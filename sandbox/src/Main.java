@@ -6,9 +6,9 @@ public class Main {
     {
         List<Customer> customers = new ArrayList<>();
 
-        int count = 4000000;
+        int count = 400000;
 
-        System.out.println("=> Generating "+ count +" customers...\n");
+        System.out.println("=> Generating " + count + " customers...\n");
         for (int i = 0; i < count; i++) {
             Customer tmp = new Customer();
             tmp.setFirstname(randomFirstname());
@@ -21,7 +21,8 @@ public class Main {
             customers.add(tmp);
         }
 
-        // Lambdas FTW!
+        // Lambdas
+        System.out.println("=> Printing using lambdas");
         printPersons(customers,
                 c -> c.getAge() >= 45
                         && c.getAge() <= 55
@@ -30,14 +31,40 @@ public class Main {
                         && c.getAddress().contains("Road")
                         && (c.getCity().equals("Bristol") || c.getCity().equals("Leeds"))
         );
+
+        // Stream API
+        System.out.println("=> Printing using streams");
+        printPersons(customers.stream().filter(c -> c.getAge() >= 45
+                        && c.getAge() <= 55
+                        && c.getLastname().equals("Moore")
+                        && c.getFirstname().contains("ar")
+                        && c.getAddress().contains("Road")
+                        && (c.getCity().equals("Bristol") || c.getCity().equals("Leeds"))
+        ).iterator());
     }
 
+    /**
+     * The lambda way
+     * @param roster
+     * @param tester
+     */
     public void printPersons(List<Customer> roster, Predicate<Customer> tester)
     {
         for (Customer c : roster) {
             if (tester.test(c)) {
                 System.out.println(c);
             }
+        }
+    }
+
+    /**
+     * The Stream way
+     * @param iterator
+     */
+    public void printPersons(Iterator<Customer> iterator)
+    {
+        while (iterator.hasNext()) {
+            System.out.println(iterator.next());
         }
     }
 
