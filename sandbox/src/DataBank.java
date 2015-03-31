@@ -13,6 +13,7 @@ public class DataBank
         "Nancy", "Karen", "Betty", "Sandra", "Betty", "Ruth",
         "Laura", "Sarah", "Kimberly", "Jessica", "Shirley"
     };
+
     public static final String[] lastnames = {
         "Smith", "Johnson", "Williams", "Jones", "Brown",
         "Davis", "Miller", "Moore", "Taylor", "Jackson",
@@ -23,6 +24,7 @@ public class DataBank
         "Turner", "Phillips", "Collins", "Stewart", "Sanchez",
         "Morris", "Rogers", "Parker", "Evans", "Edwards", "Scott"
     };
+
     public static final String[] cities = {
         "Bath", "Birmingham", "Bradford", "Brighton & Hove",
         "Bristol", "Cambridge", "Canterbury", "Carlisle",
@@ -35,7 +37,9 @@ public class DataBank
         "Sheffield", "Southampton", "Sunderland", "Truro", "Wakfield",
         "Wells", "Westminister", "Winchester", "Worcester", "York"
     };
+
     public static final String[] streetType = {
         "Road", "Street", "Bridge", "Way", "Ground", "Place", "Crossroad"
     };
+
 }
