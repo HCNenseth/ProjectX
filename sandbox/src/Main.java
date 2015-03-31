@@ -25,9 +25,10 @@ public class Main {
         printPersons(customers,
                 c -> c.getAge() >= 45
                         && c.getAge() <= 55
-                        && c.getLastname() == "Moore"
+                        && c.getLastname().equals("Moore")
+                        && c.getFirstname().contains("ar")
                         && c.getAddress().contains("Road")
-                        && (c.getCity() == "Bristol" || c.getCity() == "Leeds")
+                        && (c.getCity().equals("Bristol") || c.getCity().equals("Leeds"))
         );
     }
 
