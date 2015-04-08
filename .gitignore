@@ -1,0 +1,4 @@
+*.iws
+.idea/libraries/*.xml
+.idea/tasks.xml
+.idea/workspace.xml
