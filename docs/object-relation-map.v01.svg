@@ -1,87 +1,103 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!-- Created by diasvg.py -->
-<svg width="35.095cm" height="24.538cm" viewBox="23.950 7.112 59.045 31.650"
- xmlns="http://www.w3.org/2000/svg"
- xmlns:xlink="http://www.w3.org/1999/xlink">
-<rect x="29.000" y="13.000" width="11.280" height="2.800" fill="#FFFFFF" stroke="none" stroke-width="0"/>
-<rect x="29.000" y="13.000" width="11.280" height="2.800" fill="none" stroke="#000000" stroke-width="0.100" />
-<text x="34.640" y="13.950"  fill="#000000" text-anchor="middle" font-size="1.00" font-family="sans" font-style="normal" font-weight="700">
-Customer</text>
-<text x="34.640" y="14.725"  fill="#000000" text-anchor="middle" font-size="0.70" font-family="sans" font-style="normal" font-weight="400">
-Main customer</text>
-<text x="34.640" y="15.425"  fill="#000000" text-anchor="middle" font-size="0.70" font-family="sans" font-style="normal" font-weight="400">
-class</text>
-<rect x="29.000" y="15.800" width="11.280" height="1.000" fill="#FFFFFF" stroke="none" stroke-width="0"/>
-<rect x="29.000" y="15.800" width="11.280" height="1.000" fill="none" stroke="#000000" stroke-width="0.100" />
-<text x="29.150" y="16.500"  fill="#000000" text-anchor="start" font-size="0.80" font-family="monospace" font-style="normal" font-weight="400">
--insurances: List&lt;Insurance&gt;</text>
-<rect x="29.000" y="20.000" width="10.510" height="2.800" fill="#FFFFFF" stroke="none" stroke-width="0"/>
-<rect x="29.000" y="20.000" width="10.510" height="2.800" fill="none" stroke="#000000" stroke-width="0.100" />
-<text x="34.255" y="20.950"  fill="#000000" text-anchor="middle" font-size="1.00" font-family="sans" font-style="normal" font-weight="700">
-Insurance</text>
-<text x="34.255" y="21.725"  fill="#000000" text-anchor="middle" font-size="0.70" font-family="sans" font-style="normal" font-weight="400">
-Main Insurance</text>
-<text x="34.255" y="22.425"  fill="#000000" text-anchor="middle" font-size="0.70" font-family="sans" font-style="normal" font-weight="400">
-class</text>
-<rect x="29.000" y="22.800" width="10.510" height="1.800" fill="#FFFFFF" stroke="none" stroke-width="0"/>
-<rect x="29.000" y="22.800" width="10.510" height="1.800" fill="none" stroke="#000000" stroke-width="0.100" />
-<text x="29.150" y="23.500"  fill="#000000" text-anchor="start" font-size="0.80" font-family="monospace" font-style="normal" font-weight="400">
--customer: Customer</text>
-<text x="29.150" y="24.300"  fill="#000000" text-anchor="start" font-size="0.80" font-family="monospace" font-style="normal" font-weight="400">
--accidents: List&lt;Accident&gt;</text>
-<rect x="29.000" y="27.000" width="7.815" height="2.800" fill="#FFFFFF" stroke="none" stroke-width="0"/>
-<rect x="29.000" y="27.000" width="7.815" height="2.800" fill="none" stroke="#000000" stroke-width="0.100" />
-<text x="32.907" y="27.950"  fill="#000000" text-anchor="middle" font-size="1.00" font-family="sans" font-style="normal" font-weight="700">
-Accident</text>
-<text x="32.907" y="28.725"  fill="#000000" text-anchor="middle" font-size="0.70" font-family="sans" font-style="normal" font-weight="400">
-Main Accident</text>
-<text x="32.907" y="29.425"  fill="#000000" text-anchor="middle" font-size="0.70" font-family="sans" font-style="normal" font-weight="400">
-class</text>
-<rect x="29.000" y="29.800" width="7.815" height="1.800" fill="#FFFFFF" stroke="none" stroke-width="0"/>
-<rect x="29.000" y="29.800" width="7.815" height="1.800" fill="none" stroke="#000000" stroke-width="0.100" />
-<text x="29.150" y="30.500"  fill="#000000" text-anchor="start" font-size="0.80" font-family="monospace" font-style="normal" font-weight="400">
--customer: Customer</text>
-<text x="29.150" y="31.300"  fill="#000000" text-anchor="start" font-size="0.80" font-family="monospace" font-style="normal" font-weight="400">
--accident: Accident</text>
-<rect x="49.000" y="14.000" width="9.847" height="1.800" fill="#FFFFFF" stroke="none" stroke-width="0"/>
-<rect x="49.000" y="14.000" width="9.847" height="1.800" fill="none" stroke="#000000" stroke-width="0.100" />
-<text x="53.924" y="15.095"  fill="#000000" text-anchor="middle" font-size="0.80" font-family="sans" font-style="normal" font-weight="400">
-List&lt;Customer&gt; customers</text>
-<line x1="49.500" y1="15.245" x2="58.347" y2="15.245" stroke="#000000" stroke-width="0.050" />
-<rect x="49.000" y="21.000" width="9.995" height="1.800" fill="#FFFFFF" stroke="none" stroke-width="0"/>
-<rect x="49.000" y="21.000" width="9.995" height="1.800" fill="none" stroke="#000000" stroke-width="0.100" />
-<text x="53.998" y="22.095"  fill="#000000" text-anchor="middle" font-size="0.80" font-family="sans" font-style="normal" font-weight="400">
-List&lt;Insurance&gt; insurances</text>
-<line x1="49.500" y1="22.245" x2="58.495" y2="22.245" stroke="#000000" stroke-width="0.050" />
-<rect x="49.000" y="28.000" width="9.227" height="1.800" fill="#FFFFFF" stroke="none" stroke-width="0"/>
-<rect x="49.000" y="28.000" width="9.227" height="1.800" fill="none" stroke="#000000" stroke-width="0.100" />
-<text x="53.614" y="29.095"  fill="#000000" text-anchor="middle" font-size="0.80" font-family="sans" font-style="normal" font-weight="400">
-List&lt;Accident&gt; accidents</text>
-<line x1="49.500" y1="29.245" x2="57.727" y2="29.245" stroke="#000000" stroke-width="0.050" />
-<path stroke="#000000" fill="none" stroke-width="0.100"  d ="M 49.000,14.900 A 10.036,10.036 0 0,0 40.734,14.225 "/>
-<polygon fill="#000000" stroke="none" stroke-width="0.100" points="40.383,14.357 40.749,13.935 40.730,14.214 40.941,14.397 "/>
-<polygon fill="none" stroke="#000000" stroke-width="0.100"  points="40.383,14.357 40.749,13.935 40.730,14.214 40.941,14.397 "/>
-<path stroke="#000000" fill="none" stroke-width="0.100"  d ="M 49.000,21.900 A 11.789,11.789 0 0,0 39.968,21.237 "/>
-<polygon fill="#000000" stroke="none" stroke-width="0.100" points="39.615,21.360 39.994,20.949 39.965,21.228 40.171,21.417 "/>
-<polygon fill="none" stroke="#000000" stroke-width="0.100"  points="39.615,21.360 39.994,20.949 39.965,21.228 40.171,21.417 "/>
-<path stroke="#000000" fill="none" stroke-width="0.100"  d ="M 49.000,28.900 A 19.091,19.091 0 0,0 37.284,28.270 "/>
-<polygon fill="#000000" stroke="none" stroke-width="0.100" points="36.922,28.369 37.332,27.989 37.282,28.264 37.472,28.468 "/>
-<polygon fill="none" stroke="#000000" stroke-width="0.100"  points="36.922,28.369 37.332,27.989 37.282,28.264 37.472,28.468 "/>
-<path stroke="#000000" fill="none" stroke-width="0.100"  d ="M 29.000,16.300 A 3.751,3.751 0 0,0 28.695,21.025 "/>
-<polygon fill="#000000" stroke="none" stroke-width="0.100" points="28.924,21.318 28.401,21.121 28.669,21.043 28.767,20.781 "/>
-<polygon fill="none" stroke="#000000" stroke-width="0.100"  points="28.924,21.318 28.401,21.121 28.669,21.043 28.767,20.781 "/>
-<path stroke="#000000" fill="none" stroke-width="0.100"  d ="M 29.000,24.100 A 2.811,2.811 0 0,0 28.660,28.059 "/>
-<polygon fill="#000000" stroke="none" stroke-width="0.100" points="28.914,28.328 28.371,28.197 28.628,28.086 28.693,27.815 "/>
-<polygon fill="none" stroke="#000000" stroke-width="0.100"  points="28.914,28.328 28.371,28.197 28.628,28.086 28.693,27.815 "/>
-<text x="31.000" y="9.000"  fill="#000000" text-anchor="start" font-size="2.54" font-family="sans" font-style="normal" font-weight="400">
-Object Relation Map</text>
-<path stroke="#000000" fill="none" stroke-width="0.100"  d ="M 28.560,14.604 A 4.800,4.800 0 0,0 29.000,23.300 "/>
-<polygon fill="#000000" stroke="none" stroke-width="0.100" points="28.896,14.442 28.527,14.861 28.549,14.583 28.339,14.398 "/>
-<polygon fill="none" stroke="#000000" stroke-width="0.100"  points="28.896,14.442 28.527,14.861 28.549,14.583 28.339,14.398 "/>
-<path stroke="#000000" fill="none" stroke-width="0.100"  d ="M 28.576,21.636 A 5.420,5.420 0 0,0 29.000,31.100 "/>
-<polygon fill="#000000" stroke="none" stroke-width="0.100" points="28.900,21.450 28.564,21.897 28.564,21.617 28.341,21.450 "/>
-<polygon fill="none" stroke="#000000" stroke-width="0.100"  points="28.900,21.450 28.564,21.897 28.564,21.617 28.341,21.450 "/>
-<path stroke="#000000" fill="none" stroke-width="0.100"  d ="M 28.568,14.623 A 8.820,8.820 0 0,0 29.000,30.300 "/>
-<polygon fill="#000000" stroke="none" stroke-width="0.100" points="28.899,14.448 28.557,14.890 28.561,14.611 28.340,14.440 "/>
-<polygon fill="none" stroke="#000000" stroke-width="0.100"  points="28.899,14.448 28.557,14.890 28.561,14.611 28.340,14.440 "/>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/PR-SVG-20010719/DTD/svg10.dtd">
+<svg width="34cm" height="25cm" viewBox="459 162 662 491" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <g>
+    <rect style="fill: #ffffff" x="560" y="260" width="225.6" height="56"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="560" y="260" width="225.6" height="56"/>
+    <text font-size="16" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:700" x="672.8" y="279">Customer</text>
+    <text font-size="11.2" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:italic;font-weight:normal" x="672.8" y="294.5">Main customer</text>
+    <text font-size="11.2" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:italic;font-weight:normal" x="672.8" y="308.5">class</text>
+    <rect style="fill: #ffffff" x="560" y="316" width="225.6" height="20"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="560" y="316" width="225.6" height="20"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="563" y="330">-insurances: List&lt;Insurance&gt;</text>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="560" y="400" width="210.2" height="56"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="560" y="400" width="210.2" height="56"/>
+    <text font-size="16" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:700" x="665.1" y="419">Insurance</text>
+    <text font-size="11.2" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:italic;font-weight:normal" x="665.1" y="434.5">Main Insurance</text>
+    <text font-size="11.2" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:italic;font-weight:normal" x="665.1" y="448.5">class</text>
+    <rect style="fill: #ffffff" x="560" y="456" width="210.2" height="36"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="560" y="456" width="210.2" height="36"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="563" y="470">-customer: Customer</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="563" y="486">-accidents: List&lt;Accident&gt;</text>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="560" y="560" width="171.7" height="56"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="560" y="560" width="171.7" height="56"/>
+    <text font-size="16" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:700" x="645.85" y="579">Accident</text>
+    <text font-size="11.2" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:italic;font-weight:normal" x="645.85" y="594.5">Main Accident</text>
+    <text font-size="11.2" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:italic;font-weight:normal" x="645.85" y="608.5">class</text>
+    <rect style="fill: #ffffff" x="560" y="616" width="171.7" height="36"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="560" y="616" width="171.7" height="36"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="563" y="630">-customer: Customer</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="563" y="646">-insurance: Insurance</text>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="920" y="280" width="196.95" height="36"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="920" y="280" width="196.95" height="36"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="1018.47" y="301.9">
+      <tspan x="1018.47" y="301.9">List&lt;Customer&gt; customers</tspan>
+    </text>
+    <line style="fill: none; fill-opacity:0; stroke-width: 1; stroke: #000000" x1="930" y1="304.9" x2="1106.95" y2="304.9"/>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="920" y="420" width="199.9" height="36"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="920" y="420" width="199.9" height="36"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="1019.95" y="441.9">
+      <tspan x="1019.95" y="441.9">List&lt;Insurance&gt; insurances</tspan>
+    </text>
+    <line style="fill: none; fill-opacity:0; stroke-width: 1; stroke: #000000" x1="930" y1="444.9" x2="1109.9" y2="444.9"/>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="920" y="580" width="184.55" height="36"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="920" y="580" width="184.55" height="36"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="1012.28" y="601.9">
+      <tspan x="1012.28" y="601.9">List&lt;Accident&gt; accidents</tspan>
+    </text>
+    <line style="fill: none; fill-opacity:0; stroke-width: 1; stroke: #000000" x1="930" y1="604.9" x2="1094.55" y2="604.9"/>
+  </g>
+  <g>
+    <path style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" d="M 920,298 A 123.521,123.521 0 0 0 794.289,283.658"/>
+    <polygon style="fill: #000000" points="787.559,286.923 793.913,277.723 794.131,283.309 798.731,286.485 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="787.559,286.923 793.913,277.723 794.131,283.309 798.731,286.485 "/>
+  </g>
+  <g>
+    <path style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" d="M 920,438 A 150.875,150.875 0 0 0 779.069,424.019"/>
+    <polygon style="fill: #000000" points="772.209,427.019 779.003,418.139 778.949,423.729 783.389,427.126 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="772.209,427.019 779.003,418.139 778.949,423.729 783.389,427.126 "/>
+  </g>
+  <g>
+    <path style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" d="M 920,598 A 232.231,232.231 0 0 0 740.859,584.718"/>
+    <polygon style="fill: #000000" points="733.789,587.202 741.345,578.962 740.795,584.525 744.915,588.303 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="733.789,587.202 741.345,578.962 740.795,584.525 744.915,588.303 "/>
+  </g>
+  <g>
+    <path style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" d="M 560,326 A 75.025,75.025 0 0 0 553.894,420.495"/>
+    <polygon style="fill: #000000" points="558.48,426.36 548.015,422.425 553.382,420.859 555.349,415.627 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="558.48,426.36 548.015,422.425 553.382,420.859 555.349,415.627 "/>
+  </g>
+  <g>
+    <path style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" d="M 560,482 A 80.225,80.225 0 0 0 554.053,580.358"/>
+    <polygon style="fill: #000000" points="558.523,586.321 548.163,582.118 553.568,580.691 555.67,575.511 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="558.523,586.321 548.163,582.118 553.568,580.691 555.67,575.511 "/>
+  </g>
+  <text font-size="40.64" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="600" y="200">
+    <tspan x="600" y="200">Object Relation Map</tspan>
+  </text>
+  <g>
+    <path style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" d="M 551.204,292.087 A 96.0083,96.0083 0 0 0 560,466"/>
+    <polygon style="fill: #000000" points="557.927,288.839 550.532,297.224 550.975,291.652 546.782,287.954 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="557.927,288.839 550.532,297.224 550.975,291.652 546.782,287.954 "/>
+  </g>
+  <g>
+    <path style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" d="M 551.914,433.384 A 125.408,125.408 0 0 0 560,642"/>
+    <polygon style="fill: #000000" points="558.092,429.166 552.168,438.648 551.693,433.078 546.952,430.116 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="558.092,429.166 552.168,438.648 551.693,433.078 546.952,430.116 "/>
+  </g>
+  <g>
+    <path style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" d="M 551.595,292.895 A 192.805,192.805 0 0 0 560,626"/>
+    <polygon style="fill: #000000" points="558.04,289.076 551.681,298.272 551.466,292.686 546.868,289.507 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="558.04,289.076 551.681,298.272 551.466,292.686 546.868,289.507 "/>
+  </g>
 </svg>
