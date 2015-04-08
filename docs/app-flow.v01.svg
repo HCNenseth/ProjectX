@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created by diasvg.py -->
+<svg width="33.030cm" height="38.938cm" viewBox="23.950 11.113 56.980 50.050"
+ xmlns="http://www.w3.org/2000/svg"
+ xmlns:xlink="http://www.w3.org/1999/xlink">
+<rect x="24.000" y="38.000" width="27.000" height="12.000" fill="#FFC0CB" stroke="none" stroke-width="0"/>
+<rect x="24.000" y="38.000" width="27.000" height="12.000" fill="none" stroke="#000000" stroke-width="0.100" />
+<rect x="24.000" y="14.000" width="27.000" height="12.000" fill="#D8E5E5" stroke="none" stroke-width="0"/>
+<rect x="24.000" y="14.000" width="27.000" height="12.000" fill="none" stroke="#000000" stroke-width="0.100" />
+<rect x="24.000" y="26.000" width="27.000" height="12.000" fill="#E6E6FA" stroke="none" stroke-width="0"/>
+<rect x="24.000" y="26.000" width="27.000" height="12.000" fill="none" stroke="#000000" stroke-width="0.100" />
+<text x="24.000" y="13.000"  fill="#000000" text-anchor="start" font-size="2.54" font-family="sans" font-style="normal" font-weight="400">
+App flow</text>
+<path stroke="none" fill="#FFFFFF" stroke-width="0.100" d="M 25.000,15.000 L 30.232,15.000 L 30.232,16.714 C 29.186,16.429 28.663,16.429 27.616,16.714 C 26.570,17.000 26.046,17.000 25.000,16.714 L 25.000,15.000 "/>
+<path stroke="#000000" fill="none" stroke-width="0.100"  d="M 25.000,15.000 L 30.232,15.000 L 30.232,16.714 C 29.186,16.429 28.663,16.429 27.616,16.714 C 26.570,17.000 26.046,17.000 25.000,16.714 L 25.000,15.000 "/>
+<text x="27.616" y="15.914"  fill="#000000" text-anchor="middle" font-size="0.80" font-family="sans" font-style="normal" font-weight="400">
+Customer table</text>
+<rect x="25.000" y="21.000" width="2.497" height="1.900" fill="#FFFFFF" stroke="none" stroke-width="0"/>
+<rect x="25.000" y="21.000" width="2.497" height="1.900" fill="none" stroke="#000000" stroke-width="0.100" />
+<text x="26.249" y="22.145"  fill="#000000" text-anchor="middle" font-size="0.80" font-family="sans" font-style="normal" font-weight="400">
+New</text>
+<rect x="39.000" y="21.000" width="2.828" height="1.900" fill="#FFFFFF" stroke="none" stroke-width="0"/>
+<rect x="39.000" y="21.000" width="2.828" height="1.900" fill="none" stroke="#000000" stroke-width="0.100" />
+<text x="40.414" y="22.145"  fill="#000000" text-anchor="middle" font-size="0.80" font-family="sans" font-style="normal" font-weight="400">
+Show</text>
+<rect x="46.000" y="21.000" width="2.340" height="1.900" fill="#FFFFFF" stroke="none" stroke-width="0"/>
+<rect x="46.000" y="21.000" width="2.340" height="1.900" fill="none" stroke="#000000" stroke-width="0.100" />
+<text x="47.170" y="22.145"  fill="#000000" text-anchor="middle" font-size="0.80" font-family="sans" font-style="normal" font-weight="400">
+Edit</text>
+<path stroke="#000000" fill="none" stroke-width="0.100"  d ="M 40.161,20.584 A 11.179,11.179 0 0,0 30.233,15.429 "/>
+<polygon fill="#000000" stroke="none" stroke-width="0.100" points="40.358,20.903 39.891,20.596 40.170,20.579 40.324,20.345 "/>
+<polygon fill="none" stroke="#000000" stroke-width="0.100"  points="40.358,20.903 39.891,20.596 40.170,20.579 40.324,20.345 "/>
+<path stroke="#000000" fill="none" stroke-width="0.100"  d ="M 41.828,22.900 A 2.749,2.749 0 0,0 47.016,23.356 "/>
+<polygon fill="#000000" stroke="none" stroke-width="0.100" points="47.144,23.009 47.269,23.554 47.055,23.373 46.783,23.435 "/>
+<polygon fill="none" stroke="#000000" stroke-width="0.100"  points="47.144,23.009 47.269,23.554 47.055,23.373 46.783,23.435 "/>
+<path stroke="#000000" fill="none" stroke-width="0.100"  d ="M 47.170,21.000 A 2.784,2.784 0 0,0 42.002,20.552 "/>
+<polygon fill="#000000" stroke="none" stroke-width="0.100" points="41.859,20.893 41.760,20.343 41.965,20.533 42.240,20.483 "/>
+<polygon fill="none" stroke="#000000" stroke-width="0.100"  points="41.859,20.893 41.760,20.343 41.965,20.533 42.240,20.483 "/>
+<path stroke="#000000" fill="none" stroke-width="0.100"  d ="M 38.595,20.731 A 11.162,11.162 0 0,0 26.249,21.000 "/>
+<polygon fill="#000000" stroke="none" stroke-width="0.100" points="38.908,20.936 38.355,20.856 38.600,20.722 38.641,20.445 "/>
+<polygon fill="none" stroke="#000000" stroke-width="0.100"  points="38.908,20.936 38.355,20.856 38.600,20.722 38.641,20.445 "/>
+<path stroke="none" fill="#FFFFFF" stroke-width="0.100" d="M 25.000,27.000 L 30.265,27.000 L 30.265,28.714 C 29.212,28.429 28.685,28.429 27.633,28.714 C 26.579,29.000 26.053,29.000 25.000,28.714 L 25.000,27.000 "/>
+<path stroke="#000000" fill="none" stroke-width="0.100"  d="M 25.000,27.000 L 30.265,27.000 L 30.265,28.714 C 29.212,28.429 28.685,28.429 27.633,28.714 C 26.579,29.000 26.053,29.000 25.000,28.714 L 25.000,27.000 "/>
+<text x="27.633" y="27.914"  fill="#000000" text-anchor="middle" font-size="0.80" font-family="sans" font-style="normal" font-weight="400">
+Insurance table</text>
+<rect x="25.000" y="33.000" width="2.497" height="1.900" fill="#FFFFFF" stroke="none" stroke-width="0"/>
+<rect x="25.000" y="33.000" width="2.497" height="1.900" fill="none" stroke="#000000" stroke-width="0.100" />
+<text x="26.249" y="34.145"  fill="#000000" text-anchor="middle" font-size="0.80" font-family="sans" font-style="normal" font-weight="400">
+New</text>
+<rect x="39.000" y="33.000" width="2.828" height="1.900" fill="#FFFFFF" stroke="none" stroke-width="0"/>
+<rect x="39.000" y="33.000" width="2.828" height="1.900" fill="none" stroke="#000000" stroke-width="0.100" />
+<text x="40.414" y="34.145"  fill="#000000" text-anchor="middle" font-size="0.80" font-family="sans" font-style="normal" font-weight="400">
+Show</text>
+<rect x="46.000" y="33.000" width="2.340" height="1.900" fill="#FFFFFF" stroke="none" stroke-width="0"/>
+<rect x="46.000" y="33.000" width="2.340" height="1.900" fill="none" stroke="#000000" stroke-width="0.100" />
+<text x="47.170" y="34.145"  fill="#000000" text-anchor="middle" font-size="0.80" font-family="sans" font-style="normal" font-weight="400">
+Edit</text>
+<path stroke="#000000" fill="none" stroke-width="0.100"  d ="M 40.162,32.584 A 11.128,11.128 0 0,0 30.265,27.429 "/>
+<polygon fill="#000000" stroke="none" stroke-width="0.100" points="40.358,32.903 39.892,32.594 40.171,32.578 40.326,32.345 "/>
+<polygon fill="none" stroke="#000000" stroke-width="0.100"  points="40.358,32.903 39.892,32.594 40.171,32.578 40.326,32.345 "/>
+<path stroke="#000000" fill="none" stroke-width="0.100"  d ="M 41.828,34.900 A 2.749,2.749 0 0,0 47.016,35.356 "/>
+<polygon fill="#000000" stroke="none" stroke-width="0.100" points="47.144,35.009 47.269,35.554 47.055,35.373 46.783,35.435 "/>
+<polygon fill="none" stroke="#000000" stroke-width="0.100"  points="47.144,35.009 47.269,35.554 47.055,35.373 46.783,35.435 "/>
+<path stroke="#000000" fill="none" stroke-width="0.100"  d ="M 47.170,33.000 A 2.784,2.784 0 0,0 42.002,32.552 "/>
+<polygon fill="#000000" stroke="none" stroke-width="0.100" points="41.859,32.893 41.760,32.343 41.965,32.533 42.240,32.483 "/>
+<polygon fill="none" stroke="#000000" stroke-width="0.100"  points="41.859,32.893 41.760,32.343 41.965,32.533 42.240,32.483 "/>
+<path stroke="#000000" fill="none" stroke-width="0.100"  d ="M 38.595,32.731 A 11.162,11.162 0 0,0 26.249,33.000 "/>
+<polygon fill="#000000" stroke="none" stroke-width="0.100" points="38.908,32.936 38.355,32.856 38.600,32.722 38.641,32.445 "/>
+<polygon fill="none" stroke="#000000" stroke-width="0.100"  points="38.908,32.936 38.355,32.856 38.600,32.722 38.641,32.445 "/>
+<path stroke="none" fill="#FFFFFF" stroke-width="0.100" d="M 25.000,39.000 L 29.892,39.000 L 29.892,40.714 C 28.914,40.429 28.425,40.429 27.446,40.714 C 26.468,41.000 25.979,41.000 25.000,40.714 L 25.000,39.000 "/>
+<path stroke="#000000" fill="none" stroke-width="0.100"  d="M 25.000,39.000 L 29.892,39.000 L 29.892,40.714 C 28.914,40.429 28.425,40.429 27.446,40.714 C 26.468,41.000 25.979,41.000 25.000,40.714 L 25.000,39.000 "/>
+<text x="27.446" y="39.914"  fill="#000000" text-anchor="middle" font-size="0.80" font-family="sans" font-style="normal" font-weight="400">
+Accident table</text>
+<rect x="25.000" y="45.000" width="2.497" height="1.900" fill="#FFFFFF" stroke="none" stroke-width="0"/>
+<rect x="25.000" y="45.000" width="2.497" height="1.900" fill="none" stroke="#000000" stroke-width="0.100" />
+<text x="26.249" y="46.145"  fill="#000000" text-anchor="middle" font-size="0.80" font-family="sans" font-style="normal" font-weight="400">
+New</text>
+<rect x="39.000" y="45.000" width="2.828" height="1.900" fill="#FFFFFF" stroke="none" stroke-width="0"/>
+<rect x="39.000" y="45.000" width="2.828" height="1.900" fill="none" stroke="#000000" stroke-width="0.100" />
+<text x="40.414" y="46.145"  fill="#000000" text-anchor="middle" font-size="0.80" font-family="sans" font-style="normal" font-weight="400">
+Show</text>
+<rect x="46.000" y="45.000" width="2.340" height="1.900" fill="#FFFFFF" stroke="none" stroke-width="0"/>
+<rect x="46.000" y="45.000" width="2.340" height="1.900" fill="none" stroke="#000000" stroke-width="0.100" />
+<text x="47.170" y="46.145"  fill="#000000" text-anchor="middle" font-size="0.80" font-family="sans" font-style="normal" font-weight="400">
+Edit</text>
+<path stroke="#000000" fill="none" stroke-width="0.100"  d ="M 40.141,44.597 A 12.468,12.468 0 0,0 29.492,39.329 "/>
+<polygon fill="#000000" stroke="none" stroke-width="0.100" points="40.353,44.906 39.871,44.623 40.149,44.592 40.290,44.351 "/>
+<polygon fill="none" stroke="#000000" stroke-width="0.100"  points="40.353,44.906 39.871,44.623 40.149,44.592 40.290,44.351 "/>
+<path stroke="#000000" fill="none" stroke-width="0.100"  d ="M 41.828,46.900 A 2.749,2.749 0 0,0 47.016,47.356 "/>
+<polygon fill="#000000" stroke="none" stroke-width="0.100" points="47.144,47.009 47.269,47.554 47.055,47.373 46.783,47.435 "/>
+<polygon fill="none" stroke="#000000" stroke-width="0.100"  points="47.144,47.009 47.269,47.554 47.055,47.373 46.783,47.435 "/>
+<path stroke="#000000" fill="none" stroke-width="0.100"  d ="M 47.170,45.000 A 2.784,2.784 0 0,0 42.002,44.552 "/>
+<polygon fill="#000000" stroke="none" stroke-width="0.100" points="41.859,44.893 41.760,44.343 41.965,44.533 42.240,44.483 "/>
+<polygon fill="none" stroke="#000000" stroke-width="0.100"  points="41.859,44.893 41.760,44.343 41.965,44.533 42.240,44.483 "/>
+<path stroke="#000000" fill="none" stroke-width="0.100"  d ="M 38.595,44.731 A 11.162,11.162 0 0,0 26.249,45.000 "/>
+<polygon fill="#000000" stroke="none" stroke-width="0.100" points="38.908,44.936 38.355,44.856 38.600,44.722 38.641,44.445 "/>
+<polygon fill="none" stroke="#000000" stroke-width="0.100"  points="38.908,44.936 38.355,44.856 38.600,44.722 38.641,44.445 "/>
+<text x="52.000" y="15.000"  fill="#000000" text-anchor="start" font-size="1.27" font-family="sans" font-style="normal" font-weight="400">
+Customer</text>
+<text x="52.000" y="27.000"  fill="#000000" text-anchor="start" font-size="1.27" font-family="sans" font-style="normal" font-weight="400">
+Insurance</text>
+<text x="52.000" y="39.000"  fill="#000000" text-anchor="start" font-size="1.27" font-family="sans" font-style="normal" font-weight="400">
+Accident</text>
+<path stroke="#4D4D4D" fill="none" stroke-width="0.100" stroke-dasharray="0.20,0.20" d ="M 27.983,34.392 A 12.900,12.900 0 0,0 39.707,22.900 "/>
+<polygon fill="#4D4D4D" stroke="none" stroke-width="0.100" points="27.609,34.420 28.097,34.146 27.984,34.402 28.121,34.645 "/>
+<polygon fill="none" stroke="#4D4D4D" stroke-width="0.100"  points="27.609,34.420 28.097,34.146 27.984,34.402 28.121,34.645 "/>
+<path stroke="#000000" fill="none" stroke-width="0.100"  d ="M 41.301,32.548 A 13.039,13.039 0 0,0 41.301,23.352 "/>
+<polygon fill="#000000" stroke="none" stroke-width="0.100" points="41.164,23.003 41.588,23.367 41.309,23.349 41.127,23.561 "/>
+<polygon fill="none" stroke="#000000" stroke-width="0.100"  points="41.164,23.003 41.588,23.367 41.309,23.349 41.127,23.561 "/>
+<polygon fill="#000000" stroke="none" stroke-width="0.100" points="41.164,32.897 41.127,32.339 41.309,32.551 41.588,32.533 "/>
+<polygon fill="none" stroke="#000000" stroke-width="0.100"  points="41.164,32.897 41.127,32.339 41.309,32.551 41.588,32.533 "/>
+<path stroke="#4D4D4D" fill="none" stroke-width="0.100" stroke-dasharray="0.20,0.20" d ="M 27.908,45.214 A 25.882,25.882 0 0,0 39.707,22.900 "/>
+<polygon fill="#4D4D4D" stroke="none" stroke-width="0.100" points="27.592,45.416 27.885,44.940 27.911,45.218 28.149,45.364 "/>
+<polygon fill="none" stroke="#4D4D4D" stroke-width="0.100"  points="27.592,45.416 27.885,44.940 27.911,45.218 28.149,45.364 "/>
+<path stroke="#000000" fill="none" stroke-width="0.100"  d ="M 38.920,23.095 A 14.823,14.823 0 0,0 38.621,46.120 "/>
+<polygon fill="#000000" stroke="none" stroke-width="0.100" points="39.217,22.866 38.963,23.364 38.915,23.089 38.666,22.962 "/>
+<polygon fill="none" stroke="#000000" stroke-width="0.100"  points="39.217,22.866 38.963,23.364 38.915,23.089 38.666,22.962 "/>
+<polygon fill="#000000" stroke="none" stroke-width="0.100" points="38.912,46.356 38.364,46.246 38.616,46.126 38.671,45.852 "/>
+<polygon fill="none" stroke="#000000" stroke-width="0.100"  points="38.912,46.356 38.364,46.246 38.616,46.126 38.671,45.852 "/>
+<path stroke="#4D4D4D" fill="none" stroke-width="0.100" stroke-dasharray="0.20,0.20" d ="M 27.981,46.368 A 13.756,13.756 0 0,0 39.707,34.900 "/>
+<polygon fill="#4D4D4D" stroke="none" stroke-width="0.100" points="27.609,46.414 28.081,46.115 27.982,46.376 28.131,46.613 "/>
+<polygon fill="none" stroke="#4D4D4D" stroke-width="0.100"  points="27.609,46.414 28.081,46.115 27.982,46.376 28.131,46.613 "/>
+<path stroke="#000000" fill="none" stroke-width="0.100"  d ="M 41.276,44.539 A 15.063,15.063 0 0,0 41.276,35.361 "/>
+<polygon fill="#000000" stroke="none" stroke-width="0.100" points="41.158,35.005 41.561,35.393 41.284,35.359 41.090,35.560 "/>
+<polygon fill="none" stroke="#000000" stroke-width="0.100"  points="41.158,35.005 41.561,35.393 41.284,35.359 41.090,35.560 "/>
+<polygon fill="#000000" stroke="none" stroke-width="0.100" points="41.158,44.895 41.090,44.340 41.284,44.541 41.561,44.507 "/>
+<polygon fill="none" stroke="#000000" stroke-width="0.100"  points="41.158,44.895 41.090,44.340 41.284,44.541 41.561,44.507 "/>
+</svg>
