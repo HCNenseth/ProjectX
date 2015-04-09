@@ -7,6 +7,6 @@
  * [x] Java klasser (Alex)
  * [x] Klassehierark (Alex)
  * [x] Datastruktur (Alex)
- * [ ] Systemkrav (HC)
- * [ ] Framdriftsplan (HC)
+ * [x] Systemkrav (HC)
+ * [x] Framdriftsplan (HC)
  * [ ] Arbeidsfordeling (HP)
