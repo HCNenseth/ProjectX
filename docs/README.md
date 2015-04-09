@@ -3,8 +3,8 @@
 #TODOS
 
  * [ ] Prioriteringsrekkefølge (HP)
- * [ ] Oppbygning (Alex)
- * [ ] Java klasser (Alex)
+ * [x] Oppbygning (Alex)
+ * [x] Java klasser (Alex)
  * [ ] Klassehierark (Alex)
  * [ ] Datastruktur (Alex)
  * [ ] Systemkrav (HC)
