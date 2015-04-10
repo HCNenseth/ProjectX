@@ -13,14 +13,15 @@ import java.util.Observer;
 public class ObservablePane extends Observable
 {
     private Pane pane;
-
-    private int paddingX = 20, paddingY = 20;
+    private static int counter = 0;
+    private int id, paddingX = 20, paddingY = 20;
 
     public ObservablePane(Observer observer, String title)
     {
-        addObserver(observer);
         this.pane = new Pane();
+        id = counter++;
 
+        addObserver(observer);
         createPane(title);
     }
 
@@ -30,15 +31,23 @@ public class ObservablePane extends Observable
         label.setLayoutX(paddingX);
         label.setLayoutY(paddingY);
 
-        Button b = new Button("Notify everyone!");
-        b.setLayoutX(paddingX);
-        b.setLayoutY(paddingY += 20);
-        b.setOnAction(e -> {
+        Button b1 = new Button("Send refresh signal");
+        b1.setLayoutX(paddingX);
+        b1.setLayoutY(paddingY += 30);
+        b1.setOnAction(e -> {
             setChanged();
-            notifyObservers();
+            notifyObservers(SignalType.REFRESH);
         });
 
-        pane.getChildren().addAll(label, b);
+        Button b2 = new Button("Send delete signal");
+        b2.setLayoutX(paddingX);
+        b2.setLayoutY(paddingY += 30);
+        b2.setOnAction(e -> {
+            setChanged();
+            notifyObservers(SignalType.DELETE);
+        });
+
+        pane.getChildren().addAll(label, b1, b2);
     }
 
     public void pushLabel(String text)
@@ -53,5 +62,7 @@ public class ObservablePane extends Observable
     {
         return pane;
     }
+
+    public int getId() { return id; }
 
 }
