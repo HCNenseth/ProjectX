@@ -28,9 +28,9 @@ public class Main extends Application
         MenuItem b = new MenuItem("B");
         MenuItem c = new MenuItem("C");
 
-        a.setOnAction(e -> otp.injectTab(a.getText(), true));
-        b.setOnAction(e -> otp.injectTab(b.getText(), true));
-        c.setOnAction(e -> otp.injectTab(c.getText(), true));
+        a.setOnAction(e -> otp.injectObservableTab(a.getText(), true));
+        b.setOnAction(e -> otp.injectObservableTab(b.getText(), true));
+        c.setOnAction(e -> otp.injectObservableTab(c.getText(), true));
 
         test.getItems().addAll(a, b ,c);
         mb.getMenus().addAll(test);
@@ -39,7 +39,8 @@ public class Main extends Application
         bp.setTop(mb);
 
         /* tab pane */
-        otp.injectTab("Default", false);
+        otp.injectObservableTab("Default", false);
+        otp.injectOfflineTab("Offline", false);
 
         bp.setCenter(otp);
 
