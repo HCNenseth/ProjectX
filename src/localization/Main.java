@@ -9,11 +9,13 @@ public class Main
 
     public static void main(String[] args)
     {
+        System.out.printf("=> Active lang: %s\n", Loc.getActiveLang());
         System.out.println(Loc.get("menu_fileOpen"));
         System.out.println(Loc.get("menu_fileClose"));
 
         Loc.setActiveLang("norwegian");
 
+        System.out.printf("=> Active lang: %s\n", Loc.getActiveLang());
         System.out.println(Loc.get("menu_fileOpen"));
         System.out.println(Loc.get("menu_fileClose"));
     }

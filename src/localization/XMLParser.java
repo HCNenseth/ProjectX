@@ -18,10 +18,13 @@ import java.util.Set;
  * XML parser created for scanning and importing localization
  * string from defined system path.
  * This parser expects XML files in the following format:
+ *
+ * ---
  * <language name="english">
  *     <string name="key1">value1</string>
  *     <string name="key2">value2</string>
  * </language>
+ * ---
  *
  * This class is not accessible from outside this package.
  *
@@ -67,6 +70,7 @@ class XMLParser
      * Inject XML file data into storage
      * @param filename - filename (absoulute) on system.
      */
+    // TODO handle exceptions better.
     private void parseFile(final String filename)
     {
         try {
@@ -90,18 +94,18 @@ class XMLParser
         Element docEle = dom.getDocumentElement();
         NodeList nl = docEle.getElementsByTagName("string");
 
-        Map<String, String> tmp = new HashMap<>();
         String lang = docEle.getAttribute("name");
 
-        if (nl != null && nl.getLength() > 0) {
+        if (nl != null && lang != null && nl.getLength() > 0) {
+            Map<String, String> tmp = new HashMap<>();
             for (int i = 0; i < nl.getLength(); i++) {
                 Element el = (Element)nl.item(i);
                 String key = el.getAttribute("name");
                 String value = el.getTextContent();
                 tmp.put(key, value);
             }
+            languages.put(lang, tmp);
         }
-        languages.put(lang, tmp);
     }
 
     /**
@@ -131,8 +135,5 @@ class XMLParser
      * Returns a set of all available languages.
      * @return
      */
-    public Set<String> getLanguages()
-    {
-        return languages.keySet();
-    }
+    public Set<String> getLanguages() { return languages.keySet(); }
 }

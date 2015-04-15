@@ -15,12 +15,9 @@ public final class Loc
     private static final Loc INSTANCE = new Loc();
 
     /**
-     * Prevent instanciation of this class
+     * Prevent instantiation of this class
      */
-    private Loc()
-    {
-        p = new XMLParser();
-    }
+    private Loc() { p = new XMLParser(); }
 
     /**
      * Retrieve value from storage based on only key.
@@ -55,5 +52,14 @@ public final class Loc
             throw new IllegalStateException("No such language!");
         }
         Loc.INSTANCE.activeLang = lang;
+    }
+
+    /**
+     * Return active language.
+     * @return
+     */
+    public static String getActiveLang()
+    {
+        return Loc.INSTANCE.activeLang;
     }
 }
