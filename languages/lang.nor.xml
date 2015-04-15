@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<language name="norwegian">
+    <string name="menu_fileOpen">Åpne file</string>
+    <string name="menu_fileSave">Lagre</string>
+    <string name="menu_fileSaveAs">Lagre som</string>
+    <string name="menu_fileClose">Avslutt</string>
+</language>

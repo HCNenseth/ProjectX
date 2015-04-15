@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<language name="english">
+    <string name="menu_fileOpen">Open file</string>
+    <string name="menu_fileSave">Save</string>
+    <string name="menu_fileSaveAs">Save as</string>
+    <string name="menu_fileClose">Close</string>
+</language>
