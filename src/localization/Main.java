@@ -5,7 +5,7 @@ package localization;
  */
 public class Main
 {
-    /** Simple test file */
+    /* Simple test file - will be deleted soon */
 
     public static void main(String[] args)
     {

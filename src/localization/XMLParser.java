@@ -15,54 +15,77 @@ import java.util.Map;
 import java.util.Set;
 
 /**
- * Created by alex on 4/15/15.
+ * XML parser created for scanning and importing localization
+ * string from defined system path.
+ * This parser expects XML files in the following format:
+ * <language name="english">
+ *     <string name="key1">value1</string>
+ *     <string name="key2">value2</string>
+ * </language>
+ *
+ * This class is not accessible from outside this package.
+ *
+ * @date 2015-04-15
+ * @filename XMLParser.java
  */
-class Parser
+class XMLParser
 {
-    /****************************
-     * Proof of concept only!!! *
-     ****************************/
     private Map<String, Map<String, String>> languages;
     private DocumentBuilderFactory dbf;
-    private final String path = "languages";
+    private final static String path = "languages";
 
-    public Parser()
+    public XMLParser()
     {
         languages = new HashMap<>();
         dbf = DocumentBuilderFactory.newInstance();
         readFiles();
     }
 
+    /**
+     * Read through all files in the given directory.
+     * This process is a bit fragile against files not being
+     * XML files.
+     */
+    // TODO add better protection against unknown files.
     private void readFiles()
     {
         File[] files = new File(path).listFiles();
 
-        if (files == null)
+        if (files == null) {
             throw new IllegalStateException(
                     "Could not locate languages directory!");
+        }
 
         for (File f : files) {
             if (f.canRead() && f.isFile()) {
-                injectFile(f.getAbsolutePath());
+                parseFile(f.getAbsolutePath());
             }
         }
     }
 
-    private void injectFile(String filename)
+    /**
+     * Inject XML file data into storage
+     * @param filename - filename (absoulute) on system.
+     */
+    private void parseFile(final String filename)
     {
         try {
             DocumentBuilder db = dbf.newDocumentBuilder();
             parseDocument(db.parse(filename));
-        } catch(ParserConfigurationException pce) {
+        } catch (ParserConfigurationException pce) {
             pce.printStackTrace();
-        } catch(SAXException se) {
+        } catch (SAXException se) {
             se.printStackTrace();
-        } catch(IOException ioe) {
+        } catch (IOException ioe) {
             ioe.printStackTrace();
         }
     }
 
-    private void parseDocument(Document dom)
+    /**
+     * Parse DOM data into storage
+     * @param dom
+     */
+    private void parseDocument(final Document dom)
     {
         Element docEle = dom.getDocumentElement();
         NodeList nl = docEle.getElementsByTagName("string");
@@ -81,11 +104,33 @@ class Parser
         languages.put(lang, tmp);
     }
 
+    /**
+     * Public method for returning value based on lang and key.
+     * Throws IllegalStateException if lang does not exists.
+     * @param lang
+     * @param key
+     * @return
+     */
     public String get(String lang, String key)
     {
-        return languages.get(lang).get(key);
+        if (!languages.containsKey(lang)) {
+            throw new IllegalStateException("Unknown language!");
+        }
+
+        /** Since the XML files are prone to errors and missing data,
+         *  return back the key if it does not exists.
+         */
+        if (languages.get(lang).containsKey(key)) {
+            return languages.get(lang).get(key);
+        } else {
+            return key;
+        }
     }
 
+    /**
+     * Returns a set of all available languages.
+     * @return
+     */
     public Set<String> getLanguages()
     {
         return languages.keySet();
