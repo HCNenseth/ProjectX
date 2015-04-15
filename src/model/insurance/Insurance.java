@@ -1,0 +1,27 @@
+package model.insurance;
+
+import model.Person;
+
+import java.util.Calendar;
+
+/**
+ * Created by HansChristian on 15.04.2015.
+ */
+public abstract class Insurance
+{
+    private Person customer;
+    private double premium;
+    private double amount;
+    private double deductable;
+    private Calendar date;
+    private String desc;
+
+    public Insurance(Person customer, double premium, double amount, Calendar date, String desc)
+    {
+        this.customer = customer;
+        this.premium = premium;
+        this.amount = amount;
+        this.date = date;
+        this.desc = desc;
+    }
+}
