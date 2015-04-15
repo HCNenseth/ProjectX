@@ -24,7 +24,6 @@ class Parser
      ****************************/
     private Map<String, Map<String, String>> languages;
     private DocumentBuilderFactory dbf;
-    private Document dom;
     private final String path = "languages";
 
     public Parser()
@@ -39,7 +38,8 @@ class Parser
         File[] files = new File(path).listFiles();
 
         if (files == null)
-            throw new IllegalStateException("Could not locate languages directory!");
+            throw new IllegalStateException(
+                    "Could not locate languages directory!");
 
         for (File f : files) {
             if (f.canRead() && f.isFile()) {

@@ -7,28 +7,28 @@ public class Loc
 {
     private Parser p;
     private String activeLang = "english";
+    private static final Loc INSTANCE = new Loc();
 
-    public Loc()
+    private Loc()
     {
         p = new Parser();
-
-        for (String s : p.getLanguages())
-        {
-            activeLang = s;
-            break;
-        }
     }
 
-    public String get(String key)
+    private String getValue(String key)
     {
         return p.get(activeLang, key);
     }
 
-    public void setActiveLang(String lang)
+    public static String get(String key)
     {
-        if (! p.getLanguages().contains(lang)) {
+        return Loc.INSTANCE.getValue(key);
+    }
+
+    public static void setActiveLang(String lang)
+    {
+        if (! Loc.INSTANCE.p.getLanguages().contains(lang)) {
             throw new IllegalStateException("No such language!");
         }
-        activeLang = lang;
+        Loc.INSTANCE.activeLang = lang;
     }
 }

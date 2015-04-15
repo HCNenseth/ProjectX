@@ -9,14 +9,12 @@ public class Main
 
     public static void main(String[] args)
     {
-        Loc l = new Loc();
+        System.out.println(Loc.get("menu_fileOpen"));
+        System.out.println(Loc.get("menu_fileClose"));
 
-        System.out.println(l.get("menu_fileOpen"));
-        System.out.println(l.get("menu_fileClose"));
+        Loc.setActiveLang("norwegian");
 
-        l.setActiveLang("norwegian");
-
-        System.out.println(l.get("menu_fileOpen"));
-        System.out.println(l.get("menu_fileClose"));
+        System.out.println(Loc.get("menu_fileOpen"));
+        System.out.println(Loc.get("menu_fileClose"));
     }
 }
