@@ -9,14 +9,16 @@ import javafx.stage.Stage;
 /**
  * Created by Hans Christian on 12.04.2015.
  */
-public class BorderPanePOC extends Application {
+public class BorderPanePOC extends Application
+{
 
     private BorderPane borderPane = new BorderPane();
     private MenuBar menuBar = new MenuBar();
     private Accordion accordion = new Accordion();
     private Pane pane = new Pane();
 
-    public void start(Stage primaryStage) throws Exception {
+    public void start(Stage primaryStage) throws Exception
+    {
 
         // TopMenu
         Menu test = new Menu("Test");
@@ -34,6 +36,7 @@ public class BorderPanePOC extends Application {
         TitledPane t2 = new TitledPane("T2", new Button("B2"));
         accordion.getPanes().addAll(t1, t2);
 
+
         borderPane.setCenter(pane);
         borderPane.setTop(menuBar);
         borderPane.setLeft(accordion);
@@ -45,7 +48,8 @@ public class BorderPanePOC extends Application {
         primaryStage.show();
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args)
+    {
         launch(args);
     }
 }
