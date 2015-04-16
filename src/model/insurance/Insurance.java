@@ -29,7 +29,9 @@ public abstract class Insurance
 
     public String toString()
     {
-        return "Customer:\t" + customer + "\nPremium:\t" + premium + "\nAmout:\t" + amount + "\nDeductable:\t" + deductable + "\nDescription:\t" + desc + "\nDate:\t" + date;
+        return "Customer:\t" + customer + "\nPremium:\t" + premium + "\nAmout:\t"
+                + amount + "\nDeductable:\t" + deductable + "\nDescription:\t"
+                + desc + "\nDate:\t" + date;
     }
 
     public Person getCustomer() { return customer; }
