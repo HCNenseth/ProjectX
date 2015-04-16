@@ -23,6 +23,8 @@ public abstract class Insurance
         this.amount = amount;
         this.date = date;
         this.desc = desc;
+
+        customer.setInsurance(this);
     }
 
     public String toString()
