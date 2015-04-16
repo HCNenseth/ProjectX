@@ -11,8 +11,8 @@ import java.util.Calendar;
 public class Boat extends Vehicle
 {
     private final int registrationYear;
-    private final short length;
-    private final short horsePower;
+    private final int length;
+    private final int horsePower;
 
     private final Propulsion propulsion;
     private final Type type;
@@ -56,8 +56,8 @@ public class Boat extends Vehicle
 
         private Person owner = customer;
         private int registrationYear = 1900;
-        private short length = 0;
-        private short horsePower = 0;
+        private int length = 0;
+        private int horsePower = 0;
         private String desc = "";
         private Calendar date = null;
         private double amount = 0;
@@ -77,13 +77,13 @@ public class Boat extends Vehicle
             return this;
         }
 
-        public Builder length(short val)
+        public Builder length(int val)
         {
             length = val;
             return this;
         }
 
-        public Builder horsePower(short val)
+        public Builder horsePower(int val)
         {
             horsePower = val;
             return this;
