@@ -28,4 +28,17 @@
     <string name="boat_type_b">Banana boat</string>
     <string name="boat_type_c">Oil tanker</string>
     <string name="boat_type_d">Tow boat</string>
+
+    <!-- house -->
+    <string name="house_type_a">House type a</string>
+    <string name="house_type_b">House type b</string>
+    <string name="house_type_c">House type c</string>
+
+    <string name="house_material_a">House material a</string>
+    <string name="house_material_b">House material b</string>
+    <string name="house_material_c">House material c</string>
+
+    <string name="house_standard_a">House standard a</string>
+    <string name="house_standard_b">House standard b</string>
+    <string name="house_standard_c">House standard c</string>
 </language>
