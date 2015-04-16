@@ -12,14 +12,15 @@ import java.util.Calendar;
 public class Car extends Vehicle
 {
 
-    private int registrationYear;
-    private int mileage;
-    private int bonus;
+    private final int registrationYear;
+    private final int mileage;
+    private final int bonus;
 
-    private Type type;
-    private Propulsion propulsion;
+    private final Type type;
+    private final Propulsion propulsion;
 
-    private enum Propulsion {
+    private enum Propulsion
+    {
         A(Loc.get("car_propulsion_a")),
         B(Loc.get("car_propulsion_b")),
         C(Loc.get("car_propulsion_c"));
@@ -31,10 +32,14 @@ public class Car extends Vehicle
             this.value = value;
         }
 
-        public String getValue() { return value; }
+        public String getValue()
+        {
+            return value;
+        }
     }
 
-    private enum Type {
+    private enum Type
+    {
         A(Loc.get("car_type_a")),
         B(Loc.get("car_type_b")),
         C(Loc.get("car_type_c")),
@@ -47,13 +52,106 @@ public class Car extends Vehicle
             this.value = value;
         }
 
-        public String getValue() { return value; }
+        public String getValue()
+        {
+            return value;
+        }
     }
 
-    public Car(Person customer, double premium, double amount, Calendar date, String desc)
+    public static class Builder
     {
-        super(customer, premium, amount, date, desc);
+        //Required
+        private String regNr;
+        private Person customer;
+
+        //Optional
+        private int registrationYear = 1900;
+        private int milage = 0;
+        private int bonus = 0;
+        private String desc = "";
+        private Calendar date = null;
+        private double amount = 0;
+        private double premium = 0;
+        private Propulsion propulsion = Propulsion.A;
+        private Type type = Type.A;
+
+        public Builder(Person customer, String regNr)
+        {
+            this.customer = customer;
+            this.regNr = regNr;
+        }
+
+        public Builder registrationYear(int val)
+        {
+            this.registrationYear = val;
+            return this;
+        }
+
+
+        public Builder milage(int val)
+        {
+            this.milage = val;
+            return this;
+        }
+
+        public Builder bonus(int val)
+        {
+            this.bonus = val;
+            return this;
+        }
+
+        public Builder desc(String val)
+        {
+            desc = val;
+            return this;
+        }
+
+        public Builder date(Calendar val)
+        {
+            date = val;
+            return this;
+        }
+
+        public Builder premium(double val)
+        {
+            premium = val;
+            return this;
+        }
+
+        public Builder amount(double val)
+        {
+            amount = val;
+            return this;
+        }
+
+        public Builder type(Type val)
+        {
+            type = val;
+            return this;
+        }
+
+        public Builder propulsion(Propulsion val)
+        {
+            propulsion = val;
+            return this;
+        }
+
+        public Car build()
+        {
+            return new Car(this);
+        }
     }
+
+    public Car(Builder builder)
+    {
+        super(builder.customer, builder.premium, builder.amount, builder.date,builder.desc);
+        registrationYear = builder.registrationYear;
+        mileage          = builder.milage;
+        bonus            = builder.bonus;
+        type             = builder.type;
+        propulsion       = builder.propulsion;
+    }
+
 
     public String getType()
     {
