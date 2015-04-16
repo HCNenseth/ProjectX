@@ -16,20 +16,28 @@ public class UnitTest {
 
     @Test public void testStorage()
     {
+        String[] strings = {"Input 1", "Input 2", "Input 3"};
+        String key = "Strings";
         Storage.injectFilename("strings.dat");
 
-        List<String> tmp = new LinkedList<>();
+        List<String> listToFile = new LinkedList<>();
 
-        assertTrue(tmp.add("Input 1"));
-        assertTrue(tmp.add("Input 2"));
-        assertTrue(tmp.add("Input 3"));
+        for (String s : strings) {
+            listToFile.add(s);
+        }
+        Storage.getInstance().put(key, listToFile);
 
-        Storage.getInstance().put("Strings", tmp);
-
+        /* save and read to/from file */
         try {
             Storage.getInstance().save();
-        } catch (IOException ioe) {
-            //
+            Storage.getInstance().read();
+        } catch (IOException | ClassNotFoundException e) {
+            // YOLO!!!
         }
+
+        List<String> listFromFile = (List<String>)Storage.getInstance()
+                .get(key);
+
+        assertArrayEquals(listFromFile.toArray(), strings);
     }
 }
