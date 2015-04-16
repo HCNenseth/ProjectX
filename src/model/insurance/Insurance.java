@@ -24,4 +24,9 @@ public abstract class Insurance
         this.date = date;
         this.desc = desc;
     }
+
+    public String toString()
+    {
+        return "Customer:\t" + customer + "\nPremium:\t" + premium + "\nAmout:\t" + amount + "\nDeductable:\t" + deductable + "\nDescription:\t" + desc + "\nDate:\t" + date;
+    }
 }

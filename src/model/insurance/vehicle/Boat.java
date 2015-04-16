@@ -17,7 +17,7 @@ public class Boat extends Vehicle
     private final Propulsion propulsion;
     private final Type type;
 
-    private enum Propulsion {
+    public enum Propulsion {
         A(Loc.get("boat_propulsion_a")),
         B(Loc.get("boat_propulsion_b")),
         C(Loc.get("boat_propulsion_c"));
@@ -32,7 +32,7 @@ public class Boat extends Vehicle
         public String getValue() { return value; }
     }
 
-    private enum Type {
+    public enum Type {
         A(Loc.get("boat_type_a")),
         B(Loc.get("boat_type_b")),
         C(Loc.get("boat_type_c")),
@@ -149,5 +149,7 @@ public class Boat extends Vehicle
     {
         return propulsion.getValue();
     }
+
+
 }
 
