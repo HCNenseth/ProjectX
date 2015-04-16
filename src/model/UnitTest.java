@@ -8,7 +8,6 @@ import model.insurance.vehicle.Boat;
 import org.junit.Test;
 
 import java.io.IOException;
-import java.lang.reflect.Type;
 import java.util.Calendar;
 import java.util.LinkedList;
 import java.util.List;
@@ -43,14 +42,29 @@ public class UnitTest {
 
         assertArrayEquals(listFromFile.toArray(), strings);
 
-        Person person1 = new Person.Builder("Hans Christian", "Nenseth").dateOfBirth(Calendar.getInstance()).city("Oslo").postalCode("0476").street("Torshov gate 8c").build();
-        Boat boat1 = new Boat.Builder(person1, "AB1234").build();
-        short horsePower = 750;
-        short length = 3;
-        Boat.Propulsion propulsion = Boat.Propulsion.B;
-        Boat.Type type = Boat.Type.C;
+        Person person1 = new Person.Builder("Hans Christian", "Nenseth")
+                .dateOfBirth(Calendar.getInstance())
+                .city("Oslo")
+                .postalCode("0476")
+                .street("Torshov gate 8c")
+                .build();
 
-        Boat boat2 = new Boat.Builder(person1, "CBD445").horsePower(horsePower).length(length).propulsion(propulsion).type(type).build();
+        Boat boat1 = new Boat.Builder(person1, "AB1234")
+                .build();
+
+        Boat boat2 = new Boat.Builder(person1, "CBD445")
+                .horsePower((short)750)
+                .length((short)3)
+                .propulsion(Boat.Propulsion.B)
+                .type(Boat.Type.C)
+                .build();
+
+        assertTrue(person1.getInsurance().get(boat1));
+        assertTrue(person1.getInsurance().get(boat2));
+        assertEquals(boat1.getCustomer(), person1);
+        assertEquals(boat2.getCustomer(), person1);
+
+
         System.out.println(boat1);
         System.out.println(boat2);
     }
