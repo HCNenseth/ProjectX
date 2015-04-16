@@ -10,12 +10,12 @@ import java.util.Calendar;
  */
 public class Boat extends Vehicle
 {
-    private int registrationYear;
-    private short length;
-    private short horsePower;
+    private final int registrationYear;
+    private final short length;
+    private final short horsePower;
 
-    private Propulsion propulsion;
-    private Type type;
+    private final Propulsion propulsion;
+    private final Type type;
 
     private enum Propulsion {
         A(Loc.get("boat_propulsion_a")),
@@ -48,9 +48,96 @@ public class Boat extends Vehicle
         public String getValue() { return value; }
     }
 
-    public Boat(Person customer, double premium, double amount, Calendar date, String desc)
+    public static class Builder
     {
-        super(customer, premium, amount, date, desc);
+        private String regNr;
+        private Person customer;
+
+        private int registrationYear = 1900;
+        private short length = 0;
+        private short horsePower = 0;
+        private String desc = "";
+        private Calendar date = null;
+        private double amount = 0;
+        private double premium = 0;
+        private Propulsion propulsion = Propulsion.A;
+        private Type type = Type.A;
+
+        public Builder(Person customer, String regNr)
+        {
+            this.regNr = regNr;
+            this.customer = customer;
+        }
+
+        public Builder registrationYear(int val)
+        {
+            registrationYear = val;
+            return this;
+        }
+
+        public Builder length(short val)
+        {
+            length = val;
+            return this;
+        }
+
+        public Builder horsePower(short val)
+        {
+            horsePower = val;
+            return this;
+        }
+
+        public Boat build()
+        {
+            return new Boat(this);
+        }
+
+        public Builder desc(String val)
+        {
+            desc = val;
+            return this;
+        }
+
+        public Builder date(Calendar val)
+        {
+            date = val;
+            return this;
+        }
+
+        public Builder premium(double val)
+        {
+            premium = val;
+            return this;
+        }
+
+        public Builder amount(double val)
+        {
+            amount = val;
+            return this;
+        }
+
+        public Builder type(Type val)
+        {
+            type = val;
+            return this;
+        }
+
+        public Builder propulsion(Propulsion val)
+        {
+            propulsion = val;
+            return this;
+        }
+    }
+
+
+    public Boat(Builder b)
+    {
+        super(b.customer, b.premium, b.amount, b.date, b.desc);
+        registrationYear = b.registrationYear;
+        length = b.length;
+        horsePower = b.horsePower;
+        type = b.type;
+        propulsion = b.propulsion;
     }
 
     public String getType()
