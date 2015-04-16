@@ -65,6 +65,7 @@ public class Car extends Vehicle
         private Person customer;
 
         //Optional
+        private Person owner = customer;
         private int registrationYear = 1900;
         private int milage = 0;
         private int bonus = 0;
@@ -136,6 +137,12 @@ public class Car extends Vehicle
             return this;
         }
 
+        public Builder owner(Person val)
+        {
+            owner = val;
+            return this;
+        }
+
         public Car build()
         {
             return new Car(this);
@@ -144,7 +151,7 @@ public class Car extends Vehicle
 
     public Car(Builder builder)
     {
-        super(builder.customer, builder.premium, builder.amount, builder.date,builder.desc);
+        super(builder.customer, builder.premium, builder.amount, builder.date,builder.desc, builder.owner, builder.regNr);
         registrationYear = builder.registrationYear;
         mileage          = builder.milage;
         bonus            = builder.bonus;
