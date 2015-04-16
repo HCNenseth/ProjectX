@@ -1,7 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <language name="norwegian">
-    <string name="menu_fileOpen">Åpne file</string>
+    <string name="menu_fileOpen">Åpne fil</string>
     <string name="menu_fileSave">Lagre</string>
     <string name="menu_fileSaveAs">Lagre som</string>
     <string name="menu_fileClose">Avslutt</string>
+
+    <!-- person -->
+    <string name="firstname">Fornavn</string>
+    <string name="lastname">Etternavn</string>
+
+    <!-- car -->
+    <string name="car_propulsion_a">Bensin</string>
+    <string name="car_propulsion_b">Diesel</string>
+    <string name="car_propulsion_c">Elektrisk</string>
+
+    <string name="car_type_a">Liten</string>
+    <string name="car_type_b">Medium</string>
+    <string name="car_type_c">Stor</string>
+    <string name="car_type_d">Sportsbil</string>
+
+    <!-- boat -->
+    <string name="boat_propulsion_a">Bensin</string>
+    <string name="boat_propulsion_b">Diesel</string>
+    <string name="boat_propulsion_c">Enhjørnings urin</string>
+
+    <string name="boat_type_a">Fiskebåt</string>
+    <string name="boat_type_b">Bananbåt</string>
+    <string name="boat_type_c">Oljetanker</string>
+    <string name="boat_type_d">Tauebåt</string>
 </language>
