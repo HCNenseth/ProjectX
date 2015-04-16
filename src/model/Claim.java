@@ -89,4 +89,14 @@ public class Claim<T> implements Serializable
         date = builder.date;
         type = builder.type;
     }
+
+    public Person getCustomer()
+    {
+        return customer;
+    }
+
+    public Insurance getInsurance()
+    {
+        return insurance;
+    }
 }

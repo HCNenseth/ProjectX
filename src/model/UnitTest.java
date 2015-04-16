@@ -177,7 +177,8 @@ public class UnitTest {
         assertTrue(person1.getInsurances().contains(boat2));
         assertEquals(boat1.getCustomer(), person1);
         assertEquals(boat2.getCustomer(), person1);
-        
+        assertEquals(claim1.getCustomer(), person1);
+        assertEquals(claim1.getInsurance(), house1);
 
         Storage.getInstance().put("persons", persons);
         Storage.getInstance().put("insurances", insurances);
@@ -195,7 +196,6 @@ public class UnitTest {
                 .get("persons");
         List<Insurance> insurancesFromFile = (List<Insurance>)Storage.getInstance()
                 .get("insurances");
-
         List<Claim> claimsFromFile = (List<Claim>)Storage.getInstance()
                 .get("claims");
 
@@ -209,8 +209,7 @@ public class UnitTest {
         assertTrue(insurancesFromFile.contains(boat2));
         assertTrue(insurancesFromFile.contains(boat3));
         assertTrue(claimsFromFile.contains(claim1));
-        //System.out.println(boat3);
-        //System.out.println(boat2);
+
     }
 
     @Test public void massInsertPersons()
