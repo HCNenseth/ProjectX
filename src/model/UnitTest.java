@@ -49,14 +49,33 @@ public class UnitTest {
                 .street("Torshov gate 8c")
                 .build();
 
+        Person person2 = new Person.Builder("Hans Petter", "Osvold")
+                .dateOfBirth(Calendar.getInstance())
+                .street("Moldegata 17")
+                .postalCode("0445")
+                .city("Oslo")
+                .build();
+
         Boat boat1 = new Boat.Builder(person1, "AB1234")
                 .build();
 
         Boat boat2 = new Boat.Builder(person1, "CBD445")
-                .horsePower((short)750)
-                .length((short)3)
+                .horsePower(750)
+                .length(3)
                 .propulsion(Boat.Propulsion.B)
                 .type(Boat.Type.C)
+                .amount(50000)
+                .desc("super boat")
+                .build();
+
+        Boat boat3 = new Boat.Builder(person1, "CBD445")
+                .horsePower(750)
+                .length(3)
+                .propulsion(Boat.Propulsion.B)
+                .type(Boat.Type.C)
+                .amount(50000)
+                .desc("super boat")
+                .owner(person2)
                 .build();
 
         assertTrue(person1.getInsurance().get(boat1));
