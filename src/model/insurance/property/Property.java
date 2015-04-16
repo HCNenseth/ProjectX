@@ -10,7 +10,11 @@ import java.util.Calendar;
  */
 abstract class Property extends Insurance
 {
-    public Property(Person customer, double premium, double amount, Calendar date, String desc)
+    public Property(Person customer,
+                    double premium,
+                    double amount,
+                    Calendar date,
+                    String desc)
     {
         super(customer, premium, amount, date, desc);
     }

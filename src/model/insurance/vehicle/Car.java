@@ -151,12 +151,19 @@ public class Car extends Vehicle
 
     public Car(Builder builder)
     {
-        super(builder.customer, builder.premium, builder.amount, builder.date,builder.desc, builder.owner, builder.regNr);
+        super(builder.customer,
+              builder.premium,
+              builder.amount,
+              builder.date,
+              builder.desc,
+              builder.owner,
+              builder.regNr);
+
         registrationYear = builder.registrationYear;
-        mileage          = builder.milage;
-        bonus            = builder.bonus;
-        type             = builder.type;
-        propulsion       = builder.propulsion;
+        mileage = builder.milage;
+        bonus = builder.bonus;
+        type = builder.type;
+        propulsion = builder.propulsion;
     }
 
 
