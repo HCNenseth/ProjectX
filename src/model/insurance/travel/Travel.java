@@ -2,6 +2,7 @@ package model.insurance.travel;
 
 import model.Person;
 import model.insurance.Insurance;
+import model.insurance.InsuranceBuilder;
 
 import java.util.Calendar;
 
@@ -10,8 +11,28 @@ import java.util.Calendar;
  */
 public class Travel extends Insurance
 {
-    public Travel(Person customer, double premium, double amount, Calendar date, String desc)
+
+    public static class Builder extends InsuranceBuilder<Builder, Travel>
     {
-        super(customer, premium, amount, date, desc);
+        private Person customer;
+
+        public Builder(Person customer)
+        {
+            this.customer = customer;
+        }
+
+        public Travel build()
+        {
+            return new Travel(this);
+        }
+    }
+
+    private Travel(Builder builder)
+    {
+        super(builder.customer,
+              builder.getPremium(),
+              builder.getAmount(),
+              builder.getDate(),
+              builder.getDesc());
     }
 }

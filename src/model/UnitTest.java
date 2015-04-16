@@ -5,6 +5,7 @@ package model;
  */
 
 import model.insurance.Insurance;
+import model.insurance.property.House;
 import model.insurance.vehicle.Boat;
 import model.insurance.vehicle.Car;
 import org.junit.Test;
@@ -75,6 +76,19 @@ public class UnitTest {
                 .type(Car.Type.C)
                 .build();
 
+        House house1 = new House.Builder(person1,
+                "Pilestredet 100", "0361").build();
+
+        House house2 = new House.Builder(person1,
+                "Pilestredet 100", "0361")
+                .amount(3000)
+                .desc("Nice building")
+                .premium(100000)
+                .type(House.Type.A)
+                .standard(House.Standard.A)
+                .material(House.Material.A)
+                .build();
+
         Boat boat1 = new Boat.Builder(person1, "AB1234")
                 .build();
 
@@ -99,12 +113,16 @@ public class UnitTest {
 
         insurances.add(car1);
         insurances.add(car2);
+        insurances.add(house1);
+        insurances.add(house2);
         insurances.add(boat1);
         insurances.add(boat2);
         insurances.add(boat3);
 
         assertTrue(person1.getInsurances().contains(car1));
         assertTrue(person1.getInsurances().contains(car2));
+        assertTrue(person1.getInsurances().contains(house1));
+        assertTrue(person1.getInsurances().contains(house2));
         assertTrue(person1.getInsurances().contains(boat1));
         assertTrue(person1.getInsurances().contains(boat2));
         assertEquals(boat1.getCustomer(), person1);
@@ -130,6 +148,8 @@ public class UnitTest {
         assertTrue(personsFromFile.contains(person2));
         assertTrue(insurancesFromFile.contains(car1));
         assertTrue(insurancesFromFile.contains(car2));
+        assertTrue(insurancesFromFile.contains(house1));
+        assertTrue(insurancesFromFile.contains(house2));
         assertTrue(insurancesFromFile.contains(boat1));
         assertTrue(insurancesFromFile.contains(boat2));
         assertTrue(insurancesFromFile.contains(boat3));
