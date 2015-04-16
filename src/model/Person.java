@@ -84,8 +84,15 @@ public class Person
         return firstname + " " + lastname + " " + streetAddress + " " + postalCode + " " + city;
     }
 
-    public List<Insurance> getInsurances() { return insurances; }
-    public List<Claim> getClaims() { return claims; }
+    public List<Insurance> getInsurances()
+    {
+        return insurances;
+    }
+
+    public List<Claim> getClaims()
+    {
+        return claims;
+    }
 
     public void setInsurance(Insurance insurance)
     {

@@ -118,6 +118,8 @@ public class Boat extends Vehicle
               b.owner,
               b.regNr);
 
+        super.setRegNrRule(Loc.get("car_regnr_rgx"));
+
         registrationYear = b.registrationYear;
         length = b.length;
         horsePower = b.horsePower;

@@ -12,10 +12,15 @@ abstract class Vehicle extends Insurance
 {
     private Person owner;
     private String regNr;
-    //private String model;
-    //private String regNrRule;
+    private String regNrRule;
 
-    public Vehicle(Person customer, double premium, double amount, Calendar date, String desc, Person owner, String regNr)
+    public Vehicle(Person customer,
+                   double premium,
+                   double amount,
+                   Calendar date,
+                   String desc,
+                   Person owner,
+                   String regNr)
     {
         super(customer, premium, amount, date, desc);
         this.owner = owner;
@@ -25,5 +30,15 @@ abstract class Vehicle extends Insurance
 
     public String toString(){
         return super.toString() + "\n\n" + "Owner:\t" + owner + "\nRegNr:\t" + regNr;
+    }
+
+    protected void setRegNrRule(String regNrRule)
+    {
+        this.regNrRule = regNrRule;
+    }
+
+    public String getRegNrRule()
+    {
+        return regNrRule;
     }
 }

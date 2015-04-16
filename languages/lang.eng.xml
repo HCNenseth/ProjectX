@@ -41,4 +41,7 @@
     <string name="house_standard_a">House standard a</string>
     <string name="house_standard_b">House standard b</string>
     <string name="house_standard_c">House standard c</string>
+
+    <!-- regexes -->
+    <string name="car_regnr_rgx">AB12345</string>
 </language>

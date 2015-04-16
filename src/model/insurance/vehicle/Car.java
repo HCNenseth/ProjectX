@@ -132,6 +132,8 @@ public class Car extends Vehicle
               builder.owner,
               builder.regNr);
 
+        super.setRegNrRule(Loc.get("car_regnr_rgx"));
+
         registrationYear = builder.registrationYear;
         mileage = builder.milage;
         bonus = builder.bonus;
