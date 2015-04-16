@@ -7,9 +7,9 @@ import java.io.Serializable;
 import java.util.Calendar;
 
 /**
- * Created by HansChristian on 15.04.2015.
+ * Created by Hans Petter on 16.04.2015.
  */
-public class Claim implements Serializable
+public class Claim<T> implements Serializable
 {
     private String desc;
     private String contacts;
@@ -17,10 +17,17 @@ public class Claim implements Serializable
     private Calendar date;
     private Person customer;
     private Insurance insurance;
-    private enum type {
+    private Type type;
+
+    public enum Type {
         A(Loc.get("claim_type_a")),
         B(Loc.get("claim_type_b")),
         C(Loc.get("claim_type_a"));
+
+        String value;
+        Type(String value){ this.value = value; }
+
+        public String getValue() {  return value;   }
     }
 
     public float payout()
@@ -29,14 +36,14 @@ public class Claim implements Serializable
         //return amount - insurance.getDeductable();
     }
 
-    public class Builder
+    public static class Builder
     {
         private String description, contacts;
         private double amount;
         private Person customer;
         private Insurance insurance;
         private Calendar date;
-        private
+        private Type type = Type.A;
 
         public Builder(Person customer, Insurance insurance){
             this.customer = customer;
@@ -65,6 +72,12 @@ public class Claim implements Serializable
         {
             return new Claim(this);
         }
+
+        public Builder type(Type val)
+        {
+            type = val;
+            return this;
+        }
     }
 
     public Claim(Builder builder)
@@ -74,5 +87,6 @@ public class Claim implements Serializable
         desc = builder.description;
         contacts = builder.contacts;
         date = builder.date;
+        type = builder.type;
     }
 }

@@ -92,6 +92,7 @@ public class UnitTest {
 
         List<Person> persons = new LinkedList<>();
         List<Insurance> insurances = new LinkedList<>();
+        List<Claim> claims = new LinkedList<>();
 
         Person person1 = new Person.Builder("Hans Christian", "Nenseth")
                 .dateOfBirth(Calendar.getInstance())
@@ -151,6 +152,15 @@ public class UnitTest {
                 .owner(person2)
                 .build();
 
+        Claim claim1 = new Claim.Builder(person1, house1)
+                .contacts("WITNESS 1: 986 161 15")
+                .date(Calendar.getInstance())
+                .description("Car damage: total.")
+                .type(Claim.Type.A)
+                .build();
+
+        claims.add(claim1);
+
         insurances.add(car1);
         insurances.add(car2);
         insurances.add(house1);
@@ -167,9 +177,11 @@ public class UnitTest {
         assertTrue(person1.getInsurances().contains(boat2));
         assertEquals(boat1.getCustomer(), person1);
         assertEquals(boat2.getCustomer(), person1);
+        
 
         Storage.getInstance().put("persons", persons);
         Storage.getInstance().put("insurances", insurances);
+        Storage.getInstance().put("claims", claims);
 
         /* save and read to/from file */
         try {
@@ -184,6 +196,9 @@ public class UnitTest {
         List<Insurance> insurancesFromFile = (List<Insurance>)Storage.getInstance()
                 .get("insurances");
 
+        List<Claim> claimsFromFile = (List<Claim>)Storage.getInstance()
+                .get("claims");
+
         assertTrue(personsFromFile.contains(person1));
         assertTrue(personsFromFile.contains(person2));
         assertTrue(insurancesFromFile.contains(car1));
@@ -193,7 +208,7 @@ public class UnitTest {
         assertTrue(insurancesFromFile.contains(boat1));
         assertTrue(insurancesFromFile.contains(boat2));
         assertTrue(insurancesFromFile.contains(boat3));
-
+        assertTrue(claimsFromFile.contains(claim1));
         //System.out.println(boat3);
         //System.out.println(boat2);
     }
