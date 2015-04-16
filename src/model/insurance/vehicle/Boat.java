@@ -16,6 +16,7 @@ public class Boat extends Vehicle
 
     private final Propulsion propulsion;
     private final Type type;
+    private Person owner;
 
     public enum Propulsion {
         A(Loc.get("boat_propulsion_a")),
@@ -53,6 +54,7 @@ public class Boat extends Vehicle
         private String regNr;
         private Person customer;
 
+        private Person owner = customer;
         private int registrationYear = 1900;
         private short length = 0;
         private short horsePower = 0;
@@ -127,12 +129,18 @@ public class Boat extends Vehicle
             propulsion = val;
             return this;
         }
+
+        public Builder owner(Person val)
+        {
+            owner = val;
+            return this;
+        }
     }
 
 
     public Boat(Builder b)
     {
-        super(b.customer, b.premium, b.amount, b.date, b.desc);
+        super(b.customer, b.premium, b.amount, b.date, b.desc, b.owner, b.regNr);
         registrationYear = b.registrationYear;
         length = b.length;
         horsePower = b.horsePower;
@@ -148,6 +156,10 @@ public class Boat extends Vehicle
     public String getPropulsion()
     {
         return propulsion.getValue();
+    }
+
+    public String toString(){
+        return super.toString();
     }
 
 

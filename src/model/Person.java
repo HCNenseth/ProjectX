@@ -74,6 +74,6 @@ public class Person
     }
 
     public String toString(){
-        return firstname + " " + lastname + " " + dateOfBirth + " " + streetAddress + " " + postalCode + " " + city;
+        return firstname + " " + lastname + " " + streetAddress + " " + postalCode + " " + city;
     }
 }
