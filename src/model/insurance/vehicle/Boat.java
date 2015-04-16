@@ -13,7 +13,6 @@ public class Boat extends Vehicle
     private final int registrationYear;
     private final int length;
     private final int horsePower;
-
     private final Propulsion propulsion;
     private final Type type;
     private Person owner;
@@ -54,16 +53,16 @@ public class Boat extends Vehicle
         private String regNr;
         private Person customer;
 
-        private Person owner = customer;
-        private int registrationYear = 1900;
-        private int length = 0;
-        private int horsePower = 0;
-        private String desc = "";
-        private Calendar date = null;
-        private double amount = 0;
-        private double premium = 0;
-        private Propulsion propulsion = Propulsion.A;
-        private Type type = Type.A;
+        private Person owner            = customer;
+        private int registrationYear    = 1900;
+        private int length              = 0;
+        private int horsePower          = 0;
+        private String desc             = "";
+        private Calendar date           = null;
+        private double amount           = 0;
+        private double premium          = 0;
+        private Propulsion propulsion   = Propulsion.A;
+        private Type type               = Type.A;
 
         public Builder(Person customer, String regNr)
         {
@@ -141,11 +140,11 @@ public class Boat extends Vehicle
     public Boat(Builder b)
     {
         super(b.customer, b.premium, b.amount, b.date, b.desc, b.owner, b.regNr);
-        registrationYear = b.registrationYear;
-        length = b.length;
-        horsePower = b.horsePower;
-        type = b.type;
-        propulsion = b.propulsion;
+        registrationYear     = b.registrationYear;
+        length               = b.length;
+        horsePower           = b.horsePower;
+        type                 = b.type;
+        propulsion           = b.propulsion;
     }
 
     public String getType()
