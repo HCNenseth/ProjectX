@@ -28,4 +28,9 @@
     <string name="boat_type_b">Bananbåt</string>
     <string name="boat_type_c">Oljetanker</string>
     <string name="boat_type_d">Tauebåt</string>
+
+    <!-- Claim -->
+    <string name="claim_type_a">Tyveri</string>
+    <string name="claim_type_b">Skade</string>
+    <string name="claim_type_c">Bilulykke</string>
 </language>

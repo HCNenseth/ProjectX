@@ -82,7 +82,11 @@ public class Person implements Serializable
     }
 
     public String toString(){
-        return firstname + " " + lastname + " " + streetAddress + " " + postalCode + " " + city;
+        return "\nFornavn:\t" + firstname +
+                "\nEtternavn:\t" + lastname +
+                "\nGateadresse:\t" + streetAddress +
+                "\nPostkode:\t" + postalCode +
+                "\nBy:\t" + city;
     }
 
     public List<Insurance> getInsurances()

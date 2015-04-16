@@ -42,6 +42,11 @@
     <string name="house_standard_b">House standard b</string>
     <string name="house_standard_c">House standard c</string>
 
+    <!-- Claim -->
+    <string name="claim_type_a">Theft</string>
+    <string name="claim_type_b">Sickness</string>
+    <string name="claim_type_c">Car accident</string>
+
     <!-- regexes -->
     <string name="car_regnr_rgx">AB12345</string>
 </language>
