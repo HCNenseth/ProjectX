@@ -2,25 +2,78 @@ package model;
 
 import model.insurance.Insurance;
 
+import java.util.Calendar;
 import java.util.List;
 
-/**
- * Created by HansChristian on 15.04.2015.
- */
 public class Person
 {
-    private String firstname;
-    private String lastname;
-    private String streetAddress;
-    private String city;
-    private short postalCode;
-    private List<Insurance> insurances;
-    private List<Claim> claims;
 
-    public Person(String firstname, String lastname)
+    private final String firstname;
+    private final String lastname;
+
+    private final String streetAddress;
+    private final String city;
+    private final String postalCode;
+    private final Calendar dateOfBirth;
+
+    public static class Builder
     {
-        this.firstname = firstname;
-        this.lastname = lastname;
+        private String firstname;       // required
+        private String lastname;        // required
+
+        // optional
+        private String streetAddress = null;
+        private String city = null;
+        private String postalCode = null;
+        private Calendar dateOfBirth = null;
+
+        public Builder(String firstname, String lastname)
+        {
+            this.firstname = firstname;
+            this.lastname = lastname;
+        }
+
+        public Builder street(String val)
+        {
+            streetAddress = val;
+            return this;
+        }
+
+        public Builder city(String val)
+        {
+            city = val;
+            return this;
+        }
+
+        public Builder postalCode(String val)
+        {
+            postalCode = val;
+            return this;
+        }
+
+        public Builder dateOfBirth(Calendar val)
+        {
+            dateOfBirth = val;
+            return this;
+        }
+
+        public Person build()
+        {
+            return new Person(this);
+        }
     }
 
+    public Person(Builder builder)
+    {
+        firstname = builder.firstname;
+        lastname = builder.lastname;
+        dateOfBirth = builder.dateOfBirth;
+        streetAddress = builder.streetAddress;
+        postalCode = builder.postalCode;
+        city = builder.city;
+    }
+
+    public String toString(){
+        return firstname + " " + lastname + " " + dateOfBirth + " " + streetAddress + " " + postalCode + " " + city;
+    }
 }
