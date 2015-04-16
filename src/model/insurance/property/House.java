@@ -4,11 +4,13 @@ import localization.Loc;
 import model.Person;
 import model.insurance.InsuranceBuilder;
 
+import java.io.Serializable;
+
 
 /**
  * Created by HansChristian on 15.04.2015.
  */
-public class House extends Property
+public class House extends Property implements Serializable
 {
     private String streetAddress;
     private String postalCode;

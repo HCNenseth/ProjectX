@@ -5,12 +5,13 @@ import model.Person;
 import model.insurance.InsuranceBuilder;
 
 
+import java.io.Serializable;
 import java.util.Calendar;
 
 /**
  * Created by HansChristian on 15.04.2015.
  */
-public class Car extends Vehicle
+public class Car extends Vehicle implements Serializable
 {
 
     private final int registrationYear;

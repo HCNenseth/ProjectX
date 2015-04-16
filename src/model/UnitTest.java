@@ -14,10 +14,50 @@ import java.io.IOException;
 import java.util.Calendar;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Random;
 
 import static org.junit.Assert.*;
 
 public class UnitTest {
+
+    public static final String[] firstnames = {
+        "James", "John", "Robert", "Michael", "William",
+        "David", "Richard", "Charles", "Joseph", "Thomas",
+        "Daniel", "Paul", "Christopher", "Mark", "Paul",
+        "Donald", "George", "Kenneth", "Steven", "Brian",
+        "Mary", "Linda", "Patricia", "Barbara", "Elizabeth",
+        "Jennifer", "Maria", "Susan", "Margaret", "Lisa",
+        "Nancy", "Karen", "Betty", "Sandra", "Betty", "Ruth",
+        "Laura", "Sarah", "Kimberly", "Jessica", "Shirley"
+    };
+
+    public static final String[] lastnames = {
+        "Smith", "Johnson", "Williams", "Jones", "Brown",
+        "Davis", "Miller", "Moore", "Taylor", "Jackson",
+        "Anderson", "White", "Harris", "Martin", "Garcia",
+        "Thomas", "Robinson", "Clark", "Rodriguez", "Lewis",
+        "Lee", "Walker", "Hall", "Allen", "Hernandez", "King",
+        "Wright", "Lopez", "Gonzales", "Nelson", "Perez",
+        "Turner", "Phillips", "Collins", "Stewart", "Sanchez",
+        "Morris", "Rogers", "Parker", "Evans", "Edwards", "Scott"
+    };
+
+    public static final String[] cities = {
+        "Bath", "Birmingham", "Bradford", "Brighton & Hove",
+        "Bristol", "Cambridge", "Canterbury", "Carlisle",
+        "Chelmsford", "Chester", "Coventry", "Derby",
+        "Durham", "Ely", "Exeter", "Gloucester", "Hereford",
+        "Kingston upon Hull", "Lancaster", "Leeds", "Leicester",
+        "Lincoln", "City of London", "Manchester", "Norwich",
+        "Nottingham", "Oxford", "Peterborough", "Plymouth",
+        "Portsmouth", "Preston", "Ripon", "Salford", "Salisbury",
+        "Sheffield", "Southampton", "Sunderland", "Truro", "Wakfield",
+        "Wells", "Westminister", "Winchester", "Worcester", "York"
+    };
+
+    public static final String[] streetType = {
+        "Road", "Street", "Bridge", "Way", "Ground", "Place", "Crossroad"
+    };
 
     @Test public void testStorage()
     {
@@ -156,5 +196,66 @@ public class UnitTest {
 
         //System.out.println(boat3);
         //System.out.println(boat2);
+    }
+
+    @Test public void massInsertPersons()
+    {
+        Storage.injectFilename("persons_big.dat");
+
+        List<Person> persons = new LinkedList<>();
+
+        for (int i = 0; i < 20000; i++) {
+            persons.add(new Person.Builder(randomFirstname(), randomLastname())
+                    .build());
+        }
+
+        Storage.getInstance().put("persons", persons);
+
+        /* save and read to/from file */
+        try {
+            Storage.getInstance().save();
+            //Storage.getInstance().read();
+        } catch (IOException /*| ClassNotFoundException*/ e) {
+            // YOLO!!!
+        }
+    }
+
+        /**
+     * Helper method for outputting random firstname
+     * @return
+     */
+    public String randomFirstname()
+    {
+        return firstnames[randInt(0, firstnames.length - 1)];
+    }
+
+    /**
+     * Helper method for outputting random lastname
+     * @return
+     */
+    public String randomLastname()
+    {
+        return lastnames[randInt(0, lastnames.length - 1)];
+    }
+
+    /**
+     * Helper method for outputting random city
+     * @return
+     */
+    public String randomCity()
+    {
+        return cities[randInt(0, cities.length - 1)];
+    }
+
+    /**
+     * Helper method for generating random numbers in range
+     * @param min
+     * @param max
+     * @return
+     */
+    public int randInt(int min, int max)
+    {
+        Random r = new Random();
+        return r.nextInt((max - min) + 1) + min;
     }
 }

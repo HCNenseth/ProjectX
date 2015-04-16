@@ -3,12 +3,13 @@ package model.insurance.property;
 import model.Person;
 import model.insurance.Insurance;
 
+import java.io.Serializable;
 import java.util.Calendar;
 
 /**
  * Created by HansChristian on 15.04.2015.
  */
-abstract class Property extends Insurance
+abstract class Property extends Insurance implements Serializable
 {
     public Property(Person customer,
                     double premium,

@@ -2,11 +2,12 @@ package model;
 
 import model.insurance.Insurance;
 
+import java.io.Serializable;
 import java.util.Calendar;
 import java.util.LinkedList;
 import java.util.List;
 
-public class Person
+public class Person implements Serializable
 {
 
     private final String firstname;

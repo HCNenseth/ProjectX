@@ -4,10 +4,12 @@ import localization.Loc;
 import model.Person;
 import model.insurance.InsuranceBuilder;
 
+import java.io.Serializable;
+
 /**
  * Created by HansChristian on 15.04.2015.
  */
-public class Boat extends Vehicle
+public class Boat extends Vehicle implements Serializable
 {
     private final int registrationYear;
     private final int length;

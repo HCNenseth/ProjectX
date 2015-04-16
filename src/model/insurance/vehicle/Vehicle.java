@@ -3,12 +3,13 @@ package model.insurance.vehicle;
 import model.Person;
 import model.insurance.Insurance;
 
+import java.io.Serializable;
 import java.util.Calendar;
 
 /**
  * Created by HansChristian on 15.04.2015.
  */
-abstract class Vehicle extends Insurance
+abstract class Vehicle extends Insurance implements Serializable
 {
     private Person owner;
     private String regNr;

@@ -2,12 +2,13 @@ package model.insurance;
 
 import model.Person;
 
+import java.io.Serializable;
 import java.util.Calendar;
 
 /**
  * Created by HansChristian on 15.04.2015.
  */
-public abstract class Insurance
+public abstract class Insurance implements Serializable
 {
     private Person customer;
     private double premium;

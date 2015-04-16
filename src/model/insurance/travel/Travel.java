@@ -4,12 +4,13 @@ import model.Person;
 import model.insurance.Insurance;
 import model.insurance.InsuranceBuilder;
 
+import java.io.Serializable;
 import java.util.Calendar;
 
 /**
  * Created by HansChristian on 15.04.2015.
  */
-public class Travel extends Insurance
+public class Travel extends Insurance implements Serializable
 {
 
     public static class Builder extends InsuranceBuilder<Builder, Travel>
