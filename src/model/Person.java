@@ -86,4 +86,9 @@ public class Person
 
     public List<Insurance> getInsurances() { return insurances; }
     public List<Claim> getClaims() { return claims; }
+
+    public void setInsurance(Insurance insurance)
+    {
+        insurances.add(insurance);
+    }
 }
