@@ -9,3 +9,5 @@ out
 *_LOCAL_*
 *_REMOTE_*
 *.swp
+
+*.dat
