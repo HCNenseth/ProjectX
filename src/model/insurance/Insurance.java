@@ -29,4 +29,6 @@ public abstract class Insurance
     {
         return "Customer:\t" + customer + "\nPremium:\t" + premium + "\nAmout:\t" + amount + "\nDeductable:\t" + deductable + "\nDescription:\t" + desc + "\nDate:\t" + date;
     }
+
+    public Person getCustomer() { return customer; }
 }
