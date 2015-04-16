@@ -4,6 +4,7 @@ package model;
  * Created by alex on 4/16/15.
  */
 
+import model.insurance.Insurance;
 import model.insurance.vehicle.Boat;
 import org.junit.Test;
 
@@ -41,6 +42,14 @@ public class UnitTest {
                 .get(key);
 
         assertArrayEquals(listFromFile.toArray(), strings);
+    }
+
+    @Test public void testInsurance()
+    {
+        Storage.injectFilename("insurances.dat");
+
+        List<Person> persons = new LinkedList<>();
+        List<Insurance> boats = new LinkedList<>();
 
         Person person1 = new Person.Builder("Hans Christian", "Nenseth")
                 .dateOfBirth(Calendar.getInstance())
@@ -55,6 +64,9 @@ public class UnitTest {
                 .postalCode("0445")
                 .city("Oslo")
                 .build();
+
+        persons.add(person1);
+        persons.add(person2);
 
         Boat boat1 = new Boat.Builder(person1, "AB1234")
                 .build();
@@ -78,13 +90,38 @@ public class UnitTest {
                 .owner(person2)
                 .build();
 
+        boats.add(boat1);
+        boats.add(boat2);
+        boats.add(boat3);
+
         assertTrue(person1.getInsurances().contains(boat1));
         assertTrue(person1.getInsurances().contains(boat2));
         assertEquals(boat1.getCustomer(), person1);
         assertEquals(boat2.getCustomer(), person1);
 
+        Storage.getInstance().put("persons", persons);
+        Storage.getInstance().put("insurances", boats);
 
-        System.out.println(boat3);
-        System.out.println(boat2);
+        /* save and read to/from file */
+        try {
+            Storage.getInstance().save();
+            Storage.getInstance().read();
+        } catch (IOException | ClassNotFoundException e) {
+            // YOLO!!!
+        }
+
+        List<Person> personsFromFile = (List<Person>)Storage.getInstance()
+                .get("persons");
+        List<Insurance> insurancesFromFile = (List<Insurance>)Storage.getInstance()
+                .get("insurances");
+
+        assertTrue(personsFromFile.contains(person1));
+        assertTrue(personsFromFile.contains(person2));
+        assertTrue(insurancesFromFile.contains(boat1));
+        assertTrue(insurancesFromFile.contains(boat2));
+        assertTrue(insurancesFromFile.contains(boat3));
+
+        //System.out.println(boat3);
+        //System.out.println(boat2);
     }
 }
