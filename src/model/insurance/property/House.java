@@ -2,8 +2,8 @@ package model.insurance.property;
 
 import localization.Loc;
 import model.Person;
+import model.insurance.InsuranceBuilder;
 
-import java.util.Calendar;
 
 /**
  * Created by HansChristian on 15.04.2015.
@@ -55,16 +55,12 @@ public class House extends Property
         public String getValue() { return value; }
     }
 
-    public static class Builder
+    public static class Builder extends InsuranceBuilder<Builder, House>
     {
         private Person customer;
         private String streetAddress;
         private String postalCode;
         private String city = "";
-        private double amount = 0;
-        private double premium = 0;
-        private Calendar date = null;
-        private String desc = "";
         private int year = 2000;
         private int squareMeter = 100;
         private Type type = Type.A;
@@ -110,26 +106,6 @@ public class House extends Property
             this.standard = standard; return this;
         }
 
-        public Builder amount(double amount)
-        {
-            this.amount = amount; return this;
-        }
-
-        public Builder premium(double premium)
-        {
-            this.premium = premium; return this;
-        }
-
-        public Builder date(Calendar date)
-        {
-            this.date = date; return this;
-        }
-
-        public Builder desc(String desc)
-        {
-            this.desc = desc; return this;
-        }
-
         public House build()
         {
             return new House(this);
@@ -139,10 +115,10 @@ public class House extends Property
     private House(Builder builder)
     {
         super(builder.customer,
-              builder.premium,
-              builder.amount,
-              builder.date,
-              builder.desc);
+              builder.getPremium(),
+              builder.getAmount(),
+              builder.getDate(),
+              builder.getDesc());
 
         streetAddress = builder.streetAddress;
         postalCode = builder.postalCode;
