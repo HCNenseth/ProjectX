@@ -19,7 +19,7 @@ public class Car extends Vehicle
     private final Type type;
     private final Propulsion propulsion;
 
-    private enum Propulsion
+    public enum Propulsion
     {
         A(Loc.get("car_propulsion_a")),
         B(Loc.get("car_propulsion_b")),
@@ -38,7 +38,7 @@ public class Car extends Vehicle
         }
     }
 
-    private enum Type
+    public enum Type
     {
         A(Loc.get("car_type_a")),
         B(Loc.get("car_type_b")),

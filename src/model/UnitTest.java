@@ -6,6 +6,7 @@ package model;
 
 import model.insurance.Insurance;
 import model.insurance.vehicle.Boat;
+import model.insurance.vehicle.Car;
 import org.junit.Test;
 
 import java.io.IOException;
@@ -49,7 +50,7 @@ public class UnitTest {
         Storage.injectFilename("insurances.dat");
 
         List<Person> persons = new LinkedList<>();
-        List<Insurance> boats = new LinkedList<>();
+        List<Insurance> insurances = new LinkedList<>();
 
         Person person1 = new Person.Builder("Hans Christian", "Nenseth")
                 .dateOfBirth(Calendar.getInstance())
@@ -67,6 +68,12 @@ public class UnitTest {
 
         persons.add(person1);
         persons.add(person2);
+
+        Car car1 = new Car.Builder(person1, "AB12345").build();
+        Car car2 = new Car.Builder(person1, "AB23456")
+                .propulsion(Car.Propulsion.A)
+                .type(Car.Type.C)
+                .build();
 
         Boat boat1 = new Boat.Builder(person1, "AB1234")
                 .build();
@@ -90,17 +97,21 @@ public class UnitTest {
                 .owner(person2)
                 .build();
 
-        boats.add(boat1);
-        boats.add(boat2);
-        boats.add(boat3);
+        insurances.add(car1);
+        insurances.add(car2);
+        insurances.add(boat1);
+        insurances.add(boat2);
+        insurances.add(boat3);
 
+        assertTrue(person1.getInsurances().contains(car1));
+        assertTrue(person1.getInsurances().contains(car2));
         assertTrue(person1.getInsurances().contains(boat1));
         assertTrue(person1.getInsurances().contains(boat2));
         assertEquals(boat1.getCustomer(), person1);
         assertEquals(boat2.getCustomer(), person1);
 
         Storage.getInstance().put("persons", persons);
-        Storage.getInstance().put("insurances", boats);
+        Storage.getInstance().put("insurances", insurances);
 
         /* save and read to/from file */
         try {
@@ -117,6 +128,8 @@ public class UnitTest {
 
         assertTrue(personsFromFile.contains(person1));
         assertTrue(personsFromFile.contains(person2));
+        assertTrue(insurancesFromFile.contains(car1));
+        assertTrue(insurancesFromFile.contains(car2));
         assertTrue(insurancesFromFile.contains(boat1));
         assertTrue(insurancesFromFile.contains(boat2));
         assertTrue(insurancesFromFile.contains(boat3));
