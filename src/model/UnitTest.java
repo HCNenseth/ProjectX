@@ -59,8 +59,8 @@ public class UnitTest {
                 .type(Boat.Type.C)
                 .build();
 
-        assertTrue(person1.getInsurance().get(boat1));
-        assertTrue(person1.getInsurance().get(boat2));
+        assertTrue(person1.getInsurances().contains(boat1));
+        assertTrue(person1.getInsurances().contains(boat2));
         assertEquals(boat1.getCustomer(), person1);
         assertEquals(boat2.getCustomer(), person1);
 

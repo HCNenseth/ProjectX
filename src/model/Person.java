@@ -3,6 +3,7 @@ package model;
 import model.insurance.Insurance;
 
 import java.util.Calendar;
+import java.util.LinkedList;
 import java.util.List;
 
 public class Person
@@ -15,6 +16,9 @@ public class Person
     private final String city;
     private final String postalCode;
     private final Calendar dateOfBirth;
+
+    private List<Insurance> insurances;
+    private List<Claim> claims;
 
     public static class Builder
     {
@@ -71,9 +75,15 @@ public class Person
         streetAddress = builder.streetAddress;
         postalCode = builder.postalCode;
         city = builder.city;
+
+        insurances = new LinkedList<>();
+        claims = new LinkedList<>();
     }
 
     public String toString(){
         return firstname + " " + lastname + " " + streetAddress + " " + postalCode + " " + city;
     }
+
+    public List<Insurance> getInsurances() { return insurances; }
+    public List<Claim> getClaims() { return claims; }
 }
