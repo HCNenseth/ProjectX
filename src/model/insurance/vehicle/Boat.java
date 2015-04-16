@@ -2,8 +2,7 @@ package model.insurance.vehicle;
 
 import localization.Loc;
 import model.Person;
-
-import java.util.Calendar;
+import model.insurance.InsuranceBuilder;
 
 /**
  * Created by HansChristian on 15.04.2015.
@@ -48,21 +47,17 @@ public class Boat extends Vehicle
         public String getValue() { return value; }
     }
 
-    public static class Builder
+    public static class Builder extends InsuranceBuilder<Builder, Boat>
     {
         private String regNr;
         private Person customer;
 
-        private Person owner            = customer;
-        private int registrationYear    = 1900;
-        private int length              = 0;
-        private int horsePower          = 0;
-        private String desc             = "";
-        private Calendar date           = null;
-        private double amount           = 0;
-        private double premium          = 0;
-        private Propulsion propulsion   = Propulsion.A;
-        private Type type               = Type.A;
+        private Person owner = customer;
+        private int registrationYear = 1900;
+        private int length = 0;
+        private int horsePower = 0;
+        private Propulsion propulsion = Propulsion.A;
+        private Type type = Type.A;
 
         public Builder(Person customer, String regNr)
         {
@@ -93,30 +88,6 @@ public class Boat extends Vehicle
             return new Boat(this);
         }
 
-        public Builder desc(String val)
-        {
-            desc = val;
-            return this;
-        }
-
-        public Builder date(Calendar val)
-        {
-            date = val;
-            return this;
-        }
-
-        public Builder premium(double val)
-        {
-            premium = val;
-            return this;
-        }
-
-        public Builder amount(double val)
-        {
-            amount = val;
-            return this;
-        }
-
         public Builder type(Type val)
         {
             type = val;
@@ -139,12 +110,19 @@ public class Boat extends Vehicle
 
     public Boat(Builder b)
     {
-        super(b.customer, b.premium, b.amount, b.date, b.desc, b.owner, b.regNr);
-        registrationYear     = b.registrationYear;
-        length               = b.length;
-        horsePower           = b.horsePower;
-        type                 = b.type;
-        propulsion           = b.propulsion;
+        super(b.customer,
+              b.getPremium(),
+              b.getAmount(),
+              b.getDate(),
+              b.getDesc(),
+              b.owner,
+              b.regNr);
+
+        registrationYear = b.registrationYear;
+        length = b.length;
+        horsePower = b.horsePower;
+        type = b.type;
+        propulsion = b.propulsion;
     }
 
     public String getType()
@@ -161,6 +139,4 @@ public class Boat extends Vehicle
         return super.toString();
     }
 
-
 }
-

@@ -2,6 +2,7 @@ package model.insurance.vehicle;
 
 import localization.Loc;
 import model.Person;
+import model.insurance.InsuranceBuilder;
 
 
 import java.util.Calendar;
@@ -58,7 +59,7 @@ public class Car extends Vehicle
         }
     }
 
-    public static class Builder
+    public static class Builder extends InsuranceBuilder<Builder, Car>
     {
         //Required
         private String regNr;
@@ -69,10 +70,6 @@ public class Car extends Vehicle
         private int registrationYear = 1900;
         private int milage = 0;
         private int bonus = 0;
-        private String desc = "";
-        private Calendar date = null;
-        private double amount = 0;
-        private double premium = 0;
         private Propulsion propulsion = Propulsion.A;
         private Type type = Type.A;
 
@@ -98,30 +95,6 @@ public class Car extends Vehicle
         public Builder bonus(int val)
         {
             this.bonus = val;
-            return this;
-        }
-
-        public Builder desc(String val)
-        {
-            desc = val;
-            return this;
-        }
-
-        public Builder date(Calendar val)
-        {
-            date = val;
-            return this;
-        }
-
-        public Builder premium(double val)
-        {
-            premium = val;
-            return this;
-        }
-
-        public Builder amount(double val)
-        {
-            amount = val;
             return this;
         }
 
@@ -152,10 +125,10 @@ public class Car extends Vehicle
     public Car(Builder builder)
     {
         super(builder.customer,
-              builder.premium,
-              builder.amount,
-              builder.date,
-              builder.desc,
+              builder.getPremium(),
+              builder.getAmount(),
+              builder.getDate(),
+              builder.getDesc(),
               builder.owner,
               builder.regNr);
 
