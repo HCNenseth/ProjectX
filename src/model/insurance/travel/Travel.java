@@ -36,4 +36,6 @@ public class Travel extends Insurance implements Serializable
               builder.getDate(),
               builder.getDesc());
     }
+
+    // TODO override equals and hashcode
 }

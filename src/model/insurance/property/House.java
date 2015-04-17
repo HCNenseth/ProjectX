@@ -132,4 +132,6 @@ public class House extends Property implements Serializable
         standard = builder.standard;
 
     }
+
+    // TODO override equals and hashcode
 }
