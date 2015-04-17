@@ -42,4 +42,11 @@ abstract class Vehicle extends Insurance implements Serializable
     {
         return regNrRule;
     }
+
+    @Override
+    public boolean query(String value)
+    {
+        return super.query(value)
+                || regNr.contains(value);
+    }
 }

@@ -1,6 +1,7 @@
 package model.insurance.travel;
 
 import model.Person;
+import model.insurance.ConcreteType;
 import model.insurance.Insurance;
 import model.insurance.InsuranceBuilder;
 
@@ -35,6 +36,16 @@ public class Travel extends Insurance implements Serializable
               builder.getAmount(),
               builder.getDate(),
               builder.getDesc());
+    }
+
+    public ConcreteType identify()
+    {
+        return ConcreteType.TRAVEL;
+    }
+
+    public boolean query(String value)
+    {
+        return false;
     }
 
     // TODO override equals and hashcode

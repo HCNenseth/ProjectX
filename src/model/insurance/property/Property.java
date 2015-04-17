@@ -19,4 +19,10 @@ abstract class Property extends Insurance implements Serializable
     {
         super(customer, premium, amount, date, desc);
     }
+
+    @Override
+    public boolean query(String value)
+    {
+        return super.query(value); // only push upstream
+    }
 }

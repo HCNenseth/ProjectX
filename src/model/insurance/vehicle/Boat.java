@@ -2,6 +2,7 @@ package model.insurance.vehicle;
 
 import localization.Loc;
 import model.Person;
+import model.insurance.ConcreteType;
 import model.insurance.InsuranceBuilder;
 
 import java.io.Serializable;
@@ -143,4 +144,16 @@ public class Boat extends Vehicle implements Serializable
         return super.toString();
     }
 
+    public ConcreteType identify()
+    {
+        return ConcreteType.BOAT;
+    }
+
+    @Override
+    public boolean query(String value)
+    {
+        return super.query(value)
+                || type.getValue().contains(value)
+                || propulsion.getValue().contains(value);
+    }
 }

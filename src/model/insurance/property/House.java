@@ -2,6 +2,7 @@ package model.insurance.property;
 
 import localization.Loc;
 import model.Person;
+import model.insurance.ConcreteType;
 import model.insurance.InsuranceBuilder;
 
 import java.io.Serializable;
@@ -131,6 +132,17 @@ public class House extends Property implements Serializable
         material = builder.material;
         standard = builder.standard;
 
+    }
+
+    public ConcreteType identify()
+    {
+        return ConcreteType.HOUSE;
+    }
+
+    @Override
+    public boolean query(String value)
+    {
+        return super.query(value) && false;
     }
 
     // TODO override equals and hashcode

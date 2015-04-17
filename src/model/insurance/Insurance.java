@@ -8,7 +8,7 @@ import java.util.Calendar;
 /**
  * Created by HansChristian on 15.04.2015.
  */
-public abstract class Insurance implements Serializable
+public abstract class Insurance<T> implements Serializable, Type
 {
     private Person customer;
     private double premium;
@@ -36,4 +36,10 @@ public abstract class Insurance implements Serializable
     }
 
     public Person getCustomer() { return customer; }
+
+    public boolean query(String value)
+    {
+        // TODO implement test for all members!
+        return desc.contains(value);
+    }
 }
