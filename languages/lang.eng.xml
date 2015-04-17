@@ -47,6 +47,10 @@
     <string name="claim_type_b">Sickness</string>
     <string name="claim_type_c">Car accident</string>
 
+    <string name="payment_status_a">Pending</string>
+    <string name="payment_status_b">Not acceptet</string>
+    <string name="payment_status_c">Disbursed</string>
+
     <!-- regexes -->
     <string name="car_regnr_rgx">AB12345</string>
 </language>
