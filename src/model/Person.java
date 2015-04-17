@@ -103,4 +103,6 @@ public class Person implements Serializable
     {
         insurances.add(insurance);
     }
+
+    // TODO override equals and hashcode
 }

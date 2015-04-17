@@ -99,4 +99,6 @@ public class Claim<T> implements Serializable
     {
         return insurance;
     }
+
+    // TODO override equals and hashcode
 }
