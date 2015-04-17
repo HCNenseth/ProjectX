@@ -6,4 +6,5 @@ package model.insurance;
 public interface Type
 {
     ConcreteType identify();
+    boolean query(String value);
 }

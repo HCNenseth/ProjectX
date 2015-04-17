@@ -36,4 +36,10 @@ public abstract class Insurance<T> implements Serializable, Type
     }
 
     public Person getCustomer() { return customer; }
+
+    public boolean query(String value)
+    {
+        // TODO implement test for all members!
+        return desc.contains(value);
+    }
 }

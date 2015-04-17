@@ -148,4 +148,12 @@ public class Boat extends Vehicle implements Serializable
     {
         return ConcreteType.BOAT;
     }
+
+    @Override
+    public boolean query(String value)
+    {
+        return super.query(value)
+                || type.getValue().contains(value)
+                || propulsion.getValue().contains(value);
+    }
 }

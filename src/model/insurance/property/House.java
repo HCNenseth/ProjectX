@@ -139,5 +139,11 @@ public class House extends Property implements Serializable
         return ConcreteType.HOUSE;
     }
 
+    @Override
+    public boolean query(String value)
+    {
+        return super.query(value) && false;
+    }
+
     // TODO override equals and hashcode
 }

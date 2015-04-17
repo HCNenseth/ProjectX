@@ -43,5 +43,10 @@ public class Travel extends Insurance implements Serializable
         return ConcreteType.TRAVEL;
     }
 
+    public boolean query(String value)
+    {
+        return false;
+    }
+
     // TODO override equals and hashcode
 }
