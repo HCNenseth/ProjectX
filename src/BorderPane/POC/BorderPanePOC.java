@@ -1,7 +1,7 @@
 package BorderPane.POC;
 
 import javafx.application.Application;
-import javafx.scene.Scene;
+import javafx.scene.*;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
@@ -23,7 +23,7 @@ public class BorderPanePOC extends Application
         // TopMenu
         Menu test = new Menu("Test");
         Menu test2 = new Menu("About");
-        MenuItem a = new MenuItem("Test Insert");
+        MenuItem a = new MenuItem("New Pane");
         MenuItem b = new MenuItem("Test Delete");
         MenuItem c = new MenuItem("Help");
 

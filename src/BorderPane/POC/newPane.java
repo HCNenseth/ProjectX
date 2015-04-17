@@ -6,14 +6,15 @@ import javafx.scene.layout.Pane;
 /**
  * Created by Hans Christian on 12.04.2015.
  */
-public class newPane {
+public class newPane
+{
 
     private Pane pane;
-    private int paddingX=20, paddingY=20;
+    private int paddingX = 20, paddingY = 20;
 
-    public newPane(String title) {
+    public newPane(String title)
+    {
         this.pane = new Pane();
-
         createPane(title);
     }
 
@@ -22,5 +23,6 @@ public class newPane {
         Label label = new Label(title);
         label.setLayoutX(paddingX);
         label.setLayoutY(paddingY);
+        pane.getChildren().add(pane);
     }
 }
