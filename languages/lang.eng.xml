@@ -5,11 +5,26 @@
     <string name="menu_fileSaveAs">Save as</string>
     <string name="menu_fileClose">Close</string>
 
+    <!-- shared -->
+    <string name="date">Date</string>
+    <string name="description">Description</string>
+    <string name="street_address">Street address</string>
+    <string name="postal_code">Postal code</string>
+    <string name="city">City</string>
+    <string name="owner">Owner</string>
+    <string name="customer">Customer</string>
+
+    <!-- insurance -->
+    <string name="premium">Premium</string>
+    <string name="amount">Amount</string>
+    <string name="deductible">Deductible</string>
+
     <!-- person -->
     <string name="firstname">Firstname</string>
     <string name="lastname">Lastname</string>
 
     <!-- car -->
+    <string name="reg_number">Reg number</string>
     <string name="car_propulsion_a">Gas</string>
     <string name="car_propulsion_b">Diesel</string>
     <string name="car_propulsion_c">Electric</string>
