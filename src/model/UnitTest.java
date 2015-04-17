@@ -7,6 +7,7 @@ package model;
 import model.insurance.ConcreteType;
 import model.insurance.Insurance;
 import model.insurance.property.House;
+import model.insurance.travel.Travel;
 import model.insurance.vehicle.Boat;
 import model.insurance.vehicle.Car;
 import org.junit.Test;
@@ -60,18 +61,23 @@ public class UnitTest {
         "Road", "Street", "Bridge", "Way", "Ground", "Place", "Crossroad"
     };
 
+    /**
+     * Simple String and Integers test of Storage class
+     */
     @Test public void testStorage()
     {
         String[] strings = {"Input 1", "Input 2", "Input 3"};
-        String key = "Strings";
+        Integer[] ints = {2, 3, 5, 7, 11, 13};
         Storage.injectFilename("strings.dat");
 
-        List<String> listToFile = new LinkedList<>();
+        List<String> stringsToFile = new LinkedList<>();
+        List<Integer> intsToFile = new LinkedList<>();
 
-        for (String s : strings) {
-            listToFile.add(s);
-        }
-        Storage.getInstance().put(key, listToFile);
+        for (String s : strings) { stringsToFile.add(s); }
+        for (Integer i : ints) { intsToFile.add(i); }
+
+        Storage.getInstance().put("strings", stringsToFile);
+        Storage.getInstance().put("ints", intsToFile);
 
         /* save and read to/from file */
         try {
@@ -81,10 +87,15 @@ public class UnitTest {
             // YOLO!!!
         }
 
-        List<String> listFromFile = (List<String>)Storage.getInstance()
-                .get(key);
+        List<String> stringsFromFile = (List<String>)Storage.getInstance()
+                .get("strings");
+        List<Integer> intsFromFile = (List<Integer>)Storage.getInstance()
+                .get("ints");
 
-        assertArrayEquals(listFromFile.toArray(), strings);
+        assertEquals(stringsFromFile, stringsToFile);
+        assertEquals(intsFromFile, intsToFile);
+        assertArrayEquals(stringsFromFile.toArray(), strings);
+        assertArrayEquals(intsFromFile.toArray(), ints);
     }
 
     @Test public void testInsurance()
@@ -210,10 +221,6 @@ public class UnitTest {
         assertTrue(insurancesFromFile.get(4).identify().equals(ConcreteType.BOAT));
         assertTrue(insurancesFromFile.get(5).identify().equals(ConcreteType.BOAT));
 
-        insurancesFromFile.stream()
-                .filter(i -> i.identify().equals(ConcreteType.CAR))
-                .forEach(System.out::println);
-
         /*
         assertTrue(personsFromFile.contains(person2));
         assertTrue(insurancesFromFile.contains(car1));
@@ -228,29 +235,108 @@ public class UnitTest {
 
     }
 
+    /**
+     * Generate a log of data for stress testing the Storage class
+     */
     @Test public void massInsertPersons()
     {
+        /**
+         * 2000:    ~ 3.7MB file
+         * 20000:   ~ 37MB file
+         * 200000:  ~ 370MB file
+         */
+        int count = 2000;
+
         Storage.injectFilename("persons_big.dat");
 
         List<Person> persons = new LinkedList<>();
+        List<Insurance> insurances = new LinkedList<>();
+        List<Claim> claims = new LinkedList<>();
 
-        for (int i = 0; i < 2000; i++) {
-            persons.add(new Person.Builder(randomFirstname(), randomLastname())
-                    .build());
+        /* generate a lot of persons, with various insurances and claims */
+        for (int i = 0; i < count; i++) {
+            String city = randomCity();
+            String streetName = String.format("%s %s %d",
+                    randomCity(), randomStreetType(), randInt(1, 100));
+
+            Person tmp =  new Person.Builder(randomFirstname(), randomLastname())
+                    .city(city)
+                    .street(streetName)
+                    .build();
+
+            /* add some random car insurances */
+            for (int j = 0; j < randInt(0,10); j++) {
+                Car car = new Car.Builder(tmp, "ABC123")
+                        .bonus(randInt(50,80))
+                        .milage(randInt(4000, 20000))
+                        .registrationYear(randInt(1980, 2014))
+                        .type(Car.Type.A)
+                        .amount(randInt(4000, 10000))
+                        .build();
+                /* add some random claims */
+                for (int k = 0; k < randInt(0, 5); k++) {
+                    claims.add(new Claim.Builder(tmp, car).build());
+                }
+                insurances.add(car);
+            }
+
+            /* add some random boat insurances */
+            for (int j = 0; j < randInt(0,10); j++) {
+                Boat boat = new Boat.Builder(tmp, "ABC123")
+                        .horsePower(randInt(20, 400))
+                        .length(randInt(10, 50))
+                        .registrationYear(randInt(1940, 2014))
+                        .type(Boat.Type.A)
+                        .build();
+                /* add some random claims */
+                for (int k = 0; k < randInt(0, 5); k++) {
+                    claims.add(new Claim.Builder(tmp, boat).build());
+                }
+                insurances.add(boat);
+            }
+
+            /* add some random houses */
+            for (int j = 0; j < randInt(0,10); j++) {
+                House house = new House.Builder(tmp, streetName, randInt(1000, 9000) + "")
+                        .material(House.Material.A)
+                        .standard(House.Standard.A)
+                        .type(House.Type.A)
+                        .year(randInt(1900, 2014))
+                        .build();
+                /* add some random claims */
+                for (int k = 0; k < randInt(0, 5); k++) {
+                    claims.add(new Claim.Builder(tmp, house).build());
+                }
+                insurances.add(house);
+            }
+
+            /* add some random travel insurances */
+            for (int j = 0; j < randInt(0,10); j++) {
+                Travel travel = new Travel.Builder(tmp).build();
+                /* add some random claims */
+                for (int k = 0; k < randInt(0, 5); k++) {
+                    claims.add(new Claim.Builder(tmp, travel).build());
+                }
+                insurances.add(travel);
+            }
+            persons.add(tmp);
         }
 
+        /* add them all to storage */
         Storage.getInstance().put("persons", persons);
+        Storage.getInstance().put("insurances", insurances);
+        Storage.getInstance().put("claims", claims);
 
         /* save and read to/from file */
         try {
             Storage.getInstance().save();
-            //Storage.getInstance().read();
-        } catch (IOException /*| ClassNotFoundException*/ e) {
+            Storage.getInstance().read();
+        } catch (IOException | ClassNotFoundException e) {
             // YOLO!!!
         }
     }
 
-        /**
+    /**
      * Helper method for outputting random firstname
      * @return
      */
@@ -287,5 +373,14 @@ public class UnitTest {
     {
         Random r = new Random();
         return r.nextInt((max - min) + 1) + min;
+    }
+
+    /**
+     * Helper method for outputting random street type
+     * @return
+     */
+    public String randomStreetType()
+    {
+        return streetType[randInt(0, streetType.length - 1)];
     }
 }
