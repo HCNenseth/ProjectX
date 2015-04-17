@@ -2,6 +2,7 @@ package model.insurance.vehicle;
 
 import localization.Loc;
 import model.Person;
+import model.insurance.ConcreteType;
 import model.insurance.InsuranceBuilder;
 
 import java.io.Serializable;
@@ -143,4 +144,8 @@ public class Boat extends Vehicle implements Serializable
         return super.toString();
     }
 
+    public ConcreteType identify()
+    {
+        return ConcreteType.BOAT;
+    }
 }
