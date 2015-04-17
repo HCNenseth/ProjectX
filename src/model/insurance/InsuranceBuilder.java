@@ -1,6 +1,6 @@
 package model.insurance;
 
-import model.Person;
+import model.person.Person;
 import model.Status;
 
 import java.util.Calendar;

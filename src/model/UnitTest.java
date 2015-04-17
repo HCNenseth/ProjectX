@@ -4,12 +4,14 @@ package model;
  * Created by alex on 4/16/15.
  */
 
+import model.claim.Claim;
 import model.insurance.ConcreteType;
 import model.insurance.Insurance;
 import model.insurance.property.House;
 import model.insurance.travel.Travel;
 import model.insurance.vehicle.Boat;
 import model.insurance.vehicle.Car;
+import model.person.Person;
 import org.junit.Test;
 
 import java.io.IOException;

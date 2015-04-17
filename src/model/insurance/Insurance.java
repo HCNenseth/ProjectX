@@ -2,7 +2,7 @@ package model.insurance;
 
 import localization.Loc;
 import model.FullTextSearch;
-import model.Person;
+import model.person.Person;
 import model.Status;
 
 import java.io.Serializable;

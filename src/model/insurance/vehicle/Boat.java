@@ -1,7 +1,7 @@
 package model.insurance.vehicle;
 
 import localization.Loc;
-import model.Person;
+import model.person.Person;
 import model.insurance.ConcreteType;
 import model.insurance.InsuranceBuilder;
 

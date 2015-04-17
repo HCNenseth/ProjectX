@@ -1,12 +1,11 @@
 package model.insurance.travel;
 
-import model.Person;
+import model.person.Person;
 import model.insurance.ConcreteType;
 import model.insurance.Insurance;
 import model.insurance.InsuranceBuilder;
 
 import java.io.Serializable;
-import java.util.Calendar;
 
 /**
  * Created by HansChristian on 15.04.2015.

@@ -1,6 +1,9 @@
-package model;
+package model.person;
 
 import localization.Loc;
+import model.FullTextSearch;
+import model.Status;
+import model.claim.Claim;
 import model.insurance.Insurance;
 
 import java.io.Serializable;
