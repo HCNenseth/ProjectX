@@ -18,6 +18,18 @@ public class Claim implements Serializable
     private Person customer;
     private Insurance insurance;
     private Type type;
+    private boolean active;
+
+    public enum PaymentStatus {
+        A(Loc.get("payment_status_a")),
+        B(Loc.get("payment_status_b")),
+        C(Loc.get("payment_status_c"));
+
+        String value;
+        PaymentStatus(String value){ this.value = value; }
+
+        public String getValue() { return value; }
+    }
 
     public enum Type {
         A(Loc.get("claim_type_a")),
@@ -38,16 +50,27 @@ public class Claim implements Serializable
 
     public static class Builder
     {
-        private String description, contacts;
-        private double amount;
+        // required
         private Person customer;
         private Insurance insurance;
+
+        // optional
+        private String description = "";
+        private String contacts = "";
+        private double amount = 0;
         private Calendar date;
         private Type type = Type.A;
+        private boolean active = true;
 
         public Builder(Person customer, Insurance insurance){
             this.customer = customer;
             this.insurance = insurance;
+        }
+
+        public Builder active(Boolean val)
+        {
+            active = val;
+            return this;
         }
 
         public Builder description(String val)
@@ -88,6 +111,7 @@ public class Claim implements Serializable
         contacts = builder.contacts;
         date = builder.date;
         type = builder.type;
+        active = builder.active;
     }
 
     public Person getCustomer()
@@ -100,5 +124,10 @@ public class Claim implements Serializable
         return insurance;
     }
 
+    public Calendar getDate() { return date; }
+
+
+
     // TODO override equals and hashcode
+
 }
