@@ -2,6 +2,7 @@ package model.insurance.vehicle;
 
 import model.Person;
 import model.insurance.Insurance;
+import model.insurance.InsuranceBuilder;
 
 import java.io.Serializable;
 import java.util.Calendar;
@@ -15,18 +16,11 @@ abstract class Vehicle extends Insurance implements Serializable
     private String regNr;
     private String regNrRule;
 
-    public Vehicle(Person customer,
-                   double premium,
-                   double amount,
-                   Calendar date,
-                   String desc,
-                   Person owner,
-                   String regNr)
+    public Vehicle(InsuranceBuilder ib, Person owner, String regNr)
     {
-        super(customer, premium, amount, date, desc);
+        super(ib);
         this.owner = owner;
         this.regNr = regNr;
-
     }
 
     public String toString(){

@@ -7,7 +7,6 @@ import model.insurance.InsuranceBuilder;
 
 
 import java.io.Serializable;
-import java.util.Calendar;
 
 /**
  * Created by HansChristian on 15.04.2015.
@@ -65,10 +64,9 @@ public class Car extends Vehicle implements Serializable
     {
         //Required
         private String regNr;
-        private Person customer;
 
         //Optional
-        private Person owner = customer;
+        private Person owner = getCustomer();
         private int registrationYear = 1900;
         private int milage = 0;
         private int bonus = 0;
@@ -77,7 +75,7 @@ public class Car extends Vehicle implements Serializable
 
         public Builder(Person customer, String regNr)
         {
-            this.customer = customer;
+            super.customer(customer);
             this.regNr = regNr;
         }
 
@@ -126,13 +124,7 @@ public class Car extends Vehicle implements Serializable
 
     public Car(Builder builder)
     {
-        super(builder.customer,
-              builder.getPremium(),
-              builder.getAmount(),
-              builder.getDate(),
-              builder.getDesc(),
-              builder.owner,
-              builder.regNr);
+        super(builder, builder.owner, builder.regNr);
 
         super.setRegNrRule(Loc.get("car_regnr_rgx"));
 

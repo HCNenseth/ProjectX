@@ -2,6 +2,7 @@ package model.insurance.property;
 
 import model.Person;
 import model.insurance.Insurance;
+import model.insurance.InsuranceBuilder;
 
 import java.io.Serializable;
 import java.util.Calendar;
@@ -11,14 +12,8 @@ import java.util.Calendar;
  */
 abstract class Property extends Insurance implements Serializable
 {
-    public Property(Person customer,
-                    double premium,
-                    double amount,
-                    Calendar date,
-                    String desc)
-    {
-        super(customer, premium, amount, date, desc);
-    }
+
+    public Property(InsuranceBuilder ib) { super(ib); }
 
     @Override
     public boolean query(String value)

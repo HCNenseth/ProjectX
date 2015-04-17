@@ -53,9 +53,8 @@ public class Boat extends Vehicle implements Serializable
     public static class Builder extends InsuranceBuilder<Builder, Boat>
     {
         private String regNr;
-        private Person customer;
 
-        private Person owner = customer;
+        private Person owner = getCustomer();
         private int registrationYear = 1900;
         private int length = 0;
         private int horsePower = 0;
@@ -64,8 +63,8 @@ public class Boat extends Vehicle implements Serializable
 
         public Builder(Person customer, String regNr)
         {
+            super.customer(customer);
             this.regNr = regNr;
-            this.customer = customer;
         }
 
         public Builder registrationYear(int val)
@@ -111,23 +110,17 @@ public class Boat extends Vehicle implements Serializable
     }
 
 
-    public Boat(Builder b)
+    public Boat(Builder builder)
     {
-        super(b.customer,
-              b.getPremium(),
-              b.getAmount(),
-              b.getDate(),
-              b.getDesc(),
-              b.owner,
-              b.regNr);
+        super(builder, builder.owner, builder.regNr);
 
         super.setRegNrRule(Loc.get("car_regnr_rgx"));
 
-        registrationYear = b.registrationYear;
-        length = b.length;
-        horsePower = b.horsePower;
-        type = b.type;
-        propulsion = b.propulsion;
+        registrationYear = builder.registrationYear;
+        length = builder.length;
+        horsePower = builder.horsePower;
+        type = builder.type;
+        propulsion = builder.propulsion;
     }
 
     public String getType()

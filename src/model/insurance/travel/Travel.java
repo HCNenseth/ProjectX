@@ -16,11 +16,9 @@ public class Travel extends Insurance implements Serializable
 
     public static class Builder extends InsuranceBuilder<Builder, Travel>
     {
-        private Person customer;
-
         public Builder(Person customer)
         {
-            this.customer = customer;
+            super.customer(customer);
         }
 
         public Travel build()
@@ -31,11 +29,7 @@ public class Travel extends Insurance implements Serializable
 
     private Travel(Builder builder)
     {
-        super(builder.customer,
-              builder.getPremium(),
-              builder.getAmount(),
-              builder.getDate(),
-              builder.getDesc());
+        super(builder);
     }
 
     public ConcreteType identify()

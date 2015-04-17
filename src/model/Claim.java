@@ -20,6 +20,8 @@ public class Claim implements Serializable, FullTextSearch
     private Type type;
     private boolean active;
 
+    private Status status;
+
     public enum PaymentStatus {
         A(Loc.get("payment_status_a")),
         B(Loc.get("payment_status_b")),

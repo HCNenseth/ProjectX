@@ -2,6 +2,7 @@ package model.insurance;
 
 import model.FullTextSearch;
 import model.Person;
+import model.Status;
 
 import java.io.Serializable;
 import java.util.Calendar;
@@ -18,13 +19,16 @@ public abstract class Insurance<T> implements Serializable, Type, FullTextSearch
     private Calendar date;
     private String desc;
 
-    public Insurance(Person customer, double premium, double amount, Calendar date, String desc)
+    private Status status;
+
+    public Insurance(InsuranceBuilder ib)
     {
-        this.customer = customer;
-        this.premium = premium;
-        this.amount = amount;
-        this.date = date;
-        this.desc = desc;
+        this.customer = ib.getCustomer();
+        this.premium = ib.getPremium();
+        this.amount = ib.getAmount();
+        this.date = ib.getDate();
+        this.desc = ib.getDesc();
+        this.status = ib.getStatus();
 
         customer.setInsurance(this);
     }

@@ -60,7 +60,6 @@ public class House extends Property implements Serializable
 
     public static class Builder extends InsuranceBuilder<Builder, House>
     {
-        private Person customer;
         private String streetAddress;
         private String postalCode;
         private String city = "";
@@ -74,7 +73,7 @@ public class House extends Property implements Serializable
                        String streetAddress,
                        String postalCode)
         {
-            this.customer = customer;
+            super.customer(customer);
             this.streetAddress = streetAddress;
             this.postalCode = postalCode;
         }
@@ -117,11 +116,7 @@ public class House extends Property implements Serializable
 
     private House(Builder builder)
     {
-        super(builder.customer,
-              builder.getPremium(),
-              builder.getAmount(),
-              builder.getDate(),
-              builder.getDesc());
+        super(builder);
 
         streetAddress = builder.streetAddress;
         postalCode = builder.postalCode;

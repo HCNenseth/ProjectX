@@ -18,6 +18,8 @@ public class Person implements Serializable, FullTextSearch
     private final String postalCode;
     private final Calendar dateOfBirth;
 
+    private Status status;
+
     private List<Insurance> insurances;
     private List<Claim> claims;
 
