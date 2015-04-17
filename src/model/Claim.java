@@ -9,7 +9,7 @@ import java.util.Calendar;
 /**
  * Created by Hans Petter on 16.04.2015.
  */
-public class Claim<T> implements Serializable
+public class Claim implements Serializable
 {
     private String desc;
     private String contacts;
