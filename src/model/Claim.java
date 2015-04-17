@@ -18,8 +18,7 @@ public class Claim implements Serializable, FullTextSearch
     private Person customer;
     private Insurance insurance;
     private Type type;
-    private boolean active;
-
+    private PaymentStatus paymentStatus;
     private Status status;
 
     public enum PaymentStatus {
@@ -44,12 +43,6 @@ public class Claim implements Serializable, FullTextSearch
         public String getValue() {  return value;   }
     }
 
-    public float payout()
-    {
-        return 0;
-        //return amount - insurance.getDeductable();
-    }
-
     public static class Builder
     {
         // required
@@ -62,16 +55,16 @@ public class Claim implements Serializable, FullTextSearch
         private double amount = 0;
         private Calendar date;
         private Type type = Type.A;
-        private boolean active = true;
+        private Status status = Status.ACTIVE;
 
         public Builder(Person customer, Insurance insurance){
             this.customer = customer;
             this.insurance = insurance;
         }
 
-        public Builder active(Boolean val)
+        public Builder status(Status val)
         {
-            active = val;
+            status = val;
             return this;
         }
 
@@ -113,7 +106,7 @@ public class Claim implements Serializable, FullTextSearch
         contacts = builder.contacts;
         date = builder.date;
         type = builder.type;
-        active = builder.active;
+        status = builder.status;
     }
 
     public Person getCustomer()
@@ -135,6 +128,11 @@ public class Claim implements Serializable, FullTextSearch
                 || type.getValue().contains(value);
     }
 
-    // TODO override equals and hashcode
+    public float payout()
+    {
+        return 0;
+        //return amount - insurance.getDeductable();
+    }
 
+    // TODO override equals and hashcode
 }

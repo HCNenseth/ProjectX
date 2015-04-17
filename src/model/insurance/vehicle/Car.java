@@ -29,15 +29,9 @@ public class Car extends Vehicle implements Serializable
 
         String value;
 
-        Propulsion(String value)
-        {
-            this.value = value;
-        }
+        Propulsion(String value) { this.value = value; }
 
-        public String getValue()
-        {
-            return value;
-        }
+        public String getValue() { return value; }
     }
 
     public enum Type
@@ -49,15 +43,9 @@ public class Car extends Vehicle implements Serializable
 
         String value;
 
-        Type(String value)
-        {
-            this.value = value;
-        }
+        Type(String value) { this.value = value; }
 
-        public String getValue()
-        {
-            return value;
-        }
+        public String getValue() { return value; }
     }
 
     public static class Builder extends InsuranceBuilder<Builder, Car>
@@ -125,7 +113,6 @@ public class Car extends Vehicle implements Serializable
     public Car(Builder builder)
     {
         super(builder, builder.owner, builder.regNr);
-
         super.setRegNrRule(Loc.get("car_regnr_rgx"));
 
         registrationYear = builder.registrationYear;
@@ -134,7 +121,6 @@ public class Car extends Vehicle implements Serializable
         type = builder.type;
         propulsion = builder.propulsion;
     }
-
 
     public String getType()
     {
@@ -157,5 +143,11 @@ public class Car extends Vehicle implements Serializable
         return super.query(value)
                 || (type != null && type.getValue().contains(value))
                 || (propulsion != null && propulsion.getValue().contains(value));
+    }
+
+    @Override
+    public String toString()
+    {
+        return super.toString();
     }
 }

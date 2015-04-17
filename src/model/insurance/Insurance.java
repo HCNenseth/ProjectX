@@ -1,5 +1,6 @@
 package model.insurance;
 
+import localization.Loc;
 import model.FullTextSearch;
 import model.Person;
 import model.Status;
@@ -15,7 +16,7 @@ public abstract class Insurance<T> implements Serializable, Type, FullTextSearch
     private Person customer;
     private double premium;
     private double amount;
-    private double deductable;
+    private double deductible;
     private Calendar date;
     private String desc;
 
@@ -33,13 +34,6 @@ public abstract class Insurance<T> implements Serializable, Type, FullTextSearch
         customer.setInsurance(this);
     }
 
-    public String toString()
-    {
-        return "Customer:\t" + customer + "\nPremium:\t" + premium + "\nAmout:\t"
-                + amount + "\nDeductable:\t" + deductable + "\nDescription:\t"
-                + desc + "\nDate:\t" + date;
-    }
-
     public Person getCustomer() { return customer; }
 
     public boolean query(String value)
@@ -47,4 +41,25 @@ public abstract class Insurance<T> implements Serializable, Type, FullTextSearch
         // TODO implement test for all members!
         return (desc != null && desc.contains(value));
     }
+
+    @Override
+    public String toString()
+    {
+        return String.format(
+                "%s:\t%s\n" +
+                "%s:\t%s\n" +
+                "%s:\t%s\n" +
+                "%s:\t%s\n" +
+                "%s:\t%s\n" +
+                "%s:\t%s\n",
+                Loc.get("customer"), customer,
+                Loc.get("premium"), premium,
+                Loc.get("amount"), amount,
+                Loc.get("deductible"), deductible,
+                Loc.get("description"), desc,
+                Loc.get("date"), date
+
+        );
+    }
+
 }

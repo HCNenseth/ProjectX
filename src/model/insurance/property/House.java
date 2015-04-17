@@ -7,7 +7,6 @@ import model.insurance.InsuranceBuilder;
 
 import java.io.Serializable;
 
-
 /**
  * Created by HansChristian on 15.04.2015.
  */
@@ -126,7 +125,6 @@ public class House extends Property implements Serializable
         type = builder.type;
         material = builder.material;
         standard = builder.standard;
-
     }
 
     public ConcreteType identify()

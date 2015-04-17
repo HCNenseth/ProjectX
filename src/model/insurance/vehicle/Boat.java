@@ -26,10 +26,7 @@ public class Boat extends Vehicle implements Serializable
 
         String value;
 
-        Propulsion(String value)
-        {
-            this.value = value;
-        }
+        Propulsion(String value) { this.value = value; }
 
         public String getValue() { return value; }
     }
@@ -42,10 +39,7 @@ public class Boat extends Vehicle implements Serializable
 
         String value;
 
-        Type(String value)
-        {
-            this.value = value;
-        }
+        Type(String value) { this.value = value; }
 
         public String getValue() { return value; }
     }
@@ -85,11 +79,6 @@ public class Boat extends Vehicle implements Serializable
             return this;
         }
 
-        public Boat build()
-        {
-            return new Boat(this);
-        }
-
         public Builder type(Type val)
         {
             type = val;
@@ -107,13 +96,17 @@ public class Boat extends Vehicle implements Serializable
             owner = val;
             return this;
         }
+
+        public Boat build()
+        {
+            return new Boat(this);
+        }
     }
 
 
     public Boat(Builder builder)
     {
         super(builder, builder.owner, builder.regNr);
-
         super.setRegNrRule(Loc.get("car_regnr_rgx"));
 
         registrationYear = builder.registrationYear;
@@ -133,10 +126,6 @@ public class Boat extends Vehicle implements Serializable
         return propulsion.getValue();
     }
 
-    public String toString(){
-        return super.toString();
-    }
-
     public ConcreteType identify()
     {
         return ConcreteType.BOAT;
@@ -148,5 +137,11 @@ public class Boat extends Vehicle implements Serializable
         return super.query(value)
                 || (type != null && type.getValue().contains(value))
                 || (propulsion != null && propulsion.getValue().contains(value));
+    }
+
+    @Override
+    public String toString()
+    {
+        return super.toString();
     }
 }

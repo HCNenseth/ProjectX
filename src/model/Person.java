@@ -1,5 +1,6 @@
 package model;
 
+import localization.Loc;
 import model.insurance.Insurance;
 
 import java.io.Serializable;
@@ -33,6 +34,7 @@ public class Person implements Serializable, FullTextSearch
         private String city = null;
         private String postalCode = null;
         private Calendar dateOfBirth = null;
+        private Status status = Status.ACTIVE;
 
         public Builder(String firstname, String lastname)
         {
@@ -64,6 +66,11 @@ public class Person implements Serializable, FullTextSearch
             return this;
         }
 
+        public Builder status(Status val)
+        {
+            status = val; return this;
+        }
+
         public Person build()
         {
             return new Person(this);
@@ -78,17 +85,10 @@ public class Person implements Serializable, FullTextSearch
         streetAddress = builder.streetAddress;
         postalCode = builder.postalCode;
         city = builder.city;
+        status = builder.status;
 
         insurances = new LinkedList<>();
         claims = new LinkedList<>();
-    }
-
-    public String toString(){
-        return "\nFornavn:\t" + firstname +
-                "\nEtternavn:\t" + lastname +
-                "\nGateadresse:\t" + streetAddress +
-                "\nPostkode:\t" + postalCode +
-                "\nBy:\t" + city;
     }
 
     public List<Insurance> getInsurances()
@@ -113,6 +113,22 @@ public class Person implements Serializable, FullTextSearch
                 || (streetAddress != null && streetAddress.contains(value))
                 || (city != null && city.contains(value))
                 || (city != null && postalCode.contains(value));
+    }
+
+    public String toString()
+    {
+        return String.format(
+                "\n%s\t%s" +
+                "\n%s\t%s" +
+                "\n%s\t%s" +
+                "\n%s\t%s" +
+                "\n%s\t%s",
+                Loc.get("firstname"), firstname,
+                Loc.get("lastname"), lastname,
+                Loc.get("street_address"), streetAddress,
+                Loc.get("postal_code"), postalCode,
+                Loc.get("city"), city
+        );
     }
 
     // TODO override equals and hashcode

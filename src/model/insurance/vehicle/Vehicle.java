@@ -1,5 +1,6 @@
 package model.insurance.vehicle;
 
+import localization.Loc;
 import model.Person;
 import model.insurance.Insurance;
 import model.insurance.InsuranceBuilder;
@@ -23,10 +24,6 @@ abstract class Vehicle extends Insurance implements Serializable
         this.regNr = regNr;
     }
 
-    public String toString(){
-        return super.toString() + "\n\n" + "Owner:\t" + owner + "\nRegNr:\t" + regNr;
-    }
-
     protected void setRegNrRule(String regNrRule)
     {
         this.regNrRule = regNrRule;
@@ -43,4 +40,14 @@ abstract class Vehicle extends Insurance implements Serializable
         return super.query(value)
                 || (regNr != null && regNr.contains(value));
     }
+
+    @Override
+    public String toString(){
+        return super.toString() + String.format(
+                "\n%s\t%s\n%s\t%s",
+                Loc.get("owner"), owner,
+                Loc.get("reg_number"), regNr
+        );
+    }
+
 }
