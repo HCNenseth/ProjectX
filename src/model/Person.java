@@ -7,7 +7,7 @@ import java.util.Calendar;
 import java.util.LinkedList;
 import java.util.List;
 
-public class Person implements Serializable
+public class Person implements Serializable, FullTextSearch
 {
 
     private final String firstname;
@@ -102,6 +102,15 @@ public class Person implements Serializable
     public void setInsurance(Insurance insurance)
     {
         insurances.add(insurance);
+    }
+
+    public boolean query(String value)
+    {
+        return firstname.contains(value)
+                || lastname.contains(value)
+                || (streetAddress != null && streetAddress.contains(value))
+                || (city != null && city.contains(value))
+                || (city != null && postalCode.contains(value));
     }
 
     // TODO override equals and hashcode

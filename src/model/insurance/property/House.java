@@ -142,7 +142,13 @@ public class House extends Property implements Serializable
     @Override
     public boolean query(String value)
     {
-        return super.query(value) && false;
+        return super.query(value)
+                || (streetAddress != null && streetAddress.contains(value))
+                || (postalCode != null && postalCode.contains(value))
+                || (city != null && city.contains(value))
+                || (type != null && type.getValue().contains(value))
+                || (material != null && material.getValue().contains(value))
+                || (standard != null && standard.getValue().contains(value));
     }
 
     // TODO override equals and hashcode

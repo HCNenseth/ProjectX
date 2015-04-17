@@ -45,7 +45,7 @@ public class Travel extends Insurance implements Serializable
 
     public boolean query(String value)
     {
-        return false;
+        return super.query(value);
     }
 
     // TODO override equals and hashcode

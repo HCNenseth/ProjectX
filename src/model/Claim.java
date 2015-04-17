@@ -9,7 +9,7 @@ import java.util.Calendar;
 /**
  * Created by Hans Petter on 16.04.2015.
  */
-public class Claim implements Serializable
+public class Claim implements Serializable, FullTextSearch
 {
     private String desc;
     private String contacts;
@@ -126,7 +126,12 @@ public class Claim implements Serializable
 
     public Calendar getDate() { return date; }
 
-
+    public boolean query(String value)
+    {
+        return desc.contains(value)
+                || contacts.contains(value)
+                || type.getValue().contains(value);
+    }
 
     // TODO override equals and hashcode
 

@@ -47,6 +47,6 @@ abstract class Vehicle extends Insurance implements Serializable
     public boolean query(String value)
     {
         return super.query(value)
-                || regNr.contains(value);
+                || (regNr != null && regNr.contains(value));
     }
 }

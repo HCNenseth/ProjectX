@@ -163,7 +163,7 @@ public class Car extends Vehicle implements Serializable
     public boolean query(String value)
     {
         return super.query(value)
-                || type.getValue().contains(value)
-                || propulsion.getValue().contains(value);
+                || (type != null && type.getValue().contains(value))
+                || (propulsion != null && propulsion.getValue().contains(value));
     }
 }
