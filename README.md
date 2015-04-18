@@ -7,3 +7,5 @@
 # Useful links
 http://stackoverflow.com/questions/21086417/builder-pattern-and-inheritance
 https://sourcemaking.com/design_patterns/visitor/java/2
+
+http://docs.oracle.com/javase/8/javafx/properties-binding-tutorial/binding.htm
