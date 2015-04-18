@@ -2,6 +2,8 @@ package observer.tabs.POC;
 
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
+import main.view.ObservablePane;
+import main.view.SignalType;
 
 import java.util.LinkedList;
 import java.util.List;
