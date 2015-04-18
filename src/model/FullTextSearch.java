@@ -6,4 +6,5 @@ package model;
 public interface FullTextSearch
 {
     boolean query(String value);
+    Status getStatus();
 }

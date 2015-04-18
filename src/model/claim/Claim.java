@@ -131,6 +131,12 @@ public class Claim implements Serializable, FullTextSearch
                 || type.getValue().contains(value);
     }
 
+    @Override
+    public Status getStatus()
+    {
+        return status;
+    }
+
     public float payout()
     {
         return 0;

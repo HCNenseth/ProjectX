@@ -43,6 +43,12 @@ public abstract class Insurance<T> implements Serializable, Type, FullTextSearch
     }
 
     @Override
+    public Status getStatus()
+    {
+        return status;
+    }
+
+    @Override
     public String toString()
     {
         return String.format(

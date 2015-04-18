@@ -118,6 +118,12 @@ public class Person implements Serializable, FullTextSearch
                 || (city != null && postalCode.contains(value));
     }
 
+    @Override
+    public Status getStatus()
+    {
+        return status;
+    }
+
     public String toString()
     {
         return String.format(
