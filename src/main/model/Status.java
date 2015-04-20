@@ -5,5 +5,8 @@ package main.model;
  */
 public enum Status
 {
+    /**
+     * Generic statuses for the three main model types {person, insurance, claim}
+     */
     ACTIVE, INACTIVE, PENDING, INCOMPLETE;
 }

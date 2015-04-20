@@ -6,7 +6,8 @@ import main.model.Status;
 import java.util.Calendar;
 
 /**
- * Created by alex on 4/16/15.
+ * InsuranceBuilder abstract class.
+ * All insurances builders should extend from this class.
  */
 public abstract class InsuranceBuilder<T, E>
 {

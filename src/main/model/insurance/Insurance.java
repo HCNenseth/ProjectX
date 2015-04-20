@@ -9,9 +9,10 @@ import java.io.Serializable;
 import java.util.Calendar;
 
 /**
- * Created by HansChristian on 15.04.2015.
+ * Main insurance class.
  */
-public abstract class Insurance<T> implements Serializable, Type, FullTextSearch
+public abstract class Insurance<T> implements
+        Serializable, Type, FullTextSearch
 {
     private Person customer;
     private double premium;
@@ -22,6 +23,10 @@ public abstract class Insurance<T> implements Serializable, Type, FullTextSearch
 
     private Status status;
 
+    /**
+     * Insurance constructor.
+     * @param ib
+     */
     public Insurance(InsuranceBuilder ib)
     {
         this.customer = ib.getCustomer();
@@ -31,7 +36,7 @@ public abstract class Insurance<T> implements Serializable, Type, FullTextSearch
         this.desc = ib.getDesc();
         this.status = ib.getStatus();
 
-        customer.setInsurance(this);
+        customer.addInsurance(this);
     }
 
     public Person getCustomer() { return customer; }

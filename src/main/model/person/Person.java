@@ -11,6 +11,9 @@ import java.util.Calendar;
 import java.util.LinkedList;
 import java.util.List;
 
+/**
+ * Person class.
+ */
 public class Person implements Serializable, FullTextSearch
 {
 
@@ -27,10 +30,13 @@ public class Person implements Serializable, FullTextSearch
     private List<Insurance> insurances;
     private List<Claim> claims;
 
+    /**
+     * Inner builder class, following the Builder pattern.
+     */
     public static class Builder
     {
-        private String firstname;       // required
-        private String lastname;        // required
+        private String firstname; // required
+        private String lastname; // required
 
         // optional
         private String streetAddress = null;
@@ -39,48 +45,86 @@ public class Person implements Serializable, FullTextSearch
         private Calendar dateOfBirth = null;
         private Status status = Status.ACTIVE;
 
+        /**
+         * Constructor with the required params.
+         * @param firstname
+         * @param lastname
+         */
         public Builder(String firstname, String lastname)
         {
             this.firstname = firstname;
             this.lastname = lastname;
         }
 
+        /**
+         * Setter for street member.
+         * @param val
+         * @return
+         */
         public Builder street(String val)
         {
             streetAddress = val;
             return this;
         }
 
+        /**
+         * Setter for city member.
+         * @param val
+         * @return
+         */
         public Builder city(String val)
         {
             city = val;
             return this;
         }
 
+        /**
+         * Setter for postal code.
+         * @param val
+         * @return
+         */
         public Builder postalCode(String val)
         {
             postalCode = val;
             return this;
         }
 
+        /**
+         * Setter for dob.
+         * @param val
+         * @return
+         */
         public Builder dateOfBirth(Calendar val)
         {
             dateOfBirth = val;
             return this;
         }
 
+        /**
+         * Setter for status.
+         * @param val
+         * @return
+         */
         public Builder status(Status val)
         {
             status = val; return this;
         }
 
+        /**
+         * Builder build method for creating the person object.
+         * @return
+         */
         public Person build()
         {
             return new Person(this);
         }
     }
 
-    public Person(Builder builder)
+    /**
+     * Person class main and only constructur, requires Builder object.
+     * @param builder
+     */
+    private Person(Builder builder)
     {
         firstname = builder.firstname;
         lastname = builder.lastname;
@@ -94,21 +138,38 @@ public class Person implements Serializable, FullTextSearch
         claims = new LinkedList<>();
     }
 
+    /**
+     * Get insurances from person.
+     * @return
+     */
     public List<Insurance> getInsurances()
     {
         return insurances;
     }
 
+    /**
+     * Get claims from person.
+     * @return
+     */
     public List<Claim> getClaims()
     {
         return claims;
     }
 
-    public void setInsurance(Insurance insurance)
+    /**
+     * Add insurance to person object.
+     * @param insurance
+     */
+    public void addInsurance(Insurance insurance)
     {
         insurances.add(insurance);
     }
 
+    /**
+     * Query method used for search.
+     * @param value
+     * @return
+     */
     public boolean query(String value)
     {
         return firstname.contains(value)
@@ -118,6 +179,10 @@ public class Person implements Serializable, FullTextSearch
                 || (city != null && postalCode.contains(value));
     }
 
+    /**
+     * Mandatory method for returning staus.
+     * @return
+     */
     @Override
     public Status getStatus()
     {
