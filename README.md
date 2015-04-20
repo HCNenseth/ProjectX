@@ -8,5 +8,7 @@
 http://stackoverflow.com/questions/21086417/builder-pattern-and-inheritance
 https://sourcemaking.com/design_patterns/visitor/java/2
 
+# GUI
 http://docs.oracle.com/javase/8/javafx/properties-binding-tutorial/binding.htm
 https://pixelduke.wordpress.com/2012/10/23/jmetro-windows-8-controls-on-java/
+https://arnaudnouard.wordpress.com/2013/02/02/undecorator-add-a-better-look-to-your-javafx-stages-part-i/
