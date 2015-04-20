@@ -104,7 +104,7 @@ public class Boat extends Vehicle implements Serializable
     }
 
 
-    public Boat(Builder builder)
+    private Boat(Builder builder)
     {
         super(builder, builder.owner, builder.regNr);
         super.setRegNrRule(Loc.get("car_regnr_rgx"));

@@ -110,7 +110,7 @@ public class Car extends Vehicle implements Serializable
         }
     }
 
-    public Car(Builder builder)
+    private Car(Builder builder)
     {
         super(builder, builder.owner, builder.regNr);
         super.setRegNrRule(Loc.get("car_regnr_rgx"));
