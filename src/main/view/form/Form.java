@@ -20,7 +20,7 @@ public class Form
 {
     private GridPane gp;
     private List<FormNode> nodes = new ArrayList<>();
-    Formable caller;
+    private Formable caller;
     private Button submit;
     private int rowNum = 0;
     private boolean valid = true;
@@ -39,7 +39,7 @@ public class Form
      * implement a system for rejecting object > 1
      * @param caller
      */
-    public void injectObject(Formable caller)
+    public void injectAdapter(Formable caller)
     {
         this.caller = caller;
         nodes = this.caller.getNodes();
@@ -53,7 +53,7 @@ public class Form
     public GridPane getForm() {
         gp.addRow(rowNum++);
 
-        gp.add(submit, 2, rowNum);
+        gp.add(submit, 1, rowNum);
         return gp;
     }
 

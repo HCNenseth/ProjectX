@@ -24,7 +24,7 @@ public class ObservablePane extends Observable
          */
 
         Form f = new Form();
-        f.injectObject(new PersonAdapter());
+        f.injectAdapter(new PersonAdapter());
         pane.setContent(f.getForm());
     }
 
