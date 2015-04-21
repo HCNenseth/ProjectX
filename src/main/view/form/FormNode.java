@@ -1,7 +1,12 @@
 package main.view.form;
 
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.scene.paint.Color;
+
 /**
- * Created by alex on 4/20/15.
+ * Simple FormNode class used for structuring data
+ * and sending a key-value pair to the Form class.
  */
 public class FormNode
 {
@@ -10,6 +15,9 @@ public class FormNode
     private String error;
     private String regex;
     private boolean required;
+    private Label keyLabel;
+    private TextField valueField;
+    private Label errorLabel;
 
     public static class Builder
     {
@@ -56,45 +64,22 @@ public class FormNode
         this.value = builder.value;
         this.error = builder.error;
         this.regex = builder.regex;
+        this.required = builder.required;
+
+        keyLabel = new Label(key);
+        valueField = new TextField(value);
+        errorLabel = new Label(error);
+        errorLabel.setTextFill(Color.RED);
+        errorLabel.setVisible(false);
     }
 
-    public String getKey()
-    {
-        return key;
-    }
+    public Label getKey() { return keyLabel; }
 
-    public void setKey(String key)
-    {
-        this.key = key;
-    }
+    public TextField getValue() { return valueField; }
 
-    public String getValue()
-    {
-        return value;
-    }
+    public Label getError() { return errorLabel; }
 
-    public void setValue(String value)
-    {
-        this.value = value;
-    }
+    public String getRegex() { return regex; }
 
-    public String getError()
-    {
-        return error;
-    }
-
-    public void setError(String error)
-    {
-        this.error = error;
-    }
-
-    public String getRegex()
-    {
-        return regex;
-    }
-
-    public void setRegex(String regex)
-    {
-        this.regex = regex;
-    }
+    public boolean getRequired() { return required; }
 }

@@ -4,13 +4,18 @@
     <string name="menu_fileSave">Save</string>
     <string name="menu_fileSaveAs">Save as</string>
     <string name="menu_fileClose">Close</string>
+    <string name="submit">Submit</string>
+    <string name="save">Save</string>
 
     <!-- shared -->
     <string name="date">Date</string>
     <string name="description">Description</string>
     <string name="street_address">Street address</string>
+    <string name="street_address_error">Streetname must contain...</string>
     <string name="postal_code">Postal code</string>
+    <string name="postal_code_error">Postal code must contain only numbers</string>
     <string name="city">City</string>
+    <string name="city_error">City must contain...</string>
     <string name="owner">Owner</string>
     <string name="customer">Customer</string>
 
@@ -21,7 +26,9 @@
 
     <!-- person -->
     <string name="firstname">Firstname</string>
+    <string name="firstname_error">Firstname must contain ...</string>
     <string name="lastname">Lastname</string>
+    <string name="lastname_error">Lastname must contain ...</string>
 
     <!-- car -->
     <string name="reg_number">Reg number</string>

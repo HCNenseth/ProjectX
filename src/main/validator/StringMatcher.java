@@ -41,4 +41,19 @@ public enum StringMatcher
     public static boolean length(String val) { return val.matches(length); }
 
     public static boolean power(String val) { return val.matches(power); }
+
+    public static String getEmail()
+    {
+        return email;
+    }
+
+    public static String getFirstname()
+    {
+        return firstname;
+    }
+
+    public static String getLastname()
+    {
+        return lastname;
+    }
 }

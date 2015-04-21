@@ -2,6 +2,7 @@ package main.view;
 
 import javafx.scene.layout.Pane;
 import main.view.form.Form;
+import main.view.form.adapter.PersonAdapter;
 
 import java.util.Observable;
 import java.util.Observer;
@@ -23,7 +24,7 @@ public class ObservablePane extends Observable
          */
 
         Form f = new Form();
-        f.injectObject(new TestPerson());
+        f.injectObject(new PersonAdapter());
         pane.setContent(f.getForm());
     }
 
