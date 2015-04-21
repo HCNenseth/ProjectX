@@ -20,6 +20,7 @@ public class Form
 {
     private GridPane gp;
     private List<FormNode> nodes = new ArrayList<>();
+    Formable caller;
     private Button submit;
     private int rowNum = 0;
     private boolean valid = true;
@@ -36,11 +37,12 @@ public class Form
     /**
      * Inject a Formable object into form. This method should
      * implement a system for rejecting object > 1
-     * @param formable
+     * @param caller
      */
-    public void injectObject(Formable formable)
+    public void injectObject(Formable caller)
     {
-        nodes = formable.getNodes();
+        this.caller = caller;
+        nodes = this.caller.getNodes();
         nodes.stream().forEach(this::addPart);
     }
 
@@ -63,7 +65,7 @@ public class Form
     {
         gp.addRow(rowNum++);
         gp.add(fn.getKey(), 0, rowNum);
-        gp.add(fn.getValue(), 1, rowNum);
+        gp.add(fn.getNode(), 1, rowNum);
         gp.add(fn.getError(), 1, ++rowNum);
     }
 
@@ -72,6 +74,9 @@ public class Form
      */
     public void validate()
     {
+        // reset valid status
+        valid = true;
+
         // loop through all nodes
         for (FormNode fn : nodes) {
             // reset all error fields (hide them)
@@ -80,12 +85,14 @@ public class Form
             // Type.VALUE
             if (fn.getRequired() && fn.getType().equals(Type.VALUE)) {
                 FormValueNode fvn = (FormValueNode)fn;
-                if (!fvn.getValue().getText().matches(fvn.getRegex())) {
+                if (!fvn.getNode().getText().matches(fvn.getRegex())) {
                     // Show error message and set class valid to false
                     fn.getError().setVisible(true);
                     valid = false;
                 }
             }
         }
+
+        if (valid) { caller.callback(); }
     }
 }

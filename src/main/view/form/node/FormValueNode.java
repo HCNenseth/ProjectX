@@ -8,7 +8,7 @@ import javafx.scene.paint.Color;
  * Simple FormNode class used for structuring data
  * and sending a key-value pair to the Form class.
  */
-public class FormValueNode extends FormNode
+public class FormValueNode extends FormNode<String>
 {
     private String key;
     private String value;
@@ -75,11 +75,15 @@ public class FormValueNode extends FormNode
 
     public Label getKey() { return keyLabel; }
 
-    public TextField getValue() { return valueField; }
+    public TextField getNode() { return valueField; }
 
     public Label getError() { return errorLabel; }
 
+    public String getValue() { return valueField.getText(); }
+
     public String getRegex() { return regex; }
+
+    public String getData() { return getValue(); }
 
     @Override
     public Type getType() { return Type.VALUE; }

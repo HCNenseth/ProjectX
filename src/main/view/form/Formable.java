@@ -10,4 +10,5 @@ import java.util.List;
 public interface Formable
 {
     List<FormNode> getNodes();
+    void callback();
 }

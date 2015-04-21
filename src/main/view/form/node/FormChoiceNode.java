@@ -12,7 +12,7 @@ import java.util.List;
  * Simple FormNode class used for structuring data
  * and sending a key-value pair to the Form class.
  */
-public class FormChoiceNode<T> extends FormNode
+public class FormChoiceNode<T> extends FormNode<T>
 {
     private String key;
     private String error;
@@ -79,13 +79,17 @@ public class FormChoiceNode<T> extends FormNode
 
     public Label getKey() { return keyLabel; }
 
-    public ChoiceBox<T> getValue() { return values; }
+    public ChoiceBox<T> getNode() { return values; }
 
     public Label getError() { return errorLabel; }
 
     public String getRegex() { return regex; }
 
+    public String getValue() { return values.getValue().toString(); }
+
     public boolean getRequired() { return required; }
+
+    public T getData() { return values.getValue(); }
 
     @Override
     public Type getType() { return Type.CHOICE; }

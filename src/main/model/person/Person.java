@@ -17,13 +17,13 @@ import java.util.List;
 public class Person implements Serializable, FullTextSearch
 {
 
-    private final String firstname;
-    private final String lastname;
+    private String firstname;
+    private String lastname;
 
-    private final String streetAddress;
-    private final String city;
-    private final String postalCode;
-    private final Calendar dateOfBirth;
+    private String streetAddress;
+    private String city;
+    private String postalCode;
+    private Calendar dateOfBirth;
 
     private Status status;
 
@@ -57,11 +57,11 @@ public class Person implements Serializable, FullTextSearch
         }
 
         /**
-         * Setter for street member.
+         * Setter for streetAddress member.
          * @param val
          * @return
          */
-        public Builder street(String val)
+        public Builder streetAddress(String val)
         {
             streetAddress = val;
             return this;
@@ -163,6 +163,36 @@ public class Person implements Serializable, FullTextSearch
     public void addInsurance(Insurance insurance)
     {
         insurances.add(insurance);
+    }
+
+    public void setFirstname(String firstname)
+    {
+        this.firstname = firstname;
+    }
+
+    public void setLastname(String lastname)
+    {
+        this.lastname = lastname;
+    }
+
+    public void setStreetAddress(String streetAddress)
+    {
+        this.streetAddress = streetAddress;
+    }
+
+    public void setCity(String city)
+    {
+        this.city = city;
+    }
+
+    public void setPostalCode(String postalCode)
+    {
+        this.postalCode = postalCode;
+    }
+
+    public void setStatus(Status status)
+    {
+        this.status = status;
     }
 
     /**

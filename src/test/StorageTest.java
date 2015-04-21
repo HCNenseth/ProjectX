@@ -114,12 +114,12 @@ public class StorageTest
                 .dateOfBirth(Calendar.getInstance())
                 .city("Oslo")
                 .postalCode("0476")
-                .street("Torshov gate 8c")
+                .streetAddress("Torshov gate 8c")
                 .build();
 
         Person person2 = new Person.Builder("Hans Petter", "Osvold")
                 .dateOfBirth(Calendar.getInstance())
-                .street("Moldegata 17")
+                .streetAddress("Moldegata 17")
                 .postalCode("0445")
                 .city("Oslo")
                 .build();
@@ -265,7 +265,7 @@ public class StorageTest
 
             Person tmp =  new Person.Builder(randomFirstname(), randomLastname())
                     .city(city)
-                    .street(streetName)
+                    .streetAddress(streetName)
                     .build();
 
             /* add some random car insurances */
@@ -380,7 +380,7 @@ public class StorageTest
     }
 
     /**
-     * Helper method for outputting random street type
+     * Helper method for outputting random streetAddress type
      * @return
      */
     public String randomStreetType()

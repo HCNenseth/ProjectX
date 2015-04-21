@@ -2,6 +2,7 @@ package main.view.form.adapter;
 
 import main.localization.Loc;
 import main.model.Status;
+import main.model.person.Person;
 import main.validator.StringMatcher;
 import main.view.form.node.FormChoiceNode;
 import main.view.form.node.FormNode;
@@ -16,12 +17,20 @@ import java.util.List;
  */
 public class PersonAdapter implements Formable
 {
-    FormValueNode firstname;
-    FormValueNode lastname;
-    FormValueNode city;
-    FormValueNode streetAddress;
-    FormValueNode postNum;
-    FormChoiceNode status;
+    private FormValueNode firstname;
+    private FormValueNode lastname;
+    private FormValueNode city;
+    private FormValueNode streetAddress;
+    private FormValueNode postalCode;
+    private FormChoiceNode status;
+
+    private Person person;
+
+    public PersonAdapter(Person person)
+    {
+        this();
+        this.person = person;
+    }
 
     public PersonAdapter()
     {
@@ -41,7 +50,7 @@ public class PersonAdapter implements Formable
         streetAddress = new FormValueNode.Builder(Loc.get("street_address"))
                 .required(false).build();
 
-        postNum = new FormValueNode.Builder(Loc.get("postal_code"))
+        postalCode = new FormValueNode.Builder(Loc.get("postal_code"))
                 .required(false).build();
 
         // TODO: This is slightly retarded, improve it somehow.
@@ -62,9 +71,33 @@ public class PersonAdapter implements Formable
         tmp.add(lastname);
         tmp.add(city);
         tmp.add(streetAddress);
-        tmp.add(postNum);
+        tmp.add(postalCode);
         tmp.add(status);
 
         return tmp;
+    }
+
+    public void callback()
+    {
+        if (person == null) {
+            person = new Person.Builder(firstname.getValue(), lastname.getValue())
+                    .streetAddress(streetAddress.getValue())
+                    .postalCode(postalCode.getValue())
+                    .status((Status)status.getData()) // tsk tsk
+                    .city(city.getValue())
+                    .build();
+
+            System.out.println(person);
+            return;
+        }
+
+        person.setFirstname(firstname.getValue());
+        person.setLastname(lastname.getValue());
+        person.setPostalCode(postalCode.getValue());
+        person.setStreetAddress(streetAddress.getValue());
+        person.setCity(city.getValue());
+        person.setStatus((Status) status.getData()); // tsk tsk
+
+        System.out.println(person);
     }
 }
