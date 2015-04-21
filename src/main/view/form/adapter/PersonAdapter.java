@@ -1,8 +1,11 @@
 package main.view.form.adapter;
 
 import main.localization.Loc;
+import main.model.Status;
 import main.validator.StringMatcher;
-import main.view.form.FormNode;
+import main.view.form.node.FormChoiceNode;
+import main.view.form.node.FormNode;
+import main.view.form.node.FormValueNode;
 import main.view.form.Formable;
 
 import java.util.ArrayList;
@@ -13,33 +16,44 @@ import java.util.List;
  */
 public class PersonAdapter implements Formable
 {
-    FormNode firstname;
-    FormNode lastname;
-    FormNode city;
-    FormNode streetAddress;
-    FormNode postNum;
+    FormValueNode firstname;
+    FormValueNode lastname;
+    FormValueNode city;
+    FormValueNode streetAddress;
+    FormValueNode postNum;
+    FormChoiceNode status;
 
     public PersonAdapter()
     {
-        firstname = new FormNode.Builder(Loc.get("firstname"))
+        firstname = new FormValueNode.Builder(Loc.get("firstname"))
                 .error(Loc.get("firstname_error"))
                 .regex(StringMatcher.getFirstname())
                 .build();
 
-        lastname = new FormNode.Builder(Loc.get("lastname"))
+        lastname = new FormValueNode.Builder(Loc.get("lastname"))
                 .error(Loc.get("lastname_error"))
                 .regex(StringMatcher.getLastname())
                 .build();
 
-        city = new FormNode.Builder(Loc.get("city"))
+        city = new FormValueNode.Builder(Loc.get("city"))
                 .required(false).build();
 
-        streetAddress = new FormNode.Builder(Loc.get("street_address"))
+        streetAddress = new FormValueNode.Builder(Loc.get("street_address"))
                 .required(false).build();
 
-        postNum = new FormNode.Builder(Loc.get("postal_code"))
+        postNum = new FormValueNode.Builder(Loc.get("postal_code"))
                 .required(false).build();
+
+        // TODO: This is slightly retarded, improve it somehow.
+        List<String> statusList = new ArrayList<>();
+        for (Status s : Status.values())
+            statusList.add(s.getValue());
+
+        status = new FormChoiceNode.Builder<>(Loc.get("status"), statusList)
+                .active(Loc.get("active"))
+                .build();
     }
+
     @Override
     public List<FormNode> getNodes()
     {
@@ -49,6 +63,7 @@ public class PersonAdapter implements Formable
         tmp.add(city);
         tmp.add(streetAddress);
         tmp.add(postNum);
+        tmp.add(status);
 
         return tmp;
     }

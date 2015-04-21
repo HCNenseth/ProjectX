@@ -1,4 +1,4 @@
-package main.view.form;
+package main.view.form.node;
 
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -8,13 +8,12 @@ import javafx.scene.paint.Color;
  * Simple FormNode class used for structuring data
  * and sending a key-value pair to the Form class.
  */
-public class FormNode
+public class FormValueNode extends FormNode
 {
     private String key;
     private String value;
     private String error;
     private String regex;
-    private boolean required;
     private Label keyLabel;
     private TextField valueField;
     private Label errorLabel;
@@ -52,19 +51,20 @@ public class FormNode
             this.required = value; return this;
         }
 
-        public FormNode build()
+        public FormValueNode build()
         {
-            return new FormNode(this);
+            return new FormValueNode(this);
         }
     }
 
-    private FormNode(Builder builder)
+    private FormValueNode(Builder builder)
     {
         this.key = builder.key;
         this.value = builder.value;
         this.error = builder.error;
         this.regex = builder.regex;
-        this.required = builder.required;
+
+        super.setRequired(builder.required);
 
         keyLabel = new Label(key);
         valueField = new TextField(value);
@@ -81,5 +81,7 @@ public class FormNode
 
     public String getRegex() { return regex; }
 
-    public boolean getRequired() { return required; }
+    @Override
+    public Type getType() { return Type.VALUE; }
+
 }

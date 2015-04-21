@@ -4,6 +4,9 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import main.localization.Loc;
+import main.view.form.node.FormNode;
+import main.view.form.node.FormValueNode;
+import main.view.form.node.Type;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -61,7 +64,7 @@ public class Form
         gp.addRow(rowNum++);
         gp.add(fn.getKey(), 0, rowNum);
         gp.add(fn.getValue(), 1, rowNum);
-        gp.add(fn.getError(), 2, rowNum);
+        gp.add(fn.getError(), 1, ++rowNum);
     }
 
     /**
@@ -73,8 +76,11 @@ public class Form
         for (FormNode fn : nodes) {
             // reset all error fields (hide them)
             fn.getError().setVisible(false);
-            if (fn.getRequired()) {
-                if (!fn.getValue().getText().matches(fn.getRegex())) {
+
+            // Type.VALUE
+            if (fn.getRequired() && fn.getType().equals(Type.VALUE)) {
+                FormValueNode fvn = (FormValueNode)fn;
+                if (!fvn.getValue().getText().matches(fvn.getRegex())) {
                     // Show error message and set class valid to false
                     fn.getError().setVisible(true);
                     valid = false;

@@ -1,5 +1,7 @@
 package main.view.form;
 
+import main.view.form.node.FormNode;
+
 import java.util.List;
 
 /**
