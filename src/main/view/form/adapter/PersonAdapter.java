@@ -45,13 +45,16 @@ public class PersonAdapter implements Formable
                 .build();
 
         city = new FormValueNode.Builder(Loc.get("city"))
-                .required(false).build();
+                .required(false)
+                .build();
 
         streetAddress = new FormValueNode.Builder(Loc.get("street_address"))
-                .required(false).build();
+                .required(false)
+                .build();
 
         postalCode = new FormValueNode.Builder(Loc.get("postal_code"))
-                .required(false).build();
+                .required(false)
+                .build();
 
         // TODO: This is slightly retarded, improve it somehow.
         List<Enum> statusList = new ArrayList<>();
