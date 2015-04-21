@@ -34,8 +34,6 @@ public class FormChoiceNode<T> extends FormNode
         {
             this.key = key;
             values = new ChoiceBox<>();
-            ObservableList<String> ob = FXCollections.observableArrayList();
-
             values.getItems().setAll(data);
         }
 
@@ -74,7 +72,6 @@ public class FormChoiceNode<T> extends FormNode
         this.required = builder.required;
 
         keyLabel = new Label(key);
-        //valueField = new TextField(value);
         errorLabel = new Label(error);
         errorLabel.setTextFill(Color.RED);
         errorLabel.setVisible(false);

@@ -45,13 +45,13 @@ public class PersonAdapter implements Formable
                 .required(false).build();
 
         // TODO: This is slightly retarded, improve it somehow.
-        List<String> statusList = new ArrayList<>();
-        for (Status s : Status.values())
-            statusList.add(s.getValue());
+        List<Enum> statusList = new ArrayList<>();
+        for (Status s : Status.values()) { statusList.add(s); }
 
         status = new FormChoiceNode.Builder<>(Loc.get("status"), statusList)
-                .active(Loc.get("active"))
+                .active(Status.ACTIVE)
                 .build();
+
     }
 
     @Override
