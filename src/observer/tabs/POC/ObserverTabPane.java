@@ -32,20 +32,9 @@ public class ObserverTabPane extends TabPane implements Observer
 
         switch (signalType) {
             case REFRESH:
-                observablePanes.stream()
-                        .filter(i -> i != caller)
-                        .forEach(i ->
-                                i.pushLabel("Received refresh from: " + caller.getId()));
                 break;
             case DELETE:
-                observablePanes.stream()
-                        .filter(i -> i != caller)
-                        .forEach(i -> i.pushLabel("Received delete from: " + caller.getId()));
                 break;
-            default:
-                observablePanes.stream()
-                        .filter(i -> i != caller)
-                        .forEach(i -> i.pushLabel("Received something else..."));
         }
     }
 
@@ -65,7 +54,7 @@ public class ObserverTabPane extends TabPane implements Observer
         ObservablePane obsPane = new ObservablePane(this, title);
         observablePanes.add(obsPane);
 
-        Tab tmp = new Tab(String.format("- %s %d -", title, obsPane.getId()));
+        Tab tmp = new Tab(String.format("- %s -", title));
         tmp.setContent(obsPane.getPane());
         tmp.closableProperty().set(closeable);
         getTabs().addAll(tmp);
