@@ -1,9 +1,7 @@
 package main.view;
 
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
-import main.view.SignalType;
+import main.view.form.Form;
 
 import java.util.Observable;
 import java.util.Observer;
@@ -14,56 +12,24 @@ import java.util.Observer;
 public class ObservablePane extends Observable
 {
     private BasePane pane;
-    private static int counter = 0;
-    private int id, paddingX = 20, paddingY = 20;
 
     public ObservablePane(Observer observer, String title)
     {
         this.pane = new BasePane(title);
-        id = counter++;
-
         addObserver(observer);
-        createPane(title);
-    }
 
-    private void createPane(String title)
-    {
-        Label label = new Label(title);
-        label.setLayoutX(paddingX);
-        label.setLayoutY(paddingY);
+        /**
+         * Some stupid test code only!
+         */
 
-        Button b1 = new Button("Send refresh signal");
-        b1.setLayoutX(paddingX);
-        b1.setLayoutY(paddingY += 30);
-        b1.setOnAction(e -> {
-            setChanged();
-            notifyObservers(SignalType.REFRESH);
-        });
-
-        Button b2 = new Button("Send delete signal");
-        b2.setLayoutX(paddingX);
-        b2.setLayoutY(paddingY += 30);
-        b2.setOnAction(e -> {
-            setChanged();
-            notifyObservers(SignalType.DELETE);
-        });
-
-        pane.getChildren().addAll(label, b1, b2);
-    }
-
-    public void pushLabel(String text)
-    {
-        Label label = new Label(text);
-        label.setLayoutX(paddingX);
-        label.setLayoutY(paddingY += 30);
-        pane.getChildren().add(label);
+        Form f = new Form();
+        f.injectObject(new TestPerson());
+        pane.setContent(f.getForm());
     }
 
     public Pane getPane()
     {
         return pane;
     }
-
-    public int getId() { return id; }
 
 }

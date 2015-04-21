@@ -1,6 +1,7 @@
 package main.view;
 
 import javafx.geometry.Insets;
+import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
@@ -13,7 +14,7 @@ public class BasePane extends Pane
 {
     private Label title;
     private BorderPane borderPane;
-    private int titleSize = 10;
+    private int titleSize = 20;
     private int padding = 10;
 
     public BasePane(String title)
@@ -26,5 +27,11 @@ public class BasePane extends Pane
         borderPane.topProperty().set(this.title);
 
         getChildren().addAll(borderPane);
+    }
+
+    public void setContent(Node node)
+    {
+        borderPane.centerProperty().set(node);
+        borderPane.setPadding(new Insets(padding));
     }
 }
