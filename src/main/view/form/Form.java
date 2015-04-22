@@ -71,6 +71,11 @@ public class Form
 
     /**
      * Validate form method.
+     * This is the class most important method.
+     * Its responsibilities is to loop through all
+     * the FormNodes and validate them. If none of
+     * these tests failed call upon the callers
+     * callback method.
      */
     public void validate()
     {
@@ -82,14 +87,19 @@ public class Form
             // reset all error fields (hide them)
             fn.getError().setVisible(false);
 
-            // Type.VALUE
-            if (fn.getRequired() && fn.getType().equals(Type.VALUE)) {
-                FormValueNode fvn = (FormValueNode)fn;
-                if (!fvn.getNode().getText().matches(fvn.getRegex())) {
-                    // Show error message and set class valid to false
-                    fn.getError().setVisible(true);
-                    valid = false;
-                }
+            // switch on because each node might have different behaviours
+            switch (fn.getType()) {
+                case VALUE:
+                    // check if required or value is not blank
+                    if (fn.getRequired() || !fn.getValue().equals("")) {
+                        FormValueNode fvn = (FormValueNode)fn;
+                        if (!fvn.getNode().getText().matches(fvn.getRegex())) {
+                            // Show error message and set class valid to false
+                            fn.getError().setVisible(true);
+                            valid = false;
+                        }
+                    }
+                    break;
             }
         }
 
