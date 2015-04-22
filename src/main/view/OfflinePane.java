@@ -1,4 +1,4 @@
-package observer.tabs.POC;
+package main.view;
 
 import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;

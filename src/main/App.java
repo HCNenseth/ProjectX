@@ -4,6 +4,7 @@ import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
+import main.view.ObserverTabPane;
 import main.view.menubar.MenuBar;
 
 /**
@@ -13,6 +14,7 @@ public class App extends Application
 {
     private BorderPane bp = new BorderPane();
     private MenuBar menuBar = new MenuBar();
+    private ObserverTabPane otp = new ObserverTabPane();
     private final int HEIGHT = 600;
     private final int WIDTH = 800;
 
@@ -20,6 +22,9 @@ public class App extends Application
     public void start(Stage primaryStage) throws Exception
     {
         bp.setTop(menuBar);
+        bp.setCenter(otp);
+
+        otp.injectObservableTab("Default", false);
 
         Scene scene = new Scene(bp, WIDTH, HEIGHT);
 

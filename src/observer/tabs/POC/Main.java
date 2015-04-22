@@ -5,6 +5,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
+import main.view.ObserverTabPane;
 
 /**
  * Created by alex on 4/10/15.
