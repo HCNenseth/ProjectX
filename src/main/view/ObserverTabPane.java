@@ -41,7 +41,7 @@ public class ObserverTabPane extends TabPane implements Observer
         OfflinePane offPane = new OfflinePane(title);
         offlinePanes.add(offPane);
 
-        Tab tmp = new Tab(String.format("-- %s --", title));
+        Tab tmp = new Tab(title);
         tmp.setContent(offPane.getPane());
         tmp.closableProperty().set(closeable);
         getTabs().addAll(tmp);
@@ -52,7 +52,7 @@ public class ObserverTabPane extends TabPane implements Observer
         ObservablePane obsPane = new ObservablePane(this, title);
         observablePanes.add(obsPane);
 
-        Tab tmp = new Tab(String.format("- %s -", title));
+        Tab tmp = new Tab(title);
         tmp.setContent(obsPane.getPane());
         tmp.closableProperty().set(closeable);
         getTabs().addAll(tmp);

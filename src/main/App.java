@@ -33,6 +33,11 @@ public class App extends Application
         primaryStage.show();
     }
 
+    public void injectTab()
+    {
+        otp.injectObservableTab("Default", false);
+    }
+
     public static void main(String[] args)
     {
         launch(args);
