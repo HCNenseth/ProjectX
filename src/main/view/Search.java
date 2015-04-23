@@ -21,9 +21,9 @@ public class Search
     {
         gp = new GridPane();
 
-        submit = new Button(Loc.get("submit"));
         input = new TextField();
-        input.setOnAction(e -> searchSubmit());
+        submit = new Button(Loc.get("submit"));
+        submit.setOnAction(e -> searchSubmit());
 
         gp.add(input, 0, 0);
         gp.add(submit, 1, 0);

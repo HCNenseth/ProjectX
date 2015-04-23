@@ -26,6 +26,7 @@
 
     <!-- search -->
     <string name="search">Search</string>
+    <string name="search_results">Search results</string>
 
     <!-- statuses -->
     <string name="status">Status</string>
