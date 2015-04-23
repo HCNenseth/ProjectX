@@ -145,8 +145,8 @@ public class HouseAdapter implements Formable {
     public void callback() {
         if(house == null)
         {
-            house = new House.Builder(customer, (String) street.getValue(), (String)postalCode.getValue())
-                    .city((String)city.getValue())
+            house = new House.Builder(customer, street.getValue(), postalCode.getValue())
+                    .city(city.getValue())
                     .type((House.Type)type.getData())
                     .material((House.Material)material.getData())
                     .squareMeter(Integer.parseInt(squareMeters.getValue()))
@@ -162,7 +162,7 @@ public class HouseAdapter implements Formable {
 
         // TODO refactor house model
 
-        house.setCity((String)city.getValue());
+        house.setCity(city.getValue());
         house.setType((House.Type)type.getData());
         house.setMaterial((House.Material)material.getData());
         house.setSquareMeter(Integer.parseInt(squareMeters.getValue()));
