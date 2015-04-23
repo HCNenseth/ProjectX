@@ -65,6 +65,8 @@ public class MenuBar
 
     private void saveFile()
     {
+        if (!Storage.hasFilename()) { return; }
+
         try {
             Storage.getInstance().save();
         } catch (IOException ioe) {

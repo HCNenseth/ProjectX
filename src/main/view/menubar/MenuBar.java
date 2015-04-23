@@ -34,7 +34,7 @@ public class MenuBar extends javafx.scene.control.MenuBar
         newMenu = new Menu(Loc.get("New"));
 
         fileSave = new MenuItem(Loc.get("menu_fileSave"));
-        fileSaveAs.setOnAction(e -> Mediator.inst.router(Signal.FILE,
+        fileSave.setOnAction(e -> Mediator.inst.router(Signal.FILE,
                 new Payload(main.controller.MenuBar.Type.SAVE)));
 
         fileSaveAs = new MenuItem(Loc.get("menu_fileSaveAs"));
