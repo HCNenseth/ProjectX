@@ -1,7 +1,7 @@
 package main.view.form.adapter;
 
 import main.localization.Loc;
-import main.model.insurance.Type;
+import main.model.Status;
 import main.model.insurance.vehicle.Car;
 import main.model.person.Person;
 import main.validator.StringMatcher;
@@ -23,11 +23,15 @@ public class CarAdapter implements Formable {
     /**
      * From Car
      */
-    private FormValueNode owner;
+
+    private FormValueNode premium;
+    private FormValueNode amount;
+    private FormValueNode desc;
     private FormValueNode regNr;
     private FormValueNode registrationYear;
     private FormValueNode mileage;
     private FormChoiceNode type;
+    private FormChoiceNode status;
     private FormChoiceNode propulsion;
 
     /**
@@ -53,9 +57,19 @@ public class CarAdapter implements Formable {
 
     public CarAdapter()
     {
-        owner = new FormValueNode.Builder(Loc.get("owner"))
-                .error(Loc.get("owner_error"))
-                .regex(StringMatcher.getFirstname())
+        premium = new FormValueNode.Builder(Loc.get("premium"))
+                .regex(StringMatcher.getDigit())
+                .error(Loc.get("error_premium"))
+                .build();
+
+        amount = new FormValueNode.Builder(Loc.get("amount"))
+                .regex(StringMatcher.getDigit())
+                .error(Loc.get("error_amount"))
+                .build();
+
+        desc = new FormValueNode.Builder(Loc.get("desc"))
+                .regex(StringMatcher.getBaseString())
+                .error(Loc.get("error_desc"))
                 .build();
 
         regNr = new FormValueNode.Builder(Loc.get("regNr"))
@@ -86,6 +100,16 @@ public class CarAdapter implements Formable {
                 .active(Car.Type.A)
                 .build();
 
+        List<Enum> statusList = new ArrayList<>();
+        for(Status s : Status.values())
+        {
+            statusList.add(s);
+        }
+
+        status = new FormChoiceNode.Builder(Loc.get("status"), statusList)
+                .active(Status.ACTIVE)
+                .build();
+
         List<Enum> propulsionList = new ArrayList<>();
         for(Car.Propulsion p : Car.Propulsion.values())
         {
@@ -101,7 +125,9 @@ public class CarAdapter implements Formable {
     @Override
     public List<FormNode> getNodes() {
         List<FormNode> tmp = new ArrayList<>();
-        tmp.add(owner);
+        tmp.add(premium);
+        tmp.add(status);
+        tmp.add(amount);
         tmp.add(regNr);
         tmp.add(registrationYear);
         tmp.add(mileage);
@@ -117,8 +143,11 @@ public class CarAdapter implements Formable {
         {
             car = new Car.Builder(customer, regNr.getValue())
                     .registrationYear( Integer.parseInt(registrationYear.getValue()) )
-                    .milage(Integer.parseInt(mileage.getValue()))
-                    .type((Car.Type)type.getData())
+                    .mileage(Integer.parseInt(mileage.getValue()))
+                    .amount(Integer.parseInt(amount.getValue()))
+                    .premium(Integer.parseInt(premium.getValue()))
+                    .status((Status)status.getData())
+                    .type((Car.Type) type.getData())
                     .propulsion((Car.Propulsion)propulsion.getData())
                     .build();
 
@@ -128,6 +157,9 @@ public class CarAdapter implements Formable {
 
         car.setMileage(Integer.parseInt(mileage.getValue()));
         car.setRegNr(regNr.getValue());
+        car.setPremium(Integer.parseInt(premium.getValue()));
+        car.setAmount(Integer.parseInt(amount.getValue()));
+        car.setStatus((Status) status.getData());
 
         System.out.println(car);
     }

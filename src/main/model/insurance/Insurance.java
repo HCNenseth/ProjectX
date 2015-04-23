@@ -39,6 +39,22 @@ public abstract class Insurance<T> implements
         customer.addInsurance(this);
     }
 
+    public void setPremium(int val)
+    {
+        premium = val;
+    }
+
+    public void setAmount(int val)
+    {
+        amount = val;
+    }
+
+    public void setStatus(Status s)
+    {
+        status = s;
+    }
+
+
     public Person getCustomer() { return customer; }
 
     public boolean query(String value)
