@@ -5,5 +5,5 @@ package main.view.form.node;
  */
 public enum Type
 {
-    VALUE, CHOICE, ENUM
+    VALUE, CHOICE, ENUM, LABEL
 }
