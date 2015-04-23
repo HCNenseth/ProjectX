@@ -56,4 +56,9 @@ public enum StringMatcher
     {
         return lastname;
     }
+
+    public static String getRegnr()
+    {
+        return regnr;
+    }
 }
