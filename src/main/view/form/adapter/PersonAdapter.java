@@ -31,12 +31,16 @@ public class PersonAdapter implements Formable
 
     public PersonAdapter(Person person)
     {
-        this();
-        this.person = person;
-        editMode = true;
+        if (person != null) {
+            this.person = person;
+            editMode = true;
+        }
+        initNodes();
     }
 
-    public PersonAdapter()
+    public PersonAdapter() { this(null); }
+
+    private void initNodes()
     {
         firstname = new FormValueNode.Builder(Loc.get("firstname"))
                 .value(editMode ? person.getFirstname() : "")
@@ -71,7 +75,6 @@ public class PersonAdapter implements Formable
         status = new FormChoiceNode.Builder<>(Loc.get("status"), statusList)
                 .active(editMode ? person.getStatus() : Status.ACTIVE)
                 .build();
-
     }
 
     @Override
