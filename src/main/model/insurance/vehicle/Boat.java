@@ -12,11 +12,11 @@ import java.io.Serializable;
  */
 public class Boat extends Vehicle implements Serializable
 {
-    private final int registrationYear;
-    private final int length;
-    private final int horsePower;
-    private final Propulsion propulsion;
-    private final Type type;
+    private int registrationYear;
+    private int length;
+    private int horsePower;
+    private Propulsion propulsion;
+    private Type type;
     private Person owner;
 
     public enum Propulsion {
@@ -129,6 +129,16 @@ public class Boat extends Vehicle implements Serializable
     public ConcreteType identify()
     {
         return ConcreteType.BOAT;
+    }
+
+    public void setPropulsion(Propulsion propulsion)
+    {
+        this.propulsion = propulsion;
+    }
+
+    public void setHorsePower(int horsePower)
+    {
+        this.horsePower = horsePower;
     }
 
     @Override
