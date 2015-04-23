@@ -1,5 +1,7 @@
 package main.controller;
 
+import main.localization.Loc;
+import main.view.Resources;
 import main.view.form.Form;
 import main.view.form.adapter.PersonAdapter;
 
@@ -16,8 +18,9 @@ public class Person
 
     public void newPerson()
     {
-        // TODO inject new tab with customer form
         Form f = new Form();
         f.injectAdapter(new PersonAdapter());
+        Resources.inst.getOtp().injectObservableTab(Loc.get("new_customer"),
+                f.getForm(), true);
     }
 }

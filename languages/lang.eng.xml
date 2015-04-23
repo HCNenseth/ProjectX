@@ -41,6 +41,7 @@
     <string name="city_error">City must contain...</string>
     <string name="owner">Owner</string>
     <string name="customer">Customer</string>
+    <string name="new_customer">New customer</string>
 
     <!-- insurance -->
     <string name="premium">Premium</string>

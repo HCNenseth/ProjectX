@@ -1,5 +1,6 @@
 package main.view;
 
+import javafx.scene.Node;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 
@@ -49,7 +50,13 @@ public class ObserverTabPane extends TabPane implements Observer
 
     public void injectObservableTab(String title, Boolean closeable)
     {
+        injectObservableTab(title, null, closeable);
+    }
+
+    public void injectObservableTab(String title, Node content, Boolean closeable)
+    {
         ObservablePane obsPane = new ObservablePane(this, title);
+        obsPane.setContent(content);
         observablePanes.add(obsPane);
 
         Tab tmp = new Tab(title);
