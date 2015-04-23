@@ -26,42 +26,50 @@ public class PersonAdapter implements Formable
 
     private Person person;
 
+    // TODO rethink this implementation decision.
+    private boolean editMode = false;
+
     public PersonAdapter(Person person)
     {
         this();
         this.person = person;
+        editMode = true;
     }
 
     public PersonAdapter()
     {
         firstname = new FormValueNode.Builder(Loc.get("firstname"))
+                .value(editMode ? person.getFirstname() : "")
                 .error(Loc.get("firstname_error"))
                 .regex(StringMatcher.getFirstname())
                 .build();
 
         lastname = new FormValueNode.Builder(Loc.get("lastname"))
+                .value(editMode ? person.getLastname() : "")
                 .error(Loc.get("lastname_error"))
                 .regex(StringMatcher.getLastname())
                 .build();
 
         city = new FormValueNode.Builder(Loc.get("city"))
+                .value(editMode ? person.getCity() : "")
                 .required(false)
                 .build();
 
         streetAddress = new FormValueNode.Builder(Loc.get("street_address"))
+                .value(editMode ? person.getStreetAddress() : "")
                 .required(false)
                 .build();
 
         postalCode = new FormValueNode.Builder(Loc.get("postal_code"))
+                .value(editMode ? person.getPostalCode() : "")
                 .required(false)
                 .build();
 
-        // TODO: This is slightly retarded, improve it somehow.
         List<Enum> statusList = new ArrayList<>();
         for (Status s : Status.values()) { statusList.add(s); }
 
         status = new FormChoiceNode.Builder<>(Loc.get("status"), statusList)
-                .active(Status.ACTIVE)
+                .active(editMode ? person.getStatus() : Status.ACTIVE)
                 .build();
 
     }
@@ -82,25 +90,20 @@ public class PersonAdapter implements Formable
 
     public void callback()
     {
-        if (person == null) {
+        if (editMode) {
+            person.setFirstname(firstname.getValue());
+            person.setLastname(lastname.getValue());
+            person.setPostalCode(postalCode.getValue());
+            person.setStreetAddress(streetAddress.getValue());
+            person.setCity(city.getValue());
+            person.setStatus((Status) status.getData()); // tsk tsk
+        } else {
             person = new Person.Builder(firstname.getValue(), lastname.getValue())
                     .streetAddress(streetAddress.getValue())
                     .postalCode(postalCode.getValue())
                     .status((Status)status.getData()) // tsk tsk
                     .city(city.getValue())
                     .build();
-
-            System.out.println(person);
-            return;
         }
-
-        person.setFirstname(firstname.getValue());
-        person.setLastname(lastname.getValue());
-        person.setPostalCode(postalCode.getValue());
-        person.setStreetAddress(streetAddress.getValue());
-        person.setCity(city.getValue());
-        person.setStatus((Status) status.getData()); // tsk tsk
-
-        System.out.println(person);
     }
 }
