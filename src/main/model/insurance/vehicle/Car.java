@@ -1,6 +1,7 @@
 package main.model.insurance.vehicle;
 
 import main.localization.Loc;
+import main.model.Status;
 import main.model.person.Person;
 import main.model.insurance.ConcreteType;
 import main.model.insurance.InsuranceBuilder;
@@ -60,10 +61,13 @@ public class Car extends Vehicle implements Serializable
         //Optional
         private Person owner = getCustomer();
         private int registrationYear = 1900;
-        private int milage = 0;
+        private int mileage = 0;
         private int bonus = 0;
+        private int amount = 0;
+        private int premium = 0;
         private Propulsion propulsion = Propulsion.A;
         private Type type = Type.A;
+        private Status status = Status.ACTIVE;
 
         public Builder(Person customer, String regNr)
         {
@@ -78,9 +82,27 @@ public class Car extends Vehicle implements Serializable
         }
 
 
-        public Builder milage(int val)
+        public Builder mileage(int val)
         {
-            this.milage = val;
+            this.mileage = val;
+            return this;
+        }
+
+        public Builder premium(int val)
+        {
+            premium = val;
+            return this;
+        }
+
+        public Builder amount(int val)
+        {
+            amount = val;
+            return this;
+        }
+
+        public Builder status(Status status)
+        {
+            this.status = status;
             return this;
         }
 
@@ -117,10 +139,9 @@ public class Car extends Vehicle implements Serializable
     private Car(Builder builder)
     {
         super(builder, builder.owner, builder.regNr);
-        super.setRegNrRule(Loc.get("car_regnr_rgx"));
 
         registrationYear = builder.registrationYear;
-        mileage = builder.milage;
+        mileage = builder.mileage;
         bonus = builder.bonus;
         type = builder.type;
         propulsion = builder.propulsion;

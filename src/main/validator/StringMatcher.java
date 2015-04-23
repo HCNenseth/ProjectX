@@ -58,6 +58,11 @@ public enum StringMatcher
         return baseDigit;
     }
 
+    public static String getBaseString()
+    {
+        return baseString;
+    }
+
     public static String getFirstname()
     {
         return firstname;

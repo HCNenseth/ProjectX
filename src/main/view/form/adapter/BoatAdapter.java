@@ -1,6 +1,7 @@
 package main.view.form.adapter;
 
 import main.localization.Loc;
+import main.model.Status;
 import main.model.insurance.vehicle.Boat;
 import main.model.person.Person;
 import main.validator.StringMatcher;
@@ -21,8 +22,12 @@ public class BoatAdapter implements Formable {
     private FormValueNode registrationYear;
     private FormValueNode length;
     private FormValueNode horsePower;
+    private FormValueNode premium;
+    private FormValueNode amount;
+    private FormValueNode desc;
     private FormChoiceNode propulsion;
     private FormChoiceNode type;
+    private FormChoiceNode status;
 
     private Person customer;
     private Boat boat;
@@ -42,6 +47,22 @@ public class BoatAdapter implements Formable {
 
     public BoatAdapter()
     {
+
+        premium = new FormValueNode.Builder(Loc.get("premium"))
+                .regex(StringMatcher.getDigit())
+                .error(Loc.get("error_premium"))
+                .build();
+
+        amount = new FormValueNode.Builder(Loc.get("amount"))
+                .regex(StringMatcher.getDigit())
+                .error(Loc.get("error_amount"))
+                .build();
+
+        desc = new FormValueNode.Builder(Loc.get("desc"))
+                .regex(StringMatcher.getBaseString())
+                .error(Loc.get("error_desc"))
+                .build();
+
         regNr = new FormValueNode.Builder(Loc.get("reg_number"))
                 .regex(StringMatcher.getRegnr())
                 .error(Loc.get("error_reg_number"))
@@ -60,6 +81,16 @@ public class BoatAdapter implements Formable {
         horsePower = new FormValueNode.Builder(Loc.get("boat_horse_power"))
                 .regex(StringMatcher.getDigit())
                 .error(Loc.get("error_boat_horse_power"))
+                .build();
+
+        List<Enum> statusList = new ArrayList<>();
+        for(Status s : Status.values())
+        {
+            statusList.add(s);
+        }
+
+        status = new FormChoiceNode.Builder(Loc.get("status"), statusList)
+                .active(Status.ACTIVE)
                 .build();
 
         List<Enum> propulsionList = new ArrayList<>();
@@ -92,7 +123,10 @@ public class BoatAdapter implements Formable {
         tmp.add(registrationYear);
         tmp.add(length);
         tmp.add(horsePower);
+        tmp.add(premium);
+        tmp.add(amount);
         tmp.add(propulsion);
+        tmp.add(status);
         tmp.add(type);
         return tmp;
     }
@@ -104,17 +138,23 @@ public class BoatAdapter implements Formable {
             boat = new Boat.Builder(customer, regNr.getValue())
                     .horsePower(Integer.parseInt(horsePower.getValue()))
                     .length(Integer.parseInt(length.getValue()))
-                    .propulsion((Boat.Propulsion)propulsion.getData())
                     .registrationYear(Integer.parseInt(registrationYear.getValue()))
-                    .type((Boat.Type)type.getData())
+                    .premium(Integer.parseInt(premium.getValue()))
+                    .amount(Integer.parseInt(amount.getValue()))
+                    .propulsion((Boat.Propulsion) propulsion.getData())
+                    .status((Status)status.getData())
+                    .type((Boat.Type) type.getData())
                     .build();
             System.out.println(boat);
             return;
         }
 
         boat.setHorsePower(Integer.parseInt(horsePower.getValue()));
+        boat.setPremium(Integer.parseInt(premium.getValue()));
+        boat.setAmount(Integer.parseInt(amount.getValue()));
+        boat.setStatus((Status)status.getData());
         boat.setRegNr(regNr.getValue());
-        boat.setPropulsion((Boat.Propulsion)propulsion.getData());
+        boat.setPropulsion((Boat.Propulsion) propulsion.getData());
         System.out.println(boat);
         return;
     }

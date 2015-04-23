@@ -14,7 +14,6 @@ abstract class Vehicle extends Insurance implements Serializable
 {
     private Person owner;
     private String regNr;
-    private String regNrRule;
 
     public Vehicle(InsuranceBuilder ib, Person owner, String regNr)
     {
@@ -28,15 +27,6 @@ abstract class Vehicle extends Insurance implements Serializable
         this.regNr = regNr;
     }
 
-    protected void setRegNrRule(String regNrRule)
-    {
-        this.regNrRule = regNrRule;
-    }
-
-    public String getRegNrRule()
-    {
-        return regNrRule;
-    }
 
     @Override
     public boolean query(String value)

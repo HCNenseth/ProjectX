@@ -54,11 +54,32 @@ public class Boat extends Vehicle implements Serializable
         private int horsePower = 0;
         private Propulsion propulsion = Propulsion.A;
         private Type type = Type.A;
+        private int amount;
+        private int premium;
+        private String desc;
 
         public Builder(Person customer, String regNr)
         {
             super.customer(customer);
             this.regNr = regNr;
+        }
+
+        public Builder amount(int val)
+        {
+            amount = val;
+            return this;
+        }
+
+        public Builder premium(int val)
+        {
+            premium = val;
+            return this;
+        }
+
+        public Builder desc(String val)
+        {
+            desc = val;
+            return this;
         }
 
         public Builder registrationYear(int val)
@@ -107,7 +128,6 @@ public class Boat extends Vehicle implements Serializable
     private Boat(Builder builder)
     {
         super(builder, builder.owner, builder.regNr);
-        super.setRegNrRule(Loc.get("car_regnr_rgx"));
 
         registrationYear = builder.registrationYear;
         length = builder.length;
