@@ -11,6 +11,7 @@
     <string name="menu_statistics">Statistics</string>
     <string name="theme">Theme</string>
     <string name="new">New</string>
+    <string name="data_files">Data files (*.dat)</string>
     <string name="language">Language</string>
     <string name="default">Default</string>
     <string name="inverse">Inverse</string>

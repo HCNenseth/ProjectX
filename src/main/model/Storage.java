@@ -45,6 +45,14 @@ public class Storage
     }
 
     /**
+     * Return isset boolean value for filename.
+     */
+    public static boolean hasFilename()
+    {
+        return !(filename == null || filename.equals(""));
+    }
+
+    /**
      * Read data from file.
      * @throws IOException
      * @throws ClassNotFoundException

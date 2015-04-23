@@ -4,7 +4,9 @@ import javafx.scene.control.Menu;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.RadioMenuItem;
 import javafx.scene.control.ToggleGroup;
-import main.controller.MenuBarRouter;
+import main.controller.Mediator;
+import main.controller.Payload;
+import main.controller.Signal;
 import main.localization.Loc;
 
 
@@ -22,12 +24,8 @@ public class MenuBar extends javafx.scene.control.MenuBar
             langaugeSubMenuItem1, langaugeSubMenuItem2, langaugeSubMenuItem3,
             langaugeSubMenuItem4, langaugeSubMenuItem5;
 
-    private MenuBarRouter menuBarRouter;
-
     public MenuBar()
     {
-
-        menuBarRouter = new MenuBarRouter();
 
         fileMenu = new Menu(Loc.get("menu_groupFile"));
         editMenu = new Menu(Loc.get("menu_groupEdit"));
@@ -36,13 +34,26 @@ public class MenuBar extends javafx.scene.control.MenuBar
         newMenu = new Menu(Loc.get("New"));
 
         fileSave = new MenuItem(Loc.get("menu_fileSave"));
+        fileSave.setOnAction(e -> Mediator.inst.router(Signal.FILE,
+                new Payload(main.controller.MenuBar.Type.SAVE)));
+
         fileSaveAs = new MenuItem(Loc.get("menu_fileSaveAs"));
+        fileSaveAs.setOnAction(e -> Mediator.inst.router(Signal.FILE,
+                new Payload(main.controller.MenuBar.Type.SAVE_AS)));
+
         fileOpen = new MenuItem(Loc.get("menu_fileOpen"));
+        fileOpen.setOnAction(e -> Mediator.inst.router(Signal.FILE,
+                new Payload(main.controller.MenuBar.Type.OPEN)));
+
         fileExit = new MenuItem(Loc.get("menu_fileClose"));
+        fileExit.setOnAction(e -> Mediator.inst.router(Signal.FILE,
+                new Payload(main.controller.MenuBar.Type.CLOSE)));
+
         statistics = new MenuItem(Loc.get("menu_statistics"));
 
         customer = new MenuItem(Loc.get("customer"));
-        customer.setOnAction(e -> menuBarRouter.newCustomer());
+        customer.setOnAction(e -> Mediator.inst.router(Signal.FILE,
+                new Payload(main.controller.MenuBar.Type.NEW_CUSTOMER)));
 
         /**
          * Sub menus with Radio menu items.

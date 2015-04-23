@@ -5,6 +5,7 @@ import main.model.FullTextSearch;
 import main.model.Status;
 import main.model.claim.Claim;
 import main.model.insurance.Insurance;
+import main.validator.StringMatcher;
 
 import java.io.Serializable;
 import java.util.Calendar;
@@ -193,6 +194,16 @@ public class Person implements Serializable, FullTextSearch
     public void setStatus(Status status)
     {
         this.status = status;
+    }
+
+    public String getName()
+    {
+        return firstname + lastname;
+    }
+
+    public String getLastname()
+    {
+        return firstname;
     }
 
     /**
