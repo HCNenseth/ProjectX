@@ -127,7 +127,7 @@ class XMLParser
         if (languages.get(lang).containsKey(key)) {
             return languages.get(lang).get(key);
         } else {
-            return key;
+            return "_" + key;
         }
     }
 

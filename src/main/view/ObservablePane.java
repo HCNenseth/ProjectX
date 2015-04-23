@@ -1,5 +1,6 @@
 package main.view;
 
+import javafx.scene.Node;
 import javafx.scene.layout.Pane;
 import main.view.form.Form;
 import main.view.form.adapter.CarAdapter;
@@ -19,19 +20,16 @@ public class ObservablePane extends Observable
     {
         this.pane = new BasePane(title);
         addObserver(observer);
-
-        /**
-         * Some stupid test code only!
-         */
-
-        Form f = new Form();
-        f.injectAdapter(new PersonAdapter());
-        pane.setContent(f.getForm());
     }
 
     public Pane getPane()
     {
         return pane;
+    }
+
+    public void setContent(Node node)
+    {
+        pane.setContent(node);
     }
 
 }

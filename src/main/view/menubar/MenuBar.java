@@ -4,6 +4,7 @@ import javafx.scene.control.Menu;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.RadioMenuItem;
 import javafx.scene.control.ToggleGroup;
+import main.controller.MenuBarRouter;
 import main.localization.Loc;
 
 
@@ -13,25 +14,35 @@ import main.localization.Loc;
 public class MenuBar extends javafx.scene.control.MenuBar
 {
     private Menu fileMenu, statisticsMenu, editMenu,
-            themeSubMenu, languageSubMenu;
+            themeSubMenu, languageSubMenu, newMenu;
     private MenuItem fileSave, fileSaveAs, fileOpen, fileExit,
-            statistics;
+            statistics, customer;
     private ToggleGroup themeSubMenuGroup, langaugeSubMenuGroup;
     private RadioMenuItem themeSubMenuItem1, themeSubMenuItem2,
             langaugeSubMenuItem1, langaugeSubMenuItem2, langaugeSubMenuItem3,
             langaugeSubMenuItem4, langaugeSubMenuItem5;
 
+    private MenuBarRouter menuBarRouter;
+
     public MenuBar()
     {
+
+        menuBarRouter = new MenuBarRouter();
+
         fileMenu = new Menu(Loc.get("menu_groupFile"));
         editMenu = new Menu(Loc.get("menu_groupEdit"));
         statisticsMenu = new Menu(Loc.get("menu_groupStatistics"));
+
+        newMenu = new Menu(Loc.get("New"));
 
         fileSave = new MenuItem(Loc.get("menu_fileSave"));
         fileSaveAs = new MenuItem(Loc.get("menu_fileSaveAs"));
         fileOpen = new MenuItem(Loc.get("menu_fileOpen"));
         fileExit = new MenuItem(Loc.get("menu_fileClose"));
         statistics = new MenuItem(Loc.get("menu_statistics"));
+
+        customer = new MenuItem(Loc.get("customer"));
+        customer.setOnAction(e -> menuBarRouter.newCustomer());
 
         /**
          * Sub menus with Radio menu items.
@@ -47,7 +58,6 @@ public class MenuBar extends javafx.scene.control.MenuBar
         themeSubMenuItem2 = new RadioMenuItem(Loc.get("inverse"));
         themeSubMenuItem2.setToggleGroup(themeSubMenuGroup);
         themeSubMenu.getItems().addAll(themeSubMenuItem1, themeSubMenuItem2);
-
 
         languageSubMenu = new Menu(Loc.get("language"));
         langaugeSubMenuGroup = new ToggleGroup();
@@ -82,10 +92,12 @@ public class MenuBar extends javafx.scene.control.MenuBar
          */
         fileMenu.getItems().addAll(fileOpen, fileSave, fileSaveAs, fileExit);
 
-        statisticsMenu.getItems().addAll(statistics);
-
         editMenu.getItems().addAll(themeSubMenu, languageSubMenu);
 
-        getMenus().addAll(fileMenu, editMenu, statisticsMenu);
+        newMenu.getItems().add(customer);
+
+        statisticsMenu.getItems().addAll(statistics);
+
+        getMenus().addAll(fileMenu, newMenu, editMenu, statisticsMenu);
     }
 }

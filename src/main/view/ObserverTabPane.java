@@ -1,5 +1,7 @@
 package main.view;
 
+import javafx.scene.Node;
+import javafx.scene.control.SingleSelectionModel;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 
@@ -15,11 +17,14 @@ public class ObserverTabPane extends TabPane implements Observer
 {
     private List<ObservablePane> observablePanes;
     private List<OfflinePane> offlinePanes;
+    SingleSelectionModel<Tab> selectionModel;
 
     public ObserverTabPane()
     {
         observablePanes = new LinkedList<>();
         offlinePanes = new LinkedList<>();
+
+        selectionModel = getSelectionModel();
     }
 
     @Override
@@ -41,21 +46,31 @@ public class ObserverTabPane extends TabPane implements Observer
         OfflinePane offPane = new OfflinePane(title);
         offlinePanes.add(offPane);
 
-        Tab tmp = new Tab(String.format("-- %s --", title));
-        tmp.setContent(offPane.getPane());
-        tmp.closableProperty().set(closeable);
-        getTabs().addAll(tmp);
+        Tab tab = new Tab(title);
+        tab.setContent(offPane.getPane());
+        tab.closableProperty().set(closeable);
+        getTabs().addAll(tab);
+
+        selectionModel.select(tab);
     }
 
     public void injectObservableTab(String title, Boolean closeable)
     {
+        injectObservableTab(title, null, closeable);
+    }
+
+    public void injectObservableTab(String title, Node content, Boolean closeable)
+    {
         ObservablePane obsPane = new ObservablePane(this, title);
+        obsPane.setContent(content);
         observablePanes.add(obsPane);
 
-        Tab tmp = new Tab(String.format("- %s -", title));
-        tmp.setContent(obsPane.getPane());
-        tmp.closableProperty().set(closeable);
-        getTabs().addAll(tmp);
+        Tab tab = new Tab(title);
+        tab.setContent(obsPane.getPane());
+        tab.closableProperty().set(closeable);
+        getTabs().addAll(tab);
+
+        selectionModel.select(tab);
     }
 
 }

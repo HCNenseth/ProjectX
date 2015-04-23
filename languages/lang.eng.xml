@@ -10,6 +10,7 @@
     <string name="menu_groupStatistics">Statistics</string>
     <string name="menu_statistics">Statistics</string>
     <string name="theme">Theme</string>
+    <string name="new">New</string>
     <string name="language">Language</string>
     <string name="default">Default</string>
     <string name="inverse">Inverse</string>
@@ -40,6 +41,7 @@
     <string name="city_error">City must contain...</string>
     <string name="owner">Owner</string>
     <string name="customer">Customer</string>
+    <string name="new_customer">New customer</string>
 
     <!-- insurance -->
     <string name="premium">Premium</string>
