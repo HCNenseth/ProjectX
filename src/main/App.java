@@ -7,6 +7,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import main.view.Resources;
+import main.view.Search;
 import main.view.menubar.MenuBar;
 
 /**
@@ -27,7 +28,9 @@ public class App extends Application
         bp.setCenter(Resources.inst.getOtp());
         bp.setLeft(sidePane);
 
-        Resources.inst.getOtp().injectObservableTab("Default", false);
+        Search search = new Search();
+        Resources.inst.getOtp().injectObservableTab("Search",
+                search.getNode(), false);
 
         Scene scene = new Scene(bp, WIDTH, HEIGHT);
         scene.getStylesheets().add("file:resources/css/test.css");
