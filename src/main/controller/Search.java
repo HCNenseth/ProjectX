@@ -1,5 +1,8 @@
 package main.controller;
 
+import main.model.Storage;
+import main.model.person.*;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,8 +21,8 @@ class Search
 
     private void generateData()
     {
-        // TODO change this tmp list with actual data.
-        List<main.model.person.Person> tmp = new ArrayList<>();
+        List<main.model.person.Person> tmp = (List< main.model.person.Person>)Storage
+                .getInstance().get("persons");
 
         // TODO send data to a search result view.
         tmp.stream().filter(i -> i.query(keyword));

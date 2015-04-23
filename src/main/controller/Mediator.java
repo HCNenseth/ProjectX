@@ -15,6 +15,9 @@ public enum Mediator
             case SEARCH:
                 new Search(p);
                 break;
+            case FILE:
+                new MenuBar(p);
+                break;
             default:
         }
 
