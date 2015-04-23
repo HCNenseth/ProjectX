@@ -6,6 +6,7 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import main.localization.Loc;
 import main.view.Resources;
 import main.view.Search;
 import main.view.menubar.MenuBar;
@@ -29,7 +30,7 @@ public class App extends Application
         bp.setLeft(sidePane);
 
         Search search = new Search();
-        Resources.inst.getOtp().injectObservableTab("Search",
+        Resources.inst.getOtp().injectObservableTab(Loc.get("search"),
                 search.getNode(), false);
 
         Scene scene = new Scene(bp, WIDTH, HEIGHT);
