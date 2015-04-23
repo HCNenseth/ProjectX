@@ -46,10 +46,12 @@ public class ObserverTabPane extends TabPane implements Observer
         OfflinePane offPane = new OfflinePane(title);
         offlinePanes.add(offPane);
 
-        Tab tmp = new Tab(title);
-        tmp.setContent(offPane.getPane());
-        tmp.closableProperty().set(closeable);
-        getTabs().addAll(tmp);
+        Tab tab = new Tab(title);
+        tab.setContent(offPane.getPane());
+        tab.closableProperty().set(closeable);
+        getTabs().addAll(tab);
+
+        selectionModel.select(tab);
     }
 
     public void injectObservableTab(String title, Boolean closeable)
@@ -63,12 +65,12 @@ public class ObserverTabPane extends TabPane implements Observer
         obsPane.setContent(content);
         observablePanes.add(obsPane);
 
-        Tab tmp = new Tab(title);
-        tmp.setContent(obsPane.getPane());
-        tmp.closableProperty().set(closeable);
-        getTabs().addAll(tmp);
+        Tab tab = new Tab(title);
+        tab.setContent(obsPane.getPane());
+        tab.closableProperty().set(closeable);
+        getTabs().addAll(tab);
 
-        selectionModel.select(tmp);
+        selectionModel.select(tab);
     }
 
 }
