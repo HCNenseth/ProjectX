@@ -201,9 +201,29 @@ public class Person implements Serializable, FullTextSearch
         return firstname + lastname;
     }
 
-    public String getLastname()
+    public String getFirstname()
     {
         return firstname;
+    }
+
+    public String getLastname()
+    {
+        return lastname;
+    }
+
+    public String getStreetAddress()
+    {
+        return streetAddress;
+    }
+
+    public String getCity()
+    {
+        return city;
+    }
+
+    public String getPostalCode()
+    {
+        return postalCode;
     }
 
     /**
