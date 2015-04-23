@@ -23,6 +23,11 @@ abstract class Vehicle extends Insurance implements Serializable
         this.regNr = regNr;
     }
 
+    public void setRegNr(String regNr)
+    {
+        this.regNr = regNr;
+    }
+
     protected void setRegNrRule(String regNrRule)
     {
         this.regNrRule = regNrRule;

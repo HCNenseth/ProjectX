@@ -15,7 +15,7 @@ public class Car extends Vehicle implements Serializable
 {
 
     private final int registrationYear;
-    private final int mileage;
+    private int mileage;
     private final int bonus;
 
     private final Type type;
@@ -32,6 +32,8 @@ public class Car extends Vehicle implements Serializable
         Propulsion(String value) { this.value = value; }
 
         public String getValue() { return value; }
+
+        public String toString() { return value; }
     }
 
     public enum Type
@@ -46,7 +48,9 @@ public class Car extends Vehicle implements Serializable
         Type(String value) { this.value = value; }
 
         public String getValue() { return value; }
-    }
+
+        public String toString() { return value; }
+        }
 
     public static class Builder extends InsuranceBuilder<Builder, Car>
     {
@@ -120,6 +124,16 @@ public class Car extends Vehicle implements Serializable
         bonus = builder.bonus;
         type = builder.type;
         propulsion = builder.propulsion;
+    }
+
+    public void setMileage(int mileage)
+    {
+        this.mileage = mileage;
+    }
+
+    public void setRegNr(String regNr)
+    {
+        super.setRegNr(regNr);
     }
 
     public String getType()

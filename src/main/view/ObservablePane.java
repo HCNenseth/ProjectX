@@ -2,6 +2,7 @@ package main.view;
 
 import javafx.scene.layout.Pane;
 import main.view.form.Form;
+import main.view.form.adapter.CarAdapter;
 import main.view.form.adapter.PersonAdapter;
 
 import java.util.Observable;

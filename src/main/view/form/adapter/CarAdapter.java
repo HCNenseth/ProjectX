@@ -23,8 +23,6 @@ public class CarAdapter implements Formable {
     /**
      * From Car
      */
-
-
     private FormValueNode owner;
     private FormValueNode regNr;
     private FormValueNode registrationYear;
@@ -73,18 +71,30 @@ public class CarAdapter implements Formable {
 
         mileage = new FormValueNode.Builder(Loc.get("mileage"))
                 .error(Loc.get("mileage"))
-                .regex(StringMatcher.getNumber())
+                .regex(StringMatcher.getDigit())
                 .required(false)
                 .build();
 
-        type = new FormChoiceNode.Builder(Loc.get("car_type"), TypeList)
+        List<Enum> typeList = new ArrayList<>();
+        for(Car.Type t : Car.Type.values())
+        {
+            typeList.add(t);
+        }
+
+        type = new FormChoiceNode.Builder(Loc.get("car_type"), typeList)
                 .required(false)
-                .active(true)
+                .active(Car.Type.A)
                 .build();
 
-        propulsion = new FormChoiceNode.Builder(Loc.get("car_propulsion"), PropulsionList)
+        List<Enum> propulsionList = new ArrayList<>();
+        for(Car.Propulsion p : Car.Propulsion.values())
+        {
+            propulsionList.add(p);
+        }
+
+        propulsion = new FormChoiceNode.Builder(Loc.get("car_propulsion"), propulsionList)
                 .required(false)
-                .active(true)
+                .active(Car.Propulsion.A)
                 .build();
     }
 
@@ -106,11 +116,19 @@ public class CarAdapter implements Formable {
         if(car == null)
         {
             car = new Car.Builder(customer, regNr.getValue())
-                    .registrationYear(registrationYear.getValue())
-                    .milage(mileage.getValue())
-                    .type(type.getValue())
-                    .propulsion(propulsion.getValue())
+                    .registrationYear( Integer.parseInt(registrationYear.getValue()) )
+                    .milage(Integer.parseInt(mileage.getValue()))
+                    .type((Car.Type)type.getData())
+                    .propulsion((Car.Propulsion)propulsion.getData())
                     .build();
+
+            System.out.println(car);
+            return;
         }
+
+        car.setMileage(Integer.parseInt(mileage.getValue()));
+        car.setRegNr(regNr.getValue());
+
+        System.out.println(car);
     }
 }
