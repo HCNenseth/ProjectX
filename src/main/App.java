@@ -5,6 +5,7 @@ import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import main.view.Resources;
+import main.view.Search;
 import main.view.menubar.MenuBar;
 
 /**
@@ -23,7 +24,9 @@ public class App extends Application
         bp.setTop(menuBar);
         bp.setCenter(Resources.inst.getOtp());
 
-        Resources.inst.getOtp().injectObservableTab("Default", false);
+        Search search = new Search();
+        Resources.inst.getOtp().injectObservableTab("Search",
+                search.getNode(), false);
 
         Scene scene = new Scene(bp, WIDTH, HEIGHT);
 

@@ -31,5 +31,6 @@ public class Table<T>
         table.setItems(observableList);
     }
 
+    public TableView<T> getTable() { return table; }
 
 }

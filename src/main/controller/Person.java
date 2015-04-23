@@ -8,7 +8,7 @@ import main.view.form.adapter.PersonAdapter;
 /**
  * Created by alex on 4/23/15.
  */
-public class Person
+class Person
 {
 
     public Person()
@@ -22,5 +22,10 @@ public class Person
         f.injectAdapter(new PersonAdapter());
         Resources.inst.getOtp().injectObservableTab(Loc.get("new_customer"),
                 f.getForm(), true);
+    }
+
+    public void showPerson(main.model.person.Person person)
+    {
+        Resources.inst.getOtp().injectOfflineTab(person.getLastname(), true);
     }
 }
