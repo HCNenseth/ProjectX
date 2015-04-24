@@ -11,6 +11,7 @@ import main.view.form.node.FormDateNode;
 import main.view.form.node.FormNode;
 import main.view.form.node.FormValueNode;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,6 +35,10 @@ public class HouseAdapter implements Formable {
     private Person customer;
 
     private boolean editMode = false;
+
+    private int standardYear = 1970;
+    private int standardMonth = 1;
+    private int standardDay = 1;
 
     public HouseAdapter(Person customer, House house)
     {
@@ -69,7 +74,9 @@ public class HouseAdapter implements Formable {
                 .regex(StringMatcher.getBaseString())
                 .build();
 
-        yearBuilt = new FormDateNode.Builder(Loc.get("year_house_built"), "beh").build();
+        yearBuilt = new FormDateNode.Builder(Loc.get("year_house_built"),
+                editMode ? customer.getDateOfBirth() : LocalDate.of(standardYear, standardMonth, standardDay))
+                .build();
 
         squareMeters = new FormValueNode.Builder(Loc.get("squaremeteres"))
                 .error(Loc.get("error_squaremeters"))
@@ -154,13 +161,13 @@ public class HouseAdapter implements Formable {
 
         house = new House.Builder(customer, street.getValue(), postalCode.getValue())
                 .city(city.getValue())
-                .type((House.Type)type.getData())
-                .material((House.Material)material.getData())
+                .type((House.Type) type.getData())
+                .material((House.Material) material.getData())
                 .squareMeter(Integer.parseInt(squareMeters.getValue()))
                 .year(Integer.parseInt(yearBuilt.getValue()))
                 .premium(Integer.parseInt(premium.getValue()))
                 .amount(Integer.parseInt(amount.getValue()))
-                .status((Status)status.getData())
+                .status((Status) status.getData())
                 .build();
 
         System.out.println(house);
