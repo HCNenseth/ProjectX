@@ -20,9 +20,9 @@ public class App extends Application
     private BorderPane bp = new BorderPane();
     private MenuBar menuBar = new MenuBar();
     private Pane sidePane = new Pane();
-    private final int HEIGHT = 600;
-    private final int WIDTH = 800;
 
+    public static final int HEIGHT = 600;
+    public static final int WIDTH = 800;
     public static final String PERSONS = "persons";
     public static final String INSURANCES = "insurances";
     public static final String CLAIMS = "claims";
@@ -47,6 +47,13 @@ public class App extends Application
         primaryStage.setScene(scene);
         primaryStage.getIcons()
                 .add(new Image("file:resources/images/glyphicons-41-stats.png"));
+
+        /* compatibility code */
+        primaryStage.setMaxHeight(HEIGHT);
+        primaryStage.setMinHeight(HEIGHT);
+        primaryStage.setMaxWidth(WIDTH);
+        primaryStage.setMinWidth(WIDTH);
+
         primaryStage.show();
     }
 
