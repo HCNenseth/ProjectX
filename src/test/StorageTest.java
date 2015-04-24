@@ -295,7 +295,8 @@ public class StorageTest
                 Boat boat = new Boat.Builder(tmp, "ABC123")
                         .horsePower(randInt(20, 400))
                         .length(randInt(10, 50))
-                        .registrationYear(randInt(1940, 2014))
+                        .registrationYear(LocalDate.of(randInt(1940, 2014),
+                                randInt(1,12), randInt(1,28)))
                         .type(Boat.Type.A)
                         .build();
                 /* add some random claims */
