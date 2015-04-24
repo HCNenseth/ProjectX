@@ -4,6 +4,7 @@ import main.controller.Mediator;
 import main.controller.Payload;
 import main.controller.Signal;
 import main.localization.Loc;
+import main.validator.StringMatcher;
 import main.view.form.Formable;
 import main.view.form.node.FormNode;
 import main.view.form.node.FormValueNode;
@@ -20,7 +21,10 @@ public class SearchAdapter implements Formable
 
     public SearchAdapter()
     {
-        input = new FormValueNode.Builder(Loc.get("search")).build();
+        input = new FormValueNode.Builder(Loc.get("search"))
+                .regex(StringMatcher.getBaseString())
+                .error(Loc.get("search_error"))
+                .build();
     }
 
     public List<FormNode> getNodes()
