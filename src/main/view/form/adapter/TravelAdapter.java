@@ -89,6 +89,5 @@ public class TravelAdapter implements Formable
                 .amount(Integer.parseInt(amount.getValue()))
                 .status((Status) status.getData())
                 .build();
-
     }
 }
