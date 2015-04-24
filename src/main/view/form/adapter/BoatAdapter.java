@@ -7,9 +7,11 @@ import main.model.person.Person;
 import main.validator.StringMatcher;
 import main.view.form.Formable;
 import main.view.form.node.FormChoiceNode;
+import main.view.form.node.FormDateNode;
 import main.view.form.node.FormNode;
 import main.view.form.node.FormValueNode;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,7 +21,7 @@ import java.util.List;
 public class BoatAdapter implements Formable {
 
     private FormValueNode regNr;
-    private FormValueNode registrationYear;
+    private FormDateNode registrationYear;
     private FormValueNode length;
     private FormValueNode horsePower;
     private FormValueNode premium;
@@ -32,22 +34,34 @@ public class BoatAdapter implements Formable {
     private Person customer;
     private Boat boat;
 
+
+    /**
+     * For use in the FormDateNode
+     */
+    private int standardYear = 1970;
+    private int standardMonth = 1;
+    private int standardDay = 1;
+
+    private boolean editMode = false;
+
+    private BoatAdapter() { return; }
+
     public BoatAdapter(Person customer, Boat boat)
     {
-        this();
         this.customer = customer;
         this.boat = boat;
+        editMode = true;
+        initNodes();
     }
 
     public BoatAdapter(Person customer)
     {
-        this();
         this.customer = customer;
+        initNodes();
     }
 
-    public BoatAdapter()
+    private void initNodes()
     {
-
         premium = new FormValueNode.Builder(Loc.get("premium"))
                 .regex(StringMatcher.getDigit())
                 .error(Loc.get("error_premium"))
@@ -68,9 +82,8 @@ public class BoatAdapter implements Formable {
                 .error(Loc.get("error_reg_number"))
                 .build();
 
-        registrationYear = new FormValueNode.Builder(Loc.get("reg_year"))
-                .regex(StringMatcher.getYear())
-                .error(Loc.get("error_reg_year"))
+        registrationYear = new FormDateNode.Builder(Loc.get("car_reg_year"),
+                editMode ? boat.getRegistrationYear() : LocalDate.of(standardYear, standardMonth, standardDay))
                 .build();
 
         length = new FormValueNode.Builder(Loc.get("boat_length"))
@@ -114,8 +127,8 @@ public class BoatAdapter implements Formable {
                 .required(false)
                 .active(Boat.Type.A)
                 .build();
-    }
 
+    }
 
     @Override
     public List<FormNode> getNodes() {
@@ -133,28 +146,30 @@ public class BoatAdapter implements Formable {
 
     @Override
     public void callback() {
-        if(boat == null)
+
+        if(editMode)
         {
-            boat = new Boat.Builder(customer, regNr.getValue())
-                    .horsePower(Integer.parseInt(horsePower.getValue()))
-                    .length(Integer.parseInt(length.getValue()))
-                    .registrationYear(Integer.parseInt(registrationYear.getValue()))
-                    .premium(Integer.parseInt(premium.getValue()))
-                    .amount(Integer.parseInt(amount.getValue()))
-                    .propulsion((Boat.Propulsion) propulsion.getData())
-                    .status((Status)status.getData())
-                    .type((Boat.Type) type.getData())
-                    .build();
+            boat.setHorsePower(Integer.parseInt(horsePower.getValue()));
+            boat.setPremium(Integer.parseInt(premium.getValue()));
+            boat.setAmount(Integer.parseInt(amount.getValue()));
+            boat.setStatus((Status)status.getData());
+            boat.setRegNr(regNr.getValue());
+            boat.setPropulsion((Boat.Propulsion) propulsion.getData());
             System.out.println(boat);
             return;
         }
 
-        boat.setHorsePower(Integer.parseInt(horsePower.getValue()));
-        boat.setPremium(Integer.parseInt(premium.getValue()));
-        boat.setAmount(Integer.parseInt(amount.getValue()));
-        boat.setStatus((Status)status.getData());
-        boat.setRegNr(regNr.getValue());
-        boat.setPropulsion((Boat.Propulsion) propulsion.getData());
+        boat = new Boat.Builder(customer, regNr.getValue())
+                .horsePower(Integer.parseInt(horsePower.getValue()))
+                .length(Integer.parseInt(length.getValue()))
+                .registrationYear(registrationYear.getData())
+                .premium(Integer.parseInt(premium.getValue()))
+                .amount(Integer.parseInt(amount.getValue()))
+                .propulsion((Boat.Propulsion) propulsion.getData())
+                .status((Status) status.getData())
+                .type((Boat.Type) type.getData())
+                .build();
+
         System.out.println(boat);
         return;
     }
