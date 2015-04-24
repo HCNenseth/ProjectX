@@ -5,6 +5,8 @@ import javafx.scene.layout.Pane;
 import main.view.form.Form;
 import main.view.form.adapter.CarAdapter;
 import main.view.form.adapter.PersonAdapter;
+import main.view.form.adapter.TravelAdapter;
+
 
 import java.util.Observable;
 import java.util.Observer;

@@ -1,6 +1,7 @@
 package main.view;
 
 import javafx.scene.control.Button;
+import javafx.scene.layout.VBox;
 import main.localization.Loc;
 
 /**
@@ -10,7 +11,9 @@ public class SidePane
 {
     public SidePane()
     {
-        Button btn = new Button(Loc.get("customer"));
+        VBox vBox = new VBox(5);
+        Button btn = new Button("Test");
+        vBox.getChildren().addAll(btn);
 
 
     }

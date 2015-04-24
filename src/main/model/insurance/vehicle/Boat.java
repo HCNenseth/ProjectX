@@ -6,18 +6,51 @@ import main.model.insurance.ConcreteType;
 import main.model.insurance.InsuranceBuilder;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 
 /**
  * Created by HansChristian on 15.04.2015.
  */
 public class Boat extends Vehicle implements Serializable
 {
-    private int registrationYear;
+    private LocalDate registrationYear;
     private int length;
     private int horsePower;
     private Propulsion propulsion;
     private Type type;
     private Person owner;
+
+    public LocalDate getRegistrationYear() {
+        return registrationYear;
+    }
+
+    public void setRegistrationYear(LocalDate registrationYear) {
+        this.registrationYear = registrationYear;
+    }
+
+    public int getLength() {
+        return length;
+    }
+
+    public void setLength(int length) {
+        this.length = length;
+    }
+
+    public int getHorsePower() {
+        return horsePower;
+    }
+
+    public void setType(Type type) {
+        this.type = type;
+    }
+
+    public Person getOwner() {
+        return owner;
+    }
+
+    public void setOwner(Person owner) {
+        this.owner = owner;
+    }
 
     public enum Propulsion {
         A(Loc.get("boat_propulsion_a")),
@@ -49,7 +82,7 @@ public class Boat extends Vehicle implements Serializable
         private String regNr;
 
         private Person owner = getCustomer();
-        private int registrationYear = 1900;
+        private LocalDate registrationYear = null;
         private int length = 0;
         private int horsePower = 0;
         private Propulsion propulsion = Propulsion.A;
@@ -82,7 +115,7 @@ public class Boat extends Vehicle implements Serializable
             return this;
         }
 
-        public Builder registrationYear(int val)
+        public Builder registrationYear(LocalDate val)
         {
             registrationYear = val;
             return this;
