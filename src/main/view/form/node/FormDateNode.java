@@ -58,6 +58,6 @@ public class FormDateNode extends FormNode<LocalDate>
     public LocalDate getData() { return getNode().getValue(); }
 
     @Override
-    public Type getType() { return Type.LABEL; }
+    public Type getType() { return Type.DATEPICKER; }
 
 }
