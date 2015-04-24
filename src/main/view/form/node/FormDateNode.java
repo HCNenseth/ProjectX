@@ -3,6 +3,8 @@ package main.view.form.node;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 
+import java.time.LocalDate;
+
 /**
  * Simple FormNode class used for structuring data
  * and sending a key-value pair to the Form class.
@@ -13,6 +15,12 @@ public class FormDateNode extends FormNode<DatePicker>
     private String value;
     private Label keyLabel;
     private DatePicker datePicker;
+
+    private int standardYear = 1970;
+    private int standardMonth = 1;
+    private int standardDay = 1;
+
+    private final String pattern = "yyyy-MM-dd";
 
     public static class Builder
     {
@@ -38,7 +46,8 @@ public class FormDateNode extends FormNode<DatePicker>
 
         keyLabel = new Label(key);
         // TODO insert date here
-        datePicker =  new DatePicker();
+        datePicker =  new DatePicker(LocalDate.of(standardYear,
+                standardMonth, standardDay));
     }
 
     public Label getKey() { return keyLabel; }
