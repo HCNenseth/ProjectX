@@ -88,9 +88,9 @@ public class PersonAdapter implements Formable
         tmp.add(firstname);
         tmp.add(lastname);
         tmp.add(dob);
-        tmp.add(city);
         tmp.add(streetAddress);
         tmp.add(postalCode);
+        tmp.add(city);
         tmp.add(status);
 
         return tmp;
