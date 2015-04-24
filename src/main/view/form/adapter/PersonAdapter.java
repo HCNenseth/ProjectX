@@ -5,6 +5,7 @@ import main.model.Status;
 import main.model.person.Person;
 import main.validator.StringMatcher;
 import main.view.form.node.FormChoiceNode;
+import main.view.form.node.FormDateNode;
 import main.view.form.node.FormNode;
 import main.view.form.node.FormValueNode;
 import main.view.form.Formable;
@@ -19,6 +20,7 @@ public class PersonAdapter implements Formable
 {
     private FormValueNode firstname;
     private FormValueNode lastname;
+    private FormDateNode dob;
     private FormValueNode city;
     private FormValueNode streetAddress;
     private FormValueNode postalCode;
@@ -54,6 +56,8 @@ public class PersonAdapter implements Formable
                 .regex(StringMatcher.getLastname())
                 .build();
 
+        dob = new FormDateNode.Builder(Loc.get("date_of_birth"), "beh").build();
+
         city = new FormValueNode.Builder(Loc.get("city"))
                 .value(editMode ? person.getCity() : "")
                 .required(false)
@@ -83,6 +87,7 @@ public class PersonAdapter implements Formable
         List<FormNode> tmp = new ArrayList<>();
         tmp.add(firstname);
         tmp.add(lastname);
+        tmp.add(dob);
         tmp.add(city);
         tmp.add(streetAddress);
         tmp.add(postalCode);
@@ -93,6 +98,9 @@ public class PersonAdapter implements Formable
 
     public void callback()
     {
+
+        // TODO use date (dob) and insert into person.
+
         if (editMode) {
             person.setFirstname(firstname.getValue());
             person.setLastname(lastname.getValue());
