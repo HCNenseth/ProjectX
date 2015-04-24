@@ -3,23 +3,27 @@ package main.view.form.node;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 
+import java.time.LocalDate;
+
 /**
  * Simple FormNode class used for structuring data
  * and sending a key-value pair to the Form class.
  */
-public class FormDateNode extends FormNode<DatePicker>
+public class FormDateNode extends FormNode<LocalDate>
 {
     private String key;
-    private String value;
+    private LocalDate value;
     private Label keyLabel;
     private DatePicker datePicker;
+
+    private final String pattern = "yyyy-MM-dd";
 
     public static class Builder
     {
         private String key;
-        private String value;
+        private LocalDate value;
 
-        public Builder(String key, String value)
+        public Builder(String key, LocalDate value)
         {
             this.key = key;
             this.value = value;
@@ -38,7 +42,7 @@ public class FormDateNode extends FormNode<DatePicker>
 
         keyLabel = new Label(key);
         // TODO insert date here
-        datePicker =  new DatePicker();
+        datePicker =  new DatePicker(value);
     }
 
     public Label getKey() { return keyLabel; }
@@ -51,7 +55,7 @@ public class FormDateNode extends FormNode<DatePicker>
 
     public String getRegex() { return ""; }
 
-    public DatePicker getData() { return getNode(); }
+    public LocalDate getData() { return getNode().getValue(); }
 
     @Override
     public Type getType() { return Type.LABEL; }

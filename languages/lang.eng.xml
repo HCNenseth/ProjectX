@@ -58,6 +58,7 @@
     <string name="firstname_error">Firstname must contain ...</string>
     <string name="lastname">Lastname</string>
     <string name="lastname_error">Lastname must contain ...</string>
+    <string name="date_of_birth">Date of birth</string>
 
     <!-- car -->
     <string name="reg_number">Reg number</string>
