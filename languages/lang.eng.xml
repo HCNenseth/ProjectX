@@ -18,7 +18,7 @@
     <string name="langEn">English</string>
     <string name="langNo">Norwegian</string>
     <string name="langGe">German</string>
-    <string name="langFr">Franch</string>
+    <string name="langFr">French</string>
     <string name="langIt">Italian</string>
     <string name="submit">Submit</string>
 
@@ -39,7 +39,7 @@
     <string name="date">Date</string>
     <string name="description">Description</string>
     <string name="street_address">Street address</string>
-    <string name="street_address_error">Streetname must contain...</string>
+    <string name="street_address_error">Street address must contain...</string>
     <string name="postal_code">Postal code</string>
     <string name="postal_code_error">Postal code must contain only numbers</string>
     <string name="city">City</string>
@@ -99,7 +99,7 @@
     <string name="claim_type_c">Car accident</string>
 
     <string name="payment_status_a">Pending</string>
-    <string name="payment_status_b">Not acceptet</string>
+    <string name="payment_status_b">Not accepted</string>
     <string name="payment_status_c">Disbursed</string>
 
     <!-- regexes -->
