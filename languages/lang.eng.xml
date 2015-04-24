@@ -28,6 +28,9 @@
     <string name="search">Search</string>
     <string name="search_results">Search results</string>
     <string name="search_error">Keyword must contain at between 2 and 20 characters</string>
+    <string name="persons">Persons</string>
+    <string name="insurances">Insurances</string>
+    <string name="claims">Claims</string>
 
     <!-- statuses -->
     <string name="status">Status</string>
