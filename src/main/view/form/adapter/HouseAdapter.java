@@ -162,7 +162,7 @@ public class HouseAdapter implements Formable {
 
         // TODO refactor house model
 
-        house.setCity(city.getValue());
+        /**house.setCity(city.getValue());
         house.setType((House.Type)type.getData());
         house.setMaterial((House.Material)material.getData());
         house.setSquareMeter(Integer.parseInt(squareMeters.getValue()));
@@ -173,6 +173,6 @@ public class HouseAdapter implements Formable {
 
         System.out.println(house);
         return;
-
+*/
     }
 }
