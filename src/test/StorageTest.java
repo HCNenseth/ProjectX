@@ -266,6 +266,7 @@ public class StorageTest
 
             Person tmp =  new Person.Builder(randomFirstname(), randomLastname())
                     .city(city)
+                    .postalCode(String.valueOf(randInt(1000, 9000)))
                     .streetAddress(streetName)
                     .build();
 
