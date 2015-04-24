@@ -7,9 +7,11 @@ import main.model.person.Person;
 import main.validator.StringMatcher;
 import main.view.form.Formable;
 import main.view.form.node.FormChoiceNode;
+import main.view.form.node.FormDateNode;
 import main.view.form.node.FormNode;
 import main.view.form.node.FormValueNode;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,44 +20,45 @@ import java.util.List;
  */
 public class CarAdapter implements Formable {
 
-    // TODO Did not implement the bonus field as it would be part of business logic. Good / bad ?
-
-    /**
-     * From Car
-     */
-
     private FormValueNode premium;
     private FormValueNode amount;
     private FormValueNode desc;
     private FormValueNode regNr;
-    private FormValueNode registrationYear;
+    private FormDateNode registrationYear;
     private FormValueNode mileage;
     private FormChoiceNode type;
     private FormChoiceNode status;
     private FormChoiceNode propulsion;
 
-    /**
-     * For editing of said Car insurance we will need a reference to the object.
-     */
+    private boolean editMode = false;
+
     private Car car;
     private Person customer;
 
-    // TODO not sure about how to manage all the datafields as ex: premium, deductible, etc.
+    /**
+     * For use in the FormDateNode
+     */
+    private int standardYear = 1970;
+    private int standardMonth = 1;
+    private int standardDay = 1;
 
     public CarAdapter(Person customer, Car car)
     {
-        this();
         this.customer = customer;
         this.car = car;
+        editMode = true;
+        initNodes();
     }
 
     public CarAdapter(Person customer)
     {
-        this();
         this.customer = customer;
+        initNodes();
     }
 
-    public CarAdapter()
+    private CarAdapter() { return; }
+
+    private void initNodes()
     {
         premium = new FormValueNode.Builder(Loc.get("premium"))
                 .regex(StringMatcher.getDigit())
@@ -77,10 +80,8 @@ public class CarAdapter implements Formable {
                 .regex(StringMatcher.getRegnr())
                 .build();
 
-        registrationYear = new FormValueNode.Builder(Loc.get("registrationYear"))
-                .error(Loc.get("registrationYear_error"))
-                .regex(StringMatcher.getYear())
-                .required(false)
+        registrationYear = new FormDateNode.Builder(Loc.get("car_reg_year"),
+                editMode ? car.getRegistrationYear() : LocalDate.of(standardYear, standardMonth, standardDay))
                 .build();
 
         mileage = new FormValueNode.Builder(Loc.get("mileage"))
@@ -139,28 +140,30 @@ public class CarAdapter implements Formable {
 
     @Override
     public void callback() {
-        if(car == null)
+
+        if(editMode)
         {
-            car = new Car.Builder(customer, regNr.getValue())
-                    .registrationYear( Integer.parseInt(registrationYear.getValue()) )
-                    .mileage(Integer.parseInt(mileage.getValue()))
-                    .amount(Integer.parseInt(amount.getValue()))
-                    .premium(Integer.parseInt(premium.getValue()))
-                    .status((Status)status.getData())
-                    .type((Car.Type) type.getData())
-                    .propulsion((Car.Propulsion)propulsion.getData())
-                    .build();
+            car.setMileage(Integer.parseInt(mileage.getValue()));
+            car.setRegNr(regNr.getValue());
+            car.setPremium(Integer.parseInt(premium.getValue()));
+            car.setAmount(Integer.parseInt(amount.getValue()));
+            car.setStatus((Status) status.getData());
 
             System.out.println(car);
             return;
         }
 
-        car.setMileage(Integer.parseInt(mileage.getValue()));
-        car.setRegNr(regNr.getValue());
-        car.setPremium(Integer.parseInt(premium.getValue()));
-        car.setAmount(Integer.parseInt(amount.getValue()));
-        car.setStatus((Status) status.getData());
+        car = new Car.Builder(customer, regNr.getValue())
+                .registrationYear(registrationYear.getData())
+                .mileage(Integer.parseInt(mileage.getValue()))
+                .amount(Integer.parseInt(amount.getValue()))
+                .premium(Integer.parseInt(premium.getValue()))
+                .status((Status) status.getData())
+                .type((Car.Type) type.getData())
+                .propulsion((Car.Propulsion) propulsion.getData())
+                .build();
 
         System.out.println(car);
+        return;
     }
 }
