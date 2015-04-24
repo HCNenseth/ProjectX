@@ -207,7 +207,7 @@ public class Person implements Serializable, FullTextSearch
 
     public String getName()
     {
-        return firstname + lastname;
+        return String.format("%s %s", firstname, lastname);
     }
 
     public String getFirstname()
