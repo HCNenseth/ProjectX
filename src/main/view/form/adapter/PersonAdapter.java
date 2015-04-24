@@ -10,6 +10,7 @@ import main.view.form.node.FormNode;
 import main.view.form.node.FormValueNode;
 import main.view.form.Formable;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,6 +26,10 @@ public class PersonAdapter implements Formable
     private FormValueNode streetAddress;
     private FormValueNode postalCode;
     private FormChoiceNode status;
+
+    private int standardYear = 1970;
+    private int standardMonth = 1;
+    private int standardDay = 1;
 
     private Person person;
 
@@ -56,7 +61,9 @@ public class PersonAdapter implements Formable
                 .regex(StringMatcher.getLastname())
                 .build();
 
-        dob = new FormDateNode.Builder(Loc.get("date_of_birth"), "beh").build();
+        dob = new FormDateNode.Builder(Loc.get("date_of_birth"),
+                editMode ? person.getDateOfBirth() : LocalDate.of(standardYear, standardMonth, standardDay))
+                .build();
 
         city = new FormValueNode.Builder(Loc.get("city"))
                 .value(editMode ? person.getCity() : "")
@@ -99,11 +106,10 @@ public class PersonAdapter implements Formable
     public void callback()
     {
 
-        // TODO use date (dob) and insert into person.
-
         if (editMode) {
             person.setFirstname(firstname.getValue());
             person.setLastname(lastname.getValue());
+            person.setDateOfBirth(dob.getData());
             person.setPostalCode(postalCode.getValue());
             person.setStreetAddress(streetAddress.getValue());
             person.setCity(city.getValue());
@@ -111,6 +117,7 @@ public class PersonAdapter implements Formable
         } else {
             person = new Person.Builder(firstname.getValue(), lastname.getValue())
                     .streetAddress(streetAddress.getValue())
+                    .dateOfBirth(dob.getData())
                     .postalCode(postalCode.getValue())
                     .status((Status)status.getData()) // tsk tsk
                     .city(city.getValue())

@@ -16,6 +16,7 @@ import main.model.person.Person;
 import org.junit.Test;
 
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.Calendar;
 import java.util.LinkedList;
 import java.util.List;
@@ -111,14 +112,14 @@ public class StorageTest
         List<Claim> claims = new LinkedList<>();
 
         Person person1 = new Person.Builder("Hans Christian", "Nenseth")
-                .dateOfBirth(Calendar.getInstance())
+                .dateOfBirth(LocalDate.now())
                 .city("Oslo")
                 .postalCode("0476")
                 .streetAddress("Torshov gate 8c")
                 .build();
 
         Person person2 = new Person.Builder("Hans Petter", "Osvold")
-                .dateOfBirth(Calendar.getInstance())
+                .dateOfBirth(LocalDate.now())
                 .streetAddress("Moldegata 17")
                 .postalCode("0445")
                 .city("Oslo")

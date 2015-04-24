@@ -5,10 +5,9 @@ import main.model.FullTextSearch;
 import main.model.Status;
 import main.model.claim.Claim;
 import main.model.insurance.Insurance;
-import main.validator.StringMatcher;
 
 import java.io.Serializable;
-import java.util.Calendar;
+import java.time.LocalDate;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -24,7 +23,7 @@ public class Person implements Serializable, FullTextSearch
     private String streetAddress;
     private String city;
     private String postalCode;
-    private Calendar dateOfBirth;
+    private LocalDate dateOfBirth;
 
     private Status status;
 
@@ -43,7 +42,7 @@ public class Person implements Serializable, FullTextSearch
         private String streetAddress = null;
         private String city = null;
         private String postalCode = null;
-        private Calendar dateOfBirth = null;
+        private LocalDate dateOfBirth = null;
         private Status status = Status.ACTIVE;
 
         /**
@@ -95,7 +94,7 @@ public class Person implements Serializable, FullTextSearch
          * @param val
          * @return
          */
-        public Builder dateOfBirth(Calendar val)
+        public Builder dateOfBirth(LocalDate val)
         {
             dateOfBirth = val;
             return this;
@@ -194,6 +193,16 @@ public class Person implements Serializable, FullTextSearch
     public void setStatus(Status status)
     {
         this.status = status;
+    }
+
+    public void setDateOfBirth(LocalDate dateOfBirth)
+    {
+        this.dateOfBirth = dateOfBirth;
+    }
+
+    public LocalDate getDateOfBirth()
+    {
+        return dateOfBirth;
     }
 
     public String getName()
