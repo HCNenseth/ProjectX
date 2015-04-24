@@ -113,6 +113,38 @@ public class House extends Property implements Serializable
         }
     }
 
+    public void setStreetAddress(String streetAddress) {
+        this.streetAddress = streetAddress;
+    }
+
+    public void setPostalCode(String postalCode) {
+        this.postalCode = postalCode;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public void setYear(int year) {
+        this.year = year;
+    }
+
+    public void setSquareMeter(int squareMeter) {
+        this.squareMeter = squareMeter;
+    }
+
+    public void setType(Type type) {
+        this.type = type;
+    }
+
+    public void setMaterial(Material material) {
+        this.material = material;
+    }
+
+    public void setStandard(Standard standard) {
+        this.standard = standard;
+    }
+
     private House(Builder builder)
     {
         super(builder);
