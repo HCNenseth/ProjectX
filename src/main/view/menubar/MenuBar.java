@@ -55,9 +55,11 @@ public class MenuBar extends javafx.scene.control.MenuBar
         customer.setOnAction(e -> Mediator.inst.router(Signal.FILE,
                 new Payload(main.controller.MenuBar.Type.NEW_CUSTOMER)));
 
+
+
         /**
          * Sub menus with Radio menu items.
-         * Probly better for scaling to use ENUMS with a loop.
+         * Probably better for scaling to use ENUMS with a loop.
          * But this is just a proof of concept.
          */
 

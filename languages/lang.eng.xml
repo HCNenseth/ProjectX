@@ -99,7 +99,7 @@
     <string name="house_postal_code">Postal code:</string>
     <string name="house_city">City:</string>
     <string name="house_year_built">Year built:</string>
-    <string name="house_squaremeteres">Squaremetres:</string>
+    <string name="house_squaremeteres">Square meters:</string>
 
     <!-- Claim -->
     <string name="claim_type_a">Theft</string>
