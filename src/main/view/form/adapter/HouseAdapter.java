@@ -57,29 +57,29 @@ public class HouseAdapter implements Formable {
     private void initNodes()
     {
 
-        street = new FormValueNode.Builder(Loc.get("street"))
-                .error(Loc.get("error_street"))
+        street = new FormValueNode.Builder(Loc.get("house_street"))
+                .error(Loc.get("error_house_street"))
                 .regex(StringMatcher.getStreetAddress())
                 .required(true)
                 .build();
 
-        postalCode = new FormValueNode.Builder(Loc.get("postalCode"))
-                .error(Loc.get("error_postal_code"))
+        postalCode = new FormValueNode.Builder(Loc.get("house_postalCode"))
+                .error(Loc.get("error_house_code"))
                 .regex(StringMatcher.getPostalCode())
                 .required(true)
                 .build();
 
-        city = new FormValueNode.Builder(Loc.get("city"))
-                .error(Loc.get("error_city"))
+        city = new FormValueNode.Builder(Loc.get("house_city"))
+                .error(Loc.get("error_house_city"))
                 .regex(StringMatcher.getBaseString())
                 .build();
 
-        yearBuilt = new FormDateNode.Builder(Loc.get("year_house_built"),
+        yearBuilt = new FormDateNode.Builder(Loc.get("house_year_built"),
                 editMode ? customer.getDateOfBirth() : LocalDate.of(standardYear, standardMonth, standardDay))
                 .build();
 
-        squareMeters = new FormValueNode.Builder(Loc.get("squaremeteres"))
-                .error(Loc.get("error_squaremeters"))
+        squareMeters = new FormValueNode.Builder(Loc.get("house_squaremeteres"))
+                .error(Loc.get("error_house_squaremeters"))
                 .regex(StringMatcher.getDigit())
                 .build();
 
