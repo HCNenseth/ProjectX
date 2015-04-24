@@ -246,7 +246,7 @@ public class Person implements Serializable, FullTextSearch
                 || lastname.contains(value)
                 || (streetAddress != null && streetAddress.contains(value))
                 || (city != null && city.contains(value))
-                || (city != null && postalCode.contains(value));
+                || (postalCode != null && postalCode.contains(value));
     }
 
     /**
