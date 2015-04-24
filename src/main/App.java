@@ -23,6 +23,10 @@ public class App extends Application
     private final int HEIGHT = 600;
     private final int WIDTH = 800;
 
+    public static final String PERSONS = "persons";
+    public static final String INSURANCES = "insurances";
+    public static final String CLAIMS = "claims";
+
     @Override
     public void start(Stage primaryStage) throws Exception
     {
