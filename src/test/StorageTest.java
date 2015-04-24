@@ -274,7 +274,11 @@ public class StorageTest
                 Car car = new Car.Builder(tmp, "ABC123")
                         .bonus(randInt(50,80))
                         .mileage(randInt(4000, 20000))
-                        .registrationYear(randInt(1980, 2014))
+                        .registrationYear(
+                                LocalDate.of(randInt(1980, 2014),
+                                        randInt(1,12),
+                                        randInt(1,28))
+                                )
                         .type(Car.Type.A)
                         .amount(randInt(4000, 10000))
                         .build();
