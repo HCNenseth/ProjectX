@@ -6,6 +6,7 @@ import main.model.person.Person;
 import main.model.Status;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.Calendar;
 
 /**
@@ -18,7 +19,7 @@ public abstract class Insurance<T> implements
     private double premium;
     private double amount;
     private double deductible;
-    private Calendar date;
+    private LocalDate date;
     private String desc;
 
     private Status status;

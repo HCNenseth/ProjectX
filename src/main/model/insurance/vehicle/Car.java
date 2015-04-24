@@ -5,9 +5,11 @@ import main.model.Status;
 import main.model.person.Person;
 import main.model.insurance.ConcreteType;
 import main.model.insurance.InsuranceBuilder;
+import sun.util.resources.LocaleData;
 
 
 import java.io.Serializable;
+import java.time.LocalDate;
 
 /**
  * Created by HansChristian on 15.04.2015.
@@ -15,9 +17,9 @@ import java.io.Serializable;
 public class Car extends Vehicle implements Serializable
 {
 
-    private final int registrationYear;
+    private LocalDate registrationYear;
     private int mileage;
-    private final int bonus;
+    private int bonus;
 
     private final Type type;
     private final Propulsion propulsion;
@@ -60,7 +62,7 @@ public class Car extends Vehicle implements Serializable
 
         //Optional
         private Person owner = getCustomer();
-        private int registrationYear = 1900;
+        private LocalDate registrationYear = null;
         private int mileage = 0;
         private int bonus = 0;
         private int amount = 0;
@@ -75,7 +77,7 @@ public class Car extends Vehicle implements Serializable
             this.regNr = regNr;
         }
 
-        public Builder registrationYear(int val)
+        public Builder registrationYear(LocalDate val)
         {
             this.registrationYear = val;
             return this;
@@ -170,6 +172,26 @@ public class Car extends Vehicle implements Serializable
     public ConcreteType identify()
     {
         return ConcreteType.CAR;
+    }
+
+    public void setRegistrationYear(LocalDate registrationYear) {
+        this.registrationYear = registrationYear;
+    }
+
+    public void setBonus(int bonus) {
+        this.bonus = bonus;
+    }
+
+    public LocalDate getRegistrationYear() {
+        return registrationYear;
+    }
+
+    public int getMileage() {
+        return mileage;
+    }
+
+    public int getBonus() {
+        return bonus;
     }
 
     @Override

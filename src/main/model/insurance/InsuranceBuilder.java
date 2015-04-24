@@ -3,6 +3,7 @@ package main.model.insurance;
 import main.model.person.Person;
 import main.model.Status;
 
+import java.time.LocalDate;
 import java.util.Calendar;
 
 /**
@@ -14,7 +15,7 @@ public abstract class InsuranceBuilder<T, E>
     private Person customer;
     private double amount = 0;
     private double premium = 0;
-    private Calendar date = null;
+    private LocalDate date = null;
     private String desc = "";
     private Status status = Status.ACTIVE;
 
@@ -37,7 +38,7 @@ public abstract class InsuranceBuilder<T, E>
         return (T)this;
     }
 
-    public T date(Calendar date)
+    public T date(LocalDate date)
     {
         this.date = date;
         return (T)this;
@@ -62,7 +63,7 @@ public abstract class InsuranceBuilder<T, E>
 
     public double getPremium() { return premium; }
 
-    public Calendar getDate() { return date; }
+    public LocalDate getDate() { return date; }
 
     public String getDesc() { return desc; }
 
