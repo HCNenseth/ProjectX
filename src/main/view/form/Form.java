@@ -1,8 +1,12 @@
 package main.view.form;
 
+import javafx.geometry.HPos;
+import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Priority;
+import main.App;
 import main.localization.Loc;
 import main.view.form.node.FormNode;
 import main.view.form.node.FormValueNode;
@@ -15,9 +19,8 @@ import java.util.List;
  * gridpane and validating them upon submit. Depends heavy
  * on the FormNode class.
  */
-public class Form
+public class Form extends GridPane
 {
-    private GridPane gp;
     private List<FormNode> nodes = new ArrayList<>();
     private Formable caller;
     private Button submit;
@@ -26,8 +29,21 @@ public class Form
 
     public Form()
     {
-        gp = new GridPane();
-        gp.getColumnConstraints().add(new ColumnConstraints(200));
+        setMinWidth(App.WIDTH - (App.WIDTH / 20));
+
+        ColumnConstraints keyColumn = new ColumnConstraints();
+        //keyColumn.setHgrow(Priority.SOMETIMES);
+        keyColumn.setPercentWidth(20);
+
+        ColumnConstraints valueColumn = new ColumnConstraints();
+        //valueColumn.setHgrow(Priority.ALWAYS);
+        valueColumn.setPercentWidth(80);
+
+        getColumnConstraints().add(0, keyColumn);
+        getColumnConstraints().add(1, valueColumn);
+
+        setHgap(5);
+        setVgap(5);
 
         submit = new Button(Loc.get("submit"));
         submit.setOnAction(e -> this.validate());
@@ -50,10 +66,10 @@ public class Form
      * @return
      */
     public GridPane getForm() {
-        gp.addRow(rowNum++);
+        addRow(rowNum++);
 
-        gp.add(submit, 1, rowNum);
-        return gp;
+        add(submit, 1, rowNum);
+        return this;
     }
 
     /**
@@ -62,10 +78,12 @@ public class Form
      */
     private void addPart(FormNode fn)
     {
-        gp.addRow(rowNum++);
-        gp.add(fn.getKey(), 0, rowNum);
-        gp.add(fn.getNode(), 1, rowNum);
-        gp.add(fn.getError(), 1, ++rowNum);
+        addRow(rowNum++);
+        add(fn.getKey(), 0, rowNum);
+        add(fn.getNode(), 1, rowNum);
+        add(fn.getError(), 1, ++rowNum);
+
+        setFillWidth(fn.getNode(), true);
     }
 
     /**
