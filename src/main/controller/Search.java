@@ -1,7 +1,12 @@
 package main.controller;
 
 import main.localization.Loc;
+import main.model.Storage;
+import main.model.person.Person;
 import main.view.Resources;
+import main.view.table.PersonTable;
+
+import java.util.List;
 
 /**
  * Created by alex on 4/23/15.
@@ -18,15 +23,13 @@ class Search
 
     private void generateData()
     {
-        /*
-        List<main.model.person.Person> tmp = (List<main.model.person.Person>)Storage
-                .getInstance().get("persons");
+        List<Person> persons = (List<Person>)Storage.getInstance().get("persons");
 
-        // TODO send data to a search result view.
-        tmp.stream().filter(i -> i.query(keyword));
-        */
+        PersonTable personTable = new PersonTable();
+
+        persons.stream().filter(i -> i.query(keyword)).forEach(personTable::insertData);
 
         Resources.inst.getOtp().injectObservableTab(Loc.get("search_results"),
-                true);
+                personTable.getTable(), true);
     }
 }

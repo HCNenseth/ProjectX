@@ -27,6 +27,7 @@
     <!-- search -->
     <string name="search">Search</string>
     <string name="search_results">Search results</string>
+    <string name="search_error">Keyword must contain at between 2 and 20 characters</string>
 
     <!-- statuses -->
     <string name="status">Status</string>

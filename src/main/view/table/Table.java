@@ -2,35 +2,37 @@ package main.view.table;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-
-import java.util.List;
 
 /**
  * Created by alex on 4/23/15.
  */
-public class Table<T>
+abstract class Table<T>
 {
-    private List<T> data;
     private TableView<T> table;
     private ObservableList<T> observableList;
 
-    public Table(List<T> data)
+    public Table()
     {
-        this.data = data;
-
         table = new TableView<>();
         observableList = FXCollections.observableArrayList();
-
-        insertData();
     }
 
-    private void insertData()
+    public void insertData(T t)
     {
-        data.stream().forEach(observableList::add);
-        table.setItems(observableList);
+        observableList.add(t);
     }
 
-    public TableView<T> getTable() { return table; }
+    public void injectColumn(TableColumn<T, String> column)
+    {
+        table.getColumns().add(column);
+    }
+
+    public TableView<T> getTable()
+    {
+        table.setItems(observableList);
+        return table;
+    }
 
 }
