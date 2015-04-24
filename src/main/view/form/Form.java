@@ -6,7 +6,6 @@ import javafx.scene.layout.GridPane;
 import main.localization.Loc;
 import main.view.form.node.FormNode;
 import main.view.form.node.FormValueNode;
-import main.view.form.node.Type;
 
 import java.util.ArrayList;
 import java.util.List;
