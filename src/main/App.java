@@ -8,7 +8,8 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import main.localization.Loc;
 import main.view.Resources;
-import main.view.Search;
+import main.view.form.Form;
+import main.view.form.adapter.SearchAdapter;
 import main.view.menubar.MenuBar;
 
 /**
@@ -29,9 +30,11 @@ public class App extends Application
         bp.setCenter(Resources.inst.getOtp());
         bp.setLeft(sidePane);
 
-        Search search = new Search();
+        Form f = new Form();
+        f.injectAdapter(new SearchAdapter());
+
         Resources.inst.getOtp().injectObservableTab(Loc.get("search"),
-                search.getNode(), false);
+                f.getForm(), false);
 
         Scene scene = new Scene(bp, WIDTH, HEIGHT);
         scene.getStylesheets().add("file:resources/css/test.css");
