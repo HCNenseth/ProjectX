@@ -272,7 +272,7 @@ public class StorageTest
             for (int j = 0; j < randInt(0,10); j++) {
                 Car car = new Car.Builder(tmp, "ABC123")
                         .bonus(randInt(50,80))
-                        .milage(randInt(4000, 20000))
+                        .mileage(randInt(4000, 20000))
                         .registrationYear(randInt(1980, 2014))
                         .type(Car.Type.A)
                         .amount(randInt(4000, 10000))
