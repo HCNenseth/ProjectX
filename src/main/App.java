@@ -41,7 +41,7 @@ public class App extends Application
                 f.getForm(), false);
 
         Scene scene = new Scene(bp, WIDTH, HEIGHT);
-        scene.getStylesheets().add("file:resources/css/test.css");
+        scene.getStylesheets().add("file:resources/css/main.css");
 
         primaryStage.setTitle("Appname be here");
         primaryStage.setScene(scene);
