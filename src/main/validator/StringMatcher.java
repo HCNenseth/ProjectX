@@ -13,6 +13,7 @@ public enum StringMatcher
     private final static String baseString = "[\\w\\s\\-æøåØÆÅ].{2,20}";
     private final static String baseFloat = "[0-9]+([\\\\,\\\\.][0-9]+)?";
     private final static String baseDigit = "\\d*";
+    private final static String liberation = ".*";
 
     private final static String email = "[a-z0-9._%+-]+@[a-z0-9.-]+\\.\\w{2,4}";
     private final static String firstname = baseString;
@@ -86,5 +87,10 @@ public enum StringMatcher
     public static String getPostalCode()
     {
         return baseFloat;
+    }
+
+    public static String getLiberation()
+    {
+        return liberation;
     }
 }

@@ -1,11 +1,8 @@
 package main.view.form;
 
-import javafx.geometry.HPos;
-import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.Priority;
 import main.App;
 import main.localization.Loc;
 import main.view.form.node.FormNode;

@@ -36,12 +36,6 @@ public class MenuBar
         Platform.exit();
     }
 
-    public void newCustomer()
-    {
-        Person person = new Person();
-        person.newPerson();
-    }
-
     private void openFile()
     {
         FileChooser fc = new FileChooser();
@@ -101,4 +95,5 @@ public class MenuBar
         */
     }
 
+    public void newCustomer() { PersonController.create(); }
 }
