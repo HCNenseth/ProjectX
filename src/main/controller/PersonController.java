@@ -1,6 +1,7 @@
 package main.controller;
 
 import main.localization.Loc;
+import main.model.person.Person;
 import main.view.Resources;
 import main.view.form.Form;
 import main.view.form.adapter.PersonAdapter;
@@ -8,15 +9,12 @@ import main.view.form.adapter.PersonAdapter;
 /**
  * Created by alex on 4/23/15.
  */
-class Person
+class PersonController
 {
 
-    public Person()
-    {
+    private PersonController() {}
 
-    }
-
-    public void newPerson()
+    public static void create()
     {
         Form f = new Form();
         f.injectAdapter(new PersonAdapter());
@@ -24,8 +22,8 @@ class Person
                 f.getForm(), true);
     }
 
-    public void showPerson(main.model.person.Person person)
+    public static void view(Person person)
     {
-        Resources.inst.getOtp().injectOfflineTab(person.getLastname(), true);
+        Resources.inst.getOtp().injectOfflineTab(person.getName(), true);
     }
 }
