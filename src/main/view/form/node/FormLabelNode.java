@@ -36,6 +36,7 @@ public class FormLabelNode extends FormNode<Label>
     {
         this.key = builder.key;
         this.value = builder.value;
+        super.setRequired(false);
 
         keyLabel = new Label(key);
         valueLabel =  new Label(value);

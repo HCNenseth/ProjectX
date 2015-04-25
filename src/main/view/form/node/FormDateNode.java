@@ -22,11 +22,17 @@ public class FormDateNode extends FormNode<LocalDate>
     {
         private String key;
         private LocalDate value;
+        private boolean required;
 
         public Builder(String key, LocalDate value)
         {
             this.key = key;
             this.value = value;
+        }
+
+        public Builder required(boolean value)
+        {
+            this.required = value; return this;
         }
 
         public FormDateNode build()
@@ -39,6 +45,7 @@ public class FormDateNode extends FormNode<LocalDate>
     {
         this.key = builder.key;
         this.value = builder.value;
+        super.setRequired(builder.required);
 
         keyLabel = new Label(key);
         // TODO insert date here
