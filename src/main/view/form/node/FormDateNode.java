@@ -47,8 +47,7 @@ public class FormDateNode extends FormNode<LocalDate>
         this.value = builder.value;
         super.setRequired(builder.required);
 
-        keyLabel = new Label(key);
-        // TODO insert date here
+        keyLabel = new Label(key + ":");
         datePicker =  new DatePicker(value);
     }
 

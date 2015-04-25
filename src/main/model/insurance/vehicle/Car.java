@@ -36,6 +36,7 @@ public class Car extends Vehicle implements Serializable
 
         public String getValue() { return value; }
 
+        @Override
         public String toString() { return value; }
     }
 
@@ -52,8 +53,9 @@ public class Car extends Vehicle implements Serializable
 
         public String getValue() { return value; }
 
+        @Override
         public String toString() { return value; }
-        }
+    }
 
     public static class Builder extends InsuranceBuilder<Builder, Car>
     {

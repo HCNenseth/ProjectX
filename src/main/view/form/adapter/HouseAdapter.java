@@ -59,28 +59,28 @@ public class HouseAdapter implements Formable<House>
     private void initNodes()
     {
 
-        street = new FormValueNode.Builder(Loc.get("house_street"))
+        street = new FormValueNode.Builder(Loc.get("street_address"))
                 .error(Loc.get("error_house_street"))
                 .regex(StringMatcher.getStreetAddress())
                 .required(true)
                 .build();
 
-        postalCode = new FormValueNode.Builder(Loc.get("house_postalCode"))
+        postalCode = new FormValueNode.Builder(Loc.get("postal_code"))
                 .error(Loc.get("error_house_code"))
                 .regex(StringMatcher.getPostalCode())
                 .required(true)
                 .build();
 
-        city = new FormValueNode.Builder(Loc.get("house_city"))
+        city = new FormValueNode.Builder(Loc.get("city"))
                 .error(Loc.get("error_house_city"))
                 .regex(StringMatcher.getBaseString())
                 .build();
 
-        yearBuilt = new FormDateNode.Builder(Loc.get("house_year_built"),
+        yearBuilt = new FormDateNode.Builder(Loc.get("year_built"),
                 editMode ? customer.getDateOfBirth() : LocalDate.of(standardYear, standardMonth, standardDay))
                 .build();
 
-        squareMeters = new FormValueNode.Builder(Loc.get("house_squaremeteres"))
+        squareMeters = new FormValueNode.Builder(Loc.get("square_meters"))
                 .error(Loc.get("error_house_squaremeters"))
                 .regex(StringMatcher.getDigit())
                 .build();
@@ -101,7 +101,7 @@ public class HouseAdapter implements Formable<House>
             typeList.add(t);
         }
 
-        type = new FormChoiceNode.Builder(Loc.get("type"), typeList)
+        type = new FormChoiceNode.Builder<>(Loc.get("type"), typeList)
                 .build();
 
         List<Enum> statusList = new ArrayList();
@@ -110,7 +110,7 @@ public class HouseAdapter implements Formable<House>
             statusList.add(s);
         }
 
-        status = new FormChoiceNode.Builder(Loc.get("status"), statusList)
+        status = new FormChoiceNode.Builder<>(Loc.get("status"), statusList)
                 .build();
 
         List<Enum> materialList = new ArrayList();
@@ -119,7 +119,7 @@ public class HouseAdapter implements Formable<House>
             materialList.add(m);
         }
 
-        material = new FormChoiceNode.Builder(Loc.get("material"), materialList)
+        material = new FormChoiceNode.Builder<>(Loc.get("material"), materialList)
                 .build();
 
     }

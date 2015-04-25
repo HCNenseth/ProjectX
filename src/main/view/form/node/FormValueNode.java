@@ -66,7 +66,7 @@ public class FormValueNode extends FormNode<String>
 
         super.setRequired(builder.required);
 
-        keyLabel = new Label(key);
+        keyLabel = new Label(key + ":");
         valueField = new TextField(value);
         errorLabel = new Label(error);
         errorLabel.setTextFill(Color.RED);

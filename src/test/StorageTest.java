@@ -268,6 +268,8 @@ public class StorageTest
                     .city(city)
                     .postalCode(String.valueOf(randInt(1000, 9000)))
                     .streetAddress(streetName)
+                    .dateOfBirth(LocalDate.of(randInt(1930, 2014),
+                            randInt(1,12), randInt(1,28)))
                     .build();
 
             /* add some random car insurances */

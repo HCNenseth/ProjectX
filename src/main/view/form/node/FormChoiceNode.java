@@ -71,7 +71,7 @@ public class FormChoiceNode<T> extends FormNode<T>
         this.regex = builder.regex;
         this.required = builder.required;
 
-        keyLabel = new Label(key);
+        keyLabel = new Label(key + ":");
         errorLabel = new Label(error);
         errorLabel.setTextFill(Color.RED);
         errorLabel.setVisible(false);
