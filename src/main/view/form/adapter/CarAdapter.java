@@ -14,11 +14,13 @@ import main.view.form.node.FormValueNode;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Consumer;
 
 /**
  * Created by HansPetter on 22.04.2015.
  */
-public class CarAdapter implements Formable {
+public class CarAdapter implements Formable<Car>
+{
 
     private FormValueNode premium;
     private FormValueNode amount;
@@ -163,7 +165,12 @@ public class CarAdapter implements Formable {
                 .propulsion((Car.Propulsion) propulsion.getData())
                 .build();
 
-        System.out.println(car);
-        return;
+        callBackEvent.fire();
+    }
+
+    @Override
+    public void setOnDoneAction(Consumer<Car> c)
+    {
+        callBackEvent.setOnAction(e -> c.accept(car));
     }
 }

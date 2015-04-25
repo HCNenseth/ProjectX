@@ -14,11 +14,13 @@ import main.view.form.node.FormValueNode;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Consumer;
 
 /**
  * Created by HansPetter on 23.04.2015.
  */
-public class HouseAdapter implements Formable {
+public class HouseAdapter implements Formable<House>
+{
 
     private FormValueNode street;
     private FormValueNode postalCode;
@@ -170,7 +172,12 @@ public class HouseAdapter implements Formable {
                 .status((Status) status.getData())
                 .build();
 
-        System.out.println(house);
-        return;
+        callBackEvent.fire();
+    }
+
+    @Override
+    public void setOnDoneAction(Consumer<House> c)
+    {
+        callBackEvent.setOnAction(e -> c.accept(house));
     }
 }

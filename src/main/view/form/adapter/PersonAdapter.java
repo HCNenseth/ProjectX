@@ -13,11 +13,12 @@ import main.view.form.Formable;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Consumer;
 
 /**
  * Created by alex on 4/21/15.
  */
-public class PersonAdapter implements Formable
+public class PersonAdapter implements Formable<Person>
 {
     private FormValueNode firstname;
     private FormValueNode lastname;
@@ -63,20 +64,27 @@ public class PersonAdapter implements Formable
 
         dob = new FormDateNode.Builder(Loc.get("date_of_birth"),
                 editMode ? person.getDateOfBirth() : LocalDate.of(standardYear, standardMonth, standardDay))
+                .required(false)
                 .build();
 
         city = new FormValueNode.Builder(Loc.get("city"))
                 .value(editMode ? person.getCity() : "")
+                .error(Loc.get("city_error"))
+                .regex(StringMatcher.getBaseString())
                 .required(false)
                 .build();
 
         streetAddress = new FormValueNode.Builder(Loc.get("street_address"))
                 .value(editMode ? person.getStreetAddress() : "")
+                .error(Loc.get("street_address_error"))
+                .regex(StringMatcher.getLiberation())
                 .required(false)
                 .build();
 
         postalCode = new FormValueNode.Builder(Loc.get("postal_code"))
                 .value(editMode ? person.getPostalCode() : "")
+                .error(Loc.get("postal_code_error"))
+                .regex(StringMatcher.getDigit())
                 .required(false)
                 .build();
 
@@ -123,5 +131,12 @@ public class PersonAdapter implements Formable
                     .city(city.getValue())
                     .build();
         }
+        callBackEvent.fire();
+    }
+
+    @Override
+    public void setOnDoneAction(Consumer<Person> c)
+    {
+        callBackEvent.setOnAction(e -> c.accept(person));
     }
 }

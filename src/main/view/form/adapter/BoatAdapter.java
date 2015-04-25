@@ -14,11 +14,13 @@ import main.view.form.node.FormValueNode;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Consumer;
 
 /**
  * Created by HansPetter on 23.04.2015.
  */
-public class BoatAdapter implements Formable {
+public class BoatAdapter implements Formable<Boat>
+{
 
     private FormValueNode regNr;
     private FormDateNode registrationYear;
@@ -170,7 +172,12 @@ public class BoatAdapter implements Formable {
                 .type((Boat.Type) type.getData())
                 .build();
 
-        System.out.println(boat);
-        return;
+        callBackEvent.fire();
+    }
+
+    @Override
+    public void setOnDoneAction(Consumer<Boat> c)
+    {
+        callBackEvent.setOnAction(e -> c.accept(boat));
     }
 }

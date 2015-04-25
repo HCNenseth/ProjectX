@@ -12,11 +12,12 @@ import main.view.form.node.FormValueNode;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Consumer;
 
 /**
  * Created by HansChristian on 24.04.2015.
  */
-public class TravelAdapter implements Formable
+public class TravelAdapter implements Formable<Travel>
 {
     private FormValueNode premium;
     private FormValueNode amount;
@@ -89,5 +90,13 @@ public class TravelAdapter implements Formable
                 .amount(Integer.parseInt(amount.getValue()))
                 .status((Status) status.getData())
                 .build();
+
+        callBackEvent.fire();
+    }
+
+    @Override
+    public void setOnDoneAction(Consumer<Travel> c)
+    {
+        callBackEvent.setOnAction(e -> c.accept(travel));
     }
 }

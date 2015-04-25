@@ -19,7 +19,6 @@ import main.view.table.InsuranceTable;
 import main.view.table.PersonTable;
 
 import java.util.List;
-import java.util.function.Supplier;
 
 /**
  * Created by alex on 4/23/15.
@@ -76,48 +75,61 @@ class Search
 
     private void viewPerson(Person p)
     {
-        System.out.println(p.toString());
+        PersonController.view(p);
     }
 
     private void editPerson(Person p)
     {
         Form f = new Form();
-        f.injectAdapter(new PersonAdapter(p));
+        PersonAdapter personAdapter = new PersonAdapter(p);
+        personAdapter.setOnDoneAction(PersonController::view);
+        f.injectAdapter(personAdapter);
+
         Resources.inst.getOtp().injectObservableTab(p.getName(),
                 f.getForm(), true);
     }
 
     private void viewInsurance(Insurance i)
     {
-        System.out.println(i.toString());
+        // TODO Create Insurance Controller
+        //InsuranceController.view(i);
     }
 
     private void editInsurance(Insurance i)
     {
+        // TODO Create Insurance Controller
         Form f = new Form();
         switch (i.identify()) {
             case CAR:
-                f.injectAdapter(new CarAdapter(i.getCustomer(), (Car)i));
+                CarAdapter carAdapter = new CarAdapter(i.getCustomer(), (Car)i);
+                //carAdapter.setOnDoneAction(CarController::view);
+                f.injectAdapter(carAdapter);
                 break;
             case BOAT:
-                f.injectAdapter(new BoatAdapter(i.getCustomer(), (Boat)i));
+                BoatAdapter boatAdapter = new BoatAdapter(i.getCustomer(), (Boat)i);
+                //boatAdapter.setOnDoneAction(BoatController::view);
+                f.injectAdapter(boatAdapter);
                 break;
             case HOUSE:
-                f.injectAdapter(new HouseAdapter(i.getCustomer(), (House)i));
+                HouseAdapter houseAdapter = new HouseAdapter(i.getCustomer(), (House)i);
+                //houseAdapter.setOnDoneAction(HouseController::view);
+                f.injectAdapter(houseAdapter);
                 break;
             case TRAVEL:
-                f.injectAdapter(new TravelAdapter(i.getCustomer(), (Travel)i));
+                TravelAdapter travelAdapter = new TravelAdapter(i.getCustomer(), (Travel)i);
+                //travelAdapter.setOnDoneAction(TravelController::view);
+                f.injectAdapter(travelAdapter);
                 break;
             default: return;
         }
-
         Resources.inst.getOtp().injectObservableTab(i.getCustomer().getName(),
                 f.getForm(), true);
     }
 
     private void viewClaim(Claim c)
     {
-        System.out.println(c.toString());
+        // TODO Create ClaimController
+        //ClaimController.view(c);
     }
 
     private void editClaim(Claim c)
