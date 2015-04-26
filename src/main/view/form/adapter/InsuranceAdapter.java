@@ -13,7 +13,22 @@ import java.util.List;
 
 // TODO this code is not tested.
 
-abstract class InsuranceAdapter {
+public abstract class InsuranceAdapter<T> {
+
+    /**
+     * STATIC
+     */
+
+    /**
+     * Constants for the FormDateNode
+     */
+    protected static int standardYear = 1970;
+    protected static int standardMonth = 1;
+    protected static int standardDay = 1;
+
+    /**
+     * CLASS
+     */
 
     /**
      * Insurance getAmount.
@@ -53,18 +68,17 @@ abstract class InsuranceAdapter {
      */
     private boolean editMode = false;
 
-
     /**
-     * Constants for the FormDateNode
+     * Insurance reference to the type object.
      */
-    protected static int standardYear = 1970;
-    protected static int standardMonth = 1;
-    protected static int standardDay = 1;
+    private T insurance = null;
 
-    public InsuranceAdapter(Person customer, boolean editMode)
+
+    public InsuranceAdapter(Person customer, T ref)
     {
         this.customer = customer;
-        this.editMode = editMode;
+        this.insurance = ref;
+        this.editMode = true;
         initialize();
     }
 
@@ -145,5 +159,10 @@ abstract class InsuranceAdapter {
     protected Person getCustomer()
     {
         return customer;
+    }
+
+    protected T getInsurance()
+    {
+        return (T) insurance;
     }
 }
