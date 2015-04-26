@@ -43,12 +43,12 @@ public class TravelAdapter implements Formable<Travel>
 
     public TravelAdapter()
     {
-        premium = new FormValueNode.Builder(Loc.get("premium"))
+        premium = new FormValueNode.Builder(Loc.get("getPremium"))
                 .regex(StringMatcher.getDigit())
                 .error(Loc.get("error_premium"))
                 .build();
 
-        amount = new FormValueNode.Builder(Loc.get("amount"))
+        amount = new FormValueNode.Builder(Loc.get("getAmount"))
                 .regex(StringMatcher.getDigit())
                 .error(Loc.get("error_amount"))
                 .build();
@@ -58,7 +58,7 @@ public class TravelAdapter implements Formable<Travel>
             statusList.add(s);
         }
 
-        status = new FormChoiceNode.Builder(Loc.get("status"), statusList)
+        status = new FormChoiceNode.Builder(Loc.get("getStatus"), statusList)
                 .active(Status.ACTIVE)
                 .build();
     }

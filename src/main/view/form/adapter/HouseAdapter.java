@@ -19,7 +19,7 @@ import java.util.function.Consumer;
 /**
  * Created by HansPetter on 23.04.2015.
  */
-public class HouseAdapter implements Formable<House>
+public class HouseAdapter extends InsuranceAdapter implements Formable<House>
 {
 
     private FormValueNode street;
@@ -27,32 +27,21 @@ public class HouseAdapter implements Formable<House>
     private FormValueNode city;
     private FormValueNode squareMeters;
     private FormDateNode yearBuilt;
-    private FormValueNode amount;
-    private FormValueNode premium;
     private FormChoiceNode type;
     private FormChoiceNode material;
-    private FormChoiceNode status;
 
     private House house;
-    private Person customer;
-
-    private boolean editMode = false;
-
-    private int standardYear = 1970;
-    private int standardMonth = 1;
-    private int standardDay = 1;
 
     public HouseAdapter(Person customer, House house)
     {
-        this.customer = customer;
+        super(customer, true);
         this.house = house;
-        editMode = true;
         initNodes();
     }
 
     public HouseAdapter(Person customer)
     {
-        this.customer = customer;
+        super(customer);
         initNodes();
     }
 
@@ -77,21 +66,11 @@ public class HouseAdapter implements Formable<House>
                 .build();
 
         yearBuilt = new FormDateNode.Builder(Loc.get("year_built"),
-                editMode ? customer.getDateOfBirth() : LocalDate.of(standardYear, standardMonth, standardDay))
+                super.getEditMode() ? super.getCustomer().getDateOfBirth() : LocalDate.of(standardYear, standardMonth, standardDay))
                 .build();
 
         squareMeters = new FormValueNode.Builder(Loc.get("square_meters"))
                 .error(Loc.get("error_house_squaremeters"))
-                .regex(StringMatcher.getDigit())
-                .build();
-
-        amount = new FormValueNode.Builder(Loc.get("amount"))
-                .error(Loc.get("error_amount"))
-                .regex(StringMatcher.getDigit())
-                .build();
-
-        premium = new FormValueNode.Builder(Loc.get("premium"))
-                .error(Loc.get("error_premium"))
                 .regex(StringMatcher.getDigit())
                 .build();
 
@@ -102,15 +81,6 @@ public class HouseAdapter implements Formable<House>
         }
 
         type = new FormChoiceNode.Builder<>(Loc.get("type"), typeList)
-                .build();
-
-        List<Enum> statusList = new ArrayList();
-        for(Status s : Status.values())
-        {
-            statusList.add(s);
-        }
-
-        status = new FormChoiceNode.Builder<>(Loc.get("status"), statusList)
                 .build();
 
         List<Enum> materialList = new ArrayList();
@@ -124,12 +94,12 @@ public class HouseAdapter implements Formable<House>
 
     }
 
-    private HouseAdapter() { return; }
+    private HouseAdapter() { super(null); return; }
 
 
     @Override
     public List<FormNode> getNodes() {
-        List<FormNode> tmp = new ArrayList();
+        List<FormNode> tmp = super.getNodes();
         tmp.add(street);
         tmp.add(postalCode);
         tmp.add(city);
@@ -137,39 +107,36 @@ public class HouseAdapter implements Formable<House>
         tmp.add(material);
         tmp.add(squareMeters);
         tmp.add(yearBuilt);
-        tmp.add(premium);
-        tmp.add(amount);
-        tmp.add(status);
         return tmp;
     }
 
     @Override
     public void callback() {
 
-        if(editMode)
+        if(super.getEditMode())
         {
             house.setCity(city.getValue());
             house.setType((House.Type) type.getData());
             house.setMaterial((House.Material) material.getData());
             house.setSquareMeter(Integer.parseInt(squareMeters.getValue()));
             house.setYear(Integer.parseInt(yearBuilt.getValue()));
-            house.setPremium(Integer.parseInt(premium.getValue()));
-            house.setAmount(Integer.parseInt(amount.getValue()));
-            house.setStatus((Status) status.getData());
+            house.setPremium(Integer.parseInt(super.getPremium().getValue()));
+            house.setAmount(Integer.parseInt(super.getAmount().getValue()));
+            house.setStatus((Status) super.getStatus().getData());
 
             System.out.println(house);
             return;
         }
 
-        house = new House.Builder(customer, street.getValue(), postalCode.getValue())
+        house = new House.Builder(super.getCustomer(), street.getValue(), postalCode.getValue())
                 .city(city.getValue())
                 .type((House.Type) type.getData())
                 .material((House.Material) material.getData())
                 .squareMeter(Integer.parseInt(squareMeters.getValue()))
                 .year(Integer.parseInt(yearBuilt.getValue()))
-                .premium(Integer.parseInt(premium.getValue()))
-                .amount(Integer.parseInt(amount.getValue()))
-                .status((Status) status.getData())
+                .premium(Integer.parseInt(super.getPremium().getValue()))
+                .amount(Integer.parseInt(super.getAmount().getValue()))
+                .status((Status)super.getStatus().getData())
                 .build();
 
         callBackEvent.fire();

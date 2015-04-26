@@ -91,7 +91,7 @@ public class PersonAdapter implements Formable<Person>
         List<Enum> statusList = new ArrayList<>();
         for (Status s : Status.values()) { statusList.add(s); }
 
-        status = new FormChoiceNode.Builder<>(Loc.get("status"), statusList)
+        status = new FormChoiceNode.Builder<>(Loc.get("getStatus"), statusList)
                 .active(editMode ? person.getStatus() : Status.ACTIVE)
                 .build();
     }

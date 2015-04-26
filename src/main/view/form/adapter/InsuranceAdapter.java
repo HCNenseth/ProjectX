@@ -16,7 +16,7 @@ import java.util.List;
 abstract class InsuranceAdapter {
 
     /**
-     * Insurance amount.
+     * Insurance getAmount.
      * Maximum possible payment for a claim.
      */
     private FormValueNode amount;
@@ -28,13 +28,13 @@ abstract class InsuranceAdapter {
     private FormValueNode desc;
 
     /**
-     * Insurance premium.
+     * Insurance getPremium.
      * The yearly cost of the insurance.
      */
     private FormValueNode premium;
 
     /**
-     * Insurance status.
+     * Insurance getStatus.
      * ACTIVE
      * INACTIVE
      * PENDING
@@ -43,7 +43,7 @@ abstract class InsuranceAdapter {
     private FormChoiceNode status;
 
     /**
-     * Reference to the customer.
+     * Reference to the getCustomer.
      */
 
     private Person customer;
@@ -117,32 +117,32 @@ abstract class InsuranceAdapter {
         return tmp;
     }
 
-    protected FormValueNode amount()
+    protected FormValueNode getAmount()
     {
         return amount;
     }
 
-    protected FormValueNode premium()
+    protected FormValueNode getPremium()
     {
         return premium;
     }
 
-    protected FormValueNode desc()
+    protected FormValueNode getDesc()
     {
         return desc;
     }
 
-    protected FormChoiceNode status()
+    protected FormChoiceNode getStatus()
     {
         return status;
     }
 
-    protected boolean editMode()
+    protected boolean getEditMode()
     {
         return editMode;
     }
 
-    protected Person customer()
+    protected Person getCustomer()
     {
         return customer;
     }

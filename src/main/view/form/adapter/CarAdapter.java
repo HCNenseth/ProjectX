@@ -56,7 +56,7 @@ public class CarAdapter extends InsuranceAdapter implements Formable<Car>
                 .build();
 
         registrationYear = new FormDateNode.Builder(Loc.get("car_reg_year"),
-                super.editMode() ? car.getRegistrationYear() : LocalDate.of(super.standardYear, super.standardMonth, super.standardDay))
+                super.getEditMode() ? car.getRegistrationYear() : LocalDate.of(super.standardYear, super.standardMonth, super.standardDay))
                 .build();
 
         mileage = new FormValueNode.Builder(Loc.get("mileage"))
@@ -104,24 +104,24 @@ public class CarAdapter extends InsuranceAdapter implements Formable<Car>
     @Override
     public void callback() {
 
-        if(super.editMode())
+        if(super.getEditMode())
         {
             car.setMileage(Integer.parseInt(mileage.getValue()));
             car.setRegNr(regNr.getValue());
-            car.setPremium(Integer.parseInt(super.premium().getValue()));
-            car.setAmount(Integer.parseInt(super.amount().getValue()));
-            car.setStatus((Status) super.status().getData());
+            car.setPremium(Integer.parseInt(super.getPremium().getValue()));
+            car.setAmount(Integer.parseInt(super.getAmount().getValue()));
+            car.setStatus((Status) super.getStatus().getData());
 
             System.out.println(car);
             return;
         }
 
-        car = new Car.Builder(super.customer(), regNr.getValue())
+        car = new Car.Builder(super.getCustomer(), regNr.getValue())
                 .registrationYear(registrationYear.getData())
                 .mileage(Integer.parseInt(mileage.getValue()))
-                .amount(Integer.parseInt(super.amount().getValue()))
-                .premium(Integer.parseInt(super.premium().getValue()))
-                .status((Status) super.status().getData())
+                .amount(Integer.parseInt(super.getAmount().getValue()))
+                .premium(Integer.parseInt(super.getPremium().getValue()))
+                .status((Status) super.getStatus().getData())
                 .type((Car.Type) type.getData())
                 .propulsion((Car.Propulsion) propulsion.getData())
                 .build();

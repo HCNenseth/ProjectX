@@ -93,7 +93,7 @@ public class Form extends GridPane
      */
     public void validate()
     {
-        // reset valid status
+        // reset valid getStatus
         valid = true;
 
         // loop through all nodes

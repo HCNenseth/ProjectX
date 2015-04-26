@@ -64,17 +64,17 @@ public class BoatAdapter implements Formable<Boat>
 
     private void initNodes()
     {
-        premium = new FormValueNode.Builder(Loc.get("premium"))
+        premium = new FormValueNode.Builder(Loc.get("getPremium"))
                 .regex(StringMatcher.getDigit())
                 .error(Loc.get("error_premium"))
                 .build();
 
-        amount = new FormValueNode.Builder(Loc.get("amount"))
+        amount = new FormValueNode.Builder(Loc.get("getAmount"))
                 .regex(StringMatcher.getDigit())
                 .error(Loc.get("error_amount"))
                 .build();
 
-        desc = new FormValueNode.Builder(Loc.get("desc"))
+        desc = new FormValueNode.Builder(Loc.get("getDesc"))
                 .regex(StringMatcher.getBaseString())
                 .error(Loc.get("error_desc"))
                 .build();
@@ -104,7 +104,7 @@ public class BoatAdapter implements Formable<Boat>
             statusList.add(s);
         }
 
-        status = new FormChoiceNode.Builder(Loc.get("status"), statusList)
+        status = new FormChoiceNode.Builder(Loc.get("getStatus"), statusList)
                 .active(Status.ACTIVE)
                 .build();
 
