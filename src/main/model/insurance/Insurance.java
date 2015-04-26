@@ -2,18 +2,18 @@ package main.model.insurance;
 
 import main.localization.Loc;
 import main.model.FullTextSearch;
+import main.model.Model;
 import main.model.person.Person;
 import main.model.Status;
 
 import java.io.Serializable;
 import java.time.LocalDate;
-import java.util.Calendar;
 
 /**
  * Main insurance class.
  */
 public abstract class Insurance<T> implements
-        Serializable, Type, FullTextSearch
+        Serializable, Type, FullTextSearch, Model
 {
     private Person customer;
     private double premium;
@@ -90,4 +90,6 @@ public abstract class Insurance<T> implements
         );
     }
 
+    @Override
+    public ModelType getModelType() { return ModelType.INSURANCE; }
 }

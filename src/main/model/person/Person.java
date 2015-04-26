@@ -2,6 +2,7 @@ package main.model.person;
 
 import main.localization.Loc;
 import main.model.FullTextSearch;
+import main.model.Model;
 import main.model.Status;
 import main.model.claim.Claim;
 import main.model.insurance.Insurance;
@@ -14,7 +15,7 @@ import java.util.List;
 /**
  * Person class.
  */
-public class Person implements Serializable, FullTextSearch
+public class Person implements Serializable, FullTextSearch, Model
 {
 
     private String firstname;
@@ -274,6 +275,9 @@ public class Person implements Serializable, FullTextSearch
                 Loc.get("city"), city
         );
     }
+
+    @Override
+    public ModelType getModelType() { return ModelType.PERSON; }
 
     // TODO override equals and hashcode
 }

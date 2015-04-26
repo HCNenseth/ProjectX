@@ -2,10 +2,7 @@ package main.view;
 
 import javafx.scene.Node;
 import javafx.scene.layout.Pane;
-import main.view.form.Form;
-import main.view.form.adapter.CarAdapter;
-import main.view.form.adapter.PersonAdapter;
-import main.view.form.adapter.TravelAdapter;
+import main.model.Model;
 
 
 import java.util.Observable;
@@ -17,6 +14,7 @@ import java.util.Observer;
 public class ObservablePane extends Observable
 {
     private BasePane pane;
+    private Model reference;
 
     public ObservablePane(Observer observer, String title)
     {
@@ -24,14 +22,17 @@ public class ObservablePane extends Observable
         addObserver(observer);
     }
 
-    public Pane getPane()
+    public Pane getPane() { return pane; }
+
+    public void setContent(Node node) { pane.setContent(node); }
+
+    public boolean hasReference(Model reference)
     {
-        return pane;
+        if (this.reference != null && this.reference.equals(reference))
+            return true;
+
+        return false;
     }
 
-    public void setContent(Node node)
-    {
-        pane.setContent(node);
-    }
-
+    public void setReference(Model reference) { this.reference = reference; }
 }

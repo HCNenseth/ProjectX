@@ -12,7 +12,7 @@ public enum Mediator
     public void router(Signal s, Payload p)
     {
         switch (s) {
-            case SEARCH: new Search(p); break;
+            case SEARCH: new SearchController(p); break;
             case FILE: new MenuBar(p);break;
             default: return;
         }

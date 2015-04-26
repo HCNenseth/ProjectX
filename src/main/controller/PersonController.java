@@ -11,7 +11,6 @@ import main.view.form.adapter.PersonAdapter;
  */
 class PersonController
 {
-
     private PersonController() {}
 
     public static void create()
@@ -24,6 +23,25 @@ class PersonController
 
     public static void view(Person person)
     {
-        Resources.inst.getOtp().injectOfflineTab(person.getName(), true);
+        // Remove all tabs dealing with this person
+        Resources.inst.getOtp().closeObservableTabs(person);
+
+        // TODO insert something more meaningful.
+        Resources.inst.getOtp().injectObservableTab(person.getName(),
+                null, person, true);
+    }
+
+    public static void edit(Person person)
+    {
+        // Remove all tabs dealing with this person
+        Resources.inst.getOtp().closeObservableTabs(person);
+
+        Form f = new Form();
+        PersonAdapter personAdapter = new PersonAdapter(person);
+        personAdapter.setOnDoneAction(PersonController::view);
+        f.injectAdapter(personAdapter);
+
+        Resources.inst.getOtp().injectObservableTab(person.getName(),
+                f.getForm(), person, true);
     }
 }

@@ -2,6 +2,7 @@ package main.model.claim;
 
 import main.localization.Loc;
 import main.model.FullTextSearch;
+import main.model.Model;
 import main.model.person.Person;
 import main.model.Status;
 import main.model.insurance.Insurance;
@@ -12,7 +13,7 @@ import java.util.Calendar;
 /**
  * Created by Hans Petter on 16.04.2015.
  */
-public class Claim implements Serializable, FullTextSearch
+public class Claim implements Serializable, FullTextSearch, Model
 {
     private String desc;
     private String contacts;
@@ -142,6 +143,9 @@ public class Claim implements Serializable, FullTextSearch
         return 0;
         //return amount - insurance.getDeductable();
     }
+
+    @Override
+    public ModelType getModelType() { return ModelType.CLAIM; }
 
     // TODO override equals and hashcode
 }
