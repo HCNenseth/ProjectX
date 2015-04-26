@@ -19,20 +19,14 @@ import java.util.function.Consumer;
 /**
  * Created by HansPetter on 22.04.2015.
  */
-public class CarAdapter implements Formable<Car>
+public class CarAdapter extends InsuranceAdapter implements Formable<Car>
 {
 
-    private FormValueNode premium;
-    private FormValueNode amount;
-    private FormValueNode desc;
     private FormValueNode regNr;
     private FormDateNode registrationYear;
     private FormValueNode mileage;
     private FormChoiceNode type;
-    private FormChoiceNode status;
     private FormChoiceNode propulsion;
-
-    private boolean editMode = false;
 
     private Car car;
     private Person customer;
@@ -46,44 +40,31 @@ public class CarAdapter implements Formable<Car>
 
     public CarAdapter(Person customer, Car car)
     {
-        this.customer = customer;
+        super(customer, true);
         this.car = car;
-        editMode = true;
         initNodes();
     }
 
     public CarAdapter(Person customer)
     {
-        this.customer = customer;
+        super(customer);
         initNodes();
     }
 
-    private CarAdapter() { return; }
+    private CarAdapter()
+    {
+        super(null);
+    }
 
     private void initNodes()
     {
-        premium = new FormValueNode.Builder(Loc.get("premium"))
-                .regex(StringMatcher.getDigit())
-                .error(Loc.get("error_premium"))
-                .build();
-
-        amount = new FormValueNode.Builder(Loc.get("amount"))
-                .regex(StringMatcher.getDigit())
-                .error(Loc.get("error_amount"))
-                .build();
-
-        desc = new FormValueNode.Builder(Loc.get("desc"))
-                .regex(StringMatcher.getBaseString())
-                .error(Loc.get("error_desc"))
-                .build();
-
         regNr = new FormValueNode.Builder(Loc.get("regNr"))
                 .error(Loc.get("regNr_error"))
                 .regex(StringMatcher.getRegnr())
                 .build();
 
         registrationYear = new FormDateNode.Builder(Loc.get("car_reg_year"),
-                editMode ? car.getRegistrationYear() : LocalDate.of(standardYear, standardMonth, standardDay))
+                super.editMode() ? car.getRegistrationYear() : LocalDate.of(standardYear, standardMonth, standardDay))
                 .build();
 
         mileage = new FormValueNode.Builder(Loc.get("mileage"))
@@ -103,15 +84,6 @@ public class CarAdapter implements Formable<Car>
                 .active(Car.Type.A)
                 .build();
 
-        List<Enum> statusList = new ArrayList<>();
-        for(Status s : Status.values())
-        {
-            statusList.add(s);
-        }
-
-        status = new FormChoiceNode.Builder(Loc.get("status"), statusList)
-                .active(Status.ACTIVE)
-                .build();
 
         List<Enum> propulsionList = new ArrayList<>();
         for(Car.Propulsion p : Car.Propulsion.values())
@@ -127,10 +99,7 @@ public class CarAdapter implements Formable<Car>
 
     @Override
     public List<FormNode> getNodes() {
-        List<FormNode> tmp = new ArrayList<>();
-        tmp.add(premium);
-        tmp.add(status);
-        tmp.add(amount);
+        List<FormNode> tmp = super.getNodes();
         tmp.add(regNr);
         tmp.add(registrationYear);
         tmp.add(mileage);
@@ -143,13 +112,13 @@ public class CarAdapter implements Formable<Car>
     @Override
     public void callback() {
 
-        if(editMode)
+        if(super.editMode())
         {
             car.setMileage(Integer.parseInt(mileage.getValue()));
             car.setRegNr(regNr.getValue());
-            car.setPremium(Integer.parseInt(premium.getValue()));
-            car.setAmount(Integer.parseInt(amount.getValue()));
-            car.setStatus((Status) status.getData());
+            car.setPremium(Integer.parseInt(super.premium().getValue()));
+            car.setAmount(Integer.parseInt(super.amount().getValue()));
+            car.setStatus((Status) super.status().getData());
 
             System.out.println(car);
             return;
@@ -158,9 +127,9 @@ public class CarAdapter implements Formable<Car>
         car = new Car.Builder(customer, regNr.getValue())
                 .registrationYear(registrationYear.getData())
                 .mileage(Integer.parseInt(mileage.getValue()))
-                .amount(Integer.parseInt(amount.getValue()))
-                .premium(Integer.parseInt(premium.getValue()))
-                .status((Status) status.getData())
+                .amount(Integer.parseInt(super.amount().getValue()))
+                .premium(Integer.parseInt(super.premium().getValue()))
+                .status((Status) super.status().getData())
                 .type((Car.Type) type.getData())
                 .propulsion((Car.Propulsion) propulsion.getData())
                 .build();
