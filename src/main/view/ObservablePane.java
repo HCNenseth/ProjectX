@@ -9,7 +9,13 @@ import java.util.Observable;
 import java.util.Observer;
 
 /**
- * Created by alex on 4/10/15.
+ * ObservablePane
+ *
+ * Tabs for ObserverTabPane. Extends Observable for observer pattern
+ * with ObserverTabPane.
+ *
+ * @filename ObservablePane.java
+ * @date 2015-04-26
  */
 public class ObservablePane extends Observable
 {

@@ -9,24 +9,31 @@ import main.model.Model;
 import java.util.*;
 
 /**
- * Created by alex on 4/10/15.
+ * ObserverTabPane
+ *
+ * Main tab pane for application. Extends JavaFX TabPane and adds
+ * some functionality on top. Implements Observer pattern for communication.
+ *
+ * @filename ObserverTabPane.java
+ * @date 2015-04-26
  */
 public class ObserverTabPane extends TabPane implements Observer
 {
     private Map<Tab, ObservablePane> observablePaneMap;
-    private List<ObservablePane> observablePanes;
-    private List<OfflinePane> offlinePanes;
-    SingleSelectionModel<Tab> selectionModel;
+    private SingleSelectionModel<Tab> selectionModel;
 
     public ObserverTabPane()
     {
-        observablePanes = new LinkedList<>();
-        offlinePanes = new LinkedList<>();
         observablePaneMap = new HashMap<>();
-
         selectionModel = getSelectionModel();
     }
 
+    /**
+     * Observer pattern update method. This method can be used
+     * to send a signal to all observable panes in the list.
+     * @param obj
+     * @param arg
+     */
     @Override
     public void update(Observable obj, Object arg)
     {
@@ -41,6 +48,10 @@ public class ObserverTabPane extends TabPane implements Observer
         }
     }
 
+    /**
+     * Find and delete tab and list entry based on Model reference
+     * @param ref
+     */
     public void closeObservableTabs(Model ref)
     {
         Iterator iterator = observablePaneMap.entrySet().iterator();
@@ -55,44 +66,44 @@ public class ObserverTabPane extends TabPane implements Observer
         }
     }
 
-    public Tab injectOfflineTab(String title, Boolean closeable)
-    {
-        OfflinePane offPane = new OfflinePane(title);
-        offlinePanes.add(offPane);
-
-        Tab tab = new Tab(title);
-        tab.setContent(offPane.getPane());
-        tab.closableProperty().set(closeable);
-        getTabs().addAll(tab);
-
-        selectionModel.select(tab);
-
-        return tab;
-    }
-
-    public Tab injectObservableTab(String title, Node content,
+    /**
+     * Inject new tab without reference. A simple proxy method for
+     * the method below (with reference)
+     * @param title - tab title
+     * @param content - tab content
+     * @param closeable - tab attr
+     */
+    public void injectObservableTab(String title, Node content,
                                    Boolean closeable)
     {
-        return injectObservableTab(title, content, null, closeable);
+        injectObservableTab(title, content, null, closeable);
     }
 
-    public Tab injectObservableTab(String title, Node content,
+    /**
+     * Inject new tab with reference
+     * @param title - tab title
+     * @param content - tab content
+     * @param ref - tab model reference
+     * @param closeable - tab attr
+     */
+    public void injectObservableTab(String title, Node content,
                                    Model ref, Boolean closeable)
     {
         ObservablePane obsPane = new ObservablePane(this, title);
-        obsPane.setContent(content);
         if (ref != null) { obsPane.setReference(ref); }
-        observablePanes.add(obsPane);
+        obsPane.setContent(content);
 
         Tab tab = new Tab(title);
         tab.setContent(obsPane.getPane());
         tab.closableProperty().set(closeable);
+
+        // Add tab to tab pane
         getTabs().addAll(tab);
 
+        // Add tab to hash map for later reference
         observablePaneMap.put(tab, obsPane);
 
+        // Select new tab
         selectionModel.select(tab);
-
-        return tab;
     }
 }
