@@ -29,14 +29,6 @@ public class CarAdapter extends InsuranceAdapter implements Formable<Car>
     private FormChoiceNode propulsion;
 
     private Car car;
-    private Person customer;
-
-    /**
-     * For use in the FormDateNode
-     */
-    private int standardYear = 1970;
-    private int standardMonth = 1;
-    private int standardDay = 1;
 
     public CarAdapter(Person customer, Car car)
     {
@@ -64,7 +56,7 @@ public class CarAdapter extends InsuranceAdapter implements Formable<Car>
                 .build();
 
         registrationYear = new FormDateNode.Builder(Loc.get("car_reg_year"),
-                super.editMode() ? car.getRegistrationYear() : LocalDate.of(standardYear, standardMonth, standardDay))
+                super.editMode() ? car.getRegistrationYear() : LocalDate.of(super.standardYear, super.standardMonth, super.standardDay))
                 .build();
 
         mileage = new FormValueNode.Builder(Loc.get("mileage"))
@@ -124,7 +116,7 @@ public class CarAdapter extends InsuranceAdapter implements Formable<Car>
             return;
         }
 
-        car = new Car.Builder(customer, regNr.getValue())
+        car = new Car.Builder(super.customer(), regNr.getValue())
                 .registrationYear(registrationYear.getData())
                 .mileage(Integer.parseInt(mileage.getValue()))
                 .amount(Integer.parseInt(super.amount().getValue()))

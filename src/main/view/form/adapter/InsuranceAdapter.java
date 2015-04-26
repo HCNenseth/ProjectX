@@ -11,7 +11,7 @@ import main.view.form.node.FormValueNode;
 import java.util.ArrayList;
 import java.util.List;
 
-// TODO this code is not tested. 
+// TODO this code is not tested.
 
 abstract class InsuranceAdapter {
 
@@ -57,9 +57,9 @@ abstract class InsuranceAdapter {
     /**
      * Constants for the FormDateNode
      */
-    private static int standardYear = 1970;
-    private static int standardMonth = 1;
-    private static int standardDay = 1;
+    protected static int standardYear = 1970;
+    protected static int standardMonth = 1;
+    protected static int standardDay = 1;
 
     public InsuranceAdapter(Person customer, boolean editMode)
     {
@@ -119,27 +119,31 @@ abstract class InsuranceAdapter {
 
     protected FormValueNode amount()
     {
-        return this.amount;
+        return amount;
     }
 
     protected FormValueNode premium()
     {
-        return this.premium;
+        return premium;
     }
 
     protected FormValueNode desc()
     {
-        return this.desc;
+        return desc;
     }
 
     protected FormChoiceNode status()
     {
-        return this.status;
+        return status;
     }
 
     protected boolean editMode()
     {
-        return this.editMode;
+        return editMode;
     }
 
+    protected Person customer()
+    {
+        return customer;
+    }
 }
