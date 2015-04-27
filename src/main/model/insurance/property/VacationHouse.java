@@ -47,6 +47,11 @@ public class VacationHouse extends Property implements Serializable {
             return streetAddress;
         }
 
+        public String getCity()
+        {
+            return city;
+        }
+
         public Builder(Person customer,
                        String streetAddress,
                        String postalCode)
