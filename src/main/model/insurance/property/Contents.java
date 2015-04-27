@@ -17,13 +17,19 @@ public class Contents extends Insurance implements Serializable {
      *
      * @param ib
      */
-    public Contents(InsuranceBuilder ib) {
+    public Contents(Builder ib) {
         super(ib);
     }
 
-    public static class InsuranceBuilder<Builder, Contents>
+    public static class Builder extends InsuranceBuilder<Builder, Contents>
     {
 
+
+
+        @Override
+        public Contents build() {
+            return new Contents(this);
+        }
     }
 
 

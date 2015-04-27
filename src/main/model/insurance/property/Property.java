@@ -24,6 +24,10 @@ abstract class Property extends Insurance implements Serializable
 
     public Property(InsuranceBuilder ib) {
         super(ib);
+
+        city = ib.getCity();
+
+
     }
 
     public enum Type {

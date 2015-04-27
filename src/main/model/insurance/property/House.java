@@ -128,6 +128,11 @@ public class House extends Property implements Serializable
             this.standard = standard; return this;
         }
 
+        public String getCity()
+        {
+            return city;
+        }
+
         public House build()
         {
             return new House(this);
