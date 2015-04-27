@@ -20,38 +20,6 @@ public class Boat extends Vehicle implements Serializable
     private Type type;
     private Person owner;
 
-    public LocalDate getRegistrationYear() {
-        return registrationYear;
-    }
-
-    public void setRegistrationYear(LocalDate registrationYear) {
-        this.registrationYear = registrationYear;
-    }
-
-    public int getLength() {
-        return length;
-    }
-
-    public void setLength(int length) {
-        this.length = length;
-    }
-
-    public int getHorsePower() {
-        return horsePower;
-    }
-
-    public void setType(Type type) {
-        this.type = type;
-    }
-
-    public Person getOwner() {
-        return owner;
-    }
-
-    public void setOwner(Person owner) {
-        this.owner = owner;
-    }
-
     public enum Propulsion {
         A(Loc.get("boat_propulsion_a")),
         B(Loc.get("boat_propulsion_b")),
@@ -167,6 +135,46 @@ public class Boat extends Vehicle implements Serializable
         horsePower = builder.horsePower;
         type = builder.type;
         propulsion = builder.propulsion;
+    }
+
+    public LocalDate getRegistrationYear()
+    {
+        return registrationYear;
+    }
+
+    public void setRegistrationYear(LocalDate registrationYear)
+    {
+        this.registrationYear = registrationYear;
+    }
+
+    public int getLength()
+    {
+        return length;
+    }
+
+    public void setLength(int length)
+    {
+        this.length = length;
+    }
+
+    public int getHorsePower()
+    {
+        return horsePower;
+    }
+
+    public void setType(Type type)
+    {
+        this.type = type;
+    }
+
+    public Person getOwner()
+    {
+        return owner;
+    }
+
+    public void setOwner(Person owner)
+    {
+        this.owner = owner;
     }
 
     public String getType()
