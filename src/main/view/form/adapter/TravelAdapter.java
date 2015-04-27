@@ -18,7 +18,7 @@ import java.util.function.Consumer;
 /**
  * Created by HansChristian on 24.04.2015.
  */
-public class TravelAdapter extends InsuranceAdapter implements Formable<Travel>
+public class TravelAdapter extends InsuranceAdapter<Travel> implements Formable<Travel>
 {
     public TravelAdapter(Person customer, Travel travel)
     {
@@ -38,7 +38,7 @@ public class TravelAdapter extends InsuranceAdapter implements Formable<Travel>
 
     }
 
-    public TravelAdapter()
+    private TravelAdapter()
     {
         super(null);
         return;
@@ -56,26 +56,29 @@ public class TravelAdapter extends InsuranceAdapter implements Formable<Travel>
     {
         if (super.getEditMode()) {
             super.getInsurance().setPremium(Integer.parseInt(super.getPremium().getValue()));
-            travel.setAmount(Integer.parseInt(super.getAmount().getValue()));
-            travel.setStatus((Status) super.getStatus().getData());
+            super.getInsurance().setAmount(Integer.parseInt(super.getAmount().getValue()));
+            super.getInsurance().setStatus((Status) super.getStatus().getData());
 
-            System.out.println(travel);
+            System.out.println(super.getInsurance());
             return;
         }
 
-        travel = new Travel.Builder(super.getCustomer())
+        Travel travel = new Travel.Builder(super.getCustomer())
                 .premium(Integer.parseInt(super.getPremium().getValue()))
                 .amount(Integer.parseInt(super.getAmount().getValue()))
                 .status((Status)super.getStatus().getData())
                 .build();
 
         System.out.println(travel);
+
+        super.setInsurance(travel);
+
         callBackEvent.fire();
     }
 
     @Override
     public void setOnDoneAction(Consumer<Travel> c)
     {
-        callBackEvent.setOnAction(e -> c.accept(travel));
+        callBackEvent.setOnAction(e -> c.accept(super.getInsurance()));
     }
 }

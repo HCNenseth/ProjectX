@@ -19,7 +19,7 @@ import java.util.function.Consumer;
 /**
  * Created by HansPetter on 22.04.2015.
  */
-public class CarAdapter extends InsuranceAdapter implements Formable<Car>
+public class CarAdapter extends InsuranceAdapter<Car> implements Formable<Car>
 {
 
     private FormValueNode regNr;
@@ -28,12 +28,10 @@ public class CarAdapter extends InsuranceAdapter implements Formable<Car>
     private FormChoiceNode type;
     private FormChoiceNode propulsion;
 
-    private Car car;
 
     public CarAdapter(Person customer, Car car)
     {
-        super(customer, true);
-        this.car = car;
+        super(customer, car);
         initNodes();
     }
 
@@ -46,6 +44,7 @@ public class CarAdapter extends InsuranceAdapter implements Formable<Car>
     private CarAdapter()
     {
         super(null);
+        return;
     }
 
     private void initNodes()
@@ -56,7 +55,7 @@ public class CarAdapter extends InsuranceAdapter implements Formable<Car>
                 .build();
 
         registrationYear = new FormDateNode.Builder(Loc.get("car_reg_year"),
-                super.getEditMode() ? car.getRegistrationYear() : LocalDate.of(super.standardYear, super.standardMonth, super.standardDay))
+                super.getEditMode() ? super.getInsurance().getRegistrationYear() : LocalDate.of(super.standardYear, super.standardMonth, super.standardDay))
                 .build();
 
         mileage = new FormValueNode.Builder(Loc.get("mileage"))
@@ -106,17 +105,17 @@ public class CarAdapter extends InsuranceAdapter implements Formable<Car>
 
         if(super.getEditMode())
         {
-            car.setMileage(Integer.parseInt(mileage.getValue()));
-            car.setRegNr(regNr.getValue());
-            car.setPremium(Integer.parseInt(super.getPremium().getValue()));
-            car.setAmount(Integer.parseInt(super.getAmount().getValue()));
-            car.setStatus((Status) super.getStatus().getData());
+            super.getInsurance().setMileage(Integer.parseInt(mileage.getValue()));
+            super.getInsurance().setRegNr(regNr.getValue());
+            super.getInsurance().setPremium(Integer.parseInt(super.getPremium().getValue()));
+            super.getInsurance().setAmount(Integer.parseInt(super.getAmount().getValue()));
+            super.getInsurance().setStatus((Status) super.getStatus().getData());
 
-            System.out.println(car);
+            System.out.println(super.getInsurance());
             return;
         }
 
-        car = new Car.Builder(super.getCustomer(), regNr.getValue())
+        Car car = new Car.Builder(super.getCustomer(), regNr.getValue())
                 .registrationYear(registrationYear.getData())
                 .mileage(Integer.parseInt(mileage.getValue()))
                 .amount(Integer.parseInt(super.getAmount().getValue()))
@@ -126,12 +125,14 @@ public class CarAdapter extends InsuranceAdapter implements Formable<Car>
                 .propulsion((Car.Propulsion) propulsion.getData())
                 .build();
 
+        super.setInsurance(car);
+
         callBackEvent.fire();
     }
 
     @Override
     public void setOnDoneAction(Consumer<Car> c)
     {
-        callBackEvent.setOnAction(e -> c.accept(car));
+        callBackEvent.setOnAction(e -> c.accept(super.getInsurance()));
     }
 }

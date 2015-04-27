@@ -163,6 +163,11 @@ public abstract class InsuranceAdapter<T> {
 
     protected T getInsurance()
     {
-        return (T) insurance;
+        return insurance;
+    }
+
+    protected void setInsurance(T insurance)
+    {
+        this.insurance = insurance;
     }
 }

@@ -19,7 +19,7 @@ import java.util.function.Consumer;
 /**
  * Created by HansPetter on 23.04.2015.
  */
-public class HouseAdapter extends InsuranceAdapter implements Formable<House>
+public class HouseAdapter extends InsuranceAdapter<House> implements Formable<House>
 {
 
     private FormValueNode street;
@@ -30,12 +30,9 @@ public class HouseAdapter extends InsuranceAdapter implements Formable<House>
     private FormChoiceNode type;
     private FormChoiceNode material;
 
-    private House house;
-
     public HouseAdapter(Person customer, House house)
     {
-        super(customer, true);
-        this.house = house;
+        super(customer, house);
         initNodes();
     }
 
@@ -115,20 +112,20 @@ public class HouseAdapter extends InsuranceAdapter implements Formable<House>
 
         if(super.getEditMode())
         {
-            house.setCity(city.getValue());
-            house.setType((House.Type) type.getData());
-            house.setMaterial((House.Material) material.getData());
-            house.setSquareMeter(Integer.parseInt(squareMeters.getValue()));
-            house.setYear(Integer.parseInt(yearBuilt.getValue()));
-            house.setPremium(Integer.parseInt(super.getPremium().getValue()));
-            house.setAmount(Integer.parseInt(super.getAmount().getValue()));
-            house.setStatus((Status) super.getStatus().getData());
+            super.getInsurance().setCity(city.getValue());
+            super.getInsurance().setType((House.Type) type.getData());
+            super.getInsurance().setMaterial((House.Material) material.getData());
+            super.getInsurance().setSquareMeter(Integer.parseInt(squareMeters.getValue()));
+            super.getInsurance().setYear(Integer.parseInt(yearBuilt.getValue()));
+            super.getInsurance().setPremium(Integer.parseInt(super.getPremium().getValue()));
+            super.getInsurance().setAmount(Integer.parseInt(super.getAmount().getValue()));
+            super.getInsurance().setStatus((Status) super.getStatus().getData());
 
-            System.out.println(house);
+            System.out.println(super.getInsurance());
             return;
         }
 
-        house = new House.Builder(super.getCustomer(), street.getValue(), postalCode.getValue())
+        House house = new House.Builder(super.getCustomer(), street.getValue(), postalCode.getValue())
                 .city(city.getValue())
                 .type((House.Type) type.getData())
                 .material((House.Material) material.getData())
@@ -139,12 +136,14 @@ public class HouseAdapter extends InsuranceAdapter implements Formable<House>
                 .status((Status)super.getStatus().getData())
                 .build();
 
+        super.setInsurance(house);
+
         callBackEvent.fire();
     }
 
     @Override
     public void setOnDoneAction(Consumer<House> c)
     {
-        callBackEvent.setOnAction(e -> c.accept(house));
+        callBackEvent.setOnAction(e -> c.accept(super.getInsurance()));
     }
 }
