@@ -12,22 +12,81 @@ import java.io.Serializable;
 abstract class Property extends Insurance implements Serializable
 {
 
-    protected String postalCode;
-    protected String city;
-    protected int year;
-    protected Material material;
-    protected Type type;
-    protected int squareMeters;
-    protected Standard standard;
-    protected String streetAddress;
+    private String postalCode;
+    private String city;
+    private int year;
+    private Material material;
+    private Type type;
+    private int squareMeters;
+    private Standard standard;
+    private String streetAddress;
 
+    protected void setStreetAddress(String streetAddress) {
+        this.streetAddress = streetAddress;
+    }
+
+    protected void setPostalCode(String postalCode) {
+        this.postalCode = postalCode;
+    }
+
+    protected void setCity(String city) {
+        this.city = city;
+    }
+
+    protected void setYear(int year) {
+        this.year = year;
+    }
+
+    protected void setMaterial(Material material) {
+        this.material = material;
+    }
+
+    protected void setType(Type type) {
+        this.type = type;
+    }
+
+    protected void setSquareMeter(int squareMeters) {
+        this.squareMeters = squareMeters;
+    }
+
+    protected void setStandard(Standard standard) {
+        this.standard = standard;
+    }
+
+    protected String getPostalCode() {
+        return postalCode;
+    }
+
+    protected String getCity() {
+        return city;
+    }
+
+    protected int getYear() {
+        return year;
+    }
+
+    protected Material getMaterial() {
+        return material;
+    }
+
+    protected Type getType() {
+        return type;
+    }
+
+    protected int getSquareMeters() {
+        return squareMeters;
+    }
+
+    protected Standard getStandard() {
+        return standard;
+    }
+
+    protected String getStreetAddress() {
+        return streetAddress;
+    }
 
     public Property(InsuranceBuilder ib) {
         super(ib);
-
-        city = ib.getCity();
-
-
     }
 
     public enum Type {
