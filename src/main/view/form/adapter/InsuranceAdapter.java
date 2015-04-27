@@ -74,6 +74,7 @@ public abstract class InsuranceAdapter<T> {
     private T insurance = null;
 
 
+    // TODO what if customer and or ref by accident is null? Edit mode then?
     public InsuranceAdapter(Person customer, T ref)
     {
         this.customer = customer;
@@ -84,6 +85,7 @@ public abstract class InsuranceAdapter<T> {
 
     public InsuranceAdapter(Person customer)
     {
+        // TODO this constructor does not initialize if customer is null...
         if(customer != null)
         {
             this.customer = customer;
