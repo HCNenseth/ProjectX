@@ -1,5 +1,7 @@
 package main.model.insurance.property;
 
+import main.localization.Loc;
+import main.model.insurance.vehicle.Car;
 import main.model.person.Person;
 import main.model.insurance.ConcreteType;
 import main.model.insurance.InsuranceBuilder;
@@ -9,6 +11,23 @@ import java.io.Serializable;
 
 public class House extends Property implements Serializable
 {
+
+    private Type type;
+
+    public enum Type {
+        A(Loc.get("house_type_a")),
+        B(Loc.get("house_type_b")),
+        C(Loc.get("house_type_c"));
+
+        String value;
+
+        Type(String value) { this.value = value; }
+
+        public String getValue() { return value; }
+
+        @Override
+        public String toString() { return getValue(); }
+    }
 
     private House(Builder builder)
     {
@@ -22,6 +41,16 @@ public class House extends Property implements Serializable
         setCity(builder.city);
         setType(builder.type);
         setYear(builder.year);
+    }
+
+    public void setType(House.Type type)
+    {
+        this.type = type;
+    }
+
+    public House.Type getType()
+    {
+        return type;
     }
 
     public ConcreteType identify()

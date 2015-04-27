@@ -16,8 +16,7 @@ abstract class Property extends Insurance implements Serializable
     private String city;
     private int year;
     private Material material;
-    private Type type;
-    private int squareMeters;
+    private int squareMeter;
     private Standard standard;
     private String streetAddress;
 
@@ -41,12 +40,8 @@ abstract class Property extends Insurance implements Serializable
         this.material = material;
     }
 
-    protected void setType(Type type) {
-        this.type = type;
-    }
-
-    protected void setSquareMeter(int squareMeters) {
-        this.squareMeters = squareMeters;
+    protected void setSquareMeter(int squareMeter) {
+        this.squareMeter = squareMeter;
     }
 
     protected void setStandard(Standard standard) {
@@ -69,14 +64,6 @@ abstract class Property extends Insurance implements Serializable
         return material;
     }
 
-    protected Type getType() {
-        return type;
-    }
-
-    protected int getSquareMeters() {
-        return squareMeters;
-    }
-
     protected Standard getStandard() {
         return standard;
     }
@@ -89,25 +76,11 @@ abstract class Property extends Insurance implements Serializable
         super(ib);
     }
 
-    public enum Type {
-        A(Loc.get("house_type_a")),
-        B(Loc.get("house_type_b")),
-        C(Loc.get("house_type_c"));
-
-        String value;
-
-        Type(String value) { this.value = value; }
-
-        public String getValue() { return value; }
-
-        @Override
-        public String toString() { return getValue(); }
-    }
 
     public enum Material {
-        A(Loc.get("house_material_a")),
-        B(Loc.get("house_material_b")),
-        C(Loc.get("house_material_c"));
+        A(Loc.get("property_material_a")),
+        B(Loc.get("property_material_b")),
+        C(Loc.get("property_material_c"));
 
         String value;
 
@@ -120,9 +93,9 @@ abstract class Property extends Insurance implements Serializable
     }
 
     public enum Standard {
-        A(Loc.get("house_standard_a")),
-        B(Loc.get("house_standard_b")),
-        C(Loc.get("house_standard_c"));
+        A(Loc.get("property_standard_a")),
+        B(Loc.get("property_standard_b")),
+        C(Loc.get("property_standard_c"));
 
         String value;
 

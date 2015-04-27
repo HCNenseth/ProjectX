@@ -1,5 +1,6 @@
 package main.model.insurance.property;
 
+import main.localization.Loc;
 import main.model.insurance.ConcreteType;
 import main.model.insurance.InsuranceBuilder;
 import main.model.person.Person;
@@ -10,6 +11,23 @@ import java.io.Serializable;
  * Created by Hans Petter on 27.04.2015.
  */
 public class VacationHouse extends Property implements Serializable {
+
+    private Type type;
+
+    public enum Type {
+        A(Loc.get("vacation_house_type_a")),
+        B(Loc.get("vacation_house_type_b")),
+        C(Loc.get("vacation_house_type_c"));
+
+        String value;
+
+        Type(String value) { this.value = value; }
+
+        public String getValue() { return value; }
+
+        @Override
+        public String toString() { return getValue(); }
+    }
 
 
     public VacationHouse(Builder builder) {
@@ -23,6 +41,16 @@ public class VacationHouse extends Property implements Serializable {
         setCity(builder.city);
         setType(builder.type);
         setYear(builder.year);
+    }
+
+    public void setType(VacationHouse.Type type)
+    {
+        this.type = type;
+    }
+
+    public VacationHouse.Type getType()
+    {
+        return type;
     }
 
     @Override
