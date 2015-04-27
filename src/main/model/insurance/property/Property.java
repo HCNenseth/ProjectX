@@ -11,7 +11,20 @@ import java.io.Serializable;
  */
 abstract class Property extends Insurance implements Serializable
 {
-    public Property(InsuranceBuilder ib) { super(ib); }
+
+    protected String postalCode;
+    protected String city;
+    protected int year;
+    protected Material material;
+    protected Type type;
+    protected int squareMeters;
+    protected Standard standard;
+    protected String streetAddress;
+
+
+    public Property(InsuranceBuilder ib) {
+        super(ib);
+    }
 
     public enum Type {
         A(Loc.get("house_type_a")),

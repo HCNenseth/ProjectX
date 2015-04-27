@@ -11,6 +11,7 @@ import main.view.form.adapter.BoatAdapter;
 import main.view.form.adapter.CarAdapter;
 import main.view.form.adapter.HouseAdapter;
 import main.view.form.adapter.TravelAdapter;
+//import main.view.form.adapter.TravelAdapter;
 
 /**
  * Created by alex on 4/26/15.

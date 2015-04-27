@@ -6,6 +6,8 @@ package main.model.insurance;
 public enum ConcreteType
 {
     HOUSE,
+    VACATION_HOUSE,
+    CONTENTS,
     TRAVEL,
     BOAT,
     CAR,

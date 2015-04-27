@@ -13,6 +13,8 @@ import java.io.Serializable;
 public class Travel extends Insurance implements Serializable
 {
 
+    
+
     public static class Builder extends InsuranceBuilder<Builder, Travel>
     {
         public Builder(Person customer)
