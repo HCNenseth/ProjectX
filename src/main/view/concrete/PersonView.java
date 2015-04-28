@@ -1,7 +1,9 @@
 package main.view.concrete;
 
 import javafx.scene.control.Label;
+import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
+import main.App;
 import main.controller.TableController;
 import main.localization.Loc;
 import main.model.person.Person;
@@ -20,6 +22,23 @@ public class PersonView
         this.person = p;
 
         gp = new GridPane();
+
+        gp.setMinWidth(App.WIDTH - (App.WIDTH / 20));
+
+        ColumnConstraints keyColumn = new ColumnConstraints();
+        //keyColumn.setHgrow(Priority.SOMETIMES);
+        keyColumn.setPercentWidth(20);
+
+        ColumnConstraints valueColumn = new ColumnConstraints();
+        //valueColumn.setHgrow(Priority.ALWAYS);
+        valueColumn.setPercentWidth(80);
+
+        gp.getColumnConstraints().add(0, keyColumn);
+        gp.getColumnConstraints().add(1, valueColumn);
+
+        gp.setHgap(5);
+        gp.setVgap(5);
+
         initPersonFields();
     }
 
@@ -46,11 +65,11 @@ public class PersonView
 
         gp.add(new Label(Loc.get("insurances")), 0, rowNum++);
         gp.add(TableController.getInsuranceTable(person.getInsurances().stream())
-                .getTable(), 0, rowNum++);
+                .getTable(), 0, rowNum++, 2, 1);
 
         gp.add(new Label(Loc.get("claims")), 0, rowNum++);
         gp.add(TableController.getClaimsTable(person.getClaims().stream())
-                .getTable(), 0, rowNum++);
+                .getTable(), 0, rowNum++, 2, 1);
     }
 
     public GridPane getNode() { return gp; }

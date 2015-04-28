@@ -1,7 +1,10 @@
 package main.view.concrete;
 
 import javafx.scene.control.Label;
+import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
+import main.App;
+import main.controller.TableController;
 import main.localization.Loc;
 import main.model.insurance.Insurance;
 
@@ -18,6 +21,22 @@ public class InsuranceView<T extends Insurance>
     {
         this.insurance = insurance;
         gp = new GridPane();
+
+        gp.setMinWidth(App.WIDTH - (App.WIDTH / 20));
+
+        ColumnConstraints keyColumn = new ColumnConstraints();
+        //keyColumn.setHgrow(Priority.SOMETIMES);
+        keyColumn.setPercentWidth(20);
+
+        ColumnConstraints valueColumn = new ColumnConstraints();
+        //valueColumn.setHgrow(Priority.ALWAYS);
+        valueColumn.setPercentWidth(80);
+
+        gp.getColumnConstraints().add(0, keyColumn);
+        gp.getColumnConstraints().add(1, valueColumn);
+
+        gp.setHgap(5);
+        gp.setVgap(5);
 
         initInsuranceFields();
     }
@@ -38,6 +57,13 @@ public class InsuranceView<T extends Insurance>
 
         gp.add(new Label(Loc.get("description")), 0, rowNum);
         gp.add(new Label(insurance.getDesc()), 1, rowNum++);
+    }
+
+    protected void addClaimsTable()
+    {
+        getNode().add(new Label(Loc.get("claims")), 0, rowNum++);
+        getNode().add(TableController.getClaimsTable(getInsurance().getClaims().stream())
+                .getTable(), 0, rowNum++, 2, 1);
     }
 
     public T getInsurance() { return insurance; }
