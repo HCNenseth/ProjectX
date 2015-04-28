@@ -61,6 +61,10 @@
     <string name="premium">Premium</string>
     <string name="amount">Amount</string>
     <string name="deductible">Deductible</string>
+    <string name="car_insurance">Car insurance</string>
+    <string name="boat_insurance">Boat insurance</string>
+    <string name="house_insurance">House insurance</string>
+    <string name="travel_insurance">Travel insurance</string>
 
     <!-- person -->
     <string name="firstname">Firstname</string>
@@ -106,6 +110,14 @@
     <string name="year_built">Year built</string>
     <string name="square_meters">Square meters</string>
     <string name="material">Material</string>
+
+    <!-- travel -->
+    <string name="continent_a">Europa</string>
+    <string name="continent_b">Asia</string>
+    <string name="continent_c">Africa</string>
+    <string name="continent_d">America</string>
+    <string name="continent_e">Antarctica</string>
+    <string name="continent_f">War Zone</string>
 
     <!-- Claim -->
     <string name="claim_type_a">Theft</string>
