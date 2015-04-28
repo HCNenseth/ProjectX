@@ -6,40 +6,73 @@ import main.model.insurance.Insurance;
 import main.model.insurance.InsuranceBuilder;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 
 /**
  * Created by HansChristian on 15.04.2015.
  */
 public abstract class Vehicle extends Insurance implements Serializable
 {
+    private String licencePlate;
     private Person owner;
-    private String regNr;
+    private int horsePower;
+    private int modelYear;
+    private LocalDate firstTimeRegistered;
 
-    public Vehicle(InsuranceBuilder ib, Person owner, String regNr)
+    public Vehicle(InsuranceBuilder ib)
     {
         super(ib);
-        this.owner = owner;
-        this.regNr = regNr;
-    }
-
-    public void setRegNr(String regNr)
-    {
-        this.regNr = regNr;
     }
 
     public Person getOwner() {
         return owner;
     }
 
-    public String getRegNr() {
-        return regNr;
+    // SETTERS
+    public void setOwner(Person owner)
+    {
+        this.owner = owner;
+    }
+
+    public void setFirstTimeRegistered(LocalDate date)
+    {
+        firstTimeRegistered = date;
+    }
+
+    public void setLicencePlate(String licencePlate)
+    {
+        this.licencePlate = licencePlate;
+    }
+
+    public void setModelYear(int year)
+    {
+        this.modelYear = year;
+    }
+
+    // GETTERS
+
+
+    public String getLicencePlate() {
+        return licencePlate;
+    }
+
+    public int getHorsePower() {
+        return horsePower;
+    }
+
+    public int getModelYear() {
+        return modelYear;
+    }
+
+    public LocalDate getFirstTimeRegistered() {
+        return firstTimeRegistered;
     }
 
     @Override
     public boolean query(String value)
     {
         return super.query(value)
-                || (regNr != null && regNr.contains(value));
+                || (licencePlate != null && licencePlate.contains(value));
     }
 
     @Override
@@ -47,7 +80,7 @@ public abstract class Vehicle extends Insurance implements Serializable
         return super.toString() + String.format(
                 "\n%s\t%s\n%s\t%s",
                 Loc.get("owner"), owner,
-                Loc.get("reg_number"), regNr
+                Loc.get("licence_plate"), licencePlate
         );
     }
 

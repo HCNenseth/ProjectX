@@ -5,21 +5,14 @@ import main.model.Status;
 import main.model.person.Person;
 import main.model.insurance.ConcreteType;
 import main.model.insurance.InsuranceBuilder;
-import sun.util.resources.LocaleData;
 
 
 import java.io.Serializable;
 import java.time.LocalDate;
 
-/**
- * Created by HansChristian on 15.04.2015.
- */
 public class Car extends Vehicle implements Serializable
 {
-
-    private int registrationYear;
     private int mileage;
-    private int bonus;
 
     private final Type type;
     private final Propulsion propulsion;
@@ -60,28 +53,25 @@ public class Car extends Vehicle implements Serializable
     public static class Builder extends InsuranceBuilder<Builder, Car>
     {
         //Required
-        private String regNr;
+        private String licencePlate;
 
         //Optional
         private Person owner = getCustomer();
-        private int registrationYear = 1990;
+        private LocalDate firstTimeRegistered = null;
+        private int modelYear = 2000;
         private int mileage = 0;
-        private int bonus = 0;
-        private int amount = 0;
-        private int premium = 0;
         private Propulsion propulsion = Propulsion.A;
         private Type type = Type.A;
-        private Status status = Status.ACTIVE;
 
-        public Builder(Person customer, String regNr)
+        public Builder(Person customer, String licencePlate)
         {
             super.customer(customer);
-            this.regNr = regNr;
+            this.licencePlate = licencePlate;
         }
 
-        public Builder registrationYear(int val)
+        public Builder firstTimeRegistered(LocalDate date)
         {
-            this.registrationYear = val;
+            this.firstTimeRegistered = date;
             return this;
         }
 
@@ -89,30 +79,6 @@ public class Car extends Vehicle implements Serializable
         public Builder mileage(int val)
         {
             this.mileage = val;
-            return this;
-        }
-
-        public Builder premium(int val)
-        {
-            premium = val;
-            return this;
-        }
-
-        public Builder amount(int val)
-        {
-            amount = val;
-            return this;
-        }
-
-        public Builder status(Status status)
-        {
-            this.status = status;
-            return this;
-        }
-
-        public Builder bonus(int val)
-        {
-            this.bonus = val;
             return this;
         }
 
@@ -142,11 +108,12 @@ public class Car extends Vehicle implements Serializable
 
     private Car(Builder builder)
     {
-        super(builder, builder.owner, builder.regNr);
+        super(builder);
+        setOwner(builder.owner);
+        setLicencePlate(builder.licencePlate);
+        setFirstTimeRegistered(builder.firstTimeRegistered);
 
-        registrationYear = builder.registrationYear;
         mileage = builder.mileage;
-        bonus = builder.bonus;
         type = builder.type;
         propulsion = builder.propulsion;
     }
@@ -154,11 +121,6 @@ public class Car extends Vehicle implements Serializable
     public void setMileage(int mileage)
     {
         this.mileage = mileage;
-    }
-
-    public void setRegNr(String regNr)
-    {
-        super.setRegNr(regNr);
     }
 
     public String getType()
@@ -176,24 +138,8 @@ public class Car extends Vehicle implements Serializable
         return ConcreteType.CAR;
     }
 
-    public void setRegistrationYear(int registrationYear) {
-        this.registrationYear = registrationYear;
-    }
-
-    public void setBonus(int bonus) {
-        this.bonus = bonus;
-    }
-
-    public int getRegistrationYear() {
-        return registrationYear;
-    }
-
     public int getMileage() {
         return mileage;
-    }
-
-    public int getBonus() {
-        return bonus;
     }
 
     @Override
