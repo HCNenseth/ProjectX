@@ -56,7 +56,7 @@ public class CarAdapter extends InsuranceAdapter<Car> implements Formable<Car>
                 .build();
 
         registration = new FormDateNode.Builder(Loc.get("car_reg_year"),
-                 getEditMode() ? getInsurance().getFirstTimeRegistered() : LocalDate.of(standardYear, standardMonth, standardDay))
+                 getEditMode() ? getInsurance().getRegistration() : LocalDate.of(standardYear, standardMonth, standardDay))
                 //.error(Loc.get("error_reg_year"))
                 //.regex(StringMatcher.getYear())
                 .build();

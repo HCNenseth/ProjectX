@@ -1,7 +1,6 @@
 package main.model.insurance.vehicle;
 
 import main.localization.Loc;
-import main.model.Status;
 import main.model.person.Person;
 import main.model.insurance.ConcreteType;
 import main.model.insurance.InsuranceBuilder;
@@ -57,7 +56,7 @@ public class Car extends Vehicle implements Serializable
 
         //Optional
         private Person owner = getCustomer();
-        private LocalDate firstTimeRegistered = null;
+        private LocalDate registration = null;
         private int modelYear = 2000;
         private int mileage = 0;
         private Propulsion propulsion = Propulsion.A;
@@ -69,12 +68,11 @@ public class Car extends Vehicle implements Serializable
             this.licencePlate = licencePlate;
         }
 
-        public Builder firstTimeRegistered(LocalDate date)
+        public Builder registration(LocalDate date)
         {
-            this.firstTimeRegistered = date;
+            this.registration = date;
             return this;
         }
-
 
         public Builder mileage(int val)
         {
@@ -111,7 +109,8 @@ public class Car extends Vehicle implements Serializable
         super(builder);
         setOwner(builder.owner);
         setLicencePlate(builder.licencePlate);
-        setFirstTimeRegistered(builder.firstTimeRegistered);
+        setRegistration(builder.registration);
+        setModelYear(builder.modelYear);
 
         mileage = builder.mileage;
         type = builder.type;

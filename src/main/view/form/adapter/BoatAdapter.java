@@ -20,7 +20,7 @@ public class BoatAdapter extends InsuranceAdapter<Boat> implements Formable<Boat
 {
 
     private FormValueNode regNr;
-    private FormValueNode registrationYear;
+    private FormDateNode registration;
     private FormValueNode length;
     private FormValueNode horsePower;
     private FormChoiceNode propulsion;
@@ -42,28 +42,27 @@ public class BoatAdapter extends InsuranceAdapter<Boat> implements Formable<Boat
 
     private void initNodes()
     {
-        regNr = new FormValueNode.Builder(Loc.get("reg_number"))
+        regNr = new FormValueNode.Builder(Loc.get("licence_plate"))
                 .regex(StringMatcher.getRegnr())
                 .value(getEditMode() ? getInsurance().getLicencePlate() : "")
-                .error(Loc.get("error_reg_number"))
+                .error(Loc.get("licence_plate_error"))
                 .build();
 
-        registrationYear = new FormValueNode.Builder(Loc.get("car_reg_year"))
-                .regex(StringMatcher.getYear())
-                .value(getEditMode() ? Integer.toString(getInsurance().getRegistrationYear()) : "")
-                .error(Loc.get("error_reg_year"))
+        registration = new FormDateNode.Builder(Loc.get("registration"),
+                getEditMode() ? getInsurance().getRegistration() : LocalDate.of(standardYear, standardMonth, standardDay))
+                .required(false)
                 .build();
 
-        length = new FormValueNode.Builder(Loc.get("boat_length"))
+        length = new FormValueNode.Builder(Loc.get("length"))
                 .regex(StringMatcher.getDigit())
                 .value(getEditMode() ? Integer.toString(getInsurance().getLength()) : "")
-                .error(Loc.get("error_boat_length"))
+                .error(Loc.get("length_error"))
                 .build();
 
-        horsePower = new FormValueNode.Builder(Loc.get("boat_horse_power"))
+        horsePower = new FormValueNode.Builder(Loc.get("horse_power"))
                 .regex(StringMatcher.getDigit())
                 .value(getEditMode() ? Integer.toString(getInsurance().getHorsePower()) : "")
-                .error(Loc.get("error_boat_horse_power"))
+                .error(Loc.get("horse_power_error"))
                 .build();
 
         List<Enum> propulsionList = new ArrayList<>();
@@ -72,7 +71,7 @@ public class BoatAdapter extends InsuranceAdapter<Boat> implements Formable<Boat
             propulsionList.add(p);
         }
 
-        propulsion = new FormChoiceNode.Builder(Loc.get("boat_propulsion"), propulsionList )
+        propulsion = new FormChoiceNode.Builder(Loc.get("propulsion"), propulsionList )
                 .required(false)
                 .active(Boat.Propulsion.A)
                 .build();
@@ -93,7 +92,7 @@ public class BoatAdapter extends InsuranceAdapter<Boat> implements Formable<Boat
     @Override
     public List<FormNode> getNodes() {
         List<FormNode> tmp = super.getNodes();
-        tmp.add(registrationYear);
+        tmp.add(registration);
         tmp.add(length);
         tmp.add(horsePower);
         tmp.add(propulsion);
@@ -119,7 +118,7 @@ public class BoatAdapter extends InsuranceAdapter<Boat> implements Formable<Boat
         Boat boat = new Boat.Builder(super.getCustomer(), regNr.getValue())
                 .horsePower(Integer.parseInt(horsePower.getValue()))
                 .length(Integer.parseInt(length.getValue()))
-                .registrationYear(Integer.parseInt(registrationYear.getValue()))
+                .registration(registration.getData())
                 .premium(Integer.parseInt(super.getPremium().getValue()))
                 .amount(Integer.parseInt(super.getAmount().getValue()))
                 .propulsion((Boat.Propulsion) propulsion.getData())

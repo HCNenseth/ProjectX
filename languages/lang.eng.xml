@@ -56,6 +56,8 @@
     <string name="owner">Owner</string>
     <string name="customer">Customer</string>
     <string name="new_customer">New customer</string>
+    <string name="licence_plate">Licence plate</string>
+    <string name="licence_plate_error">licence plate must contain...</string>
 
     <!-- insurance -->
     <string name="premium">Premium</string>
@@ -131,6 +133,4 @@
     <string name="payment_status_b">Not accepted</string>
     <string name="payment_status_c">Disbursed</string>
 
-    <!-- regexes -->
-    <string name="car_regnr_rgx">AB12345</string>
 </language>
