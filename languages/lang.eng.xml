@@ -111,6 +111,14 @@
     <string name="square_meters">Square meters</string>
     <string name="material">Material</string>
 
+    <!-- travel -->
+    <string name="continent_a">Europa</string>
+    <string name="continent_b">Asia</string>
+    <string name="continent_c">Africa</string>
+    <string name="continent_d">America</string>
+    <string name="continent_e">Antarctica</string>
+    <string name="continent_f">War Zone</string>
+
     <!-- Claim -->
     <string name="claim_type_a">Theft</string>
     <string name="claim_type_b">Sickness</string>

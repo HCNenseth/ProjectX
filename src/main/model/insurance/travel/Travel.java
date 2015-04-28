@@ -1,30 +1,70 @@
 package main.model.insurance.travel;
 
+import main.localization.Loc;
+import main.model.insurance.Type;
 import main.model.person.Person;
 import main.model.insurance.ConcreteType;
 import main.model.insurance.Insurance;
 import main.model.insurance.InsuranceBuilder;
 
+import javax.management.ValueExp;
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 
+/**
+ * Created by HansChristian on 15.04.2015.
+ */
 public class Travel extends Insurance implements Serializable
 {
 
-    /**
-     * List of zones the insurance is covering.
-     * Suggestions of zone:
-     * Just the continents. 
-     */
-    private List<String> zones;
-    private int sum;
+    private final Continent continent;
+
+    public enum Continent
+    {
+        A(Loc.get("continent_a")),
+        B(Loc.get("continent_b")),
+        C(Loc.get("continent_c")),
+        D(Loc.get("continent_d")),
+        E(Loc.get("continent_e")),
+        F(Loc.get("continent_f"));
+
+        String value;
+
+        Continent(String value) { this.value = value;}
+
+        public String getValue() { return value; }
+
+        @Override
+        public String toString() { return value; }
+    }
+
+    public static class Builder extends InsuranceBuilder<Builder, Travel>
+    {
+
+        private Continent continent = Continent.A;
+
+        public Builder(Person customer)
+        {
+            super.customer(customer);
+        }
+
+
+        public Builder continent(Continent val)
+        {
+            continent = val;
+            return this;
+        }
+
+        public Travel build()
+        {
+            return new Travel(this);
+        }
+    }
+
 
     private Travel(Builder builder)
     {
         super(builder);
-        zones = builder.zones;
-        sum = builder.sum;
+        continent = builder.continent;
     }
 
     public ConcreteType identify()
@@ -36,34 +76,6 @@ public class Travel extends Insurance implements Serializable
     {
         return super.query(value);
     }
-
-    public static class Builder extends InsuranceBuilder<Builder, Travel>
-    {
-        private List<String> zones = new ArrayList<>();
-        private int sum;
-
-        public Builder addZone(String zone)
-        {
-            return this;
-        }
-
-        public Builder sum(int sum)
-        {
-
-            return this;
-        }
-
-        public Builder(Person customer)
-        {
-            super.customer(customer);
-        }
-
-        public Travel build()
-        {
-            return new Travel(this);
-        }
-    }
-
 
     // TODO override equals and hashcode
 }
