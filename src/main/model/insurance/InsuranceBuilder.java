@@ -13,6 +13,7 @@ import java.util.Calendar;
 public abstract class InsuranceBuilder<T, E>
 {
     private Person customer;
+    private Person owner = customer;
     private double amount = 0;
     private double premium = 0;
     private double deductible;
@@ -27,19 +28,25 @@ public abstract class InsuranceBuilder<T, E>
         return (T)this;
     }
 
-    public T amount(double amount)
+    public T owner(Person owner)
+    {
+        this.owner = owner;
+        return (T)this;
+    }
+
+    public T amount(int amount)
     {
         this.amount = amount;
         return (T)this;
     }
 
-    public T premium(double premium)
+    public T premium(int premium)
     {
         this.premium = premium;
         return (T)this;
     }
 
-    public T deductible(double deductible)
+    public T deductible(int deductible)
     {
         this.deductible = deductible;
         return (T)this;
@@ -65,6 +72,8 @@ public abstract class InsuranceBuilder<T, E>
 
     /* GETTERS */
     public Person getCustomer() { return customer; }
+
+    public Person getOwner(){ return owner; }
 
     public double getAmount() { return amount; }
 

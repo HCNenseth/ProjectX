@@ -33,14 +33,10 @@ public class TravelAdapter extends InsuranceAdapter<Travel> implements Formable<
     {
         super(customer);
         initNodes();
-
     }
 
     private void initNodes()
     {
-
-
-
 
         List<Enum> typeList = new ArrayList<>();
         for(Travel.Continent t : Travel.Continent.values())
@@ -52,7 +48,6 @@ public class TravelAdapter extends InsuranceAdapter<Travel> implements Formable<
                 .required(false)
                 .active(Travel.Continent.A)
                 .build();
-
     }
 
     private TravelAdapter()
