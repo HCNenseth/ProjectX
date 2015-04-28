@@ -16,9 +16,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Consumer;
 
-/**
- * Created by HansPetter on 23.04.2015.
- */
 public class HouseAdapter extends InsuranceAdapter<House> implements Formable<House>
 {
 
