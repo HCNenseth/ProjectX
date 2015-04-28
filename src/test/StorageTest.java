@@ -15,6 +15,7 @@ import main.model.insurance.vehicle.Car;
 import main.model.person.Person;
 import org.junit.Test;
 
+
 import java.io.IOException;
 import java.time.LocalDate;
 import java.util.Calendar;
@@ -69,7 +70,8 @@ public class StorageTest
     /**
      * Simple String and Integers test of Storage class
      */
-    @Test public void testStorage()
+    @Test
+    public void testStorage()
     {
         String[] strings = {"Input 1", "Input 2", "Input 3"};
         Integer[] ints = {2, 3, 5, 7, 11, 13};

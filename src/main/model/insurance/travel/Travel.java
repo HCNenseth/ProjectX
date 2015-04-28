@@ -6,31 +6,25 @@ import main.model.insurance.Insurance;
 import main.model.insurance.InsuranceBuilder;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
-/**
- * Created by HansChristian on 15.04.2015.
- */
 public class Travel extends Insurance implements Serializable
 {
 
-    
-
-    public static class Builder extends InsuranceBuilder<Builder, Travel>
-    {
-        public Builder(Person customer)
-        {
-            super.customer(customer);
-        }
-
-        public Travel build()
-        {
-            return new Travel(this);
-        }
-    }
+    /**
+     * List of zones the insurance is covering.
+     * Suggestions of zone:
+     * Just the continents. 
+     */
+    private List<String> zones;
+    private int sum;
 
     private Travel(Builder builder)
     {
         super(builder);
+        zones = builder.zones;
+        sum = builder.sum;
     }
 
     public ConcreteType identify()
@@ -42,6 +36,34 @@ public class Travel extends Insurance implements Serializable
     {
         return super.query(value);
     }
+
+    public static class Builder extends InsuranceBuilder<Builder, Travel>
+    {
+        private List<String> zones = new ArrayList<>();
+        private int sum;
+
+        public Builder addZone(String zone)
+        {
+            return this;
+        }
+
+        public Builder sum(int sum)
+        {
+
+            return this;
+        }
+
+        public Builder(Person customer)
+        {
+            super.customer(customer);
+        }
+
+        public Travel build()
+        {
+            return new Travel(this);
+        }
+    }
+
 
     // TODO override equals and hashcode
 }
