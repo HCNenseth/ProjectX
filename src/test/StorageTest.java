@@ -173,7 +173,7 @@ public class StorageTest
 
         Claim claim1 = new Claim.Builder(person1, house1)
                 .contacts("WITNESS 1: 986 161 15")
-                .date(Calendar.getInstance())
+                .date(LocalDate.of(randInt(1985, 2014), randInt(1,12), randInt(1,28)))
                 .description("Car damage: total.")
                 .type(Claim.Type.A)
                 .build();

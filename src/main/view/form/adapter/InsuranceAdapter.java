@@ -106,17 +106,17 @@ public abstract class InsuranceAdapter<T extends Insurance> {
                 .error(Loc.get("error_premium"))
                 .build();
 
-         amount = new FormValueNode.Builder(Loc.get("amount"))
-                 .regex(StringMatcher.getDigit())
-                 .value(editMode ? Double.toString(insurance.getAmount()) : "")
-                 .error(Loc.get("error_amount"))
-                 .build();
+        amount = new FormValueNode.Builder(Loc.get("amount"))
+                .regex(StringMatcher.getDigit())
+                .value(editMode ? Double.toString(insurance.getAmount()) : "")
+                .error(Loc.get("error_amount"))
+                .build();
 
-         deductible = new FormValueNode.Builder(Loc.get("deductible"))
-                 .regex(StringMatcher.getDigit())
-                 .value(editMode ? Double.toString(insurance.getDeductible()) : "")
-                 .error(Loc.get("error_amount"))
-                 .build();
+        deductible = new FormValueNode.Builder(Loc.get("deductible"))
+                .regex(StringMatcher.getDigit())
+                .value(editMode ? Double.toString(insurance.getDeductible()) : "")
+                .error(Loc.get("error_amount"))
+                .build();
 
         desc = new FormValueNode.Builder(Loc.get("desc"))
                 .regex(StringMatcher.getBaseString())
@@ -125,12 +125,9 @@ public abstract class InsuranceAdapter<T extends Insurance> {
                 .build();
 
         List<Enum> statusList = new ArrayList<>();
-        for(Status s : Status.values())
-        {
-            statusList.add(s);
-        }
+        for (Status s : Status.values()) { statusList.add(s); }
 
-        status = new FormChoiceNode.Builder(Loc.get("status"), statusList)
+        status = new FormChoiceNode.Builder<>(Loc.get("status"), statusList)
                 .active(Status.ACTIVE)
                 .build();
     }
