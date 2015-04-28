@@ -31,11 +31,11 @@ public class HouseView extends InsuranceView<House>
         getNode().add(new Label(getInsurance().getCity()), 1, rowNum++);
 
         // Year
-        getNode().add(new Label(Loc.get("build_year")), 0, rowNum);
+        getNode().add(new Label(Loc.get("year_built")), 0, rowNum);
         getNode().add(new Label(getInsurance().getYear() + ""), 1, rowNum++);
 
         // Material
-        getNode().add(new Label(Loc.get("house_material")), 0, rowNum);
+        getNode().add(new Label(Loc.get("material")), 0, rowNum);
         getNode().add(new Label(getInsurance().getMaterial().getValue()), 1, rowNum++);
 
         // Standard
@@ -43,7 +43,7 @@ public class HouseView extends InsuranceView<House>
         getNode().add(new Label(getInsurance().getStandard().getValue()), 1, rowNum++);
 
         // Standard
-        getNode().add(new Label(Loc.get("square_meter")), 0, rowNum);
+        getNode().add(new Label(Loc.get("square_meters")), 0, rowNum);
         getNode().add(new Label(getInsurance().getSquareMeter() + ""), 1, rowNum++);
 
         addClaimsTable();

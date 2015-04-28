@@ -39,7 +39,6 @@ public class Travel extends Insurance implements Serializable
 
     public static class Builder extends InsuranceBuilder<Builder, Travel>
     {
-
         private Continent continent = Continent.A;
 
         public Builder(Person customer)
@@ -59,7 +58,6 @@ public class Travel extends Insurance implements Serializable
             return new Travel(this);
         }
     }
-
 
     private Travel(Builder builder)
     {

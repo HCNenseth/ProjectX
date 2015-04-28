@@ -31,7 +31,6 @@ public class ClaimAdapter implements Formable<Claim>
         initNodes();
     }
 
-
     private void initNodes()
     {
         description = new FormValueNode.Builder(Loc.get("desc"))
@@ -67,6 +66,6 @@ public class ClaimAdapter implements Formable<Claim>
     @Override
     public void setOnDoneAction(Consumer<Claim> c)
     {
-        callBackEvent.setOnAction(e -> c.accept(person));
+       // callBackEvent.setOnAction(e -> c.accept(    ));
     }
 }
