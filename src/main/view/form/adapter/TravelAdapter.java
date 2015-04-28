@@ -21,7 +21,7 @@ import java.util.function.Consumer;
 public class TravelAdapter extends InsuranceAdapter<Travel> implements Formable<Travel>
 {
 
-    private FormChoiceNode type;
+    private FormChoiceNode continent;
 
     public TravelAdapter(Person customer, Travel travel)
     {
@@ -44,7 +44,7 @@ public class TravelAdapter extends InsuranceAdapter<Travel> implements Formable<
             typeList.add(t);
         }
 
-        type = new FormChoiceNode.Builder(Loc.get("continent"), typeList)
+        continent = new FormChoiceNode.Builder(Loc.get("continent"), typeList)
                 .required(false)
                 .active(Travel.Continent.A)
                 .build();
@@ -60,14 +60,15 @@ public class TravelAdapter extends InsuranceAdapter<Travel> implements Formable<
     public List<FormNode> getNodes()
     {
         List<FormNode> tmp = super.getNodes();
-        tmp.add(type);
+        tmp.add(continent);
         return tmp;
     }
 
     @Override
     public void callback()
     {
-        if (super.getEditMode()) {
+        if (super.getEditMode())
+        {
             super.getInsurance().setPremium(Integer.parseInt(super.getPremium().getValue()));
             super.getInsurance().setAmount(Integer.parseInt(super.getAmount().getValue()));
             super.getInsurance().setStatus((Status) super.getStatus().getData());
@@ -80,9 +81,8 @@ public class TravelAdapter extends InsuranceAdapter<Travel> implements Formable<
                 .premium(Integer.parseInt(super.getPremium().getValue()))
                 .amount(Integer.parseInt(super.getAmount().getValue()))
                 .status((Status)super.getStatus().getData())
+                .continent((Travel.Continent) continent.getData())
                 .build();
-
-        System.out.println(travel);
 
         super.setInsurance(travel);
 

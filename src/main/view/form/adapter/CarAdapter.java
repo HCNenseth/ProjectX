@@ -111,8 +111,8 @@ public class CarAdapter extends InsuranceAdapter<Car> implements Formable<Car>
     }
 
     @Override
-    public void callback() {
-
+    public void callback()
+    {
         if(super.getEditMode())
         {
             super.getInsurance().setMileage(Integer.parseInt(mileage.getValue()));
