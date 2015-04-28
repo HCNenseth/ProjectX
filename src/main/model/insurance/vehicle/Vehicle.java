@@ -17,7 +17,7 @@ public abstract class Vehicle extends Insurance implements Serializable
     private Person owner;
     private int horsePower;
     private int modelYear;
-    private LocalDate firstTimeRegistered;
+    private LocalDate registration;
 
     public Vehicle(InsuranceBuilder ib)
     {
@@ -34,9 +34,9 @@ public abstract class Vehicle extends Insurance implements Serializable
         this.owner = owner;
     }
 
-    public void setFirstTimeRegistered(LocalDate date)
+    public void setRegistration(LocalDate date)
     {
-        firstTimeRegistered = date;
+        registration = date;
     }
 
     public void setLicencePlate(String licencePlate)
@@ -64,8 +64,8 @@ public abstract class Vehicle extends Insurance implements Serializable
         return modelYear;
     }
 
-    public LocalDate getFirstTimeRegistered() {
-        return firstTimeRegistered;
+    public LocalDate getRegistration() {
+        return registration;
     }
 
     @Override

@@ -46,7 +46,7 @@ public class Boat extends Vehicle implements Serializable
 
         private Person owner = null;
         private int modelYear = 2000;
-        private LocalDate firstTimeRegistered = null;
+        private LocalDate registration = null;
         private int length = 0;
         private int horsePower = 0;
         private Propulsion propulsion = Propulsion.A;
@@ -88,9 +88,9 @@ public class Boat extends Vehicle implements Serializable
             return this;
         }
 
-        public Builder firstTimeRegistered(LocalDate date)
+        public Builder registration(LocalDate date)
         {
-            firstTimeRegistered = date;
+            registration = date;
             return this;
         }
 
@@ -107,7 +107,7 @@ public class Boat extends Vehicle implements Serializable
         setOwner(builder.owner);
         setLicencePlate(builder.licencePlate);
         setModelYear(builder.modelYear);
-        setFirstTimeRegistered(builder.firstTimeRegistered);
+        setRegistration(builder.registration);
         setHorsePower(builder.horsePower);
 
         length = builder.length;
