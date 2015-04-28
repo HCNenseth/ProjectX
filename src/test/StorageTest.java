@@ -277,13 +277,18 @@ public class StorageTest
             /* add some random car insurances */
             for (int j = 0; j < randInt(0,10); j++) {
                 Car car = new Car.Builder(tmp, "ABC123")
+                        .amount(randInt(1000, 4000))
+                        .premium(randInt(300, 700))
+                        .deductible(randInt(4000, 12000))
                         .bonus(randInt(50,80))
                         .mileage(randInt(4000, 20000))
+                        /*
                         .registrationYear(
                                 LocalDate.of(randInt(1980, 2014),
                                         randInt(1,12),
                                         randInt(1,28))
                                 )
+                                */
                         .type(Car.Type.A)
                         .amount(randInt(4000, 10000))
                         .build();
@@ -297,10 +302,15 @@ public class StorageTest
             /* add some random boat insurances */
             for (int j = 0; j < randInt(0,10); j++) {
                 Boat boat = new Boat.Builder(tmp, "ABC123")
+                        .amount(randInt(1000, 4000))
+                        .premium(randInt(300, 700))
+                        .deductible(randInt(4000, 12000))
                         .horsePower(randInt(20, 400))
                         .length(randInt(10, 50))
+                        /*
                         .registrationYear(LocalDate.of(randInt(1940, 2014),
                                 randInt(1,12), randInt(1,28)))
+                        */
                         .type(Boat.Type.A)
                         .build();
                 /* add some random claims */
@@ -314,6 +324,9 @@ public class StorageTest
             for (int j = 0; j < randInt(0,10); j++) {
                 House house = new House.Builder(tmp, streetName, randInt(1000, 9000) + "")
                         .material(House.Material.A)
+                        .amount(randInt(1000, 4000))
+                        .premium(randInt(300, 700))
+                        .deductible(randInt(4000, 12000))
                         .standard(House.Standard.A)
                         .type(House.Type.A)
                         .year(randInt(1900, 2014))
@@ -327,7 +340,11 @@ public class StorageTest
 
             /* add some random travel insurances */
             for (int j = 0; j < randInt(0,10); j++) {
-                Travel travel = new Travel.Builder(tmp).build();
+                Travel travel = new Travel.Builder(tmp)
+                        .amount(randInt(1000, 4000))
+                        .premium(randInt(300, 700))
+                        .deductible(randInt(4000, 12000))
+                        .build();
                 /* add some random claims */
                 for (int k = 0; k < randInt(0, 5); k++) {
                     claims.add(new Claim.Builder(tmp, travel).build());

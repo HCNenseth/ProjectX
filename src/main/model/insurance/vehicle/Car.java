@@ -5,11 +5,8 @@ import main.model.Status;
 import main.model.person.Person;
 import main.model.insurance.ConcreteType;
 import main.model.insurance.InsuranceBuilder;
-import sun.util.resources.LocaleData;
-
 
 import java.io.Serializable;
-import java.time.LocalDate;
 
 /**
  * Created by HansChristian on 15.04.2015.

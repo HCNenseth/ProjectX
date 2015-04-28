@@ -1,11 +1,13 @@
 package main.controller;
 
+import main.localization.Loc;
 import main.model.insurance.Insurance;
 import main.model.insurance.property.House;
 import main.model.insurance.travel.Travel;
 import main.model.insurance.vehicle.Boat;
 import main.model.insurance.vehicle.Car;
 import main.view.Resources;
+import main.view.concrete.*;
 import main.view.form.Form;
 import main.view.form.adapter.BoatAdapter;
 import main.view.form.adapter.CarAdapter;
@@ -27,7 +29,31 @@ class InsuranceController
 
     public static void view(Insurance i)
     {
-        // TODO implement view
+        InsuranceView view;
+
+        switch (i.identify()) {
+            case CAR:
+                view = new CarView((Car)i);
+                Resources.inst.getOtp().injectObservableTab(Loc.get("car_insurance"),
+                        view.getNode(), i, true);
+                return;
+            case BOAT:
+                view = new BoatView((Boat)i);
+                Resources.inst.getOtp().injectObservableTab(Loc.get("boat_insurance"),
+                        view.getNode(), i, true);
+                return;
+            case HOUSE:
+                view = new HouseView((House)i);
+                Resources.inst.getOtp().injectObservableTab(Loc.get("house_insurance"),
+                        view.getNode(), i, true);
+                return;
+            case TRAVEL:
+                view = new TravelView((Travel)i);
+                Resources.inst.getOtp().injectObservableTab(Loc.get("travel_insurance"),
+                        view.getNode(), i, true);
+                return;
+            default: return;
+        }
     }
 
     public static void edit(Insurance i)

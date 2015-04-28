@@ -111,6 +111,8 @@ public class Claim implements Serializable, FullTextSearch, Model
         date = builder.date;
         type = builder.type;
         status = builder.status;
+
+        insurance.addClaim(this);
     }
 
     public Person getCustomer()

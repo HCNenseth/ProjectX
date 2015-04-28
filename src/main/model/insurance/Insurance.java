@@ -3,16 +3,19 @@ package main.model.insurance;
 import main.localization.Loc;
 import main.model.FullTextSearch;
 import main.model.Model;
+import main.model.claim.Claim;
 import main.model.person.Person;
 import main.model.Status;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.LinkedList;
+import java.util.List;
 
 /**
  * Main insurance class.
  */
-public abstract class Insurance<T> implements
+public abstract class Insurance implements
         Serializable, Type, FullTextSearch, Model
 {
     private Person customer;
@@ -21,8 +24,10 @@ public abstract class Insurance<T> implements
     private double deductible;
     private LocalDate date;
     private String desc;
-
     private Status status;
+
+    private List<Claim> claims;
+
 
     /**
      * Insurance constructor.
@@ -39,9 +44,17 @@ public abstract class Insurance<T> implements
         this.status = ib.getStatus();
 
         customer.addInsurance(this);
+
+        claims = new LinkedList<>();
     }
 
-    public double getPremium() {
+    public void addClaim(Claim claim)
+    {
+        claims.add(claim);
+    }
+
+    public double getPremium()
+    {
         return premium;
     }
 
@@ -76,8 +89,9 @@ public abstract class Insurance<T> implements
         status = s;
     }
 
-
     public Person getCustomer() { return customer; }
+
+    public List<Claim> getClaims() { return claims; }
 
     public boolean query(String value)
     {

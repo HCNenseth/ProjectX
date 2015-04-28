@@ -61,6 +61,10 @@
     <string name="premium">Premium</string>
     <string name="amount">Amount</string>
     <string name="deductible">Deductible</string>
+    <string name="car_insurance">Car insurance</string>
+    <string name="boat_insurance">Boat insurance</string>
+    <string name="house_insurance">House insurance</string>
+    <string name="travel_insurance">Travel insurance</string>
 
     <!-- person -->
     <string name="firstname">Firstname</string>
