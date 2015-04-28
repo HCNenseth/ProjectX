@@ -13,10 +13,12 @@ import java.time.LocalDate;
  */
 public class Boat extends Vehicle implements Serializable
 {
+    private int registrationYear;
     private int length;
+    private int horsePower;
     private Propulsion propulsion;
     private Type type;
-
+    private Person owner;
 
     public enum Propulsion {
         A(Loc.get("boat_propulsion_a")),
@@ -45,31 +47,45 @@ public class Boat extends Vehicle implements Serializable
 
     public static class Builder extends InsuranceBuilder<Builder, Boat>
     {
-        private String licencePlate;
+        private String regNr;
 
-        private LocalDate firstTimeRegistered = null;
-        private int modelYear = 2000;
+        private Person owner = getCustomer();
+        private int registrationYear = 1990;
         private int length = 0;
         private int horsePower = 0;
         private Propulsion propulsion = Propulsion.A;
         private Type type = Type.A;
+        private int amount;
+        private int premium;
+        private String desc;
 
-
-        public Builder(Person customer, String licencePlate)
+        public Builder(Person customer, String regNr)
         {
             super.customer(customer);
-            this.licencePlate = licencePlate;
+            this.regNr = regNr;
         }
 
-        public Builder modelYear(int modelYear)
+        public Builder amount(int val)
         {
-            modelYear = modelYear;
+            amount = val;
             return this;
         }
 
-        public Builder firstTimeRegistered(LocalDate date)
+        public Builder premium(int val)
         {
-            firstTimeRegistered = date;
+            premium = val;
+            return this;
+        }
+
+        public Builder desc(String val)
+        {
+            desc = val;
+            return this;
+        }
+
+        public Builder registrationYear(int val)
+        {
+            registrationYear = val;
             return this;
         }
 
@@ -97,6 +113,12 @@ public class Boat extends Vehicle implements Serializable
             return this;
         }
 
+        public Builder owner(Person val)
+        {
+            owner = val;
+            return this;
+        }
+
         public Boat build()
         {
             return new Boat(this);
@@ -106,17 +128,23 @@ public class Boat extends Vehicle implements Serializable
 
     private Boat(Builder builder)
     {
-        super(builder);
-        setOwner(builder.getOwner());
-        setLicencePlate(builder.licencePlate);
-        setModelYear(builder.modelYear);
-        setFirstTimeRegistered(builder.firstTimeRegistered);
+        super(builder, builder.owner, builder.regNr);
 
-        setStatus(builder.getStatus());
+        registrationYear = builder.registrationYear;
         length = builder.length;
         horsePower = builder.horsePower;
         type = builder.type;
         propulsion = builder.propulsion;
+    }
+
+    public int getRegistrationYear()
+    {
+        return registrationYear;
+    }
+
+    public void setRegistrationYear(int registrationYear)
+    {
+        this.registrationYear = registrationYear;
     }
 
     public int getLength()
@@ -137,6 +165,16 @@ public class Boat extends Vehicle implements Serializable
     public void setType(Type type)
     {
         this.type = type;
+    }
+
+    public Person getOwner()
+    {
+        return owner;
+    }
+
+    public void setOwner(Person owner)
+    {
+        this.owner = owner;
     }
 
     public String getType()

@@ -65,6 +65,9 @@
     <string name="boat_insurance">Boat insurance</string>
     <string name="house_insurance">House insurance</string>
     <string name="travel_insurance">Travel insurance</string>
+    <string name="registration_year">Registration year</string>
+    <string name="horse_power">Horse power</string>
+    <string name="propulsion">Propulsion</string>
 
     <!-- person -->
     <string name="firstname">Firstname</string>
