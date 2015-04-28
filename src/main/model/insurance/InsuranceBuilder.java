@@ -15,6 +15,7 @@ public abstract class InsuranceBuilder<T, E>
     private Person customer;
     private double amount = 0;
     private double premium = 0;
+    private double deductible;
     private LocalDate date = null;
     private String desc = "";
     private Status status = Status.ACTIVE;
@@ -35,6 +36,12 @@ public abstract class InsuranceBuilder<T, E>
     public T premium(double premium)
     {
         this.premium = premium;
+        return (T)this;
+    }
+
+    public T deductible(double deductible)
+    {
+        this.deductible = deductible;
         return (T)this;
     }
 
@@ -62,6 +69,8 @@ public abstract class InsuranceBuilder<T, E>
     public double getAmount() { return amount; }
 
     public double getPremium() { return premium; }
+
+    public double getDeductible() { return deductible; }
 
     public LocalDate getDate() { return date; }
 

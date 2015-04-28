@@ -7,10 +7,7 @@ import main.model.claim.Claim;
 import main.model.insurance.Insurance;
 import main.model.person.Person;
 import main.view.Resources;
-import main.view.concrete.SearchResult;
-import main.view.table.ClaimTable;
-import main.view.table.InsuranceTable;
-import main.view.table.PersonTable;
+import main.view.concrete.SearchResultView;
 
 import java.util.List;
 
@@ -33,34 +30,15 @@ class SearchController
         List<Insurance> insurances = (List<Insurance>)Storage.getInstance().get(App.INSURANCES);
         List<Claim> claims = (List<Claim>)Storage.getInstance().get(App.CLAIMS);
 
-        /* person table and actions */
-        PersonTable personTable = new PersonTable();
-        personTable.setOnEditAction(PersonController::edit);
-        personTable.setOnViewAction(PersonController::view);
-        personTable.setOnDoubleClickAction(PersonController::view);
-
-        /* insurance table and actions */
-        InsuranceTable insuranceTable = new InsuranceTable();
-        insuranceTable.setOnEditAction(InsuranceController::edit);
-        insuranceTable.setOnViewAction(InsuranceController::view);
-        insuranceTable.setOnDoubleClickAction(InsuranceController::view);
-
-        /* claim table and actions */
-        ClaimTable claimTable = new ClaimTable();
-        claimTable.setOnEditAction(ClaimController::edit);
-        claimTable.setOnViewAction(ClaimController::view);
-        claimTable.setOnDoubleClickAction(ClaimController::view);
-
-        /* generate data for the tables */
-        persons.stream().filter(i -> i.query(keyword)).forEach(personTable::insertData);
-        insurances.stream().filter(i -> i.query(keyword)).forEach(insuranceTable::insertData);
-        claims.stream().filter(i -> i.query(keyword)).forEach(claimTable::insertData);
-
         /* put the tables into a search result view */
-        SearchResult searchResult = new SearchResult();
-        searchResult.addTable(personTable.getTable(), Loc.get("persons"));
-        searchResult.addTable(insuranceTable.getTable(), Loc.get("insurances"));
-        searchResult.addTable(claimTable.getTable(), Loc.get("insurances"));
+        SearchResultView searchResult = new SearchResultView();
+
+        searchResult.addTable(TableController.getPersonTable(persons.stream()
+                .filter(i -> i.query(keyword))).getTable(), Loc.get("persons"));
+        searchResult.addTable(TableController.getInsuranceTable(insurances.stream()
+                .filter(i -> i.query(keyword))).getTable(), Loc.get("insurances"));
+        searchResult.addTable(TableController.getClaimsTable(claims.stream()
+                .filter(i -> i.query(keyword))).getTable(), Loc.get("claims"));
 
         /* insert search result view into tab */
         Resources.inst.getOtp().injectObservableTab(Loc.get("search_results"),

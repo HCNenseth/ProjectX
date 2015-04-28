@@ -2,6 +2,7 @@ package main.view.form.adapter;
 
 import main.localization.Loc;
 import main.model.Status;
+import main.model.insurance.Insurance;
 import main.model.person.Person;
 import main.validator.StringMatcher;
 import main.view.form.node.FormChoiceNode;
@@ -13,7 +14,7 @@ import java.util.List;
 
 // TODO this code is not tested.
 
-public abstract class InsuranceAdapter<T> {
+public abstract class InsuranceAdapter<T extends Insurance> {
 
     /**
      * STATIC
@@ -73,6 +74,10 @@ public abstract class InsuranceAdapter<T> {
      */
     private T insurance = null;
 
+    /**
+     *
+     */
+    private FormValueNode deductible;
 
     // TODO what if customer and or ref by accident is null? Edit mode then?
     public InsuranceAdapter(Person customer, T ref)
@@ -94,19 +99,28 @@ public abstract class InsuranceAdapter<T> {
     }
 
     private void initialize()
-    {
+     {
         premium = new FormValueNode.Builder(Loc.get("premium"))
                 .regex(StringMatcher.getDigit())
+                .value(editMode ? Double.toString(insurance.getPremium()) : "")
                 .error(Loc.get("error_premium"))
                 .build();
 
-        amount = new FormValueNode.Builder(Loc.get("amount"))
-                .regex(StringMatcher.getDigit())
-                .error(Loc.get("error_amount"))
-                .build();
+         amount = new FormValueNode.Builder(Loc.get("amount"))
+                 .regex(StringMatcher.getDigit())
+                 .value(editMode ? Double.toString(insurance.getAmount()) : "")
+                 .error(Loc.get("error_amount"))
+                 .build();
+
+         deductible = new FormValueNode.Builder(Loc.get("deductible"))
+                 .regex(StringMatcher.getDigit())
+                 .value(editMode ? Double.toString(insurance.getDeductible()) : "")
+                 .error(Loc.get("error_amount"))
+                 .build();
 
         desc = new FormValueNode.Builder(Loc.get("desc"))
                 .regex(StringMatcher.getBaseString())
+                .value(editMode ? insurance.getDesc() : "")
                 .error(Loc.get("error_desc"))
                 .build();
 

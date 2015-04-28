@@ -17,7 +17,7 @@ import java.time.LocalDate;
 public class Car extends Vehicle implements Serializable
 {
 
-    private LocalDate registrationYear;
+    private int registrationYear;
     private int mileage;
     private int bonus;
 
@@ -64,7 +64,7 @@ public class Car extends Vehicle implements Serializable
 
         //Optional
         private Person owner = getCustomer();
-        private LocalDate registrationYear = null;
+        private int registrationYear = 1990;
         private int mileage = 0;
         private int bonus = 0;
         private int amount = 0;
@@ -79,7 +79,7 @@ public class Car extends Vehicle implements Serializable
             this.regNr = regNr;
         }
 
-        public Builder registrationYear(LocalDate val)
+        public Builder registrationYear(int val)
         {
             this.registrationYear = val;
             return this;
@@ -176,7 +176,7 @@ public class Car extends Vehicle implements Serializable
         return ConcreteType.CAR;
     }
 
-    public void setRegistrationYear(LocalDate registrationYear) {
+    public void setRegistrationYear(int registrationYear) {
         this.registrationYear = registrationYear;
     }
 
@@ -184,7 +184,7 @@ public class Car extends Vehicle implements Serializable
         this.bonus = bonus;
     }
 
-    public LocalDate getRegistrationYear() {
+    public int getRegistrationYear() {
         return registrationYear;
     }
 

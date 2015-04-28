@@ -10,7 +10,7 @@ import java.io.Serializable;
 /**
  * Created by HansChristian on 15.04.2015.
  */
-abstract class Vehicle extends Insurance implements Serializable
+public abstract class Vehicle extends Insurance implements Serializable
 {
     private Person owner;
     private String regNr;
@@ -27,6 +27,13 @@ abstract class Vehicle extends Insurance implements Serializable
         this.regNr = regNr;
     }
 
+    public Person getOwner() {
+        return owner;
+    }
+
+    public String getRegNr() {
+        return regNr;
+    }
 
     @Override
     public boolean query(String value)

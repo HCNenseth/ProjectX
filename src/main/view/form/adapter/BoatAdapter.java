@@ -16,26 +16,21 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Consumer;
 
-/**
- * Created by HansPetter on 23.04.2015.
- */
-public class BoatAdapter extends InsuranceAdapter implements Formable<Boat>
+public class BoatAdapter extends InsuranceAdapter<Boat> implements Formable<Boat>
 {
 
     private FormValueNode regNr;
-    private FormDateNode registrationYear;
+    private FormValueNode registrationYear;
     private FormValueNode length;
     private FormValueNode horsePower;
     private FormChoiceNode propulsion;
     private FormChoiceNode type;
-    private Boat boat;
 
     private BoatAdapter() { super(null); return; }
 
     public BoatAdapter(Person customer, Boat boat)
     {
-        super(customer, true);
-        this.boat = boat;
+        super(customer, boat);
         initNodes();
     }
 
@@ -49,20 +44,25 @@ public class BoatAdapter extends InsuranceAdapter implements Formable<Boat>
     {
         regNr = new FormValueNode.Builder(Loc.get("reg_number"))
                 .regex(StringMatcher.getRegnr())
+                .value(getEditMode() ? getInsurance().getRegNr() : "")
                 .error(Loc.get("error_reg_number"))
                 .build();
 
-        registrationYear = new FormDateNode.Builder(Loc.get("car_reg_year"),
-                super.getEditMode() ? boat.getRegistrationYear() : LocalDate.of(super.standardYear, super.standardMonth, super.standardDay))
+        registrationYear = new FormValueNode.Builder(Loc.get("car_reg_year"))
+                .regex(StringMatcher.getYear())
+                .value(getEditMode() ? Integer.toString(getInsurance().getRegistrationYear()) : "")
+                .error(Loc.get("error_reg_year"))
                 .build();
 
         length = new FormValueNode.Builder(Loc.get("boat_length"))
                 .regex(StringMatcher.getDigit())
+                .value(getEditMode() ? Integer.toString(getInsurance().getLength()) : "")
                 .error(Loc.get("error_boat_length"))
                 .build();
 
         horsePower = new FormValueNode.Builder(Loc.get("boat_horse_power"))
                 .regex(StringMatcher.getDigit())
+                .value(getEditMode() ? Integer.toString(getInsurance().getHorsePower()) : "")
                 .error(Loc.get("error_boat_horse_power"))
                 .build();
 
@@ -106,20 +106,20 @@ public class BoatAdapter extends InsuranceAdapter implements Formable<Boat>
 
         if(super.getEditMode())
         {
-            boat.setHorsePower(Integer.parseInt(horsePower.getValue()));
-            boat.setPremium(Integer.parseInt(super.getPremium().getValue()));
-            boat.setAmount(Integer.parseInt(super.getAmount().getValue()));
-            boat.setStatus((Status)super.getStatus().getData());
-            boat.setRegNr(regNr.getValue());
-            boat.setPropulsion((Boat.Propulsion) propulsion.getData());
-            System.out.println(boat);
+            getInsurance().setHorsePower(Integer.parseInt(horsePower.getValue()));
+            getInsurance().setPremium(Integer.parseInt(super.getPremium().getValue()));
+            getInsurance().setAmount(Integer.parseInt(super.getAmount().getValue()));
+            getInsurance().setStatus((Status) super.getStatus().getData());
+            getInsurance().setRegNr(regNr.getValue());
+            getInsurance().setPropulsion((Boat.Propulsion) propulsion.getData());
+            System.out.println(getInsurance());
             return;
         }
 
-        boat = new Boat.Builder(super.getCustomer(), regNr.getValue())
+        Boat boat = new Boat.Builder(super.getCustomer(), regNr.getValue())
                 .horsePower(Integer.parseInt(horsePower.getValue()))
                 .length(Integer.parseInt(length.getValue()))
-                .registrationYear(registrationYear.getData())
+                .registrationYear(Integer.parseInt(registrationYear.getValue()))
                 .premium(Integer.parseInt(super.getPremium().getValue()))
                 .amount(Integer.parseInt(super.getAmount().getValue()))
                 .propulsion((Boat.Propulsion) propulsion.getData())
@@ -133,6 +133,6 @@ public class BoatAdapter extends InsuranceAdapter implements Formable<Boat>
     @Override
     public void setOnDoneAction(Consumer<Boat> c)
     {
-        callBackEvent.setOnAction(e -> c.accept(boat));
+        callBackEvent.setOnAction(e -> c.accept(getInsurance()));
     }
 }

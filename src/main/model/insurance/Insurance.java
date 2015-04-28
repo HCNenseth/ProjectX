@@ -33,11 +33,32 @@ public abstract class Insurance<T> implements
         this.customer = ib.getCustomer();
         this.premium = ib.getPremium();
         this.amount = ib.getAmount();
+        this.deductible = ib.getDeductible();
         this.date = ib.getDate();
         this.desc = ib.getDesc();
         this.status = ib.getStatus();
 
         customer.addInsurance(this);
+    }
+
+    public double getPremium() {
+        return premium;
+    }
+
+    public double getAmount() {
+        return amount;
+    }
+
+    public double getDeductible() {
+        return deductible;
+    }
+
+    public LocalDate getDate() {
+        return date;
+    }
+
+    public String getDesc() {
+        return desc;
     }
 
     public void setPremium(int val)
