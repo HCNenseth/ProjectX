@@ -1,32 +1,25 @@
 package main.view.concrete;
 
 import javafx.scene.control.Label;
-import javafx.scene.control.TableView;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.Priority;
-import javafx.scene.layout.RowConstraints;
 import javafx.scene.text.Font;
 import main.App;
 import main.localization.Loc;
 import main.view.BasePane;
-import main.view.table.ClaimTable;
-import main.view.table.InsuranceTable;
-import main.view.table.PersonTable;
 import main.view.table.Table;
 
 /**
  * Created by alex on 4/24/15.
  */
-public class SearchResult extends BasePane
+public class SearchResultView
 {
     private GridPane gp;
     private int rowNum = 0;
     private int headerSize = 16;
 
-    public SearchResult()
+    public SearchResultView()
     {
-        super(Loc.get("search_results"));
         gp = new GridPane();
         gp.setMinWidth(App.WIDTH - (App.WIDTH / 20));
         gp.setMinHeight(App.HEIGHT - (App.HEIGHT / 20));

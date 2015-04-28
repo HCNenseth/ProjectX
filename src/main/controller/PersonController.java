@@ -3,6 +3,7 @@ package main.controller;
 import main.localization.Loc;
 import main.model.person.Person;
 import main.view.Resources;
+import main.view.concrete.PersonView;
 import main.view.form.Form;
 import main.view.form.adapter.PersonAdapter;
 
@@ -27,8 +28,10 @@ class PersonController
         Resources.inst.getOtp().closeObservableTabs(person);
 
         // TODO insert something more meaningful.
+        PersonView personView = new PersonView(person);
+
         Resources.inst.getOtp().injectObservableTab(person.getName(),
-                null, person, true);
+                personView.getNode(), person, true);
     }
 
     public static void edit(Person person)
