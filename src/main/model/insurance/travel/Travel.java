@@ -61,8 +61,6 @@ public class Travel extends Insurance implements Serializable
     }
 
 
-
-
     private Travel(Builder builder)
     {
         super(builder);
