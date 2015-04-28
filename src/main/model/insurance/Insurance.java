@@ -33,6 +33,7 @@ public abstract class Insurance<T> implements
         this.customer = ib.getCustomer();
         this.premium = ib.getPremium();
         this.amount = ib.getAmount();
+        this.deductible = ib.getDeductible();
         this.date = ib.getDate();
         this.desc = ib.getDesc();
         this.status = ib.getStatus();
