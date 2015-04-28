@@ -26,9 +26,9 @@ public class CarView extends InsuranceView<Car>
         getNode().add(new Label(getInsurance().getModelYear() + ""), 0, rowNum++);
 
         // registration year
-        if (getInsurance().getFirstTimeRegistered() != null) {
+        if (getInsurance().getRegistration() != null) {
             getNode().add(new Label(Loc.get("registration_year")), 0, rowNum);
-            getNode().add(new Label(getInsurance().getFirstTimeRegistered().toString()), 1, rowNum++);
+            getNode().add(new Label(getInsurance().getRegistration().toString()), 1, rowNum++);
         }
 
         // license plate

@@ -6,6 +6,7 @@ import main.model.insurance.Insurance;
 import main.model.person.Person;
 import main.validator.StringMatcher;
 import main.view.form.node.FormChoiceNode;
+import main.view.form.node.FormLabelNode;
 import main.view.form.node.FormNode;
 import main.view.form.node.FormValueNode;
 
@@ -30,6 +31,8 @@ public abstract class InsuranceAdapter<T extends Insurance> {
     /**
      * CLASS
      */
+
+    private FormLabelNode customerNode;
 
     /**
      * Insurance getAmount.
@@ -100,34 +103,38 @@ public abstract class InsuranceAdapter<T extends Insurance> {
 
     private void initialize()
      {
-        premium = new FormValueNode.Builder(Loc.get("premium"))
+         customerNode = new FormLabelNode.Builder(Loc.get("customer"), customer.getName())
+                 .build();
+
+         premium = new FormValueNode.Builder(Loc.get("premium"))
                 .regex(StringMatcher.getDigit())
                 .value(editMode ? Double.toString(insurance.getPremium()) : "")
                 .error(Loc.get("error_premium"))
                 .build();
 
-        amount = new FormValueNode.Builder(Loc.get("amount"))
+         amount = new FormValueNode.Builder(Loc.get("amount"))
                 .regex(StringMatcher.getDigit())
                 .value(editMode ? Double.toString(insurance.getAmount()) : "")
                 .error(Loc.get("error_amount"))
                 .build();
 
-        deductible = new FormValueNode.Builder(Loc.get("deductible"))
+         deductible = new FormValueNode.Builder(Loc.get("deductible"))
                 .regex(StringMatcher.getDigit())
                 .value(editMode ? Double.toString(insurance.getDeductible()) : "")
                 .error(Loc.get("error_amount"))
                 .build();
 
-        desc = new FormValueNode.Builder(Loc.get("desc"))
+         desc = new FormValueNode.Builder(Loc.get("desc"))
                 .regex(StringMatcher.getBaseString())
                 .value(editMode ? insurance.getDesc() : "")
                 .error(Loc.get("error_desc"))
                 .build();
 
-        List<Enum> statusList = new ArrayList<>();
-        for (Status s : Status.values()) { statusList.add(s); }
+         List<Enum> statusList = new ArrayList<>();
 
-        status = new FormChoiceNode.Builder<>(Loc.get("status"), statusList)
+         for (Status s : Status.values()) { statusList.add(s); }
+
+         status = new FormChoiceNode.Builder<>(Loc.get("status"), statusList)
                 .active(Status.ACTIVE)
                 .build();
     }
@@ -136,6 +143,7 @@ public abstract class InsuranceAdapter<T extends Insurance> {
     {
         List<FormNode> tmp = new ArrayList<>();
 
+        tmp.add(customerNode);
         tmp.add(amount);
         tmp.add(premium);
         tmp.add(desc);
