@@ -60,6 +60,10 @@ abstract class Property extends Insurance implements Serializable
         return year;
     }
 
+    public int getSquareMeter() {
+        return squareMeter;
+    }
+
     public Material getMaterial() {
         return material;
     }

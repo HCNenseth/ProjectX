@@ -40,6 +40,26 @@ public abstract class Insurance<T> implements
         customer.addInsurance(this);
     }
 
+    public double getPremium() {
+        return premium;
+    }
+
+    public double getAmount() {
+        return amount;
+    }
+
+    public double getDeductible() {
+        return deductible;
+    }
+
+    public LocalDate getDate() {
+        return date;
+    }
+
+    public String getDesc() {
+        return desc;
+    }
+
     public void setPremium(int val)
     {
         premium = val;

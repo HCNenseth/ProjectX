@@ -26,7 +26,7 @@ public class HouseAdapter extends InsuranceAdapter<House> implements Formable<Ho
     private FormValueNode postalCode;
     private FormValueNode city;
     private FormValueNode squareMeters;
-    private FormDateNode yearBuilt;
+    private FormValueNode yearBuilt;
     private FormChoiceNode type;
     private FormChoiceNode material;
 
@@ -47,27 +47,33 @@ public class HouseAdapter extends InsuranceAdapter<House> implements Formable<Ho
 
         street = new FormValueNode.Builder(Loc.get("street_address"))
                 .error(Loc.get("error_house_street"))
+                .value(getEditMode() ? getCustomer().getStreetAddress() : "")
                 .regex(StringMatcher.getStreetAddress())
                 .required(true)
                 .build();
 
         postalCode = new FormValueNode.Builder(Loc.get("postal_code"))
                 .error(Loc.get("error_house_code"))
+                .value(getEditMode() ? getCustomer().getPostalCode() : "")
                 .regex(StringMatcher.getPostalCode())
                 .required(true)
                 .build();
 
         city = new FormValueNode.Builder(Loc.get("city"))
                 .error(Loc.get("error_house_city"))
+                .value(getEditMode() ? getCustomer().getCity() : "")
                 .regex(StringMatcher.getBaseString())
                 .build();
 
-        yearBuilt = new FormDateNode.Builder(Loc.get("year_built"),
-                super.getEditMode() ? super.getCustomer().getDateOfBirth() : LocalDate.of(standardYear, standardMonth, standardDay))
+        yearBuilt = new FormValueNode.Builder(Loc.get("year_built"))
+                .error(Loc.get("error_house_city"))
+                .value(getEditMode() ? Integer.toString(getInsurance().getYear()) : "")
+                .regex(StringMatcher.getBaseString())
                 .build();
 
         squareMeters = new FormValueNode.Builder(Loc.get("square_meters"))
                 .error(Loc.get("error_house_squaremeters"))
+                .value(getEditMode() ? Integer.toString(getInsurance().getSquareMeter()) : "")
                 .regex(StringMatcher.getDigit())
                 .build();
 
@@ -78,6 +84,7 @@ public class HouseAdapter extends InsuranceAdapter<House> implements Formable<Ho
         }
 
         type = new FormChoiceNode.Builder<>(Loc.get("type"), typeList)
+                .active(getEditMode() ? getInsurance().getType() : House.Type.A)
                 .build();
 
         List<Enum> materialList = new ArrayList();
@@ -87,6 +94,7 @@ public class HouseAdapter extends InsuranceAdapter<House> implements Formable<Ho
         }
 
         material = new FormChoiceNode.Builder<>(Loc.get("material"), materialList)
+                .active(getEditMode() ? getInsurance().getMaterial() : House.Material.A)
                 .build();
 
     }
