@@ -11,20 +11,10 @@ import java.util.List;
 
 public class Travel extends Insurance implements Serializable
 {
-
-    /**
-     * List of zones the insurance is covering.
-     * Suggestions of zone:
-     * Just the continents. 
-     */
-    private List<String> zones;
-    private int sum;
-
+    
     private Travel(Builder builder)
     {
         super(builder);
-        zones = builder.zones;
-        sum = builder.sum;
     }
 
     public ConcreteType identify()
@@ -39,19 +29,6 @@ public class Travel extends Insurance implements Serializable
 
     public static class Builder extends InsuranceBuilder<Builder, Travel>
     {
-        private List<String> zones = new ArrayList<>();
-        private int sum;
-
-        public Builder addZone(String zone)
-        {
-            return this;
-        }
-
-        public Builder sum(int sum)
-        {
-
-            return this;
-        }
 
         public Builder(Person customer)
         {
