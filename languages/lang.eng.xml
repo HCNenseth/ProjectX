@@ -58,6 +58,10 @@
     <string name="new_customer">New customer</string>
     <string name="licence_plate">Licence plate</string>
     <string name="licence_plate_error">licence plate must contain...</string>
+    <string name="vehicle_registration">First time registered</string>
+    <string name="vehicle_registration_error">Invalid date.</string>
+    <string name="vehicle_horse_power">Horse power</string>
+    <string name="vehicle_horse_power_error">Horse power error.</string>
 
     <!-- insurance -->
     <string name="premium">Premium</string>
@@ -79,7 +83,7 @@
     <string name="date_of_birth">Date of birth</string>
 
     <!-- car -->
-    <string name="reg_number">Reg number</string>
+
     <string name="car_propulsion_a">Gas</string>
     <string name="car_propulsion_b">Diesel</string>
     <string name="car_propulsion_c">Electric</string>

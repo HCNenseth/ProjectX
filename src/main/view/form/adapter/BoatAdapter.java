@@ -48,7 +48,7 @@ public class BoatAdapter extends InsuranceAdapter<Boat> implements Formable<Boat
                 .error(Loc.get("licence_plate_error"))
                 .build();
 
-        registration = new FormDateNode.Builder(Loc.get("registration"),
+        registration = new FormDateNode.Builder(Loc.get("vehicle_registration"),
                 getEditMode() ? getInsurance().getRegistration() : LocalDate.of(standardYear, standardMonth, standardDay))
                 .required(false)
                 .build();
@@ -59,10 +59,10 @@ public class BoatAdapter extends InsuranceAdapter<Boat> implements Formable<Boat
                 .error(Loc.get("length_error"))
                 .build();
 
-        horsePower = new FormValueNode.Builder(Loc.get("horse_power"))
+        horsePower = new FormValueNode.Builder(Loc.get("vehicle_horse_power"))
                 .regex(StringMatcher.getDigit())
                 .value(getEditMode() ? Integer.toString(getInsurance().getHorsePower()) : "")
-                .error(Loc.get("horse_power_error"))
+                .error(Loc.get("vehicle_horse_power_error"))
                 .build();
 
         List<Enum> propulsionList = new ArrayList<>();
@@ -71,7 +71,7 @@ public class BoatAdapter extends InsuranceAdapter<Boat> implements Formable<Boat
             propulsionList.add(p);
         }
 
-        propulsion = new FormChoiceNode.Builder(Loc.get("propulsion"), propulsionList )
+        propulsion = new FormChoiceNode.Builder(Loc.get("boat_propulsion"), propulsionList )
                 .required(false)
                 .active(Boat.Propulsion.A)
                 .build();
