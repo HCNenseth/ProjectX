@@ -24,7 +24,7 @@ public class BoatView extends InsuranceView<Boat>
 
         // registration year
         getNode().add(new Label(Loc.get("registration_year")), 0, rowNum);
-        getNode().add(new Label(getInsurance().getRegistrationYear() + ""), 1, rowNum++);
+        getNode().add(new Label(getInsurance().getRegistration() + ""), 1, rowNum++);
 
         // license plate
         getNode().add(new Label(Loc.get("license_plate")), 0, rowNum);

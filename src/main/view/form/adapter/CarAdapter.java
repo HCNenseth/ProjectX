@@ -120,7 +120,7 @@ public class CarAdapter extends InsuranceAdapter<Car> implements Formable<Car>
         }
 
         Car car = new Car.Builder(super.getCustomer(), regNr.getValue())
-                .firstTimeRegistered(registration.getData())
+                .registration(registration.getData())
                 .mileage(Integer.parseInt(mileage.getValue()))
                 .amount(Integer.parseInt(super.getAmount().getValue()))
                 .premium(Integer.parseInt(super.getPremium().getValue()))
