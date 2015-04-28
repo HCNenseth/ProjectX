@@ -12,43 +12,75 @@ import java.io.Serializable;
 abstract class Property extends Insurance implements Serializable
 {
 
-    protected String postalCode;
-    protected String city;
-    protected int year;
-    protected Material material;
-    protected Type type;
-    protected int squareMeters;
-    protected Standard standard;
-    protected String streetAddress;
+    private String postalCode;
+    private String city;
+    private int year;
+    private Material material;
+    private int squareMeter;
+    private Standard standard;
+    private String streetAddress;
 
+    protected void setStreetAddress(String streetAddress) {
+        this.streetAddress = streetAddress;
+    }
+
+    protected void setPostalCode(String postalCode) {
+        this.postalCode = postalCode;
+    }
+
+    protected void setCity(String city) {
+        this.city = city;
+    }
+
+    protected void setYear(int year) {
+        this.year = year;
+    }
+
+    protected void setMaterial(Material material) {
+        this.material = material;
+    }
+
+    protected void setSquareMeter(int squareMeter) {
+        this.squareMeter = squareMeter;
+    }
+
+    protected void setStandard(Standard standard) {
+        this.standard = standard;
+    }
+
+    protected String getPostalCode() {
+        return postalCode;
+    }
+
+    protected String getCity() {
+        return city;
+    }
+
+    protected int getYear() {
+        return year;
+    }
+
+    protected Material getMaterial() {
+        return material;
+    }
+
+    protected Standard getStandard() {
+        return standard;
+    }
+
+    protected String getStreetAddress() {
+        return streetAddress;
+    }
 
     public Property(InsuranceBuilder ib) {
         super(ib);
-
-        city = ib.getCity();
-
-
     }
 
-    public enum Type {
-        A(Loc.get("house_type_a")),
-        B(Loc.get("house_type_b")),
-        C(Loc.get("house_type_c"));
-
-        String value;
-
-        Type(String value) { this.value = value; }
-
-        public String getValue() { return value; }
-
-        @Override
-        public String toString() { return getValue(); }
-    }
 
     public enum Material {
-        A(Loc.get("house_material_a")),
-        B(Loc.get("house_material_b")),
-        C(Loc.get("house_material_c"));
+        A(Loc.get("property_material_a")),
+        B(Loc.get("property_material_b")),
+        C(Loc.get("property_material_c"));
 
         String value;
 
@@ -61,9 +93,9 @@ abstract class Property extends Insurance implements Serializable
     }
 
     public enum Standard {
-        A(Loc.get("house_standard_a")),
-        B(Loc.get("house_standard_b")),
-        C(Loc.get("house_standard_c"));
+        A(Loc.get("property_standard_a")),
+        B(Loc.get("property_standard_b")),
+        C(Loc.get("property_standard_c"));
 
         String value;
 

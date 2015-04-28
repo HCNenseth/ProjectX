@@ -1,5 +1,6 @@
 package main.model.insurance.property;
 
+import main.localization.Loc;
 import main.model.insurance.ConcreteType;
 import main.model.insurance.InsuranceBuilder;
 import main.model.person.Person;
@@ -11,18 +12,57 @@ import java.io.Serializable;
  */
 public class VacationHouse extends Property implements Serializable {
 
+    private Type type;
+
+    public enum Type {
+        A(Loc.get("vacation_house_type_a")),
+        B(Loc.get("vacation_house_type_b")),
+        C(Loc.get("vacation_house_type_c"));
+
+        String value;
+
+        Type(String value) { this.value = value; }
+
+        public String getValue() { return value; }
+
+        @Override
+        public String toString() { return getValue(); }
+    }
+
 
     public VacationHouse(Builder builder) {
         super(builder);
 
-        super.streetAddress = builder.streetAddress;
-        super.postalCode = builder.postalCode;
-        super.city = builder.city;
-        super.year = builder.year;
-        super.squareMeters = builder.squareMeters;
-        super.type = builder.type;
-        super.material = builder.material;
-        super.standard = builder.standard;
+        setStreetAddress(builder.streetAddress);
+        setPostalCode(builder.postalCode);
+        setMaterial(builder.material);
+        setSquareMeter(builder.squareMeter);
+        setStandard(builder.standard);
+        setCity(builder.city);
+        setType(builder.type);
+        setYear(builder.year);
+    }
+
+    public void setType(VacationHouse.Type type)
+    {
+        this.type = type;
+    }
+
+    public VacationHouse.Type getType()
+    {
+        return type;
+    }
+
+    @Override
+    public boolean query(String value)
+    {
+        return super.query(value)
+                || (getStreetAddress() != null && getStreetAddress().contains(value))
+                || (getPostalCode() != null && getPostalCode().contains(value))
+                || (getCity() != null && getCity().contains(value))
+                || (getType() != null && getType().getValue().contains(value))
+                || (getMaterial() != null && getMaterial().getValue().contains(value))
+                || (getStandard() != null && getStandard().getValue().contains(value));
     }
 
     @Override
@@ -35,22 +75,12 @@ public class VacationHouse extends Property implements Serializable {
     {
         protected String streetAddress;
         protected String postalCode;
-        protected String city = "";
-        protected int year = 2000;
-        protected int squareMeters = 100;
+        protected String city = "Unknown";
+        protected int year = -1;
+        protected int squareMeter = -1;
         protected Type type = Type.A;
         protected Material material = Material.A;
         protected Standard standard = Standard.A;
-
-        public String getStreetAddress()
-        {
-            return streetAddress;
-        }
-
-        public String getCity()
-        {
-            return city;
-        }
 
         public Builder(Person customer,
                        String streetAddress,
@@ -71,9 +101,10 @@ public class VacationHouse extends Property implements Serializable {
             this.year = year; return this;
         }
 
-        public Builder squareMeters(int squareMeters)
+        public Builder squareMeter(int squareMeter)
         {
-            this.squareMeters = this.squareMeters; return this;
+            this.squareMeter = squareMeter;
+            return this;
         }
 
         public Builder type(Type type)
