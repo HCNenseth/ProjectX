@@ -26,7 +26,6 @@
     <string name="langIt">Italian</string>
     <string name="submit">Submit</string>
     <string name="type">Type</string>
-
     <string name="save">Save</string>
 
     <!-- search -->
@@ -83,14 +82,13 @@
     <string name="date_of_birth">Date of birth</string>
 
     <!-- car -->
-
     <string name="car_propulsion_a">Gas</string>
     <string name="car_propulsion_b">Diesel</string>
     <string name="car_propulsion_c">Electric</string>
 
-    <string name="car_type_a">Compact</string>
-    <string name="car_type_b">Mid-size</string>
-    <string name="car_type_c">Full-size</string>
+    <string name="car_type_a">Compact car</string>
+    <string name="car_type_b">Mid-size car</string>
+    <string name="car_type_c">Full-size car</string>
     <string name="car_type_d">Sports car</string>
 
     <!-- boat -->

@@ -1,22 +1,92 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <language name="norwegian">
-    <string name="menu_fileOpen">Åpne fil</string>
-    <string name="menu_fileSave">Lagre</string>
-    <string name="menu_fileSaveAs">Lagre som</string>
-    <string name="menu_fileClose">Avslutt</string>
+    <string name="menu_group_file">Fil</string>
+    <string name="menu_file_open">Åpne fil</string>
+    <string name="menu_file_save">Lagre</string>
+    <string name="menu_file_save_as">Lagre som</string>
+    <string name="menu_file_close">Avslutt</string>
+
+    <string name="menu_group_edit">Endre</string>
+    <string name="menu_group_statistics">Statistikk</string>
+    <string name="menu_statistics">Statistikk</string>
+
+    <!-- commons -->
+    <string name="theme">Tema</string>
+    <string name="new">Ny</string>
+    <string name="edit">Endre</string>
+    <string name="view">Vis</string>
+    <string name="data_files">Data filer (*.dat)</string>
+    <string name="language">Språk</string>
+    <string name="default">Standard</string>
+    <string name="inverse">Inverse</string>
+    <string name="langEn">Engelsk</string>
+    <string name="langNo">Norsk</string>
+    <string name="langGe">Tysk</string>
+    <string name="langFr">Fransk</string>
+    <string name="langIt">Italiensk</string>
+    <string name="submit">Send</string>
+    <string name="type">Type</string>
+    <string name="save">Lagre</string>
+
+    <!-- search -->
+    <string name="search">Søk</string>
+    <string name="search_results">Søke resultater</string>
+    <string name="search_error">Nøkkelord må innehold mellom 2 og 20 bokstaver.</string>
+    <string name="persons">Personer</string>
+    <string name="insurances">Forsikringer</string>
+    <string name="claims">Skademeldinger</string>
+
+    <!-- statuses -->
+    <string name="status">Status</string>
+    <string name="active">Aktiv</string>
+    <string name="inactive">Inaktiv</string>
+    <string name="pending">Ventende</string>
+    <string name="incomplete">Ufullstendig</string>
+
+    <!-- shared -->
+    <string name="date">Dato</string>
+    <string name="description">Beskrivelse</string>
+    <string name="street_address">Gateadresse</string>
+    <string name="street_address_error">Gateadresse må inneholde...</string>
+    <string name="postal_code">Postnummer</string>
+    <string name="postal_code_error">Postnummer må kun inneholde siffer.</string>
+    <string name="city">By</string>
+    <string name="city_error">By må inneholde...</string>
+    <string name="owner">Eier</string>
+    <string name="customer">Kunde</string>
+    <string name="new_customer">Ny kunde</string>
+    <string name="licence_plate">Registreringnummer</string>
+    <string name="licence_plate_error">Registreringsnummer må inneholde...</string>
+    <string name="vehicle_registration">Førstegangs registrert</string>
+    <string name="vehicle_registration_error">Registreringsnummer må inneholde...</string>
+    <string name="vehicle_horse_power">Hestekrefter</string>
+    <string name="vehicle_horse_power_error">Hestekrefter må innehold.</string>
+
+    <!-- insurance -->
+    <string name="premium">Premie</string>
+    <string name="amount">Forsikringsbeløp</string>
+    <string name="deductible">Deductible</string>
+    <string name="car_insurance">Bil forsikring</string>
+    <string name="boat_insurance">Båt forsikring</string>
+    <string name="house_insurance">Hus forsikring</string>
+    <string name="travel_insurance">Reise forsikring</string>
 
     <!-- person -->
     <string name="firstname">Fornavn</string>
     <string name="lastname">Etternavn</string>
+    <string name="firstname_error">Fornavn må inneholde ...</string>
+    <string name="lastname_error">Etternavn må inneholde ...</string>
+    <string name="date_of_birth">Fødselsdato</string>
+
 
     <!-- car -->
     <string name="car_propulsion_a">Bensin</string>
     <string name="car_propulsion_b">Diesel</string>
     <string name="car_propulsion_c">Elektrisk</string>
 
-    <string name="car_type_a">Liten</string>
-    <string name="car_type_b">Medium</string>
-    <string name="car_type_c">Stor</string>
+    <string name="car_type_a">Liten bil</string>
+    <string name="car_type_b">Medium bil</string>
+    <string name="car_type_c">Stor bil</string>
     <string name="car_type_d">Sportsbil</string>
 
     <!-- boat -->
@@ -33,4 +103,38 @@
     <string name="claim_type_a">Tyveri</string>
     <string name="claim_type_b">Skade</string>
     <string name="claim_type_c">Bilulykke</string>
+
+    <!-- house -->
+    <string name="house_type_a">Enebolig</string>
+    <string name="house_type_b">Leilighet</string>
+    <string name="house_type_c">Husbåt</string>
+
+    <string name="house_material_a">House material a</string>
+    <string name="house_material_b">House material b</string>
+    <string name="house_material_c">House material c</string>
+
+    <string name="house_standard_a">House standard a</string>
+    <string name="house_standard_b">House standard b</string>
+    <string name="house_standard_c">House standard c</string>
+
+    <string name="year_built">Byggeår</string>
+    <string name="square_meters">Kvadratmeter</string>
+    <string name="material">Materiale</string>
+
+    <!-- travel -->
+    <string name="continent_a">Europa</string>
+    <string name="continent_b">Asia</string>
+    <string name="continent_c">Afrika</string>
+    <string name="continent_d">Amerika</string>
+    <string name="continent_e">Antarktis</string>
+    <string name="continent_f">Krigssone</string>
+
+    <!-- Claim -->
+    <string name="claim_type_a">Tyvere</string>
+    <string name="claim_type_b">Sykdom</string>
+    <string name="claim_type_c">Ulykket</string>
+
+    <string name="payment_status_a">Avventer krav utbetaling</string>
+    <string name="payment_status_b">Krav avvist</string>
+    <string name="payment_status_c">Krav utbetalt.</string>
 </language>
