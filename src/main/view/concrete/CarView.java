@@ -1,7 +1,6 @@
 package main.view.concrete;
 
 import javafx.scene.control.Label;
-import main.controller.TableController;
 import main.localization.Loc;
 import main.model.insurance.vehicle.Car;
 
@@ -17,7 +16,7 @@ public class CarView extends InsuranceView<Car>
         addFields();
     }
 
-    public void addFields()
+    private void addFields()
     {
         // Type
         getNode().add(new Label(Loc.get("type")), 0, rowNum);
@@ -42,8 +41,6 @@ public class CarView extends InsuranceView<Car>
         getNode().add(new Label(Loc.get("propulsion")), 0, rowNum);
         getNode().add(new Label(getInsurance().getPropulsion() + ""), 1, rowNum++);
 
-        getNode().add(new Label(Loc.get("claims")), 0, rowNum);
-        getNode().add(TableController.getClaimsTable(getInsurance().getClaims().stream())
-                .getTable(), 0, rowNum++);
+        addClaimsTable();
     }
 }
