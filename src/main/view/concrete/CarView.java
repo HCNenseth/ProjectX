@@ -1,14 +1,49 @@
 package main.view.concrete;
 
+import javafx.scene.control.Label;
+import main.controller.TableController;
+import main.localization.Loc;
 import main.model.insurance.vehicle.Car;
 
 /**
  * Created by alex on 4/28/15.
  */
-public class CarView extends InsuranceView
+public class CarView extends InsuranceView<Car>
 {
     public CarView(Car car)
     {
         super(car);
+
+        addFields();
+    }
+
+    public void addFields()
+    {
+        // Type
+        getNode().add(new Label(Loc.get("type")), 0, rowNum);
+        getNode().add(new Label(getInsurance().getType()), 1, rowNum++);
+
+        getNode().add(new Label(Loc.get("model_year")), 0, rowNum);
+        getNode().add(new Label(getInsurance().getModelYear() + ""), 0, rowNum++);
+
+        // registration year
+        getNode().add(new Label(Loc.get("registration_year")), 0, rowNum);
+        getNode().add(new Label(getInsurance().getFirstTimeRegistered().toString()), 1, rowNum++);
+
+        // license plate
+        getNode().add(new Label(Loc.get("license_plate")), 0, rowNum);
+        getNode().add(new Label(getInsurance().getLicencePlate()), 0, rowNum++);
+
+        // horse_power
+        getNode().add(new Label(Loc.get("horse_power")), 0, rowNum);
+        getNode().add(new Label(getInsurance().getHorsePower() + ""), 1, rowNum++);
+
+        // propulsion
+        getNode().add(new Label(Loc.get("propulsion")), 0, rowNum);
+        getNode().add(new Label(getInsurance().getPropulsion() + ""), 1, rowNum++);
+
+        getNode().add(new Label(Loc.get("claims")), 0, rowNum);
+        getNode().add(TableController.getClaimsTable(getInsurance().getClaims().stream())
+                .getTable(), 0, rowNum++);
     }
 }

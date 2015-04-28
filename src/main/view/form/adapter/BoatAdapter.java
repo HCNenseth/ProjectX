@@ -44,7 +44,7 @@ public class BoatAdapter extends InsuranceAdapter<Boat> implements Formable<Boat
     {
         regNr = new FormValueNode.Builder(Loc.get("reg_number"))
                 .regex(StringMatcher.getRegnr())
-                .value(getEditMode() ? getInsurance().getRegNr() : "")
+                .value(getEditMode() ? getInsurance().getLicencePlate() : "")
                 .error(Loc.get("error_reg_number"))
                 .build();
 
@@ -110,7 +110,7 @@ public class BoatAdapter extends InsuranceAdapter<Boat> implements Formable<Boat
             getInsurance().setPremium(Integer.parseInt(super.getPremium().getValue()));
             getInsurance().setAmount(Integer.parseInt(super.getAmount().getValue()));
             getInsurance().setStatus((Status) super.getStatus().getData());
-            getInsurance().setRegNr(regNr.getValue());
+            getInsurance().setLicencePlate(regNr.getValue());
             getInsurance().setPropulsion((Boat.Propulsion) propulsion.getData());
             System.out.println(getInsurance());
             return;

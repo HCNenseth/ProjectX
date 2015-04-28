@@ -280,7 +280,7 @@ public class StorageTest
                         .amount(randInt(1000, 4000))
                         .premium(randInt(300, 700))
                         .deductible(randInt(4000, 12000))
-                        .bonus(randInt(50,80))
+                        //.bonus(randInt(50,80))
                         .mileage(randInt(4000, 20000))
                         /*
                         .registrationYear(

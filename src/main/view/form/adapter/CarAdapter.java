@@ -23,7 +23,7 @@ public class CarAdapter extends InsuranceAdapter<Car> implements Formable<Car>
 {
 
     private FormValueNode regNr;
-    private FormValueNode registrationYear;
+    private FormDateNode registration;
     private FormValueNode mileage;
     private FormChoiceNode type;
     private FormChoiceNode propulsion;
@@ -51,14 +51,14 @@ public class CarAdapter extends InsuranceAdapter<Car> implements Formable<Car>
     {
         regNr = new FormValueNode.Builder(Loc.get("regNr"))
                 .error(Loc.get("error_reg_number"))
-                .value(getEditMode() ? getInsurance().getRegNr() : "")
+                .value(getEditMode() ? getInsurance().getLicencePlate() : "")
                 .regex(StringMatcher.getRegnr())
                 .build();
 
-        registrationYear = new FormValueNode.Builder(Loc.get("car_reg_year"))
-                .error(Loc.get("error_reg_year"))
-                .value(getEditMode() ? Integer.toString(getInsurance().getRegistrationYear()) : "")
-                .regex(StringMatcher.getYear())
+        registration = new FormDateNode.Builder(Loc.get("car_reg_year"),
+                 getEditMode() ? getInsurance().getFirstTimeRegistered() : LocalDate.of(standardYear, standardMonth, standardDay))
+                //.error(Loc.get("error_reg_year"))
+                //.regex(StringMatcher.getYear())
                 .build();
 
         mileage = new FormValueNode.Builder(Loc.get("mileage"))
@@ -96,7 +96,7 @@ public class CarAdapter extends InsuranceAdapter<Car> implements Formable<Car>
     public List<FormNode> getNodes() {
         List<FormNode> tmp = super.getNodes();
         tmp.add(regNr);
-        tmp.add(registrationYear);
+        tmp.add(registration);
         tmp.add(mileage);
         tmp.add(type);
         tmp.add(propulsion);
@@ -110,7 +110,7 @@ public class CarAdapter extends InsuranceAdapter<Car> implements Formable<Car>
         if(super.getEditMode())
         {
             super.getInsurance().setMileage(Integer.parseInt(mileage.getValue()));
-            super.getInsurance().setRegNr(regNr.getValue());
+            super.getInsurance().setLicencePlate(regNr.getValue());
             super.getInsurance().setPremium(Integer.parseInt(super.getPremium().getValue()));
             super.getInsurance().setAmount(Integer.parseInt(super.getAmount().getValue()));
             super.getInsurance().setStatus((Status) super.getStatus().getData());
@@ -120,7 +120,7 @@ public class CarAdapter extends InsuranceAdapter<Car> implements Formable<Car>
         }
 
         Car car = new Car.Builder(super.getCustomer(), regNr.getValue())
-                .registrationYear(Integer.parseInt(registrationYear.getValue()))
+                .firstTimeRegistered(registration.getData())
                 .mileage(Integer.parseInt(mileage.getValue()))
                 .amount(Integer.parseInt(super.getAmount().getValue()))
                 .premium(Integer.parseInt(super.getPremium().getValue()))

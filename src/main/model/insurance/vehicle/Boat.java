@@ -128,7 +128,7 @@ public class Boat extends Vehicle implements Serializable
 
     private Boat(Builder builder)
     {
-        super(builder, builder.owner, builder.regNr);
+        super(builder /*, builder.owner, builder.regNr */);
 
         registrationYear = builder.registrationYear;
         length = builder.length;
