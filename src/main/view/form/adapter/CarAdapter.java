@@ -23,7 +23,7 @@ public class CarAdapter extends InsuranceAdapter<Car> implements Formable<Car>
 {
 
     private FormValueNode regNr;
-    private FormDateNode registrationYear;
+    private FormValueNode registrationYear;
     private FormValueNode mileage;
     private FormChoiceNode type;
     private FormChoiceNode propulsion;
@@ -50,16 +50,20 @@ public class CarAdapter extends InsuranceAdapter<Car> implements Formable<Car>
     private void initNodes()
     {
         regNr = new FormValueNode.Builder(Loc.get("regNr"))
-                .error(Loc.get("regNr_error"))
+                .error(Loc.get("error_reg_number"))
+                .value(getEditMode() ? getInsurance().getRegNr() : "")
                 .regex(StringMatcher.getRegnr())
                 .build();
 
-        registrationYear = new FormDateNode.Builder(Loc.get("car_reg_year"),
-                super.getEditMode() ? super.getInsurance().getRegistrationYear() : LocalDate.of(super.standardYear, super.standardMonth, super.standardDay))
+        registrationYear = new FormValueNode.Builder(Loc.get("car_reg_year"))
+                .error(Loc.get("error_reg_year"))
+                .value(getEditMode() ? Integer.toString(getInsurance().getRegistrationYear()) : "")
+                .regex(StringMatcher.getYear())
                 .build();
 
         mileage = new FormValueNode.Builder(Loc.get("mileage"))
                 .error(Loc.get("mileage"))
+                .value(getEditMode() ? Integer.toString(getInsurance().getMileage()) : "")
                 .regex(StringMatcher.getDigit())
                 .required(false)
                 .build();
@@ -116,7 +120,7 @@ public class CarAdapter extends InsuranceAdapter<Car> implements Formable<Car>
         }
 
         Car car = new Car.Builder(super.getCustomer(), regNr.getValue())
-                .registrationYear(registrationYear.getData())
+                .registrationYear(Integer.parseInt(registrationYear.getValue()))
                 .mileage(Integer.parseInt(mileage.getValue()))
                 .amount(Integer.parseInt(super.getAmount().getValue()))
                 .premium(Integer.parseInt(super.getPremium().getValue()))
