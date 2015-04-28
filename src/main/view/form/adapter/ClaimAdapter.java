@@ -3,6 +3,7 @@ package main.view.form.adapter;
 import main.localization.Loc;
 import main.model.Status;
 import main.model.claim.Claim;
+import main.model.insurance.travel.Travel;
 import main.model.person.Person;
 import main.view.form.Formable;
 import main.view.form.node.FormChoiceNode;
@@ -21,7 +22,6 @@ public class ClaimAdapter implements Formable<Claim>
     private FormValueNode description;
     private FormChoiceNode status;
     private FormValueNode contacts;
-
 
     private Person customer;
 
@@ -59,5 +59,4 @@ public class ClaimAdapter implements Formable<Claim>
     {
         callBackEvent.setOnAction(e -> c.accept(person));
     }
-
 }
