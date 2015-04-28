@@ -8,6 +8,7 @@ import main.model.Status;
 import main.model.insurance.Insurance;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.Calendar;
 
 /**
@@ -18,7 +19,7 @@ public class Claim implements Serializable, FullTextSearch, Model
     private String desc;
     private String contacts;
     private double amount;
-    private Calendar date;
+    private LocalDate date;
     private Person customer;
     private Insurance insurance;
     private Type type;
@@ -57,7 +58,7 @@ public class Claim implements Serializable, FullTextSearch, Model
         private String description = "";
         private String contacts = "";
         private double amount = 0;
-        private Calendar date;
+        private LocalDate date;
         private Type type = Type.A;
         private Status status = Status.ACTIVE;
 
@@ -84,7 +85,7 @@ public class Claim implements Serializable, FullTextSearch, Model
             return this;
         }
 
-        public Builder date(Calendar val)
+        public Builder date(LocalDate val)
         {
             date = val;
             return this;
@@ -125,7 +126,32 @@ public class Claim implements Serializable, FullTextSearch, Model
         return insurance;
     }
 
-    public Calendar getDate() { return date; }
+    public LocalDate getDate() { return date; }
+
+    public String getDesc()
+    {
+        return desc;
+    }
+
+    public String getContacts()
+    {
+        return contacts;
+    }
+
+    public double getAmount()
+    {
+        return amount;
+    }
+
+    public Type getType()
+    {
+        return type;
+    }
+
+    public PaymentStatus getPaymentStatus()
+    {
+        return paymentStatus;
+    }
 
     public boolean query(String value)
     {

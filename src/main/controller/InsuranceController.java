@@ -83,7 +83,7 @@ class InsuranceController
             default: return;
         }
 
-        Resources.inst.getOtp().injectObservableTab(i.getCustomer().getName(),
+        Resources.inst.getOtp().injectObservableTab(i.identify().getValue(),
                 f.getForm(), i, true);
     }
 

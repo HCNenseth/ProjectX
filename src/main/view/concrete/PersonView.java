@@ -44,29 +44,36 @@ public class PersonView
 
     public void initPersonFields()
     {
+        // firstname
         gp.add(new Label(Loc.get("firstname")), 0, rowNum);
         gp.add(new Label(person.getFirstname()), 1, rowNum++);
 
+        // lastname
         gp.add(new Label(Loc.get("lastname")), 0, rowNum);
         gp.add(new Label(person.getLastname()), 1, rowNum++);
 
+        // street address
         gp.add(new Label(Loc.get("street_address")), 0, rowNum);
         gp.add(new Label(person.getStreetAddress()), 1, rowNum++);
 
+        // postal code
         gp.add(new Label(Loc.get("postal_code")), 0, rowNum);
         gp.add(new Label(person.getPostalCode()), 1, rowNum++);
 
+        // city
         gp.add(new Label(Loc.get("city")), 0, rowNum);
         gp.add(new Label(person.getCity()), 1, rowNum++);
 
+        // date of birth
         gp.add(new Label(Loc.get("date_of_birth")), 0, rowNum);
         gp.add(new Label(person.getDateOfBirth().toString()), 1, rowNum++);
 
-
+        // insurances table
         gp.add(new Label(Loc.get("insurances")), 0, rowNum++);
         gp.add(TableController.getInsuranceTable(person.getInsurances().stream())
                 .getTable(), 0, rowNum++, 2, 1);
 
+        // claims table
         gp.add(new Label(Loc.get("claims")), 0, rowNum++);
         gp.add(TableController.getClaimsTable(person.getClaims().stream())
                 .getTable(), 0, rowNum++, 2, 1);

@@ -28,7 +28,6 @@ public abstract class Insurance implements
 
     private List<Claim> claims;
 
-
     /**
      * Insurance constructor.
      * @param ib
