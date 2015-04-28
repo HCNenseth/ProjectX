@@ -3,10 +3,10 @@ package main.view.form.adapter;
 import main.localization.Loc;
 import main.model.Status;
 import main.model.claim.Claim;
-import main.model.insurance.travel.Travel;
 import main.model.person.Person;
 import main.view.form.Formable;
 import main.view.form.node.FormChoiceNode;
+import main.view.form.node.FormNode;
 import main.view.form.node.FormValueNode;
 
 import java.util.ArrayList;
@@ -43,9 +43,19 @@ public class ClaimAdapter implements Formable<Claim>
         List<Enum> statusList = new ArrayList();
         for(Status s : Status.values()) { statusList.add(s); }
 
-        status = new FormChoiceNode.Builder<>(Loc.get("getStatus"), statusList)
+        status = new FormChoiceNode.Builder<>(Loc.get("status"), statusList)
             .active(Status.ACTIVE )
             .build();
+    }
+
+    public List<FormNode> getNodes()
+    {
+        List<FormNode> tmp = new ArrayList<>();
+        tmp.add(description);
+        tmp.add(contacts);
+        tmp.add(status);
+
+        return tmp;
     }
 
     @Override

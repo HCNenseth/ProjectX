@@ -131,7 +131,6 @@ public abstract class InsuranceAdapter<T extends Insurance> {
                 .build();
 
          List<Enum> statusList = new ArrayList<>();
-
          for (Status s : Status.values()) { statusList.add(s); }
 
          status = new FormChoiceNode.Builder<>(Loc.get("status"), statusList)
@@ -142,7 +141,6 @@ public abstract class InsuranceAdapter<T extends Insurance> {
     protected List<FormNode> getNodes()
     {
         List<FormNode> tmp = new ArrayList<>();
-
         tmp.add(customerNode);
         tmp.add(amount);
         tmp.add(premium);

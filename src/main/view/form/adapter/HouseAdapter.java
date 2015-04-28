@@ -93,14 +93,13 @@ public class HouseAdapter extends InsuranceAdapter<House> implements Formable<Ho
         material = new FormChoiceNode.Builder<>(Loc.get("material"), materialList)
                 .active(getEditMode() ? getInsurance().getMaterial() : House.Material.A)
                 .build();
-
     }
 
     private HouseAdapter() { super(null); return; }
 
-
     @Override
-    public List<FormNode> getNodes() {
+    public List<FormNode> getNodes()
+    {
         List<FormNode> tmp = super.getNodes();
         tmp.add(street);
         tmp.add(postalCode);
@@ -113,8 +112,8 @@ public class HouseAdapter extends InsuranceAdapter<House> implements Formable<Ho
     }
 
     @Override
-    public void callback() {
-
+    public void callback()
+    {
         if(super.getEditMode())
         {
             super.getInsurance().setCity(city.getValue());
