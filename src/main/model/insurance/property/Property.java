@@ -20,55 +20,55 @@ abstract class Property extends Insurance implements Serializable
     private Standard standard;
     private String streetAddress;
 
-    protected void setStreetAddress(String streetAddress) {
+    public void setStreetAddress(String streetAddress) {
         this.streetAddress = streetAddress;
     }
 
-    protected void setPostalCode(String postalCode) {
+    public void setPostalCode(String postalCode) {
         this.postalCode = postalCode;
     }
 
-    protected void setCity(String city) {
+    public void setCity(String city) {
         this.city = city;
     }
 
-    protected void setYear(int year) {
+    public void setYear(int year) {
         this.year = year;
     }
 
-    protected void setMaterial(Material material) {
+    public void setMaterial(Material material) {
         this.material = material;
     }
 
-    protected void setSquareMeter(int squareMeter) {
+    public void setSquareMeter(int squareMeter) {
         this.squareMeter = squareMeter;
     }
 
-    protected void setStandard(Standard standard) {
+    public void setStandard(Standard standard) {
         this.standard = standard;
     }
 
-    protected String getPostalCode() {
+    public String getPostalCode() {
         return postalCode;
     }
 
-    protected String getCity() {
+    public String getCity() {
         return city;
     }
 
-    protected int getYear() {
+    public int getYear() {
         return year;
     }
 
-    protected Material getMaterial() {
+    public Material getMaterial() {
         return material;
     }
 
-    protected Standard getStandard() {
+    public Standard getStandard() {
         return standard;
     }
 
-    protected String getStreetAddress() {
+    public String getStreetAddress() {
         return streetAddress;
     }
 
