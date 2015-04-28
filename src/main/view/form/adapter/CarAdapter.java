@@ -27,7 +27,7 @@ public class CarAdapter extends InsuranceAdapter<Car> implements Formable<Car>
     private FormValueNode mileage;
     private FormChoiceNode type;
     private FormChoiceNode propulsion;
-
+    private FormValueNode horsePower;
 
     public CarAdapter(Person customer, Car car)
     {
@@ -49,23 +49,29 @@ public class CarAdapter extends InsuranceAdapter<Car> implements Formable<Car>
 
     private void initNodes()
     {
-        regNr = new FormValueNode.Builder(Loc.get("regNr"))
-                .error(Loc.get("error_reg_number"))
+        regNr = new FormValueNode.Builder(Loc.get("licence_plate"))
+                .error(Loc.get("licence_plate_error"))
                 .value(getEditMode() ? getInsurance().getLicencePlate() : "")
                 .regex(StringMatcher.getRegnr())
                 .build();
 
-        registration = new FormDateNode.Builder(Loc.get("car_reg_year"),
+        registration = new FormDateNode.Builder(Loc.get("vehicle_registration"),
                  getEditMode() ? getInsurance().getRegistration() : LocalDate.of(standardYear, standardMonth, standardDay))
                 //.error(Loc.get("error_reg_year"))
                 //.regex(StringMatcher.getYear())
                 .build();
 
         mileage = new FormValueNode.Builder(Loc.get("mileage"))
-                .error(Loc.get("mileage"))
+                .error(Loc.get("mileage_error"))
                 .value(getEditMode() ? Integer.toString(getInsurance().getMileage()) : "")
                 .regex(StringMatcher.getDigit())
                 .required(false)
+                .build();
+
+        horsePower = new FormValueNode.Builder(Loc.get("vehicle_horse_power"))
+                .regex(StringMatcher.getDigit())
+                .value(getEditMode() ? Integer.toString(getInsurance().getHorsePower()) : "")
+                .error(Loc.get("vehicle_horse_power_error"))
                 .build();
 
         List<Enum> typeList = new ArrayList<>();
