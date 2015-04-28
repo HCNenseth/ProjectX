@@ -75,7 +75,6 @@ public class Car extends Vehicle implements Serializable
             return this;
         }
 
-
         public Builder mileage(int val)
         {
             this.mileage = val;
@@ -112,6 +111,7 @@ public class Car extends Vehicle implements Serializable
         setOwner(builder.owner);
         setLicencePlate(builder.licencePlate);
         setFirstTimeRegistered(builder.firstTimeRegistered);
+        setModelYear(builder.modelYear);
 
         mileage = builder.mileage;
         type = builder.type;

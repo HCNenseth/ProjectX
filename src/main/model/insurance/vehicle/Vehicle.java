@@ -49,9 +49,9 @@ public abstract class Vehicle extends Insurance implements Serializable
         this.modelYear = year;
     }
 
+    public void setHorsePower(int hk){this.horsePower = hk; }
+
     // GETTERS
-
-
     public String getLicencePlate() {
         return licencePlate;
     }
