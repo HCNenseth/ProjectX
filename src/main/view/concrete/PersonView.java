@@ -2,6 +2,7 @@ package main.view.concrete;
 
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ToolBar;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import main.config.Config;
@@ -54,7 +55,7 @@ public class PersonView
     {
         int column = 0, row = 0;
 
-        GridPane buttonPane = new GridPane();
+        ToolBar buttonPane = new ToolBar();
         Label newInsurance = new Label(Loc.get("new_insurance"));
         Label editPerson = new Label(Loc.get("edit"));
 
@@ -82,6 +83,8 @@ public class PersonView
         Button editButton = new Button(Loc.get("edit"));
         editButton.setOnAction(e -> PersonController.edit(person));
 
+        buttonPane.getItems().addAll(b1,b2,b3,b4,b5);
+                /*
         buttonPane.add(newInsurance, column++, row);
         buttonPane.add(b1, column++, row);
         buttonPane.add(b2, column++, row);
@@ -92,6 +95,7 @@ public class PersonView
         buttonPane.add(editButton, column++, row);
 
         buttonPane.setHgap(cellGap);
+        */
 
         gp.add(buttonPane, 0, rowNum++, 2, 1);
     }

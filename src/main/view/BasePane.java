@@ -3,10 +3,8 @@ package main.view;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
-import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.text.Font;
-import main.config.Config;
 
 /**
  * Created by alex on 4/18/15.
@@ -19,9 +17,6 @@ public class BasePane extends BorderPane
 
     public BasePane(String title)
     {
-        prefWidth(Config.WIDTH);
-        prefHeight(Config.HEIGHT);
-
         this.title = new Label(title);
         this.title.setPadding(new Insets(padding));
         this.title.setFont(new Font(titleSize));
@@ -31,9 +26,7 @@ public class BasePane extends BorderPane
 
     public void setContent(Node node)
     {
-        ScrollPane scrollPane = new ScrollPane(node);
-        //scrollPane.setPadding(new Insets(10));
-        centerProperty().set(scrollPane);
+        centerProperty().set(node);
         setPadding(new Insets(padding));
     }
 }

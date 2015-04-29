@@ -9,7 +9,6 @@ import main.model.insurance.Insurance;
 
 import java.io.Serializable;
 import java.time.LocalDate;
-import java.util.Calendar;
 
 /**
  * Created by Hans Petter on 16.04.2015.

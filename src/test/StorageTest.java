@@ -4,6 +4,7 @@ package test;
  * Created by alex on 4/16/15.
  */
 
+import main.config.Config;
 import main.model.Storage;
 import main.model.claim.Claim;
 import main.model.insurance.ConcreteType;
@@ -173,7 +174,7 @@ public class StorageTest
 
         Claim claim1 = new Claim.Builder(person1, house1)
                 .contacts("WITNESS 1: 986 161 15")
-                .date(LocalDate.of(randInt(1985, 2014), randInt(1,12), randInt(1,28)))
+                .date(LocalDate.of(randInt(1985, 2014), randInt(1, 12), randInt(1, 28)))
                 .description("Car damage: total.")
                 .type(Claim.Type.A)
                 .build();
@@ -266,7 +267,7 @@ public class StorageTest
             String streetName = String.format("%s %s %d",
                     randomCity(), randomStreetType(), randInt(1, 100));
 
-            Person tmp =  new Person.Builder(randomFirstname(), randomLastname())
+            Person person =  new Person.Builder(randomFirstname(), randomLastname())
                     .city(city)
                     .postalCode(String.valueOf(randInt(1000, 9000)))
                     .streetAddress(streetName)
@@ -276,7 +277,7 @@ public class StorageTest
 
             /* add some random car insurances */
             for (int j = 0; j < randInt(0,10); j++) {
-                Car car = new Car.Builder(tmp, "ABC123")
+                Car car = new Car.Builder(person, "ABC123")
                         .amount(randInt(1000, 4000))
                         .premium(randInt(300, 700))
                         .deductible(randInt(4000, 12000))
@@ -294,14 +295,14 @@ public class StorageTest
                         .build();
                 /* add some random claims */
                 for (int k = 0; k < randInt(0, 5); k++) {
-                    claims.add(new Claim.Builder(tmp, car).build());
+                    claims.add(new Claim.Builder(person, car).build());
                 }
                 insurances.add(car);
             }
 
             /* add some random boat insurances */
             for (int j = 0; j < randInt(0,10); j++) {
-                Boat boat = new Boat.Builder(tmp, "ABC123")
+                Boat boat = new Boat.Builder(person, "ABC123")
                         .amount(randInt(1000, 4000))
                         .premium(randInt(300, 700))
                         .deductible(randInt(4000, 12000))
@@ -315,14 +316,14 @@ public class StorageTest
                         .build();
                 /* add some random claims */
                 for (int k = 0; k < randInt(0, 5); k++) {
-                    claims.add(new Claim.Builder(tmp, boat).build());
+                    claims.add(new Claim.Builder(person, boat).build());
                 }
                 insurances.add(boat);
             }
 
             /* add some random houses */
             for (int j = 0; j < randInt(0,10); j++) {
-                House house = new House.Builder(tmp, streetName, randInt(1000, 9000) + "")
+                House house = new House.Builder(person, streetName, randInt(1000, 9000) + "")
                         .material(House.Material.A)
                         .amount(randInt(1000, 4000))
                         .premium(randInt(300, 700))
@@ -333,31 +334,31 @@ public class StorageTest
                         .build();
                 /* add some random claims */
                 for (int k = 0; k < randInt(0, 5); k++) {
-                    claims.add(new Claim.Builder(tmp, house).build());
+                    claims.add(new Claim.Builder(person, house).build());
                 }
                 insurances.add(house);
             }
 
             /* add some random travel insurances */
             for (int j = 0; j < randInt(0,10); j++) {
-                Travel travel = new Travel.Builder(tmp)
+                Travel travel = new Travel.Builder(person)
                         .amount(randInt(1000, 4000))
                         .premium(randInt(300, 700))
                         .deductible(randInt(4000, 12000))
                         .build();
                 /* add some random claims */
                 for (int k = 0; k < randInt(0, 5); k++) {
-                    claims.add(new Claim.Builder(tmp, travel).build());
+                    claims.add(new Claim.Builder(person, travel).build());
                 }
                 insurances.add(travel);
             }
-            persons.add(tmp);
+            persons.add(person);
         }
 
         /* add them all to storage */
-        Storage.getInstance().put("persons", persons);
-        Storage.getInstance().put("insurances", insurances);
-        Storage.getInstance().put("claims", claims);
+        Storage.getInstance().put(Config.PERSONS, persons);
+        Storage.getInstance().put(Config.INSURANCES, insurances);
+        Storage.getInstance().put(Config.CLAIMS, claims);
 
         /* save and read to/from file */
         try {

@@ -1,6 +1,7 @@
 package main.controller;
 
 import main.App;
+import main.config.Config;
 import main.localization.Loc;
 import main.model.Storage;
 import main.model.claim.Claim;
@@ -41,19 +42,22 @@ class SearchController
 
     private void search()
     {
-        List<Person> persons = (List<Person>)Storage.getInstance().get(App.PERSONS);
-        List<Insurance> insurances = (List<Insurance>)Storage.getInstance().get(App.INSURANCES);
-        List<Claim> claims = (List<Claim>)Storage.getInstance().get(App.CLAIMS);
+        List<Person> persons = (List<Person>)Storage.getInstance().get(Config.PERSONS);
+        List<Insurance> insurances = (List<Insurance>)Storage.getInstance().get(Config.INSURANCES);
+        List<Claim> claims = (List<Claim>)Storage.getInstance().get(Config.CLAIMS);
 
         /* put the tables into a search result view */
         SearchResultView searchResult = new SearchResultView();
 
-        searchResult.addTable(TableController.getPersonTable(persons.stream()
-                .filter(i -> i.query(keyword))).getTable(), Loc.get("persons"));
-        searchResult.addTable(TableController.getInsuranceTable(insurances.stream()
-                .filter(i -> i.query(keyword))).getTable(), Loc.get("insurances"));
-        searchResult.addTable(TableController.getClaimsTable(claims.stream()
-                .filter(i -> i.query(keyword))).getTable(), Loc.get("claims"));
+        if (persons.size() > 0)
+            searchResult.addTable(TableController.getPersonTable(persons.stream()
+                    .filter(i -> i.query(keyword))).getTable(), Loc.get("persons"));
+        if (insurances.size() > 0)
+            searchResult.addTable(TableController.getInsuranceTable(insurances.stream()
+                    .filter(i -> i.query(keyword))).getTable(), Loc.get("insurances"));
+        if (claims.size() > 0)
+            searchResult.addTable(TableController.getClaimsTable(claims.stream()
+                    .filter(i -> i.query(keyword))).getTable(), Loc.get("claims"));
 
         /* insert search result view into tab */
         Resources.inst.getOtp().injectObservableTab(Loc.get("search_results"),

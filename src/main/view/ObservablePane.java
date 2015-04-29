@@ -34,10 +34,7 @@ public class ObservablePane extends Observable
 
     public boolean hasReference(Model reference)
     {
-        if (this.reference != null && this.reference.equals(reference))
-            return true;
-
-        return false;
+        return this.reference != null && this.reference.equals(reference);
     }
 
     public void setReference(Model reference) { this.reference = reference; }

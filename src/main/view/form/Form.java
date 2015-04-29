@@ -1,9 +1,10 @@
 package main.view.form;
 
+import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
-import main.config.Config;
+import javafx.scene.layout.Priority;
 import main.localization.Loc;
 import main.view.form.node.FormNode;
 import main.view.form.node.FormValueNode;
@@ -26,15 +27,15 @@ public class Form extends GridPane
 
     public Form()
     {
-        setMinWidth(Config.WIDTH - (Config.WIDTH / 20));
+        setPadding(new Insets(5));
 
         ColumnConstraints keyColumn = new ColumnConstraints();
-        //keyColumn.setHgrow(Priority.SOMETIMES);
-        keyColumn.setPercentWidth(20);
+        keyColumn.setHgrow(Priority.SOMETIMES);
+        keyColumn.setPercentWidth(15);
 
         ColumnConstraints valueColumn = new ColumnConstraints();
-        //valueColumn.setHgrow(Priority.ALWAYS);
-        valueColumn.setPercentWidth(80);
+        valueColumn.setHgrow(Priority.ALWAYS);
+        valueColumn.setPercentWidth(85);
 
         getColumnConstraints().add(0, keyColumn);
         getColumnConstraints().add(1, valueColumn);
@@ -79,8 +80,6 @@ public class Form extends GridPane
         add(fn.getKey(), 0, rowNum);
         add(fn.getNode(), 1, rowNum);
         add(fn.getError(), 1, ++rowNum);
-
-        setFillWidth(fn.getNode(), true);
     }
 
     /**
