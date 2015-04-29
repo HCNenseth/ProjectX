@@ -134,6 +134,7 @@
     <string name="material">Material</string>
 
     <!-- travel -->
+    <string name="continent">Continent</string>
     <string name="continent_a">Europa</string>
     <string name="continent_b">Asia</string>
     <string name="continent_c">Africa</string>
