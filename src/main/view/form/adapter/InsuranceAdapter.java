@@ -17,72 +17,24 @@ import java.util.List;
 
 public abstract class InsuranceAdapter<T extends Insurance> {
 
-    /**
-     * STATIC
-     */
-
-    /**
-     * Constants for the FormDateNode
-     */
-    protected static int standardYear = 1970;
-    protected static int standardMonth = 1;
-    protected static int standardDay = 1;
-
-    /**
-     * CLASS
-     */
-
     private FormLabelNode customerNode;
 
-    /**
-     * Insurance getAmount.
-     * Maximum possible payment for a claim.
-     */
     private FormValueNode amount;
 
-    /**
-     * Insurance description.
-     * A short description.
-     */
     private FormValueNode desc;
 
-    /**
-     * Insurance getPremium.
-     * The yearly cost of the insurance.
-     */
     private FormValueNode premium;
 
-    /**
-     * Insurance getStatus.
-     * ACTIVE
-     * INACTIVE
-     * PENDING
-     * INCOMPLETE
-     */
     private FormChoiceNode status;
-
-    /**
-     * Reference to the getCustomer.
-     */
 
     private Person customer;
 
-    /**
-     * Create new Insurance or edit existing.
-     */
     private boolean editMode = false;
 
-    /**
-     * Insurance reference to the type object.
-     */
     private T insurance = null;
 
-    /**
-     *
-     */
     private FormValueNode deductible;
 
-    // TODO what if customer and or ref by accident is null? Edit mode then?
     public InsuranceAdapter(Person customer, T ref)
     {
         this.customer = customer;
@@ -93,7 +45,6 @@ public abstract class InsuranceAdapter<T extends Insurance> {
 
     public InsuranceAdapter(Person customer)
     {
-        // TODO this constructor does not initialize if customer is null...
         if(customer != null)
         {
             this.customer = customer;

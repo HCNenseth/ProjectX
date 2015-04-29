@@ -17,7 +17,7 @@ public abstract class InsuranceBuilder<T, E>
     private double amount = 0;
     private double premium = 0;
     private double deductible;
-    private LocalDate date = null;
+    private LocalDate date = LocalDate.now();
     private String desc = "";
     private Status status = Status.ACTIVE;
 

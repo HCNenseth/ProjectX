@@ -1,7 +1,7 @@
 package main.localization;
 
 /**
- * Simple main.localization system. This is the package static gateway
+ * Simple main.localization system. This is the package config gateway
  * to the outside. Singleton pattern is used for preventing duplication
  * and some short and compact methods is defined.
  *

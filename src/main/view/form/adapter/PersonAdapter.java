@@ -1,5 +1,6 @@
 package main.view.form.adapter;
 
+import main.config.Config;
 import main.localization.Loc;
 import main.model.Status;
 import main.model.person.Person;
@@ -27,11 +28,7 @@ public class PersonAdapter implements Formable<Person>
     private FormValueNode streetAddress;
     private FormValueNode postalCode;
     private FormChoiceNode status;
-
-    private int standardYear = 1970;
-    private int standardMonth = 1;
-    private int standardDay = 1;
-
+    
     private Person person;
 
     // TODO rethink this implementation decision.
@@ -63,7 +60,7 @@ public class PersonAdapter implements Formable<Person>
                 .build();
 
         dob = new FormDateNode.Builder(Loc.get("date_of_birth"),
-                editMode ? person.getDateOfBirth() : LocalDate.of(standardYear, standardMonth, standardDay))
+                editMode ? person.getDateOfBirth() : LocalDate.of(Config.STANDARD_YEAR, Config.STANDARD_MONTH, Config.STANDARD_DAY))
                 .required(false)
                 .build();
 

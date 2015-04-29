@@ -1,5 +1,6 @@
 package main.view.form.adapter;
 
+import main.config.Config;
 import main.localization.Loc;
 import main.model.Status;
 import main.model.insurance.vehicle.Boat;
@@ -48,7 +49,7 @@ public class BoatAdapter extends InsuranceAdapter<Boat> implements Formable<Boat
                 .build();
 
         registration = new FormDateNode.Builder(Loc.get("vehicle_registration"),
-                getEditMode() ? getInsurance().getRegistration() : LocalDate.of(standardYear, standardMonth, standardDay))
+                getEditMode() ? getInsurance().getRegistration() : LocalDate.of(Config.STANDARD_YEAR, Config.STANDARD_MONTH, Config.STANDARD_DAY))
                 .required(false)
                 .build();
 
