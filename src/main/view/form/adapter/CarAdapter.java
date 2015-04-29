@@ -64,7 +64,6 @@ public class CarAdapter extends InsuranceAdapter<Car> implements Formable<Car>
                 .error(Loc.get("mileage_error"))
                 .value(getEditMode() ? Integer.toString(getInsurance().getMileage()) : "")
                 .regex(StringMatcher.getDigit())
-                .required(false)
                 .build();
 
         horsePower = new FormValueNode.Builder(Loc.get("vehicle_horse_power"))
