@@ -5,10 +5,10 @@ package main.config;
  */
 public class Config {
 
-    public final String APP_NAME = "";
+    public static final String APP_NAME = "";
 
-    public final int STANDARD_YEAR = 1970;
-    public final int STANDARD_MONTH = 1;
-    public final int STANDARD_DAY = 1;
+    public static final int STANDARD_YEAR = 1970;
+    public static final int STANDARD_MONTH = 1;
+    public static final int STANDARD_DAY = 1;
 
 }
