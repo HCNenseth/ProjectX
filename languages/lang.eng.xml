@@ -41,6 +41,7 @@
     <string name="search_results">Search results</string>
     <string name="search_error">Keyword must contain at between 2 and 20 characters</string>
     <string name="persons">Persons</string>
+    <string name="insurance">Insurance</string>
     <string name="insurances">Insurances</string>
     <string name="claims">Claims</string>
 
@@ -66,8 +67,8 @@
     <string name="customer">Customer</string>
     <string name="new_customer">New customer</string>
     <string name="mileage">Mileage</string>
-    <string name="licence_plate">Licence plate</string>
-    <string name="licence_plate_error">licence plate must contain...</string>
+    <string name="license_plate">Licence plate</string>
+    <string name="license_plate_error">licence plate must contain...</string>
     <string name="vehicle_registration">First time registered</string>
     <string name="vehicle_registration_error">Invalid date.</string>
     <string name="vehicle_horse_power">Horse power</string>
@@ -104,6 +105,8 @@
     <string name="car_type_c">Full-size car</string>
     <string name="car_type_d">Sports car</string>
 
+    <string name="model_year">Model</string>
+
     <!-- boat -->
     <string name="boat_propulsion">Propulsion</string>
     <string name="boat_propulsion_a">Gas</string>
@@ -125,9 +128,19 @@
     <string name="house_material_b">House material b</string>
     <string name="house_material_c">House material c</string>
 
+    <string name="property_material">Property material</string>
+    <string name="property_material_a">Property material a</string>
+    <string name="property_material_b">Property material b</string>
+    <string name="property_material_c">Property material c</string>
+
     <string name="house_standard_a">House standard a</string>
     <string name="house_standard_b">House standard b</string>
     <string name="house_standard_c">House standard c</string>
+
+    <string name="property_standard">Property standard</string>
+    <string name="property_standard_a">Property standard a</string>
+    <string name="property_standard_b">Property standard b</string>
+    <string name="property_standard_c">Property standard c</string>
 
     <string name="year_built">Year built</string>
     <string name="square_meters">Square meters</string>
