@@ -1,5 +1,6 @@
 package main.view.form.node;
 
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.paint.Color;
@@ -84,6 +85,11 @@ public class FormValueNode extends FormNode<String>
     public String getRegex() { return regex; }
 
     public String getData() { return getValue(); }
+
+    public void connectToButton(Button button)
+    {
+        valueField.setOnAction(e -> button.fire());
+    }
 
     @Override
     public Type getType() { return Type.VALUE; }

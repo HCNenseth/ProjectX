@@ -2,14 +2,11 @@ package main.view.form.adapter;
 
 import main.localization.Loc;
 import main.model.Status;
-import main.model.insurance.Insurance;
 import main.model.insurance.travel.Travel;
 import main.model.person.Person;
-import main.validator.StringMatcher;
 import main.view.form.Formable;
 import main.view.form.node.FormChoiceNode;
 import main.view.form.node.FormNode;
-import main.view.form.node.FormValueNode;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -94,4 +91,5 @@ public class TravelAdapter extends InsuranceAdapter<Travel> implements Formable<
     {
         callBackEvent.setOnAction(e -> c.accept(super.getInsurance()));
     }
+
 }

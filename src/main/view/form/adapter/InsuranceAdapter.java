@@ -15,7 +15,8 @@ import java.util.List;
 
 // TODO this code is not tested.
 
-public abstract class InsuranceAdapter<T extends Insurance> {
+public abstract class InsuranceAdapter<T extends Insurance>
+{
 
     private FormLabelNode customerNode;
 
@@ -141,4 +142,5 @@ public abstract class InsuranceAdapter<T extends Insurance> {
     {
         this.insurance = insurance;
     }
+
 }

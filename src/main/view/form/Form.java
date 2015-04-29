@@ -56,6 +56,7 @@ public class Form extends GridPane
     {
         this.caller = caller;
         nodes = this.caller.getNodes();
+        this.caller.submitActuator(submit);
         nodes.stream().forEach(this::addPart);
     }
 

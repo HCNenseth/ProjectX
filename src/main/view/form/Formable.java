@@ -1,6 +1,7 @@
 package main.view.form;
 
 import javafx.event.ActionEvent;
+import javafx.scene.control.Button;
 import javafx.scene.control.ButtonBase;
 import main.view.form.node.FormNode;
 
@@ -25,4 +26,5 @@ public interface Formable<T>
     List<FormNode> getNodes();
     void callback();
     void setOnDoneAction(Consumer<T> c);
+    default void submitActuator(Button b) {}
 }
