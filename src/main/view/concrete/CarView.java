@@ -23,7 +23,7 @@ public class CarView extends InsuranceView<Car>
         getNode().add(new Label(getInsurance().getType()), 1, rowNum++);
 
         getNode().add(new Label(Loc.get("model_year")), 0, rowNum);
-        getNode().add(new Label(getInsurance().getModelYear() + ""), 0, rowNum++);
+        getNode().add(new Label(getInsurance().getModelYear() + ""), 1, rowNum++);
 
         // registration year
         if (getInsurance().getRegistration() != null) {
