@@ -131,7 +131,6 @@ public class Boat extends Vehicle implements Serializable
         this.type = type;
     }
 
-
     public String getType()
     {
         return type.getValue();

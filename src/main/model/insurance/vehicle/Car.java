@@ -61,6 +61,7 @@ public class Car extends Vehicle implements Serializable
         private int mileage = 0;
         private Propulsion propulsion = Propulsion.A;
         private Type type = Type.A;
+        private int horsePower = 100;
 
         public Builder(Person customer, String licencePlate)
         {
@@ -71,6 +72,12 @@ public class Car extends Vehicle implements Serializable
         public Builder registration(LocalDate date)
         {
             this.registration = date;
+            return this;
+        }
+
+        public Builder horsePower(int horsePower)
+        {
+            this.horsePower = horsePower;
             return this;
         }
 

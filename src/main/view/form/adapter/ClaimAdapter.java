@@ -6,9 +6,11 @@ import main.model.claim.Claim;
 import main.model.person.Person;
 import main.view.form.Formable;
 import main.view.form.node.FormChoiceNode;
+import main.view.form.node.FormDateNode;
 import main.view.form.node.FormNode;
 import main.view.form.node.FormValueNode;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Consumer;
@@ -22,8 +24,11 @@ public class ClaimAdapter implements Formable<Claim>
     private FormValueNode description;
     private FormChoiceNode status;
     private FormValueNode contacts;
+    private FormDateNode registrationDate;
+    private FormDateNode dateOfDamages;
 
     private Person customer;
+    private boolean editMode = false;
 
     public ClaimAdapter(Person customer, Claim claim)
     {
@@ -45,6 +50,9 @@ public class ClaimAdapter implements Formable<Claim>
         status = new FormChoiceNode.Builder<>(Loc.get("status"), statusList)
             .active(Status.ACTIVE )
             .build();
+
+      //  registrationDate = new FormDateNode.Builder(Loc.get("date_of_registration"), LocalDate.of(standardYear, standardMonth, standardDay))
+        //        .build();
     }
 
     public List<FormNode> getNodes()
