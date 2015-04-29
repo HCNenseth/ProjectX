@@ -28,7 +28,7 @@ public class PersonAdapter implements Formable<Person>
     private FormValueNode streetAddress;
     private FormValueNode postalCode;
     private FormChoiceNode status;
-    
+
     private Person person;
 
     // TODO rethink this implementation decision.
