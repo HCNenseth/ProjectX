@@ -34,6 +34,7 @@
     <string name="search_error">Nøkkelord må innehold mellom 2 og 20 bokstaver.</string>
     <string name="persons">Personer</string>
     <string name="insurances">Forsikringer</string>
+    <string name="insurance">Forsikring</string>
     <string name="claims">Skademeldinger</string>
 
     <!-- statuses -->
@@ -55,8 +56,8 @@
     <string name="owner">Eier</string>
     <string name="customer">Kunde</string>
     <string name="new_customer">Ny kunde</string>
-    <string name="licence_plate">Registreringnummer</string>
-    <string name="licence_plate_error">Registreringsnummer må inneholde...</string>
+    <string name="license_plate">Registreringnummer</string>
+    <string name="license_plate_error">Registreringsnummer må inneholde...</string>
     <string name="vehicle_registration">Førstegangs registrert</string>
     <string name="vehicle_registration_error">Registreringsnummer må inneholde...</string>
     <string name="vehicle_horse_power">Hestekrefter</string>
@@ -89,6 +90,8 @@
     <string name="car_type_c">Stor bil</string>
     <string name="car_type_d">Sportsbil</string>
 
+    <string name="model_year">Årsmodell</string>
+
     <!-- boat -->
     <string name="boat_propulsion_a">Bensin</string>
     <string name="boat_propulsion_b">Diesel</string>
@@ -109,13 +112,25 @@
     <string name="house_type_b">Leilighet</string>
     <string name="house_type_c">Husbåt</string>
 
+    <string name="house_material">House material</string>
     <string name="house_material_a">House material a</string>
     <string name="house_material_b">House material b</string>
     <string name="house_material_c">House material c</string>
 
+    <string name="property_material">Property material</string>
+    <string name="property_material_a">Property material a</string>
+    <string name="property_material_b">Property material b</string>
+    <string name="property_material_c">Property material c</string>
+
+    <string name="house_standard">House standard</string>
     <string name="house_standard_a">House standard a</string>
     <string name="house_standard_b">House standard b</string>
     <string name="house_standard_c">House standard c</string>
+
+    <string name="property_standard">Property standard</string>
+    <string name="property_standard_a">Property standard a</string>
+    <string name="property_standard_b">Property standard b</string>
+    <string name="property_standard_c">Property standard c</string>
 
     <string name="year_built">Byggeår</string>
     <string name="square_meters">Kvadratmeter</string>
