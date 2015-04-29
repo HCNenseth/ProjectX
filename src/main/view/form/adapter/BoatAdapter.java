@@ -18,8 +18,7 @@ import java.util.function.Consumer;
 
 public class BoatAdapter extends InsuranceAdapter<Boat> implements Formable<Boat>
 {
-
-    private FormValueNode regNr;
+    private FormValueNode licencePlate;
     private FormDateNode registration;
     private FormValueNode length;
     private FormValueNode horsePower;
@@ -42,7 +41,7 @@ public class BoatAdapter extends InsuranceAdapter<Boat> implements Formable<Boat
 
     private void initNodes()
     {
-        regNr = new FormValueNode.Builder(Loc.get("licence_plate"))
+        licencePlate = new FormValueNode.Builder(Loc.get("licence_plate"))
                 .regex(StringMatcher.getRegnr())
                 .value(getEditMode() ? getInsurance().getLicencePlate() : "")
                 .error(Loc.get("licence_plate_error"))
@@ -73,7 +72,7 @@ public class BoatAdapter extends InsuranceAdapter<Boat> implements Formable<Boat
 
         propulsion = new FormChoiceNode.Builder(Loc.get("boat_propulsion"), propulsionList )
                 .required(false)
-                .active(Boat.Propulsion.A)
+                .active(getEditMode() ? getInsurance().getPropulsion() : Boat.Propulsion.A)
                 .build();
 
         List<Enum> typeList = new ArrayList<>();
@@ -84,7 +83,7 @@ public class BoatAdapter extends InsuranceAdapter<Boat> implements Formable<Boat
 
         type = new FormChoiceNode.Builder(Loc.get("boat_type"), typeList)
                 .required(false)
-                .active(Boat.Type.A)
+                .active(getEditMode() ? getInsurance().getType() : Boat.Type.A)
                 .build();
 
     }
@@ -109,13 +108,13 @@ public class BoatAdapter extends InsuranceAdapter<Boat> implements Formable<Boat
             getInsurance().setPremium(Integer.parseInt(super.getPremium().getValue()));
             getInsurance().setAmount(Integer.parseInt(super.getAmount().getValue()));
             getInsurance().setStatus((Status) super.getStatus().getData());
-            getInsurance().setLicencePlate(regNr.getValue());
+            getInsurance().setLicencePlate(licencePlate.getValue());
             getInsurance().setPropulsion((Boat.Propulsion) propulsion.getData());
             System.out.println(getInsurance());
             return;
         }
 
-        Boat boat = new Boat.Builder(super.getCustomer(), regNr.getValue())
+        Boat boat = new Boat.Builder(super.getCustomer(), licencePlate.getValue())
                 .horsePower(Integer.parseInt(horsePower.getValue()))
                 .length(Integer.parseInt(length.getValue()))
                 .registration(registration.getData())
