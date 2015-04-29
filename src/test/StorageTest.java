@@ -338,6 +338,8 @@ public class StorageTest
                 insurances.add(house);
             }
 
+            /* add some claims */
+
             /* add some random travel insurances */
             for (int j = 0; j < randInt(0,10); j++) {
                 Travel travel = new Travel.Builder(tmp)

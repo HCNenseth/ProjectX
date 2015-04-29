@@ -1,4 +1,4 @@
-package main;
+package main.config;
 
 /**
  * Created by HansPetter on 29.04.2015.
