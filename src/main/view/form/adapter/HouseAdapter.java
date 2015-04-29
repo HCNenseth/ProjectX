@@ -39,6 +39,8 @@ public class HouseAdapter extends InsuranceAdapter<House> implements Formable<Ho
         initNodes();
     }
 
+    private HouseAdapter() { super(null); return; }
+
     private void initNodes()
     {
 
@@ -63,9 +65,9 @@ public class HouseAdapter extends InsuranceAdapter<House> implements Formable<Ho
                 .build();
 
         yearBuilt = new FormValueNode.Builder(Loc.get("year_built"))
-                .error(Loc.get("error_house_city"))
+                .error(Loc.get("error_house_year"))
                 .value(getEditMode() ? Integer.toString(getInsurance().getYear()) : "")
-                .regex(StringMatcher.getBaseString())
+                .regex(StringMatcher.getYear())
                 .build();
 
         squareMeters = new FormValueNode.Builder(Loc.get("square_meters"))
@@ -94,8 +96,6 @@ public class HouseAdapter extends InsuranceAdapter<House> implements Formable<Ho
                 .active(getEditMode() ? getInsurance().getMaterial() : House.Material.A)
                 .build();
     }
-
-    private HouseAdapter() { super(null); return; }
 
     @Override
     public List<FormNode> getNodes()
