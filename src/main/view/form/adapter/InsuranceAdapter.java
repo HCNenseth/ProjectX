@@ -79,6 +79,7 @@ public abstract class InsuranceAdapter<T extends Insurance> {
                 .regex(StringMatcher.getBaseString())
                 .value(editMode ? insurance.getDesc() : "")
                 .error(Loc.get("error_desc"))
+                 .required(false)
                 .build();
 
          List<Enum> statusList = new ArrayList<>();
