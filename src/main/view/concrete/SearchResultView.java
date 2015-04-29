@@ -19,8 +19,6 @@ public class SearchResultView
     public SearchResultView()
     {
         gp = new GridPane();
-        gp.setMinWidth(Config.WIDTH - (Config.WIDTH / 20));
-        gp.setMinHeight(Config.HEIGHT - (Config.HEIGHT / 20));
 
         ColumnConstraints mainColumn = new ColumnConstraints();
         mainColumn.setPercentWidth(100);

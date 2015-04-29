@@ -17,7 +17,9 @@ public class PersonController
     public static void create()
     {
         Form f = new Form();
-        f.injectAdapter(new PersonAdapter());
+        PersonAdapter personAdapter = new PersonAdapter();
+        personAdapter.setOnDoneAction(PersonController::view);
+        f.injectAdapter(personAdapter);
         Resources.inst.getOtp().injectObservableTab(Loc.get("new_customer"),
                 f.getForm(), true);
     }

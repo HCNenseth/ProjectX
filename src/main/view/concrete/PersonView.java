@@ -29,8 +29,6 @@ public class PersonView
 
         gp = new GridPane();
 
-        gp.setMinWidth(Config.WIDTH - (Config.WIDTH / 20));
-
         ColumnConstraints keyColumn = new ColumnConstraints();
         //keyColumn.setHgrow(Priority.SOMETIMES);
         keyColumn.setPercentWidth(20);
@@ -44,8 +42,6 @@ public class PersonView
 
         gp.setHgap(cellGap);
         gp.setVgap(cellGap);
-
-        //gp.setGridLinesVisible(true);
 
         initButtonPanel();
         initPersonFields();
@@ -84,7 +80,8 @@ public class PersonView
         editButton.setOnAction(e -> PersonController.edit(person));
 
         buttonPane.getItems().addAll(b1,b2,b3,b4,b5);
-                /*
+
+        /*
         buttonPane.add(newInsurance, column++, row);
         buttonPane.add(b1, column++, row);
         buttonPane.add(b2, column++, row);

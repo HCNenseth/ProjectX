@@ -34,10 +34,12 @@ public class App extends Application
         bp.setCenter(Resources.inst.getOtp());
         bp.setLeft(sidePane);
 
+        /*
         Form f = new Form();
         f.injectAdapter(new SearchAdapter());
         Resources.inst.getOtp().injectObservableTab(Loc.get("search"),
                 f.getForm(), true);
+        */
 
         Scene scene = new Scene(bp, Config.WIDTH, Config.HEIGHT);
         scene.getStylesheets().add("file:resources/css/main.css");

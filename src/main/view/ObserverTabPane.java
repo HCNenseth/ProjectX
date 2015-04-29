@@ -67,6 +67,17 @@ public class ObserverTabPane extends TabPane implements Observer
     }
 
     /**
+     * remove tab from map when it closes.
+     * @param tab
+     */
+    private void closeTab(Tab tab)
+    {
+        if (observablePaneMap.containsKey(tab)) {
+            observablePaneMap.remove(tab);
+        }
+    }
+
+    /**
      * Inject new tab without reference. A simple proxy method for
      * the method below (with reference)
      * @param title - tab title
@@ -89,6 +100,8 @@ public class ObserverTabPane extends TabPane implements Observer
     public void injectObservableTab(String title, Node content,
                                    Model ref, Boolean closeable)
     {
+        System.out.println(getTabs().size());
+
         ObservablePane obsPane = new ObservablePane(this, title);
         if (ref != null) { obsPane.setReference(ref); }
         obsPane.setContent(content);
@@ -96,6 +109,7 @@ public class ObserverTabPane extends TabPane implements Observer
         Tab tab = new Tab(title);
         tab.setContent(obsPane.getPane());
         tab.closableProperty().set(closeable);
+        tab.setOnCloseRequest(e -> closeTab(tab));
 
         // Add tab to tab pane
         getTabs().addAll(tab);
