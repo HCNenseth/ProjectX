@@ -1,5 +1,6 @@
 package main.view.form.adapter;
 
+import main.config.Config;
 import main.localization.Loc;
 import main.model.Status;
 import main.model.claim.Claim;
@@ -51,8 +52,14 @@ public class ClaimAdapter implements Formable<Claim>
             .active(Status.ACTIVE )
             .build();
 
-      //  registrationDate = new FormDateNode.Builder(Loc.get("date_of_registration"), LocalDate.of(standardYear, standardMonth, standardDay))
-        //        .build();
+        registrationDate = new FormDateNode.Builder(Loc.get("date_of_registration")
+                ,LocalDate.of(Config.STANDARD_YEAR, Config.STANDARD_MONTH, Config.STANDARD_DAY))
+                .build();
+
+        dateOfDamages = new FormDateNode.Builder(Loc.get("date_of_damages")
+                ,LocalDate.of(Config.STANDARD_YEAR, Config.STANDARD_MONTH, Config.STANDARD_DAY))
+                .build();
+
     }
 
     public List<FormNode> getNodes()
