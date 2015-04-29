@@ -3,7 +3,7 @@ package main.view.form;
 import javafx.scene.control.Button;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
-import main.App;
+import main.config.Config;
 import main.localization.Loc;
 import main.view.form.node.FormNode;
 import main.view.form.node.FormValueNode;
@@ -26,7 +26,7 @@ public class Form extends GridPane
 
     public Form()
     {
-        setMinWidth(App.WIDTH - (App.WIDTH / 20));
+        setMinWidth(Config.WIDTH - (Config.WIDTH / 20));
 
         ColumnConstraints keyColumn = new ColumnConstraints();
         //keyColumn.setHgrow(Priority.SOMETIMES);

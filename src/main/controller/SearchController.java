@@ -8,6 +8,8 @@ import main.model.insurance.Insurance;
 import main.model.person.Person;
 import main.view.Resources;
 import main.view.concrete.SearchResultView;
+import main.view.form.Form;
+import main.view.form.adapter.SearchAdapter;
 
 import java.util.List;
 
@@ -20,11 +22,24 @@ class SearchController
 
     public SearchController(Payload p)
     {
-        this.keyword = p.getString();
-        search();
+        if (p != null) {
+            this.keyword = p.getString();
+            search();
+        } else {
+            create();
+        }
     }
 
-    public void search()
+    private void create()
+    {
+        Form f = new Form();
+        f.injectAdapter(new SearchAdapter());
+
+        Resources.inst.getOtp().injectObservableTab(Loc.get("search"),
+                f.getForm(), true);
+    }
+
+    private void search()
     {
         List<Person> persons = (List<Person>)Storage.getInstance().get(App.PERSONS);
         List<Insurance> insurances = (List<Insurance>)Storage.getInstance().get(App.INSURANCES);

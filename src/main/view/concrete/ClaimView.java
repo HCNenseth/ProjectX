@@ -3,11 +3,10 @@ package main.view.concrete;
 import javafx.scene.control.Label;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
-import main.App;
+import main.config.Config;
 import main.localization.Loc;
 import main.model.claim.Claim;
 import main.model.insurance.property.House;
-import main.model.insurance.travel.Travel;
 import main.model.insurance.vehicle.Boat;
 import main.model.insurance.vehicle.Car;
 
@@ -23,7 +22,7 @@ public class ClaimView
     public ClaimView(Claim claim)
     {
         gp = new GridPane();
-        gp.setMinWidth(App.WIDTH - (App.WIDTH / 20));
+        gp.setMinWidth(Config.WIDTH - (Config.WIDTH / 20));
 
         ColumnConstraints keyColumn = new ColumnConstraints();
         //keyColumn.setHgrow(Priority.SOMETIMES);

@@ -3,7 +3,7 @@ package main.view.concrete;
 import javafx.scene.control.Label;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
-import main.App;
+import main.config.Config;
 import main.controller.TableController;
 import main.localization.Loc;
 import main.model.insurance.Insurance;
@@ -22,7 +22,7 @@ public abstract class InsuranceView<T extends Insurance>
         this.insurance = insurance;
         gp = new GridPane();
 
-        gp.setMinWidth(App.WIDTH - (App.WIDTH / 20));
+        gp.setMinWidth(Config.WIDTH - (Config.WIDTH / 20));
 
         ColumnConstraints keyColumn = new ColumnConstraints();
         //keyColumn.setHgrow(Priority.SOMETIMES);

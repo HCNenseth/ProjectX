@@ -4,9 +4,7 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Font;
-import main.App;
-import main.localization.Loc;
-import main.view.BasePane;
+import main.config.Config;
 import main.view.table.Table;
 
 /**
@@ -21,8 +19,8 @@ public class SearchResultView
     public SearchResultView()
     {
         gp = new GridPane();
-        gp.setMinWidth(App.WIDTH - (App.WIDTH / 20));
-        gp.setMinHeight(App.HEIGHT - (App.HEIGHT / 20));
+        gp.setMinWidth(Config.WIDTH - (Config.WIDTH / 20));
+        gp.setMinHeight(Config.HEIGHT - (Config.HEIGHT / 20));
 
         ColumnConstraints mainColumn = new ColumnConstraints();
         mainColumn.setPercentWidth(100);

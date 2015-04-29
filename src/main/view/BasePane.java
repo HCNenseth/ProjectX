@@ -5,9 +5,8 @@ import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.Pane;
 import javafx.scene.text.Font;
-import main.App;
+import main.config.Config;
 
 /**
  * Created by alex on 4/18/15.
@@ -20,8 +19,8 @@ public class BasePane extends BorderPane
 
     public BasePane(String title)
     {
-        prefWidth(App.WIDTH);
-        prefHeight(App.HEIGHT);
+        prefWidth(Config.WIDTH);
+        prefHeight(Config.HEIGHT);
 
         this.title = new Label(title);
         this.title.setPadding(new Insets(padding));

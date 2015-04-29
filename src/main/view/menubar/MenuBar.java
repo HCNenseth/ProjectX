@@ -18,7 +18,7 @@ public class MenuBar extends javafx.scene.control.MenuBar
     private Menu fileMenu, statisticsMenu, editMenu,
             themeSubMenu, languageSubMenu, newMenu;
     private MenuItem fileSave, fileSaveAs, fileOpen, fileExit,
-            statistics, customer;
+            statistics, customer, search;
     private ToggleGroup themeSubMenuGroup, langaugeSubMenuGroup;
     private RadioMenuItem themeSubMenuItem1, themeSubMenuItem2,
             langaugeSubMenuItem1, langaugeSubMenuItem2, langaugeSubMenuItem3,
@@ -55,6 +55,8 @@ public class MenuBar extends javafx.scene.control.MenuBar
         customer.setOnAction(e -> Mediator.inst.router(Signal.FILE,
                 new Payload(main.controller.MenuBar.Type.NEW_CUSTOMER)));
 
+        search = new MenuItem(Loc.get("search"));
+        search.setOnAction(e -> Mediator.inst.router(Signal.SEARCH, null));
 
 
         /**
@@ -107,7 +109,7 @@ public class MenuBar extends javafx.scene.control.MenuBar
 
         editMenu.getItems().addAll(themeSubMenu, languageSubMenu);
 
-        newMenu.getItems().add(customer);
+        newMenu.getItems().addAll(search, customer);
 
         statisticsMenu.getItems().addAll(statistics);
 
