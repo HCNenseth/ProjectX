@@ -22,7 +22,7 @@ import java.util.function.Consumer;
 public class CarAdapter extends InsuranceAdapter<Car> implements Formable<Car>
 {
 
-    private FormValueNode regNr;
+    private FormValueNode licencePlate;
     private FormDateNode registration;
     private FormValueNode mileage;
     private FormChoiceNode type;
@@ -49,7 +49,7 @@ public class CarAdapter extends InsuranceAdapter<Car> implements Formable<Car>
 
     private void initNodes()
     {
-        regNr = new FormValueNode.Builder(Loc.get("licence_plate"))
+        licencePlate = new FormValueNode.Builder(Loc.get("licence_plate"))
                 .error(Loc.get("licence_plate_error"))
                 .value(getEditMode() ? getInsurance().getLicencePlate() : "")
                 .regex(StringMatcher.getRegnr())
@@ -57,8 +57,6 @@ public class CarAdapter extends InsuranceAdapter<Car> implements Formable<Car>
 
         registration = new FormDateNode.Builder(Loc.get("vehicle_registration"),
                  getEditMode() ? getInsurance().getRegistration() : LocalDate.of(standardYear, standardMonth, standardDay))
-                //.error(Loc.get("error_reg_year"))
-                //.regex(StringMatcher.getYear())
                 .build();
 
         mileage = new FormValueNode.Builder(Loc.get("mileage"))
@@ -82,7 +80,7 @@ public class CarAdapter extends InsuranceAdapter<Car> implements Formable<Car>
 
         type = new FormChoiceNode.Builder(Loc.get("car_type"), typeList)
                 .required(false)
-                .active(Car.Type.A)
+                .active(getEditMode() ? getInsurance().getType() : Car.Type.A)
                 .build();
 
 
@@ -94,48 +92,51 @@ public class CarAdapter extends InsuranceAdapter<Car> implements Formable<Car>
 
         propulsion = new FormChoiceNode.Builder(Loc.get("car_propulsion"), propulsionList)
                 .required(false)
-                .active(Car.Propulsion.A)
+                .active(getEditMode() ? getInsurance().getPropulsion() : Car.Propulsion.A)
                 .build();
     }
 
     @Override
     public List<FormNode> getNodes() {
         List<FormNode> tmp = super.getNodes();
-        tmp.add(regNr);
+        tmp.add(licencePlate);
         tmp.add(registration);
         tmp.add(mileage);
         tmp.add(type);
+        tmp.add(horsePower);
         tmp.add(propulsion);
-
         return tmp;
     }
 
     @Override
     public void callback()
     {
-        if(super.getEditMode())
+        if(getEditMode())
         {
-            super.getInsurance().setMileage(Integer.parseInt(mileage.getValue()));
-            super.getInsurance().setLicencePlate(regNr.getValue());
-            super.getInsurance().setPremium(Integer.parseInt(super.getPremium().getValue()));
-            super.getInsurance().setAmount(Integer.parseInt(super.getAmount().getValue()));
-            super.getInsurance().setStatus((Status) super.getStatus().getData());
+            getInsurance().setMileage(Integer.parseInt(mileage.getValue()));
+            getInsurance().setHorsePower(Integer.parseInt(horsePower.getValue()));
+            getInsurance().setLicencePlate(licencePlate.getValue());
+            getInsurance().setPremium(Integer.parseInt(super.getPremium().getValue()));
+            getInsurance().setAmount(Integer.parseInt(super.getAmount().getValue()));
+            getInsurance().setStatus((Status) super.getStatus().getData());
 
-            System.out.println(super.getInsurance());
+            System.out.println(getInsurance());
             return;
         }
 
-        Car car = new Car.Builder(super.getCustomer(), regNr.getValue())
+        Car car = new Car.Builder(getCustomer(), licencePlate.getValue())
                 .registration(registration.getData())
+                .horsePower(Integer.parseInt(horsePower.getValue()))
                 .mileage(Integer.parseInt(mileage.getValue()))
-                .amount(Integer.parseInt(super.getAmount().getValue()))
-                .premium(Integer.parseInt(super.getPremium().getValue()))
-                .status((Status) super.getStatus().getData())
+                .amount(Integer.parseInt(getAmount().getValue()))
+                .premium(Integer.parseInt(getPremium().getValue()))
+                .status((Status) getStatus().getData())
                 .type((Car.Type) type.getData())
                 .propulsion((Car.Propulsion) propulsion.getData())
                 .build();
 
-        super.setInsurance(car);
+        setInsurance(car);
+        System.out.println(getInsurance());
 
         callBackEvent.fire();
     }
@@ -143,6 +144,6 @@ public class CarAdapter extends InsuranceAdapter<Car> implements Formable<Car>
     @Override
     public void setOnDoneAction(Consumer<Car> c)
     {
-        callBackEvent.setOnAction(e -> c.accept(super.getInsurance()));
+        callBackEvent.setOnAction(e -> c.accept(getInsurance()));
     }
 }
