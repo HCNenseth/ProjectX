@@ -10,7 +10,7 @@ import main.view.form.adapter.PersonAdapter;
 /**
  * Created by alex on 4/23/15.
  */
-class PersonController
+public class PersonController
 {
     private PersonController() {}
 

@@ -11,7 +11,7 @@ import main.model.insurance.Insurance;
 /**
  * Created by alex on 4/28/15.
  */
-public class InsuranceView<T extends Insurance>
+public abstract class InsuranceView<T extends Insurance>
 {
     private GridPane gp;
     private T insurance;
