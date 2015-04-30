@@ -108,14 +108,15 @@
     <string name="claim_type_c">Bilulykke</string>
 
     <!-- house -->
-    <string name="house_type_a">Enebolig</string>
+    <string name="house_type_a">Villa</string>
     <string name="house_type_b">Leilighet</string>
     <string name="house_type_c">Husbåt</string>
+    <string name="house_type_c">Husbil</string>
 
     <string name="house_material">House material</string>
-    <string name="house_material_a">House material a</string>
-    <string name="house_material_b">House material b</string>
-    <string name="house_material_c">House material c</string>
+    <string name="house_material_a">Murstein</string>
+    <string name="house_material_b">Trevirke</string>
+    <string name="house_material_c">Glass</string>
 
     <string name="property_material">Property material</string>
     <string name="property_material_a">Property material a</string>
