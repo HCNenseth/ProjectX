@@ -52,13 +52,14 @@ public class InsuranceController
                 f.injectAdapter(vacationHouseAdapter);
                 Resources.inst.getOtp().injectObservableTab(Loc.get("new_vacationhouse_insuarance"),
                         f.getForm(), true);
-                break;
+                return;
             case TRAVEL:
                 TravelAdapter travelAdapter = new TravelAdapter(p);
                 travelAdapter.setOnDoneAction(InsuranceController::view);
                 f.injectAdapter(travelAdapter);
                 Resources.inst.getOtp().injectObservableTab(Loc.get("new_travel_insurance"),
                         f.getForm(), true);
+                return;
             default: return;
         }
     }

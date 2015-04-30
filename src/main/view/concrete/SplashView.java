@@ -78,7 +78,6 @@ public class SplashView {
         statistics = new Button("", statisticsIV);
         statistics.setOnAction(e -> System.out.println("statistics not ready yet."));
 
-
         hbox.getChildren().addAll(search, customer, statistics);
 
         gridPane.getChildren().add(hbox);
