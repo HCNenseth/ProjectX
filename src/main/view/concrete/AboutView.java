@@ -1,7 +1,9 @@
 package main.view.concrete;
 
+import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import main.config.Config;
+import main.localization.Loc;
 import main.view.StandardGridPane;
 
 /**
@@ -22,8 +24,27 @@ public class AboutView {
     private void initAboutFields()
     {
 
-        gp.add(new Label(Config.APP_NAME), 0, rowNum++);
+        gp.add(new Label(Config.APP_NAME + " \t " + Loc.get("version")), 0, rowNum++);
 
+        addSpace(5);
+
+        gp.add(new Label(Loc.get("made_by")), 0, rowNum++);
+        gp.add(new Label("Alexander Skjolden"), 0, rowNum++);
+        gp.add(new Label("Hans Christian Nenseth"), 0, rowNum++);
+        gp.add(new Label("Hans Petter Osvold"), 0, rowNum++);
+
+        addSpace(5);
+
+        gp.add(new Label(Loc.get("git") + " \t " + Loc.get("git_url")), 0, rowNum++);
+
+    }
+
+    private void addSpace(int space)
+    {
+        for(int i = 0; i < space; i++)
+        {
+            rowNum++;
+        }
     }
 
     public StandardGridPane getNode()
