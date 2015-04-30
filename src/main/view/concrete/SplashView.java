@@ -52,7 +52,7 @@ public class SplashView {
         gridPane = new GridPane();
 
         searchIcon = new Image("File:resources/images/search.png");
-        customerIcon = new Image("File:resources/images/plus.png");
+        customerIcon = new Image("File:resources/images/customer.png");
         statisticsIcon = new Image("File:resources/images/chart.png");
 
         searchIV = new ImageView();
