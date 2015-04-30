@@ -46,16 +46,13 @@ class XMLParser
         File file = new File(mainFile);
 
         if (file == null) {
-            throw new IllegalStateException(
-                    "Could not locate languages directory!");
+            System.out.println("main.xml file not found");
+            return;
         }
 
         if (file.canRead() && file.isFile()) {
             parseFile(file.getAbsolutePath());
-        } else {
-            throw new IllegalStateException("Could not read from file!");
         }
-
     }
 
     private void parseFile(final String filename)
