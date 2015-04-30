@@ -11,12 +11,11 @@ import javafx.scene.layout.Region;
 import javafx.stage.Stage;
 import main.config.Config;
 import main.localization.Loc;
+import main.view.InfoBar;
 import main.view.Resources;
 import main.view.form.Form;
 import main.view.form.adapter.SearchAdapter;
 import main.view.menubar.MenuBar;
-
-import java.util.DoubleSummaryStatistics;
 
 /**
  * Created by alex on 4/22/15.
@@ -33,6 +32,7 @@ public class App extends Application
         bp.setTop(menuBar);
         bp.setCenter(Resources.inst.getOtp());
         bp.setLeft(sidePane);
+        bp.setBottom(InfoBar.inst.getMain());
 
         /*
         Form f = new Form();
