@@ -29,20 +29,9 @@ import static main.controller.Mediator.*;
 public class SplashView {
 
     private GridPane gridPane;
-    private Pane    searchPane,
-                    customerPane,
-                    statisticsPane;
-
     private HBox hbox;
-
-    private Image   searchIcon,
-                    customerIcon,
-                    statisticsIcon;
-
-    private ImageView   searchIV,
-                        customerIV,
-                        statisticsIV;
-
+    private Image searchIcon, customerIcon, statisticsIcon;
+    private ImageView searchIV, customerIV, statisticsIV;
     private Button search, customer, statistics;
 
     public SplashView()
