@@ -2,20 +2,20 @@ package main.view.concrete;
 
 import javafx.scene.control.Label;
 import main.localization.Loc;
-import main.model.insurance.property.House;
+import main.model.insurance.property.VacationHouse;
 
 /**
- * Created by alex on 4/28/15.
+ * Created by HansChristian on 30.04.2015.
  */
-public class HouseView extends InsuranceView<House>
+public class VacationHouseView extends InsuranceView<VacationHouse>
 {
-    public HouseView(House house)
+    public VacationHouseView(VacationHouse vacationHouse)
     {
-        super(house);
+        super(vacationHouse);
         addFields();
     }
 
-    private void addFields()
+    public void addFields()
     {
         // Street address
         getNode().add(new Label(Loc.get("street_address")), 0, rowNum);

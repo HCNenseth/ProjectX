@@ -29,7 +29,6 @@ public class VacationHouse extends Property implements Serializable {
         public String toString() { return getValue(); }
     }
 
-
     public VacationHouse(Builder builder) {
         super(builder);
 
@@ -69,7 +68,6 @@ public class VacationHouse extends Property implements Serializable {
     public ConcreteType identify() {
         return ConcreteType.VACATION_HOUSE;
     }
-
 
     public static class Builder extends InsuranceBuilder<Builder, VacationHouse>
     {
