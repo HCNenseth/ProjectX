@@ -1,8 +1,27 @@
 package main.view.concrete;
 
+import javafx.event.Event;
+import javafx.event.EventHandler;
+import javafx.geometry.HPos;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
+import javafx.geometry.VPos;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
+import main.controller.Mediator;
+import main.controller.Payload;
+import main.controller.Signal;
+
+import java.awt.event.MouseEvent;
+import java.io.FileNotFoundException;
+
+import static main.controller.Mediator.*;
 
 /**
  * Created by HansPetter on 30.04.2015.
@@ -10,44 +29,71 @@ import javafx.scene.layout.Pane;
 public class SplashView {
 
     private GridPane gridPane;
+    private Pane    searchPane,
+                    customerPane,
+                    statisticsPane;
 
-    private Pane searchPane, customerPane, statisticsPane;
+    private HBox hbox;
 
-    private Label searchLabel, customerLabel, statisticsLabel;
+    private Image   searchIcon,
+                    customerIcon,
+                    statisticsIcon;
 
-    private final String SEARCH = "Search";
-    private final String CUSTOMER = "Customer";
-    private final String STATISTICS = "Statistics";
+    private ImageView   searchIV,
+                        customerIV,
+                        statisticsIV;
+
+    private Button search, customer, statistics;
 
     public SplashView()
     {
+        hbox = new HBox();
+        hbox.setSpacing(50);
         gridPane = new GridPane();
 
-        searchLabel = new Label(SEARCH);
-        customerLabel = new Label(CUSTOMER);
-        statisticsLabel = new Label(STATISTICS);
+        searchIcon = new Image("File:resources/images/search.png");
+        customerIcon = new Image("File:resources/images/plus.png");
+        statisticsIcon = new Image("File:resources/images/chart.png");
 
-        searchPane = new Pane();
-        searchPane.setPrefSize(50, 50);
-        searchPane.getChildren().add(searchLabel);
+        searchIV = new ImageView();
+        searchIV.setImage(searchIcon);
+        searchIV.setFitWidth(80);
+        searchIV.setFitHeight(80);
+        searchIV.setPreserveRatio(true);
+        searchIV.setSmooth(true);
+        searchIV.setCache(true);
 
-        customerPane = new Pane();
-        customerPane.setPrefSize(50, 50);
-        customerPane.getChildren().add(customerLabel);
+        customerIV = new ImageView();
+        customerIV.setImage(customerIcon);
+        customerIV.setFitHeight(80);
+        customerIV.setFitWidth(80);
+        customerIV.setPreserveRatio(true);
+        customerIV.setSmooth(true);
+        customerIV.setCache(true);
 
-        statisticsPane = new Pane();
-        statisticsPane.setPrefSize(50, 50);
-        statisticsPane.getChildren().add(statisticsLabel);
+        statisticsIV = new ImageView();
+        statisticsIV.setImage(statisticsIcon);
+        statisticsIV.setFitWidth(80);
+        statisticsIV.setFitHeight(80);
+        statisticsIV.setPreserveRatio(true);
+        statisticsIV.setSmooth(true);
+        statisticsIV.setCache(true);
 
-        gridPane.setConstraints(searchPane, 2, 2);
+        search = new Button("", searchIV);
+        search.setOnAction(e -> Mediator.inst.router(Signal.SEARCH, null));
 
-        gridPane.setConstraints(customerPane, 4, 2);
+        customer = new Button("", customerIV);
+        customer.setOnAction(e -> Mediator.inst.router(Signal.FILE,
+                new Payload(main.controller.MenuBar.Type.NEW_CUSTOMER)));
 
-        gridPane.setConstraints(statisticsPane, 3, 4);
+        statistics = new Button("", statisticsIV);
+        statistics.setOnAction(e -> System.out.println("statistics not ready yet."));
 
-        gridPane.getChildren().addAll(searchPane, customerPane, statisticsPane);
 
-        show();
+        hbox.getChildren().addAll(search, customer, statistics);
+
+        gridPane.getChildren().add(hbox);
+        gridPane.setAlignment(Pos.CENTER);
 
     }
 

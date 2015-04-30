@@ -23,8 +23,8 @@ public enum Resources
         observerTabPane = new ObserverTabPane();
         splashView = new SplashView();
 
-        stackPane.getChildren().add(splashView.getSplashPane());
         stackPane.getChildren().add(observerTabPane);
+        stackPane.getChildren().add(splashView.getSplashPane());
 
         infoBar = new InfoBar();
     }
