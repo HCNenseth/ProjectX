@@ -11,7 +11,6 @@ import java.io.Serializable;
 
 public class House extends Property implements Serializable
 {
-
     private Type type;
 
     public enum Type {

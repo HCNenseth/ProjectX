@@ -16,7 +16,7 @@ public class MenuBar
 {
     public enum Type {
         OPEN, SAVE_AS, SAVE, CLOSE,
-        NEW_CUSTOMER;
+        NEW_CUSTOMER, ABOUT
     }
 
     public MenuBar(Payload p)
@@ -27,8 +27,14 @@ public class MenuBar
             case SAVE: saveFile(); break;
             case CLOSE: exitApp(); break;
             case NEW_CUSTOMER: newCustomer(); break;
+            case ABOUT: aboutUs(); break;
             default: return;
         }
+    }
+
+    public void aboutUs()
+    {
+        AboutController.view();
     }
 
     public void exitApp()
