@@ -1,42 +1,25 @@
 package main.view.concrete;
 
 import javafx.scene.control.Label;
-import javafx.scene.layout.ColumnConstraints;
-import javafx.scene.layout.GridPane;
-import main.config.Config;
 import main.localization.Loc;
 import main.model.claim.Claim;
 import main.model.insurance.property.House;
 import main.model.insurance.vehicle.Boat;
 import main.model.insurance.vehicle.Car;
+import main.view.StandardGridPane;
 
 /**
  * Created by alex on 4/28/15.
  */
 public class ClaimView
 {
-    private GridPane gp;
+    private StandardGridPane gp;
     private int rowNum = 0;
     private Claim claim;
 
     public ClaimView(Claim claim)
     {
-        gp = new GridPane();
-        gp.setMinWidth(Config.WIDTH - (Config.WIDTH / 20));
-
-        ColumnConstraints keyColumn = new ColumnConstraints();
-        //keyColumn.setHgrow(Priority.SOMETIMES);
-        keyColumn.setPercentWidth(20);
-
-        ColumnConstraints valueColumn = new ColumnConstraints();
-        //valueColumn.setHgrow(Priority.ALWAYS);
-        valueColumn.setPercentWidth(80);
-
-        gp.getColumnConstraints().add(0, keyColumn);
-        gp.getColumnConstraints().add(1, valueColumn);
-
-        gp.setHgap(5);
-        gp.setVgap(5);
+        gp = new StandardGridPane();
 
         initFields();
     }
@@ -96,7 +79,7 @@ public class ClaimView
         gp.add(new Label(claim.getStatus().getValue()), 1, rowNum++);
     }
 
-    public GridPane getNode()
+    public StandardGridPane getNode()
     {
         return gp;
     }

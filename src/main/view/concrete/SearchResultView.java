@@ -1,10 +1,9 @@
 package main.view.concrete;
 
 import javafx.scene.control.Label;
-import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Font;
-import main.config.Config;
+import main.view.StandardGridPane;
 import main.view.table.Table;
 
 /**
@@ -12,20 +11,13 @@ import main.view.table.Table;
  */
 public class SearchResultView
 {
-    private GridPane gp;
+    private StandardGridPane gp;
     private int rowNum = 0;
     private int headerSize = 16;
 
     public SearchResultView()
     {
-        gp = new GridPane();
-
-        ColumnConstraints mainColumn = new ColumnConstraints();
-        mainColumn.setPercentWidth(100);
-
-        gp.getColumnConstraints().add(0, mainColumn);
-        gp.setHgap(5);
-        gp.setVgap(5);
+        gp = new StandardGridPane(1);
     }
 
     public void addTable(Table<?> table, String label)

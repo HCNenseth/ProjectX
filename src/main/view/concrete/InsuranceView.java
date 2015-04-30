@@ -1,42 +1,24 @@
 package main.view.concrete;
 
 import javafx.scene.control.Label;
-import javafx.scene.layout.ColumnConstraints;
-import javafx.scene.layout.GridPane;
-import main.config.Config;
 import main.controller.TableController;
 import main.localization.Loc;
 import main.model.insurance.Insurance;
+import main.view.StandardGridPane;
 
 /**
  * Created by alex on 4/28/15.
  */
 public abstract class InsuranceView<T extends Insurance>
 {
-    private GridPane gp;
+    private StandardGridPane gp;
     private T insurance;
     protected int rowNum = 0;
 
     public InsuranceView(T insurance)
     {
         this.insurance = insurance;
-        gp = new GridPane();
-
-        gp.setMinWidth(Config.WIDTH - (Config.WIDTH / 20));
-
-        ColumnConstraints keyColumn = new ColumnConstraints();
-        //keyColumn.setHgrow(Priority.SOMETIMES);
-        keyColumn.setPercentWidth(20);
-
-        ColumnConstraints valueColumn = new ColumnConstraints();
-        //valueColumn.setHgrow(Priority.ALWAYS);
-        valueColumn.setPercentWidth(80);
-
-        gp.getColumnConstraints().add(0, keyColumn);
-        gp.getColumnConstraints().add(1, valueColumn);
-
-        gp.setHgap(5);
-        gp.setVgap(5);
+        gp = new StandardGridPane();
 
         initInsuranceFields();
     }
@@ -68,5 +50,5 @@ public abstract class InsuranceView<T extends Insurance>
 
     public T getInsurance() { return insurance; }
 
-    public GridPane getNode() { return gp; }
+    public StandardGridPane getNode() { return gp; }
 }
