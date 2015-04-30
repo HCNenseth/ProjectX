@@ -76,6 +76,11 @@ public class ObserverTabPane extends TabPane implements Observer
         if (observablePaneMap.containsKey(tab)) {
             observablePaneMap.remove(tab);
         }
+
+        if (getTabs().size() < 2) {
+            Resources.inst.getSplashView().show();
+        }
+
     }
 
     /**
@@ -101,7 +106,8 @@ public class ObserverTabPane extends TabPane implements Observer
     public void injectObservableTab(String title, Node content,
                                    Model ref, Boolean closeable)
     {
-        System.out.println(getTabs().size());
+        // hide splash view...
+        Resources.inst.getSplashView().hide();
 
         ObservablePane obsPane = new ObservablePane(this, title);
         if (ref != null) { obsPane.setReference(ref); }

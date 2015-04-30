@@ -32,7 +32,7 @@ public class App extends Application
         sidePane = new Pane();
 
         bp.setTop(menuBar);
-        bp.setCenter(Resources.inst.getOtp());
+        bp.setCenter(Resources.inst.getStackPane());
         bp.setBottom(Resources.inst.getInfoBar().getMain());
         bp.setLeft(sidePane);
 
