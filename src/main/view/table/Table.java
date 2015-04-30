@@ -32,6 +32,9 @@ public abstract class Table<T> extends TableView<T>
 
         observableList = FXCollections.observableArrayList();
 
+        setEditable(false);
+        setTableMenuButtonVisible(true);
+        setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
         setContextMenu(contextMenu);
     }
 

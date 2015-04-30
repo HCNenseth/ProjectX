@@ -1,5 +1,7 @@
 package main.localization;
 
+import java.util.Set;
+
 /**
  * Simple main.localization system. This is the package config gateway
  * to the outside. Singleton pattern is used for preventing duplication
@@ -52,6 +54,16 @@ public final class Loc
             throw new IllegalStateException("No such language!");
         }
         Loc.INSTANCE.activeLang = lang;
+
+    }
+
+    /**
+     * Return all available languages.
+     * @return
+     */
+    public static Set<String> getLanguages()
+    {
+        return Loc.INSTANCE.p.getLanguages();
     }
 
     /**
