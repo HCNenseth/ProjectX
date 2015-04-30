@@ -15,5 +15,6 @@ public class PersonTable extends Table<Person>
         injectColumn(Column.generate(Loc.get("street_address"), "streetAddress"));
         injectColumn(Column.generate(Loc.get("postal_code"), "postalCode"));
         injectColumn(Column.generate(Loc.get("city"), "city"));
+        injectColumn(Column.generate(Loc.get("status"), "status"));
     }
 }

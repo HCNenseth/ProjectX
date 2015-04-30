@@ -16,5 +16,6 @@ public class InsuranceTable extends Table<Insurance>
         injectColumn(Column.generate(Loc.get("premium"), "premium"));
         injectColumn(Column.generate(Loc.get("amount"), "amount"));
         injectColumn(Column.generate(Loc.get("deductible"), "deductible"));
+        injectColumn(Column.generate(Loc.get("status"), "status"));
     }
 }
