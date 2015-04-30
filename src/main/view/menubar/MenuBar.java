@@ -5,12 +5,8 @@ import main.controller.Mediator;
 import main.controller.Payload;
 import main.controller.Signal;
 import main.localization.Loc;
-import main.preference.Preferences;
-import main.view.InfoBar;
+import main.preference.Pref;
 import main.view.Resources;
-
-import javax.sound.midi.MidiDevice;
-
 
 /**
  * Created by alex on 4/22/15.
@@ -84,7 +80,7 @@ public class MenuBar extends javafx.scene.control.MenuBar
                 Loc.setActiveLang(s);
                 Resources.inst.getInfoBar().setAndShow(
                         Loc.get("please_restart_for_changes_to_take_effect"));
-                Preferences.inst.add("language", s);
+                Pref.inst.put("language", s);
             });
             languageSubMenu.getItems().add(tmp);
         }

@@ -4,6 +4,7 @@ import javafx.application.Platform;
 import javafx.stage.FileChooser;
 import main.localization.Loc;
 import main.model.Storage;
+import main.preference.Pref;
 
 import java.io.File;
 import java.io.IOException;
@@ -50,6 +51,7 @@ public class MenuBar
             try {
                 Storage.injectFilename(file.getPath());
                 Storage.getInstance().read();
+                Pref.inst.put("last_used_file", file.getPath());
             } catch (IOException | ClassNotFoundException e) {
                 // TODO do something meaningful with this error.
                 System.out.println("error reading from file");

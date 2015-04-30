@@ -8,9 +8,13 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import main.config.Config;
 import main.localization.Loc;
+import main.model.Storage;
+import main.preference.Pref;
 import main.preference.Preferences;
 import main.view.Resources;
 import main.view.menubar.MenuBar;
+
+import java.io.IOException;
 
 /**
  * Created by alex on 4/22/15.
@@ -18,7 +22,6 @@ import main.view.menubar.MenuBar;
 public class App extends Application
 {
     private BorderPane bp;
-    private MenuBar menuBar;
     private Pane sidePane;
 
     @Override
@@ -28,10 +31,9 @@ public class App extends Application
         init();
 
         bp = new BorderPane();
-        menuBar = new MenuBar();
         sidePane = new Pane();
 
-        bp.setTop(menuBar);
+        bp.setTop(new MenuBar());
         bp.setCenter(Resources.inst.getStackPane());
         bp.setBottom(Resources.inst.getInfoBar().getMain());
         bp.setLeft(sidePane);
@@ -56,11 +58,18 @@ public class App extends Application
 
     public void init()
     {
-        if (Preferences.inst.has("language")) {
-            Loc.setActiveLang(Preferences.inst.get("language"));
+        if (Pref.inst.has("language")) {
+            Loc.setActiveLang(Pref.inst.get("language"));
         }
 
-        if (Preferences.inst.has("last_used_file")) {
+        if (Pref.inst.has("last_used_file")) {
+            Storage.injectFilename(Pref.inst.get("last_used_file"));
+            try {
+                Storage.getInstance().read();
+            } catch (IOException | ClassNotFoundException e) {
+                // TODO do something meaningful with this error.
+                System.out.println("error reading from file");
+            }
         }
     }
 
