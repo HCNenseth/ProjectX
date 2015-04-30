@@ -14,6 +14,7 @@ public enum Mediator
         switch (s) {
             case SEARCH: new SearchController(p); break;
             case FILE: new MenuBar(p);break;
+            case ABOUT: AboutController.view(); System.out.println("Mediator"); break;
             default: return;
         }
     }

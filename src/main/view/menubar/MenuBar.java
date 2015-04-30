@@ -14,34 +14,38 @@ import main.view.Resources;
 public class MenuBar extends javafx.scene.control.MenuBar
 {
     private Menu fileMenu, statisticsMenu, editMenu,
-            themeSubMenu, languageSubMenu, newMenu;
+            themeSubMenu, languageSubMenu, newMenu, aboutMenu;
     private MenuItem fileSave, fileSaveAs, fileOpen, fileExit,
-            statistics, customer, search;
+            statistics, customer, search, aboutUs;
     private ToggleGroup themeSubMenuGroup, languageSubMenuGroup;
     private RadioMenuItem themeSubMenuItem1, themeSubMenuItem2;
 
     public MenuBar()
     {
 
-        fileMenu = new Menu(Loc.get("menu_groupFile"));
-        editMenu = new Menu(Loc.get("menu_groupEdit"));
-        statisticsMenu = new Menu(Loc.get("menu_groupStatistics"));
-
+        fileMenu = new Menu(Loc.get("menu_group_file"));
+        editMenu = new Menu(Loc.get("menu_group_edit"));
+        statisticsMenu = new Menu(Loc.get("menu_group_statistics"));
+        aboutMenu = new Menu(Loc.get("menu_group_about"));
         newMenu = new Menu(Loc.get("New"));
 
-        fileSave = new MenuItem(Loc.get("menu_fileSave"));
+        aboutUs = new MenuItem(Loc.get("menu_about"));
+        aboutUs.setOnAction(e -> Mediator.inst.router(Signal.ABOUT,
+                new Payload()));
+
+        fileSave = new MenuItem(Loc.get("menu_file_save"));
         fileSave.setOnAction(e -> Mediator.inst.router(Signal.FILE,
                 new Payload(main.controller.MenuBar.Type.SAVE)));
 
-        fileSaveAs = new MenuItem(Loc.get("menu_fileSaveAs"));
+        fileSaveAs = new MenuItem(Loc.get("menu_file_save_as"));
         fileSaveAs.setOnAction(e -> Mediator.inst.router(Signal.FILE,
                 new Payload(main.controller.MenuBar.Type.SAVE_AS)));
 
-        fileOpen = new MenuItem(Loc.get("menu_fileOpen"));
+        fileOpen = new MenuItem(Loc.get("menu_file_open"));
         fileOpen.setOnAction(e -> Mediator.inst.router(Signal.FILE,
                 new Payload(main.controller.MenuBar.Type.OPEN)));
 
-        fileExit = new MenuItem(Loc.get("menu_fileClose"));
+        fileExit = new MenuItem(Loc.get("menu_file_close"));
         fileExit.setOnAction(e -> Mediator.inst.router(Signal.FILE,
                 new Payload(main.controller.MenuBar.Type.CLOSE)));
 
@@ -60,6 +64,8 @@ public class MenuBar extends javafx.scene.control.MenuBar
          * Probably better for scaling to use ENUMS with a loop.
          * But this is just a proof of concept.
          */
+
+
 
         themeSubMenu = new Menu(Loc.get("theme"));
         themeSubMenuGroup = new ToggleGroup();
@@ -92,7 +98,8 @@ public class MenuBar extends javafx.scene.control.MenuBar
         editMenu.getItems().addAll(themeSubMenu, languageSubMenu);
         newMenu.getItems().addAll(search, customer);
         statisticsMenu.getItems().addAll(statistics);
+        aboutMenu.getItems().add(aboutUs);
 
-        getMenus().addAll(fileMenu, newMenu, editMenu, statisticsMenu);
+        getMenus().addAll(fileMenu, newMenu, editMenu, statisticsMenu, aboutMenu);
     }
 }
