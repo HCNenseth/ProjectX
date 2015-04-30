@@ -29,6 +29,15 @@ public class ObserverTabPane extends TabPane implements Observer
     }
 
     /**
+     * Checks if the observable tab pane is empty.
+     * If it is, then show the splash screen.
+     */
+    public SplashPane showSplashScreen()
+    {
+        return new SplashPane();
+    }
+
+    /**
      * Observer pattern update method. This method can be used
      * to send a signal to all observable panes in the list.
      * @param obj
@@ -74,6 +83,10 @@ public class ObserverTabPane extends TabPane implements Observer
     {
         if (observablePaneMap.containsKey(tab)) {
             observablePaneMap.remove(tab);
+            if(getTabs().size() < 2)
+            {
+                showSplashScreen();
+            }
         }
     }
 
