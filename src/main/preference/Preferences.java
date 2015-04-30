@@ -1,18 +1,16 @@
 package main.preference;
 
-import java.util.prefs.Preferences;
-
 /**
  * Super simple config singleton for persistent storage of config data.
  */
-public enum Config
+public enum Preferences
 {
     inst;
 
-    private Preferences prefs;
+    private java.util.prefs.Preferences prefs;
     private final String dirName = "prettyUselessInsuranceSystem";
 
-    Config() { prefs = Preferences.userRoot().node(dirName); }
+    Preferences() { prefs = java.util.prefs.Preferences.userRoot().node(dirName); }
 
     public void add(String key, String value)
     {

@@ -1,13 +1,15 @@
 package main.view.menubar;
 
-import javafx.scene.control.Menu;
-import javafx.scene.control.MenuItem;
-import javafx.scene.control.RadioMenuItem;
-import javafx.scene.control.ToggleGroup;
+import javafx.scene.control.*;
 import main.controller.Mediator;
 import main.controller.Payload;
 import main.controller.Signal;
 import main.localization.Loc;
+import main.preference.Preferences;
+import main.view.InfoBar;
+import main.view.Resources;
+
+import javax.sound.midi.MidiDevice;
 
 
 /**
@@ -19,10 +21,8 @@ public class MenuBar extends javafx.scene.control.MenuBar
             themeSubMenu, languageSubMenu, newMenu;
     private MenuItem fileSave, fileSaveAs, fileOpen, fileExit,
             statistics, customer, search;
-    private ToggleGroup themeSubMenuGroup, langaugeSubMenuGroup;
-    private RadioMenuItem themeSubMenuItem1, themeSubMenuItem2,
-            langaugeSubMenuItem1, langaugeSubMenuItem2, langaugeSubMenuItem3,
-            langaugeSubMenuItem4, langaugeSubMenuItem5;
+    private ToggleGroup themeSubMenuGroup, languageSubMenuGroup;
+    private RadioMenuItem themeSubMenuItem1, themeSubMenuItem2;
 
     public MenuBar()
     {
@@ -75,42 +75,26 @@ public class MenuBar extends javafx.scene.control.MenuBar
         themeSubMenu.getItems().addAll(themeSubMenuItem1, themeSubMenuItem2);
 
         languageSubMenu = new Menu(Loc.get("language"));
-        langaugeSubMenuGroup = new ToggleGroup();
+        languageSubMenuGroup = new ToggleGroup();
 
-        langaugeSubMenuItem1 = new RadioMenuItem(Loc.get("langEn"));
-        langaugeSubMenuItem1.setSelected(true);
-        langaugeSubMenuItem1.setToggleGroup(langaugeSubMenuGroup);
-
-        langaugeSubMenuItem2 = new RadioMenuItem(Loc.get("langNo"));
-        langaugeSubMenuItem2.setToggleGroup(langaugeSubMenuGroup);
-
-        langaugeSubMenuItem3 = new RadioMenuItem(Loc.get("langGe"));
-        langaugeSubMenuItem3.setToggleGroup(langaugeSubMenuGroup);
-
-        langaugeSubMenuItem4 = new RadioMenuItem(Loc.get("langFr"));
-        langaugeSubMenuItem4.setToggleGroup(langaugeSubMenuGroup);
-
-        langaugeSubMenuItem5 = new RadioMenuItem(Loc.get("langIt"));
-        langaugeSubMenuItem5.setToggleGroup(langaugeSubMenuGroup);
-
-        languageSubMenu.getItems()
-                .addAll(
-                        langaugeSubMenuItem1,
-                        langaugeSubMenuItem2,
-                        langaugeSubMenuItem3,
-                        langaugeSubMenuItem4,
-                        langaugeSubMenuItem5
-                );
+        for (String s : Loc.getLanguages()) {
+            RadioMenuItem tmp = new RadioMenuItem(Loc.get(s));
+            tmp.setToggleGroup(languageSubMenuGroup);
+            tmp.setOnAction(e -> {
+                Loc.setActiveLang(s);
+                Resources.inst.getInfoBar().setAndShow(
+                        Loc.get("please_restart_for_changes_to_take_effect"));
+                Preferences.inst.add("language", s);
+            });
+            languageSubMenu.getItems().add(tmp);
+        }
 
        /**
          * Putting the parts together.
          */
         fileMenu.getItems().addAll(fileOpen, fileSave, fileSaveAs, fileExit);
-
         editMenu.getItems().addAll(themeSubMenu, languageSubMenu);
-
         newMenu.getItems().addAll(search, customer);
-
         statisticsMenu.getItems().addAll(statistics);
 
         getMenus().addAll(fileMenu, newMenu, editMenu, statisticsMenu);

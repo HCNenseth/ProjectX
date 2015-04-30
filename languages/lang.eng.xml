@@ -120,13 +120,14 @@
     <string name="boat_type_d">Tow boat</string>
 
     <!-- house -->
-    <string name="house_type_a">House type a</string>
-    <string name="house_type_b">House type b</string>
-    <string name="house_type_c">House type c</string>
+    <string name="house_type_a">Villa</string>
+    <string name="house_type_b">Apartment</string>
+    <string name="house_type_c">House Boat</string>
+    <string name="house_type_d">Caravan</string>
 
-    <string name="house_material_a">House material a</string>
-    <string name="house_material_b">House material b</string>
-    <string name="house_material_c">House material c</string>
+    <string name="house_material_a">Brick</string>
+    <string name="house_material_b">Wood</string>
+    <string name="house_material_c">Glass</string>
 
     <string name="property_material">Property material</string>
     <string name="property_material_a">Property material a</string>
