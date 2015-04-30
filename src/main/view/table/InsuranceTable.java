@@ -11,6 +11,7 @@ public class InsuranceTable extends Table<Insurance>
 {
     public InsuranceTable()
     {
+        //injectColumn(Column.generate(Loc.get("insurance"), "insuranceType"));
         injectColumn(Column.generate(Loc.get("type"), "type"));
         injectColumn(Column.generate(Loc.get("premium"), "premium"));
         injectColumn(Column.generate(Loc.get("amount"), "amount"));

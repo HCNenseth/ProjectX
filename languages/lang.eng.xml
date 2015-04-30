@@ -43,7 +43,7 @@
     <string name="new_car_insurance">New car insurance</string>
     <string name="new_boat_insurance">New boat insurance</string>
     <string name="new_house_insurance">New house insurance</string>
-    <string name="new_vacation_house_insurance">New vacation house insurance</string>
+    <string name="new_vacationhouse_insurance">New vacation house insurance</string>
     <string name="new_travel_insurance">New travel insurance</string>
 
     <!-- search -->
@@ -104,6 +104,7 @@
     <string name="date_of_birth">Date of birth</string>
 
     <!-- car -->
+    <string name="license_plate">License plate</string>
     <string name="car_propulsion">Propulsion</string>
     <string name="car_propulsion_a">Gas</string>
     <string name="car_propulsion_b">Diesel</string>

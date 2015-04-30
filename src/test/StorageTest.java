@@ -10,6 +10,7 @@ import main.model.claim.Claim;
 import main.model.insurance.ConcreteType;
 import main.model.insurance.Insurance;
 import main.model.insurance.property.House;
+import main.model.insurance.property.VacationHouse;
 import main.model.insurance.travel.Travel;
 import main.model.insurance.vehicle.Boat;
 import main.model.insurance.vehicle.Car;
@@ -311,10 +312,8 @@ public class StorageTest
                         .deductible(randInt(4000, 12000))
                         .horsePower(randInt(20, 400))
                         .length(randInt(10, 50))
-                        /*
-                        .registrationYear(LocalDate.of(randInt(1940, 2014),
+                        .registration(LocalDate.of(randInt(1940, 2014),
                                 randInt(1,12), randInt(1,28)))
-                        */
                         .type(Boat.Type.A)
                         .build();
                 /* add some random claims */
@@ -339,6 +338,7 @@ public class StorageTest
                         .standard(House.Standard.A)
                         .type(House.Type.A)
                         .year(randInt(1900, 2014))
+                        .squareMeter(randInt(30, 200))
                         .build();
                 /* add some random claims */
                 for (int k = 0; k < randInt(0, 5); k++) {
@@ -351,6 +351,31 @@ public class StorageTest
                 }
                 insurances.add(house);
             }
+
+            /* add some random houses */
+            /*
+            for (int j = 0; j < randInt(0,10); j++) {
+                VacationHouse vacationHouse = new House.Builder(person, streetName, randInt(1000, 9000) + "")
+                        .material(House.Material.A)
+                        .amount(randInt(1000, 4000))
+                        .premium(randInt(300, 700))
+                        .deductible(randInt(4000, 12000))
+                        .standard(House.Standard.A)
+                        .type(House.Type.A)
+                        .year(randInt(1900, 2014))
+                        .squareMeter(randInt(30, 200))
+                        .build();
+                for (int k = 0; k < randInt(0, 5); k++) {
+                    claims.add(new Claim.Builder(person, house)
+                            .date(LocalDate.of(randInt(1960,2014),
+                                    randInt(1,12), randInt(1,28)))
+                            .description("foobar")
+                            .amount(randInt(1000, 12000))
+                            .build());
+                }
+                insurances.add(house);
+            }
+            */
 
             /* add some random travel insurances */
             for (int j = 0; j < randInt(0,10); j++) {
