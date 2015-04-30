@@ -158,6 +158,12 @@
     <string name="square_meters">Square meters</string>
     <string name="material">Material</string>
 
+    <!-- vacation house -->
+    <string name="vacationHouse_type_a">Cottage</string>
+    <string name="vacationHouse_type_b">Caravan</string>
+    <string name="vacationHouse_type_c">House Boat</string>
+    <string name="vacationHouse_type_d">Tent</string>
+
     <!-- travel -->
     <string name="continent">Continent</string>
     <string name="continent_a">Europa</string>

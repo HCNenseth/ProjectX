@@ -84,7 +84,7 @@ public class VacationHouseAdapter extends InsuranceAdapter<VacationHouse> implem
         }
 
         type = new FormChoiceNode.Builder<>(Loc.get("type"), typeList)
-                .active(getEditMode() ? getInsurance().getType() : House.Type.A)
+                .active(getEditMode() ? getInsurance().getType() : VacationHouse.Type.A)
                 .build();
 
         List<Enum> materialList = new ArrayList();
