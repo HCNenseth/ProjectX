@@ -5,7 +5,9 @@ import main.controller.Mediator;
 import main.controller.Payload;
 import main.controller.Signal;
 import main.localization.Loc;
+import main.preference.Preferences;
 import main.view.InfoBar;
+import main.view.Resources;
 
 import javax.sound.midi.MidiDevice;
 
@@ -80,9 +82,9 @@ public class MenuBar extends javafx.scene.control.MenuBar
             tmp.setToggleGroup(languageSubMenuGroup);
             tmp.setOnAction(e -> {
                 Loc.setActiveLang(s);
-                InfoBar.inst.setAndShow(Loc.get("please_restart_for_changes_to_take_effect"));
-                // TODO implement persistent storage call
-                // TODO implement call to main gui to alert language
+                Resources.inst.getInfoBar().setAndShow(
+                        Loc.get("please_restart_for_changes_to_take_effect"));
+                Preferences.inst.add("language", s);
             });
             languageSubMenu.getItems().add(tmp);
         }

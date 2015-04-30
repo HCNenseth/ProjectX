@@ -11,15 +11,13 @@ import main.localization.Loc;
 /**
  * Created by alex on 4/30/15.
  */
-public enum InfoBar
+public class InfoBar
 {
-    inst;
-
     private GridPane main;
     private Button xout;
     private int msg = 95, button = 5;
 
-    InfoBar()
+    public InfoBar()
     {
         main = new GridPane();
         main.setVisible(false);
@@ -43,9 +41,9 @@ public enum InfoBar
 
     public GridPane getMain() { return main; }
 
-    public void hide() { main.setVisible(false); }
+    private void hide() { main.setVisible(false); }
 
-    public void show() { main.setVisible(true); }
+    private void show() { main.setVisible(true); }
 
     public void setAndShow(String string)
     {
