@@ -33,11 +33,7 @@ public class PersonView
 
     public void initButtonPanel()
     {
-        int column = 0, row = 0;
-
         ToolBar buttonPane = new ToolBar();
-        Label newInsurance = new Label(Loc.get("new_insurance"));
-        Label editPerson = new Label(Loc.get("edit"));
 
         // car
         Button b1 = new Button(Loc.get("car"));
@@ -64,19 +60,6 @@ public class PersonView
         editButton.setOnAction(e -> PersonController.edit(person));
 
         buttonPane.getItems().addAll(b1, b2, b3, b4, b5, editButton);
-
-        /*
-        buttonPane.add(newInsurance, column++, row);
-        buttonPane.add(b1, column++, row);
-        buttonPane.add(b2, column++, row);
-        buttonPane.add(b3, column++, row);
-        buttonPane.add(b4, column++, row);
-        buttonPane.add(b5, column++, row);
-        buttonPane.add(editPerson, column++, row);
-        buttonPane.add(editButton, column++, row);
-
-        buttonPane.setHgap(cellGap);
-        */
 
         gp.add(buttonPane, 0, rowNum++, 2, 1);
     }

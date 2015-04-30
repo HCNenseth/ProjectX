@@ -13,7 +13,7 @@ import org.junit.experimental.theories.FromDataPoints;
 /**
  * Created by alex on 4/26/15.
  */
-class ClaimController
+public class ClaimController
 {
     private ClaimController() {}
 
