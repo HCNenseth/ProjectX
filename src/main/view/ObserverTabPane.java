@@ -26,6 +26,7 @@ public class ObserverTabPane extends TabPane implements Observer
     {
         observablePaneMap = new HashMap<>();
         selectionModel = getSelectionModel();
+
     }
 
     /**

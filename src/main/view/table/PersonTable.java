@@ -10,10 +10,10 @@ public class PersonTable extends Table<Person>
 {
     public PersonTable()
     {
-        this.injectColumn(Column.generate(Loc.get("firstname"), "firstname"));
-        this.injectColumn(Column.generate(Loc.get("lastname"), "lastname"));
-        this.injectColumn(Column.generate(Loc.get("street_address"), "streetAddress"));
-        this.injectColumn(Column.generate(Loc.get("postal_code"), "postalCode"));
-        this.injectColumn(Column.generate(Loc.get("city"), "city"));
+        injectColumn(Column.generate(Loc.get("firstname"), "firstname"));
+        injectColumn(Column.generate(Loc.get("lastname"), "lastname"));
+        injectColumn(Column.generate(Loc.get("street_address"), "streetAddress"));
+        injectColumn(Column.generate(Loc.get("postal_code"), "postalCode"));
+        injectColumn(Column.generate(Loc.get("city"), "city"));
     }
 }

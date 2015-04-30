@@ -63,7 +63,7 @@ public class PersonView
         Button editButton = new Button(Loc.get("edit"));
         editButton.setOnAction(e -> PersonController.edit(person));
 
-        buttonPane.getItems().addAll(b1,b2,b3,b4,b5);
+        buttonPane.getItems().addAll(b1, b2, b3, b4, b5, editButton);
 
         /*
         buttonPane.add(newInsurance, column++, row);

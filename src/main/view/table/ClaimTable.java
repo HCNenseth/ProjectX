@@ -11,8 +11,8 @@ public class ClaimTable extends Table<Claim>
 {
     public ClaimTable()
     {
-        this.injectColumn(Column.generate(Loc.get("date"), "date"));
-        this.injectColumn(Column.generate(Loc.get("amount"), "amount"));
-        this.injectColumn(Column.generate(Loc.get("description"), "desc"));
+        injectColumn(Column.generate(Loc.get("date"), "date"));
+        injectColumn(Column.generate(Loc.get("amount"), "amount"));
+        injectColumn(Column.generate(Loc.get("description"), "desc"));
     }
 }
