@@ -4,6 +4,7 @@ import main.localization.Loc;
 import main.model.insurance.ConcreteType;
 import main.model.insurance.Insurance;
 import main.model.insurance.property.House;
+import main.model.insurance.property.VacationHouse;
 import main.model.insurance.travel.Travel;
 import main.model.insurance.vehicle.Boat;
 import main.model.insurance.vehicle.Car;
@@ -46,7 +47,11 @@ public class InsuranceController
                         f.getForm(), true);
                 return;
             case VACATION_HOUSE:
-                // TODO implement vacation adapter.
+                VacationHouseAdapter vacationHouseAdapter = new VacationHouseAdapter(p);
+                vacationHouseAdapter.setOnDoneAction(InsuranceController::view);
+                f.injectAdapter(vacationHouseAdapter);
+                Resources.inst.getOtp().injectObservableTab(Loc.get("new_vacationhouse_insuarance"),
+                        f.getForm(), true);
                 break;
             case TRAVEL:
                 TravelAdapter travelAdapter = new TravelAdapter(p);
@@ -56,7 +61,6 @@ public class InsuranceController
                         f.getForm(), true);
             default: return;
         }
-
     }
 
     public static void view(Insurance i)
@@ -124,5 +128,4 @@ public class InsuranceController
         Resources.inst.getOtp().injectObservableTab(i.identify().getValue(),
                 f.getForm(), i, true);
     }
-
 }
