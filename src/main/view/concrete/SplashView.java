@@ -1,4 +1,4 @@
-package main.view;
+package main.view.concrete;
 
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
@@ -7,7 +7,7 @@ import javafx.scene.layout.Pane;
 /**
  * Created by HansPetter on 30.04.2015.
  */
-public class SplashPane {
+public class SplashView {
 
     private GridPane gridPane;
     private Pane searchPane, customerPane, statisticsPane;
@@ -18,8 +18,9 @@ public class SplashPane {
     private final String CUSTOMER = "Customer";
     private final String STATISTICS = "Statistics";
 
-    public SplashPane()
+    public SplashView()
     {
+        System.out.println("SplashView");
         gridPane = new GridPane();
 
         searchLabel = new Label(SEARCH);
@@ -46,10 +47,25 @@ public class SplashPane {
 
         gridPane.getChildren().addAll(searchPane, customerPane, statisticsPane);
 
+        show();
+
+    }
+
+    public void show()
+    {
+        System.out.println("SplashView.show()");
+        gridPane.setVisible(true);
+    }
+
+    public void hide()
+    {
+        System.out.println("SplashView.hide()");
+        gridPane.setVisible(false);
     }
 
     public GridPane getSplashPane()
     {
+        System.out.println("SplashView.getSplashPane()");
         return gridPane;
     }
 }

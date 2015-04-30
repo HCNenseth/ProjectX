@@ -5,6 +5,7 @@ import javafx.scene.control.SingleSelectionModel;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import main.model.Model;
+import main.view.concrete.SplashView;
 
 import java.util.*;
 
@@ -26,16 +27,6 @@ public class ObserverTabPane extends TabPane implements Observer
     {
         observablePaneMap = new HashMap<>();
         selectionModel = getSelectionModel();
-
-    }
-
-    /**
-     * Checks if the observable tab pane is empty.
-     * If it is, then show the splash screen.
-     */
-    public SplashPane showSplashScreen()
-    {
-        return new SplashPane();
     }
 
     /**
@@ -84,10 +75,6 @@ public class ObserverTabPane extends TabPane implements Observer
     {
         if (observablePaneMap.containsKey(tab)) {
             observablePaneMap.remove(tab);
-            if(getTabs().size() < 2)
-            {
-                showSplashScreen();
-            }
         }
     }
 
