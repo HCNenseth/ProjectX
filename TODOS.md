@@ -8,3 +8,5 @@
 * Write an about us view, and link it in the main menubar.
 * Finish view and adapters for all types!
 * Take care of "long" forms on small screens. Scrollpane has caused trouble in the past...
+* Implement FormTextNode
+* Implement FormImageNode
