@@ -166,6 +166,11 @@ public class Person implements Serializable, FullTextSearch, Model
         insurances.add(insurance);
     }
 
+    public void addClaim(Claim claim)
+    {
+        claims.add(claim);
+    }
+
     public void setFirstname(String firstname)
     {
         this.firstname = firstname;

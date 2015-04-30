@@ -15,7 +15,7 @@ public class VacationHouseView extends InsuranceView<VacationHouse>
         addFields();
     }
 
-    public void addFields()
+    private void addFields()
     {
         // Street address
         getNode().add(new Label(Loc.get("street_address")), 0, rowNum);

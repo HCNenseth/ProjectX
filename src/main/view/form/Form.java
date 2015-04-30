@@ -31,14 +31,19 @@ public class Form extends GridPane
 
         ColumnConstraints keyColumn = new ColumnConstraints();
         keyColumn.setHgrow(Priority.SOMETIMES);
-        keyColumn.setPercentWidth(15);
+        keyColumn.setPercentWidth(10);
 
         ColumnConstraints valueColumn = new ColumnConstraints();
         valueColumn.setHgrow(Priority.ALWAYS);
-        valueColumn.setPercentWidth(85);
+        valueColumn.setPercentWidth(60);
+
+        ColumnConstraints errorColumn = new ColumnConstraints();
+        errorColumn.setHgrow(Priority.ALWAYS);
+        errorColumn.setPercentWidth(30);
 
         getColumnConstraints().add(0, keyColumn);
         getColumnConstraints().add(1, valueColumn);
+        getColumnConstraints().add(2, errorColumn);
 
         setHgap(5);
         setVgap(5);
@@ -80,7 +85,7 @@ public class Form extends GridPane
         addRow(rowNum++);
         add(fn.getKey(), 0, rowNum);
         add(fn.getNode(), 1, rowNum);
-        add(fn.getError(), 1, ++rowNum);
+        add(fn.getError(), 2, rowNum++);
     }
 
     /**

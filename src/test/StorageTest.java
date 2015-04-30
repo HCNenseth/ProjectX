@@ -283,19 +283,22 @@ public class StorageTest
                         .deductible(randInt(4000, 12000))
                         //.bonus(randInt(50,80))
                         .mileage(randInt(4000, 20000))
-                        /*
-                        .registrationYear(
+                        .registration(
                                 LocalDate.of(randInt(1980, 2014),
                                         randInt(1,12),
                                         randInt(1,28))
                                 )
-                                */
                         .type(Car.Type.A)
                         .amount(randInt(4000, 10000))
                         .build();
                 /* add some random claims */
                 for (int k = 0; k < randInt(0, 5); k++) {
-                    claims.add(new Claim.Builder(person, car).build());
+                    claims.add(new Claim.Builder(person, car)
+                            .date(LocalDate.of(randInt(1960,2014),
+                                    randInt(1,12), randInt(1,28)))
+                            .description("foobar")
+                            .amount(randInt(1000, 12000))
+                            .build());
                 }
                 insurances.add(car);
             }
@@ -316,7 +319,12 @@ public class StorageTest
                         .build();
                 /* add some random claims */
                 for (int k = 0; k < randInt(0, 5); k++) {
-                    claims.add(new Claim.Builder(person, boat).build());
+                    claims.add(new Claim.Builder(person, boat)
+                            .date(LocalDate.of(randInt(1960,2014),
+                                    randInt(1,12), randInt(1,28)))
+                            .description("foobar")
+                            .amount(randInt(1000, 12000))
+                            .build());
                 }
                 insurances.add(boat);
             }
@@ -334,7 +342,12 @@ public class StorageTest
                         .build();
                 /* add some random claims */
                 for (int k = 0; k < randInt(0, 5); k++) {
-                    claims.add(new Claim.Builder(person, house).build());
+                    claims.add(new Claim.Builder(person, house)
+                            .date(LocalDate.of(randInt(1960,2014),
+                                    randInt(1,12), randInt(1,28)))
+                            .description("foobar")
+                            .amount(randInt(1000, 12000))
+                            .build());
                 }
                 insurances.add(house);
             }
@@ -348,7 +361,12 @@ public class StorageTest
                         .build();
                 /* add some random claims */
                 for (int k = 0; k < randInt(0, 5); k++) {
-                    claims.add(new Claim.Builder(person, travel).build());
+                    claims.add(new Claim.Builder(person, travel)
+                            .date(LocalDate.of(randInt(1960,2014),
+                                    randInt(1,12), randInt(1,28)))
+                            .description("foobar")
+                            .amount(randInt(1000, 12000))
+                            .build());
                 }
                 insurances.add(travel);
             }

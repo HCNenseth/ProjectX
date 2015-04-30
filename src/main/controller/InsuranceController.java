@@ -85,7 +85,9 @@ public class InsuranceController
                         view.getNode(), i, true);
                 return;
             case VACATION_HOUSE:
-                // TODO implement vacation view.
+                view = new VacationHouseView((VacationHouse)i);
+                Resources.inst.getOtp().injectObservableTab(Loc.get("vacationHouse_insurance"),
+                        view.getNode(), i, true);
                 return;
             case TRAVEL:
                 view = new TravelView((Travel)i);
@@ -98,6 +100,8 @@ public class InsuranceController
 
     public static void edit(Insurance i)
     {
+        Resources.inst.getOtp().closeObservableTabs(i);
+
         Form f = new Form();
         switch (i.identify()) {
             case CAR:
@@ -116,7 +120,9 @@ public class InsuranceController
                 f.injectAdapter(houseAdapter);
                 break;
             case VACATION_HOUSE:
-                // TODO implement vacation adapter.
+                VacationHouseAdapter vacationHouseAdapter = new VacationHouseAdapter(i.getCustomer(), (VacationHouse)i);
+                vacationHouseAdapter.setOnDoneAction(InsuranceController::view);
+                f.injectAdapter(vacationHouseAdapter);
                 break;
             case TRAVEL:
                 TravelAdapter travelAdapter = new TravelAdapter(i.getCustomer(), (Travel)i);

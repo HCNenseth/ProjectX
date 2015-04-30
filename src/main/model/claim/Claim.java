@@ -60,6 +60,7 @@ public class Claim implements Serializable, FullTextSearch, Model
         private LocalDate date;
         private Type type = Type.A;
         private Status status = Status.ACTIVE;
+        private PaymentStatus paymentStatus = PaymentStatus.A;
 
         public Builder(Person customer, Insurance insurance){
             this.customer = customer;
@@ -84,21 +85,33 @@ public class Claim implements Serializable, FullTextSearch, Model
             return this;
         }
 
+        public Builder amount(double val)
+        {
+            amount = val;
+            return this;
+        }
+
         public Builder date(LocalDate val)
         {
             date = val;
             return this;
         }
 
+        public Builder type(Type val)
+        {
+            this.type = val;
+            return this;
+        }
+
+        public Builder paymentStatus(PaymentStatus val)
+        {
+            this.paymentStatus = paymentStatus;
+            return this;
+        }
+
         public Claim build()
         {
             return new Claim(this);
-        }
-
-        public Builder type(Type val)
-        {
-            type = val;
-            return this;
         }
     }
 
@@ -108,10 +121,13 @@ public class Claim implements Serializable, FullTextSearch, Model
         insurance = builder.insurance;
         desc = builder.description;
         contacts = builder.contacts;
+        amount = builder.amount;
         date = builder.date;
         type = builder.type;
+        paymentStatus = builder.paymentStatus;
         status = builder.status;
 
+        customer.addClaim(this);
         insurance.addClaim(this);
     }
 
