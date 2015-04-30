@@ -21,6 +21,8 @@ public class ClaimView
     {
         gp = new StandardGridPane();
 
+        this.claim = claim;
+
         initFields();
     }
 

@@ -131,11 +131,11 @@
     <string name="house_material_b">Wood</string>
     <string name="house_material_c">Glass</string>
 
-    <string name="property_material">Property material</string>
     <string name="property_material_a">Property material a</string>
     <string name="property_material_b">Property material b</string>
     <string name="property_material_c">Property material c</string>
 
+    <string name="house_standard">House standard</string>
     <string name="house_standard_a">House standard a</string>
     <string name="house_standard_b">House standard b</string>
     <string name="house_standard_c">House standard c</string>
@@ -159,10 +159,15 @@
     <string name="continent_f">War Zone</string>
 
     <!-- Claim -->
+    <string name="claim">Claim</string>
+    <string name="contacts">Contacts</string>
+
+    <string name="claim_type">Claim type</string>
     <string name="claim_type_a">Theft</string>
     <string name="claim_type_b">Sickness</string>
     <string name="claim_type_c">Car accident</string>
 
+    <string name="payment_status">Payment status</string>
     <string name="payment_status_a">Pending</string>
     <string name="payment_status_b">Not accepted</string>
     <string name="payment_status_c">Disbursed</string>
