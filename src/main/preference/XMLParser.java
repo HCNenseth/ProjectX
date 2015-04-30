@@ -27,12 +27,14 @@ import java.util.Map;
  */
 class XMLParser
 {
-    private Map<String, String> preferences;
-    private DocumentBuilderFactory dbf;
     private final String mainFile = "preferences/main.xml";
     private final String rootLevel = "preferences";
+    private final String childLevel = "string";
+    private final String childAttributeName = "name";
 
-    Document dom;
+    private Map<String, String> preferences;
+    private DocumentBuilderFactory dbf;
+    private Document dom;
 
     public XMLParser()
     {
@@ -41,20 +43,29 @@ class XMLParser
         readFile();
     }
 
+    /**
+     * Try to read from file if possible.
+     */
     private void readFile()
     {
         File file = new File(mainFile);
 
-        if (file == null) {
-            System.out.println("main.xml file not found");
+        if (!file.isFile()) {
+            System.out.println("File: " + mainFile + " not found");
             return;
         }
 
-        if (file.canRead() && file.isFile()) {
+        if (file.canRead()) {
             parseFile(file.getAbsolutePath());
+        } else {
+            System.out.println("File: " + mainFile + " read error");
         }
     }
 
+    /**
+     * Try to parse file if possible
+     * @param filename - absolute filename path
+     */
     private void parseFile(final String filename)
     {
         try {
@@ -66,30 +77,46 @@ class XMLParser
         }
     }
 
+    /**
+     * Parse file document
+     */
     private void parseDocument()
     {
         Element root = dom.getDocumentElement();
-        NodeList nl = root.getElementsByTagName("string");
+        NodeList nl = root.getElementsByTagName(childLevel);
 
         for (int i = 0; i < nl.getLength(); i++) {
             Element el = (Element)nl.item(i);
-            String key = el.getAttribute("name");
+            String key = el.getAttribute(childAttributeName);
             String value = el.getTextContent();
             preferences.put(key, value);
         }
     }
-
+    /**
+     * Public getter method for accessing values in the hashmap.
+     * @param key - key to search for.
+     * @return
+     */
     public String get(String key)
     {
         return preferences.get(key);
     }
 
+    /**
+     * Put a key value pair into the hashmap. Immediately after save the
+     * whole hashmap to file (overwrite)
+     * @param key - key value to store.
+     * @param value - value value to store.
+     */
     public void put(String key, String value)
     {
         preferences.put(key, value);
         save();
     }
 
+    /**
+     * Save the complete hashmap to file.
+     */
     private void save()
     {
         Document dom;
@@ -101,14 +128,17 @@ class XMLParser
 
             Element rootEle = dom.createElement(rootLevel);
 
+            // loop through the hashmap and add all the elements.
             Iterator iterator = preferences.entrySet().iterator();
             while (iterator.hasNext()) {
                 Map.Entry pair = (Map.Entry) iterator.next();
                 String key = (String) pair.getKey();
                 String value = (String) pair.getValue();
-                Element e = dom.createElement("string");
-                e.setAttribute("name", key);
+
+                Element e = dom.createElement(childLevel);
+                e.setAttribute(childAttributeName, key);
                 e.appendChild(dom.createTextNode(value));
+
                 rootEle.appendChild(e);
             }
 
@@ -123,13 +153,13 @@ class XMLParser
 
                 // send DOM to file
                 tr.transform(new DOMSource(dom),
-                        new StreamResult(new FileOutputStream(mainFile)));
+                             new StreamResult(new FileOutputStream(mainFile)));
 
             } catch (TransformerException | IOException e) {
                 e.printStackTrace();
             }
         } catch (ParserConfigurationException pce) {
-            System.out.println("UsersXML: Error trying to instantiate DocumentBuilder " + pce);
+            pce.printStackTrace();
         }
     }
 }
