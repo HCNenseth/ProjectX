@@ -168,6 +168,7 @@ public class Claim implements Serializable, FullTextSearch, Model
         return paymentStatus;
     }
 
+    @Override
     public boolean query(String value)
     {
         return desc.contains(value)

@@ -1,6 +1,7 @@
 package main.model.insurance.travel;
 
 import main.localization.Loc;
+import main.model.claim.Claim;
 import main.model.insurance.Type;
 import main.model.person.Person;
 import main.model.insurance.ConcreteType;
@@ -16,7 +17,7 @@ import java.io.Serializable;
 public class Travel extends Insurance implements Serializable
 {
 
-    private final Continent continent;
+    private Continent type;
 
     public enum Continent
     {
@@ -62,8 +63,10 @@ public class Travel extends Insurance implements Serializable
     private Travel(Builder builder)
     {
         super(builder);
-        continent = builder.continent;
+        type = builder.continent;
     }
+
+    public Continent getType() { return type; }
 
     public ConcreteType identify()
     {
