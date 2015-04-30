@@ -1,6 +1,9 @@
 package main.view.concrete;
 
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ToolBar;
+import main.controller.ClaimController;
 import main.localization.Loc;
 import main.model.claim.Claim;
 import main.model.insurance.property.House;
@@ -23,7 +26,21 @@ public class ClaimView
 
         this.claim = claim;
 
+        initButtonPanel();
         initFields();
+    }
+
+    public void initButtonPanel()
+    {
+        ToolBar buttonPane = new ToolBar();
+
+        // edit person
+        Button editButton = new Button(Loc.get("edit"));
+        editButton.setOnAction(e -> ClaimController.edit(claim));
+
+        buttonPane.getItems().addAll(editButton);
+
+        gp.add(buttonPane, 0, rowNum++, 2, 1);
     }
 
     public void initFields()

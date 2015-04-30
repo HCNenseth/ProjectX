@@ -6,18 +6,27 @@ import main.model.insurance.Insurance;
 import main.model.person.Person;
 import main.view.Resources;
 import main.view.concrete.ClaimView;
+import main.view.form.Form;
+import main.view.form.adapter.ClaimAdapter;
+import org.junit.experimental.theories.FromDataPoints;
 
 /**
  * Created by alex on 4/26/15.
  */
-class ClaimController
+public class ClaimController
 {
     private ClaimController() {}
 
 
     public static void create(Person person, Insurance insurance)
     {
+        Form f = new Form();
+        ClaimAdapter claimAdapter = new ClaimAdapter(person, insurance);
+        claimAdapter.setOnDoneAction(ClaimController::view);
+        f.injectAdapter(claimAdapter);
 
+        Resources.inst.getOtp().injectObservableTab(Loc.get("new_claim"),
+                f.getForm(), true);
     }
 
     public static void view(Claim claim)
@@ -30,6 +39,14 @@ class ClaimController
 
     public static void edit(Claim claim)
     {
-        // TODO ClaimAdapter not implemented yet.
+        Resources.inst.getOtp().closeObservableTabs(claim);
+
+        Form f = new Form();
+        ClaimAdapter claimAdapter = new ClaimAdapter(claim);
+        claimAdapter.setOnDoneAction(ClaimController::view);
+        f.injectAdapter(claimAdapter);
+
+        Resources.inst.getOtp().injectObservableTab(Loc.get("claim"),
+                f.getForm(), claim, true);
     }
 }

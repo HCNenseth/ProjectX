@@ -100,6 +100,8 @@ public class InsuranceController
 
     public static void edit(Insurance i)
     {
+        Resources.inst.getOtp().closeObservableTabs(i);
+
         Form f = new Form();
         switch (i.identify()) {
             case CAR:
