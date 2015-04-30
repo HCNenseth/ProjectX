@@ -3,22 +3,20 @@ package main.view.concrete;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ToolBar;
-import javafx.scene.layout.ColumnConstraints;
-import javafx.scene.layout.GridPane;
-import main.config.Config;
 import main.controller.InsuranceController;
 import main.controller.PersonController;
 import main.controller.TableController;
 import main.localization.Loc;
 import main.model.insurance.ConcreteType;
 import main.model.person.Person;
+import main.view.StandardGridPane;
 
 /**
  * Created by alex on 4/28/15.
  */
 public class PersonView
 {
-    private GridPane gp;
+    private StandardGridPane gp;
     private Person person;
     private int cellGap = 5;
     private int rowNum = 0;
@@ -27,21 +25,7 @@ public class PersonView
     {
         this.person = p;
 
-        gp = new GridPane();
-
-        ColumnConstraints keyColumn = new ColumnConstraints();
-        //keyColumn.setHgrow(Priority.SOMETIMES);
-        keyColumn.setPercentWidth(20);
-
-        ColumnConstraints valueColumn = new ColumnConstraints();
-        //valueColumn.setHgrow(Priority.ALWAYS);
-        valueColumn.setPercentWidth(80);
-
-        gp.getColumnConstraints().add(0, keyColumn);
-        gp.getColumnConstraints().add(1, valueColumn);
-
-        gp.setHgap(cellGap);
-        gp.setVgap(cellGap);
+        gp = new StandardGridPane();
 
         initButtonPanel();
         initPersonFields();
@@ -135,5 +119,5 @@ public class PersonView
                 .getTable(), 0, rowNum++, 2, 1);
     }
 
-    public GridPane getNode() { return gp; }
+    public StandardGridPane getNode() { return gp; }
 }
