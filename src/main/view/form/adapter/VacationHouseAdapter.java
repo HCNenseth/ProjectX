@@ -35,6 +35,12 @@ public class VacationHouseAdapter extends InsuranceAdapter<VacationHouse> implem
         initNodes();
     }
 
+    public VacationHouseAdapter(Person customer)
+    {
+        super(customer);
+        initNodes();
+    }
+
     private VacationHouseAdapter() { super(null); return; }
 
     private void initNodes()
