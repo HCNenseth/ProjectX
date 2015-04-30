@@ -10,6 +10,7 @@ import javafx.scene.layout.Pane;
 public class SplashView {
 
     private GridPane gridPane;
+
     private Pane searchPane, customerPane, statisticsPane;
 
     private Label searchLabel, customerLabel, statisticsLabel;
@@ -20,7 +21,6 @@ public class SplashView {
 
     public SplashView()
     {
-        System.out.println("SplashView");
         gridPane = new GridPane();
 
         searchLabel = new Label(SEARCH);
@@ -53,19 +53,16 @@ public class SplashView {
 
     public void show()
     {
-        System.out.println("SplashView.show()");
         gridPane.setVisible(true);
     }
 
     public void hide()
     {
-        System.out.println("SplashView.hide()");
         gridPane.setVisible(false);
     }
 
     public GridPane getSplashPane()
     {
-        System.out.println("SplashView.getSplashPane()");
         return gridPane;
     }
 }
