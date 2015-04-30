@@ -5,6 +5,7 @@ import javafx.scene.control.SingleSelectionModel;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import main.model.Model;
+import main.view.concrete.SplashView;
 
 import java.util.*;
 
@@ -26,7 +27,6 @@ public class ObserverTabPane extends TabPane implements Observer
     {
         observablePaneMap = new HashMap<>();
         selectionModel = getSelectionModel();
-
     }
 
     /**
