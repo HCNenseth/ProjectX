@@ -9,6 +9,8 @@
     <string name="menu_groupEdit">Edit</string>
     <string name="menu_groupStatistics">Statistics</string>
     <string name="menu_statistics">Statistics</string>
+    <string name="save_data_file_as">Save data file as</string>
+    <string name="choose_data_file">Choose data file</string>
 
     <!-- commons -->
     <string name="theme">Theme</string>

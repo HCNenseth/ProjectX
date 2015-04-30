@@ -10,7 +10,6 @@ import main.config.Config;
 import main.localization.Loc;
 import main.model.Storage;
 import main.preference.Pref;
-import main.preference.Preferences;
 import main.view.Resources;
 import main.view.menubar.MenuBar;
 
