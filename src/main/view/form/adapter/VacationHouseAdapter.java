@@ -3,20 +3,22 @@ package main.view.form.adapter;
 import main.localization.Loc;
 import main.model.Status;
 import main.model.insurance.property.House;
+import main.model.insurance.property.VacationHouse;
 import main.model.person.Person;
 import main.validator.StringMatcher;
 import main.view.form.Formable;
 import main.view.form.node.FormChoiceNode;
-import main.view.form.node.FormDateNode;
 import main.view.form.node.FormNode;
 import main.view.form.node.FormValueNode;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Consumer;
 
-public class HouseAdapter extends InsuranceAdapter<House> implements Formable<House>
+/**
+ * Created by HansChristian on 30.04.2015.
+ */
+public class VacationHouseAdapter extends InsuranceAdapter<VacationHouse> implements Formable<VacationHouse>
 {
 
     private FormValueNode street;
@@ -27,23 +29,16 @@ public class HouseAdapter extends InsuranceAdapter<House> implements Formable<Ho
     private FormChoiceNode type;
     private FormChoiceNode material;
 
-    public HouseAdapter(Person customer, House house)
+    public VacationHouseAdapter(Person customer, VacationHouse vacationHouse)
     {
-        super(customer, house);
+        super(customer, vacationHouse);
         initNodes();
     }
 
-    public HouseAdapter(Person customer)
-    {
-        super(customer);
-        initNodes();
-    }
-
-    private HouseAdapter() { super(null); return; }
+    private VacationHouseAdapter() { super(null); return; }
 
     private void initNodes()
     {
-
         street = new FormValueNode.Builder(Loc.get("street_address"))
                 .error(Loc.get("error_house_street"))
                 .value(getEditMode() ? getCustomer().getStreetAddress() : "")
@@ -77,7 +72,7 @@ public class HouseAdapter extends InsuranceAdapter<House> implements Formable<Ho
                 .build();
 
         List<Enum> typeList = new ArrayList();
-        for(House.Type t : House.Type.values())
+        for(VacationHouse.Type t : VacationHouse.Type.values())
         {
             typeList.add(t);
         }
@@ -87,7 +82,7 @@ public class HouseAdapter extends InsuranceAdapter<House> implements Formable<Ho
                 .build();
 
         List<Enum> materialList = new ArrayList();
-        for(House.Material m : House.Material.values())
+        for(VacationHouse.Material m : VacationHouse.Material.values())
         {
             materialList.add(m);
         }
@@ -118,8 +113,8 @@ public class HouseAdapter extends InsuranceAdapter<House> implements Formable<Ho
         if(super.getEditMode())
         {
             super.getInsurance().setCity(city.getValue());
-            super.getInsurance().setType((House.Type) type.getData());
-            super.getInsurance().setMaterial((House.Material) material.getData());
+            super.getInsurance().setType((VacationHouse.Type) type.getData());
+            super.getInsurance().setMaterial((VacationHouse.Material) material.getData());
             super.getInsurance().setSquareMeter(Integer.parseInt(squareMeters.getValue()));
             super.getInsurance().setYear(Integer.parseInt(yearBuilt.getValue()));
             super.getInsurance().setPremium(Integer.parseInt(super.getPremium().getValue()));
@@ -130,10 +125,10 @@ public class HouseAdapter extends InsuranceAdapter<House> implements Formable<Ho
             return;
         }
 
-        House house = new House.Builder(super.getCustomer(), street.getValue(), postalCode.getValue())
+        VacationHouse vacationHouse = new VacationHouse.Builder(super.getCustomer(), street.getValue(), postalCode.getValue())
                 .city(city.getValue())
-                .type((House.Type) type.getData())
-                .material((House.Material) material.getData())
+                .type((VacationHouse.Type) type.getData())
+                .material((VacationHouse.Material) material.getData())
                 .squareMeter(Integer.parseInt(squareMeters.getValue()))
                 .year(Integer.parseInt(yearBuilt.getValue()))
                 .premium(Integer.parseInt(super.getPremium().getValue()))
@@ -141,13 +136,13 @@ public class HouseAdapter extends InsuranceAdapter<House> implements Formable<Ho
                 .status((Status)super.getStatus().getData())
                 .build();
 
-        super.setInsurance(house);
+        super.setInsurance(vacationHouse);
 
         callBackEvent.fire();
     }
 
     @Override
-    public void setOnDoneAction(Consumer<House> c)
+    public void setOnDoneAction(Consumer<VacationHouse> c)
     {
         callBackEvent.setOnAction(e -> c.accept(super.getInsurance()));
     }
