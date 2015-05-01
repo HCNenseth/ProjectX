@@ -254,7 +254,7 @@ public class StorageTest
          * 20000:   ~ 37MB file
          * 200000:  ~ 370MB file
          */
-        int count = 20;
+        int count = 2000;
 
         Storage.injectFilename("persons_big.dat");
 

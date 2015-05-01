@@ -82,9 +82,9 @@ abstract class Property extends Insurance implements Serializable
 
 
     public enum Material {
-        A(Loc.get("property_material_a")),
-        B(Loc.get("property_material_b")),
-        C(Loc.get("property_material_c"));
+        A(Loc.c("property_material_a")),
+        B(Loc.c("property_material_b")),
+        C(Loc.c("property_material_c"));
 
         String value;
 
@@ -97,9 +97,9 @@ abstract class Property extends Insurance implements Serializable
     }
 
     public enum Standard {
-        A(Loc.get("property_standard_a")),
-        B(Loc.get("property_standard_b")),
-        C(Loc.get("property_standard_c"));
+        A(Loc.c("property_standard_a")),
+        B(Loc.c("property_standard_b")),
+        C(Loc.c("property_standard_c"));
 
         String value;
 

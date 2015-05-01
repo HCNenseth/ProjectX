@@ -47,40 +47,40 @@ public class PersonAdapter implements Formable<Person>
 
     private void initNodes()
     {
-        firstname = new FormValueNode.Builder(Loc.get("firstname"))
+        firstname = new FormValueNode.Builder(Loc.c("firstname"))
                 .value(editMode ? person.getFirstname() : "")
-                .error(Loc.get("firstname_error"))
+                .error(Loc.c("firstname_error"))
                 .regex(StringMatcher.getFirstname())
                 .build();
 
-        lastname = new FormValueNode.Builder(Loc.get("lastname"))
+        lastname = new FormValueNode.Builder(Loc.c("lastname"))
                 .value(editMode ? person.getLastname() : "")
-                .error(Loc.get("lastname_error"))
+                .error(Loc.c("lastname_error"))
                 .regex(StringMatcher.getLastname())
                 .build();
 
-        dob = new FormDateNode.Builder(Loc.get("date_of_birth"),
+        dob = new FormDateNode.Builder(Loc.c("date_of_birth"),
                 editMode ? person.getDateOfBirth() : LocalDate.of(Config.STANDARD_YEAR, Config.STANDARD_MONTH, Config.STANDARD_DAY))
                 .required(false)
                 .build();
 
-        city = new FormValueNode.Builder(Loc.get("city"))
+        city = new FormValueNode.Builder(Loc.c("city"))
                 .value(editMode ? person.getCity() : "")
-                .error(Loc.get("city_error"))
+                .error(Loc.c("city_error"))
                 .regex(StringMatcher.getBaseString())
                 .required(false)
                 .build();
 
-        streetAddress = new FormValueNode.Builder(Loc.get("street_address"))
+        streetAddress = new FormValueNode.Builder(Loc.c("street_address"))
                 .value(editMode ? person.getStreetAddress() : "")
-                .error(Loc.get("street_address_error"))
+                .error(Loc.c("street_address_error"))
                 .regex(StringMatcher.getLiberation())
                 .required(false)
                 .build();
 
-        postalCode = new FormValueNode.Builder(Loc.get("postal_code"))
+        postalCode = new FormValueNode.Builder(Loc.c("postal_code"))
                 .value(editMode ? person.getPostalCode() : "")
-                .error(Loc.get("postal_code_error"))
+                .error(Loc.c("postal_code_error"))
                 .regex(StringMatcher.getDigit())
                 .required(false)
                 .build();
@@ -88,7 +88,7 @@ public class PersonAdapter implements Formable<Person>
         List<Enum> statusList = new ArrayList<>();
         for (Status s : Status.values()) { statusList.add(s); }
 
-        status = new FormChoiceNode.Builder<>(Loc.get("status"), statusList)
+        status = new FormChoiceNode.Builder<>(Loc.c("status"), statusList)
                 .active(editMode ? person.getStatus() : Status.ACTIVE)
                 .build();
     }

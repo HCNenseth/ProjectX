@@ -31,7 +31,7 @@ public class InfoBar
         main.getColumnConstraints().add(0, msgColumn);
         main.getColumnConstraints().add(1, btnColumn);
 
-        xout = new Button(Loc.get("close"));
+        xout = new Button(Loc.c("close"));
         xout.setOnAction(e -> hide());
 
         main.setPadding(new Insets(10));

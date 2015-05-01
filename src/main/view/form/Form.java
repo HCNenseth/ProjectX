@@ -48,7 +48,7 @@ public class Form extends GridPane
         setHgap(5);
         setVgap(5);
 
-        submit = new Button(Loc.get("submit"));
+        submit = new Button(Loc.c("submit"));
         submit.setOnAction(e -> this.validate());
     }
 

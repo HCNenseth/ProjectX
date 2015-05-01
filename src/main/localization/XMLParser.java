@@ -12,6 +12,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 import java.util.Set;
 
 /**
@@ -124,10 +125,11 @@ class XMLParser
         /** Since the XML files are prone to errors and missing data,
          *  return back the key if it does not exists.
          */
+
         if (languages.get(lang).containsKey(key)) {
             return languages.get(lang).get(key);
         } else {
-            return "_" + key;
+            return "*" + key;
         }
     }
 

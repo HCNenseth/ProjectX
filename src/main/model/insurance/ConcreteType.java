@@ -7,12 +7,12 @@ import main.localization.Loc;
  */
 public enum ConcreteType
 {
-    HOUSE(Loc.get("house_insurance")),
-    VACATION_HOUSE(Loc.get("vacation_house_insurance")),
-    CONTENTS(Loc.get("contents_insurance")),
-    TRAVEL(Loc.get("travel_insurance")),
-    BOAT(Loc.get("boat_insurance")),
-    CAR(Loc.get("car_insurance"));
+    HOUSE(Loc.c("house_insurance")),
+    VACATION_HOUSE(Loc.c("vacation_house_insurance")),
+    CONTENTS(Loc.c("contents_insurance")),
+    TRAVEL(Loc.c("travel_insurance")),
+    BOAT(Loc.c("boat_insurance")),
+    CAR(Loc.c("car_insurance"));
 
     String value;
 

@@ -79,8 +79,8 @@ public abstract class Vehicle extends Insurance implements Serializable
     public String toString(){
         return super.toString() + String.format(
                 "\n%s\t%s\n%s\t%s",
-                Loc.get("owner"), owner,
-                Loc.get("licence_plate"), licencePlate
+                Loc.c("owner"), owner,
+                Loc.c("licence_plate"), licencePlate
         );
     }
 

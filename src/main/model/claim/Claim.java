@@ -26,9 +26,9 @@ public class Claim implements Serializable, FullTextSearch, Model
     private Status status;
 
     public enum PaymentStatus {
-        A(Loc.get("payment_status_a")),
-        B(Loc.get("payment_status_b")),
-        C(Loc.get("payment_status_c"));
+        A(Loc.c("payment_status_a")),
+        B(Loc.c("payment_status_b")),
+        C(Loc.c("payment_status_c"));
 
         String value;
         PaymentStatus(String value){ this.value = value; }
@@ -37,9 +37,9 @@ public class Claim implements Serializable, FullTextSearch, Model
     }
 
     public enum Type {
-        A(Loc.get("claim_type_a")),
-        B(Loc.get("claim_type_b")),
-        C(Loc.get("claim_type_a"));
+        A(Loc.c("claim_type_a")),
+        B(Loc.c("claim_type_b")),
+        C(Loc.c("claim_type_a"));
 
         String value;
         Type(String value){ this.value = value; }

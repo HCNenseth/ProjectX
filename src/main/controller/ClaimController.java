@@ -8,7 +8,6 @@ import main.view.Resources;
 import main.view.concrete.ClaimView;
 import main.view.form.Form;
 import main.view.form.adapter.ClaimAdapter;
-import org.junit.experimental.theories.FromDataPoints;
 
 /**
  * Created by alex on 4/26/15.
@@ -25,14 +24,14 @@ public class ClaimController
         claimAdapter.setOnDoneAction(ClaimController::view);
         f.injectAdapter(claimAdapter);
 
-        Resources.inst.getOtp().injectObservableTab(Loc.get("new_claim"),
+        Resources.inst.getOtp().injectObservableTab(Loc.c("new_claim"),
                 f.getForm(), true);
     }
 
     public static void view(Claim claim)
     {
         ClaimView claimView = new ClaimView(claim);
-        Resources.inst.getOtp().injectObservableTab(Loc.get("claim"),
+        Resources.inst.getOtp().injectObservableTab(Loc.c("claim"),
                 claimView.getNode(), claim, true);
 
     }
@@ -46,7 +45,7 @@ public class ClaimController
         claimAdapter.setOnDoneAction(ClaimController::view);
         f.injectAdapter(claimAdapter);
 
-        Resources.inst.getOtp().injectObservableTab(Loc.get("claim"),
+        Resources.inst.getOtp().injectObservableTab(Loc.c("claim"),
                 f.getForm(), claim, true);
     }
 }

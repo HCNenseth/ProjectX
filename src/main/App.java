@@ -1,6 +1,7 @@
 package main;
 
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
@@ -22,13 +23,12 @@ public class App extends Application
 {
     private BorderPane bp;
     private Pane sidePane;
+    private static App inst = new App();
+    public static boolean restart = false;
 
     @Override
     public void start(Stage primaryStage) throws Exception
     {
-        // MUST BE FIRST!
-        init();
-
         bp = new BorderPane();
         sidePane = new Pane();
 
@@ -48,6 +48,9 @@ public class App extends Application
         primaryStage.show();
     }
 
+    /**
+     * Init method kicked of by Application (JavaFX)
+     */
     public void init()
     {
         if (Pref.inst.has("language")) {
@@ -67,6 +70,22 @@ public class App extends Application
 
     public static void main(String[] args)
     {
-        launch(args);
+        do {
+            launch();
+            System.out.println("main");
+        } while (restart);
+    }
+
+    public static void kill()
+    {
+        System.out.println("kill");
+        try {
+            Platform.setImplicitExit(false);
+            Platform.exit();
+            App.inst.stop();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        //restart = false;
     }
 }

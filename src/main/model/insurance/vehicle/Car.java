@@ -18,9 +18,9 @@ public class Car extends Vehicle implements Serializable
 
     public enum Propulsion
     {
-        A(Loc.get("car_propulsion_a")),
-        B(Loc.get("car_propulsion_b")),
-        C(Loc.get("car_propulsion_c"));
+        A(Loc.c("car_propulsion_a")),
+        B(Loc.c("car_propulsion_b")),
+        C(Loc.c("car_propulsion_c"));
 
         String value;
 
@@ -34,10 +34,10 @@ public class Car extends Vehicle implements Serializable
 
     public enum Type
     {
-        A(Loc.get("car_type_a")),
-        B(Loc.get("car_type_b")),
-        C(Loc.get("car_type_c")),
-        D(Loc.get("car_type_d"));
+        A(Loc.c("car_type_a")),
+        B(Loc.c("car_type_b")),
+        C(Loc.c("car_type_c")),
+        D(Loc.c("car_type_d"));
 
         String value;
 

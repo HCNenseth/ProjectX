@@ -10,10 +10,10 @@ public enum Status
     /**
      * Generic statuses for the three main model types {person, insurance, claim}
      */
-    ACTIVE(Loc.get("active")),
-    INACTIVE(Loc.get("inactive")),
-    PENDING(Loc.get("pending")),
-    INCOMPLETE(Loc.get("incomplete"));
+    ACTIVE(Loc.c("active")),
+    INACTIVE(Loc.c("inactive")),
+    PENDING(Loc.c("pending")),
+    INCOMPLETE(Loc.c("incomplete"));
 
     private String value;
 

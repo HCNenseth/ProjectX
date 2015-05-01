@@ -1,14 +1,11 @@
 package main.model.insurance.travel;
 
 import main.localization.Loc;
-import main.model.claim.Claim;
-import main.model.insurance.Type;
 import main.model.person.Person;
 import main.model.insurance.ConcreteType;
 import main.model.insurance.Insurance;
 import main.model.insurance.InsuranceBuilder;
 
-import javax.management.ValueExp;
 import java.io.Serializable;
 
 /**
@@ -21,12 +18,12 @@ public class Travel extends Insurance implements Serializable
 
     public enum Continent
     {
-        A(Loc.get("continent_a")),
-        B(Loc.get("continent_b")),
-        C(Loc.get("continent_c")),
-        D(Loc.get("continent_d")),
-        E(Loc.get("continent_e")),
-        F(Loc.get("continent_f"));
+        A(Loc.c("continent_a")),
+        B(Loc.c("continent_b")),
+        C(Loc.c("continent_c")),
+        D(Loc.c("continent_d")),
+        E(Loc.c("continent_e")),
+        F(Loc.c("continent_f"));
 
         String value;
 

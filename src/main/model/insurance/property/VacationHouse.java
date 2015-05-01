@@ -15,9 +15,9 @@ public class VacationHouse extends Property implements Serializable {
     private Type type;
 
     public enum Type {
-        A(Loc.get("vacation_house_type_a")),
-        B(Loc.get("vacation_house_type_b")),
-        C(Loc.get("vacation_house_type_c"));
+        A(Loc.c("vacation_house_type_a")),
+        B(Loc.c("vacation_house_type_b")),
+        C(Loc.c("vacation_house_type_c"));
 
         String value;
 

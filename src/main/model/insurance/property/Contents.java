@@ -18,9 +18,9 @@ public class Contents extends Insurance implements Serializable {
     private Type type;
 
     public enum Type {
-        A(Loc.get("contents_type_a")),
-        B(Loc.get("contents_type_b")),
-        C(Loc.get("contents_type_c"));
+        A(Loc.c("contents_type_a")),
+        B(Loc.c("contents_type_b")),
+        C(Loc.c("contents_type_c"));
 
         String value;
 

@@ -55,38 +55,38 @@ public abstract class InsuranceAdapter<T extends Insurance>
 
     private void initialize()
      {
-         customerNode = new FormLabelNode.Builder(Loc.get("customer"), customer.getName())
+         customerNode = new FormLabelNode.Builder(Loc.c("customer"), customer.getName())
                  .build();
 
-         premium = new FormValueNode.Builder(Loc.get("premium"))
+         premium = new FormValueNode.Builder(Loc.c("premium"))
                 .regex(StringMatcher.getDigit())
                 .value(editMode ? Double.toString(insurance.getPremium()) : "")
-                .error(Loc.get("error_premium"))
+                .error(Loc.c("error_premium"))
                 .build();
 
-         amount = new FormValueNode.Builder(Loc.get("amount"))
+         amount = new FormValueNode.Builder(Loc.c("amount"))
                 .regex(StringMatcher.getDigit())
                 .value(editMode ? Double.toString(insurance.getAmount()) : "")
-                .error(Loc.get("error_amount"))
+                .error(Loc.c("error_amount"))
                 .build();
 
-         deductible = new FormValueNode.Builder(Loc.get("deductible"))
+         deductible = new FormValueNode.Builder(Loc.c("deductible"))
                 .regex(StringMatcher.getDigit())
                 .value(editMode ? Double.toString(insurance.getDeductible()) : "")
-                .error(Loc.get("error_amount"))
+                .error(Loc.c("error_amount"))
                 .build();
 
-         desc = new FormValueNode.Builder(Loc.get("desc"))
+         desc = new FormValueNode.Builder(Loc.c("desc"))
                 .regex(StringMatcher.getBaseString())
                 .value(editMode ? insurance.getDesc() : "")
-                .error(Loc.get("error_desc"))
+                .error(Loc.c("error_desc"))
                  .required(false)
                 .build();
 
          List<Enum> statusList = new ArrayList<>();
          for (Status s : Status.values()) { statusList.add(s); }
 
-         status = new FormChoiceNode.Builder<>(Loc.get("status"), statusList)
+         status = new FormChoiceNode.Builder<>(Loc.c("status"), statusList)
                 .active(Status.ACTIVE)
                 .build();
     }

@@ -41,7 +41,7 @@ public class TravelAdapter extends InsuranceAdapter<Travel> implements Formable<
             typeList.add(t);
         }
 
-        continent = new FormChoiceNode.Builder(Loc.get("continent"), typeList)
+        continent = new FormChoiceNode.Builder(Loc.c("continent"), typeList)
                 .required(false)
                 .active(Travel.Continent.A)
                 .build();
