@@ -20,7 +20,7 @@ public class PersonController
         PersonAdapter personAdapter = new PersonAdapter();
         personAdapter.setOnDoneAction(PersonController::view);
         f.injectAdapter(personAdapter);
-        Resources.inst.getOtp().injectObservableTab(Loc.get("new_customer"),
+        Resources.inst.getOtp().injectObservableTab(Loc.c("new_customer"),
                 f.getForm(), true);
     }
 

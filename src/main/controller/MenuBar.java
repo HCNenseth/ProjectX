@@ -2,6 +2,7 @@ package main.controller;
 
 import javafx.application.Platform;
 import javafx.stage.FileChooser;
+import main.App;
 import main.localization.Loc;
 import main.model.Storage;
 import main.preference.Pref;
@@ -15,8 +16,8 @@ import java.io.IOException;
 public class MenuBar
 {
     public enum Type {
-        OPEN, SAVE_AS, SAVE, CLOSE,
-        NEW_CUSTOMER, ABOUT
+        OPEN, SAVE_AS, SAVE, CLOSE, RESTART,
+        NEW_CUSTOMER, ABOUT,
     }
 
     public MenuBar(Payload p)
@@ -26,30 +27,38 @@ public class MenuBar
             case SAVE_AS: safeFileAs(); break;
             case SAVE: saveFile(); break;
             case CLOSE: exitApp(); break;
+            case RESTART: restartApp(); break;
             case NEW_CUSTOMER: newCustomer(); break;
             case ABOUT: aboutUs(); break;
             default: return;
         }
     }
 
-    public void aboutUs()
+    private void aboutUs()
     {
         AboutController.view();
     }
 
-    public void exitApp()
+    private void exitApp()
     {
         saveFile();
         Platform.exit();
     }
 
+    private void restartApp()
+    {
+        saveFile();
+        App.restart = true;
+        App.kill();
+    }
+
     private void openFile()
     {
         FileChooser fc = new FileChooser();
-        fc.setTitle(Loc.get("choose_data_file"));
+        fc.setTitle(Loc.c("choose_data_file"));
 
         fc.getExtensionFilters().addAll(
-                new FileChooser.ExtensionFilter(Loc.get("data_files"), "*.dat")
+                new FileChooser.ExtensionFilter(Loc.c("data_files"), "*.dat")
         );
         File file = fc.showOpenDialog(null);
 
@@ -80,9 +89,9 @@ public class MenuBar
     private void safeFileAs()
     {
         FileChooser fc = new FileChooser();
-        fc.setTitle(Loc.get("save_data_file_as"));
+        fc.setTitle(Loc.c("save_data_file_as"));
         fc.getExtensionFilters().addAll(
-                new FileChooser.ExtensionFilter(Loc.get("data_files"), "*.dat")
+                new FileChooser.ExtensionFilter(Loc.c("data_files"), "*.dat")
         );
         File file = fc.showSaveDialog(null);
 

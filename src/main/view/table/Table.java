@@ -24,8 +24,8 @@ public abstract class Table<T> extends TableView<T>
     public Table()
     {
         contextMenu = new ContextMenu();
-        edit = new MenuItem(Loc.get("edit"));
-        view = new MenuItem(Loc.get("view"));
+        edit = new MenuItem(Loc.c("edit"));
+        view = new MenuItem(Loc.c("view"));
 
         contextMenu.getItems().add(edit);
         contextMenu.getItems().add(view);

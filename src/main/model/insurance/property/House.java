@@ -1,7 +1,6 @@
 package main.model.insurance.property;
 
 import main.localization.Loc;
-import main.model.insurance.vehicle.Car;
 import main.model.person.Person;
 import main.model.insurance.ConcreteType;
 import main.model.insurance.InsuranceBuilder;
@@ -14,9 +13,9 @@ public class House extends Property implements Serializable
     private Type type;
 
     public enum Type {
-        A(Loc.get("house_type_a")),
-        B(Loc.get("house_type_b")),
-        C(Loc.get("house_type_c"));
+        A(Loc.c("house_type_a")),
+        B(Loc.c("house_type_b")),
+        C(Loc.c("house_type_c"));
 
         String value;
 

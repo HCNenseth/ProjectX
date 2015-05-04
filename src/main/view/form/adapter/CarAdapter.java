@@ -50,26 +50,26 @@ public class CarAdapter extends InsuranceAdapter<Car> implements Formable<Car>
 
     private void initNodes()
     {
-        licencePlate = new FormValueNode.Builder(Loc.get("licence_plate"))
-                .error(Loc.get("licence_plate_error"))
+        licencePlate = new FormValueNode.Builder(Loc.c("licence_plate"))
+                .error(Loc.c("licence_plate_error"))
                 .value(getEditMode() ? getInsurance().getLicencePlate() : "")
                 .regex(StringMatcher.getRegnr())
                 .build();
 
-        registration = new FormDateNode.Builder(Loc.get("vehicle_registration"),
+        registration = new FormDateNode.Builder(Loc.c("vehicle_registration"),
                  getEditMode() ? getInsurance().getRegistration() : LocalDate.of(Config.STANDARD_YEAR, Config.STANDARD_MONTH, Config.STANDARD_DAY))
                 .build();
 
-        mileage = new FormValueNode.Builder(Loc.get("mileage"))
-                .error(Loc.get("mileage_error"))
+        mileage = new FormValueNode.Builder(Loc.c("mileage"))
+                .error(Loc.c("mileage_error"))
                 .value(getEditMode() ? Integer.toString(getInsurance().getMileage()) : "")
                 .regex(StringMatcher.getDigit())
                 .build();
 
-        horsePower = new FormValueNode.Builder(Loc.get("vehicle_horse_power"))
+        horsePower = new FormValueNode.Builder(Loc.c("vehicle_horse_power"))
                 .regex(StringMatcher.getDigit())
                 .value(getEditMode() ? Integer.toString(getInsurance().getHorsePower()) : "")
-                .error(Loc.get("vehicle_horse_power_error"))
+                .error(Loc.c("vehicle_horse_power_error"))
                 .build();
 
         List<Enum> typeList = new ArrayList<>();
@@ -78,7 +78,7 @@ public class CarAdapter extends InsuranceAdapter<Car> implements Formable<Car>
             typeList.add(t);
         }
 
-        type = new FormChoiceNode.Builder(Loc.get("car_type"), typeList)
+        type = new FormChoiceNode.Builder(Loc.c("car_type"), typeList)
                 .required(false)
                 .active(getEditMode() ? getInsurance().getType() : Car.Type.A)
                 .build();
@@ -90,7 +90,7 @@ public class CarAdapter extends InsuranceAdapter<Car> implements Formable<Car>
             propulsionList.add(p);
         }
 
-        propulsion = new FormChoiceNode.Builder(Loc.get("car_propulsion"), propulsionList)
+        propulsion = new FormChoiceNode.Builder(Loc.c("car_propulsion"), propulsionList)
                 .required(false)
                 .active(getEditMode() ? getInsurance().getPropulsion() : Car.Propulsion.A)
                 .build();

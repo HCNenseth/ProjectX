@@ -1,6 +1,5 @@
 package main.controller;
 
-import main.App;
 import main.config.Config;
 import main.localization.Loc;
 import main.model.Storage;
@@ -36,7 +35,7 @@ class SearchController
         Form f = new Form();
         f.injectAdapter(new SearchAdapter());
 
-        Resources.inst.getOtp().injectObservableTab(Loc.get("search"),
+        Resources.inst.getOtp().injectObservableTab(Loc.c("search"),
                 f.getForm(), true);
     }
 
@@ -51,16 +50,16 @@ class SearchController
 
         if (persons.size() > 0)
             searchResult.addTable(TableController.getPersonTable(persons.stream()
-                    .filter(i -> i.query(keyword))).getTable(), Loc.get("persons"));
+                    .filter(i -> i.query(keyword))).getTable(), Loc.c("persons"));
         if (insurances.size() > 0)
             searchResult.addTable(TableController.getInsuranceTable(insurances.stream()
-                    .filter(i -> i.query(keyword))).getTable(), Loc.get("insurances"));
+                    .filter(i -> i.query(keyword))).getTable(), Loc.c("insurances"));
         if (claims.size() > 0)
             searchResult.addTable(TableController.getClaimsTable(claims.stream()
-                    .filter(i -> i.query(keyword))).getTable(), Loc.get("claims"));
+                    .filter(i -> i.query(keyword))).getTable(), Loc.c("claims"));
 
         /* insert search result view into tab */
-        Resources.inst.getOtp().injectObservableTab(Loc.get("search_results"),
+        Resources.inst.getOtp().injectObservableTab(Loc.c("search_results"),
                 searchResult.getNode(), true);
     }
 }

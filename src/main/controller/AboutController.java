@@ -14,7 +14,7 @@ public class AboutController {
     public static void view()
     {
         AboutView view = new AboutView();
-        Resources.inst.getOtp().injectObservableTab(Loc.get("about"),
+        Resources.inst.getOtp().injectObservableTab(Loc.c("about"),
                 view.getNode(), null, true);
     }
 

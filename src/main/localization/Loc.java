@@ -24,22 +24,47 @@ public final class Loc
     /**
      * Retrieve value from storage based on only key.
      * Language is set elsewhere.
-     * @param key
-     * @return
+     * @param key - key to find in map
+     * @return - value in map
      */
     private String getValue(final String key)
     {
         return p.get(activeLang, key);
     }
 
-    /**
-     * Static method for usage outside package.
-     * @param key
-     * @return
-     */
-    public static String get(final String key)
+    private static String capitalize(final String string)
     {
-        return Loc.INSTANCE.getValue(key);
+        return string.substring(0,1).toUpperCase() + string.substring(1).toLowerCase();
+    }
+
+    /**
+     * Static method for usage outside package. This returns a capitalized string
+     * @param key - key to find in map
+     * @return - value in map
+     */
+    public static String c(final String key)
+    {
+        return capitalize(Loc.INSTANCE.getValue(key));
+    }
+
+    /**
+     * Static method
+     * @param key - key to find in map
+     * @return - uppercase value in map
+     */
+    public static String u(final String key)
+    {
+        return Loc.INSTANCE.getValue(key).toUpperCase();
+    }
+
+    /**
+     * Public static
+     * @param key - key to find in map
+     * @return - lowercase value in map
+     */
+    public static String l(final String key)
+    {
+        return Loc.INSTANCE.getValue(key).toLowerCase();
     }
 
     /**

@@ -114,12 +114,12 @@ public abstract class Insurance implements
                 "%s:\t%s\n" +
                 "%s:\t%s\n" +
                 "%s:\t%s\n",
-                Loc.get("customer"), customer,
-                Loc.get("premium"), premium,
-                Loc.get("amount"), amount,
-                Loc.get("deductible"), deductible,
-                Loc.get("description"), desc,
-                Loc.get("date"), date
+                Loc.c("customer"), customer,
+                Loc.c("premium"), premium,
+                Loc.c("amount"), amount,
+                Loc.c("deductible"), deductible,
+                Loc.c("description"), desc,
+                Loc.c("date"), date
 
         );
     }

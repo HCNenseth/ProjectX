@@ -58,30 +58,30 @@ public class ClaimAdapter implements Formable<Claim>
 
     private void initNodes()
     {
-        description = new FormValueNode.Builder(Loc.get("desc"))
+        description = new FormValueNode.Builder(Loc.c("desc"))
                 .value(editMode ? claim.getDesc() : "")
                 .regex(StringMatcher.getBaseString())
-                .error(Loc.get("claim_description_error"))
+                .error(Loc.c("claim_description_error"))
                 .build();
 
-        contacts = new FormValueNode.Builder(Loc.get("contacts"))
+        contacts = new FormValueNode.Builder(Loc.c("contacts"))
                 .value(editMode ? claim.getContacts() : "")
                 .regex(StringMatcher.getBaseString())
-                .error(Loc.get("claim_contacts_error"))
+                .error(Loc.c("claim_contacts_error"))
                 .build();
 
         List<Enum> statusList = new ArrayList();
         for (Status s : Status.values()) { statusList.add(s); }
 
-        status = new FormChoiceNode.Builder<>(Loc.get("status"), statusList)
+        status = new FormChoiceNode.Builder<>(Loc.c("status"), statusList)
                 .active(editMode ? claim.getStatus() : Status.ACTIVE)
                 .build();
 
-        registrationDate = new FormDateNode.Builder(Loc.get("date_of_registration")
+        registrationDate = new FormDateNode.Builder(Loc.c("date_of_registration")
                 ,LocalDate.of(Config.STANDARD_YEAR, Config.STANDARD_MONTH, Config.STANDARD_DAY))
                 .build();
 
-        dateOfDamages = new FormDateNode.Builder(Loc.get("date_of_damages")
+        dateOfDamages = new FormDateNode.Builder(Loc.c("date_of_damages")
                 ,LocalDate.of(Config.STANDARD_YEAR, Config.STANDARD_MONTH, Config.STANDARD_DAY))
                 .build();
 

@@ -79,6 +79,7 @@ public enum StringMatcher
         return regnr;
     }
 
+    // TODO This needs work
     public static String getStreetAddress()
     {
         return baseString + baseFloat;

@@ -273,11 +273,11 @@ public class Person implements Serializable, FullTextSearch, Model
                 "\n%s\t%s" +
                 "\n%s\t%s" +
                 "\n%s\t%s",
-                Loc.get("firstname"), firstname,
-                Loc.get("lastname"), lastname,
-                Loc.get("street_address"), streetAddress,
-                Loc.get("postal_code"), postalCode,
-                Loc.get("city"), city
+                Loc.c("firstname"), firstname,
+                Loc.c("lastname"), lastname,
+                Loc.c("street_address"), streetAddress,
+                Loc.c("postal_code"), postalCode,
+                Loc.c("city"), city
         );
     }
 

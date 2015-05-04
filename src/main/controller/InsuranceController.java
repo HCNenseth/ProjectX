@@ -29,35 +29,35 @@ public class InsuranceController
                 CarAdapter carAdapter = new CarAdapter(p);
                 carAdapter.setOnDoneAction(InsuranceController::view);
                 f.injectAdapter(carAdapter);
-                Resources.inst.getOtp().injectObservableTab(Loc.get("new_car_insurance"),
+                Resources.inst.getOtp().injectObservableTab(Loc.c("new_car_insurance"),
                         f.getForm(), true);
                 return;
             case BOAT:
                 BoatAdapter boatAdapter = new BoatAdapter(p);
                 boatAdapter.setOnDoneAction(InsuranceController::view);
                 f.injectAdapter(boatAdapter);
-                Resources.inst.getOtp().injectObservableTab(Loc.get("new_boat_insurance"),
+                Resources.inst.getOtp().injectObservableTab(Loc.c("new_boat_insurance"),
                         f.getForm(), true);
                 return;
             case HOUSE:
                 HouseAdapter houseAdapter = new HouseAdapter(p);
                 houseAdapter.setOnDoneAction(InsuranceController::view);
                 f.injectAdapter(houseAdapter);
-                Resources.inst.getOtp().injectObservableTab(Loc.get("new_house_insurance"),
+                Resources.inst.getOtp().injectObservableTab(Loc.c("new_house_insurance"),
                         f.getForm(), true);
                 return;
             case VACATION_HOUSE:
                 VacationHouseAdapter vacationHouseAdapter = new VacationHouseAdapter(p);
                 vacationHouseAdapter.setOnDoneAction(InsuranceController::view);
                 f.injectAdapter(vacationHouseAdapter);
-                Resources.inst.getOtp().injectObservableTab(Loc.get("new_vacationhouse_insuarance"),
+                Resources.inst.getOtp().injectObservableTab(Loc.c("new_vacationhouse_insuarance"),
                         f.getForm(), true);
                 return;
             case TRAVEL:
                 TravelAdapter travelAdapter = new TravelAdapter(p);
                 travelAdapter.setOnDoneAction(InsuranceController::view);
                 f.injectAdapter(travelAdapter);
-                Resources.inst.getOtp().injectObservableTab(Loc.get("new_travel_insurance"),
+                Resources.inst.getOtp().injectObservableTab(Loc.c("new_travel_insurance"),
                         f.getForm(), true);
                 return;
             default: return;
@@ -71,27 +71,27 @@ public class InsuranceController
         switch (i.identify()) {
             case CAR:
                 view = new CarView((Car)i);
-                Resources.inst.getOtp().injectObservableTab(Loc.get("car_insurance"),
+                Resources.inst.getOtp().injectObservableTab(Loc.c("car_insurance"),
                         view.getNode(), i, true);
                 return;
             case BOAT:
                 view = new BoatView((Boat)i);
-                Resources.inst.getOtp().injectObservableTab(Loc.get("boat_insurance"),
+                Resources.inst.getOtp().injectObservableTab(Loc.c("boat_insurance"),
                         view.getNode(), i, true);
                 return;
             case HOUSE:
                 view = new HouseView((House)i);
-                Resources.inst.getOtp().injectObservableTab(Loc.get("house_insurance"),
+                Resources.inst.getOtp().injectObservableTab(Loc.c("house_insurance"),
                         view.getNode(), i, true);
                 return;
             case VACATION_HOUSE:
                 view = new VacationHouseView((VacationHouse)i);
-                Resources.inst.getOtp().injectObservableTab(Loc.get("vacationHouse_insurance"),
+                Resources.inst.getOtp().injectObservableTab(Loc.c("vacationHouse_insurance"),
                         view.getNode(), i, true);
                 return;
             case TRAVEL:
                 view = new TravelView((Travel)i);
-                Resources.inst.getOtp().injectObservableTab(Loc.get("travel_insurance"),
+                Resources.inst.getOtp().injectObservableTab(Loc.c("travel_insurance"),
                         view.getNode(), i, true);
                 return;
             default: return;

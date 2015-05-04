@@ -6,10 +6,6 @@ import main.config.Config;
 import main.localization.Loc;
 import main.view.StandardGridPane;
 
-import java.io.IOException;
-import java.net.URI;
-import java.net.URISyntaxException;
-
 /**
  * Created by HansPetter on 30.04.2015.
  */
@@ -17,7 +13,6 @@ public class AboutView {
 
     private StandardGridPane gp;
     private int rowNum = 0;
-    private Hyperlink repository;
 
     public AboutView()
     {
@@ -40,26 +35,8 @@ public class AboutView {
 
         addSpace(5);
 
-        repository = new Hyperlink();
-        repository.setText(Loc.get("repository_url"));
-        repository.setOnAction(e -> urlOpener(Loc.get("repository_url")));
+        gp.add(new Label(Loc.get("git") + " \t " + Loc.get("git_url")), 0, rowNum++);
 
-        gp.add(repository, 0, rowNum++);
-
-    }
-
-    private void urlOpener(String url)
-    {
-        try {
-            java.awt.Desktop.getDesktop().browse(new URI(url));
-        }
-            catch(URISyntaxException e)
-        {
-            e.printStackTrace();
-        } catch(IOException e)
-        {
-            e.printStackTrace();
-        }
     }
 
     private void addSpace(int space)
