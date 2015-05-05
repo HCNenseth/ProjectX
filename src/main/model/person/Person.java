@@ -25,6 +25,8 @@ public class Person implements Serializable, FullTextSearch, Model
     private String city;
     private String postalCode;
     private LocalDate dateOfBirth;
+    private String phoneNumber;
+    private String email;
 
     private Status status;
 
@@ -44,6 +46,8 @@ public class Person implements Serializable, FullTextSearch, Model
         private String city = null;
         private String postalCode = null;
         private LocalDate dateOfBirth = null;
+        private String phoneNumber = null;
+        private String email = null;
         private Status status = Status.ACTIVE;
 
         /**
@@ -101,6 +105,18 @@ public class Person implements Serializable, FullTextSearch, Model
             return this;
         }
 
+        public Builder phoneNumber(String val)
+        {
+            phoneNumber = val;
+            return this;
+        }
+
+        public Builder email(String val)
+        {
+            email = val;
+            return this;
+        }
+
         /**
          * Setter for status.
          * @param val
@@ -130,6 +146,8 @@ public class Person implements Serializable, FullTextSearch, Model
         firstname = builder.firstname;
         lastname = builder.lastname;
         dateOfBirth = builder.dateOfBirth;
+        phoneNumber = builder.phoneNumber;
+        email = builder.email;
         streetAddress = builder.streetAddress;
         postalCode = builder.postalCode;
         city = builder.city;
@@ -196,6 +214,16 @@ public class Person implements Serializable, FullTextSearch, Model
         this.postalCode = postalCode;
     }
 
+    public void setPhoneNumber(String phoneNumber)
+    {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public void setEmail(String email)
+    {
+        this.email = email;
+    }
+
     public void setStatus(Status status)
     {
         this.status = status;
@@ -241,6 +269,16 @@ public class Person implements Serializable, FullTextSearch, Model
         return postalCode;
     }
 
+    public String getPhoneNumber()
+    {
+        return phoneNumber;
+    }
+
+    public String getEmail()
+    {
+        return email;
+    }
+
     /**
      * Query method used for search.
      * @param value
@@ -252,7 +290,8 @@ public class Person implements Serializable, FullTextSearch, Model
                 || lastname.contains(value)
                 || (streetAddress != null && streetAddress.contains(value))
                 || (city != null && city.contains(value))
-                || (postalCode != null && postalCode.contains(value));
+                || (postalCode != null && postalCode.contains(value))
+                || (phoneNumber != null && phoneNumber.contains(value));
     }
 
     /**
@@ -272,12 +311,16 @@ public class Person implements Serializable, FullTextSearch, Model
                 "\n%s\t%s" +
                 "\n%s\t%s" +
                 "\n%s\t%s" +
+                "\n%s\t%s" +
+                "\n%s\t%s" +
                 "\n%s\t%s",
                 Loc.c("firstname"), firstname,
                 Loc.c("lastname"), lastname,
                 Loc.c("street_address"), streetAddress,
                 Loc.c("postal_code"), postalCode,
-                Loc.c("city"), city
+                Loc.c("city"), city,
+                Loc.c("phone_number"), phoneNumber,
+                Loc.c("email"), email
         );
     }
 

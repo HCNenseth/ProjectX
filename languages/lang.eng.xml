@@ -72,6 +72,10 @@
     <string name="street_address_error">Street address must contain...</string>
     <string name="postal_code">Postal code</string>
     <string name="postal_code_error">Postal code must contain only numbers</string>
+    <string name="phone_number">Phone number</string>
+    <string name="phone_number_error">Phone number must contain...</string>
+    <string name="email">Email</string>
+    <string name="email_error">Email has wrong format</string>
     <string name="length">Length</string>
     <string name="city">City</string>
     <string name="city_error">City must contain...</string>

@@ -20,7 +20,7 @@ public enum StringMatcher
     private final static String lastname = baseString;
     private final static String color = baseString;
 
-    private final static String regnr  = "\\w{2,6}";
+    private final static String regnr  = "\\w{2,8}";
     private final static String type = "\\w{2,20}";
     private final static String year = "\\d{4}";
     private final static String length = baseFloat;
@@ -79,11 +79,11 @@ public enum StringMatcher
         return regnr;
     }
 
-    // TODO This needs work
-    public static String getStreetAddress()
+    /* public static String getStreetAddress()
     {
         return baseString + baseFloat;
     }
+    */
 
     public static String getPostalCode()
     {

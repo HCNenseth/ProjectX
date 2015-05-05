@@ -27,6 +27,8 @@ public class PersonAdapter implements Formable<Person>
     private FormValueNode city;
     private FormValueNode streetAddress;
     private FormValueNode postalCode;
+    private FormValueNode phoneNumber;
+    private FormValueNode email;
     private FormChoiceNode status;
 
     private Person person;
@@ -85,6 +87,20 @@ public class PersonAdapter implements Formable<Person>
                 .required(false)
                 .build();
 
+        phoneNumber = new FormValueNode.Builder(Loc.c("phone_number"))
+                .value(editMode ? person.getPhoneNumber() : "")
+                .error(Loc.c("phone_number_error"))
+                .regex(Loc.c(StringMatcher.getDigit()))
+                .required(false)
+                .build();
+
+        email = new FormValueNode.Builder(Loc.c("email"))
+                .value(editMode ? person.getEmail() : "")
+                .error(Loc.c("email_error"))
+                .regex(Loc.c(StringMatcher.getEmail()))
+                .required(false)
+                .build();
+
         List<Enum> statusList = new ArrayList<>();
         for (Status s : Status.values()) { statusList.add(s); }
 
@@ -103,6 +119,8 @@ public class PersonAdapter implements Formable<Person>
         tmp.add(streetAddress);
         tmp.add(postalCode);
         tmp.add(city);
+        tmp.add(phoneNumber);
+        tmp.add(email);
         tmp.add(status);
 
         return tmp;
