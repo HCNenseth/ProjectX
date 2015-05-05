@@ -13,6 +13,9 @@ public class Config {
     public static final String INSURANCES = "insurances";
     public static final String CLAIMS = "claims";
 
+    public static final String CSS = "file:resources/css/";
+    public static final String IMAGES = "file:resources/images/";
+
     public static final double HEIGHT = Screen.getPrimary().getVisualBounds().getHeight() * 0.9;
     public static final double WIDTH = Screen.getPrimary().getVisualBounds().getWidth() * 0.9;
     public static final int PD_HEIGHT = 300, PD_WIDTH = 400;

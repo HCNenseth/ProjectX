@@ -6,6 +6,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import main.config.Config;
 import main.controller.Mediator;
 import main.controller.Payload;
 import main.controller.Signal;
@@ -27,9 +28,9 @@ public class SplashView {
         hbox.setSpacing(50);
         gridPane = new GridPane();
 
-        searchIcon = new Image("File:resources/images/search.png");
-        customerIcon = new Image("File:resources/images/customer.png");
-        statisticsIcon = new Image("File:resources/images/chart.png");
+        searchIcon = new Image(Config.IMAGES + "search.png");
+        customerIcon = new Image(Config.IMAGES + "customer.png");
+        statisticsIcon = new Image(Config.IMAGES + "chart.png");
 
         searchIV = new ImageView();
         searchIV.setImage(searchIcon);

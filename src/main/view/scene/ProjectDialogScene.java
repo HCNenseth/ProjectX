@@ -13,7 +13,11 @@ import main.controller.Payload;
 import main.controller.Signal;
 
 /**
- * Created by alex on 5/5/15.
+ * ProjectDialog Scene
+ *
+ * This file both draws and sets the Project Dialog window. This because
+ * the codebase is so small, and splitting it up would only make things
+ * more messy.
  */
 public class ProjectDialogScene
 {
@@ -30,7 +34,7 @@ public class ProjectDialogScene
         draw();
 
         scene = new Scene(gridPane, Config.PD_WIDTH, Config.PD_HEIGHT);
-        scene.getStylesheets().add("file:resources/css/main.css");
+        scene.getStylesheets().add(Config.CSS + "main.css");
     }
 
     private void draw()
@@ -40,8 +44,8 @@ public class ProjectDialogScene
         hbox = new HBox();
         hbox.setSpacing(50);
 
-        openExistingIcon = new Image("File:resources/images/Folder-Open-icon.png");
-        createNewIcon = new Image("File:resources/images/Folder-Add-icon.png");
+        openExistingIcon = new Image(Config.IMAGES + "open131.png");
+        createNewIcon = new Image(Config.IMAGES + "add118.png");
 
         openExistingImageView = new ImageView();
         openExistingImageView.setImage(openExistingIcon);
