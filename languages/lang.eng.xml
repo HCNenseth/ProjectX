@@ -14,7 +14,8 @@
     <string name="choose_data_file">Choose data file</string>
     <string name="menu_group_about">About</string>
     <string name="menu_about">About</string>
-    <string name="please_restart_for_changes_to_take_effect">Please restart for changes to take effect.</string>
+    <string name="please_restart_for_changes_to_take_effect">
+        Please restart for changes to take effect.</string>
     <string name="version">Version 1.0</string>
     <string name="made_by">Made by</string>
     <string name="repository">Github</string>
