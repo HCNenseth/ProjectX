@@ -40,6 +40,8 @@
     <string name="type">Type</string>
     <string name="save">Save</string>
     <string name="new_insurance">New insurance</string>
+    <string name="create_new">Create new</string>
+    <string name="open_existing">Open existing</string>
 
     <!-- headers -->
     <string name="new_car_insurance">New car insurance</string>
