@@ -17,9 +17,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Consumer;
 
-public class BoatAdapter extends InsuranceAdapter<Boat> implements Formable<Boat>
+public class                                                                                                                                    BoatAdapter extends InsuranceAdapter<Boat> implements Formable<Boat>
 {
     private FormValueNode licencePlate;
+    private FormValueNode owner;
     private FormDateNode registration;
     private FormValueNode length;
     private FormValueNode horsePower;
@@ -47,6 +48,12 @@ public class BoatAdapter extends InsuranceAdapter<Boat> implements Formable<Boat
                 .value(getEditMode() ? getInsurance().getLicencePlate() : "")
                 .error(Loc.c("licence_plate_error"))
                 .build();
+
+        owner = new FormValueNode.Builder(Loc.c("owner"))
+                .value(getEditMode() ? getInsurance().getOwner().getFullName() : "")
+                .regex(StringMatcher.getBaseString())
+                .build();
+
 
         registration = new FormDateNode.Builder(Loc.c("vehicle_registration"),
                 getEditMode() ? getInsurance().getRegistration() : LocalDate.of(Config.STANDARD_YEAR, Config.STANDARD_MONTH, Config.STANDARD_DAY))
@@ -91,13 +98,15 @@ public class BoatAdapter extends InsuranceAdapter<Boat> implements Formable<Boat
 
     @Override
     public List<FormNode> getNodes() {
-        List<FormNode> tmp = super.getNodes();
+        List<FormNode> tmp = new ArrayList<>();
+        tmp.add(licencePlate);
+        tmp.add(owner);
         tmp.add(registration);
         tmp.add(length);
         tmp.add(horsePower);
         tmp.add(propulsion);
         tmp.add(type);
-        return tmp;
+        return super.getNodes(tmp);
     }
 
     @Override

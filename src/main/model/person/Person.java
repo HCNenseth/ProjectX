@@ -241,6 +241,8 @@ public class Person implements Serializable, FullTextSearch, Model
         return postalCode;
     }
 
+    public String getFullName() { return firstname + " " + lastname; }
+
     /**
      * Query method used for search.
      * @param value

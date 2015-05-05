@@ -95,7 +95,6 @@ public class ClaimAdapter implements Formable<Claim>
         tmp.add(dateOfDamages);
         tmp.add(registrationDate);
         tmp.add(status);
-
         return tmp;
     }
 

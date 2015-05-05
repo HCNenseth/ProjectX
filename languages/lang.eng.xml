@@ -17,8 +17,8 @@
     <string name="please_restart_for_changes_to_take_effect">Please restart for changes to take effect.</string>
     <string name="version">Version 1.0</string>
     <string name="made_by">Made by</string>
-    <string name="git">Github</string>
-    <string name="git_url">https://github.com/HCNenseth/ProjectX</string>
+    <string name="repository">Github</string>
+    <string name="repository_url">https://github.com/HCNenseth/ProjectX</string>
 
     <!-- commons -->
     <string name="theme">Theme</string>

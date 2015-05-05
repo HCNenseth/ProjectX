@@ -98,7 +98,7 @@ public class HouseAdapter extends InsuranceAdapter<House> implements Formable<Ho
     @Override
     public List<FormNode> getNodes()
     {
-        List<FormNode> tmp = super.getNodes();
+        List<FormNode> tmp = new ArrayList<>();
         tmp.add(street);
         tmp.add(postalCode);
         tmp.add(city);
@@ -106,8 +106,7 @@ public class HouseAdapter extends InsuranceAdapter<House> implements Formable<Ho
         tmp.add(material);
         tmp.add(squareMeters);
         tmp.add(yearBuilt);
-
-        return tmp;
+        return super.getNodes(tmp);
     }
 
     @Override

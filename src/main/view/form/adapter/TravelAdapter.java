@@ -56,9 +56,9 @@ public class TravelAdapter extends InsuranceAdapter<Travel> implements Formable<
     @Override
     public List<FormNode> getNodes()
     {
-        List<FormNode> tmp = super.getNodes();
+        List<FormNode> tmp = new ArrayList<>();
         tmp.add(continent);
-        return tmp;
+        return super.getNodes(tmp);
     }
 
     @Override
