@@ -15,7 +15,7 @@ public class MenuBar extends javafx.scene.control.MenuBar
 {
     private Menu fileMenu, statisticsMenu, editMenu,
             themeSubMenu, languageSubMenu, newMenu, aboutMenu;
-    private MenuItem fileSave, fileSaveAs, fileOpen, fileExit, fileRestart,
+    private MenuItem fileSave, closeProject, fileExit, fileRestart,
             statistics, customer, search, aboutUs;
     private ToggleGroup themeSubMenuGroup, languageSubMenuGroup;
     private RadioMenuItem themeSubMenuItem1, themeSubMenuItem2;
@@ -27,7 +27,7 @@ public class MenuBar extends javafx.scene.control.MenuBar
         editMenu = new Menu(Loc.c("menu_group_edit"));
         statisticsMenu = new Menu(Loc.c("menu_group_statistics"));
         aboutMenu = new Menu(Loc.c("menu_group_about"));
-        newMenu = new Menu(Loc.c("New"));
+        newMenu = new Menu(Loc.c("new"));
 
         aboutUs = new MenuItem(Loc.c("menu_about"));
         aboutUs.setOnAction(e -> Mediator.inst.router(Signal.ABOUT,
@@ -37,19 +37,15 @@ public class MenuBar extends javafx.scene.control.MenuBar
         fileSave.setOnAction(e -> Mediator.inst.router(Signal.FILE,
                 new Payload(main.controller.MenuBar.Type.SAVE)));
 
-        fileSaveAs = new MenuItem(Loc.c("menu_file_save_as"));
-        fileSaveAs.setOnAction(e -> Mediator.inst.router(Signal.FILE,
-                new Payload(main.controller.MenuBar.Type.SAVE_AS)));
-
-        fileOpen = new MenuItem(Loc.c("menu_file_open"));
-        fileOpen.setOnAction(e -> Mediator.inst.router(Signal.FILE,
-                new Payload(main.controller.MenuBar.Type.OPEN)));
+        closeProject = new MenuItem(Loc.c("menu_close_project"));
+        closeProject.setOnAction(e -> Mediator.inst.router(Signal.FILE,
+                new Payload(main.controller.MenuBar.Type.NEW_PROJECT)));
 
         fileRestart = new MenuItem(Loc.c("restart"));
         fileRestart.setOnAction(e -> Mediator.inst.router(Signal.FILE,
                 new Payload(main.controller.MenuBar.Type.RESTART)));
 
-        fileExit = new MenuItem(Loc.c("menu_file_close"));
+        fileExit = new MenuItem(Loc.c("menu_file_exit"));
         fileExit.setOnAction(e -> Mediator.inst.router(Signal.FILE,
                 new Payload(main.controller.MenuBar.Type.CLOSE)));
 
@@ -88,9 +84,13 @@ public class MenuBar extends javafx.scene.control.MenuBar
             tmp.setToggleGroup(languageSubMenuGroup);
             tmp.setOnAction(e -> {
                 Loc.setActiveLang(s);
+                /*
                 Resources.inst.getInfoBar().setAndShow(
                         Loc.c("please_restart_for_changes_to_take_effect"));
+                */
                 Pref.inst.put("language", s);
+                // TODO reevaluate this decision.
+                Resources.inst.getSceneSwitch().setMainWindow();
             });
             languageSubMenu.getItems().add(tmp);
         }
@@ -98,8 +98,13 @@ public class MenuBar extends javafx.scene.control.MenuBar
        /**
          * Putting the parts together.
          */
-        fileMenu.getItems().addAll(fileOpen, fileSave, fileSaveAs,
-                fileRestart, fileExit);
+        fileMenu.getItems().addAll(
+                closeProject,
+                new SeparatorMenuItem(),
+                fileSave,
+                new SeparatorMenuItem(),
+                fileRestart,
+                fileExit);
         editMenu.getItems().addAll(themeSubMenu, languageSubMenu);
         newMenu.getItems().addAll(search, customer);
         statisticsMenu.getItems().addAll(statistics);

@@ -18,3 +18,6 @@ http://stackoverflow.com/questions/21171249/how-to-reload-the-screen-when-changi
 
 # JavaFX Source code
 http://hg.openjdk.java.net/openjfx/8/master/rt/file/f89b7dc932af/modules/controls/src/main/java/javafx/scene/control
+
+# Resources
+http://www.iconarchive.com/show/soft-scraps-icons-by-hopstarter.1.html

@@ -2,10 +2,11 @@
 <language name="english">
     <!-- menus -->
     <string name="menu_group_file">File</string>
+    <string name="menu_close_project">Close project</string>
     <string name="menu_file_open">Open file</string>
     <string name="menu_file_save">Save</string>
     <string name="menu_file_save_as">Save as</string>
-    <string name="menu_file_close">Close</string>
+    <string name="menu_file_exit">Exit</string>
     <string name="menu_group_edit">Edit</string>
     <string name="menu_group_statistics">Statistics</string>
     <string name="menu_statistics">Statistics</string>

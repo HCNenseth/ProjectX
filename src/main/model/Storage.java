@@ -1,7 +1,10 @@
 package main.model;
 
+import main.config.Config;
+
 import java.io.*;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
@@ -21,6 +24,17 @@ public class Storage
     private Storage()
     {
         data = new HashMap<>();
+        resetData();
+    }
+
+    /**
+     * reset hashmap with empty lists.
+     */
+    public void resetData()
+    {
+        data.put(Config.PERSONS, new LinkedList<>());
+        data.put(Config.INSURANCES, new LinkedList<>());
+        data.put(Config.CLAIMS, new LinkedList<>());
     }
 
     /**
@@ -51,6 +65,12 @@ public class Storage
     {
         return !(filename == null || filename.equals(""));
     }
+
+    /**
+     * Returns current filename
+     * @return
+     */
+    public String getFilename() { return filename; }
 
     /**
      * Read data from file.
