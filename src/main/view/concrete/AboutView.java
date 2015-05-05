@@ -24,18 +24,18 @@ public class AboutView {
     private void initAboutFields()
     {
 
-        gp.add(new Label(Config.APP_NAME + " \t " + Loc.get("version")), 0, rowNum++);
+        gp.add(new Label(Config.APP_NAME + " \t " + Loc.c("version")), 0, rowNum++);
 
         addSpace(5);
 
-        gp.add(new Label(Loc.get("made_by")), 0, rowNum++);
+        gp.add(new Label(Loc.c("made_by")), 0, rowNum++);
         gp.add(new Label("Alexander Skjolden"), 0, rowNum++);
         gp.add(new Label("Hans Christian Nenseth"), 0, rowNum++);
         gp.add(new Label("Hans Petter Osvold"), 0, rowNum++);
 
         addSpace(5);
 
-        gp.add(new Label(Loc.get("git") + " \t " + Loc.get("git_url")), 0, rowNum++);
+        gp.add(new Label(Loc.c("git") + " \t " + Loc.c("git_url")), 0, rowNum++);
 
     }
 
