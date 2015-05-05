@@ -104,7 +104,7 @@ public class CarAdapter extends InsuranceAdapter<Car> implements Formable<Car>
 
     @Override
     public List<FormNode> getNodes() {
-        List<FormNode> tmp = super.getNodes();
+        List<FormNode> tmp = new ArrayList<>();
         tmp.add(licencePlate);
         tmp.add(registration);
         tmp.add(mileage);
@@ -112,7 +112,7 @@ public class CarAdapter extends InsuranceAdapter<Car> implements Formable<Car>
         tmp.add(horsePower);
         tmp.add(propulsion);
         tmp.add(getStatus());
-        return tmp;
+        return super.getNodes(tmp);
     }
 
     @Override

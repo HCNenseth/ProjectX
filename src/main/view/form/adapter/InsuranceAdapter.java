@@ -91,14 +91,14 @@ public abstract class InsuranceAdapter<T extends Insurance>
                 .build();
     }
 
-    protected List<FormNode> getNodes()
+    protected List<FormNode> getNodes(List<FormNode> tmp)
     {
-        List<FormNode> tmp = new ArrayList<>();
-        tmp.add(customerNode);
+        tmp.add(0, customerNode);
         tmp.add(amount);
         tmp.add(premium);
         tmp.add(deductible);
         tmp.add(desc);
+        tmp.add(status);
         return tmp;
     }
 

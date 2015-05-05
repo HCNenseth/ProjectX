@@ -98,7 +98,7 @@ public class                                                                    
 
     @Override
     public List<FormNode> getNodes() {
-        List<FormNode> tmp = super.getNodes();
+        List<FormNode> tmp = new ArrayList<>();
         tmp.add(licencePlate);
         tmp.add(owner);
         tmp.add(registration);
@@ -106,8 +106,7 @@ public class                                                                    
         tmp.add(horsePower);
         tmp.add(propulsion);
         tmp.add(type);
-        tmp.add(getStatus());
-        return tmp;
+        return super.getNodes(tmp);
     }
 
     @Override

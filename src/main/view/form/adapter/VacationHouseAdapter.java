@@ -101,7 +101,7 @@ public class VacationHouseAdapter extends InsuranceAdapter<VacationHouse> implem
     @Override
     public List<FormNode> getNodes()
     {
-        List<FormNode> tmp = super.getNodes();
+        List<FormNode> tmp = new ArrayList<>();
         tmp.add(street);
         tmp.add(postalCode);
         tmp.add(city);
@@ -109,8 +109,7 @@ public class VacationHouseAdapter extends InsuranceAdapter<VacationHouse> implem
         tmp.add(material);
         tmp.add(squareMeters);
         tmp.add(yearBuilt);
-        tmp.add(getStatus());
-        return tmp;
+        return super.getNodes(tmp);
     }
 
     @Override
