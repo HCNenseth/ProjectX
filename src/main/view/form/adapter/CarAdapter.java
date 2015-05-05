@@ -24,7 +24,7 @@ public class CarAdapter extends InsuranceAdapter<Car> implements Formable<Car>
 {
 
     private FormValueNode licencePlate;
-    private FormValueNode owner;
+    //private FormValueNode owner;
     private FormDateNode registration;
     private FormValueNode mileage;
     private FormChoiceNode type;
@@ -43,12 +43,6 @@ public class CarAdapter extends InsuranceAdapter<Car> implements Formable<Car>
         initNodes();
     }
 
-    private CarAdapter()
-    {
-        super(null);
-        return;
-    }
-
     private void initNodes()
     {
         licencePlate = new FormValueNode.Builder(Loc.c("licence_plate"))
@@ -57,10 +51,13 @@ public class CarAdapter extends InsuranceAdapter<Car> implements Formable<Car>
                 .regex(StringMatcher.getRegnr())
                 .build();
 
+        // This does not make any sense!
+        /*
         owner = new FormValueNode.Builder(Loc.c("owner"))
-                .value(getEditMode() ? getInsurance().getOwner().getFullName() : "")
+                .value(getEditMode() ? getInsurance().getOwner().getName() : "")
                 .regex(StringMatcher.getBaseString())
                 .build();
+        */
 
         registration = new FormDateNode.Builder(Loc.c("vehicle_registration"),
                  getEditMode() ? getInsurance().getRegistration() : LocalDate.of(Config.STANDARD_YEAR, Config.STANDARD_MONTH, Config.STANDARD_DAY))
@@ -79,10 +76,7 @@ public class CarAdapter extends InsuranceAdapter<Car> implements Formable<Car>
                 .build();
 
         List<Enum> typeList = new ArrayList<>();
-        for(Car.Type t : Car.Type.values())
-        {
-            typeList.add(t);
-        }
+        for (Car.Type t : Car.Type.values()) { typeList.add(t); }
 
         type = new FormChoiceNode.Builder(Loc.c("car_type"), typeList)
                 .required(false)
@@ -104,47 +98,41 @@ public class CarAdapter extends InsuranceAdapter<Car> implements Formable<Car>
 
     @Override
     public List<FormNode> getNodes() {
-        List<FormNode> tmp = new ArrayList<>();
+        List<FormNode> tmp = super.getNodes();
+
         tmp.add(licencePlate);
         tmp.add(registration);
         tmp.add(mileage);
         tmp.add(type);
         tmp.add(horsePower);
         tmp.add(propulsion);
-        tmp.add(getStatus());
-        return super.getNodes(tmp);
+
+        return tmp;
     }
 
     @Override
     public void callback()
     {
-        if(getEditMode())
-        {
-            getInsurance().setMileage(Integer.parseInt(mileage.getValue()));
-            getInsurance().setHorsePower(Integer.parseInt(horsePower.getValue()));
-            getInsurance().setLicencePlate(licencePlate.getValue());
-            getInsurance().setPremium(Integer.parseInt(super.getPremium().getValue()));
-            getInsurance().setAmount(Integer.parseInt(super.getAmount().getValue()));
-            getInsurance().setStatus((Status) super.getStatus().getData());
-
-            System.out.println(getInsurance());
-            return;
+        if (getEditMode()) {
+            Car i = getInsurance();
+            i.setMileage(Integer.parseInt(mileage.getValue()));
+            i.setHorsePower(Integer.parseInt(horsePower.getValue()));
+            i.setLicencePlate(licencePlate.getValue());
+            i.setPremium(Integer.parseInt(getPremium()));
+            i.setAmount(Integer.parseInt(getAmount()));
+            i.setStatus(getStatus());
+        } else {
+            setInsurance(new Car.Builder(getCustomer(), licencePlate.getValue())
+                    .registration(registration.getData())
+                    .horsePower(Integer.parseInt(horsePower.getValue()))
+                    .mileage(Integer.parseInt(mileage.getValue()))
+                    .amount(Integer.parseInt(getAmount()))
+                    .premium(Integer.parseInt(getPremium()))
+                    .status(getStatus())
+                    .type((Car.Type) type.getData())
+                    .propulsion((Car.Propulsion) propulsion.getData())
+                    .build());
         }
-
-        Car car = new Car.Builder(getCustomer(), licencePlate.getValue())
-                .registration(registration.getData())
-                .horsePower(Integer.parseInt(horsePower.getValue()))
-                .mileage(Integer.parseInt(mileage.getValue()))
-                .amount(Integer.parseInt(getAmount().getValue()))
-                .premium(Integer.parseInt(getPremium().getValue()))
-                .status((Status) getStatus().getData())
-                .type((Car.Type) type.getData())
-                .propulsion((Car.Propulsion) propulsion.getData())
-                .build();
-
-        setInsurance(car);
-        System.out.println(getInsurance());
-
         callBackEvent.fire();
     }
 

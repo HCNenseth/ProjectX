@@ -17,17 +17,15 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Consumer;
 
-public class                                                                                                                                    BoatAdapter extends InsuranceAdapter<Boat> implements Formable<Boat>
+public class BoatAdapter extends InsuranceAdapter<Boat> implements Formable<Boat>
 {
     private FormValueNode licencePlate;
-    private FormValueNode owner;
+    //private FormValueNode owner;
     private FormDateNode registration;
     private FormValueNode length;
     private FormValueNode horsePower;
     private FormChoiceNode propulsion;
     private FormChoiceNode type;
-
-    private BoatAdapter() { super(null); return; }
 
     public BoatAdapter(Person customer, Boat boat)
     {
@@ -49,14 +47,19 @@ public class                                                                    
                 .error(Loc.c("licence_plate_error"))
                 .build();
 
+        // This does not make any sense!
+        /*
         owner = new FormValueNode.Builder(Loc.c("owner"))
-                .value(getEditMode() ? getInsurance().getOwner().getFullName() : "")
+                .value(getEditMode() ? getInsurance().getOwner().getName() : "")
                 .regex(StringMatcher.getBaseString())
                 .build();
+        */
 
 
         registration = new FormDateNode.Builder(Loc.c("vehicle_registration"),
-                getEditMode() ? getInsurance().getRegistration() : LocalDate.of(Config.STANDARD_YEAR, Config.STANDARD_MONTH, Config.STANDARD_DAY))
+                getEditMode() ? getInsurance().getRegistration() : LocalDate.of(Config.STANDARD_YEAR,
+                                                                                Config.STANDARD_MONTH,
+                                                                                Config.STANDARD_DAY))
                 .required(false)
                 .build();
 
@@ -78,7 +81,7 @@ public class                                                                    
             propulsionList.add(p);
         }
 
-        propulsion = new FormChoiceNode.Builder(Loc.c("boat_propulsion"), propulsionList )
+        propulsion = new FormChoiceNode.Builder<>(Loc.c("boat_propulsion"), propulsionList )
                 .required(false)
                 .active(getEditMode() ? getInsurance().getPropulsion() : Boat.Propulsion.A)
                 .build();
@@ -89,7 +92,7 @@ public class                                                                    
             typeList.add(t);
         }
 
-        type = new FormChoiceNode.Builder(Loc.c("boat_type"), typeList)
+        type = new FormChoiceNode.Builder<>(Loc.c("boat_type"), typeList)
                 .required(false)
                 .active(getEditMode() ? getInsurance().getType() : Boat.Type.A)
                 .build();
@@ -97,44 +100,42 @@ public class                                                                    
     }
 
     @Override
-    public List<FormNode> getNodes() {
-        List<FormNode> tmp = new ArrayList<>();
+    public List<FormNode> getNodes()
+    {
+        List<FormNode> tmp = super.getNodes();
         tmp.add(licencePlate);
-        tmp.add(owner);
         tmp.add(registration);
         tmp.add(length);
         tmp.add(horsePower);
         tmp.add(propulsion);
         tmp.add(type);
-        return super.getNodes(tmp);
+
+        return tmp;
     }
 
     @Override
-    public void callback() {
-
-        if(super.getEditMode())
-        {
-            getInsurance().setHorsePower(Integer.parseInt(horsePower.getValue()));
-            getInsurance().setPremium(Integer.parseInt(super.getPremium().getValue()));
-            getInsurance().setAmount(Integer.parseInt(super.getAmount().getValue()));
-            getInsurance().setStatus((Status) super.getStatus().getData());
-            getInsurance().setLicencePlate(licencePlate.getValue());
-            getInsurance().setPropulsion((Boat.Propulsion) propulsion.getData());
-            System.out.println(getInsurance());
-            return;
+    public void callback()
+    {
+        if (getEditMode()) {
+            Boat i = getInsurance();
+            i.setHorsePower(Integer.parseInt(horsePower.getValue()));
+            i.setPremium(Integer.parseInt(getPremium()));
+            i.setAmount(Integer.parseInt(getAmount()));
+            i.setStatus(getStatus());
+            i.setLicencePlate(licencePlate.getValue());
+            i.setPropulsion((Boat.Propulsion) propulsion.getData());
+        } else {
+            setInsurance(new Boat.Builder(getCustomer(), licencePlate.getValue())
+                    .horsePower(Integer.parseInt(horsePower.getValue()))
+                    .length(Integer.parseInt(length.getValue()))
+                    .registration(registration.getData())
+                    .premium(Integer.parseInt(getPremium()))
+                    .amount(Integer.parseInt(getAmount()))
+                    .propulsion((Boat.Propulsion) propulsion.getData())
+                    .status(getStatus())
+                    .type((Boat.Type) type.getData())
+                    .build());
         }
-
-        Boat boat = new Boat.Builder(super.getCustomer(), licencePlate.getValue())
-                .horsePower(Integer.parseInt(horsePower.getValue()))
-                .length(Integer.parseInt(length.getValue()))
-                .registration(registration.getData())
-                .premium(Integer.parseInt(super.getPremium().getValue()))
-                .amount(Integer.parseInt(super.getAmount().getValue()))
-                .propulsion((Boat.Propulsion) propulsion.getData())
-                .status((Status) super.getStatus().getData())
-                .type((Boat.Type) type.getData())
-                .build();
-
         callBackEvent.fire();
     }
 

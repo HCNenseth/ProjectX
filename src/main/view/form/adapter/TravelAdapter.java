@@ -1,7 +1,6 @@
 package main.view.form.adapter;
 
 import main.localization.Loc;
-import main.model.Status;
 import main.model.insurance.travel.Travel;
 import main.model.person.Person;
 import main.view.form.Formable;
@@ -47,49 +46,38 @@ public class TravelAdapter extends InsuranceAdapter<Travel> implements Formable<
                 .build();
     }
 
-    private TravelAdapter()
-    {
-        super(null);
-        return;
-    }
-
     @Override
     public List<FormNode> getNodes()
     {
-        List<FormNode> tmp = new ArrayList<>();
+        List<FormNode> tmp = super.getNodes();
         tmp.add(continent);
-        return super.getNodes(tmp);
+
+        return tmp;
     }
 
     @Override
     public void callback()
     {
-        if (super.getEditMode())
-        {
-            super.getInsurance().setPremium(Integer.parseInt(super.getPremium().getValue()));
-            super.getInsurance().setAmount(Integer.parseInt(super.getAmount().getValue()));
-            super.getInsurance().setStatus((Status) super.getStatus().getData());
-
-            System.out.println(super.getInsurance());
-            return;
+        if (getEditMode()) {
+            Travel i = getInsurance();
+            i.setPremium(Integer.parseInt(getPremium()));
+            i.setAmount(Integer.parseInt(getAmount()));
+            i.setStatus(getStatus());
+        } else {
+            setInsurance(new Travel.Builder(getCustomer())
+                    .premium(Integer.parseInt(getPremium()))
+                    .amount(Integer.parseInt(getAmount()))
+                    .status(getStatus())
+                    .continent((Travel.Continent)continent.getData())
+                    .build());
         }
-
-        Travel travel = new Travel.Builder(super.getCustomer())
-                .premium(Integer.parseInt(super.getPremium().getValue()))
-                .amount(Integer.parseInt(super.getAmount().getValue()))
-                .status((Status)super.getStatus().getData())
-                .continent((Travel.Continent) continent.getData())
-                .build();
-
-        super.setInsurance(travel);
-
         callBackEvent.fire();
     }
 
     @Override
     public void setOnDoneAction(Consumer<Travel> c)
     {
-        callBackEvent.setOnAction(e -> c.accept(super.getInsurance()));
+        callBackEvent.setOnAction(e -> c.accept(getInsurance()));
     }
 
 }

@@ -46,11 +46,11 @@ public abstract class InsuranceAdapter<T extends Insurance>
 
     public InsuranceAdapter(Person customer)
     {
-        if(customer != null)
-        {
-            this.customer = customer;
-            initialize();
-        }
+        if (customer == null)
+            throw new IllegalStateException("Cannot operate on customer-less insurance!");
+
+        this.customer = customer;
+        initialize();
     }
 
     private void initialize()
@@ -91,9 +91,11 @@ public abstract class InsuranceAdapter<T extends Insurance>
                 .build();
     }
 
-    protected List<FormNode> getNodes(List<FormNode> tmp)
+    protected List<FormNode> getNodes()
     {
-        tmp.add(0, customerNode);
+        List<FormNode> tmp = new ArrayList<>();
+
+        tmp.add(customerNode);
         tmp.add(amount);
         tmp.add(premium);
         tmp.add(deductible);
@@ -102,27 +104,13 @@ public abstract class InsuranceAdapter<T extends Insurance>
         return tmp;
     }
 
-    protected FormValueNode getAmount()
-    {
-        return amount;
-    }
+    protected String getAmount() { return amount.getValue(); }
 
-    protected FormValueNode getPremium()
-    {
-        return premium;
-    }
+    protected String getDeductible() { return premium.getValue(); }
 
-    protected FormValueNode getDesc()
-    {
-        return desc;
-    }
+    protected String getPremium() { return premium.getValue(); }
 
-    protected FormChoiceNode getStatus()
-    {
-        return status;
-    }
-
-    protected FormValueNode getDeductible() { return deductible; }
+    protected Status getStatus() { return (Status)status.getData(); }
 
     protected boolean getEditMode()
     {

@@ -37,8 +37,6 @@ public class HouseAdapter extends InsuranceAdapter<House> implements Formable<Ho
         initNodes();
     }
 
-    private HouseAdapter() { super(null); return; }
-
     private void initNodes()
     {
 
@@ -98,7 +96,7 @@ public class HouseAdapter extends InsuranceAdapter<House> implements Formable<Ho
     @Override
     public List<FormNode> getNodes()
     {
-        List<FormNode> tmp = new ArrayList<>();
+        List<FormNode> tmp = super.getNodes();
         tmp.add(street);
         tmp.add(postalCode);
         tmp.add(city);
@@ -106,46 +104,42 @@ public class HouseAdapter extends InsuranceAdapter<House> implements Formable<Ho
         tmp.add(material);
         tmp.add(squareMeters);
         tmp.add(yearBuilt);
-        return super.getNodes(tmp);
+
+        return tmp;
     }
 
     @Override
     public void callback()
     {
-        if(super.getEditMode())
-        {
-            super.getInsurance().setCity(city.getValue());
-            super.getInsurance().setType((House.Type) type.getData());
-            super.getInsurance().setMaterial((House.Material) material.getData());
-            super.getInsurance().setSquareMeter(Integer.parseInt(squareMeters.getValue()));
-            super.getInsurance().setYear(Integer.parseInt(yearBuilt.getValue()));
-            super.getInsurance().setPremium(Integer.parseInt(super.getPremium().getValue()));
-            super.getInsurance().setAmount(Integer.parseInt(super.getAmount().getValue()));
-            super.getInsurance().setStatus((Status) super.getStatus().getData());
-
-            System.out.println(super.getInsurance());
-            return;
+        if (getEditMode()) {
+            House i = getInsurance();
+            i.setCity(city.getValue());
+            i.setType((House.Type) type.getData());
+            i.setMaterial((House.Material) material.getData());
+            i.setSquareMeter(Integer.parseInt(squareMeters.getValue()));
+            i.setYear(Integer.parseInt(yearBuilt.getValue()));
+            i.setPremium(Integer.parseInt(getPremium()));
+            i.setAmount(Integer.parseInt(getAmount()));
+            i.setStatus(getStatus());
+        } else {
+            setInsurance(new House.Builder(getCustomer(),
+                    street.getValue(), postalCode.getValue())
+                    .city(city.getValue())
+                    .type((House.Type) type.getData())
+                    .material((House.Material) material.getData())
+                    .squareMeter(Integer.parseInt(squareMeters.getValue()))
+                    .year(Integer.parseInt(yearBuilt.getValue()))
+                    .premium(Integer.parseInt(getPremium()))
+                    .amount(Integer.parseInt(getAmount()))
+                    .status(getStatus())
+                    .build());
         }
-
-        House house = new House.Builder(super.getCustomer(), street.getValue(), postalCode.getValue())
-                .city(city.getValue())
-                .type((House.Type) type.getData())
-                .material((House.Material) material.getData())
-                .squareMeter(Integer.parseInt(squareMeters.getValue()))
-                .year(Integer.parseInt(yearBuilt.getValue()))
-                .premium(Integer.parseInt(super.getPremium().getValue()))
-                .amount(Integer.parseInt(super.getAmount().getValue()))
-                .status((Status)super.getStatus().getData())
-                .build();
-
-        super.setInsurance(house);
-
         callBackEvent.fire();
     }
 
     @Override
     public void setOnDoneAction(Consumer<House> c)
     {
-        callBackEvent.setOnAction(e -> c.accept(super.getInsurance()));
+        callBackEvent.setOnAction(e -> c.accept(getInsurance()));
     }
 }

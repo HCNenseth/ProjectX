@@ -41,8 +41,6 @@ public class VacationHouseAdapter extends InsuranceAdapter<VacationHouse> implem
         initNodes();
     }
 
-    private VacationHouseAdapter() { super(null); return; }
-
     private void initNodes()
     {
         street = new FormValueNode.Builder(Loc.c("street_address"))
@@ -101,7 +99,7 @@ public class VacationHouseAdapter extends InsuranceAdapter<VacationHouse> implem
     @Override
     public List<FormNode> getNodes()
     {
-        List<FormNode> tmp = new ArrayList<>();
+        List<FormNode> tmp = super.getNodes();
         tmp.add(street);
         tmp.add(postalCode);
         tmp.add(city);
@@ -109,46 +107,42 @@ public class VacationHouseAdapter extends InsuranceAdapter<VacationHouse> implem
         tmp.add(material);
         tmp.add(squareMeters);
         tmp.add(yearBuilt);
-        return super.getNodes(tmp);
+
+        return tmp;
     }
 
     @Override
     public void callback()
     {
-        if(super.getEditMode())
-        {
-            super.getInsurance().setCity(city.getValue());
-            super.getInsurance().setType((VacationHouse.Type) type.getData());
-            super.getInsurance().setMaterial((VacationHouse.Material) material.getData());
-            super.getInsurance().setSquareMeter(Integer.parseInt(squareMeters.getValue()));
-            super.getInsurance().setYear(Integer.parseInt(yearBuilt.getValue()));
-            super.getInsurance().setPremium(Integer.parseInt(super.getPremium().getValue()));
-            super.getInsurance().setAmount(Integer.parseInt(super.getAmount().getValue()));
-            super.getInsurance().setStatus((Status) super.getStatus().getData());
-
-            System.out.println(super.getInsurance());
-            return;
+        if (getEditMode()) {
+            VacationHouse i = getInsurance();
+            i.setCity(city.getValue());
+            i.setType((VacationHouse.Type) type.getData());
+            i.setMaterial((VacationHouse.Material) material.getData());
+            i.setSquareMeter(Integer.parseInt(squareMeters.getValue()));
+            i.setYear(Integer.parseInt(yearBuilt.getValue()));
+            i.setPremium(Integer.parseInt(getPremium()));
+            i.setAmount(Integer.parseInt(getAmount()));
+            i.setStatus(getStatus());
+        } else {
+            setInsurance(new VacationHouse.Builder(getCustomer(),
+                    street.getValue(), postalCode.getValue())
+                    .city(city.getValue())
+                    .type((VacationHouse.Type) type.getData())
+                    .material((VacationHouse.Material) material.getData())
+                    .squareMeter(Integer.parseInt(squareMeters.getValue()))
+                    .year(Integer.parseInt(yearBuilt.getValue()))
+                    .premium(Integer.parseInt(getPremium()))
+                    .amount(Integer.parseInt(getAmount()))
+                    .status(getStatus())
+                    .build());
         }
-
-        VacationHouse vacationHouse = new VacationHouse.Builder(super.getCustomer(), street.getValue(), postalCode.getValue())
-                .city(city.getValue())
-                .type((VacationHouse.Type) type.getData())
-                .material((VacationHouse.Material) material.getData())
-                .squareMeter(Integer.parseInt(squareMeters.getValue()))
-                .year(Integer.parseInt(yearBuilt.getValue()))
-                .premium(Integer.parseInt(super.getPremium().getValue()))
-                .amount(Integer.parseInt(super.getAmount().getValue()))
-                .status((Status)super.getStatus().getData())
-                .build();
-
-        super.setInsurance(vacationHouse);
-
         callBackEvent.fire();
     }
 
     @Override
     public void setOnDoneAction(Consumer<VacationHouse> c)
     {
-        callBackEvent.setOnAction(e -> c.accept(super.getInsurance()));
+        callBackEvent.setOnAction(e -> c.accept(getInsurance()));
     }
 }
