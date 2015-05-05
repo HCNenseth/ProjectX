@@ -20,6 +20,8 @@
     <string name="made_by">Made by</string>
     <string name="repository">Github</string>
     <string name="repository_url">https://github.com/HCNenseth/ProjectX</string>
+    <string name="create_new_data_file">Create new data file</string>
+    <string name="choose_data_file">Choose data file</string>
 
     <!-- commons -->
     <string name="theme">Theme</string>

@@ -91,6 +91,7 @@ public class MenuBar extends javafx.scene.control.MenuBar
                 Pref.inst.put("language", s);
                 // TODO reevaluate this decision.
                 Resources.inst.getSceneSwitch().setMainWindow();
+                Resources.inst.getOtp().closeAllTabs();
             });
             languageSubMenu.getItems().add(tmp);
         }
