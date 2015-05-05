@@ -12,6 +12,7 @@ import main.localization.Loc;
 import main.model.Storage;
 import main.preference.Pref;
 import main.view.Resources;
+import main.view.SceneSwitch;
 import main.view.menubar.MenuBar;
 
 import java.io.IOException;
@@ -21,36 +22,24 @@ import java.io.IOException;
  */
 public class App extends Application
 {
-    private BorderPane bp;
-    private Pane sidePane;
-    private static App inst = new App();
-    public static boolean restart = false;
+    private boolean dialogMode = true;
 
     @Override
     public void start(Stage primaryStage) throws Exception
     {
-        bp = new BorderPane();
-        sidePane = new Pane();
+        Resources.inst.getSceneSwitch().setStage(primaryStage);
 
-        bp.setTop(new MenuBar());
-        bp.setCenter(Resources.inst.getStackPane());
-        bp.setBottom(Resources.inst.getInfoBar().getMain());
-        bp.setLeft(sidePane);
-
-        Scene scene = new Scene(bp, Config.WIDTH, Config.HEIGHT);
-        scene.getStylesheets().add("file:resources/css/main.css");
-
-        primaryStage.setTitle(Config.APP_NAME);
-        primaryStage.setScene(scene);
-        primaryStage.getIcons()
-                .add(new Image("file:resources/images/glyphicons-41-stats.png"));
-
-        primaryStage.show();
+        if (dialogMode) {
+            Resources.inst.getSceneSwitch().setProjectDialogWindow();
+        } else {
+            Resources.inst.getSceneSwitch().setMainWindow();
+        }
     }
 
     /**
      * Init method kicked of by Application (JavaFX)
      */
+    @Override
     public void init()
     {
         if (Pref.inst.has("language")) {
@@ -61,6 +50,7 @@ public class App extends Application
             Storage.injectFilename(Pref.inst.get("last_used_file"));
             try {
                 Storage.getInstance().read();
+                dialogMode = false;
             } catch (IOException | ClassNotFoundException e) {
                 // TODO do something meaningful with this error.
                 System.out.println("error reading from file");
@@ -70,22 +60,6 @@ public class App extends Application
 
     public static void main(String[] args)
     {
-        do {
-            launch();
-            System.out.println("main");
-        } while (restart);
-    }
-
-    public static void kill()
-    {
-        System.out.println("kill");
-        try {
-            Platform.setImplicitExit(false);
-            Platform.exit();
-            App.inst.stop();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        //restart = false;
+        launch(args);
     }
 }

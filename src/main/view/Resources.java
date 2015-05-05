@@ -10,6 +10,7 @@ public enum Resources
 {
     inst;
 
+    private SceneSwitch sceneSwitch;
     private ObserverTabPane observerTabPane;
     private SplashView splashView;
     private InfoBar infoBar;
@@ -18,6 +19,8 @@ public enum Resources
 
     Resources()
     {
+        sceneSwitch = new SceneSwitch();
+
         stackPane = new StackPane();
 
         observerTabPane = new ObserverTabPane();
@@ -29,14 +32,14 @@ public enum Resources
         infoBar = new InfoBar();
     }
 
-    public ObserverTabPane getOtp()
-    {
-        return observerTabPane;
-    }
+    public SceneSwitch getSceneSwitch() { return sceneSwitch; }
+
+    public ObserverTabPane getOtp() { return observerTabPane; }
 
     public InfoBar getInfoBar() { return infoBar; }
 
     public SplashView getSplashView() { return splashView; }
 
     public StackPane getStackPane() { return stackPane; }
+
 }

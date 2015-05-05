@@ -6,6 +6,7 @@ import main.App;
 import main.localization.Loc;
 import main.model.Storage;
 import main.preference.Pref;
+import main.view.Resources;
 
 import java.io.File;
 import java.io.IOException;
@@ -16,7 +17,8 @@ import java.io.IOException;
 public class MenuBar
 {
     public enum Type {
-        OPEN, SAVE_AS, SAVE, CLOSE, RESTART,
+        OPEN, SAVE, NEW, NEW_PROJECT,
+        CLOSE, RESTART,
         NEW_CUSTOMER, ABOUT,
     }
 
@@ -24,7 +26,8 @@ public class MenuBar
     {
         switch ((Type)p.getEnumValue()) {
             case OPEN: openFile(); break;
-            case SAVE_AS: safeFileAs(); break;
+            case NEW: newFile(); break;
+            case NEW_PROJECT: newProject(); break;
             case SAVE: saveFile(); break;
             case CLOSE: exitApp(); break;
             case RESTART: restartApp(); break;
@@ -48,8 +51,7 @@ public class MenuBar
     private void restartApp()
     {
         saveFile();
-        App.restart = true;
-        App.kill();
+        Resources.inst.getSceneSwitch().setMainWindow();
     }
 
     private void openFile()
@@ -67,12 +69,40 @@ public class MenuBar
                 Storage.injectFilename(file.getPath());
                 Storage.getInstance().read();
                 Pref.inst.put("last_used_file", file.getPath());
+                Resources.inst.getSceneSwitch().setMainWindow();
             } catch (IOException | ClassNotFoundException e) {
                 // TODO do something meaningful with this error.
                 System.out.println("error reading from file");
             }
         }
     }
+
+    private void newFile()
+    {
+        FileChooser fc = new FileChooser();
+        fc.setTitle(Loc.c("create_new_data_file"));
+
+        fc.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter(Loc.c("data_files"), "*.dat")
+        );
+        File file = fc.showOpenDialog(null);
+
+        if (file != null) {
+            if (!file.getName().contains(".dat")) {
+                file = new File(file.getAbsoluteFile() + ".dat");
+            }
+            try {
+                Storage.injectFilename(file.getPath());
+                Storage.getInstance().resetData();
+                Storage.getInstance().save();
+                Pref.inst.put("last_used_file", file.getPath());
+                Resources.inst.getSceneSwitch().setMainWindow();
+            } catch (IOException e) {
+                System.out.println("error writing to file");
+            }
+        }
+    }
+
 
     private void saveFile()
     {
@@ -86,31 +116,7 @@ public class MenuBar
         }
     }
 
-    private void safeFileAs()
-    {
-        FileChooser fc = new FileChooser();
-        fc.setTitle(Loc.c("save_data_file_as"));
-        fc.getExtensionFilters().addAll(
-                new FileChooser.ExtensionFilter(Loc.c("data_files"), "*.dat")
-        );
-        File file = fc.showSaveDialog(null);
-
-        // TODO implement this correctly
-        /*
-        if (file != null) {
-            // if extension is omitted from filename
-            if (! file.getName().contains(".")) {
-                file = new File(file.getAbsolutePath() + ".dat");
-            }
-
-            // try to save to file
-            try {
-            } catch (IOException ioe) {
-
-            }
-        }
-        */
-    }
+    public void newProject() { Resources.inst.getSceneSwitch().setProjectDialogWindow(); }
 
     public void newCustomer() { PersonController.create(); }
 }
