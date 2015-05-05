@@ -109,7 +109,7 @@ public class VacationHouseAdapter extends InsuranceAdapter<VacationHouse> implem
         tmp.add(material);
         tmp.add(squareMeters);
         tmp.add(yearBuilt);
-
+        tmp.add(getStatus());
         return tmp;
     }
 

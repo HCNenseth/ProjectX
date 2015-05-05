@@ -24,6 +24,7 @@ public class CarAdapter extends InsuranceAdapter<Car> implements Formable<Car>
 {
 
     private FormValueNode licencePlate;
+    private FormValueNode owner;
     private FormDateNode registration;
     private FormValueNode mileage;
     private FormChoiceNode type;
@@ -54,6 +55,11 @@ public class CarAdapter extends InsuranceAdapter<Car> implements Formable<Car>
                 .error(Loc.c("licence_plate_error"))
                 .value(getEditMode() ? getInsurance().getLicencePlate() : "")
                 .regex(StringMatcher.getRegnr())
+                .build();
+
+        owner = new FormValueNode.Builder(Loc.c("owner"))
+                .value(getEditMode() ? getInsurance().getOwner().getFullName() : "")
+                .regex(StringMatcher.getBaseString())
                 .build();
 
         registration = new FormDateNode.Builder(Loc.c("vehicle_registration"),
@@ -105,6 +111,7 @@ public class CarAdapter extends InsuranceAdapter<Car> implements Formable<Car>
         tmp.add(type);
         tmp.add(horsePower);
         tmp.add(propulsion);
+        tmp.add(getStatus());
         return tmp;
     }
 

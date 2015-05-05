@@ -97,9 +97,8 @@ public abstract class InsuranceAdapter<T extends Insurance>
         tmp.add(customerNode);
         tmp.add(amount);
         tmp.add(premium);
+        tmp.add(deductible);
         tmp.add(desc);
-        tmp.add(status);
-
         return tmp;
     }
 
@@ -122,6 +121,8 @@ public abstract class InsuranceAdapter<T extends Insurance>
     {
         return status;
     }
+
+    protected FormValueNode getDeductible() { return deductible; }
 
     protected boolean getEditMode()
     {

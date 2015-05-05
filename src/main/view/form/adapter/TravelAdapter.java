@@ -58,6 +58,7 @@ public class TravelAdapter extends InsuranceAdapter<Travel> implements Formable<
     {
         List<FormNode> tmp = super.getNodes();
         tmp.add(continent);
+        tmp.add(getStatus());
         return tmp;
     }
 

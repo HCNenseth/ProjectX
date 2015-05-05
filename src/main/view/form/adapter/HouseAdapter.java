@@ -106,7 +106,7 @@ public class HouseAdapter extends InsuranceAdapter<House> implements Formable<Ho
         tmp.add(material);
         tmp.add(squareMeters);
         tmp.add(yearBuilt);
-
+        tmp.add(getStatus());
         return tmp;
     }
 
