@@ -1,16 +1,19 @@
 package main.view.scene;
 
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
+import javafx.scene.text.Font;
 import main.config.Config;
 import main.controller.Mediator;
 import main.controller.Payload;
 import main.controller.Signal;
+import main.localization.Loc;
 
 /**
  * ProjectDialog Scene
@@ -23,14 +26,22 @@ public class ProjectDialogScene
 {
     private Scene scene;
     private GridPane gridPane;
-    private HBox hbox;
 
     private Image openExistingIcon, createNewIcon;
     private ImageView openExistingImageView, createNewImageView;
     private Button openExisting, createNew;
 
+    private int linesGap = 10, btnSize = 80,
+                appNameSize = 20, appNamePadding = 5;
+
+
     public ProjectDialogScene()
     {
+        gridPane = new GridPane();
+        gridPane.setAlignment(Pos.CENTER);
+        gridPane.setHgap(linesGap);
+        gridPane.setVgap(linesGap);
+
         draw();
 
         scene = new Scene(gridPane, Config.PD_WIDTH, Config.PD_HEIGHT);
@@ -39,18 +50,13 @@ public class ProjectDialogScene
 
     private void draw()
     {
-        gridPane = new GridPane();
-
-        hbox = new HBox();
-        hbox.setSpacing(50);
-
         openExistingIcon = new Image(Config.IMAGES + "open131.png");
         createNewIcon = new Image(Config.IMAGES + "add118.png");
 
         openExistingImageView = new ImageView();
         openExistingImageView.setImage(openExistingIcon);
-        openExistingImageView.setFitWidth(80);
-        openExistingImageView.setFitHeight(80);
+        openExistingImageView.setFitWidth(btnSize);
+        openExistingImageView.setFitHeight(btnSize);
         openExistingImageView.setPreserveRatio(true);
         openExistingImageView.setSmooth(true);
         openExistingImageView.setCache(true);
@@ -60,8 +66,8 @@ public class ProjectDialogScene
 
         createNewImageView = new ImageView();
         createNewImageView.setImage(createNewIcon);
-        createNewImageView.setFitHeight(80);
-        createNewImageView.setFitWidth(80);
+        createNewImageView.setFitHeight(btnSize);
+        createNewImageView.setFitWidth(btnSize);
         createNewImageView.setPreserveRatio(true);
         createNewImageView.setSmooth(true);
         createNewImageView.setCache(true);
@@ -69,10 +75,17 @@ public class ProjectDialogScene
         createNew.setOnAction(e -> Mediator.inst.router(Signal.FILE,
                 new Payload(main.controller.MenuBar.Type.NEW)));
 
-        hbox.getChildren().addAll(openExisting, createNew);
+        Label appName = new Label(Config.APP_NAME);
+        appName.setFont(new Font(appNameSize));
+        appName.setPadding(new Insets(appNamePadding));
 
-        gridPane.add(hbox, 1, 1);
-        gridPane.setAlignment(Pos.CENTER);
+        gridPane.add(appName, 0, 0, 2, 1);
+
+        gridPane.add(openExisting, 0, 1);
+        gridPane.add(new Label(Loc.c("open_existing")), 0, 2);
+
+        gridPane.add(createNew, 1, 1);
+        gridPane.add(new Label(Loc.c("create_new")), 1, 2);
     }
 
     public Scene getScene() { return scene; }

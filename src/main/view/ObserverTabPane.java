@@ -83,6 +83,18 @@ public class ObserverTabPane extends TabPane implements Observer
 
     }
 
+    public void closeAllTabs()
+    {
+        Iterator iterator = observablePaneMap.entrySet().iterator();
+        while (iterator.hasNext()) {
+            Map.Entry pair = (Map.Entry)iterator.next();
+            getTabs().removeAll((Tab)pair.getKey());
+        }
+
+        observablePaneMap.clear();
+        Resources.inst.getSplashView().show();
+    }
+
     /**
      * Inject new tab without reference. A simple proxy method for
      * the method below (with reference)

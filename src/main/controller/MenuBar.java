@@ -70,8 +70,8 @@ public class MenuBar
                 Storage.getInstance().read();
                 Pref.inst.put("last_used_file", file.getPath());
                 Resources.inst.getSceneSwitch().setMainWindow();
+                Resources.inst.getOtp().closeAllTabs();
             } catch (IOException | ClassNotFoundException e) {
-                // TODO do something meaningful with this error.
                 System.out.println("error reading from file");
             }
         }
@@ -97,6 +97,7 @@ public class MenuBar
                 Storage.getInstance().save();
                 Pref.inst.put("last_used_file", file.getPath());
                 Resources.inst.getSceneSwitch().setMainWindow();
+                Resources.inst.getOtp().closeAllTabs();
             } catch (IOException e) {
                 System.out.println("error writing to file");
             }
