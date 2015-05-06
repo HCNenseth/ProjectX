@@ -21,6 +21,7 @@ public abstract class ClaimBuilder<T, E>  {
     private String desc = null;
     private String contacts = null;
     private double amount = 0;
+    private double deductible = 0;
 
     private Status status = Status.INCOMPLETE;
 
@@ -40,6 +41,12 @@ public abstract class ClaimBuilder<T, E>  {
     public T amount(double amount)
     {
         this.amount = amount;
+        return (T) this;
+    }
+
+    public T deductible(double deductible)
+    {
+        this.deductible = deductible;
         return (T) this;
     }
 
@@ -83,6 +90,8 @@ public abstract class ClaimBuilder<T, E>  {
     {
         return amount;
     }
+
+    public double getDeductible() { return deductible; }
 
     public String getContacts()
     {

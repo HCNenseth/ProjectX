@@ -10,6 +10,10 @@ import main.model.person.Person;
 import java.io.Serializable;
 import java.time.LocalDate;
 
+/**
+ * Main claim class.
+ * TODO uncomment the toString lines when other models are up to date.
+ */
 public abstract class Claim implements Serializable, FullTextSearch, Model {
 
     private int reference;
@@ -23,6 +27,7 @@ public abstract class Claim implements Serializable, FullTextSearch, Model {
     private String desc;
     private String contacts;
     private double amount;
+    private double deductible;
 
     private PaymentStatus paymentStatus;
     private Status status;
@@ -52,6 +57,7 @@ public abstract class Claim implements Serializable, FullTextSearch, Model {
         desc = cb.getDesc();
         contacts = cb.getContacts();
         amount = cb.getAmount();
+        deductible = cb.getDeductible();
         paymentStatus = cb.getPaymentStatus();
     }
 
@@ -66,16 +72,37 @@ public abstract class Claim implements Serializable, FullTextSearch, Model {
         this.desc = desc;
     }
 
+    /**
+     * Claim paymentstatus.
+     * @param paymentStatus
+     */
     public void setPaymentStatus(PaymentStatus paymentStatus)
     {
         this.paymentStatus = paymentStatus;
     }
 
+    /**
+     * Claim status.
+     * @param status
+     */
+    public void setStatus(Status status)
+    {
+        this.status = status;
+    }
+
+    /**
+     * Setting the contacts info for one witness.
+     * @param contacts
+     */
     public void setContacts(String contacts)
     {
         this.contacts = contacts;
     }
 
+    /**
+     * Setting the contacts info for multiple witnesses.
+     * @param contacts
+     */
     public void addContacts(String contacts)
     {
         if(this.contacts == null && this.contacts.isEmpty())
@@ -86,6 +113,12 @@ public abstract class Claim implements Serializable, FullTextSearch, Model {
         {
             this.contacts += "\n" + contacts;
         }
+    }
+
+
+    public void setDeductible(double deductible)
+    {
+        this.deductible = deductible;
     }
 
     /* Getters */
@@ -119,6 +152,8 @@ public abstract class Claim implements Serializable, FullTextSearch, Model {
         return lastEdited;
     }
 
+    public Status getStatus() { return status; }
+
     public PaymentStatus getPaymentStatus()
     {
         return paymentStatus;
@@ -139,6 +174,8 @@ public abstract class Claim implements Serializable, FullTextSearch, Model {
         return amount;
     }
 
+    public double getDeductible() { return deductible; }
+
     public boolean query(String value)
     {
         return (desc != null && desc.contains(value));
@@ -156,11 +193,10 @@ public abstract class Claim implements Serializable, FullTextSearch, Model {
                         "%s:\t%s\n" +
                         "%s:\t%s\n" +
                         "%s:\t%s\n" +
-                        "%s:\t%s\n" +
                         "%s:\t%s\n",
                 Loc.c("reference"), reference,
                 Loc.c("customer"), customer,
-                Loc.c("insurance"), insurance.getReference(),   // just random name for insurance ref-number.
+                //Loc.c("insurance"), insurance.getReference(),   Remember to add a new "format-line" above.
                 Loc.c("accident_date"), accidentDate,
                 Loc.c("claim_date"), claimDate,
                 Loc.c("last_edited"), lastEdited,
