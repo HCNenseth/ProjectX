@@ -3,25 +3,27 @@ package main.model.claim;
 import main.localization.Loc;
 import main.model.FullTextSearch;
 import main.model.Model;
-import main.model.person.Person;
 import main.model.Status;
 import main.model.insurance.Insurance;
+import main.model.person.Person;
 
 import java.io.Serializable;
 import java.time.LocalDate;
 
-/**
- * Created by Hans Petter on 16.04.2015.
- */
-public class Claim implements Serializable, FullTextSearch, Model
-{
+public abstract class Claim implements Serializable, FullTextSearch, Model {
+
+    private int reference;
+    private Person customer;
+    private Insurance insurance;
+
+    private LocalDate accidentDate;
+    private LocalDate claimDate;
+    private LocalDate lastEdited = null;
+
     private String desc;
     private String contacts;
     private double amount;
-    private LocalDate date;
-    private Person customer;
-    private Insurance insurance;
-    private Type type;
+
     private PaymentStatus paymentStatus;
     private Status status;
 
@@ -36,99 +38,60 @@ public class Claim implements Serializable, FullTextSearch, Model
         public String getValue() { return value; }
     }
 
-    public enum Type {
-        A(Loc.c("claim_type_a")),
-        B(Loc.c("claim_type_b")),
-        C(Loc.c("claim_type_a"));
-
-        String value;
-        Type(String value){ this.value = value; }
-
-        public String getValue() {  return value;   }
+    /**
+     * Claim constructor.
+     * @param cb
+     */
+    public Claim(ClaimBuilder cb)
+    {
+        reference = reference++;
+        customer = cb.getCustomer();
+        insurance = cb.getInsurance();
+        accidentDate = cb.getAccidentDate();
+        claimDate = cb.getClaimDate();
+        desc = cb.getDesc();
+        contacts = cb.getContacts();
+        amount = cb.getAmount();
+        paymentStatus = cb.getPaymentStatus();
     }
 
-    public static class Builder
+    /* Setters */
+    public void setAccidentDate(LocalDate accidentDate)
     {
-        // required
-        private Person customer;
-        private Insurance insurance;
+        this.accidentDate = accidentDate;
+    }
 
-        // optional
-        private String description = "";
-        private String contacts = "";
-        private double amount = 0;
-        private LocalDate date;
-        private Type type = Type.A;
-        private Status status = Status.ACTIVE;
-        private PaymentStatus paymentStatus = PaymentStatus.A;
+    public void setDesc(String desc)
+    {
+        this.desc = desc;
+    }
 
-        public Builder(Person customer, Insurance insurance){
-            this.customer = customer;
-            this.insurance = insurance;
-        }
+    public void setPaymentStatus(PaymentStatus paymentStatus)
+    {
+        this.paymentStatus = paymentStatus;
+    }
 
-        public Builder status(Status val)
+    public void setContacts(String contacts)
+    {
+        this.contacts = contacts;
+    }
+
+    public void addContacts(String contacts)
+    {
+        if(this.contacts == null && this.contacts.isEmpty())
         {
-            status = val;
-            return this;
+            setContacts(contacts);
         }
-
-        public Builder description(String val)
+        else if(this.contacts != null && !this.contacts.isEmpty())
         {
-            description = val;
-            return this;
-        }
-
-        public Builder contacts(String val)
-        {
-            contacts = val;
-            return this;
-        }
-
-        public Builder amount(double val)
-        {
-            amount = val;
-            return this;
-        }
-
-        public Builder date(LocalDate val)
-        {
-            date = val;
-            return this;
-        }
-
-        public Builder type(Type val)
-        {
-            this.type = val;
-            return this;
-        }
-
-        public Builder paymentStatus(PaymentStatus val)
-        {
-            this.paymentStatus = paymentStatus;
-            return this;
-        }
-
-        public Claim build()
-        {
-            return new Claim(this);
+            this.contacts += "\n" + contacts;
         }
     }
 
-    public Claim(Builder builder)
+    /* Getters */
+    public int getReference()
     {
-        customer = builder.customer;
-        insurance = builder.insurance;
-        desc = builder.description;
-        contacts = builder.contacts;
-        amount = builder.amount;
-        date = builder.date;
-        type = builder.type;
-        paymentStatus = builder.paymentStatus;
-        status = builder.status;
-
-        customer.addClaim(this);
-        insurance.addClaim(this);
+        return reference;
     }
 
     public Person getCustomer()
@@ -141,7 +104,25 @@ public class Claim implements Serializable, FullTextSearch, Model
         return insurance;
     }
 
-    public LocalDate getDate() { return date; }
+    public LocalDate getAccidentDate()
+    {
+        return accidentDate;
+    }
+
+    public LocalDate getClaimDate()
+    {
+        return claimDate;
+    }
+
+    public LocalDate getLastEdited()
+    {
+        return lastEdited;
+    }
+
+    public PaymentStatus getPaymentStatus()
+    {
+        return paymentStatus;
+    }
 
     public String getDesc()
     {
@@ -158,38 +139,36 @@ public class Claim implements Serializable, FullTextSearch, Model
         return amount;
     }
 
-    public Type getType()
-    {
-        return type;
-    }
-
-    public PaymentStatus getPaymentStatus()
-    {
-        return paymentStatus;
-    }
-
-    @Override
     public boolean query(String value)
     {
-        return desc.contains(value)
-                || contacts.contains(value)
-                || type.getValue().contains(value);
+        return (desc != null && desc.contains(value));
     }
 
     @Override
-    public Status getStatus()
+    public String toString()
     {
-        return status;
+        return String.format(
+                "%s:\t%s\n" +
+                        "%s:\t%s\n" +
+                        "%s:\t%s\n" +
+                        "%s:\t%s\n" +
+                        "%s:\t%s\n" +
+                        "%s:\t%s\n" +
+                        "%s:\t%s\n" +
+                        "%s:\t%s\n" +
+                        "%s:\t%s\n" +
+                        "%s:\t%s\n",
+                Loc.c("reference"), reference,
+                Loc.c("customer"), customer,
+                Loc.c("insurance"), insurance.getReference(),   // just random name for insurance ref-number.
+                Loc.c("accident_date"), accidentDate,
+                Loc.c("claim_date"), claimDate,
+                Loc.c("last_edited"), lastEdited,
+                Loc.c("description"), desc,
+                Loc.c("contacts"), contacts,
+                Loc.c("amount"), amount,
+                Loc.c("payment_status"), paymentStatus
+        );
     }
 
-    public float payout()
-    {
-        return 0;
-        //return amount - insurance.getDeductable();
-    }
-
-    @Override
-    public ModelType getModelType() { return ModelType.CLAIM; }
-
-    // TODO override equals and hashcode
 }
