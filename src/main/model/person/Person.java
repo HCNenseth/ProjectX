@@ -1,9 +1,11 @@
 package main.model.person;
 
+import main.config.Config;
 import main.localization.Loc;
 import main.model.FullTextSearch;
 import main.model.Model;
 import main.model.Status;
+import main.model.Storage;
 import main.model.claim.Claim;
 import main.model.insurance.Insurance;
 
@@ -279,6 +281,12 @@ public class Person implements Serializable, FullTextSearch, Model
         return email;
     }
 
+    public static void saveNew(Person person)
+    {
+        List<Person> persons = (List<Person>)Storage.getInstance().get(Config.PERSONS);
+        persons.add(person);
+    }
+
     /**
      * Query method used for search.
      * @param value
@@ -286,8 +294,7 @@ public class Person implements Serializable, FullTextSearch, Model
      */
     public boolean query(String value)
     {
-        return firstname.contains(value)
-                || lastname.contains(value)
+        return getName().contains(value)
                 || (streetAddress != null && streetAddress.contains(value))
                 || (city != null && city.contains(value))
                 || (postalCode != null && postalCode.contains(value))

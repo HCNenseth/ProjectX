@@ -3,6 +3,7 @@ package main.view.form.adapter;
 import main.config.Config;
 import main.localization.Loc;
 import main.model.Status;
+import main.model.Storage;
 import main.model.person.Person;
 import main.validator.StringMatcher;
 import main.view.form.node.FormChoiceNode;
@@ -151,6 +152,7 @@ public class PersonAdapter implements Formable<Person>
                     .email(email.getData())
                     .phoneNumber(phoneNumber.getData())
                     .build();
+            Person.saveNew(person);
         }
         callBackEvent.fire();
     }
