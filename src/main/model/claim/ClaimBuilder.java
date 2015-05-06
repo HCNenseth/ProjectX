@@ -25,18 +25,14 @@ public abstract class ClaimBuilder<T, E>  {
 
     private Status status = Status.INCOMPLETE;
 
-    /* Setters */
-    public T customer(Person customer)
+    public ClaimBuilder(Person customer, Insurance insurance, LocalDate accidentDate)
     {
         this.customer = customer;
-        return (T) this;
+        this.insurance = insurance;
+        this.accidentDate = accidentDate;
     }
 
-    public T insurance(Insurance insurance)
-    {
-        this.insurance = insurance;
-        return (T) this;
-    }
+    /* Setters */
 
     public T amount(double amount)
     {
@@ -59,12 +55,6 @@ public abstract class ClaimBuilder<T, E>  {
     public T desc(String desc)
     {
         this.desc = desc;
-        return (T) this;
-    }
-
-    private T accidentDate(LocalDate accidentDate)
-    {
-        this.accidentDate = accidentDate;
         return (T) this;
     }
 

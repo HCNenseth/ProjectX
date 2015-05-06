@@ -49,6 +49,7 @@ public abstract class Claim implements Serializable, FullTextSearch, Model {
      */
     public Claim(ClaimBuilder cb)
     {
+        /** #YOLO */
         reference = reference++;
         customer = cb.getCustomer();
         insurance = cb.getInsurance();
