@@ -20,6 +20,7 @@ public enum StringMatcher
     private final static String lastname = baseString;
     private final static String color = baseString;
 
+
     private final static String regnr  = "\\w{2,8}";
     private final static String type = "\\w{2,20}";
     private final static String year = "\\d{4}";

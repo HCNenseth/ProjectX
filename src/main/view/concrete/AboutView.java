@@ -35,7 +35,7 @@ public class AboutView {
 
         addSpace(5);
 
-        gp.add(new Label(Loc.c("git") + " \t " + Loc.c("git_url")), 0, rowNum++);
+        gp.add(new Label(Loc.c("repository") + " \t " + Loc.c("repository_url")), 0, rowNum++);
 
     }
 

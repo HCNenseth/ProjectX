@@ -137,6 +137,8 @@ public class PersonAdapter implements Formable<Person>
             person.setStreetAddress(streetAddress.getValue());
             person.setCity(city.getValue());
             person.setStatus((Status) status.getData()); // tsk tsk
+            person.setEmail(email.getData());
+            person.setPhoneNumber(phoneNumber.getData());
         } else {
             person = new Person.Builder(firstname.getValue(), lastname.getValue())
                     .streetAddress(streetAddress.getValue())
@@ -144,6 +146,8 @@ public class PersonAdapter implements Formable<Person>
                     .postalCode(postalCode.getValue())
                     .status((Status)status.getData()) // tsk tsk
                     .city(city.getValue())
+                    .email(email.getData())
+                    .phoneNumber(phoneNumber.getData())
                     .build();
         }
         callBackEvent.fire();
