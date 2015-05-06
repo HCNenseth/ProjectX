@@ -12,7 +12,7 @@
 
 #HC
 * Løpenummer på alle typer.
-* Shortcuts
+* Shortcuts- mnemonics
 * Statistikk visning
 * Finne åpne iconer.			
 * Claim views
