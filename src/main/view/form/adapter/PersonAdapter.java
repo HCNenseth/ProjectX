@@ -62,7 +62,9 @@ public class PersonAdapter implements Formable<Person>
                 .build();
 
         dob = new FormDateNode.Builder(Loc.c("date_of_birth"),
-                editMode ? person.getDateOfBirth() : LocalDate.of(Config.STANDARD_YEAR, Config.STANDARD_MONTH, Config.STANDARD_DAY))
+                editMode ? person.getDateOfBirth() : LocalDate.of(Config.STANDARD_YEAR,
+                                                                  Config.STANDARD_MONTH,
+                                                                  Config.STANDARD_DAY))
                 .required(false)
                 .build();
 
