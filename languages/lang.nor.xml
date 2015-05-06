@@ -1,11 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <language name="norwegian">
+
+
+    <string name="menu_close_project">Lukk prosjektet</string>
+    <string name="menu_file_exit">Avslutt</string>
+    <string name="menu_group_about">Om</string>
+    <string name="menu_about">Om programmet</string>
+    <string name="please_restart_for_changes_to_take_effect">Vennligst kjør en omstart av programmet for at endringene skal tre i kraft.</string>
+    <string name="version">Versjon 1.0</string>
+    <string name="made_by">Utviklet av</string>
+    <string name="repository">Github</string>
+    <string name="repository_url">https://github.com/HCNenseth/ProjectX</string>
     <string name="menu_group_file">Fil</string>
     <string name="menu_file_open">Åpne fil</string>
     <string name="menu_file_save">Lagre</string>
     <string name="menu_file_save_as">Lagre som</string>
     <string name="menu_file_close">Avslutt</string>
-
     <string name="menu_group_edit">Endre</string>
     <string name="menu_group_statistics">Statistikk</string>
     <string name="menu_statistics">Statistikk</string>
@@ -19,12 +29,13 @@
     <string name="language">Språk</string>
     <string name="default">Standard</string>
     <string name="inverse">Inverse</string>
-    <string name="langEn">Engelsk</string>
-    <string name="langNo">Norsk</string>
-    <string name="langGe">Tysk</string>
-    <string name="langFr">Fransk</string>
-    <string name="langIt">Italiensk</string>
+    <string name="english">Engelsk</string>
+    <string name="norwegian">Norsk</string>
+    <string name="german">Tysk</string>
+    <string name="french">Fransk</string>
+    <string name="italian">Italiensk</string>
     <string name="submit">Send</string>
+    <string name="restart">Omstart</string>
     <string name="type">Type</string>
     <string name="save">Lagre</string>
 
