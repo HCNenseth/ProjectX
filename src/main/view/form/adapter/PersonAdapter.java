@@ -93,14 +93,14 @@ public class PersonAdapter implements Formable<Person>
         phoneNumber = new FormValueNode.Builder(Loc.c("phone_number"))
                 .value(editMode ? person.getPhoneNumber() : "")
                 .error(Loc.c("phone_number_error"))
-                .regex(Loc.c(StringMatcher.getDigit()))
+                .regex(StringMatcher.getDigit())
                 .required(false)
                 .build();
 
         email = new FormValueNode.Builder(Loc.c("email"))
                 .value(editMode ? person.getEmail() : "")
                 .error(Loc.c("email_error"))
-                .regex(Loc.c(StringMatcher.getEmail()))
+                .regex(StringMatcher.getEmail())
                 .required(false)
                 .build();
 
@@ -129,9 +129,9 @@ public class PersonAdapter implements Formable<Person>
         return tmp;
     }
 
+    @Override
     public void callback()
     {
-
         if (editMode) {
             person.setFirstname(firstname.getValue());
             person.setLastname(lastname.getValue());
@@ -139,15 +139,15 @@ public class PersonAdapter implements Formable<Person>
             person.setPostalCode(postalCode.getValue());
             person.setStreetAddress(streetAddress.getValue());
             person.setCity(city.getValue());
-            person.setStatus((Status) status.getData()); // tsk tsk
-            person.setEmail(email.getData());
-            person.setPhoneNumber(phoneNumber.getData());
+            person.setStatus((Status) status.getData());
+            person.setEmail(email.getValue());
+            person.setPhoneNumber(phoneNumber.getValue());
         } else {
             person = new Person.Builder(firstname.getValue(), lastname.getValue())
                     .streetAddress(streetAddress.getValue())
                     .dateOfBirth(dob.getData())
                     .postalCode(postalCode.getValue())
-                    .status((Status)status.getData()) // tsk tsk
+                    .status((Status)status.getData())
                     .city(city.getValue())
                     .email(email.getData())
                     .phoneNumber(phoneNumber.getData())

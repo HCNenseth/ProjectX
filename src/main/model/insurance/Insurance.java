@@ -1,8 +1,10 @@
 package main.model.insurance;
 
+import main.config.Config;
 import main.localization.Loc;
 import main.model.FullTextSearch;
 import main.model.Model;
+import main.model.Storage;
 import main.model.claim.Claim;
 import main.model.person.Person;
 import main.model.Status;
@@ -96,6 +98,12 @@ public abstract class Insurance implements
     {
         // TODO implement test for all members!
         return (desc != null && desc.contains(value));
+    }
+
+    public static void saveNew(Insurance insurance)
+    {
+        ((List<Insurance>) Storage.getInstance().get(Config.INSURANCES)).add(insurance);
+        insurance.getCustomer().addInsurance(insurance);
     }
 
     @Override

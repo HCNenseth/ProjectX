@@ -44,12 +44,12 @@ public class Person implements Serializable, FullTextSearch, Model
         private String lastname; // required
 
         // optional
-        private String streetAddress = null;
-        private String city = null;
-        private String postalCode = null;
         private LocalDate dateOfBirth = null;
-        private String phoneNumber = null;
-        private String email = null;
+        private String streetAddress = "";
+        private String city = "";
+        private String postalCode = "";
+        private String phoneNumber = "";
+        private String email = "";
         private Status status = Status.ACTIVE;
 
         /**
@@ -283,8 +283,7 @@ public class Person implements Serializable, FullTextSearch, Model
 
     public static void saveNew(Person person)
     {
-        List<Person> persons = (List<Person>)Storage.getInstance().get(Config.PERSONS);
-        persons.add(person);
+        ((List<Person>)Storage.getInstance().get(Config.PERSONS)).add(person);
     }
 
     /**
@@ -295,10 +294,11 @@ public class Person implements Serializable, FullTextSearch, Model
     public boolean query(String value)
     {
         return getName().contains(value)
-                || (streetAddress != null && streetAddress.contains(value))
-                || (city != null && city.contains(value))
-                || (postalCode != null && postalCode.contains(value))
-                || (phoneNumber != null && phoneNumber.contains(value));
+                || streetAddress.contains(value)
+                || city.contains(value)
+                || postalCode.contains(value)
+                || phoneNumber.contains(value)
+                || email.contains(value);
     }
 
     /**
@@ -311,28 +311,6 @@ public class Person implements Serializable, FullTextSearch, Model
         return status;
     }
 
-    public String toString()
-    {
-        return String.format(
-                "\n%s\t%s" +
-                "\n%s\t%s" +
-                "\n%s\t%s" +
-                "\n%s\t%s" +
-                "\n%s\t%s" +
-                "\n%s\t%s" +
-                "\n%s\t%s",
-                Loc.c("firstname"), firstname,
-                Loc.c("lastname"), lastname,
-                Loc.c("street_address"), streetAddress,
-                Loc.c("postal_code"), postalCode,
-                Loc.c("city"), city,
-                Loc.c("phone_number"), phoneNumber,
-                Loc.c("email"), email
-        );
-    }
-
     @Override
     public ModelType getModelType() { return ModelType.PERSON; }
-
-    // TODO override equals and hashcode
 }
