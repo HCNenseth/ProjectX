@@ -8,9 +8,7 @@ import main.model.person.Person;
 import java.time.LocalDate;
 import java.util.List;
 
-/**
- * Created by HansPetter on 06.05.2015.
- */
+
 public abstract class ClaimBuilder<T, E>  {
 
     private int reference;

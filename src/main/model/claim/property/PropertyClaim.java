@@ -1,17 +1,13 @@
 package main.model.claim.property;
 
 import main.localization.Loc;
-import main.model.Model;
 import main.model.claim.Claim;
 import main.model.claim.ClaimBuilder;
 import main.model.insurance.Insurance;
 import main.model.person.Person;
 
-import java.time.LocalDate;
+// TODO Override toString
 
-/**
- * Created by HansPetter on 07.05.2015.
- */
 public class PropertyClaim extends Claim {
 
     private ClaimType type;

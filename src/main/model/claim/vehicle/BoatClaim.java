@@ -1,13 +1,12 @@
 package main.model.claim.vehicle;
 
 import main.localization.Loc;
-import main.model.Model;
 import main.model.claim.Claim;
 import main.model.claim.ClaimBuilder;
 import main.model.insurance.Insurance;
 import main.model.person.Person;
 
-import java.time.LocalDate;
+// TODO Override toString
 
 public class BoatClaim extends Claim {
 
