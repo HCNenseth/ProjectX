@@ -85,6 +85,9 @@ public class Form extends GridPane
      */
     public void setCallbackData(Node node)
     {
+        if (getChildren().size() > rowNum)
+            getChildren().remove(rowNum);
+
         add(node, 0, rowNum, 3, 1);
     }
 
