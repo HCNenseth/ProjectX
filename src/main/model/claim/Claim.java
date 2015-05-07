@@ -79,7 +79,7 @@ public abstract class Claim implements Serializable, FullTextSearch, Model {
     }
 
     /**
-     * Claim paymentstatus.
+     * Claim payment status.
      * @param paymentStatus
      */
     public void setPaymentStatus(PaymentStatus paymentStatus)
