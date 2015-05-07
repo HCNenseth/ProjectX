@@ -2,7 +2,7 @@ package main.model.insurance.property;
 
 import main.localization.Loc;
 import main.model.person.Person;
-import main.model.insurance.ConcreteType;
+import main.model.insurance.InsuranceType;
 import main.model.insurance.InsuranceBuilder;
 
 import java.io.Serializable;
@@ -51,9 +51,9 @@ public class House extends Property implements Serializable
         return type;
     }
 
-    public ConcreteType identify()
+    public InsuranceType identify()
     {
-        return ConcreteType.HOUSE;
+        return InsuranceType.HOUSE;
     }
 
     @Override

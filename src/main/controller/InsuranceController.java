@@ -1,7 +1,7 @@
 package main.controller;
 
 import main.localization.Loc;
-import main.model.insurance.ConcreteType;
+import main.model.insurance.InsuranceType;
 import main.model.insurance.Insurance;
 import main.model.insurance.property.House;
 import main.model.insurance.property.VacationHouse;
@@ -21,7 +21,7 @@ public class InsuranceController
 {
     private InsuranceController() {}
 
-    public static void create(Person p, ConcreteType type)
+    public static void create(Person p, InsuranceType type)
     {
         Form f = new Form();
         switch (type) {

@@ -1,6 +1,5 @@
 package main.view.concrete;
 
-import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import main.config.Config;
 import main.localization.Loc;
@@ -9,7 +8,8 @@ import main.view.StandardGridPane;
 /**
  * Created by HansPetter on 30.04.2015.
  */
-public class AboutView {
+public class AboutView
+{
 
     private StandardGridPane gp;
     private int rowNum = 0;

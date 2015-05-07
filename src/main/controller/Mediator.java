@@ -12,10 +12,20 @@ public enum Mediator
     public void router(Signal s, Payload p)
     {
         switch (s) {
-            case SEARCH: new SearchController(p); break;
-            case FILE: new MenuBar(p);break;
-            case ABOUT: AboutController.view(); System.out.println("Mediator"); break;
-            default: return;
+            case SEARCH:
+                new SearchController(p);
+                break;
+            case FILE:
+                new MenuBar(p);
+                break;
+            case ABOUT:
+                AboutController.view();
+                break;
+            case REPORT:
+                ReportController.view();
+                break;
+            default:
+                throw new IllegalStateException("Unknown signal type");
         }
     }
 }

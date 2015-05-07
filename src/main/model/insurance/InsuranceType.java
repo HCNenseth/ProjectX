@@ -5,7 +5,7 @@ import main.localization.Loc;
 /**
  * Created by alex on 4/17/15.
  */
-public enum ConcreteType
+public enum InsuranceType
 {
     HOUSE(Loc.c("house_insurance")),
     VACATION_HOUSE(Loc.c("vacation_house_insurance")),
@@ -16,7 +16,7 @@ public enum ConcreteType
 
     String value;
 
-    ConcreteType(String value) { this.value = value; }
+    InsuranceType(String value) { this.value = value; }
 
     public String getValue() { return value; }
 

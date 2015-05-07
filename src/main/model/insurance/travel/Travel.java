@@ -2,7 +2,7 @@ package main.model.insurance.travel;
 
 import main.localization.Loc;
 import main.model.person.Person;
-import main.model.insurance.ConcreteType;
+import main.model.insurance.InsuranceType;
 import main.model.insurance.Insurance;
 import main.model.insurance.InsuranceBuilder;
 
@@ -65,9 +65,9 @@ public class Travel extends Insurance implements Serializable
 
     public Continent getType() { return type; }
 
-    public ConcreteType identify()
+    public InsuranceType identify()
     {
-        return ConcreteType.TRAVEL;
+        return InsuranceType.TRAVEL;
     }
 
     public boolean query(String value)

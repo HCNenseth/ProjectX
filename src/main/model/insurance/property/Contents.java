@@ -1,7 +1,7 @@
 package main.model.insurance.property;
 
 import main.localization.Loc;
-import main.model.insurance.ConcreteType;
+import main.model.insurance.InsuranceType;
 import main.model.insurance.Insurance;
 import main.model.insurance.InsuranceBuilder;
 import main.model.person.Person;
@@ -93,8 +93,8 @@ public class Contents extends Insurance implements Serializable {
     }
 
     @Override
-    public ConcreteType identify() {
-        return ConcreteType.CONTENTS;
+    public InsuranceType identify() {
+        return InsuranceType.CONTENTS;
     }
 
     @Override

@@ -2,7 +2,7 @@ package main.model.insurance.vehicle;
 
 import main.localization.Loc;
 import main.model.person.Person;
-import main.model.insurance.ConcreteType;
+import main.model.insurance.InsuranceType;
 import main.model.insurance.InsuranceBuilder;
 
 import java.io.Serializable;
@@ -146,9 +146,9 @@ public class Boat extends Vehicle implements Serializable
         this.propulsion = propulsion;
     }
 
-    public ConcreteType identify()
+    public InsuranceType identify()
     {
-        return ConcreteType.BOAT;
+        return InsuranceType.BOAT;
     }
 
     @Override

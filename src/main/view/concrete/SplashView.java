@@ -14,8 +14,8 @@ import main.controller.Signal;
 /**
  * Created by HansPetter on 30.04.2015.
  */
-public class SplashView {
-
+public class SplashView
+{
     private GridPane gridPane;
     private HBox hbox;
     private Image searchIcon, customerIcon, statisticsIcon;
