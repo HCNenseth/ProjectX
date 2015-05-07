@@ -14,16 +14,14 @@ import main.view.StandardGridPane;
 /**
  * Created by alex on 4/28/15.
  */
-public abstract class InsuranceView<T extends Insurance>
+public abstract class InsuranceView<T extends Insurance> extends StandardGridPane
 {
-    private StandardGridPane gp;
     private T insurance;
     protected int rowNum = 0;
 
     public InsuranceView(T insurance)
     {
         this.insurance = insurance;
-        gp = new StandardGridPane();
 
         initButtonPanel();
         initInsuranceFields();
@@ -43,31 +41,31 @@ public abstract class InsuranceView<T extends Insurance>
 
         buttonPane.getItems().addAll(b1, editButton);
 
-        gp.add(buttonPane, 0, rowNum++, 2, 1);
+        add(buttonPane, 0, rowNum++, 2, 1);
     }
 
 
     public void initInsuranceFields()
     {
-        gp.add(new Label(Loc.c("customer")), 0, rowNum);
-        gp.add(new Label(insurance.getCustomer().getName()), 1, rowNum++);
+        add(new Label(Loc.c("customer")), 0, rowNum);
+        add(new Label(insurance.getCustomer().getName()), 1, rowNum++);
 
-        gp.add(new Label(Loc.c("premium")), 0, rowNum);
-        gp.add(new Label(insurance.getPremium() + ""), 1, rowNum++);
+        add(new Label(Loc.c("premium")), 0, rowNum);
+        add(new Label(insurance.getPremium() + ""), 1, rowNum++);
 
-        gp.add(new Label(Loc.c("amount")), 0, rowNum);
-        gp.add(new Label(insurance.getAmount() + ""), 1, rowNum++);
+        add(new Label(Loc.c("amount")), 0, rowNum);
+        add(new Label(insurance.getAmount() + ""), 1, rowNum++);
 
-        gp.add(new Label(Loc.c("deductible")), 0, rowNum);
-        gp.add(new Label(insurance.getDeductible() + ""), 1, rowNum++);
+        add(new Label(Loc.c("deductible")), 0, rowNum);
+        add(new Label(insurance.getDeductible() + ""), 1, rowNum++);
 
-        gp.add(new Label(Loc.c("description")), 0, rowNum);
-        gp.add(new Label(insurance.getDesc()), 1, rowNum++);
+        add(new Label(Loc.c("description")), 0, rowNum);
+        add(new Label(insurance.getDesc()), 1, rowNum++);
 
-        gp.add(new Label(Loc.c("status")), 0, rowNum);
-        gp.add(new Label(insurance.getStatus().getValue()), 1, rowNum++);
+        add(new Label(Loc.c("status")), 0, rowNum);
+        add(new Label(insurance.getStatus().getValue()), 1, rowNum++);
 
-        gp.add(new Separator(), 0, rowNum++, 2, 1);
+        add(new Separator(), 0, rowNum++, 2, 1);
     }
 
     protected void addClaimsTable()
@@ -79,5 +77,5 @@ public abstract class InsuranceView<T extends Insurance>
 
     public T getInsurance() { return insurance; }
 
-    public StandardGridPane getNode() { return gp; }
+    public StandardGridPane getNode() { return this; }
 }
