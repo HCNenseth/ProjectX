@@ -1,6 +1,7 @@
 package main.view.menubar;
 
 import javafx.scene.control.*;
+import javafx.scene.input.KeyCombination;
 import main.controller.Mediator;
 import main.controller.Payload;
 import main.controller.Signal;
@@ -27,9 +28,11 @@ public class MenuBar extends javafx.scene.control.MenuBar
     public MenuBar()
     {
         fileMenu = new Menu(Loc.c("menu_group_file"));
+        fileMenu.setAccelerator(KeyCombination.valueOf("SHORTCUT + F"));
         editMenu = new Menu(Loc.c("menu_group_edit"));
         statisticsMenu = new Menu(Loc.c("menu_group_statistics"));
         aboutMenu = new Menu(Loc.c("menu_group_about"));
+        aboutMenu.setAccelerator(KeyCombination.valueOf("SHORTCUT + A"));
         newMenu = new Menu(Loc.c("new"));
 
         aboutUs = new MenuItem(Loc.c("menu_about"));

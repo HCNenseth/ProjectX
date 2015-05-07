@@ -83,11 +83,11 @@ public class ClaimView
 
         // date
         gp.add(new Label(Loc.c("date")), 0, rowNum);
-        gp.add(new Label(claim.getDate().toString()), 1, rowNum++);
+     //   gp.add(new Label(claim.getDate().toString()), 1, rowNum++);
 
         // type
         gp.add(new Label(Loc.c("type")), 0, rowNum);
-        gp.add(new Label(claim.getType().getValue()), 1, rowNum++);
+       // gp.add(new Label(claim.getType().getValue()), 1, rowNum++);
 
         // paymentStatus
         gp.add(new Label(Loc.c("payment_status")), 0, rowNum);
