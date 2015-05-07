@@ -20,7 +20,7 @@ public class CarView extends InsuranceView<Car>
     {
         // Type
         getNode().add(new Label(Loc.c("type")), 0, rowNum);
-        getNode().add(new Label(getInsurance().getType()), 1, rowNum++);
+        getNode().add(new Label(getInsurance().getType().getValue()), 1, rowNum++);
 
         getNode().add(new Label(Loc.c("model_year")), 0, rowNum);
         getNode().add(new Label(getInsurance().getModelYear() + ""), 1, rowNum++);
@@ -33,7 +33,7 @@ public class CarView extends InsuranceView<Car>
 
         // license plate
         getNode().add(new Label(Loc.c("license_plate")), 0, rowNum);
-        getNode().add(new Label(getInsurance().getLicencePlate()), 1, rowNum++);
+        getNode().add(new Label(getInsurance().getLicensePlate()), 1, rowNum++);
 
         // horse_power
         getNode().add(new Label(Loc.c("horse_power")), 0, rowNum);

@@ -2,7 +2,7 @@ package main.view.form.adapter;
 
 import main.config.Config;
 import main.localization.Loc;
-import main.model.Status;
+import main.model.insurance.Insurance;
 import main.model.insurance.vehicle.Boat;
 import main.model.person.Person;
 import main.validator.StringMatcher;
@@ -43,7 +43,7 @@ public class BoatAdapter extends InsuranceAdapter<Boat> implements Formable<Boat
     {
         licencePlate = new FormValueNode.Builder(Loc.c("licence_plate"))
                 .regex(StringMatcher.getRegnr())
-                .value(getEditMode() ? getInsurance().getLicencePlate() : "")
+                .value(getEditMode() ? getInsurance().getLicensePlate() : "")
                 .error(Loc.c("licence_plate_error"))
                 .build();
 
@@ -118,23 +118,41 @@ public class BoatAdapter extends InsuranceAdapter<Boat> implements Formable<Boat
     {
         if (getEditMode()) {
             Boat i = getInsurance();
-            i.setHorsePower(Integer.parseInt(horsePower.getValue()));
-            i.setPremium(Integer.parseInt(getPremium()));
-            i.setAmount(Integer.parseInt(getAmount()));
+            // shared values for all insurances
+            i.setPremium(getPremium());
+            i.setAmount(getAmount());
+            i.setDeductible(getDeductible());
+            i.setDesc(getDescription());
             i.setStatus(getStatus());
-            i.setLicencePlate(licencePlate.getValue());
+
+            i.setType((Boat.Type) type.getData());
             i.setPropulsion((Boat.Propulsion) propulsion.getData());
+
+            i.setHorsePower(Integer.parseInt(horsePower.getValue()));
+            i.setLength(Integer.parseInt(length.getData()));
+            i.setLicensePlate(licencePlate.getValue());
+
         } else {
-            setInsurance(new Boat.Builder(getCustomer(), licencePlate.getValue())
+            Boat insurance = new Boat.Builder(getCustomer(), licencePlate.getValue())
+                    // shared values for all insurances
+                    .premium(getPremium())
+                    .amount(getAmount())
+                    .deductible(getDeductible())
+                    .desc(getDescription())
+                    .status(getStatus())
+
+                    .type((Boat.Type) type.getData())
+                    .propulsion((Boat.Propulsion) propulsion.getData())
+
                     .horsePower(Integer.parseInt(horsePower.getValue()))
                     .length(Integer.parseInt(length.getValue()))
                     .registration(registration.getData())
-                    .premium(Integer.parseInt(getPremium()))
-                    .amount(Integer.parseInt(getAmount()))
-                    .propulsion((Boat.Propulsion) propulsion.getData())
+                    .premium(getPremium())
+                    .amount(getAmount())
                     .status(getStatus())
-                    .type((Boat.Type) type.getData())
-                    .build());
+                    .build();
+            setInsurance(insurance);
+            Insurance.saveNew(insurance);
         }
         callBackEvent.fire();
     }

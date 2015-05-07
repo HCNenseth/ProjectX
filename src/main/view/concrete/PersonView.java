@@ -99,6 +99,10 @@ public class PersonView
         gp.add(new Label(Loc.c("email")), left, rowNum);
         gp.add(new Label(person.getEmail()), right,rowNum++);
 
+        // status
+        gp.add(new Label(Loc.c("status")), left, rowNum);
+        gp.add(new Label(person.getStatus().getValue()), right, rowNum++);
+
         // insurances table
         gp.add(new Label(Loc.c("insurances")), left, rowNum++);
         gp.add(TableController.getInsuranceTable(person.getInsurances().stream())

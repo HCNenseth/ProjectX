@@ -3,18 +3,14 @@ package main.model.insurance.vehicle;
 import main.localization.Loc;
 import main.model.person.Person;
 import main.model.insurance.InsuranceType;
-import main.model.insurance.InsuranceBuilder;
-
 
 import java.io.Serializable;
-import java.time.LocalDate;
 
 public class Car extends Vehicle implements Serializable
 {
     private int mileage;
-
-    private final Type type;
-    private final Propulsion propulsion;
+    private Type type;
+    private Propulsion propulsion;
 
     public enum Propulsion
     {
@@ -49,36 +45,16 @@ public class Car extends Vehicle implements Serializable
         public String toString() { return value; }
     }
 
-    public static class Builder extends InsuranceBuilder<Builder, Car>
+    public static class Builder extends VehicleBuilder<Builder>
     {
-        //Required
-        private String licencePlate;
-
-        //Optional
-        private Person owner = getCustomer();
-        private LocalDate registration = null;
-        private int modelYear = 2000;
         private int mileage = 0;
-        private Propulsion propulsion = Propulsion.A;
         private Type type = Type.A;
-        private int horsePower = 100;
+        private Propulsion propulsion = Propulsion.A;
 
         public Builder(Person customer, String licencePlate)
         {
+            super.licensePlate(licencePlate);
             super.customer(customer);
-            this.licencePlate = licencePlate;
-        }
-
-        public Builder registration(LocalDate date)
-        {
-            this.registration = date;
-            return this;
-        }
-
-        public Builder horsePower(int horsePower)
-        {
-            this.horsePower = horsePower;
-            return this;
         }
 
         public Builder mileage(int val)
@@ -99,12 +75,6 @@ public class Car extends Vehicle implements Serializable
             return this;
         }
 
-        public Builder owner(Person val)
-        {
-            owner = val;
-            return this;
-        }
-
         public Car build()
         {
             return new Car(this);
@@ -114,39 +84,28 @@ public class Car extends Vehicle implements Serializable
     private Car(Builder builder)
     {
         super(builder);
-        setOwner(builder.owner);
-        setLicencePlate(builder.licencePlate);
-        setRegistration(builder.registration);
-        setModelYear(builder.modelYear);
-
         mileage = builder.mileage;
         type = builder.type;
         propulsion = builder.propulsion;
     }
 
-    public void setMileage(int mileage)
-    {
-        this.mileage = mileage;
-    }
+    /* SETTERS */
+    public void setMileage(int mileage) { this.mileage = mileage; }
 
-    public String getType()
-    {
-        return type.getValue();
-    }
+    public void setType(Type type) { this.type = type; }
 
-    public String getPropulsion()
-    {
-        return propulsion.getValue();
-    }
+    public void setPropulsion(Propulsion propulsion) { this.propulsion = propulsion; }
 
-    public InsuranceType identify()
-    {
-        return InsuranceType.CAR;
-    }
+    /* GETTERS */
+    public int getMileage() { return mileage; }
 
-    public int getMileage() {
-        return mileage;
-    }
+    public Type getType() { return type; }
+
+    public Propulsion getPropulsion() { return propulsion; }
+
+    /* OVERRIDES */
+    @Override
+    public InsuranceType identify() { return InsuranceType.CAR; }
 
     @Override
     public boolean query(String value)
@@ -157,8 +116,5 @@ public class Car extends Vehicle implements Serializable
     }
 
     @Override
-    public String toString()
-    {
-        return super.toString();
-    }
+    public String toString() { return super.toString(); }
 }

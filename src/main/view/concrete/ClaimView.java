@@ -53,10 +53,10 @@ public class ClaimView
         gp.add(new Label(Loc.c("insurance")), 0, rowNum);
         switch (claim.getInsurance().identify()) {
             case CAR:
-                gp.add(new Label(((Car)claim.getInsurance()).getType()), 1, rowNum++);
+                gp.add(new Label(((Car)claim.getInsurance()).getType().getValue()), 1, rowNum++);
                 break;
             case BOAT:
-                gp.add(new Label(((Boat)claim.getInsurance()).getType()), 1, rowNum++);
+                gp.add(new Label(((Boat)claim.getInsurance()).getType().getValue()), 1, rowNum++);
                 break;
             case HOUSE:
                 gp.add(new Label(((House)claim.getInsurance()).getType().getValue()), 1, rowNum++);

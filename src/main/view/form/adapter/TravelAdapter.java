@@ -1,6 +1,7 @@
 package main.view.form.adapter;
 
 import main.localization.Loc;
+import main.model.insurance.Insurance;
 import main.model.insurance.travel.Travel;
 import main.model.person.Person;
 import main.view.form.Formable;
@@ -60,16 +61,18 @@ public class TravelAdapter extends InsuranceAdapter<Travel> implements Formable<
     {
         if (getEditMode()) {
             Travel i = getInsurance();
-            i.setPremium(Integer.parseInt(getPremium()));
-            i.setAmount(Integer.parseInt(getAmount()));
+            i.setPremium(getPremium());
+            i.setAmount(getAmount());
             i.setStatus(getStatus());
         } else {
-            setInsurance(new Travel.Builder(getCustomer())
-                    .premium(Integer.parseInt(getPremium()))
-                    .amount(Integer.parseInt(getAmount()))
+            Travel insurance =  new Travel.Builder(getCustomer())
+                    .premium(getPremium())
+                    .amount(getAmount())
                     .status(getStatus())
                     .continent((Travel.Continent)continent.getData())
-                    .build());
+                    .build();
+            setInsurance(insurance);
+            Insurance.saveNew(insurance);
         }
         callBackEvent.fire();
     }

@@ -35,7 +35,7 @@ public class ClaimAdapter implements Formable<Claim>
     private Claim claim;
     private boolean editMode = false;
 
-    // edit constructr
+    // edit constructor
     public ClaimAdapter(Claim claim)
     {
         if (claim != null) {
@@ -44,7 +44,6 @@ public class ClaimAdapter implements Formable<Claim>
             insurance = claim.getInsurance();
             editMode = true;
         }
-
         initNodes();
     }
 
@@ -101,6 +100,12 @@ public class ClaimAdapter implements Formable<Claim>
     @Override
     public void callback()
     {
+        if (editMode) {
+
+        } else {
+            claim = new Claim.Builder(person, insurance).build();
+            Claim.saveNew(claim);
+        }
 
     }
 

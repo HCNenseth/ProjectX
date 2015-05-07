@@ -2,7 +2,7 @@ package main.view.form.adapter;
 
 import main.config.Config;
 import main.localization.Loc;
-import main.model.Status;
+import main.model.insurance.Insurance;
 import main.model.insurance.vehicle.Car;
 import main.model.person.Person;
 import main.validator.StringMatcher;
@@ -23,7 +23,7 @@ import java.util.function.Consumer;
 public class CarAdapter extends InsuranceAdapter<Car> implements Formable<Car>
 {
 
-    private FormValueNode licencePlate;
+    private FormValueNode licensePlate;
     //private FormValueNode owner;
     private FormDateNode registration;
     private FormValueNode mileage;
@@ -45,9 +45,9 @@ public class CarAdapter extends InsuranceAdapter<Car> implements Formable<Car>
 
     private void initNodes()
     {
-        licencePlate = new FormValueNode.Builder(Loc.c("licence_plate"))
-                .error(Loc.c("licence_plate_error"))
-                .value(getEditMode() ? getInsurance().getLicencePlate() : "")
+        licensePlate = new FormValueNode.Builder(Loc.c("license_plate"))
+                .error(Loc.c("license_plate_error"))
+                .value(getEditMode() ? getInsurance().getLicensePlate() : "")
                 .regex(StringMatcher.getRegnr())
                 .build();
 
@@ -60,13 +60,15 @@ public class CarAdapter extends InsuranceAdapter<Car> implements Formable<Car>
         */
 
         registration = new FormDateNode.Builder(Loc.c("vehicle_registration"),
-                 getEditMode() ? getInsurance().getRegistration() : LocalDate.of(Config.STANDARD_YEAR, Config.STANDARD_MONTH, Config.STANDARD_DAY))
+                 getEditMode() ? getInsurance().getRegistration() : LocalDate.of(Config.STANDARD_YEAR,
+                                                                                 Config.STANDARD_MONTH,
+                                                                                 Config.STANDARD_DAY))
                 .build();
 
         mileage = new FormValueNode.Builder(Loc.c("mileage"))
                 .error(Loc.c("mileage_error"))
                 .value(getEditMode() ? Integer.toString(getInsurance().getMileage()) : "")
-                .regex(StringMatcher.getDigit())
+                .regex(StringMatcher.getFloat())
                 .build();
 
         horsePower = new FormValueNode.Builder(Loc.c("vehicle_horse_power"))
@@ -78,21 +80,17 @@ public class CarAdapter extends InsuranceAdapter<Car> implements Formable<Car>
         List<Enum> typeList = new ArrayList<>();
         for (Car.Type t : Car.Type.values()) { typeList.add(t); }
 
-        type = new FormChoiceNode.Builder(Loc.c("car_type"), typeList)
-                .required(false)
+        type = new FormChoiceNode.Builder<>(Loc.c("car_type"), typeList)
                 .active(getEditMode() ? getInsurance().getType() : Car.Type.A)
+                .required(false)
                 .build();
 
-
         List<Enum> propulsionList = new ArrayList<>();
-        for(Car.Propulsion p : Car.Propulsion.values())
-        {
-            propulsionList.add(p);
-        }
+        for(Car.Propulsion p : Car.Propulsion.values()) { propulsionList.add(p); }
 
-        propulsion = new FormChoiceNode.Builder(Loc.c("car_propulsion"), propulsionList)
-                .required(false)
+        propulsion = new FormChoiceNode.Builder<>(Loc.c("car_propulsion"), propulsionList)
                 .active(getEditMode() ? getInsurance().getPropulsion() : Car.Propulsion.A)
+                .required(false)
                 .build();
     }
 
@@ -100,7 +98,7 @@ public class CarAdapter extends InsuranceAdapter<Car> implements Formable<Car>
     public List<FormNode> getNodes() {
         List<FormNode> tmp = super.getNodes();
 
-        tmp.add(licencePlate);
+        tmp.add(licensePlate);
         tmp.add(registration);
         tmp.add(mileage);
         tmp.add(type);
@@ -115,23 +113,38 @@ public class CarAdapter extends InsuranceAdapter<Car> implements Formable<Car>
     {
         if (getEditMode()) {
             Car i = getInsurance();
+            // shared values for all insurances
+            i.setPremium(getPremium());
+            i.setAmount(getAmount());
+            i.setDeductible(getDeductible());
+            i.setDesc(getDescription());
+            i.setStatus(getStatus());
+
+            i.setType((Car.Type) type.getData());
+            i.setPropulsion((Car.Propulsion) propulsion.getData());
+
             i.setMileage(Integer.parseInt(mileage.getValue()));
             i.setHorsePower(Integer.parseInt(horsePower.getValue()));
-            i.setLicencePlate(licencePlate.getValue());
-            i.setPremium(Integer.parseInt(getPremium()));
-            i.setAmount(Integer.parseInt(getAmount()));
-            i.setStatus(getStatus());
+            i.setLicensePlate(licensePlate.getValue());
+            i.setRegistration(registration.getData());
         } else {
-            setInsurance(new Car.Builder(getCustomer(), licencePlate.getValue())
-                    .registration(registration.getData())
-                    .horsePower(Integer.parseInt(horsePower.getValue()))
-                    .mileage(Integer.parseInt(mileage.getValue()))
-                    .amount(Integer.parseInt(getAmount()))
-                    .premium(Integer.parseInt(getPremium()))
+            Car insurance = new Car.Builder(getCustomer(), licensePlate.getValue())
+                    // shared values for all insurances
+                    .premium(getPremium())
+                    .amount(getAmount())
+                    .deductible(getDeductible())
+                    .desc(getDescription())
                     .status(getStatus())
+
                     .type((Car.Type) type.getData())
                     .propulsion((Car.Propulsion) propulsion.getData())
-                    .build());
+
+                    .mileage(Integer.parseInt(mileage.getValue()))
+                    .horsePower(Integer.parseInt(horsePower.getValue()))
+                    .registration(registration.getData())
+                    .build();
+            setInsurance(insurance);
+            Insurance.saveNew(insurance);
         }
         callBackEvent.fire();
     }

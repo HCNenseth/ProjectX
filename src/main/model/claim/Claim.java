@@ -1,14 +1,17 @@
 package main.model.claim;
 
+import main.config.Config;
 import main.localization.Loc;
 import main.model.FullTextSearch;
 import main.model.Model;
+import main.model.Storage;
 import main.model.person.Person;
 import main.model.Status;
 import main.model.insurance.Insurance;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.List;
 
 /**
  * Created by Hans Petter on 16.04.2015.
@@ -166,6 +169,11 @@ public class Claim implements Serializable, FullTextSearch, Model
     public PaymentStatus getPaymentStatus()
     {
         return paymentStatus;
+    }
+
+    public static void saveNew(Claim claim)
+    {
+        ((List<Claim>) Storage.getInstance().get(Config.CLAIMS)).add(claim);
     }
 
     @Override

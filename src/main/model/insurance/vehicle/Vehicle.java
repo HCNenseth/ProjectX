@@ -13,15 +13,19 @@ import java.time.LocalDate;
  */
 public abstract class Vehicle extends Insurance implements Serializable
 {
-    private String licencePlate;
+    private String licensePlate;
     private Person owner;
     private int horsePower;
     private int modelYear;
     private LocalDate registration;
 
-    public Vehicle(InsuranceBuilder ib)
+    public Vehicle(VehicleBuilder ib)
     {
         super(ib);
+        setOwner(ib.getOwner());
+        setLicensePlate(ib.getLicensePlate());
+        setModelYear(ib.getModelYear());
+        setHorsePower(ib.getHorsePower());
     }
 
     public Person getOwner() {
@@ -39,9 +43,9 @@ public abstract class Vehicle extends Insurance implements Serializable
         registration = date;
     }
 
-    public void setLicencePlate(String licencePlate)
+    public void setLicensePlate(String licensePlate)
     {
-        this.licencePlate = licencePlate;
+        this.licensePlate = licensePlate;
     }
 
     public void setModelYear(int year)
@@ -52,8 +56,8 @@ public abstract class Vehicle extends Insurance implements Serializable
     public void setHorsePower(int hk){this.horsePower = hk; }
 
     // GETTERS
-    public String getLicencePlate() {
-        return licencePlate;
+    public String getLicensePlate() {
+        return licensePlate;
     }
 
     public int getHorsePower() {
@@ -72,7 +76,7 @@ public abstract class Vehicle extends Insurance implements Serializable
     public boolean query(String value)
     {
         return super.query(value)
-                || (licencePlate != null && licencePlate.contains(value));
+                || (licensePlate != null && licensePlate.contains(value));
     }
 
     @Override
@@ -80,7 +84,7 @@ public abstract class Vehicle extends Insurance implements Serializable
         return super.toString() + String.format(
                 "\n%s\t%s\n%s\t%s",
                 Loc.c("owner"), owner,
-                Loc.c("licence_plate"), licencePlate
+                Loc.c("licence_plate"), licensePlate
         );
     }
 
