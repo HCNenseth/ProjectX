@@ -2,7 +2,7 @@ package main.model.insurance.vehicle;
 
 import main.localization.Loc;
 import main.model.person.Person;
-import main.model.insurance.ConcreteType;
+import main.model.insurance.InsuranceType;
 import main.model.insurance.InsuranceBuilder;
 
 
@@ -139,9 +139,9 @@ public class Car extends Vehicle implements Serializable
         return propulsion.getValue();
     }
 
-    public ConcreteType identify()
+    public InsuranceType identify()
     {
-        return ConcreteType.CAR;
+        return InsuranceType.CAR;
     }
 
     public int getMileage() {

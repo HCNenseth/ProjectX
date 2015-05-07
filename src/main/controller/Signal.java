@@ -5,5 +5,5 @@ package main.controller;
  */
 public enum Signal
 {
-    FILE, NEW, EDIT, STATISTICS, SEARCH, ABOUT
+    FILE, NEW, EDIT, STATISTICS, REPORT, SEARCH, ABOUT
 }

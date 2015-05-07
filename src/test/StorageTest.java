@@ -7,10 +7,9 @@ package test;
 import main.config.Config;
 import main.model.Storage;
 import main.model.claim.Claim;
-import main.model.insurance.ConcreteType;
+import main.model.insurance.InsuranceType;
 import main.model.insurance.Insurance;
 import main.model.insurance.property.House;
-import main.model.insurance.property.VacationHouse;
 import main.model.insurance.travel.Travel;
 import main.model.insurance.vehicle.Boat;
 import main.model.insurance.vehicle.Car;
@@ -20,7 +19,6 @@ import org.junit.Test;
 
 import java.io.IOException;
 import java.time.LocalDate;
-import java.util.Calendar;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
@@ -223,12 +221,12 @@ public class StorageTest
 
         // TODO compare/equal the elements
 
-        assertTrue(insurancesFromFile.get(0).identify().equals(ConcreteType.CAR));
-        assertTrue(insurancesFromFile.get(1).identify().equals(ConcreteType.CAR));
-        assertTrue(insurancesFromFile.get(2).identify().equals(ConcreteType.HOUSE));
-        assertTrue(insurancesFromFile.get(3).identify().equals(ConcreteType.HOUSE));
-        assertTrue(insurancesFromFile.get(4).identify().equals(ConcreteType.BOAT));
-        assertTrue(insurancesFromFile.get(5).identify().equals(ConcreteType.BOAT));
+        assertTrue(insurancesFromFile.get(0).identify().equals(InsuranceType.CAR));
+        assertTrue(insurancesFromFile.get(1).identify().equals(InsuranceType.CAR));
+        assertTrue(insurancesFromFile.get(2).identify().equals(InsuranceType.HOUSE));
+        assertTrue(insurancesFromFile.get(3).identify().equals(InsuranceType.HOUSE));
+        assertTrue(insurancesFromFile.get(4).identify().equals(InsuranceType.BOAT));
+        assertTrue(insurancesFromFile.get(5).identify().equals(InsuranceType.BOAT));
 
         /*
         assertTrue(personsFromFile.contains(person2));
