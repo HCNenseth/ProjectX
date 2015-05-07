@@ -63,12 +63,18 @@ public class TravelAdapter extends InsuranceAdapter<Travel> implements Formable<
             Travel i = getInsurance();
             i.setPremium(getPremium());
             i.setAmount(getAmount());
+            i.setDeductible(getDeductible());
+            i.setDesc(getDescription());
             i.setStatus(getStatus());
+
+            i.setType((Travel.Continent) continent.getData());
         } else {
             Travel insurance =  new Travel.Builder(getCustomer())
                     .premium(getPremium())
                     .amount(getAmount())
+                    .deductible(getDeductible())
                     .status(getStatus())
+                    .desc(getDescription())
                     .continent((Travel.Continent)continent.getData())
                     .build();
             setInsurance(insurance);

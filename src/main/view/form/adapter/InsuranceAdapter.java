@@ -7,10 +7,7 @@ import main.model.Status;
 import main.model.insurance.Insurance;
 import main.model.person.Person;
 import main.validator.StringMatcher;
-import main.view.form.node.FormChoiceNode;
-import main.view.form.node.FormLabelNode;
-import main.view.form.node.FormNode;
-import main.view.form.node.FormValueNode;
+import main.view.form.node.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,7 +19,7 @@ public abstract class InsuranceAdapter<T extends Insurance>
 
     private FormLabelNode customerNode;
     private FormValueNode amount;
-    private FormValueNode desc;
+    private FormTextAreaNode desc;
     private FormValueNode premium;
     private FormChoiceNode status;
     private FormValueNode deductible;
@@ -83,7 +80,7 @@ public abstract class InsuranceAdapter<T extends Insurance>
                 .error(Loc.c("error_amount"))
                 .build();
 
-         desc = new FormValueNode.Builder(Loc.c("desc"))
+         desc = new FormTextAreaNode.Builder(Loc.c("desc"))
                 .regex(StringMatcher.getBaseString())
                 .value(editMode ? insurance.getDesc() : "")
                 .error(Loc.c("error_desc"))

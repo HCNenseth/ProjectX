@@ -23,6 +23,9 @@ public class Boat extends Vehicle implements Serializable
         Propulsion(String value) { this.value = value; }
 
         public String getValue() { return value; }
+
+        @Override
+        public String toString() { return getValue(); }
     }
 
     public enum Type {
@@ -36,6 +39,9 @@ public class Boat extends Vehicle implements Serializable
         Type(String value) { this.value = value; }
 
         public String getValue() { return value; }
+
+        @Override
+        public String toString() { return getValue(); }
     }
 
     public static class Builder extends VehicleBuilder<Builder>

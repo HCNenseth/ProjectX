@@ -5,7 +5,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.paint.Color;
 
-public class FormTextNode extends FormNode<TextArea> {
+public class FormTextAreaNode extends FormNode<TextArea> {
 
     private String key;
     private String value;
@@ -52,14 +52,14 @@ public class FormTextNode extends FormNode<TextArea> {
             return this;
         }
 
-        public FormTextNode build()
+        public FormTextAreaNode build()
         {
-            return new FormTextNode(this);
+            return new FormTextAreaNode(this);
         }
 
     }
 
-    public FormTextNode(Builder builder)
+    public FormTextAreaNode(Builder builder)
     {
         key = builder.key;
         value = builder.value;
@@ -70,6 +70,8 @@ public class FormTextNode extends FormNode<TextArea> {
 
         keyLabel = new Label(key + ":");
         textArea = new TextArea(value);
+        textArea.setPrefRowCount(3);
+
         errorLabel = new Label(error);
         errorLabel.setTextFill(Color.RED);
         errorLabel.setVisible(false);

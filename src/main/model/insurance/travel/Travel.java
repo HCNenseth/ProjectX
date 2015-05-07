@@ -63,7 +63,11 @@ public class Travel extends Insurance implements Serializable
         type = builder.continent;
     }
 
+    /* GETTERS */
     public Continent getType() { return type; }
+
+    /* SETTERS */
+    public void setType(Continent type) { this.type = type; }
 
     public InsuranceType identify()
     {
