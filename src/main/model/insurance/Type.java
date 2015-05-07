@@ -5,5 +5,5 @@ package main.model.insurance;
  */
 public interface Type
 {
-    ConcreteType identify();
+    InsuranceType identify();
 }

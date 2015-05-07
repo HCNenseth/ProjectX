@@ -7,8 +7,8 @@ import main.view.concrete.AboutView;
 /**
  * Created by HansPetter on 30.04.2015.
  */
-public class AboutController {
-
+public class AboutController
+{
     private AboutController(){ }
 
     public static void view()

@@ -7,7 +7,7 @@ import main.controller.InsuranceController;
 import main.controller.PersonController;
 import main.controller.TableController;
 import main.localization.Loc;
-import main.model.insurance.ConcreteType;
+import main.model.insurance.InsuranceType;
 import main.model.person.Person;
 import main.view.StandardGridPane;
 
@@ -37,23 +37,23 @@ public class PersonView
 
         // car
         Button b1 = new Button(Loc.c("car"));
-        b1.setOnAction(e -> InsuranceController.create(person, ConcreteType.CAR));
+        b1.setOnAction(e -> InsuranceController.create(person, InsuranceType.CAR));
 
         // boat
         Button b2 = new Button(Loc.c("boat"));
-        b2.setOnAction(e -> InsuranceController.create(person, ConcreteType.BOAT));
+        b2.setOnAction(e -> InsuranceController.create(person, InsuranceType.BOAT));
 
         // house
         Button b3 = new Button(Loc.c("house"));
-        b3.setOnAction(e -> InsuranceController.create(person, ConcreteType.HOUSE));
+        b3.setOnAction(e -> InsuranceController.create(person, InsuranceType.HOUSE));
 
         // vacation house
         Button b4 = new Button(Loc.c("vacation_house"));
-        b4.setOnAction(e -> InsuranceController.create(person, ConcreteType.VACATION_HOUSE));
+        b4.setOnAction(e -> InsuranceController.create(person, InsuranceType.VACATION_HOUSE));
 
         // travel
         Button b5 = new Button(Loc.c("travel"));
-        b5.setOnAction(e -> InsuranceController.create(person, ConcreteType.TRAVEL));
+        b5.setOnAction(e -> InsuranceController.create(person, InsuranceType.TRAVEL));
 
         // edit person
         Button editButton = new Button(Loc.c("edit"));

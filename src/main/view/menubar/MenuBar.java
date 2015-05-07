@@ -15,14 +15,17 @@ public class MenuBar extends javafx.scene.control.MenuBar
 {
     private Menu fileMenu, statisticsMenu, editMenu,
             themeSubMenu, languageSubMenu, newMenu, aboutMenu;
+
     private MenuItem fileSave, closeProject, fileExit, fileRestart,
-            statistics, customer, search, aboutUs;
+            customerStatistics, insuranceStatistics, claimStatistics,
+            customer, search, report, aboutUs;
+
     private ToggleGroup themeSubMenuGroup, languageSubMenuGroup;
+
     private RadioMenuItem themeSubMenuItem1, themeSubMenuItem2;
 
     public MenuBar()
     {
-
         fileMenu = new Menu(Loc.c("menu_group_file"));
         editMenu = new Menu(Loc.c("menu_group_edit"));
         statisticsMenu = new Menu(Loc.c("menu_group_statistics"));
@@ -30,8 +33,10 @@ public class MenuBar extends javafx.scene.control.MenuBar
         newMenu = new Menu(Loc.c("new"));
 
         aboutUs = new MenuItem(Loc.c("menu_about"));
-        aboutUs.setOnAction(e -> Mediator.inst.router(Signal.ABOUT,
-                new Payload()));
+        aboutUs.setOnAction(e -> Mediator.inst.router(Signal.ABOUT, null));
+
+        report = new MenuItem(Loc.c("menu_report"));
+        report.setOnAction(e -> Mediator.inst.router(Signal.REPORT, null));
 
         fileSave = new MenuItem(Loc.c("menu_file_save"));
         fileSave.setOnAction(e -> Mediator.inst.router(Signal.FILE,
@@ -49,7 +54,9 @@ public class MenuBar extends javafx.scene.control.MenuBar
         fileExit.setOnAction(e -> Mediator.inst.router(Signal.FILE,
                 new Payload(main.controller.MenuBar.Type.CLOSE)));
 
-        statistics = new MenuItem(Loc.c("menu_statistics"));
+        customerStatistics = new MenuItem(Loc.c("menu_customer_statistics"));
+        insuranceStatistics = new MenuItem(Loc.c("menu_insurance_statistics"));
+        claimStatistics = new MenuItem(Loc.c("menu_claim_statistics"));
 
         customer = new MenuItem(Loc.c("customer"));
         customer.setOnAction(e -> Mediator.inst.router(Signal.FILE,
@@ -108,8 +115,10 @@ public class MenuBar extends javafx.scene.control.MenuBar
                 fileExit);
         //editMenu.getItems().addAll(themeSubMenu, languageSubMenu);
         newMenu.getItems().addAll(search, customer);
-        statisticsMenu.getItems().addAll(statistics);
-        aboutMenu.getItems().add(aboutUs);
+        statisticsMenu.getItems().addAll(customerStatistics,
+                insuranceStatistics, claimStatistics);
+
+        aboutMenu.getItems().addAll(report, aboutUs);
 
         getMenus().addAll(fileMenu, newMenu /*, editMenu */, statisticsMenu, aboutMenu);
     }
