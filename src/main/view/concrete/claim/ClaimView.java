@@ -1,4 +1,4 @@
-package main.view.concrete;
+package main.view.concrete.claim;
 
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;

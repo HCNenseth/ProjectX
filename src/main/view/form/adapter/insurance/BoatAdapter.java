@@ -1,9 +1,9 @@
-package main.view.form.adapter;
+package main.view.form.adapter.insurance;
 
 import main.config.Config;
 import main.localization.Loc;
 import main.model.insurance.Insurance;
-import main.model.insurance.vehicle.Car;
+import main.model.insurance.vehicle.Boat;
 import main.model.person.Person;
 import main.validator.StringMatcher;
 import main.view.form.Formable;
@@ -17,27 +17,23 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Consumer;
 
-/**
- * Created by HansPetter on 22.04.2015.
- */
-public class CarAdapter extends InsuranceAdapter<Car> implements Formable<Car>
+public class BoatAdapter extends InsuranceAdapter<Boat> implements Formable<Boat>
 {
-
-    private FormValueNode licensePlate;
+    private FormValueNode licencePlate;
     //private FormValueNode owner;
     private FormDateNode registration;
-    private FormValueNode mileage;
-    private FormChoiceNode type;
-    private FormChoiceNode propulsion;
+    private FormValueNode length;
     private FormValueNode horsePower;
+    private FormChoiceNode propulsion;
+    private FormChoiceNode type;
 
-    public CarAdapter(Person customer, Car car)
+    public BoatAdapter(Person customer, Boat boat)
     {
-        super(customer, car);
+        super(customer, boat);
         initNodes();
     }
 
-    public CarAdapter(Person customer)
+    public BoatAdapter(Person customer)
     {
         super(customer);
         initNodes();
@@ -45,10 +41,10 @@ public class CarAdapter extends InsuranceAdapter<Car> implements Formable<Car>
 
     private void initNodes()
     {
-        licensePlate = new FormValueNode.Builder(Loc.c("license_plate"))
-                .error(Loc.c("license_plate_error"))
-                .value(getEditMode() ? getInsurance().getLicensePlate() : "")
+        licencePlate = new FormValueNode.Builder(Loc.c("licence_plate"))
                 .regex(StringMatcher.getRegnr())
+                .value(getEditMode() ? getInsurance().getLicensePlate() : "")
+                .error(Loc.c("licence_plate_error"))
                 .build();
 
         // This does not make any sense!
@@ -59,16 +55,18 @@ public class CarAdapter extends InsuranceAdapter<Car> implements Formable<Car>
                 .build();
         */
 
+
         registration = new FormDateNode.Builder(Loc.c("vehicle_registration"),
-                 getEditMode() ? getInsurance().getRegistration() : LocalDate.of(Config.STANDARD_YEAR,
-                                                                                 Config.STANDARD_MONTH,
-                                                                                 Config.STANDARD_DAY))
+                getEditMode() ? getInsurance().getRegistration() : LocalDate.of(Config.STANDARD_YEAR,
+                                                                                Config.STANDARD_MONTH,
+                                                                                Config.STANDARD_DAY))
+                .required(false)
                 .build();
 
-        mileage = new FormValueNode.Builder(Loc.c("mileage"))
-                .error(Loc.c("mileage_error"))
-                .value(getEditMode() ? Integer.toString(getInsurance().getMileage()) : "")
-                .regex(StringMatcher.getFloat())
+        length = new FormValueNode.Builder(Loc.c("length"))
+                .regex(StringMatcher.getDigit())
+                .value(getEditMode() ? Integer.toString(getInsurance().getLength()) : "")
+                .error(Loc.c("length_error"))
                 .build();
 
         horsePower = new FormValueNode.Builder(Loc.c("vehicle_horse_power"))
@@ -77,33 +75,40 @@ public class CarAdapter extends InsuranceAdapter<Car> implements Formable<Car>
                 .error(Loc.c("vehicle_horse_power_error"))
                 .build();
 
-        List<Enum> typeList = new ArrayList<>();
-        for (Car.Type t : Car.Type.values()) { typeList.add(t); }
-
-        type = new FormChoiceNode.Builder<>(Loc.c("car_type"), typeList)
-                .active(getEditMode() ? getInsurance().getType() : Car.Type.A)
-                .required(false)
-                .build();
-
         List<Enum> propulsionList = new ArrayList<>();
-        for(Car.Propulsion p : Car.Propulsion.values()) { propulsionList.add(p); }
+        for(Boat.Propulsion p : Boat.Propulsion.values())
+        {
+            propulsionList.add(p);
+        }
 
-        propulsion = new FormChoiceNode.Builder<>(Loc.c("car_propulsion"), propulsionList)
-                .active(getEditMode() ? getInsurance().getPropulsion() : Car.Propulsion.A)
+        propulsion = new FormChoiceNode.Builder<>(Loc.c("boat_propulsion"), propulsionList )
                 .required(false)
+                .active(getEditMode() ? getInsurance().getPropulsion() : Boat.Propulsion.A)
                 .build();
+
+        List<Enum> typeList = new ArrayList<>();
+        for(Boat.Type t : Boat.Type.values())
+        {
+            typeList.add(t);
+        }
+
+        type = new FormChoiceNode.Builder<>(Loc.c("boat_type"), typeList)
+                .required(false)
+                .active(getEditMode() ? getInsurance().getType() : Boat.Type.A)
+                .build();
+
     }
 
     @Override
-    public List<FormNode> getNodes() {
+    public List<FormNode> getNodes()
+    {
         List<FormNode> tmp = super.getNodes();
-
-        tmp.add(licensePlate);
+        tmp.add(licencePlate);
         tmp.add(registration);
-        tmp.add(mileage);
-        tmp.add(type);
+        tmp.add(length);
         tmp.add(horsePower);
         tmp.add(propulsion);
+        tmp.add(type);
 
         return tmp;
     }
@@ -112,7 +117,7 @@ public class CarAdapter extends InsuranceAdapter<Car> implements Formable<Car>
     public void callback()
     {
         if (getEditMode()) {
-            Car i = getInsurance();
+            Boat i = getInsurance();
             // shared values for all insurances
             i.setPremium(getPremium());
             i.setAmount(getAmount());
@@ -120,15 +125,15 @@ public class CarAdapter extends InsuranceAdapter<Car> implements Formable<Car>
             i.setDesc(getDescription());
             i.setStatus(getStatus());
 
-            i.setType((Car.Type) type.getData());
-            i.setPropulsion((Car.Propulsion) propulsion.getData());
+            i.setType((Boat.Type) type.getData());
+            i.setPropulsion((Boat.Propulsion) propulsion.getData());
 
-            i.setMileage(Integer.parseInt(mileage.getValue()));
             i.setHorsePower(Integer.parseInt(horsePower.getValue()));
-            i.setLicensePlate(licensePlate.getValue());
-            i.setRegistration(registration.getData());
+            i.setLength(Integer.parseInt(length.getData()));
+            i.setLicensePlate(licencePlate.getValue());
+
         } else {
-            Car insurance = new Car.Builder(getCustomer(), licensePlate.getValue())
+            Boat insurance = new Boat.Builder(getCustomer(), licencePlate.getValue())
                     // shared values for all insurances
                     .premium(getPremium())
                     .amount(getAmount())
@@ -136,12 +141,15 @@ public class CarAdapter extends InsuranceAdapter<Car> implements Formable<Car>
                     .desc(getDescription())
                     .status(getStatus())
 
-                    .type((Car.Type) type.getData())
-                    .propulsion((Car.Propulsion) propulsion.getData())
+                    .type((Boat.Type) type.getData())
+                    .propulsion((Boat.Propulsion) propulsion.getData())
 
-                    .mileage(Integer.parseInt(mileage.getValue()))
                     .horsePower(Integer.parseInt(horsePower.getValue()))
+                    .length(Integer.parseInt(length.getValue()))
                     .registration(registration.getData())
+                    .premium(getPremium())
+                    .amount(getAmount())
+                    .status(getStatus())
                     .build();
             setInsurance(insurance);
             Insurance.saveNew(insurance);
@@ -150,7 +158,7 @@ public class CarAdapter extends InsuranceAdapter<Car> implements Formable<Car>
     }
 
     @Override
-    public void setOnDoneAction(Consumer<Car> c)
+    public void setOnDoneAction(Consumer<Boat> c)
     {
         callBackEvent.setOnAction(e -> c.accept(getInsurance()));
     }

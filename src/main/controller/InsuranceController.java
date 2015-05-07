@@ -10,9 +10,9 @@ import main.model.insurance.vehicle.Boat;
 import main.model.insurance.vehicle.Car;
 import main.model.person.Person;
 import main.view.Resources;
-import main.view.concrete.*;
+import main.view.concrete.insurance.*;
 import main.view.form.Form;
-import main.view.form.adapter.*;
+import main.view.form.adapter.insurance.*;
 
 /**
  * Created by alex on 4/26/15.

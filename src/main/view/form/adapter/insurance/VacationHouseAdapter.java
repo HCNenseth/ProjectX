@@ -1,15 +1,13 @@
-package main.view.form.adapter;
+package main.view.form.adapter.insurance;
 
-import javafx.event.ActionEvent;
-import javafx.scene.control.ButtonBase;
 import main.localization.Loc;
-import main.model.Status;
 import main.model.insurance.Insurance;
 import main.model.insurance.property.House;
 import main.model.insurance.property.VacationHouse;
 import main.model.person.Person;
 import main.validator.StringMatcher;
 import main.view.form.Formable;
+import main.view.form.adapter.insurance.InsuranceAdapter;
 import main.view.form.node.FormChoiceNode;
 import main.view.form.node.FormNode;
 import main.view.form.node.FormValueNode;

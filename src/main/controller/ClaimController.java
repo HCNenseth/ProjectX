@@ -5,9 +5,9 @@ import main.model.claim.Claim;
 import main.model.insurance.Insurance;
 import main.model.person.Person;
 import main.view.Resources;
-import main.view.concrete.ClaimView;
+import main.view.concrete.claim.ClaimView;
 import main.view.form.Form;
-import main.view.form.adapter.ClaimAdapter;
+import main.view.form.adapter.insurance.ClaimAdapter;
 
 /**
  * Created by alex on 4/26/15.

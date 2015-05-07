@@ -1,7 +1,6 @@
-package main.view.form.adapter;
+package main.view.form.adapter.insurance;
 
 import main.localization.Loc;
-import main.model.Status;
 import main.model.insurance.Insurance;
 import main.model.insurance.property.House;
 import main.model.person.Person;

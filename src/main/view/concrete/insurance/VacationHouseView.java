@@ -1,8 +1,9 @@
-package main.view.concrete;
+package main.view.concrete.insurance;
 
 import javafx.scene.control.Label;
 import main.localization.Loc;
 import main.model.insurance.property.VacationHouse;
+import main.view.concrete.insurance.InsuranceView;
 
 /**
  * Created by HansChristian on 30.04.2015.
