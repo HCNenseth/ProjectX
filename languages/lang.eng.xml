@@ -65,6 +65,7 @@
     <string name="insurance">Insurance</string>
     <string name="insurances">Insurances</string>
     <string name="claims">Claims</string>
+    <string name="no_results">No results</string>
 
     <!-- statuses -->
     <string name="status">Status</string>
