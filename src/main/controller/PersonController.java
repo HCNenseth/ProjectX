@@ -29,7 +29,6 @@ public class PersonController
         // Remove all tabs dealing with this person
         Resources.inst.getOtp().closeObservableTabs(person);
 
-        // TODO insert something more meaningful.
         PersonView personView = new PersonView(person);
 
         Resources.inst.getOtp().injectObservableTab(person.getName(),

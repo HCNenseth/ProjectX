@@ -5,7 +5,7 @@ package main.model;
  */
 public interface Model
 {
-    enum ModelType { PERSON, INSURANCE, CLAIM }
+    enum ModelType { PERSON, INSURANCE, CLAIM, SEARCH }
 
     ModelType getModelType();
 }
