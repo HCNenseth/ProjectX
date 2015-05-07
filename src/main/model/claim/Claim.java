@@ -22,6 +22,7 @@ public abstract class Claim implements Serializable, FullTextSearch, Model {
     private Person customer;
     private Insurance insurance;
 
+    // must find a better name for this.
     private LocalDate accidentDate;
     private LocalDate claimDate;
     private LocalDate lastEdited = null;

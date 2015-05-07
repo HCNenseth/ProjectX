@@ -196,11 +196,24 @@
     <!-- Claim -->
     <string name="claim">Claim</string>
     <string name="contacts">Contacts</string>
-
     <string name="claim_type">Claim type</string>
-    <string name="claim_type_a">Theft</string>
-    <string name="claim_type_b">Sickness</string>
-    <string name="claim_type_c">Car accident</string>
+
+    <string name="claim_car_a">Grand Theft Auto</string>
+    <string name="claim_car_b">Accident</string>
+    <string name="claim_car_c">Rust</string>
+
+    <string name="claim_boat_a">Grand Theft Auto</string>
+    <string name="claim_boat_b">Motor Theft</string>
+    <string name="claim_boat_c">Iceberg</string>
+
+    <string name="claim_property_a">Theft</string>
+    <string name="claim_property_b">Water damage</string>
+    <string name="claim_property_c">Natural disaster</string>
+
+    <string name="claim_travel_a">Theft</string>
+    <string name="claim_travel_b">Lost luggage</string>
+    <string name="claim_travel_c">Missed travel arrangement</string>
+    <string name="claim_travel_d">Sickness</string>
 
     <string name="payment_status">Payment status</string>
     <string name="payment_status_a">Pending</string>
