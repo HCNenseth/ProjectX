@@ -12,6 +12,7 @@ import main.model.person.Person;
 import main.view.StandardGridPane;
 
 import java.util.List;
+import java.util.stream.IntStream;
 
 /**
  * ReportView.java
@@ -28,20 +29,27 @@ public class ReportView extends StandardGridPane
         addKey(Loc.c("total_person_count"));
         addValue(String.format("%d", personList.size()));
 
-        addKey(Loc.c("average_insurances_per_customer"));
-        addValue(String.format("%.2f",
-                personList.stream()
-                        .mapToInt(p -> p.getInsurances().size())
-                        .average()
-                        .getAsDouble()));
+        IntStream insurances = personList.stream()
+                .mapToInt(p -> p.getInsurances().size());
+        if (insurances.count() > 0) {
+            addKey(Loc.c("average_insurances_per_customer"));
+            addValue(String.format("%.2f",
+                    personList.stream()
+                            .mapToInt(p -> p.getInsurances().size())
+                            .average()
+                            .getAsDouble()));
+        }
 
-        addKey(Loc.c("average_claims_per_customer"));
-        addValue(String.format("%.2f",
-                personList.stream()
-                        .mapToInt(p -> p.getClaims().size())
-                        .average()
-                        .getAsDouble()));
-
+        IntStream claims = personList.stream()
+                .mapToInt(p -> p.getClaims().size());
+        if (claims.count() > 0) {
+            addKey(Loc.c("average_claims_per_customer"));
+            addValue(String.format("%.2f",
+                    personList.stream()
+                            .mapToInt(p -> p.getClaims().size())
+                            .average()
+                            .getAsDouble()));
+        }
     }
 
     public void injectInsuranceData(List<Insurance> insuranceList)
@@ -52,12 +60,16 @@ public class ReportView extends StandardGridPane
         addKey(Loc.c("total_insurance_count"));
         addValue(String.format("%d", insuranceList.size()));
 
-        addKey(Loc.c("average_claims_per_insurance"));
-        addValue(String.format("%.2f",
-                insuranceList.stream()
-                        .mapToInt(p -> p.getClaims().size())
-                        .average()
-                        .getAsDouble()));
+        IntStream claims = insuranceList.stream()
+                .mapToInt(i -> i.getClaims().size());
+        if (claims.count() > 0) {
+            addKey(Loc.c("average_claims_per_insurance"));
+            addValue(String.format("%.2f",
+                    insuranceList.stream()
+                            .mapToInt(p -> p.getClaims().size())
+                            .average()
+                            .getAsDouble()));
+        }
 
         // car
         addKey(Loc.c("total_car_insurance_count"));
