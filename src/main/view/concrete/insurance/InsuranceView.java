@@ -8,6 +8,7 @@ import main.controller.ClaimController;
 import main.controller.InsuranceController;
 import main.controller.TableController;
 import main.localization.Loc;
+import main.model.claim.Claim;
 import main.model.insurance.Insurance;
 import main.view.StandardGridPane;
 
@@ -31,11 +32,27 @@ public abstract class InsuranceView<T extends Insurance> extends StandardGridPan
     {
         ToolBar buttonPane = new ToolBar();
 
-        // car
         Button b1 = new Button(Loc.c("claim"));
-        b1.setOnAction(e -> ClaimController.create(insurance.getCustomer(), insurance));
+        switch (insurance.identify()) {
+            case CAR:
+                b1.setOnAction(e -> ClaimController.create(Claim.ClaimType.CAR,
+                        insurance.getCustomer(), insurance));
+                break;
+            case BOAT:
+                //b1.setOnAction(e -> ClaimController.create(insurance.getCustomer(), insurance));
+                break;
+            case HOUSE:
+                //b1.setOnAction(e -> ClaimController.create(insurance.getCustomer(), insurance));
+                break;
+            case VACATION_HOUSE:
+                //b1.setOnAction(e -> ClaimController.create(insurance.getCustomer(), insurance));
+                break;
+            case TRAVEL:
+                //b1.setOnAction(e -> ClaimController.create(insurance.getCustomer(), insurance));
+                break;
 
-        // edit person
+        }
+
         Button editButton = new Button(Loc.c("edit"));
         editButton.setOnAction(e -> InsuranceController.edit(insurance));
 

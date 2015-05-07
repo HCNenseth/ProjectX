@@ -179,7 +179,7 @@ public class StorageTest
                 .contacts("WITNESS 1: 986 161 15")
                 .dateOfDamages(LocalDate.of(randInt(1985, 2014), randInt(1, 12), randInt(1, 28)))
                 .desc("Car damage: total.")
-                .type(PropertyClaim.ClaimType.A)
+                .type(PropertyClaim.Type.A)
                 .build();
 
         claims.add(claim1);

@@ -7,6 +7,7 @@ import main.model.Status;
 import main.model.insurance.Insurance;
 import main.model.person.Person;
 import main.validator.StringMatcher;
+import main.view.form.Formable;
 import main.view.form.node.*;
 
 import java.util.ArrayList;

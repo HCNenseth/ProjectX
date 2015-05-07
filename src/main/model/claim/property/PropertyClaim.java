@@ -10,16 +10,17 @@ import main.model.person.Person;
 
 public class PropertyClaim extends Claim {
 
-    private ClaimType type;
+    private Type type;
 
-    public enum ClaimType {
+    public enum Type
+    {
         A(Loc.c("claim_property_a")),
         B(Loc.c("claim_property_b")),
         C(Loc.c("claim_property_c"));
 
         String value;
 
-        ClaimType(String value){ this.value = value; }
+        Type(String value){ this.value = value; }
 
         public String getValue() { return value; }
 
@@ -30,13 +31,13 @@ public class PropertyClaim extends Claim {
 
     public static class Builder extends ClaimBuilder<Builder, PropertyClaim> {
 
-        private ClaimType type;
+        private Type type;
 
         public Builder(Person customer, Insurance insurance) {
             super(customer, insurance);
         }
 
-        public Builder type(ClaimType type)
+        public Builder type(Type type)
         {
             this.type = type;
             return this;
@@ -57,6 +58,9 @@ public class PropertyClaim extends Claim {
         super(builder);
         type = builder.type;
     }
+
+    @Override
+    public ClaimType identify() { return ClaimType.PROPERTY; }
 
     @Override
     public ModelType getModelType() {

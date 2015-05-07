@@ -33,15 +33,14 @@ public class FormImageNode extends FormNode<Image> {
         private String loadText = Loc.c("button_load");
         private Image image = null;
 
+        public Builder(String key)
+        {
+            this.key = key;
+        }
+
         public Builder required(boolean required)
         {
             this.required = required;
-            return this;
-        }
-
-        public Builder key(String key)
-        {
-            this.key = key;
             return this;
         }
 

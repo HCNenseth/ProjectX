@@ -1,18 +1,13 @@
 package main.model.claim;
 
-import javafx.scene.image.Image;
 import main.localization.Loc;
 import main.model.FullTextSearch;
 import main.model.Model;
 import main.config.Config;
-import main.localization.Loc;
-import main.model.FullTextSearch;
-import main.model.Model;
 import main.model.Storage;
 import main.model.person.Person;
 import main.model.Status;
 import main.model.insurance.Insurance;
-import main.model.person.Person;
 
 import java.io.Serializable;
 import java.time.LocalDate;
@@ -41,6 +36,10 @@ public abstract class Claim implements Serializable, FullTextSearch, Model {
 
     private PaymentStatus paymentStatus;
     private Status status;
+
+    public enum ClaimType {
+        PROPERTY, TRAVEL, BOAT, CAR
+    }
 
     public enum PaymentStatus {
         A(Loc.c("payment_status_a")),
@@ -197,6 +196,8 @@ public abstract class Claim implements Serializable, FullTextSearch, Model {
     {
         ((List<Claim>) Storage.getInstance().get(Config.CLAIMS)).add(claim);
     }
+
+    public abstract ClaimType identify();
 
     @Override
     public boolean query(String value)

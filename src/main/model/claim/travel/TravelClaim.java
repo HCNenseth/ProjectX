@@ -12,16 +12,17 @@ import main.model.person.Person;
 public class TravelClaim extends Claim {
 
     private Travel.Continent continent;
-    private ClaimType type;
+    private Type type;
 
-    public enum ClaimType {
+    public enum Type
+    {
         A(Loc.c("claim_travel_a")),
         B(Loc.c("claim_travel_b")),
         C(Loc.c("claim_travel_c"));
 
         String value;
 
-        ClaimType(String value){ this.value = value; }
+        Type(String value){ this.value = value; }
 
         public String getValue() { return value; }
 
@@ -34,7 +35,7 @@ public class TravelClaim extends Claim {
     {
 
         private Travel.Continent continent;
-        private ClaimType type = null;
+        private Type type = null;
 
         public Builder(Person customer, Insurance insurance)
         {
@@ -47,7 +48,7 @@ public class TravelClaim extends Claim {
             return this;
         }
 
-        public Builder type(ClaimType type)
+        public Builder type(Type type)
         {
             this.type = type;
             return this;
@@ -65,6 +66,9 @@ public class TravelClaim extends Claim {
         continent = builder.continent;
         type = builder.type;
     }
+
+    @Override
+    public ClaimType identify() { return ClaimType.TRAVEL; }
 
     @Override
     public ModelType getModelType() {
