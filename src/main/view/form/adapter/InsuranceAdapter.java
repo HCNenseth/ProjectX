@@ -1,5 +1,7 @@
 package main.view.form.adapter;
 
+import javafx.event.ActionEvent;
+import javafx.scene.control.ButtonBase;
 import main.localization.Loc;
 import main.model.Status;
 import main.model.insurance.Insurance;
@@ -19,22 +21,24 @@ public abstract class InsuranceAdapter<T extends Insurance>
 {
 
     private FormLabelNode customerNode;
-
     private FormValueNode amount;
-
     private FormValueNode desc;
-
     private FormValueNode premium;
-
     private FormChoiceNode status;
+    private FormValueNode deductible;
 
     private Person customer;
-
     private boolean editMode = false;
-
     private T insurance = null;
 
-    private FormValueNode deductible;
+    protected ButtonBase callBackEvent = new ButtonBase()
+    {
+        @Override
+        public void fire()
+        {
+            fireEvent(new ActionEvent());
+        }
+    };
 
     public InsuranceAdapter(Person customer, T insurance)
     {

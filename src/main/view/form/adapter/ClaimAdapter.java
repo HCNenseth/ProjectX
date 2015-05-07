@@ -1,5 +1,7 @@
 package main.view.form.adapter;
 
+import javafx.event.ActionEvent;
+import javafx.scene.control.ButtonBase;
 import main.config.Config;
 import main.localization.Loc;
 import main.model.Status;
@@ -34,6 +36,15 @@ public class ClaimAdapter implements Formable<Claim>
     private Insurance insurance;
     private Claim claim;
     private boolean editMode = false;
+
+    private ButtonBase callBackEvent = new ButtonBase()
+    {
+        @Override
+        public void fire()
+        {
+            fireEvent(new ActionEvent());
+        }
+    };
 
     // edit constructor
     public ClaimAdapter(Claim claim)

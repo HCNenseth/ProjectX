@@ -14,16 +14,6 @@ import java.util.function.Consumer;
  */
 public interface Formable<T extends Model>
 {
-    // TODO replace this bad event object with a bit more abstract.
-    ButtonBase callBackEvent = new ButtonBase()
-    {
-        @Override
-        public void fire()
-        {
-            fireEvent(new ActionEvent());
-        }
-    };
-
     List<FormNode> getNodes();
     void callback();
     void setOnDoneAction(Consumer<T> c);

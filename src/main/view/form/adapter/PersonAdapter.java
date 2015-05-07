@@ -1,5 +1,7 @@
 package main.view.form.adapter;
 
+import javafx.event.ActionEvent;
+import javafx.scene.control.ButtonBase;
 import main.config.Config;
 import main.localization.Loc;
 import main.model.Status;
@@ -31,6 +33,15 @@ public class PersonAdapter implements Formable<Person>
     private FormValueNode phoneNumber;
     private FormValueNode email;
     private FormChoiceNode status;
+
+    ButtonBase callBackEvent = new ButtonBase()
+    {
+        @Override
+        public void fire()
+        {
+            fireEvent(new ActionEvent());
+        }
+    };
 
     private Person person;
 
