@@ -1,5 +1,6 @@
 package main.model.claim;
 
+import javafx.scene.image.Image;
 import main.localization.Loc;
 import main.model.FullTextSearch;
 import main.model.Model;
@@ -9,6 +10,7 @@ import main.model.person.Person;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.List;
 
 /**
  * Main claim class.
@@ -28,6 +30,7 @@ public abstract class Claim implements Serializable, FullTextSearch, Model {
     private String contacts;
     private double amount;
     private double deductible;
+    private List<Image> images;
 
     private PaymentStatus paymentStatus;
     private Status status;
@@ -60,6 +63,7 @@ public abstract class Claim implements Serializable, FullTextSearch, Model {
         amount = cb.getAmount();
         deductible = cb.getDeductible();
         paymentStatus = cb.getPaymentStatus();
+        images = cb.getImages();
     }
 
     /* Setters */

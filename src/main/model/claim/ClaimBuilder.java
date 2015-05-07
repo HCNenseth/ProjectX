@@ -1,10 +1,12 @@
 package main.model.claim;
 
+import javafx.scene.image.Image;
 import main.model.Status;
 import main.model.insurance.Insurance;
 import main.model.person.Person;
 
 import java.time.LocalDate;
+import java.util.List;
 
 /**
  * Created by HansPetter on 06.05.2015.
@@ -22,6 +24,7 @@ public abstract class ClaimBuilder<T, E>  {
     private String contacts = null;
     private double amount = 0;
     private double deductible = 0;
+    private List<Image> images;
 
     private Status status = Status.INCOMPLETE;
 
@@ -33,6 +36,12 @@ public abstract class ClaimBuilder<T, E>  {
     }
 
     /* Setters */
+
+    public T addImage(Image image)
+    {
+        images.add(image);
+        return (T) this;
+    }
 
     public T amount(double amount)
     {
@@ -101,6 +110,11 @@ public abstract class ClaimBuilder<T, E>  {
     public LocalDate getClaimDate()
     {
         return claimDate;
+    }
+
+    public List<Image> getImages()
+    {
+        return images;
     }
 
     public Status getStatus()

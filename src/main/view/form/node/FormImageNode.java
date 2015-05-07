@@ -13,25 +13,17 @@ import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
-/**
- * Not finished yet.
- * Doh..
- */
 public class FormImageNode extends FormNode<Image> {
 
     private Image image;
-    private Button load;
+    private Button loadButton;
     private FileChooser fileChooser;
-
     private String key;
     private String filename;
     private String error;
     private Label keyLabel;
     private Label errorLabel;
-    private List<String> extensions = new ArrayList<>();
 
     public static class Builder
     {
@@ -39,6 +31,7 @@ public class FormImageNode extends FormNode<Image> {
         private boolean required = false;
         private String key = "";
         private String loadText = Loc.c("button_load");
+        private Image image = null;
 
         public Builder required(boolean required)
         {
@@ -58,9 +51,15 @@ public class FormImageNode extends FormNode<Image> {
             return this;
         }
 
-        public Builder setLoadText(String loadText)
+        public Builder loadText(String loadText)
         {
             this.loadText = loadText;
+            return this;
+        }
+
+        public Builder image(Image image)
+        {
+            this.image = image;
             return this;
         }
 
@@ -74,18 +73,15 @@ public class FormImageNode extends FormNode<Image> {
     {
         error = builder.error;
         key = builder.key;
-
-
+        image = builder.image;
         setRequired(builder.required);
-
         keyLabel = new Label(builder.key + ":");
-
         errorLabel = new Label(error);
         errorLabel.setTextFill(Color.RED);
         errorLabel.setVisible(false);
 
-        load = new Button(builder.loadText);
-        load.setOnAction(e -> initFileChooser());
+        loadButton = new Button(builder.loadText);
+        loadButton.setOnAction(e -> initFileChooser());
 
     }
 
@@ -114,31 +110,31 @@ public class FormImageNode extends FormNode<Image> {
 
     @Override
     public Label getKey() {
-        return null;
+        return keyLabel;
     }
 
     @Override
     public Label getError() {
-        return null;
+        return errorLabel;
     }
 
     @Override
     public Node getNode() {
-        return null;
+        return loadButton;
     }
 
     @Override
     public Type getType() {
-        return null;
+        return Type.IMAGE;
     }
 
     @Override
     public String getValue() {
-        return null;
+        return filename;
     }
 
     @Override
     public Image getData() {
-        return null;
+        return image;
     }
 }
