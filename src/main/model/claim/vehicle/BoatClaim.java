@@ -11,16 +11,16 @@ import java.time.LocalDate;
 
 public class BoatClaim extends Claim {
 
-    private Type type;
+    private ClaimType type;
 
-    public enum Type {
+    public enum ClaimType {
         A(Loc.c("claim_boat_a")),
         B(Loc.c("claim_boat_b")),
         C(Loc.c("claim_boat_c"));
 
         String value;
 
-        Type(String value){ this.value = value; }
+        ClaimType(String value){ this.value = value; }
 
         public String getValue(){ return value; }
 
@@ -30,13 +30,19 @@ public class BoatClaim extends Claim {
 
     public static class Builder extends ClaimBuilder<Builder, BoatClaim> {
 
-        private Type type;
+        private ClaimType type;
 
-        public Builder(Person customer, Insurance insurance, LocalDate accidentDate, Type type)
+        public Builder(Person customer, Insurance insurance)
         {
-            super(customer, insurance, accidentDate);
-            this.type = type;
+            super(customer, insurance);
         }
+
+        public Builder type(ClaimType type)
+        {
+            this.type = type;
+            return this;
+        }
+
 
         @Override
         public BoatClaim build() {

@@ -17,7 +17,7 @@ public abstract class ClaimBuilder<T, E>  {
     private Person customer;
     private Insurance insurance;
 
-    private LocalDate accidentDate = null;
+    private LocalDate dateOfDamages = null;
     private LocalDate claimDate = LocalDate.now();
 
     private String desc = null;
@@ -28,11 +28,10 @@ public abstract class ClaimBuilder<T, E>  {
 
     private Status status = Status.INCOMPLETE;
 
-    public ClaimBuilder(Person customer, Insurance insurance, LocalDate accidentDate)
+    public ClaimBuilder(Person customer, Insurance insurance)
     {
         this.customer = customer;
         this.insurance = insurance;
-        this.accidentDate = accidentDate;
     }
 
     /* Setters */
@@ -73,6 +72,11 @@ public abstract class ClaimBuilder<T, E>  {
         return (T)this;
     }
 
+    public T dateOfDamages(LocalDate dateOfDamages)
+    {
+        this.dateOfDamages = dateOfDamages;
+        return (T) this;
+    }
     /* Getters */
 
     public Person getCustomer()
@@ -102,9 +106,9 @@ public abstract class ClaimBuilder<T, E>  {
         return desc;
     }
 
-    public LocalDate getAccidentDate()
+    public LocalDate getDateOfDamages()
     {
-        return accidentDate;
+        return dateOfDamages;
     }
 
     public LocalDate getClaimDate()

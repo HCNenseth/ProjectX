@@ -1,5 +1,6 @@
 package main.model.claim.travel;
 
+import main.localization.Loc;
 import main.model.claim.Claim;
 import main.model.claim.ClaimBuilder;
 import main.model.insurance.Insurance;
@@ -11,16 +12,45 @@ import java.time.LocalDate;
 public class TravelClaim extends Claim {
 
     private Travel.Continent continent;
+    private ClaimType type;
+
+    public enum ClaimType {
+        A(Loc.c("claim_travel_a")),
+        B(Loc.c("claim_travel_b")),
+        C(Loc.c("claim_travel_c"));
+
+        String value;
+
+        ClaimType(String value){ this.value = value; }
+
+        public String getValue() { return value; }
+
+        @Override
+        public String toString() { return value; }
+
+    }
 
     public static class Builder extends ClaimBuilder<Builder, TravelClaim>
     {
 
         private Travel.Continent continent;
+        private ClaimType type = null;
 
-        public Builder(Person customer, Insurance insurance, LocalDate accidentDate, Travel.Continent continent)
+        public Builder(Person customer, Insurance insurance)
         {
-            super(customer, insurance, accidentDate);
+            super(customer, insurance);
+        }
+
+        public Builder continent(Travel.Continent continent)
+        {
             this.continent = continent;
+            return this;
+        }
+
+        public Builder type(ClaimType type)
+        {
+            this.type = type;
+            return this;
         }
 
         @Override
@@ -33,6 +63,7 @@ public class TravelClaim extends Claim {
     {
         super(builder);
         continent = builder.continent;
+        type = builder.type;
     }
 
     @Override
