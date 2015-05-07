@@ -5,6 +5,7 @@ import javafx.scene.input.KeyCombination;
 import main.controller.Mediator;
 import main.controller.Payload;
 import main.controller.Signal;
+import main.controller.StatisticsController;
 import main.localization.Loc;
 import main.preference.Pref;
 import main.view.Resources;
@@ -58,8 +59,16 @@ public class MenuBar extends javafx.scene.control.MenuBar
                 new Payload(main.controller.MenuBar.Type.CLOSE)));
 
         customerStatistics = new MenuItem(Loc.c("menu_customer_statistics"));
+        customerStatistics.setOnAction(e -> Mediator.inst.router(Signal.STATISTICS,
+                new Payload(StatisticsController.Type.PERSON)));
+
         insuranceStatistics = new MenuItem(Loc.c("menu_insurance_statistics"));
+        insuranceStatistics.setOnAction(e -> Mediator.inst.router(Signal.STATISTICS,
+                new Payload(StatisticsController.Type.INSURANCE)));
+
         claimStatistics = new MenuItem(Loc.c("menu_claim_statistics"));
+        claimStatistics.setOnAction(e -> Mediator.inst.router(Signal.STATISTICS,
+                new Payload(StatisticsController.Type.CLAIM)));
 
         customer = new MenuItem(Loc.c("customer"));
         customer.setOnAction(e -> Mediator.inst.router(Signal.FILE,

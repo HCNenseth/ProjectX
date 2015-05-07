@@ -10,16 +10,10 @@ import main.view.table.Table;
 /**
  * Created by alex on 4/24/15.
  */
-public class SearchResultView
+public class SearchResultView extends StandardGridPane
 {
-    private StandardGridPane gp;
     private int rowNum = 0;
     private int headerSize = 16;
-
-    public SearchResultView()
-    {
-        gp = new StandardGridPane(1);
-    }
 
     public void addTable(Table<?> table, String label)
     {
@@ -28,19 +22,18 @@ public class SearchResultView
 
         Label l = new Label(label);
         l.setFont(new Font(headerSize));
-        gp.add(l, 0, rowNum++);
-        gp.add(table, 0, rowNum++);
+        add(l, 0, rowNum++);
+        add(table, 0, rowNum++);
     }
 
-    public GridPane getNode()
+    @Override
+    public StandardGridPane getNode()
     {
         if (rowNum == 0) {
             Label label = new Label(Loc.c("no_results"));
             label.setFont(new Font(headerSize));
-            gp.add(label, 0, 0);
-            return gp;
-        } else {
-            return gp;
+            add(label, 0, 0);
         }
+        return this;
     }
 }

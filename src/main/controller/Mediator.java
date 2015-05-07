@@ -24,6 +24,9 @@ public enum Mediator
             case REPORT:
                 ReportController.view();
                 break;
+            case STATISTICS:
+                StatisticsController.view(p);
+                break;
             default:
                 throw new IllegalStateException("Unknown signal type");
         }

@@ -6,7 +6,7 @@ import javafx.scene.layout.GridPane;
 /**
  * Created by alex on 4/30/15.
  */
-public class StandardGridPane extends GridPane
+public abstract class StandardGridPane extends GridPane
 {
     private int vgap = 5, hgap = 5;
     private int key = 20, value = 80;
@@ -44,4 +44,6 @@ public class StandardGridPane extends GridPane
         mainColumn.setPercentWidth(100);
         getColumnConstraints().add(0, mainColumn);
     }
+
+    public abstract StandardGridPane getNode();
 }
