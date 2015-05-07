@@ -1,6 +1,8 @@
 package main.view.form.adapter;
 
+import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonBase;
 import main.controller.Mediator;
 import main.controller.Payload;
 import main.controller.Signal;
@@ -23,6 +25,16 @@ public class SearchAdapter implements Formable<Search>
 {
     private FormValueNode input;
     private Search search;
+
+    private ButtonBase callBackEvent = new ButtonBase()
+    {
+        @Override
+        public void fire()
+        {
+            fireEvent(new ActionEvent());
+        }
+    };
+
 
     public SearchAdapter()
     {

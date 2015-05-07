@@ -1,5 +1,7 @@
 package main.view.form.adapter;
 
+import javafx.event.ActionEvent;
+import javafx.scene.control.ButtonBase;
 import main.localization.Loc;
 import main.model.Status;
 import main.model.insurance.Insurance;
