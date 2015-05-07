@@ -8,34 +8,30 @@ import main.view.StandardGridPane;
 /**
  * Created by HansPetter on 30.04.2015.
  */
-public class AboutView
+public class AboutView extends StandardGridPane
 {
-
-    private StandardGridPane gp;
     private int rowNum = 0;
 
     public AboutView()
     {
-        gp = new StandardGridPane();
-
         initAboutFields();
     }
 
     private void initAboutFields()
     {
 
-        gp.add(new Label(Config.APP_NAME + " \t " + Loc.c("version")), 0, rowNum++);
+        add(new Label(Config.APP_NAME + " \t " + Loc.c("version")), 0, rowNum++);
 
         addSpace(5);
 
-        gp.add(new Label(Loc.c("made_by")), 0, rowNum++);
-        gp.add(new Label("Alexander Skjolden"), 0, rowNum++);
-        gp.add(new Label("Hans Christian Nenseth"), 0, rowNum++);
-        gp.add(new Label("Hans Petter Osvold"), 0, rowNum++);
+        add(new Label(Loc.c("made_by")), 0, rowNum++);
+        add(new Label("Alexander Skjolden"), 0, rowNum++);
+        add(new Label("Hans Christian Nenseth"), 0, rowNum++);
+        add(new Label("Hans Petter Osvold"), 0, rowNum++);
 
         addSpace(5);
 
-        gp.add(new Label(Loc.c("repository") + " \t " + Loc.c("repository_url")), 0, rowNum++);
+        add(new Label(Loc.c("repository") + " \t " + Loc.c("repository_url")), 0, rowNum++);
 
     }
 
@@ -47,9 +43,6 @@ public class AboutView
         }
     }
 
-    public StandardGridPane getNode()
-    {
-        return gp;
-    }
+    public StandardGridPane getNode() { return this; }
 }
 

@@ -1,4 +1,4 @@
-package main.view.form.adapter;
+package main.view.form.adapter.insurance;
 
 import javafx.event.ActionEvent;
 import javafx.scene.control.ButtonBase;

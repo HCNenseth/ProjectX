@@ -1,4 +1,4 @@
-package main.view.concrete;
+package main.view.concrete.insurance;
 
 import javafx.scene.control.Label;
 import main.localization.Loc;

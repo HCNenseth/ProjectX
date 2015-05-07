@@ -14,18 +14,12 @@ import main.view.StandardGridPane;
 import java.util.List;
 
 /**
- * Created by alex on 5/7/15.
+ * ReportView.java
  */
-public class ReportView
+public class ReportView extends StandardGridPane
 {
-    private StandardGridPane gp;
     private int rowNum = 0;
     private int headerSize = 16;
-
-    public ReportView()
-    {
-        gp = new StandardGridPane();
-    }
 
     public void injectCustomerData(List<Person> personList)
     {
@@ -191,19 +185,19 @@ public class ReportView
     {
         Label label = new Label(string);
         label.setFont(new Font(headerSize));
-        gp.add(label, 0, rowNum++, 2, 1);
+        add(label, 0, rowNum++, 2, 1);
         addColSpan(new Separator());
     }
 
     private void addColSpan(Node node)
     {
-        gp.add(node, 0, rowNum++, 2, 1);
+        add(node, 0, rowNum++, 2, 1);
     }
 
-    private void addKey(String string) { gp.add(new Label(string), 0, rowNum); }
+    private void addKey(String string) { add(new Label(string), 0, rowNum); }
 
-    private void addValue(String string) { gp.add(new Label(string), 1, rowNum++); }
+    private void addValue(String string) { add(new Label(string), 1, rowNum++); }
 
-    public StandardGridPane getNode() { return gp; }
+    public StandardGridPane getNode() { return this; }
 
 }

@@ -1,6 +1,7 @@
-package main.view.concrete;
+package main.view.concrete.insurance;
 
 import main.model.insurance.travel.Travel;
+import main.view.concrete.insurance.InsuranceView;
 
 /**
  * Created by alex on 4/28/15.
