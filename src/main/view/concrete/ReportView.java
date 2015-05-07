@@ -1,6 +1,8 @@
 package main.view.concrete;
 
+import javafx.scene.Node;
 import javafx.scene.control.Label;
+import javafx.scene.control.Separator;
 import javafx.scene.text.Font;
 import main.localization.Loc;
 import main.model.claim.Claim;
@@ -45,6 +47,7 @@ public class ReportView
                         .mapToInt(p -> p.getClaims().size())
                         .average()
                         .getAsDouble()));
+
     }
 
     public void injectInsuranceData(List<Insurance> insuranceList)
@@ -181,6 +184,7 @@ public class ReportView
 
         addKey(Loc.c("total_claims_count"));
         addValue(String.format("%d", claimList.size()));
+
     }
 
     private void addHeader(String string)
@@ -188,6 +192,12 @@ public class ReportView
         Label label = new Label(string);
         label.setFont(new Font(headerSize));
         gp.add(label, 0, rowNum++, 2, 1);
+        addColSpan(new Separator());
+    }
+
+    private void addColSpan(Node node)
+    {
+        gp.add(node, 0, rowNum++, 2, 1);
     }
 
     private void addKey(String string) { gp.add(new Label(string), 0, rowNum); }
