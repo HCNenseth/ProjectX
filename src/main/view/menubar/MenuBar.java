@@ -106,11 +106,11 @@ public class MenuBar extends javafx.scene.control.MenuBar
                 new SeparatorMenuItem(),
                 fileRestart,
                 fileExit);
-        editMenu.getItems().addAll(themeSubMenu, languageSubMenu);
+        //editMenu.getItems().addAll(themeSubMenu, languageSubMenu);
         newMenu.getItems().addAll(search, customer);
         statisticsMenu.getItems().addAll(statistics);
         aboutMenu.getItems().add(aboutUs);
 
-        getMenus().addAll(fileMenu, newMenu, editMenu, statisticsMenu, aboutMenu);
+        getMenus().addAll(fileMenu, newMenu /*, editMenu */, statisticsMenu, aboutMenu);
     }
 }
