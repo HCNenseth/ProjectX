@@ -22,6 +22,9 @@ public class SearchResultView
 
     public void addTable(Table<?> table, String label)
     {
+        // if table is empty - return.
+        if (table.getItems().size() == 0) { return; }
+
         Label l = new Label(label);
         l.setFont(new Font(headerSize));
         gp.add(l, 0, rowNum++);

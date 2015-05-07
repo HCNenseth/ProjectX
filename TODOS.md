@@ -3,7 +3,7 @@
 #Alex
 * Bonusutregning for kjøretøy forsikring.
 * Regexifisering.
-* Søkeresultater i samme bilde som søkeskjema.
+* DONE - Søkeresultater i samme bilde som søkeskjema.
 * Fullføre alle adaptere.
 * Claim adaptere
 * Statistikk layout

@@ -6,6 +6,7 @@ import main.controller.Payload;
 import main.controller.Signal;
 import main.localization.Loc;
 import main.model.Model;
+import main.model.search.Search;
 import main.validator.StringMatcher;
 import main.view.form.Formable;
 import main.view.form.node.FormNode;
@@ -18,9 +19,10 @@ import java.util.function.Consumer;
 /**
  * Created by alex on 4/24/15.
  */
-public class SearchAdapter implements Formable<Model>
+public class SearchAdapter implements Formable<Search>
 {
     private FormValueNode input;
+    private Search search;
 
     public SearchAdapter()
     {
@@ -41,14 +43,14 @@ public class SearchAdapter implements Formable<Model>
 
     public void callback()
     {
-        Mediator.inst.router(Signal.SEARCH,
-                new Payload(input.getValue()));
+        search = new Search(input.getValue());
+        callBackEvent.fire();
     }
 
     @Override
-    public void setOnDoneAction(Consumer<Model> c)
+    public void setOnDoneAction(Consumer<Search> s)
     {
-        callBackEvent.setOnAction(e -> c.accept(null));
+        callBackEvent.setOnAction(e -> s.accept(search));
     }
 
     @Override

@@ -1,9 +1,11 @@
 package main.view.form;
 
 import javafx.geometry.Insets;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.Priority;
 import main.localization.Loc;
 import main.view.form.node.FormNode;
@@ -72,8 +74,18 @@ public class Form extends GridPane
     public GridPane getForm() {
         addRow(rowNum++);
 
-        add(submit, 1, rowNum);
+        add(submit, 1, rowNum++);
+
         return this;
+    }
+
+    /**
+     * Make possible to return data to form, eg after validate callback.
+     * @param node - any JavaFX node.
+     */
+    public void setCallbackData(Node node)
+    {
+        add(node, 0, rowNum, 3, 1);
     }
 
     /**
