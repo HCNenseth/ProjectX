@@ -1,5 +1,6 @@
 package main.model.claim.vehicle;
 
+import javafx.scene.image.Image;
 import main.localization.Loc;
 import main.model.Model;
 import main.model.claim.Claim;
@@ -12,6 +13,7 @@ import java.time.LocalDate;
 public class CarClaim extends Claim {
 
     private Type type;
+    private Image damageReport; // skademeldingsskjema
 
     public enum Type {
         A(Loc.c("claim_car_a")),
@@ -31,6 +33,7 @@ public class CarClaim extends Claim {
     public static class Builder extends ClaimBuilder<Builder, CarClaim> {
 
         private Type type;
+        private Image damageReport;
 
         public Builder(Person customer, Insurance insurance, LocalDate accidentDate) {
             super(customer, insurance, accidentDate);
@@ -39,6 +42,12 @@ public class CarClaim extends Claim {
         public Builder type(Type type)
         {
             this.type = type;
+            return this;
+        }
+
+        public Builder damageReport(Image damageReport)
+        {
+            this.damageReport = damageReport;
             return this;
         }
 
