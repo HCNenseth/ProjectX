@@ -4,6 +4,12 @@ import javafx.scene.image.Image;
 import main.localization.Loc;
 import main.model.FullTextSearch;
 import main.model.Model;
+import main.config.Config;
+import main.localization.Loc;
+import main.model.FullTextSearch;
+import main.model.Model;
+import main.model.Storage;
+import main.model.person.Person;
 import main.model.Status;
 import main.model.insurance.Insurance;
 import main.model.person.Person;
@@ -158,7 +164,10 @@ public abstract class Claim implements Serializable, FullTextSearch, Model {
         return lastEdited;
     }
 
-    public Status getStatus() { return status; }
+    public Status getStatus()
+    {
+        return status;
+    }
 
     public PaymentStatus getPaymentStatus()
     {
@@ -180,8 +189,17 @@ public abstract class Claim implements Serializable, FullTextSearch, Model {
         return amount;
     }
 
-    public double getDeductible() { return deductible; }
+    public double getDeductible()
+    {
+        return deductible;
+    }
 
+    public static void saveNew(Claim claim)
+    {
+        ((List<Claim>) Storage.getInstance().get(Config.CLAIMS)).add(claim);
+    }
+
+    @Override
     public boolean query(String value)
     {
         return (desc != null && desc.contains(value));

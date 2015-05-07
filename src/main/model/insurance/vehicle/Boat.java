@@ -3,10 +3,8 @@ package main.model.insurance.vehicle;
 import main.localization.Loc;
 import main.model.person.Person;
 import main.model.insurance.InsuranceType;
-import main.model.insurance.InsuranceBuilder;
 
 import java.io.Serializable;
-import java.time.LocalDate;
 
 public class Boat extends Vehicle implements Serializable
 {
@@ -40,33 +38,21 @@ public class Boat extends Vehicle implements Serializable
         public String getValue() { return value; }
     }
 
-    public static class Builder extends InsuranceBuilder<Builder, Boat>
+    public static class Builder extends VehicleBuilder<Builder>
     {
-        private String licencePlate;
-
-        private Person owner = null;
-        private int modelYear = 2000;
-        private LocalDate registration = null;
         private int length = 0;
-        private int horsePower = 0;
         private Propulsion propulsion = Propulsion.A;
         private Type type = Type.A;
 
         public Builder(Person customer, String licencePlate)
         {
+            super.licensePlate(licencePlate);
             super.customer(customer);
-            this.licencePlate = licencePlate;
         }
 
         public Builder length(int val)
         {
             length = val;
-            return this;
-        }
-
-        public Builder horsePower(int val)
-        {
-            horsePower = val;
             return this;
         }
 
@@ -82,18 +68,6 @@ public class Boat extends Vehicle implements Serializable
             return this;
         }
 
-        public Builder owner(Person val)
-        {
-            owner = val;
-            return this;
-        }
-
-        public Builder registration(LocalDate date)
-        {
-            registration = date;
-            return this;
-        }
-
         public Boat build()
         {
             return new Boat(this);
@@ -104,52 +78,29 @@ public class Boat extends Vehicle implements Serializable
     private Boat(Builder builder)
     {
         super(builder);
-        setOwner(builder.owner);
-        setLicencePlate(builder.licencePlate);
-        setModelYear(builder.modelYear);
-        setRegistration(builder.registration);
-        setHorsePower(builder.horsePower);
-
         length = builder.length;
         type = builder.type;
         propulsion = builder.propulsion;
     }
 
+    /* GETTERS */
 
-    public int getLength()
-    {
-        return length;
-    }
+    public int getLength() { return length; }
 
-    public void setLength(int length)
-    {
-        this.length = length;
-    }
+    public Type getType() { return type; }
 
-    public void setType(Type type)
-    {
-        this.type = type;
-    }
+    public Propulsion getPropulsion() { return propulsion; }
 
-    public String getType()
-    {
-        return type.getValue();
-    }
+    /* SETTERS */
+    public void setLength(int length) { this.length = length; }
 
-    public String getPropulsion()
-    {
-        return propulsion.getValue();
-    }
+    public void setType(Type type) { this.type = type; }
 
-    public void setPropulsion(Propulsion propulsion)
-    {
-        this.propulsion = propulsion;
-    }
+    public void setPropulsion(Propulsion propulsion) { this.propulsion = propulsion; }
 
-    public InsuranceType identify()
-    {
-        return InsuranceType.BOAT;
-    }
+    /* OVERRIDES */
+    @Override
+    public InsuranceType identify() { return InsuranceType.BOAT; }
 
     @Override
     public boolean query(String value)
@@ -160,8 +111,5 @@ public class Boat extends Vehicle implements Serializable
     }
 
     @Override
-    public String toString()
-    {
-        return super.toString();
-    }
+    public String toString() { return super.toString(); }
 }

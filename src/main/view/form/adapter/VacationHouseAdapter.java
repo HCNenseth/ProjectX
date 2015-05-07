@@ -2,6 +2,7 @@ package main.view.form.adapter;
 
 import main.localization.Loc;
 import main.model.Status;
+import main.model.insurance.Insurance;
 import main.model.insurance.property.House;
 import main.model.insurance.property.VacationHouse;
 import main.model.person.Person;
@@ -121,21 +122,23 @@ public class VacationHouseAdapter extends InsuranceAdapter<VacationHouse> implem
             i.setMaterial((VacationHouse.Material) material.getData());
             i.setSquareMeter(Integer.parseInt(squareMeters.getValue()));
             i.setYear(Integer.parseInt(yearBuilt.getValue()));
-            i.setPremium(Integer.parseInt(getPremium()));
-            i.setAmount(Integer.parseInt(getAmount()));
+            i.setPremium(getPremium());
+            i.setAmount(getAmount());
             i.setStatus(getStatus());
         } else {
-            setInsurance(new VacationHouse.Builder(getCustomer(),
+            VacationHouse insurance = new VacationHouse.Builder(getCustomer(),
                     street.getValue(), postalCode.getValue())
                     .city(city.getValue())
                     .type((VacationHouse.Type) type.getData())
                     .material((VacationHouse.Material) material.getData())
                     .squareMeter(Integer.parseInt(squareMeters.getValue()))
                     .year(Integer.parseInt(yearBuilt.getValue()))
-                    .premium(Integer.parseInt(getPremium()))
-                    .amount(Integer.parseInt(getAmount()))
+                    .premium(getPremium())
+                    .amount(getAmount())
                     .status(getStatus())
-                    .build());
+                    .build();
+            setInsurance(insurance);
+            Insurance.saveNew(insurance);
         }
         callBackEvent.fire();
     }

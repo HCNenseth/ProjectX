@@ -75,14 +75,21 @@ public abstract class Insurance implements
         return desc;
     }
 
-    public void setPremium(int val)
+    public void setDesc(String desc) { this.desc = desc; }
+
+    public void setPremium(double val)
     {
         premium = val;
     }
 
-    public void setAmount(int val)
+    public void setAmount(double val)
     {
         amount = val;
+    }
+
+    public void setDeductible(double val)
+    {
+        deductible = val;
     }
 
     public void setStatus(Status s)
@@ -103,7 +110,6 @@ public abstract class Insurance implements
     public static void saveNew(Insurance insurance)
     {
         ((List<Insurance>) Storage.getInstance().get(Config.INSURANCES)).add(insurance);
-        insurance.getCustomer().addInsurance(insurance);
     }
 
     @Override

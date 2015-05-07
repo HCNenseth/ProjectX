@@ -3,6 +3,7 @@ package main.view.concrete;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Font;
+import main.localization.Loc;
 import main.view.StandardGridPane;
 import main.view.table.Table;
 
@@ -33,6 +34,13 @@ public class SearchResultView
 
     public GridPane getNode()
     {
-        return gp;
+        if (rowNum == 0) {
+            Label label = new Label(Loc.c("no_results"));
+            label.setFont(new Font(headerSize));
+            gp.add(label, 0, 0);
+            return gp;
+        } else {
+            return gp;
+        }
     }
 }

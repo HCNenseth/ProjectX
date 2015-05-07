@@ -34,19 +34,19 @@ public abstract class InsuranceBuilder<T, E>
         return (T)this;
     }
 
-    public T amount(int amount)
+    public T amount(double amount)
     {
         this.amount = amount;
         return (T)this;
     }
 
-    public T premium(int premium)
+    public T premium(double premium)
     {
         this.premium = premium;
         return (T)this;
     }
 
-    public T deductible(int deductible)
+    public T deductible(double deductible)
     {
         this.deductible = deductible;
         return (T)this;

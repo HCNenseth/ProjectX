@@ -60,6 +60,11 @@ public enum StringMatcher
         return baseDigit;
     }
 
+    public static String getFloat()
+    {
+        return baseFloat;
+    }
+
     public static String getBaseString()
     {
         return baseString;
@@ -80,15 +85,9 @@ public enum StringMatcher
         return regnr;
     }
 
-    /* public static String getStreetAddress()
-    {
-        return baseString + baseFloat;
-    }
-    */
-
     public static String getPostalCode()
     {
-        return baseFloat;
+        return year;
     }
 
     public static String getLiberation()

@@ -86,7 +86,7 @@ public class PersonAdapter implements Formable<Person>
         postalCode = new FormValueNode.Builder(Loc.c("postal_code"))
                 .value(editMode ? person.getPostalCode() : "")
                 .error(Loc.c("postal_code_error"))
-                .regex(StringMatcher.getDigit())
+                .regex(StringMatcher.getPostalCode())
                 .required(false)
                 .build();
 

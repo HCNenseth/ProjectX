@@ -2,6 +2,7 @@ package main.view.concrete;
 
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.Separator;
 import javafx.scene.control.ToolBar;
 import main.controller.ClaimController;
 import main.controller.InsuranceController;
@@ -62,6 +63,11 @@ public abstract class InsuranceView<T extends Insurance>
 
         gp.add(new Label(Loc.c("description")), 0, rowNum);
         gp.add(new Label(insurance.getDesc()), 1, rowNum++);
+
+        gp.add(new Label(Loc.c("status")), 0, rowNum);
+        gp.add(new Label(insurance.getStatus().getValue()), 1, rowNum++);
+
+        gp.add(new Separator(), 0, rowNum++, 2, 1);
     }
 
     protected void addClaimsTable()
