@@ -15,6 +15,8 @@ public class SearchResultView extends StandardGridPane
     private int rowNum = 0;
     private int headerSize = 16;
 
+    public SearchResultView() { super(1); }
+
     public void addTable(Table<?> table, String label)
     {
         // if table is empty - return.
