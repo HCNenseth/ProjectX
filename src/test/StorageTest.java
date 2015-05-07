@@ -7,6 +7,10 @@ package test;
 import main.config.Config;
 import main.model.Storage;
 import main.model.claim.Claim;
+import main.model.claim.property.PropertyClaim;
+import main.model.claim.travel.TravelClaim;
+import main.model.claim.vehicle.BoatClaim;
+import main.model.claim.vehicle.CarClaim;
 import main.model.insurance.InsuranceType;
 import main.model.insurance.Insurance;
 import main.model.insurance.property.House;
@@ -171,11 +175,11 @@ public class StorageTest
                 .owner(person2)
                 .build();
 
-        Claim claim1 = new Claim.Builder(person1, house1)
+        Claim claim1 = new PropertyClaim.Builder(person1, house1)
                 .contacts("WITNESS 1: 986 161 15")
-                .date(LocalDate.of(randInt(1985, 2014), randInt(1, 12), randInt(1, 28)))
-                .description("Car damage: total.")
-                .type(Claim.Type.A)
+                .dateOfDamages(LocalDate.of(randInt(1985, 2014), randInt(1, 12), randInt(1, 28)))
+                .desc("Car damage: total.")
+                .type(PropertyClaim.ClaimType.A)
                 .build();
 
         claims.add(claim1);
@@ -292,10 +296,10 @@ public class StorageTest
                         .build();
                 /* add some random claims */
                 for (int k = 0; k < randInt(0, 5); k++) {
-                    claims.add(new Claim.Builder(person, car)
-                            .date(LocalDate.of(randInt(1960,2014),
-                                    randInt(1,12), randInt(1,28)))
-                            .description("foobar")
+                    claims.add(new CarClaim.Builder(person, car)
+                            .dateOfDamages(LocalDate.of(randInt(1960, 2014),
+                                    randInt(1, 12), randInt(1, 28)))
+                            .desc("foobar")
                             .amount(randInt(1000, 12000))
                             .build());
                 }
@@ -316,10 +320,10 @@ public class StorageTest
                         .build();
                 /* add some random claims */
                 for (int k = 0; k < randInt(0, 5); k++) {
-                    claims.add(new Claim.Builder(person, boat)
-                            .date(LocalDate.of(randInt(1960,2014),
-                                    randInt(1,12), randInt(1,28)))
-                            .description("foobar")
+                    claims.add(new BoatClaim.Builder(person, boat)
+                            .dateOfDamages(LocalDate.of(randInt(1960, 2014),
+                                    randInt(1, 12), randInt(1, 28)))
+                            .desc("foobar")
                             .amount(randInt(1000, 12000))
                             .build());
                 }
@@ -340,10 +344,10 @@ public class StorageTest
                         .build();
                 /* add some random claims */
                 for (int k = 0; k < randInt(0, 5); k++) {
-                    claims.add(new Claim.Builder(person, house)
-                            .date(LocalDate.of(randInt(1960,2014),
-                                    randInt(1,12), randInt(1,28)))
-                            .description("foobar")
+                    claims.add(new PropertyClaim.Builder(person, house)
+                            .dateOfDamages(LocalDate.of(randInt(1960, 2014),
+                                    randInt(1, 12), randInt(1, 28)))
+                            .desc("foobar")
                             .amount(randInt(1000, 12000))
                             .build());
                 }
@@ -384,10 +388,10 @@ public class StorageTest
                         .build();
                 /* add some random claims */
                 for (int k = 0; k < randInt(0, 5); k++) {
-                    claims.add(new Claim.Builder(person, travel)
-                            .date(LocalDate.of(randInt(1960,2014),
-                                    randInt(1,12), randInt(1,28)))
-                            .description("foobar")
+                    claims.add(new TravelClaim.Builder(person, travel)
+                            .dateOfDamages(LocalDate.of(randInt(1960, 2014),
+                                    randInt(1, 12), randInt(1, 28)))
+                            .desc("foobar")
                             .amount(randInt(1000, 12000))
                             .build());
                 }

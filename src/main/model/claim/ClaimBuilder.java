@@ -126,10 +126,6 @@ public abstract class ClaimBuilder<T, E>  {
         return status;
     }
 
-    public Claim.PaymentStatus getPaymentStatus()
-    {
-        return getPaymentStatus();
-    }
 
     /* Abstract */
     public abstract E build();

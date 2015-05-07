@@ -69,7 +69,6 @@ public abstract class Claim implements Serializable, FullTextSearch, Model {
         contacts = cb.getContacts();
         amount = cb.getAmount();
         deductible = cb.getDeductible();
-        paymentStatus = cb.getPaymentStatus();
         images = cb.getImages();
     }
 
