@@ -7,7 +7,7 @@ import main.model.insurance.Insurance;
 import main.model.insurance.travel.Travel;
 import main.model.person.Person;
 
-import java.time.LocalDate;
+// TODO Override toString
 
 public class TravelClaim extends Claim {
 

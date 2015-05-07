@@ -29,7 +29,7 @@ public abstract class Claim implements Serializable, FullTextSearch, Model {
     private Insurance insurance;
 
     // must find a better name for this.
-    private LocalDate accidentDate;
+    private LocalDate dateOfDamages;
     private LocalDate claimDate;
     private LocalDate lastEdited = null;
 
@@ -63,7 +63,7 @@ public abstract class Claim implements Serializable, FullTextSearch, Model {
         reference = reference++;
         customer = cb.getCustomer();
         insurance = cb.getInsurance();
-        accidentDate = cb.getDateOfDamages();
+        dateOfDamages = cb.getDateOfDamages();
         claimDate = cb.getClaimDate();
         desc = cb.getDesc();
         contacts = cb.getContacts();
@@ -73,9 +73,9 @@ public abstract class Claim implements Serializable, FullTextSearch, Model {
     }
 
     /* Setters */
-    public void setAccidentDate(LocalDate accidentDate)
+    public void setDateOfDamages(LocalDate dateOfDamages)
     {
-        this.accidentDate = accidentDate;
+        this.dateOfDamages = dateOfDamages;
     }
 
     public void setDesc(String desc)
@@ -148,9 +148,9 @@ public abstract class Claim implements Serializable, FullTextSearch, Model {
         return insurance;
     }
 
-    public LocalDate getAccidentDate()
+    public LocalDate getDateOfDamages()
     {
-        return accidentDate;
+        return dateOfDamages;
     }
 
     public LocalDate getClaimDate()
@@ -220,7 +220,7 @@ public abstract class Claim implements Serializable, FullTextSearch, Model {
                 Loc.c("reference"), reference,
                 Loc.c("customer"), customer,
                 //Loc.c("insurance"), insurance.getReference(),   Remember to add a new "format-line" above.
-                Loc.c("accident_date"), accidentDate,
+                Loc.c("accident_date"), dateOfDamages,
                 Loc.c("claim_date"), claimDate,
                 Loc.c("last_edited"), lastEdited,
                 Loc.c("description"), desc,
