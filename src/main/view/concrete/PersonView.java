@@ -33,6 +33,7 @@ public class PersonView extends StandardGridPane
         if(drawn)
         {
             getChildren().clear();
+            rowNum = 0;
         }
 
         initButtonPanel();
