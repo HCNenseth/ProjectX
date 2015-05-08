@@ -19,16 +19,29 @@ public abstract class InsuranceView<T extends Insurance> extends StandardGridPan
 {
     private T insurance;
     protected int rowNum = 0;
+    private boolean drawn = false;
 
     public InsuranceView(T insurance)
     {
         this.insurance = insurance;
+        draw();
+    }
+
+    private void draw()
+    {
+        if(drawn)
+        {
+            getChildren().clear();
+            rowNum = 0;
+        }
 
         initButtonPanel();
         initInsuranceFields();
+        addClaimsTable();
+        drawn = true;
     }
 
-    public void initButtonPanel()
+    private void initButtonPanel()
     {
         ToolBar buttonPane = new ToolBar();
 
@@ -56,13 +69,16 @@ public abstract class InsuranceView<T extends Insurance> extends StandardGridPan
         Button editButton = new Button(Loc.c("edit"));
         editButton.setOnAction(e -> InsuranceController.edit(insurance));
 
-        buttonPane.getItems().addAll(b1, editButton);
+        Button refreshButton = new Button(Loc.c("refresh"));
+        refreshButton.setOnAction(e -> draw());
+
+        buttonPane.getItems().addAll(b1, editButton, refreshButton);
 
         add(buttonPane, 0, rowNum++, 2, 1);
     }
 
 
-    public void initInsuranceFields()
+    private void initInsuranceFields()
     {
         add(new Label(Loc.c("customer")), 0, rowNum);
         add(new Label(insurance.getCustomer().getName()), 1, rowNum++);
