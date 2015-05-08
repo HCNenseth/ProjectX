@@ -192,10 +192,7 @@ public abstract class Claim implements Serializable, FullTextSearch, Model {
         return deductible;
     }
 
-    public static void saveNew(Claim claim)
-    {
-        ((List<Claim>) Storage.getInstance().get(Config.CLAIMS)).add(claim);
-    }
+    public static void saveNew(Claim claim) {((List<Claim>) Storage.getInstance().get(Config.CLAIMS)).add(claim);}
 
     public abstract ClaimType identify();
 

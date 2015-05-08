@@ -74,6 +74,6 @@ public class CarClaim extends Claim {
 
     @Override
     public ModelType getModelType() {
-        return null;
+        return ModelType.CLAIM;
     }
 }
