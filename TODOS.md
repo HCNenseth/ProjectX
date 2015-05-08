@@ -4,11 +4,11 @@
 * Bonusutregning for kjøretøy forsikring.
 * Regexifisering.
 * *DONE - Søkeresultater i samme bilde som søkeskjema.*
-* Fullføre alle adaptere.
-* Claim adaptere
+* Fullføre alle adaptere (inkl. claims)
 * *DONE - Statistikk layout*
 * Implementere totalkunde som gir kunder med min 3 forsikringer 10% rabatt. 
 * *DONE- Rapporten*
+* Claim tabeller
 
 #HC
 * Løpenummer på alle typer.
@@ -29,7 +29,8 @@
 * Bilder i skademelding.
 * *Done - FormImageNode.*
 * *Done - FormTextNode.*
-* Toolbar -> editknappen helt til høyre.
+* Refresh *alle* fanekort
+* Toolbar -> (refresh + edit) knapp helt til høyre.
 
 # Free for all - Glemte oppgaver
 * Fjerne "Contents" forsikring og utvide "House+Vacation (property)" med innbo felt (ref oppgave beskrivelse)
@@ -46,4 +47,8 @@
     * selskapets totale forsikringspremieinntekter for en gitt forsikringstype i løpet av et år
     * selskapets forsikringspremieinntekter på en gitt forsikringskunde i løpet av kundeforholdet
 
+# Nice to have (bonus oppgaver)
+* Flyttbare faner!
+* Faneikoner (fra famfamfam kanskje)
+* Automatisk refresh av fanekort
 
