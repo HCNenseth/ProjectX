@@ -18,7 +18,7 @@
     * øking/minking av skademeldinger av en bestemt type innenfor en gitt tidsperiode
     * øking/minking av de totale erstatningskostnadene
     * øking/minking av erstatningskostnadene for en gitt skadetype innenfor en gitt tidsperiode
-type forsikringer rangert etter antall
+    * type forsikringer rangert etter antall
 * Finne åpne iconer.			
 * Claim views
 
