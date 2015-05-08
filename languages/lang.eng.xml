@@ -6,7 +6,7 @@
     <string name="menu_file_open">Open file</string>
     <string name="menu_file_save">Save</string>
     <string name="menu_file_save_as">Save as</string>
-    <string name="menu_file_exit">Exit</string>
+    <string name="menu_file_exit">E_xit</string>
     <string name="menu_group_edit">Edit</string>
     <string name="menu_group_statistics">Statistics</string>
     <string name="menu_customer_statistics">Customers</string>
@@ -14,8 +14,8 @@
     <string name="menu_claim_statistics">Claims</string>
     <string name="save_data_file_as">Save data file as</string>
     <string name="choose_data_file">Choose data file</string>
-    <string name="menu_group_about">_About</string>
-    <string name="menu_about">About</string>
+    <string name="menu_group_about">A_bout</string>
+    <string name="menu_about">_About</string>
     <string name="menu_report">Report</string>
 
     <!-- commons -->
@@ -48,7 +48,6 @@
     <string name="repository_url">https://github.com/HCNenseth/ProjectX</string>
     <string name="create_new_data_file">Create new data file</string>
     <string name="choose_data_file">Choose data file</string>
-
 
     <!-- headers -->
     <string name="new_car_insurance">New car insurance</string>
@@ -246,6 +245,5 @@
     <string name="average_house_insurance_claim">Average of claims per house insurance</string>
     <string name="average_vacation_house_insurance_claim">Average of claims per vacation house insurance</string>
     <string name="average_travel_insurance_claim">Average of claims per travel insurance</string>
-
 
 </language>
