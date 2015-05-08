@@ -19,16 +19,28 @@ public class PersonView extends StandardGridPane
     private Person person;
     private int cellGap = 5;
     private int rowNum = 0;
+    private boolean drawn = false;
 
     public PersonView(Person p)
     {
         this.person = p;
 
-        initButtonPanel();
-        initPersonFields();
+        draw();
     }
 
-    public void initButtonPanel()
+    private void draw()
+    {
+        if(drawn)
+        {
+            getChildren().clear();
+        }
+
+        initButtonPanel();
+        initPersonFields();
+        drawn = true;
+    }
+
+    private void initButtonPanel()
     {
         ToolBar buttonPane = new ToolBar();
 
@@ -56,12 +68,16 @@ public class PersonView extends StandardGridPane
         Button editButton = new Button(Loc.c("edit"));
         editButton.setOnAction(e -> PersonController.edit(person));
 
-        buttonPane.getItems().addAll(b1, b2, b3, b4, b5, editButton);
+        // refresh person
+        Button refreshButton = new Button(Loc.c("refresh"));
+        refreshButton.setOnAction(e -> draw());
+
+        buttonPane.getItems().addAll(b1, b2, b3, b4, b5, editButton, refreshButton);
 
         add(buttonPane, 0, rowNum++, 2, 1);
     }
 
-    public void initPersonFields()
+    private void initPersonFields()
     {
         int left = 0, right = 1;
 
