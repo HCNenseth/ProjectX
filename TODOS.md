@@ -21,6 +21,7 @@
 * Claim model
 * Språk -> skifte språk ned på splash screen nivå.  	(flag icons: famfamfam.com) 
 * Themevelger -> ned på splash screen nivå.
-* Bilder i skademelding	(FormImageNode).
-* FormTextNode.
+* Bilder i skademelding.
+* *Done - FormImageNode.*
+* *Done - FormTextNode.*
 * Toolbar -> editknappen helt til høyre.
