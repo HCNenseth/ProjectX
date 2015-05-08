@@ -14,7 +14,7 @@ import main.view.StandardGridPane;
 /**
  * Created by alex on 4/28/15.
  */
-public class ClaimView extends StandardGridPane
+public class ClaimView<T extends Claim> extends StandardGridPane
 {
     private int rowNum = 0;
     private Claim claim;
