@@ -82,8 +82,8 @@ public class BoatAdapter extends InsuranceAdapter<Boat> implements Formable<Boat
         }
 
         propulsion = new FormChoiceNode.Builder<>(Loc.c("boat_propulsion"), propulsionList )
-                .required(false)
                 .active(getEditMode() ? getInsurance().getPropulsion() : Boat.Propulsion.A)
+                .required(false)
                 .build();
 
         List<Enum> typeList = new ArrayList<>();
@@ -93,8 +93,8 @@ public class BoatAdapter extends InsuranceAdapter<Boat> implements Formable<Boat
         }
 
         type = new FormChoiceNode.Builder<>(Loc.c("boat_type"), typeList)
-                .required(false)
                 .active(getEditMode() ? getInsurance().getType() : Boat.Type.A)
+                .required(false)
                 .build();
 
     }

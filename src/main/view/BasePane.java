@@ -5,7 +5,6 @@ import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.text.Font;
-import main.view.concrete.SplashView;
 
 /**
  * Created by alex on 4/18/15.
