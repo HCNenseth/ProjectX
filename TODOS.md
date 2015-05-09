@@ -7,8 +7,8 @@
 * Fullføre alle adaptere (inkl. claims)
 * *DONE - Statistikk layout*
 * *DONE - Implementere totalkunde som gir kunder med min 3 forsikringer 10% rabatt.*
-* *DONE- Rapporten*
-* Claim tabeller
+* *DONE - Rapporten*
+* *DONE -Claim tabeller*
 
 #HC
 * Løpenummer på alle typer.
@@ -38,7 +38,7 @@
 * Utvide søk med kombinasjon av (n!):
     * forsikringstype
     * skadetype
-    * tid
+    * *DONE - tid*
 * Mer rapport data (copy paste)
     * selskapets totale utbetaling av erstatninger i løpet av et år
     * selskapets totale utbetaling av erstatninger for en gitt forsikringstype i løpet av et år

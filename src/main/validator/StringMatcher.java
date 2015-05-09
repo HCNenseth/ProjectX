@@ -10,7 +10,7 @@ public enum StringMatcher
     /**
      * Some simple rules. Edit here!
      */
-    private final static String baseString = "[\\w\\s\\-æøåØÆÅ].{2,20}";
+    private final static String baseString = "[\\w\\s\\-æøåØÆÅ@].{2,20}";
     private final static String baseFloat = "[0-9]+([\\\\,\\\\.][0-9]+)?";
     private final static String baseDigit = "\\d+";
     private final static String liberation = ".*";

@@ -67,7 +67,10 @@ public class StorageTest
     };
 
     public static final String[] domains = {
-            "email", "yahoo", "google", "hotmail", "outlook"
+            "email", "yahoo", "google", "hotmail", "outlook",
+            "accident", "waterdamage", "collition", "avalanche",
+            "hurricane", "cowtipping", "naturaldisaster", "volcano",
+            "flood", "weather"
     };
 
     public static final String[] streetType = {
@@ -315,7 +318,7 @@ public class StorageTest
                     claims.add(new CarClaim.Builder(person, car)
                             .dateOfDamages(LocalDate.of(randInt(1960, 2014),
                                     randInt(1, 12), randInt(1, 28)))
-                            .desc("foobar")
+                            .desc(randomDomain())
                             .amount(randInt(1000, 12000))
                             .build());
                 }
@@ -339,7 +342,7 @@ public class StorageTest
                     claims.add(new BoatClaim.Builder(person, boat)
                             .dateOfDamages(LocalDate.of(randInt(1960, 2014),
                                     randInt(1, 12), randInt(1, 28)))
-                            .desc("foobar")
+                            .desc(randomDomain())
                             .amount(randInt(1000, 12000))
                             .build());
                 }
@@ -363,7 +366,7 @@ public class StorageTest
                     claims.add(new PropertyClaim.Builder(person, house)
                             .dateOfDamages(LocalDate.of(randInt(1960, 2014),
                                     randInt(1, 12), randInt(1, 28)))
-                            .desc("foobar")
+                            .desc(randomDomain())
                             .amount(randInt(1000, 12000))
                             .build());
                 }
@@ -386,7 +389,7 @@ public class StorageTest
                     claims.add(new PropertyClaim.Builder(person, vacationHouse)
                             .dateOfDamages(LocalDate.of(randInt(1960, 2014),
                                     randInt(1, 12), randInt(1, 28)))
-                            .desc("foobar")
+                            .desc(randomDomain())
                             .amount(randInt(1000, 12000))
                             .build());
                 }
@@ -406,7 +409,7 @@ public class StorageTest
                     claims.add(new TravelClaim.Builder(person, travel)
                             .dateOfDamages(LocalDate.of(randInt(1960, 2014),
                                     randInt(1, 12), randInt(1, 28)))
-                            .desc("foobar")
+                            .desc(randomDomain())
                             .amount(randInt(1000, 12000))
                             .build());
                 }

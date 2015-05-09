@@ -60,7 +60,8 @@ public class InsuranceController
                 Resources.inst.getOtp().injectObservableTab(Loc.c("new_travel_insurance"),
                         f.getForm(), true);
                 return;
-            default: return;
+            default:
+                throw new IllegalStateException("Unknown Insurance type");
         }
     }
 
@@ -94,7 +95,8 @@ public class InsuranceController
                 Resources.inst.getOtp().injectObservableTab(Loc.c("travel_insurance"),
                         view.getNode(), i, true);
                 return;
-            default: return;
+            default:
+                throw new IllegalStateException("Unknown Insurance type");
         }
     }
 
@@ -129,7 +131,8 @@ public class InsuranceController
                 travelAdapter.setOnDoneAction(InsuranceController::view);
                 f.injectAdapter(travelAdapter);
                 break;
-            default: return;
+            default:
+                throw new IllegalStateException("Unknown Insurance type");
         }
 
         Resources.inst.getOtp().injectObservableTab(i.identify().getValue(),
