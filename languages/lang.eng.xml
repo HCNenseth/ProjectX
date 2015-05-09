@@ -24,6 +24,7 @@
     <string name="restart">Restart</string>
     <string name="new">New</string>
     <string name="edit">Edit</string>
+    <string name="refresh">Refresh</string>
     <string name="view">View</string>
     <string name="data_files">Data files (*.dat)</string>
     <string name="language">Language</string>
@@ -74,6 +75,8 @@
     <string name="incomplete">Incomplete</string>
 
     <!-- shared -->
+    <string name="true">True</string>
+    <string name="false">False</string>
     <string name="date">Date</string>
     <string name="description">Description</string>
     <string name="desc">Description</string>
@@ -122,6 +125,14 @@
     <string name="lastname">Lastname</string>
     <string name="lastname_error">Lastname must contain ...</string>
     <string name="date_of_birth">Date of birth</string>
+    <string name="number_of_insurances">Number of insurances</string>
+    <string name="number_of_claims">Number of claims</string>
+    <string name="total_customer">Total customer</string>
+    <string name="total_insurance_amount_sum">Insurances amount</string>
+    <string name="total_insurance_premium_sum">Insurances premium</string>
+    <string name="total_insurance_deductible_sum">Insurances deductible</string>
+    <string name="total_claims_amount_sum">Claims amount</string>
+    <string name="total_claims_deductible_sum">Claims deductible</string>
 
     <!-- car -->
     <string name="license_plate">License plate</string>

@@ -3,10 +3,14 @@ package main.view.concrete;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ToolBar;
+import javafx.scene.layout.ColumnConstraints;
+import javafx.scene.layout.GridPane;
+import main.config.Config;
 import main.controller.InsuranceController;
 import main.controller.PersonController;
 import main.controller.TableController;
 import main.localization.Loc;
+import main.model.Status;
 import main.model.insurance.InsuranceType;
 import main.model.person.Person;
 import main.view.StandardGridPane;
@@ -21,10 +25,10 @@ public class PersonView extends StandardGridPane
     private int rowNum = 0;
     private boolean drawn = false;
 
-    public PersonView(Person p)
+    public PersonView(Person person)
     {
-        this.person = p;
-
+        super(1);
+        this.person = person;
         draw();
     }
 
@@ -47,23 +51,28 @@ public class PersonView extends StandardGridPane
 
         // car
         Button b1 = new Button(Loc.c("car"));
-        b1.setOnAction(e -> InsuranceController.create(person, InsuranceType.CAR));
+        b1.setOnAction(e -> InsuranceController.create(person,
+                InsuranceType.CAR));
 
         // boat
         Button b2 = new Button(Loc.c("boat"));
-        b2.setOnAction(e -> InsuranceController.create(person, InsuranceType.BOAT));
+        b2.setOnAction(e -> InsuranceController.create(person,
+                InsuranceType.BOAT));
 
         // house
         Button b3 = new Button(Loc.c("house"));
-        b3.setOnAction(e -> InsuranceController.create(person, InsuranceType.HOUSE));
+        b3.setOnAction(e -> InsuranceController.create(person,
+                InsuranceType.HOUSE));
 
         // vacation house
         Button b4 = new Button(Loc.c("vacation_house"));
-        b4.setOnAction(e -> InsuranceController.create(person, InsuranceType.VACATION_HOUSE));
+        b4.setOnAction(e -> InsuranceController.create(person,
+                InsuranceType.VACATION_HOUSE));
 
         // travel
         Button b5 = new Button(Loc.c("travel"));
-        b5.setOnAction(e -> InsuranceController.create(person, InsuranceType.TRAVEL));
+        b5.setOnAction(e -> InsuranceController.create(person,
+                InsuranceType.TRAVEL));
 
         // edit person
         Button editButton = new Button(Loc.c("edit"));
@@ -73,59 +82,179 @@ public class PersonView extends StandardGridPane
         Button refreshButton = new Button(Loc.c("refresh"));
         refreshButton.setOnAction(e -> draw());
 
-        buttonPane.getItems().addAll(b1, b2, b3, b4, b5, editButton, refreshButton);
+        buttonPane.getItems().addAll(b1, b2, b3, b4, b5,
+                editButton, refreshButton);
 
         add(buttonPane, 0, rowNum++, 2, 1);
     }
 
     private void initPersonFields()
     {
-        int left = 0, right = 1;
+        GridPane innerGridPane = new GridPane();
+        int leftInnerRowNum = 0, rightInnerRowNum = 0;
+        int first = 0, second = 1, third = 2, fourth = 3;
+
+        ColumnConstraints keyColumn = new ColumnConstraints();
+        keyColumn.setPercentWidth(15);
+        ColumnConstraints valueColumn = new ColumnConstraints();
+        valueColumn.setPercentWidth(35);
+        innerGridPane.getColumnConstraints().add(first, keyColumn);
+        innerGridPane.getColumnConstraints().add(second, valueColumn);
+        innerGridPane.getColumnConstraints().add(third, keyColumn);
+        innerGridPane.getColumnConstraints().add(fourth, valueColumn);
+
+        /* LEFT FIELDS (first and second column */
 
         // firstname
-        add(new Label(Loc.c("firstname")), left, rowNum);
-        add(new Label(person.getFirstname()), right, rowNum++);
+        innerGridPane.add(new Label(Loc.c("firstname")),
+                first, leftInnerRowNum);
+        innerGridPane.add(new Label(person.getFirstname()),
+                second, leftInnerRowNum++);
 
         // lastname
-        add(new Label(Loc.c("lastname")), left, rowNum);
-        add(new Label(person.getLastname()), right, rowNum++);
+        innerGridPane.add(new Label(Loc.c("lastname")),
+                first, leftInnerRowNum);
+        innerGridPane.add(new Label(person.getLastname()),
+                second, leftInnerRowNum++);
         // street address
-        add(new Label(Loc.c("street_address")), left, rowNum);
-        add(new Label(person.getStreetAddress()), right, rowNum++);
+        innerGridPane.add(new Label(Loc.c("street_address")),
+                first, leftInnerRowNum);
+        innerGridPane.add(new Label(person.getStreetAddress()),
+                second, leftInnerRowNum++);
 
         // postal code
-        add(new Label(Loc.c("postal_code")), left, rowNum);
-        add(new Label(person.getPostalCode()), right, rowNum++);
+        innerGridPane.add(new Label(Loc.c("postal_code")),
+                first, leftInnerRowNum);
+        innerGridPane.add(new Label(person.getPostalCode()),
+                second, leftInnerRowNum++);
 
         // city
-        add(new Label(Loc.c("city")), left, rowNum);
-        add(new Label(person.getCity()), right, rowNum++);
+        innerGridPane.add(new Label(Loc.c("city")),
+                first, leftInnerRowNum);
+        innerGridPane.add(new Label(person.getCity()),
+                second, leftInnerRowNum++);
 
         // date of birth
-        add(new Label(Loc.c("date_of_birth")), left, rowNum);
-        add(new Label(person.getDateOfBirth().toString()), right, rowNum++);
+        innerGridPane.add(new Label(Loc.c("date_of_birth")),
+                first, leftInnerRowNum);
+        innerGridPane.add(new Label(person.getDateOfBirth().toString()),
+                second, leftInnerRowNum++);
 
         // phone number
-        add(new Label(Loc.c("phone_number")), left, rowNum);
-        add(new Label(person.getPhoneNumber()), right, rowNum++);
+        innerGridPane.add(new Label(Loc.c("phone_number")),
+                first, leftInnerRowNum);
+        innerGridPane.add(new Label(person.getPhoneNumber()),
+                second, leftInnerRowNum++);
 
         // email
-        add(new Label(Loc.c("email")), left, rowNum);
-        add(new Label(person.getEmail()), right,rowNum++);
+        innerGridPane.add(new Label(Loc.c("email")),
+                first, leftInnerRowNum);
+        innerGridPane.add(new Label(person.getEmail()),
+                second, leftInnerRowNum++);
 
         // status
-        add(new Label(Loc.c("status")), left, rowNum);
-        add(new Label(person.getStatus().getValue()), right, rowNum++);
+        innerGridPane.add(new Label(Loc.c("status")),
+                first, leftInnerRowNum);
+        innerGridPane.add(new Label(person.getStatus().getValue()),
+                second, leftInnerRowNum++);
+
+        /* RIGHT FIELDS (third and fourth column) */
+
+        int insuranceActiveCount = (int)person.getInsurances().stream()
+                .filter(i -> i.getStatus() == Status.ACTIVE)
+                .count();
+        int insuranceTotalCount = (int)person.getInsurances().stream()
+                .count();
+        boolean totalCustomer = insuranceActiveCount >= Config.TOTAL_CUSTOMER_INSURANCE_COUNT;
+
+        // number of insurances
+        innerGridPane.add(new Label(Loc.c("number_of_insurances")),
+                third, rightInnerRowNum);
+        innerGridPane.add(new Label(String.format("%d (%d)",
+                        insuranceActiveCount, insuranceTotalCount)),
+                fourth, rightInnerRowNum++);
+
+        // total customer
+        innerGridPane.add(new Label(Loc.c("total_customer")),
+                third, rightInnerRowNum);
+        innerGridPane.add(new Label(totalCustomer ? Loc.c("true") : Loc.c("false")),
+                fourth, rightInnerRowNum++);
+
+        // sum of all active insurances
+        innerGridPane.add(new Label(Loc.c("total_insurance_amount_sum")),
+                third, rightInnerRowNum);
+        innerGridPane.add(new Label(String.format("%.2f", person.getInsurances()
+                .stream()
+                .filter(i -> i.getStatus() == Status.ACTIVE)
+                .mapToDouble(i -> i.getAmount())
+                .sum())), fourth, rightInnerRowNum++);
+
+        // premium of all insurances
+        innerGridPane.add(new Label(Loc.c("total_insurance_premium_sum")),
+                third, rightInnerRowNum);
+        double insurancePremium = person.getInsurances()
+                .stream()
+                .filter(i -> i.getStatus() == Status.ACTIVE)
+                .mapToDouble(i -> i.getPremium())
+                .sum();
+        if (totalCustomer) {
+            insurancePremium *= ((Config.TOTAL_CUSTOMER_DISCOUNT / 100) + 1);
+        }
+        innerGridPane.add(new Label(String.format("%.2f", insurancePremium)),
+                fourth, rightInnerRowNum++);
+
+        // deductible of all insurances
+        innerGridPane.add(new Label(Loc.c("total_insurance_deductible_sum")),
+                third, rightInnerRowNum);
+        innerGridPane.add(new Label(String.format("%.2f", person.getInsurances()
+                .stream()
+                .filter(i -> i.getStatus() == Status.ACTIVE)
+                .mapToDouble(i -> i.getDeductible())
+                .sum())), fourth, rightInnerRowNum++);
+
+        // number of claims
+        int claimsActiveCount = (int)person.getClaims().stream()
+                .filter(i -> i.getStatus() == Status.ACTIVE)
+                .count();
+        int claimsTotalCount = (int)person.getClaims().stream()
+                .count();
+        innerGridPane.add(new Label(Loc.c("number_of_claims")),
+                third, rightInnerRowNum);
+        innerGridPane.add(new Label(String.format("%d (%d)",
+                claimsActiveCount, claimsTotalCount)),
+                fourth, rightInnerRowNum++);
+
+        // claims sum
+        innerGridPane.add(new Label(Loc.c("total_claims_amount_sum")),
+                third, rightInnerRowNum);
+        innerGridPane.add(new Label(String.format("%.2f", person.getClaims()
+                .stream()
+                .filter(i -> i.getStatus() == Status.ACTIVE)
+                .mapToDouble(i -> i.getAmount())
+                .sum())), fourth, rightInnerRowNum++);
+
+        // claims deductible
+        innerGridPane.add(new Label(Loc.c("total_claims_deductible_sum")),
+                third, rightInnerRowNum);
+        innerGridPane.add(new Label(String.format("%.2f", person.getClaims()
+                .stream()
+                .filter(i -> i.getStatus() == Status.ACTIVE)
+                .mapToDouble(i -> i.getDeductible())
+                .sum())), fourth, rightInnerRowNum++);
+
+
+        /* Add all to main gridpane */
+        add(innerGridPane, 0, rowNum++);
 
         // insurances table
-        add(new Label(Loc.c("insurances")), left, rowNum++);
+        add(new Label(Loc.c("insurances")), first, rowNum++);
         add(TableController.getInsuranceTable(person.getInsurances().stream())
-                .getTable(), 0, rowNum++, 2, 1);
+                .getTable(), 0, rowNum++);
 
         // claims table
-        add(new Label(Loc.c("claims")), left, rowNum++);
+        add(new Label(Loc.c("claims")), first, rowNum++);
         add(TableController.getClaimsTable(person.getClaims().stream())
-                .getTable(), 0, rowNum++, 2, 1);
+                .getTable(), 0, rowNum++);
     }
 
     public StandardGridPane getNode() { return this; }
