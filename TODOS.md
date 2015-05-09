@@ -6,7 +6,7 @@
 * *DONE - Søkeresultater i samme bilde som søkeskjema.*
 * Fullføre alle adaptere (inkl. claims)
 * *DONE - Statistikk layout*
-* Implementere totalkunde som gir kunder med min 3 forsikringer 10% rabatt. 
+* *DONE - Implementere totalkunde som gir kunder med min 3 forsikringer 10% rabatt.*
 * *DONE- Rapporten*
 * Claim tabeller
 
