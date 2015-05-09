@@ -44,25 +44,25 @@ public abstract class InsuranceView<T extends Insurance> extends StandardGridPan
     {
         ToolBar buttonPane = new ToolBar();
 
-        Button b1 = new Button(Loc.c("claim"));
+        Button b1 = new Button(Loc.c("new_claim"));
         switch (insurance.identify()) {
             case CAR:
                 b1.setOnAction(e -> ClaimController.create(Claim.ClaimType.CAR,
                         insurance.getCustomer(), insurance));
                 break;
             case BOAT:
-                //b1.setOnAction(e -> ClaimController.create(insurance.getCustomer(), insurance));
-                break;
-            case HOUSE:
-                //b1.setOnAction(e -> ClaimController.create(insurance.getCustomer(), insurance));
+                b1.setOnAction(e -> ClaimController.create(Claim.ClaimType.BOAT,
+                        insurance.getCustomer(), insurance));
                 break;
             case VACATION_HOUSE:
-                //b1.setOnAction(e -> ClaimController.create(insurance.getCustomer(), insurance));
+            case HOUSE:
+                b1.setOnAction(e -> ClaimController.create(Claim.ClaimType.PROPERTY,
+                        insurance.getCustomer(), insurance));
                 break;
             case TRAVEL:
-                //b1.setOnAction(e -> ClaimController.create(insurance.getCustomer(), insurance));
+                b1.setOnAction(e -> ClaimController.create(Claim.ClaimType.TRAVEL,
+                        insurance.getCustomer(), insurance));
                 break;
-
         }
 
         Button editButton = new Button(Loc.c("edit"));

@@ -7,8 +7,7 @@ import main.model.person.Person;
 import main.view.Resources;
 import main.view.concrete.claim.ClaimView;
 import main.view.form.Form;
-import main.view.form.adapter.claim.CarClaimAdapter;
-import main.view.form.adapter.claim.ClaimAdapter;
+import main.view.form.adapter.claim.*;
 
 /**
  * Created by alex on 4/26/15.
@@ -26,13 +25,13 @@ public class ClaimController
                 claimAdapter = new CarClaimAdapter(person, insurance);
                 break;
             case BOAT:
-                claimAdapter = new CarClaimAdapter(person, insurance);
+                claimAdapter = new BoatClaimAdapter(person, insurance);
                 break;
             case PROPERTY:
-                claimAdapter = new CarClaimAdapter(person, insurance);
+                claimAdapter = new PropertyClaimAdapter(person, insurance);
                 break;
             case TRAVEL:
-                claimAdapter = new CarClaimAdapter(person, insurance);
+                claimAdapter = new TravelClaimAdapter(person, insurance);
                 break;
             default:
                 throw new IllegalStateException("Unknown claim type");
