@@ -26,6 +26,7 @@
     <string name="edit">Edit</string>
     <string name="refresh">Refresh</string>
     <string name="view">View</string>
+    <string name="image">Image</string>
     <string name="data_files">Data files (*.dat)</string>
     <string name="language">Language</string>
     <string name="default">Default</string>
@@ -172,29 +173,24 @@
     <string name="house_material_b">Wood</string>
     <string name="house_material_c">Glass</string>
 
-    <string name="property_material_a">Property material a</string>
-    <string name="property_material_b">Property material b</string>
-    <string name="property_material_c">Property material c</string>
-
-    <string name="house_standard">House standard</string>
-    <string name="house_standard_a">House standard a</string>
-    <string name="house_standard_b">House standard b</string>
-    <string name="house_standard_c">House standard c</string>
+    <string name="property_material_a">Wood</string>
+    <string name="property_material_b">Bricks</string>
+    <string name="property_material_c">Concrete blocks</string>
 
     <string name="property_standard">Property standard</string>
-    <string name="property_standard_a">Property standard a</string>
-    <string name="property_standard_b">Property standard b</string>
-    <string name="property_standard_c">Property standard c</string>
+    <string name="property_standard_a">Like new</string>
+    <string name="property_standard_b">Aging</string>
+    <string name="property_standard_c">Old</string>
 
     <string name="year_built">Year built</string>
     <string name="square_meters">Square meters</string>
     <string name="material">Material</string>
 
     <!-- vacation house -->
-    <string name="vacationHouse_type_a">Cottage</string>
-    <string name="vacationHouse_type_b">Caravan</string>
-    <string name="vacationHouse_type_c">House Boat</string>
-    <string name="vacationHouse_type_d">Tent</string>
+    <string name="vacation_house_type_a">Cottage</string>
+    <string name="vacation_house_type_b">Caravan</string>
+    <string name="vacation_house_type_c">House Boat</string>
+    <string name="vacation_house_type_d">Tent</string>
 
     <!-- travel -->
     <string name="continent">Continent</string>
@@ -206,6 +202,7 @@
     <string name="continent_f">War Zone</string>
 
     <!-- Claim -->
+    <string name="new_claim">New claim</string>
     <string name="claim">Claim</string>
     <string name="contacts">Contacts</string>
     <string name="claim_type">Claim type</string>
@@ -231,6 +228,14 @@
     <string name="payment_status_a">Pending</string>
     <string name="payment_status_b">Not accepted</string>
     <string name="payment_status_c">Disbursed</string>
+
+    <string name="date_of_damages">Date of damages</string>
+    <string name="date_of_claim">Date of claim</string>
+
+    <string name="new_car_claim">New car claim</string>
+    <string name="new_boat_claim">New boat claim</string>
+    <string name="new_property_claim">New property claim</string>
+    <string name="new_travel_claim">New travel claim</string>
 
     <!-- Report -->
     <string name="report">Report</string>

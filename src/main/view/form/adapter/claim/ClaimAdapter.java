@@ -109,7 +109,7 @@ public abstract class ClaimAdapter<T extends Claim> implements Formable<T>
                 .error(Loc.c("claim_amount_error"))
                 .build();
 
-        deductible = new FormValueNode.Builder(Loc.c("amount"))
+        deductible = new FormValueNode.Builder(Loc.c("deductible"))
                 .value(editMode ? Double.toString(claim.getDeductible()) : "")
                 .regex(StringMatcher.getFloat())
                 .error(Loc.c("claim_deductible_error"))

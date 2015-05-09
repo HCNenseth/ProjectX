@@ -30,7 +30,7 @@
 * *Done - FormImageNode.*
 * *Done - FormTextNode.*
 * Refresh *alle* fanekort
-* Toolbar -> (refresh + edit) knapp helt til høyre.
+* *Done - Toolbar -> (refresh + edit) knapp helt til høyre.*
 
 # Free for all - Glemte oppgaver
 * Fjerne "Contents" forsikring og utvide "House+Vacation (property)" med innbo felt (ref oppgave beskrivelse)

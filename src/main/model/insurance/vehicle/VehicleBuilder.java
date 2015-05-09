@@ -38,4 +38,5 @@ public abstract class VehicleBuilder<T>
     public int getHorsePower() { return horsePower; }
 
     public int getModelYear() { return modelYear; }
+
 }

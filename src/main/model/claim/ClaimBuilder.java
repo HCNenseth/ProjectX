@@ -1,6 +1,7 @@
 package main.model.claim;
 
 import javafx.scene.image.Image;
+import main.localization.Loc;
 import main.model.Status;
 import main.model.insurance.Insurance;
 import main.model.person.Person;
@@ -15,11 +16,11 @@ public abstract class ClaimBuilder<T, E>  {
     private Person customer;
     private Insurance insurance;
 
-    private LocalDate dateOfDamages = null;
+    private LocalDate dateOfDamages = LocalDate.now();
     private LocalDate claimDate = LocalDate.now();
 
-    private String desc = null;
-    private String contacts = null;
+    private String desc = "";
+    private String contacts = "";
     private double amount = 0;
     private double deductible = 0;
     private List<Image> images;

@@ -7,8 +7,7 @@ import main.model.person.Person;
 import main.view.Resources;
 import main.view.concrete.claim.ClaimView;
 import main.view.form.Form;
-import main.view.form.adapter.claim.CarClaimAdapter;
-import main.view.form.adapter.claim.ClaimAdapter;
+import main.view.form.adapter.claim.*;
 
 /**
  * Created by alex on 4/26/15.
@@ -19,20 +18,25 @@ public class ClaimController
 
     public static void create(Claim.ClaimType type, Person person, Insurance insurance)
     {
+        String title = "";
         Form f = new Form();
         ClaimAdapter claimAdapter;
         switch (type) {
             case CAR:
+                title = "new_car_claim";
                 claimAdapter = new CarClaimAdapter(person, insurance);
                 break;
             case BOAT:
-                claimAdapter = new CarClaimAdapter(person, insurance);
+                title = "new_boat_claim";
+                claimAdapter = new BoatClaimAdapter(person, insurance);
                 break;
             case PROPERTY:
-                claimAdapter = new CarClaimAdapter(person, insurance);
+                title = "new_propery_claim";
+                claimAdapter = new PropertyClaimAdapter(person, insurance);
                 break;
             case TRAVEL:
-                claimAdapter = new CarClaimAdapter(person, insurance);
+                title = "new_travel_claim";
+                claimAdapter = new TravelClaimAdapter(person, insurance);
                 break;
             default:
                 throw new IllegalStateException("Unknown claim type");
@@ -40,7 +44,7 @@ public class ClaimController
         //claimAdapter.setOnDoneAction(ClaimController::view);
         f.injectAdapter(claimAdapter);
 
-        Resources.inst.getOtp().injectObservableTab(Loc.c("new_claim"),
+        Resources.inst.getOtp().injectObservableTab(Loc.c(title),
                 f.getForm(), true);
     }
 

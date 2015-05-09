@@ -15,7 +15,7 @@ public enum StringMatcher
     private final static String baseDigit = "\\d+";
     private final static String liberation = ".*";
 
-    private final static String email = "[a-z0-9._%+-]+@[a-z0-9.-]+\\.\\w{2,4}";
+    private final static String email = "[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.\\w{2,4}";
     private final static String firstname = baseString;
     private final static String lastname = baseString;
     private final static String color = baseString;

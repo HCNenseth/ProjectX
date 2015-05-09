@@ -1,6 +1,7 @@
 package main.model.insurance.property;
 
 import main.localization.Loc;
+import main.model.claim.property.PropertyClaim;
 import main.model.insurance.Insurance;
 import main.model.insurance.InsuranceBuilder;
 
@@ -9,7 +10,8 @@ import java.io.Serializable;
 /**
  * Created by HansChristian on 15.04.2015.
  */
-abstract class Property extends Insurance implements Serializable
+abstract class Property extends Insurance<PropertyClaim>
+        implements Serializable
 {
 
     private String postalCode;
@@ -19,67 +21,6 @@ abstract class Property extends Insurance implements Serializable
     private int squareMeter;
     private Standard standard;
     private String streetAddress;
-
-    public void setStreetAddress(String streetAddress) {
-        this.streetAddress = streetAddress;
-    }
-
-    public void setPostalCode(String postalCode) {
-        this.postalCode = postalCode;
-    }
-
-    public void setCity(String city) {
-        this.city = city;
-    }
-
-    public void setYear(int year) {
-        this.year = year;
-    }
-
-    public void setMaterial(Material material) {
-        this.material = material;
-    }
-
-    public void setSquareMeter(int squareMeter) {
-        this.squareMeter = squareMeter;
-    }
-
-    public void setStandard(Standard standard) {
-        this.standard = standard;
-    }
-
-    public String getPostalCode() {
-        return postalCode;
-    }
-
-    public String getCity() {
-        return city;
-    }
-
-    public int getYear() {
-        return year;
-    }
-
-    public int getSquareMeter() {
-        return squareMeter;
-    }
-
-    public Material getMaterial() {
-        return material;
-    }
-
-    public Standard getStandard() {
-        return standard;
-    }
-
-    public String getStreetAddress() {
-        return streetAddress;
-    }
-
-    public Property(InsuranceBuilder ib) {
-        super(ib);
-    }
-
 
     public enum Material {
         A(Loc.c("property_material_a")),
@@ -109,6 +50,70 @@ abstract class Property extends Insurance implements Serializable
 
         @Override
         public String toString() { return getValue(); }
+    }
+
+    /**
+     * Constructor - pushes builder object up the inheritance chain.
+     * @param ib
+     */
+    public Property(InsuranceBuilder ib) { super(ib); }
+
+    /* SETTERS */
+    public void setStreetAddress(String streetAddress) {
+        this.streetAddress = streetAddress;
+    }
+
+    public void setPostalCode(String postalCode) {
+        this.postalCode = postalCode;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public void setYear(int year) {
+        this.year = year;
+    }
+
+    public void setMaterial(Material material) {
+        this.material = material;
+    }
+
+    public void setSquareMeter(int squareMeter) {
+        this.squareMeter = squareMeter;
+    }
+
+    public void setStandard(Standard standard) {
+        this.standard = standard;
+    }
+
+    /* GETTERS */
+    public String getPostalCode() {
+        return postalCode;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public int getYear() {
+        return year;
+    }
+
+    public int getSquareMeter() {
+        return squareMeter;
+    }
+
+    public Material getMaterial() {
+        return material;
+    }
+
+    public Standard getStandard() {
+        return standard;
+    }
+
+    public String getStreetAddress() {
+        return streetAddress;
     }
 
     @Override

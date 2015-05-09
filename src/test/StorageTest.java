@@ -14,6 +14,7 @@ import main.model.claim.vehicle.CarClaim;
 import main.model.insurance.InsuranceType;
 import main.model.insurance.Insurance;
 import main.model.insurance.property.House;
+import main.model.insurance.property.VacationHouse;
 import main.model.insurance.travel.Travel;
 import main.model.insurance.vehicle.Boat;
 import main.model.insurance.vehicle.Car;
@@ -23,9 +24,7 @@ import org.junit.Test;
 
 import java.io.IOException;
 import java.time.LocalDate;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 import static org.junit.Assert.*;
 
@@ -33,42 +32,46 @@ public class StorageTest
 {
 
     public static final String[] firstnames = {
-        "James", "John", "Robert", "Michael", "William",
-        "David", "Richard", "Charles", "Joseph", "Thomas",
-        "Daniel", "Paul", "Christopher", "Mark", "Paul",
-        "Donald", "George", "Kenneth", "Steven", "Brian",
-        "Mary", "Linda", "Patricia", "Barbara", "Elizabeth",
-        "Jennifer", "Maria", "Susan", "Margaret", "Lisa",
-        "Nancy", "Karen", "Betty", "Sandra", "Betty", "Ruth",
-        "Laura", "Sarah", "Kimberly", "Jessica", "Shirley"
+            "James", "John", "Robert", "Michael", "William",
+            "David", "Richard", "Charles", "Joseph", "Thomas",
+            "Daniel", "Paul", "Christopher", "Mark", "Paul",
+            "Donald", "George", "Kenneth", "Steven", "Brian",
+            "Mary", "Linda", "Patricia", "Barbara", "Elizabeth",
+            "Jennifer", "Maria", "Susan", "Margaret", "Lisa",
+            "Nancy", "Karen", "Betty", "Sandra", "Betty", "Ruth",
+            "Laura", "Sarah", "Kimberly", "Jessica", "Shirley"
     };
 
     public static final String[] lastnames = {
-        "Smith", "Johnson", "Williams", "Jones", "Brown",
-        "Davis", "Miller", "Moore", "Taylor", "Jackson",
-        "Anderson", "White", "Harris", "Martin", "Garcia",
-        "Thomas", "Robinson", "Clark", "Rodriguez", "Lewis",
-        "Lee", "Walker", "Hall", "Allen", "Hernandez", "King",
-        "Wright", "Lopez", "Gonzales", "Nelson", "Perez",
-        "Turner", "Phillips", "Collins", "Stewart", "Sanchez",
-        "Morris", "Rogers", "Parker", "Evans", "Edwards", "Scott"
+            "Smith", "Johnson", "Williams", "Jones", "Brown",
+            "Davis", "Miller", "Moore", "Taylor", "Jackson",
+            "Anderson", "White", "Harris", "Martin", "Garcia",
+            "Thomas", "Robinson", "Clark", "Rodriguez", "Lewis",
+            "Lee", "Walker", "Hall", "Allen", "Hernandez", "King",
+            "Wright", "Lopez", "Gonzales", "Nelson", "Perez",
+            "Turner", "Phillips", "Collins", "Stewart", "Sanchez",
+            "Morris", "Rogers", "Parker", "Evans", "Edwards", "Scott"
     };
 
     public static final String[] cities = {
-        "Bath", "Birmingham", "Bradford", "Brighton & Hove",
-        "Bristol", "Cambridge", "Canterbury", "Carlisle",
-        "Chelmsford", "Chester", "Coventry", "Derby",
-        "Durham", "Ely", "Exeter", "Gloucester", "Hereford",
-        "Kingston upon Hull", "Lancaster", "Leeds", "Leicester",
-        "Lincoln", "City of London", "Manchester", "Norwich",
-        "Nottingham", "Oxford", "Peterborough", "Plymouth",
-        "Portsmouth", "Preston", "Ripon", "Salford", "Salisbury",
-        "Sheffield", "Southampton", "Sunderland", "Truro", "Wakfield",
-        "Wells", "Westminister", "Winchester", "Worcester", "York"
+            "Bath", "Birmingham", "Bradford", "Brighton & Hove",
+            "Bristol", "Cambridge", "Canterbury", "Carlisle",
+            "Chelmsford", "Chester", "Coventry", "Derby",
+            "Durham", "Ely", "Exeter", "Gloucester", "Hereford",
+            "Kingston upon Hull", "Lancaster", "Leeds", "Leicester",
+            "Lincoln", "City of London", "Manchester", "Norwich",
+            "Nottingham", "Oxford", "Peterborough", "Plymouth",
+            "Portsmouth", "Preston", "Ripon", "Salford", "Salisbury",
+            "Sheffield", "Southampton", "Sunderland", "Truro", "Wakfield",
+            "Wells", "Westminister", "Winchester", "Worcester", "York"
+    };
+
+    public static final String[] domains = {
+            "email", "yahoo", "google", "hotmail", "outlook"
     };
 
     public static final String[] streetType = {
-        "Road", "Street", "Bridge", "Way", "Ground", "Place", "Crossroad"
+            "Road", "Street", "Bridge", "Way", "Ground", "Place", "Crossroad"
     };
 
     /**
@@ -84,8 +87,12 @@ public class StorageTest
         List<String> stringsToFile = new LinkedList<>();
         List<Integer> intsToFile = new LinkedList<>();
 
-        for (String s : strings) { stringsToFile.add(s); }
-        for (Integer i : ints) { intsToFile.add(i); }
+        for (String s : strings) {
+            stringsToFile.add(s);
+        }
+        for (Integer i : ints) {
+            intsToFile.add(i);
+        }
 
         Storage.getInstance().put("strings", stringsToFile);
         Storage.getInstance().put("ints", intsToFile);
@@ -98,9 +105,9 @@ public class StorageTest
             // YOLO!!!
         }
 
-        List<String> stringsFromFile = (List<String>)Storage.getInstance()
+        List<String> stringsFromFile = (List<String>) Storage.getInstance()
                 .get("strings");
-        List<Integer> intsFromFile = (List<Integer>)Storage.getInstance()
+        List<Integer> intsFromFile = (List<Integer>) Storage.getInstance()
                 .get("ints");
 
         assertEquals(stringsFromFile, stringsToFile);
@@ -109,7 +116,8 @@ public class StorageTest
         assertArrayEquals(intsFromFile.toArray(), ints);
     }
 
-    @Test public void testInsurance()
+    @Test
+    public void testInsurance()
     {
         Storage.injectFilename("insurances.dat");
 
@@ -215,11 +223,11 @@ public class StorageTest
             // YOLO!!!
         }
 
-        List<Person> personsFromFile = (List<Person>)Storage.getInstance()
+        List<Person> personsFromFile = (List<Person>) Storage.getInstance()
                 .get("persons");
-        List<Insurance> insurancesFromFile = (List<Insurance>)Storage.getInstance()
+        List<Insurance> insurancesFromFile = (List<Insurance>) Storage.getInstance()
                 .get("insurances");
-        List<Claim> claimsFromFile = (List<Claim>)Storage.getInstance()
+        List<Claim> claimsFromFile = (List<Claim>) Storage.getInstance()
                 .get("claims");
 
 
@@ -249,7 +257,8 @@ public class StorageTest
     /**
      * Generate a log of data for stress testing the Storage class
      */
-    @Test public void massInsertPersons()
+    @Test
+    public void massInsertPersons()
     {
         /**
          * 2000:    ~ 3.7MB file
@@ -270,28 +279,35 @@ public class StorageTest
             String streetName = String.format("%s %s %d",
                     randomCity(), randomStreetType(), randInt(1, 100));
 
-            Person person =  new Person.Builder(randomFirstname(), randomLastname())
+            String firstname = randomFirstname();
+            String lastname = randomLastname();
+            String email = String.format("%s.%s@%s.com",
+                    firstname, lastname, randomDomain());
+
+            Person person = new Person.Builder(firstname, lastname)
                     .city(city)
                     .postalCode(String.valueOf(randInt(1000, 9000)))
                     .streetAddress(streetName)
+                    .email(email)
+                    .phoneNumber(Integer.toString(randInt(20000000, 70000000)))
                     .dateOfBirth(LocalDate.of(randInt(1930, 2014),
-                            randInt(1,12), randInt(1,28)))
+                            randInt(1, 12), randInt(1, 28)))
                     .build();
 
             /* add some random car insurances */
-            for (int j = 0; j < randInt(0,10); j++) {
+            for (int j = 0; j < randInt(0, 10); j++) {
                 Car car = new Car.Builder(person, "ABC123")
                         .amount(randInt(1000, 4000))
                         .premium(randInt(300, 700))
                         .deductible(randInt(4000, 12000))
-                        //.bonus(randInt(50,80))
+                                //.bonus(randInt(50,80))
                         .mileage(randInt(4000, 20000))
                         .registration(
                                 LocalDate.of(randInt(1980, 2014),
-                                        randInt(1,12),
-                                        randInt(1,28))
-                                )
-                        .type(Car.Type.A)
+                                        randInt(1, 12),
+                                        randInt(1, 28))
+                        )
+                        .type(randomEnumValue(Car.Type.class))
                         .amount(randInt(4000, 10000))
                         .build();
                 /* add some random claims */
@@ -307,7 +323,7 @@ public class StorageTest
             }
 
             /* add some random boat insurances */
-            for (int j = 0; j < randInt(0,10); j++) {
+            for (int j = 0; j < randInt(0, 10); j++) {
                 Boat boat = new Boat.Builder(person, "ABC123")
                         .amount(randInt(1000, 4000))
                         .premium(randInt(300, 700))
@@ -315,8 +331,8 @@ public class StorageTest
                         .horsePower(randInt(20, 400))
                         .length(randInt(10, 50))
                         .registration(LocalDate.of(randInt(1940, 2014),
-                                randInt(1,12), randInt(1,28)))
-                        .type(Boat.Type.A)
+                                randInt(1, 12), randInt(1, 28)))
+                        .type(randomEnumValue(Boat.Type.class))
                         .build();
                 /* add some random claims */
                 for (int k = 0; k < randInt(0, 5); k++) {
@@ -331,14 +347,14 @@ public class StorageTest
             }
 
             /* add some random houses */
-            for (int j = 0; j < randInt(0,10); j++) {
+            for (int j = 0; j < randInt(0, 10); j++) {
                 House house = new House.Builder(person, streetName, randInt(1000, 9000) + "")
-                        .material(House.Material.A)
+                        .material(randomEnumValue(House.Material.class))
+                        .standard(randomEnumValue(House.Standard.class))
+                        .type(randomEnumValue(House.Type.class))
                         .amount(randInt(1000, 4000))
                         .premium(randInt(300, 700))
                         .deductible(randInt(4000, 12000))
-                        .standard(House.Standard.A)
-                        .type(House.Type.A)
                         .year(randInt(1900, 2014))
                         .squareMeter(randInt(30, 200))
                         .build();
@@ -354,35 +370,34 @@ public class StorageTest
                 insurances.add(house);
             }
 
-            /* add some random houses */
-            /*
             for (int j = 0; j < randInt(0,10); j++) {
-                VacationHouse vacationHouse = new House.Builder(person, streetName, randInt(1000, 9000) + "")
-                        .material(House.Material.A)
+                VacationHouse vacationHouse = new VacationHouse.Builder(person,
+                        streetName, randInt(1000, 9000) + "")
+                        .material(randomEnumValue(VacationHouse.Material.class))
+                        .standard(randomEnumValue(VacationHouse.Standard.class))
+                        .type(randomEnumValue(VacationHouse.Type.class))
                         .amount(randInt(1000, 4000))
                         .premium(randInt(300, 700))
                         .deductible(randInt(4000, 12000))
-                        .standard(House.Standard.A)
-                        .type(House.Type.A)
                         .year(randInt(1900, 2014))
                         .squareMeter(randInt(30, 200))
                         .build();
                 for (int k = 0; k < randInt(0, 5); k++) {
-                    claims.add(new Claim.Builder(person, house)
-                            .date(LocalDate.of(randInt(1960,2014),
-                                    randInt(1,12), randInt(1,28)))
-                            .description("foobar")
+                    claims.add(new PropertyClaim.Builder(person, vacationHouse)
+                            .dateOfDamages(LocalDate.of(randInt(1960, 2014),
+                                    randInt(1, 12), randInt(1, 28)))
+                            .desc("foobar")
                             .amount(randInt(1000, 12000))
                             .build());
                 }
-                insurances.add(house);
+                insurances.add(vacationHouse);
             }
-            */
 
             /* add some random travel insurances */
-            for (int j = 0; j < randInt(0,10); j++) {
+            for (int j = 0; j < randInt(0, 10); j++) {
                 Travel travel = new Travel.Builder(person)
                         .amount(randInt(1000, 4000))
+                        .continent(randomEnumValue(Travel.Continent.class))
                         .premium(randInt(300, 700))
                         .deductible(randInt(4000, 12000))
                         .build();
@@ -416,6 +431,7 @@ public class StorageTest
 
     /**
      * Helper method for outputting random firstname
+     *
      * @return
      */
     public String randomFirstname()
@@ -425,6 +441,7 @@ public class StorageTest
 
     /**
      * Helper method for outputting random lastname
+     *
      * @return
      */
     public String randomLastname()
@@ -434,6 +451,7 @@ public class StorageTest
 
     /**
      * Helper method for outputting random city
+     *
      * @return
      */
     public String randomCity()
@@ -442,7 +460,41 @@ public class StorageTest
     }
 
     /**
+     * Helper method for outputting random streetAddress type
+     *
+     * @return
+     */
+    public String randomStreetType()
+    {
+        return streetType[randInt(0, streetType.length - 1)];
+    }
+
+    /**
+     * Random domain name.
+     *
+     * @return
+     */
+    public String randomDomain()
+    {
+        return domains[randInt(0, domains.length - 1)];
+    }
+
+
+    /**
+     * Insert generic enum, return random value!
+     * @param enumClass
+     * @param <E>
+     * @return
+     */
+    public <E extends Enum> E randomEnumValue(Class<E> enumClass)
+    {
+        E[] values = enumClass.getEnumConstants();
+        return values[randInt(0, values.length - 1)];
+    }
+
+    /**
      * Helper method for generating random numbers in range
+     *
      * @param min
      * @param max
      * @return
@@ -451,14 +503,5 @@ public class StorageTest
     {
         Random r = new Random();
         return r.nextInt((max - min) + 1) + min;
-    }
-
-    /**
-     * Helper method for outputting random streetAddress type
-     * @return
-     */
-    public String randomStreetType()
-    {
-        return streetType[randInt(0, streetType.length - 1)];
     }
 }

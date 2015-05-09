@@ -11,13 +11,12 @@ import main.model.Status;
 
 import java.io.Serializable;
 import java.time.LocalDate;
-import java.util.LinkedList;
 import java.util.List;
 
 /**
  * Main insurance class.
  */
-public abstract class Insurance implements
+public abstract class Insurance<C extends Claim> implements
         Serializable, Type, FullTextSearch, Model
 {
     private Person customer;
@@ -28,7 +27,7 @@ public abstract class Insurance implements
     private String desc;
     private Status status;
 
-    private List<Claim> claims;
+    private List<C> claims;
 
     /**
      * Insurance constructor.
@@ -43,39 +42,52 @@ public abstract class Insurance implements
         this.date = ib.getDate();
         this.desc = ib.getDesc();
         this.status = ib.getStatus();
+        this.claims = ib.getClaimsList();
 
         customer.addInsurance(this);
-
-        claims = new LinkedList<>();
     }
 
-    public void addClaim(Claim claim)
-    {
-        claims.add(claim);
-    }
-
+    /* GETTERS */
     public double getPremium()
     {
         return premium;
     }
 
-    public double getAmount() {
+    public double getAmount()
+    {
         return amount;
     }
 
-    public double getDeductible() {
+    public double getDeductible()
+    {
         return deductible;
     }
 
-    public LocalDate getDate() {
+    public LocalDate getDate()
+    {
         return date;
     }
 
-    public String getDesc() {
+    public String getDesc()
+    {
         return desc;
     }
 
-    public void setDesc(String desc) { this.desc = desc; }
+    public Person getCustomer()
+    {
+        return customer;
+    }
+
+    public List<C> getClaims()
+    {
+        return claims;
+    }
+
+    /* SETTERS */
+    public void setDesc(String desc)
+    {
+        this.desc = desc;
+    }
 
     public void setPremium(double val)
     {
@@ -97,10 +109,12 @@ public abstract class Insurance implements
         status = s;
     }
 
-    public Person getCustomer() { return customer; }
+    public void addClaim(C claim)
+    {
+        claims.add(claim);
+    }
 
-    public List<Claim> getClaims() { return claims; }
-
+    @Override
     public boolean query(String value)
     {
         // TODO implement test for all members!

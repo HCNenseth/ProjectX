@@ -1,6 +1,7 @@
 package main.model.insurance.vehicle;
 
 import main.localization.Loc;
+import main.model.claim.Claim;
 import main.model.person.Person;
 import main.model.insurance.Insurance;
 import main.model.insurance.InsuranceBuilder;
@@ -11,7 +12,7 @@ import java.time.LocalDate;
 /**
  * Created by HansChristian on 15.04.2015.
  */
-public abstract class Vehicle extends Insurance implements Serializable
+public abstract class Vehicle<C extends Claim> extends Insurance<C> implements Serializable
 {
     private String licensePlate;
     private Person owner;

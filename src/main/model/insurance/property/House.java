@@ -1,11 +1,14 @@
 package main.model.insurance.property;
 
 import main.localization.Loc;
+import main.model.claim.property.PropertyClaim;
 import main.model.person.Person;
 import main.model.insurance.InsuranceType;
 import main.model.insurance.InsuranceBuilder;
 
 import java.io.Serializable;
+import java.util.LinkedList;
+import java.util.List;
 
 
 public class House extends Property implements Serializable
@@ -26,48 +29,6 @@ public class House extends Property implements Serializable
         @Override
         public String toString() { return getValue(); }
     }
-
-    private House(Builder builder)
-    {
-        super(builder);
-
-        setStreetAddress(builder.streetAddress);
-        setPostalCode(builder.postalCode);
-        setMaterial(builder.material);
-        setSquareMeter(builder.squareMeter);
-        setStandard(builder.standard);
-        setCity(builder.city);
-        setType(builder.type);
-        setYear(builder.year);
-    }
-
-    public void setType(House.Type type)
-    {
-        this.type = type;
-    }
-
-    public House.Type getType()
-    {
-        return type;
-    }
-
-    public InsuranceType identify()
-    {
-        return InsuranceType.HOUSE;
-    }
-
-    @Override
-    public boolean query(String value)
-    {
-        return super.query(value)
-                || (getStreetAddress() != null && getStreetAddress().contains(value))
-                || (getPostalCode() != null && getPostalCode().contains(value))
-                || (getCity() != null && getCity().contains(value))
-                || (getType() != null && getType().getValue().contains(value))
-                || (getMaterial() != null && getMaterial().getValue().contains(value))
-                || (getStandard() != null && getStandard().getValue().contains(value));
-    }
-
 
     public static class Builder extends InsuranceBuilder<Builder, House>
     {
@@ -121,12 +82,58 @@ public class House extends Property implements Serializable
             return this;
         }
 
+        @Override
+        public List<PropertyClaim> getClaimsList()
+        {
+            return new LinkedList<>();
+        }
+
+        @Override
         public House build()
         {
             return new House(this);
         }
     }
 
+    /**
+     * Constructor
+     * @param builder
+     */
+    private House(Builder builder)
+    {
+        super(builder);
 
-    // TODO override equals and hashcode
+        setStreetAddress(builder.streetAddress);
+        setPostalCode(builder.postalCode);
+        setMaterial(builder.material);
+        setSquareMeter(builder.squareMeter);
+        setStandard(builder.standard);
+        setCity(builder.city);
+        setType(builder.type);
+        setYear(builder.year);
+    }
+
+    /* GETTERS */
+    public House.Type getType() { return type; }
+
+    /* SETTERS */
+    public void setType(House.Type type) { this.type = type; }
+
+    @Override
+    public InsuranceType identify()
+    {
+        return InsuranceType.HOUSE;
+    }
+
+    @Override
+    public boolean query(String value)
+    {
+        return super.query(value)
+                || (getStreetAddress() != null && getStreetAddress().contains(value))
+                || (getPostalCode() != null && getPostalCode().contains(value))
+                || (getCity() != null && getCity().contains(value))
+                || (getType() != null && getType().getValue().contains(value))
+                || (getMaterial() != null && getMaterial().getValue().contains(value))
+                || (getStandard() != null && getStandard().getValue().contains(value));
+    }
 }
