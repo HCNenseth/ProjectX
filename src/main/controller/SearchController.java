@@ -33,7 +33,7 @@ class SearchController
         searchAdapter.setOnDoneAction(this::search);
         f.injectAdapter(searchAdapter);
 
-        Resources.inst.getOtp().injectObservableTab(Loc.c("search"),
+        Resources.inst.getOtp().injectOfflineTab(Loc.c("search"),
                 f.getForm(), true);
     }
 
