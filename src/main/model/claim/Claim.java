@@ -71,6 +71,7 @@ public abstract class Claim implements Serializable, FullTextSearch, Model {
         amount = cb.getAmount();
         deductible = cb.getDeductible();
         filePathImage = cb.getFilePathImage();
+        paymentStatus = cb.getPaymentStatus();
         status = cb.getStatus();
 
         // connect this claim reference to customer and insurance

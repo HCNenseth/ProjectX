@@ -25,6 +25,7 @@ public abstract class ClaimBuilder<T, E>  {
     private double deductible = 0;
     private String filePathImage = "";
 
+    private Claim.PaymentStatus paymentStatus = Claim.PaymentStatus.A;
     private Status status = Status.ACTIVE;
 
     public ClaimBuilder(Person customer, Insurance insurance)
@@ -62,6 +63,12 @@ public abstract class ClaimBuilder<T, E>  {
     public T desc(String desc)
     {
         this.desc = desc;
+        return (T) this;
+    }
+
+    public T paymentStatus(Claim.PaymentStatus paymentStatus)
+    {
+        this.paymentStatus = paymentStatus;
         return (T) this;
     }
 
@@ -131,6 +138,11 @@ public abstract class ClaimBuilder<T, E>  {
     public String getFilePathImage()
     {
         return filePathImage;
+    }
+
+    public Claim.PaymentStatus getPaymentStatus()
+    {
+        return paymentStatus;
     }
 
     public Status getStatus()
