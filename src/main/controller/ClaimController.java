@@ -18,19 +18,24 @@ public class ClaimController
 
     public static void create(Claim.ClaimType type, Person person, Insurance insurance)
     {
+        String title = "";
         Form f = new Form();
         ClaimAdapter claimAdapter;
         switch (type) {
             case CAR:
+                title = "new_car_claim";
                 claimAdapter = new CarClaimAdapter(person, insurance);
                 break;
             case BOAT:
+                title = "new_boat_claim";
                 claimAdapter = new BoatClaimAdapter(person, insurance);
                 break;
             case PROPERTY:
+                title = "new_propery_claim";
                 claimAdapter = new PropertyClaimAdapter(person, insurance);
                 break;
             case TRAVEL:
+                title = "new_travel_claim";
                 claimAdapter = new TravelClaimAdapter(person, insurance);
                 break;
             default:
@@ -39,7 +44,7 @@ public class ClaimController
         //claimAdapter.setOnDoneAction(ClaimController::view);
         f.injectAdapter(claimAdapter);
 
-        Resources.inst.getOtp().injectObservableTab(Loc.c("new_claim"),
+        Resources.inst.getOtp().injectObservableTab(Loc.c(title),
                 f.getForm(), true);
     }
 

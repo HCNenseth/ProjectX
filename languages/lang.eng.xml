@@ -237,6 +237,11 @@
     <string name="date_of_damages">Date of damages</string>
     <string name="date_of_claim">Date of claim</string>
 
+    <string name="new_car_claim">New car claim</string>
+    <string name="new_boat_claim">New boat claim</string>
+    <string name="new_property_claim">New property claim</string>
+    <string name="new_travel_claim">New travel claim</string>
+
     <!-- Report -->
     <string name="report">Report</string>
     <string name="total_person_count">Total person count</string>
