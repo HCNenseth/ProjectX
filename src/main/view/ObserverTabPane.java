@@ -94,6 +94,21 @@ public class ObserverTabPane extends TabPane implements Observer
         Resources.inst.getSplashView().show();
     }
 
+    public void injectOfflineTab(String title,
+                                 Node content, boolean closeable)
+    {
+        Resources.inst.getSplashView().hide();
+
+        BasePane bp = new BasePane(title);
+        bp.setContent(content);
+        Tab tab = new Tab(title);
+        tab.setContent(bp);
+        tab.setClosable(closeable);
+        tab.setOnCloseRequest(e -> closeTab(tab));
+
+        getTabs().add(tab);
+    }
+
     /**
      * Inject new tab without reference. A simple proxy method for
      * the method below (with reference)
@@ -102,7 +117,7 @@ public class ObserverTabPane extends TabPane implements Observer
      * @param closeable - tab attr
      */
     public void injectObservableTab(String title, Node content,
-                                   Boolean closeable)
+                                   boolean closeable)
     {
         injectObservableTab(title, content, null, closeable);
     }
@@ -115,7 +130,7 @@ public class ObserverTabPane extends TabPane implements Observer
      * @param closeable - tab attr
      */
     public void injectObservableTab(String title, Node content,
-                                   Model ref, Boolean closeable)
+                                   Model ref, boolean closeable)
     {
         // hide splash view...
         Resources.inst.getSplashView().hide();

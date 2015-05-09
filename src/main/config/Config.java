@@ -24,4 +24,8 @@ public class Config {
     public static final int STANDARD_MONTH = 1;
     public static final int STANDARD_DAY = 1;
 
+    public final static int TOTAL_CUSTOMER_INSURANCE_COUNT = 3;
+    public final static int TOTAL_CUSTOMER_DISCOUNT = 10;
+
+
 }
