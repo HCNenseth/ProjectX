@@ -23,7 +23,7 @@ public abstract class ClaimBuilder<T, E>  {
     private String contacts = "";
     private double amount = 0;
     private double deductible = 0;
-    private List<Image> images;
+    private String filePathImage = "";
 
     private Status status = Status.INCOMPLETE;
 
@@ -35,9 +35,9 @@ public abstract class ClaimBuilder<T, E>  {
 
     /* Setters */
 
-    public T addImage(Image image)
+    public T image(String filePathImage)
     {
-        images.add(image);
+        this.filePathImage = filePathImage;
         return (T) this;
     }
 
@@ -115,9 +115,9 @@ public abstract class ClaimBuilder<T, E>  {
         return claimDate;
     }
 
-    public List<Image> getImages()
+    public String getFilePathImage()
     {
-        return images;
+        return filePathImage;
     }
 
     public Status getStatus()
