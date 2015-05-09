@@ -34,14 +34,16 @@ public class House extends Property implements Serializable
 
     public static class Builder extends InsuranceBuilder<Builder, House>
     {
-        protected String streetAddress;
-        protected String postalCode;
-        protected String city = "Unknown";
-        protected int year = -1;
-        protected int squareMeter = -1;
-        protected Type type = Type.A;
-        protected Material material = Material.A;
-        protected Standard standard = Standard.A;
+        private String streetAddress;
+        private String postalCode;
+        private String city = "Unknown";
+        private int year = 1950;
+        private int squareMeter = 0;
+        private Type type = Type.A;
+        private Material material = Material.A;
+        private Standard standard = Standard.A;
+        private int contents = 0;
+
 
         public Builder(Person customer, String streetAddress, String postalCode)
         {
@@ -112,8 +114,8 @@ public class House extends Property implements Serializable
         setStandard(builder.standard);
         setCity(builder.city);
         setYear(builder.year);
-
-        setType(builder.type);
+        setContents(builder.contents);
+        type = builder.type;
     }
 
     /* GETTERS */
@@ -133,9 +135,9 @@ public class House extends Property implements Serializable
     public boolean query(String value)
     {
         return super.query(value)
-                || (getStreetAddress() != null && getStreetAddress().contains(value))
-                || (getPostalCode() != null && getPostalCode().contains(value))
-                || (getCity() != null && getCity().contains(value))
-                || (getType() != null && getType().getValue().contains(value));
+                || (getStreetAddress() != null && getStreetAddress().toLowerCase().contains(value.toLowerCase()))
+                || (getPostalCode() != null && getPostalCode().toLowerCase().contains(value.toLowerCase()))
+                || (getCity() != null && getCity().toLowerCase().contains(value.toLowerCase()))
+                || (getType() != null && getType().getValue().toLowerCase().contains(value.toLowerCase()));
     }
 }

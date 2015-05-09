@@ -21,6 +21,7 @@ abstract class Property extends Insurance<PropertyClaim>
     private int squareMeter;
     private Standard standard;
     private String streetAddress;
+    private int contents;
 
     public enum Material {
         A(Loc.c("property_material_a")),
@@ -87,6 +88,8 @@ abstract class Property extends Insurance<PropertyClaim>
         this.standard = standard;
     }
 
+    public void setContents(int contents){ this.contents = contents; }
+
     /* GETTERS */
     public String getPostalCode() {
         return postalCode;
@@ -99,6 +102,8 @@ abstract class Property extends Insurance<PropertyClaim>
     public int getYear() {
         return year;
     }
+
+    public int getContents(){ return contents; }
 
     public int getSquareMeter() {
         return squareMeter;
@@ -121,7 +126,7 @@ abstract class Property extends Insurance<PropertyClaim>
     public boolean query(String value)
     {
         return super.query(value)
-                || (material != null && material.getValue().contains(value))
-                || (standard != null && standard.getValue().contains(value));
+                || (material != null && material.getValue().toLowerCase().contains(value.toLowerCase()))
+                || (standard != null && standard.getValue().toLowerCase().contains(value.toLowerCase()));
     }
 }

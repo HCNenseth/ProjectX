@@ -36,9 +36,10 @@ public class VacationHouse extends Property implements Serializable {
     {
         private String streetAddress;
         private String postalCode;
-        private String city = "Unknown";
-        private int year = -1;
-        private int squareMeter = -1;
+        private String city = Loc.u("N/A");
+        private int year = 1950;
+        private int squareMeter = 0;
+        private int contents = 0;
         private Type type = Type.A;
         private Material material = Material.A;
         private Standard standard = Standard.A;
@@ -105,8 +106,9 @@ public class VacationHouse extends Property implements Serializable {
         setStandard(builder.standard);
         setCity(builder.city);
         setYear(builder.year);
+        setContents(builder.contents);
 
-        setType(builder.type);
+        type = builder.type;
     }
 
     /* SETTERS */
@@ -126,10 +128,10 @@ public class VacationHouse extends Property implements Serializable {
     public boolean query(String value)
     {
         return super.query(value)
-                || (getStreetAddress() != null && getStreetAddress().contains(value))
-                || (getPostalCode() != null && getPostalCode().contains(value))
-                || (getCity() != null && getCity().contains(value))
-                || (getType() != null && getType().getValue().contains(value));
+                || (getStreetAddress() != null && getStreetAddress().toLowerCase().contains(value.toLowerCase()))
+                || (getPostalCode() != null && getPostalCode().toLowerCase().contains(value.toLowerCase()))
+                || (getCity() != null && getCity().toLowerCase().contains(value.toLowerCase()))
+                || (getType() != null && getType().getValue().toLowerCase().contains(value.toLowerCase()));
     }
 
     @Override

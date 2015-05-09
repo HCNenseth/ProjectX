@@ -16,15 +16,11 @@ import main.view.Resources;
 public class MenuBar extends javafx.scene.control.MenuBar
 {
     private Menu fileMenu, statisticsMenu, editMenu,
-            themeSubMenu, languageSubMenu, newMenu, aboutMenu;
+            newMenu, aboutMenu;
 
     private MenuItem fileSave, closeProject, fileExit, fileRestart,
             customerStatistics, insuranceStatistics, claimStatistics,
             customer, search, report, aboutUs;
-
-    private ToggleGroup themeSubMenuGroup, languageSubMenuGroup;
-
-    private RadioMenuItem themeSubMenuItem1, themeSubMenuItem2;
 
     public MenuBar()
     {
@@ -79,47 +75,6 @@ public class MenuBar extends javafx.scene.control.MenuBar
         search = new MenuItem(Loc.c("search"));
         search.setOnAction(e -> Mediator.inst.router(Signal.SEARCH, null));
 
-
-        /**
-         * Sub menus with Radio menu items.
-         * Probably better for scaling to use ENUMS with a loop.
-         * But this is just a proof of concept.
-         */
-
-
-
-        themeSubMenu = new Menu(Loc.c("theme"));
-        themeSubMenuGroup = new ToggleGroup();
-        themeSubMenuItem1 = new RadioMenuItem(Loc.c("default"));
-        themeSubMenuItem1.setSelected(true);
-        themeSubMenuItem1.setToggleGroup(themeSubMenuGroup);
-        themeSubMenuItem2 = new RadioMenuItem(Loc.c("inverse"));
-        themeSubMenuItem2.setToggleGroup(themeSubMenuGroup);
-        themeSubMenu.getItems().addAll(themeSubMenuItem1, themeSubMenuItem2);
-
-        languageSubMenu = new Menu(Loc.c("language"));
-        languageSubMenuGroup = new ToggleGroup();
-
-        for (String s : Loc.getLanguages()) {
-            RadioMenuItem tmp = new RadioMenuItem(Loc.c(s));
-            tmp.setToggleGroup(languageSubMenuGroup);
-            tmp.setOnAction(e -> {
-                Loc.setActiveLang(s);
-                /*
-                Resources.inst.getInfoBar().setAndShow(
-                        Loc.c("please_restart_for_changes_to_take_effect"));
-                */
-                Pref.inst.put("language", s);
-                // TODO reevaluate this decision.
-                Resources.inst.getSceneSwitch().setMainWindow();
-                Resources.inst.getOtp().closeAllTabs();
-            });
-            languageSubMenu.getItems().add(tmp);
-        }
-
-       /**
-         * Putting the parts together.
-         */
         fileMenu.getItems().addAll(
                 closeProject,
                 new SeparatorMenuItem(),
@@ -127,13 +82,13 @@ public class MenuBar extends javafx.scene.control.MenuBar
                 new SeparatorMenuItem(),
                 fileRestart,
                 fileExit);
-        //editMenu.getItems().addAll(themeSubMenu, languageSubMenu);
+
         newMenu.getItems().addAll(search, customer);
         statisticsMenu.getItems().addAll(customerStatistics,
                 insuranceStatistics, claimStatistics);
 
         aboutMenu.getItems().addAll(report, aboutUs);
 
-        getMenus().addAll(fileMenu, newMenu /*, editMenu */, statisticsMenu, aboutMenu);
+        getMenus().addAll(fileMenu, newMenu, statisticsMenu, aboutMenu);
     }
 }
