@@ -31,13 +31,12 @@ public abstract class InsuranceView<T extends Insurance> extends StandardGridPan
     {
         if(drawn)
         {
-            getChildren().clear();
+            getChildren();
             rowNum = 0;
         }
 
         initButtonPanel();
         initInsuranceFields();
-        addClaimsTable();
         drawn = true;
     }
 

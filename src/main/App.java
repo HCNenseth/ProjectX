@@ -1,19 +1,11 @@
 package main;
 
 import javafx.application.Application;
-import javafx.application.Platform;
-import javafx.scene.Scene;
-import javafx.scene.image.Image;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-import main.config.Config;
 import main.localization.Loc;
 import main.model.Storage;
 import main.preference.Pref;
 import main.view.Resources;
-import main.view.SceneSwitch;
-import main.view.menubar.MenuBar;
 
 import java.io.IOException;
 

@@ -1,8 +1,6 @@
 package main.view.form;
 
-import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
-import javafx.scene.control.ButtonBase;
 import main.model.Model;
 import main.view.form.node.FormNode;
 

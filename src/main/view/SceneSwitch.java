@@ -21,7 +21,7 @@ public class SceneSwitch
         primaryStage = stage;
         primaryStage.setTitle(Config.APP_NAME);
         primaryStage.getIcons()
-                .add(new Image("file:resources/images/glyphicons-41-stats.png"));
+                .add(new Image("file:resources/images/companyIcon.png"));
     }
 
     public void setMainWindow()
