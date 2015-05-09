@@ -25,7 +25,7 @@ public abstract class ClaimBuilder<T, E>  {
     private double deductible = 0;
     private List<Image> images;
 
-    private Status status = Status.INCOMPLETE;
+    private Status status = Status.ACTIVE;
 
     public ClaimBuilder(Person customer, Insurance insurance)
     {
@@ -76,6 +76,19 @@ public abstract class ClaimBuilder<T, E>  {
         this.dateOfDamages = dateOfDamages;
         return (T) this;
     }
+
+    /**
+     * This method is not needed under normal circumstances.
+     * To improve the data from the unit tests this has a right to live.
+     * @param claimDate
+     * @return
+     */
+    public T claimDate(LocalDate claimDate)
+    {
+        this.claimDate = claimDate;
+        return (T) this;
+    }
+
     /* Getters */
 
     public Person getCustomer()
