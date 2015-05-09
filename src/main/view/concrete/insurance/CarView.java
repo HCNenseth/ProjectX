@@ -12,11 +12,9 @@ public class CarView extends InsuranceView<Car>
     public CarView(Car car)
     {
         super(car);
-
-        addFields();
     }
 
-    private void addFields()
+    protected void childDraw()
     {
         // Bonus
         add(new Label(Loc.c("bonus")), 0, rowNum);

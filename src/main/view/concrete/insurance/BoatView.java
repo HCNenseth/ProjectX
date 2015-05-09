@@ -12,11 +12,9 @@ public class BoatView extends InsuranceView<Boat>
     public BoatView(Boat boat)
     {
         super(boat);
-
-        addFields();
     }
 
-    private void addFields()
+    protected void childDraw()
     {
         // Type
         add(new Label(Loc.c("type")), 0, rowNum);

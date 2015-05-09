@@ -12,4 +12,6 @@ public class TravelView extends InsuranceView
     {
         super(travel);
     }
+
+    protected void childDraw() {}
 }

@@ -13,10 +13,9 @@ public class VacationHouseView extends InsuranceView<VacationHouse>
     public VacationHouseView(VacationHouse vacationHouse)
     {
         super(vacationHouse);
-        addFields();
     }
 
-    private void addFields()
+    protected void childDraw()
     {
         // Street address
         add(new Label(Loc.c("street_address")), 0, rowNum);

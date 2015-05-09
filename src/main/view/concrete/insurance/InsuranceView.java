@@ -19,7 +19,7 @@ public abstract class InsuranceView<T extends Insurance> extends StandardGridPan
 {
     private T insurance;
     protected int rowNum = 0;
-    private boolean drawn = false;
+    protected boolean drawn = false;
 
     public InsuranceView(T insurance)
     {
@@ -29,14 +29,14 @@ public abstract class InsuranceView<T extends Insurance> extends StandardGridPan
 
     private void draw()
     {
-        if(drawn)
-        {
-            getChildren();
+        if (drawn) {
+            getChildren().clear();
             rowNum = 0;
         }
 
         initButtonPanel();
         initInsuranceFields();
+        childDraw();
         drawn = true;
     }
 
@@ -109,5 +109,8 @@ public abstract class InsuranceView<T extends Insurance> extends StandardGridPan
 
     public T getInsurance() { return insurance; }
 
+    protected abstract void childDraw();
+
+    @Override
     public StandardGridPane getNode() { return this; }
 }

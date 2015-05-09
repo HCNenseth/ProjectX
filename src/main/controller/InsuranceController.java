@@ -50,7 +50,7 @@ public class InsuranceController
                 VacationHouseAdapter vacationHouseAdapter = new VacationHouseAdapter(p);
                 vacationHouseAdapter.setOnDoneAction(InsuranceController::view);
                 f.injectAdapter(vacationHouseAdapter);
-                Resources.inst.getOtp().injectObservableTab(Loc.c("new_vacationhouse_insuarance"),
+                Resources.inst.getOtp().injectObservableTab(Loc.c("new_vacation_house_insuarance"),
                         f.getForm(), true);
                 return;
             case TRAVEL:
@@ -86,7 +86,7 @@ public class InsuranceController
                 return;
             case VACATION_HOUSE:
                 view = new VacationHouseView((VacationHouse)i);
-                Resources.inst.getOtp().injectObservableTab(Loc.c("vacationHouse_insurance"),
+                Resources.inst.getOtp().injectObservableTab(Loc.c("vacation_house_insurance"),
                         view.getNode(), i, true);
                 return;
             case TRAVEL:

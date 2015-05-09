@@ -12,10 +12,9 @@ public class HouseView extends InsuranceView<House>
     public HouseView(House house)
     {
         super(house);
-        addFields();
     }
 
-    private void addFields()
+    protected void childDraw()
     {
         // Street address
         add(new Label(Loc.c("street_address")), 0, rowNum);
