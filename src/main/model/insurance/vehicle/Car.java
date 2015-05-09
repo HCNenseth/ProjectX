@@ -10,7 +10,7 @@ import java.io.Serializable;
 import java.util.LinkedList;
 import java.util.List;
 
-public class Car extends Vehicle implements Serializable
+public class Car extends Vehicle<CarClaim> implements Serializable
 {
     private int mileage;
     private Type type;

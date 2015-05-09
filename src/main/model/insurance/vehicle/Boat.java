@@ -9,7 +9,7 @@ import java.io.Serializable;
 import java.util.LinkedList;
 import java.util.List;
 
-public class Boat extends Vehicle implements Serializable
+public class Boat extends Vehicle<BoatClaim> implements Serializable
 {
     private int length;
 

@@ -102,11 +102,9 @@ public abstract class InsuranceView<T extends Insurance> extends StandardGridPan
 
     protected void addClaimsTable()
     {
-        /*
         getNode().add(new Label(Loc.c("claims")), 0, rowNum++);
         getNode().add(TableController.getClaimsTable(getInsurance().getClaims().stream())
                 .getTable(), 0, rowNum++, 2, 1);
-        */
     }
 
     public T getInsurance() { return insurance; }

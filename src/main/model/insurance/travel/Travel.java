@@ -14,7 +14,8 @@ import java.util.List;
 /**
  * Created by HansChristian on 15.04.2015.
  */
-public class Travel extends Insurance implements Serializable
+public class Travel extends Insurance<TravelClaim>
+        implements Serializable
 {
 
     private Continent type;

@@ -72,6 +72,11 @@ public abstract class Claim implements Serializable, FullTextSearch, Model {
         amount = cb.getAmount();
         deductible = cb.getDeductible();
         images = cb.getImages();
+        status = cb.getStatus();
+
+        // connect this claim reference to customer and insurance
+        customer.addClaim(this);
+        insurance.addClaim(this);
     }
 
     /* Setters */
@@ -202,7 +207,8 @@ public abstract class Claim implements Serializable, FullTextSearch, Model {
     @Override
     public boolean query(String value)
     {
-        return (desc != null && desc.contains(value));
+        return desc.contains(value)
+                || contacts.contains(value);
     }
 
     @Override
