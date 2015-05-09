@@ -112,6 +112,8 @@ public class Car extends Vehicle<CarClaim> implements Serializable
 
     public Propulsion getPropulsion() { return propulsion; }
 
+    public int getBonus() { return CarBonus.getBonus(this); }
+
     /* OVERRIDES */
     @Override
     public InsuranceType identify() { return InsuranceType.CAR; }

@@ -39,18 +39,37 @@ class CarBonus
         }
     }
 
+
+    /**
+     * Requirements: Take car insurance and extract all claim connected.
+     * Check the last claim date (if any) and compare this date against
+     * the insurance date (car insurance). Take the insurance date day count
+     * (from current day) and subtract the claim date (again: if any).
+     * Insert this number into the above enum, and let the enum spit out
+     * correct bonus level...
+     * @param car
+     * @return
+     */
+    // TODO - fix this broken algorithm!
     static int getBonus(Car car)
     {
-        List<CarClaim> claims = (List<CarClaim>)car.getClaims();
+        List<CarClaim> claims = car.getClaims();
 
-        if (claims.size() == 0) { return -1; }
+        int days = (car.getDate().compareTo(LocalDate.now()));
+
+        if (claims.size() == 0
+                || claims.stream().filter(i -> i.getStatus() == Status.ACTIVE).count() == 0)
+        {
+            return Levels.getLevel(days).bonus;
+        }
 
         CarClaim newest = claims.stream()
                 .filter(c -> c.getStatus() == Status.ACTIVE)
-                .sorted((c, e) -> e.getClaimDate().compareTo(LocalDate.now()))
-                .findFirst()
-                .get();
+                .sorted((c, e) -> e.getDateOfDamages().compareTo(LocalDate.now()))
+                .findFirst().get();
 
-        return Levels.getLevel(newest.getClaimDate().compareTo(LocalDate.now())).bonus;
+        days -= (newest.getDateOfDamages().compareTo(LocalDate.now()));
+
+        return Levels.getLevel(days).bonus;
     }
 }
