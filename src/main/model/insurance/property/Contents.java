@@ -1,12 +1,15 @@
 package main.model.insurance.property;
 
 import main.localization.Loc;
+import main.model.claim.property.PropertyClaim;
 import main.model.insurance.InsuranceType;
 import main.model.insurance.Insurance;
 import main.model.insurance.InsuranceBuilder;
 import main.model.person.Person;
 
 import java.io.Serializable;
+import java.util.LinkedList;
+import java.util.List;
 
 public class Contents extends Insurance implements Serializable {
 
@@ -30,6 +33,51 @@ public class Contents extends Insurance implements Serializable {
 
         @Override
         public String toString() { return getValue(); }
+    }
+
+    public static class Builder extends InsuranceBuilder<Builder, Contents>
+    {
+        private String streetAddress;
+        private String postalCode;
+        private String city = "Unknown";
+        private int numberOfRooms = 1;
+        private int numberOfResidents = 1;
+
+        public Builder(Person customer, String streetAddress, String postalCode)
+        {
+            super.customer(customer);
+            this.streetAddress = streetAddress;
+            this.postalCode = postalCode;
+        }
+
+        public Builder city(String city)
+        {
+            this.city = city;
+            return this;
+        }
+
+        public Builder numberOfRooms(int numberOfRooms)
+        {
+            this.numberOfRooms = numberOfRooms;
+            return this;
+        }
+
+        public Builder numberOfResidents(int numberOfResidents)
+        {
+            this.numberOfResidents = numberOfResidents;
+            return this;
+        }
+
+        @Override
+        public List<PropertyClaim> getClaimsList()
+        {
+            return new LinkedList<>();
+        }
+
+        @Override
+        public Contents build() {
+            return new Contents(this);
+        }
     }
 
     private Contents(Builder ib) {
@@ -106,45 +154,4 @@ public class Contents extends Insurance implements Serializable {
                 || (getCity() != null && getCity().contains(value))
                 || (getType() != null && getType().getValue().contains(value));
     }
-
-    public static class Builder extends InsuranceBuilder<Builder, Contents>
-    {
-        private String streetAddress;
-        private String postalCode;
-        private String city = "Unknown";
-        private int numberOfRooms = 1;
-        private int numberOfResidents = 1;
-
-        public Builder(Person customer, String streetAddress, String postalCode)
-        {
-            super.customer(customer);
-            this.streetAddress = streetAddress;
-            this.postalCode = postalCode;
-        }
-
-        public Builder city(String city)
-        {
-            this.city = city;
-            return this;
-        }
-
-        public Builder numberOfRooms(int numberOfRooms)
-        {
-            this.numberOfRooms = numberOfRooms;
-            return this;
-        }
-
-        public Builder numberOfResidents(int numberOfResidents)
-        {
-            this.numberOfResidents = numberOfResidents;
-            return this;
-        }
-
-        @Override
-        public Contents build() {
-            return new Contents(this);
-        }
-    }
-
-
 }

@@ -1,11 +1,14 @@
 package main.model.insurance.property;
 
 import main.localization.Loc;
+import main.model.claim.property.PropertyClaim;
 import main.model.insurance.InsuranceType;
 import main.model.insurance.InsuranceBuilder;
 import main.model.person.Person;
 
 import java.io.Serializable;
+import java.util.LinkedList;
+import java.util.List;
 
 /**
  * Created by Hans Petter on 27.04.2015.
@@ -118,6 +121,12 @@ public class VacationHouse extends Property implements Serializable {
         public Builder standard(Standard standard)
         {
             this.standard = standard; return this;
+        }
+
+        @Override
+        public List<PropertyClaim> getClaimsList()
+        {
+            return new LinkedList<>();
         }
 
         @Override

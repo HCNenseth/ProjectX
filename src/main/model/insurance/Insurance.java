@@ -28,7 +28,7 @@ public abstract class Insurance implements
     private String desc;
     private Status status;
 
-    private List<Claim> claims;
+    private List<? extends Claim> claims;
 
     /**
      * Insurance constructor.
@@ -43,15 +43,9 @@ public abstract class Insurance implements
         this.date = ib.getDate();
         this.desc = ib.getDesc();
         this.status = ib.getStatus();
+        this.claims = ib.getClaimsList();
 
         customer.addInsurance(this);
-
-        claims = new LinkedList<>();
-    }
-
-    public void addClaim(Claim claim)
-    {
-        claims.add(claim);
     }
 
     public double getPremium()
@@ -99,7 +93,7 @@ public abstract class Insurance implements
 
     public Person getCustomer() { return customer; }
 
-    public List<Claim> getClaims() { return claims; }
+    public List<? extends Claim> getClaims() { return claims; }
 
     public boolean query(String value)
     {

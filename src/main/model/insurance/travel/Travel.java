@@ -1,12 +1,15 @@
 package main.model.insurance.travel;
 
 import main.localization.Loc;
+import main.model.claim.travel.TravelClaim;
 import main.model.person.Person;
 import main.model.insurance.InsuranceType;
 import main.model.insurance.Insurance;
 import main.model.insurance.InsuranceBuilder;
 
 import java.io.Serializable;
+import java.util.LinkedList;
+import java.util.List;
 
 /**
  * Created by HansChristian on 15.04.2015.
@@ -49,6 +52,11 @@ public class Travel extends Insurance implements Serializable
         {
             continent = val;
             return this;
+        }
+
+        public List<TravelClaim> getClaimsList()
+        {
+            return new LinkedList<>();
         }
 
         public Travel build()

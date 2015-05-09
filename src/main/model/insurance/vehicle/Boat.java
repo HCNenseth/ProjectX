@@ -1,10 +1,13 @@
 package main.model.insurance.vehicle;
 
 import main.localization.Loc;
+import main.model.claim.vehicle.BoatClaim;
 import main.model.person.Person;
 import main.model.insurance.InsuranceType;
 
 import java.io.Serializable;
+import java.util.LinkedList;
+import java.util.List;
 
 public class Boat extends Vehicle implements Serializable
 {
@@ -72,6 +75,11 @@ public class Boat extends Vehicle implements Serializable
         {
             propulsion = val;
             return this;
+        }
+
+        public List<BoatClaim> getClaimsList()
+        {
+            return new LinkedList<>();
         }
 
         public Boat build()
