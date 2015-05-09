@@ -21,14 +21,12 @@ public class FormImageNode extends FormNode<Image> {
     private FileChooser fileChooser;
     private String key;
     private String error;
-    private Label keyLabel;
     private Label errorLabel;
 
     public static class Builder
     {
         private String error = "";
-        private String key = "";
-        private String buttonText = Loc.c("button_load");
+        private String key = Loc.c("button_open");
         private Image image = null;
         private boolean required = false;
 
@@ -55,12 +53,6 @@ public class FormImageNode extends FormNode<Image> {
             return this;
         }
 
-        public Builder button(String text)
-        {
-            this.buttonText = text;
-            return this;
-        }
-
         public Builder image(Image image)
         {
             this.image = image;
@@ -82,13 +74,11 @@ public class FormImageNode extends FormNode<Image> {
 
         super.setRequired(builder.required);
 
-        keyLabel = new Label(key + ":");
-
         errorLabel = new Label(error);
         errorLabel.setTextFill(Color.RED);
         errorLabel.setVisible(false);
 
-        openButton = new Button(builder.buttonText);
+        openButton = new Button(key);
         openButton.setOnAction(e -> initFileChooser());
 
     }
@@ -116,7 +106,7 @@ public class FormImageNode extends FormNode<Image> {
 
     @Override
     public Label getKey() {
-        return keyLabel;
+        return null;
     }
 
     @Override
