@@ -1,6 +1,6 @@
 package main.view.form.adapter.claim;
 
-import main.model.claim.vehicle.CarClaim;
+import main.model.claim.vehicle.BoatClaim;
 import main.model.insurance.Insurance;
 import main.model.person.Person;
 import main.view.form.Formable;
@@ -12,11 +12,11 @@ import java.util.function.Consumer;
 /**
  * Created by alex on 5/7/15.
  */
-public class BoatClaimAdapter extends ClaimAdapter<CarClaim> implements Formable<CarClaim>
+public class BoatClaimAdapter extends ClaimAdapter<BoatClaim> implements Formable<BoatClaim>
 {
-    private CarClaim claim;
+    private BoatClaim claim;
 
-    public BoatClaimAdapter(CarClaim claim)
+    public BoatClaimAdapter(BoatClaim claim)
     {
         super(claim);
         this.claim = claim;
@@ -44,7 +44,7 @@ public class BoatClaimAdapter extends ClaimAdapter<CarClaim> implements Formable
     }
 
     @Override
-    public void setOnDoneAction(Consumer<CarClaim> c)
+    public void setOnDoneAction(Consumer<BoatClaim> c)
     {
         callBackEvent.setOnAction(e -> c.accept(claim));
     }

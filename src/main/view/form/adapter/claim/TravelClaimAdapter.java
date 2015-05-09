@@ -1,6 +1,6 @@
 package main.view.form.adapter.claim;
 
-import main.model.claim.vehicle.CarClaim;
+import main.model.claim.travel.TravelClaim;
 import main.model.insurance.Insurance;
 import main.model.person.Person;
 import main.view.form.Formable;
@@ -12,11 +12,11 @@ import java.util.function.Consumer;
 /**
  * Created by alex on 5/7/15.
  */
-public class TravelClaimAdapter extends ClaimAdapter<CarClaim> implements Formable<CarClaim>
+public class TravelClaimAdapter extends ClaimAdapter<TravelClaim> implements Formable<TravelClaim>
 {
-    private CarClaim claim;
+    private TravelClaim claim;
 
-    public TravelClaimAdapter(CarClaim claim)
+    public TravelClaimAdapter(TravelClaim claim)
     {
         super(claim);
         this.claim = claim;
@@ -44,7 +44,7 @@ public class TravelClaimAdapter extends ClaimAdapter<CarClaim> implements Formab
     }
 
     @Override
-    public void setOnDoneAction(Consumer<CarClaim> c)
+    public void setOnDoneAction(Consumer<TravelClaim> c)
     {
         callBackEvent.setOnAction(e -> c.accept(claim));
     }
