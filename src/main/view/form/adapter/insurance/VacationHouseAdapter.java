@@ -98,7 +98,7 @@ public class VacationHouseAdapter extends InsuranceAdapter<VacationHouse> implem
     }
 
     @Override
-    public List<FormNode> getNodes()
+    public List<FormNode> getVisibleNodes()
     {
         List<FormNode> tmp = super.getNodes();
         tmp.add(street);

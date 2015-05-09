@@ -2,12 +2,15 @@ package main.view.form;
 
 import javafx.geometry.Insets;
 import javafx.scene.Node;
+import javafx.scene.control.Accordion;
 import javafx.scene.control.Button;
+import javafx.scene.control.TitledPane;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.Priority;
 import main.localization.Loc;
+import main.view.StandardGridPane;
 import main.view.form.node.FormNode;
 import main.view.form.node.FormValueNode;
 
@@ -19,33 +22,25 @@ import java.util.List;
  * gridpane and validating them upon submit. Depends heavy
  * on the FormNode class.
  */
-public class Form extends GridPane
+public class Form extends StandardGridPane
 {
-    private List<FormNode> nodes = new ArrayList<>();
+    private List<FormNode> nodes;
+    private List<FormNode> hiddenNodes;
+    private Accordion optionalNodes;
+    private TitledPane advanced;
     private Formable caller;
     private Button submit;
+
+    private Node callBackData;
     private int rowNum = 0;
     private boolean valid = true;
+    private boolean hasCallbackData = false;
 
     public Form()
     {
+        super(3);
+
         setPadding(new Insets(5));
-
-        ColumnConstraints keyColumn = new ColumnConstraints();
-        keyColumn.setHgrow(Priority.SOMETIMES);
-        keyColumn.setPercentWidth(10);
-
-        ColumnConstraints valueColumn = new ColumnConstraints();
-        valueColumn.setHgrow(Priority.ALWAYS);
-        valueColumn.setPercentWidth(60);
-
-        ColumnConstraints errorColumn = new ColumnConstraints();
-        errorColumn.setHgrow(Priority.ALWAYS);
-        errorColumn.setPercentWidth(30);
-
-        getColumnConstraints().add(0, keyColumn);
-        getColumnConstraints().add(1, valueColumn);
-        getColumnConstraints().add(2, errorColumn);
 
         setHgap(5);
         setVgap(5);
@@ -62,20 +57,27 @@ public class Form extends GridPane
     public void injectAdapter(Formable caller)
     {
         this.caller = caller;
-        nodes = this.caller.getNodes();
+
+        nodes = this.caller.getVisibleNodes();
+
         this.caller.submitActuator(submit);
         nodes.stream().forEach(this::addPart);
+
+        hiddenNodes = this.caller.getHiddenNodes();
+        if (hiddenNodes.size() > 0) {
+            setupAdvancedSection();
+        }
     }
 
     /**
      * Return gridpane and add the button bottom.
      * @return
      */
-    public GridPane getForm() {
-        addRow(rowNum++);
+    public GridPane getForm()
+    {
+        if (optionalNodes != null) { add(optionalNodes, 1, rowNum++); }
 
         add(submit, 1, rowNum++);
-
         return this;
     }
 
@@ -85,10 +87,11 @@ public class Form extends GridPane
      */
     public void setCallbackData(Node node)
     {
-        if (getChildren().size() > rowNum)
-            getChildren().remove(rowNum);
+        if (hasCallbackData) { getChildren().remove(callBackData); }
 
         add(node, 0, rowNum, 3, 1);
+        callBackData = node;
+        hasCallbackData = true;
     }
 
     /**
@@ -97,10 +100,29 @@ public class Form extends GridPane
      */
     private void addPart(FormNode fn)
     {
-        addRow(rowNum++);
         add(fn.getKey(), 0, rowNum);
         add(fn.getNode(), 1, rowNum);
         add(fn.getError(), 2, rowNum++);
+    }
+
+    private void setupAdvancedSection()
+    {
+        StandardGridPane sgp = new StandardGridPane(3)
+        {
+            @Override
+            public StandardGridPane getNode() { return this; }
+        };
+
+        int innerRowNum = 0;
+
+        optionalNodes = new Accordion();
+        for (FormNode n: hiddenNodes) {
+            sgp.add(n.getKey(), 0, innerRowNum);
+            sgp.add(n.getNode(), 1, innerRowNum);
+            sgp.add(n.getError(), 2, innerRowNum++);
+        }
+        advanced = new TitledPane(Loc.c("advanced"), sgp);
+        optionalNodes.getPanes().addAll(advanced);
     }
 
     /**
@@ -139,4 +161,7 @@ public class Form extends GridPane
 
         if (valid) { caller.callback(); }
     }
+
+    @Override
+    public StandardGridPane getNode() { return this; }
 }

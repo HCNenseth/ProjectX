@@ -28,9 +28,9 @@ public class TravelClaimAdapter extends ClaimAdapter<TravelClaim> implements For
     }
 
     @Override
-    public List<FormNode> getNodes()
+    public List<FormNode> getVisibleNodes()
     {
-        List<FormNode> tmp = super.getNodes();
+        List<FormNode> tmp = super.getVisibleNodes();
         return tmp;
     }
 

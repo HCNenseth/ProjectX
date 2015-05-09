@@ -4,6 +4,7 @@ import javafx.scene.control.Button;
 import main.model.Model;
 import main.view.form.node.FormNode;
 
+import java.util.LinkedList;
 import java.util.List;
 import java.util.function.Consumer;
 
@@ -12,8 +13,9 @@ import java.util.function.Consumer;
  */
 public interface Formable<T extends Model>
 {
-    List<FormNode> getNodes();
+    List<FormNode> getVisibleNodes();
     void callback();
     void setOnDoneAction(Consumer<T> c);
     default void submitActuator(Button b) {}
+    default List<FormNode> getHiddenNodes() { return new LinkedList<>(); }
 }

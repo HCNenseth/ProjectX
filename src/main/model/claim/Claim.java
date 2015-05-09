@@ -236,4 +236,6 @@ public abstract class Claim implements Serializable, FullTextSearch, Model {
         );
     }
 
+    @Override
+    public LocalDate getDate() { return dateOfDamages; }
 }

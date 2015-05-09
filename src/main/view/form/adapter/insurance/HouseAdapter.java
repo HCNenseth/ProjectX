@@ -94,7 +94,7 @@ public class HouseAdapter extends InsuranceAdapter<House> implements Formable<Ho
     }
 
     @Override
-    public List<FormNode> getNodes()
+    public List<FormNode> getVisibleNodes()
     {
         List<FormNode> tmp = super.getNodes();
         tmp.add(street);

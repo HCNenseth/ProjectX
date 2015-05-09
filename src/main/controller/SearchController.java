@@ -12,6 +12,7 @@ import main.view.concrete.SearchResultView;
 import main.view.form.Form;
 import main.view.form.adapter.SearchAdapter;
 
+import java.time.LocalDate;
 import java.util.List;
 
 /**
@@ -40,6 +41,8 @@ class SearchController
     private void search(Search search)
     {
         String keyword = search.getKeyword();
+        LocalDate from = search.getFrom();
+        LocalDate to = search.getTo();
 
         List<Person> persons = (List<Person>)Storage.getInstance().get(Config.PERSONS);
         List<Insurance> insurances = (List<Insurance>)Storage.getInstance().get(Config.INSURANCES);
@@ -49,11 +52,11 @@ class SearchController
         SearchResultView searchResult = new SearchResultView();
 
         searchResult.addTable(TableController.getPersonTable(persons.stream()
-                .filter(i -> i.query(keyword))).getTable(), Loc.c("persons"));
+                .filter(i -> (i.query(keyword) && i.between(from, to)))).getTable(), Loc.c("persons"));
         searchResult.addTable(TableController.getInsuranceTable(insurances.stream()
-                .filter(i -> i.query(keyword))).getTable(), Loc.c("insurances"));
+                .filter(i -> (i.query(keyword) && i.between(from, to)))).getTable(), Loc.c("insurances"));
         searchResult.addTable(TableController.getClaimsTable(claims.stream()
-                .filter(i -> i.query(keyword))).getTable(), Loc.c("claims"));
+                .filter(i -> (i.query(keyword) && i.between(from, to)))).getTable(), Loc.c("claims"));
 
         f.setCallbackData(searchResult.getNode());
     }

@@ -28,9 +28,9 @@ public class CarClaimAdapter extends ClaimAdapter<CarClaim> implements Formable<
     }
 
     @Override
-    public List<FormNode> getNodes()
+    public List<FormNode> getVisibleNodes()
     {
-        List<FormNode> tmp = super.getNodes();
+        List<FormNode> tmp = super.getVisibleNodes();
         return tmp;
     }
 

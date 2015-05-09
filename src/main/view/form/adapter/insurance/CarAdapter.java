@@ -95,7 +95,7 @@ public class CarAdapter extends InsuranceAdapter<Car> implements Formable<Car>
     }
 
     @Override
-    public List<FormNode> getNodes() {
+    public List<FormNode> getVisibleNodes() {
         List<FormNode> tmp = super.getNodes();
 
         tmp.add(licensePlate);

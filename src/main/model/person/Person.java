@@ -19,7 +19,6 @@ import java.util.List;
  */
 public class Person implements Serializable, FullTextSearch, Model
 {
-
     private String firstname;
     private String lastname;
 
@@ -313,4 +312,7 @@ public class Person implements Serializable, FullTextSearch, Model
 
     @Override
     public ModelType getModelType() { return ModelType.PERSON; }
+
+    @Override
+    public LocalDate getDate() { return dateOfBirth; }
 }

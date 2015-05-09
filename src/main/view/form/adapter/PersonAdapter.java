@@ -124,7 +124,7 @@ public class PersonAdapter implements Formable<Person>
     }
 
     @Override
-    public List<FormNode> getNodes()
+    public List<FormNode> getVisibleNodes()
     {
         List<FormNode> tmp = new ArrayList<>();
         tmp.add(firstname);

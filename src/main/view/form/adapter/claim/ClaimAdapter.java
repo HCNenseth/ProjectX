@@ -138,7 +138,7 @@ public abstract class ClaimAdapter<T extends Claim> implements Formable<T>
 
     }
 
-    public List<FormNode> getNodes()
+    public List<FormNode> getVisibleNodes()
     {
         List<FormNode> tmp = new ArrayList<>();
         tmp.add(personNode);

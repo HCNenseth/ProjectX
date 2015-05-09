@@ -49,7 +49,7 @@ public class TravelAdapter extends InsuranceAdapter<Travel> implements Formable<
     }
 
     @Override
-    public List<FormNode> getNodes()
+    public List<FormNode> getVisibleNodes()
     {
         List<FormNode> tmp = super.getNodes();
         tmp.add(continent);

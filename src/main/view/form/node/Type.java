@@ -5,5 +5,5 @@ package main.view.form.node;
  */
 public enum Type
 {
-    VALUE, CHOICE, LABEL, DATEPICKER, TEXTAREA, IMAGE
+    VALUE, CHOICE, LABEL, DATEPICKER, TEXTAREA, IMAGE, SLIDER
 }

@@ -63,11 +63,6 @@ public abstract class Insurance<C extends Claim> implements
         return deductible;
     }
 
-    public LocalDate getDate()
-    {
-        return date;
-    }
-
     public String getDesc()
     {
         return desc;
@@ -154,4 +149,7 @@ public abstract class Insurance<C extends Claim> implements
 
     @Override
     public ModelType getModelType() { return ModelType.INSURANCE; }
+
+    @Override
+    public LocalDate getDate() { return date; }
 }

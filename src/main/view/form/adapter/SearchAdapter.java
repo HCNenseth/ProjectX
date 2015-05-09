@@ -11,9 +11,12 @@ import main.model.Model;
 import main.model.search.Search;
 import main.validator.StringMatcher;
 import main.view.form.Formable;
+import main.view.form.node.FormDateNode;
 import main.view.form.node.FormNode;
+import main.view.form.node.FormSlideNode;
 import main.view.form.node.FormValueNode;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Consumer;
@@ -24,7 +27,11 @@ import java.util.function.Consumer;
 public class SearchAdapter implements Formable<Search>
 {
     private FormValueNode input;
+    private FormDateNode from;
+    private FormDateNode to;
     private Search search;
+
+    private int fromYear = 1930, fromMonth = 01, fromDay = 01;
 
     private ButtonBase callBackEvent = new ButtonBase()
     {
@@ -42,9 +49,16 @@ public class SearchAdapter implements Formable<Search>
                 .regex(StringMatcher.getBaseString())
                 .error(Loc.c("search_error"))
                 .build();
+
+        from = new FormDateNode.Builder(Loc.c("from"), LocalDate.of(fromYear,
+                fromMonth, fromDay))
+                .build();
+
+        to = new FormDateNode.Builder(Loc.c("to"), LocalDate.now())
+                .build();
     }
 
-    public List<FormNode> getNodes()
+    public List<FormNode> getVisibleNodes()
     {
         List<FormNode> tmp = new ArrayList<>();
 
@@ -53,9 +67,23 @@ public class SearchAdapter implements Formable<Search>
         return tmp;
     }
 
+    public List<FormNode> getHiddenNodes()
+    {
+        List<FormNode> tmp = new ArrayList<>();
+        tmp.add(from);
+        tmp.add(to);
+
+        return tmp;
+    }
+
+
     public void callback()
     {
-        search = new Search(input.getValue());
+        search = new Search.Builder(input.getValue())
+                .from(from.getData())
+                .to(to.getData())
+                .build();
+
         callBackEvent.fire();
     }
 

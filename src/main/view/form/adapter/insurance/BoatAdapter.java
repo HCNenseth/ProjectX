@@ -100,7 +100,7 @@ public class BoatAdapter extends InsuranceAdapter<Boat> implements Formable<Boat
     }
 
     @Override
-    public List<FormNode> getNodes()
+    public List<FormNode> getVisibleNodes()
     {
         List<FormNode> tmp = super.getNodes();
         tmp.add(licencePlate);

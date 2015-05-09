@@ -80,6 +80,9 @@
     <string name="true">True</string>
     <string name="false">False</string>
     <string name="date">Date</string>
+    <string name="advanced">Advanced</string>
+    <string name="from">From</string>
+    <string name="to">To</string>
     <string name="description">Description</string>
     <string name="desc">Description</string>
     <string name="street_address">Street address</string>
