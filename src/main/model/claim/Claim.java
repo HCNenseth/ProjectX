@@ -23,7 +23,6 @@ public abstract class Claim implements Serializable, FullTextSearch, Model {
     private Person customer;
     private Insurance insurance;
 
-    // must find a better name for this.
     private LocalDate dateOfDamages;
     private LocalDate claimDate;
     private LocalDate lastEdited = null;
@@ -32,7 +31,7 @@ public abstract class Claim implements Serializable, FullTextSearch, Model {
     private String contacts;
     private double amount;
     private double deductible;
-    private List images;
+    private String filePathImage;
 
     private PaymentStatus paymentStatus;
     private Status status;
@@ -71,7 +70,7 @@ public abstract class Claim implements Serializable, FullTextSearch, Model {
         contacts = cb.getContacts();
         amount = cb.getAmount();
         deductible = cb.getDeductible();
-        images = cb.getImages();
+        filePathImage = cb.getFilePathImage();
         status = cb.getStatus();
 
         // connect this claim reference to customer and insurance
