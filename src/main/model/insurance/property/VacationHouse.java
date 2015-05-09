@@ -11,7 +11,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 /**
- * Created by Hans Petter on 27.04.2015.
+ * VacationHouse.java
  */
 public class VacationHouse extends Property implements Serializable {
 
@@ -32,56 +32,16 @@ public class VacationHouse extends Property implements Serializable {
         public String toString() { return getValue(); }
     }
 
-    public VacationHouse(Builder builder) {
-        super(builder);
-
-        setStreetAddress(builder.streetAddress);
-        setPostalCode(builder.postalCode);
-        setMaterial(builder.material);
-        setSquareMeter(builder.squareMeter);
-        setStandard(builder.standard);
-        setCity(builder.city);
-        setType(builder.type);
-        setYear(builder.year);
-    }
-
-    public void setType(VacationHouse.Type type)
-    {
-        this.type = type;
-    }
-
-    public VacationHouse.Type getType()
-    {
-        return type;
-    }
-
-    @Override
-    public boolean query(String value)
-    {
-        return super.query(value)
-                || (getStreetAddress() != null && getStreetAddress().contains(value))
-                || (getPostalCode() != null && getPostalCode().contains(value))
-                || (getCity() != null && getCity().contains(value))
-                || (getType() != null && getType().getValue().contains(value))
-                || (getMaterial() != null && getMaterial().getValue().contains(value))
-                || (getStandard() != null && getStandard().getValue().contains(value));
-    }
-
-    @Override
-    public InsuranceType identify() {
-        return InsuranceType.VACATION_HOUSE;
-    }
-
     public static class Builder extends InsuranceBuilder<Builder, VacationHouse>
     {
-        protected String streetAddress;
-        protected String postalCode;
-        protected String city = "Unknown";
-        protected int year = -1;
-        protected int squareMeter = -1;
-        protected Type type = Type.A;
-        protected Material material = Material.A;
-        protected Standard standard = Standard.A;
+        private String streetAddress;
+        private String postalCode;
+        private String city = "Unknown";
+        private int year = -1;
+        private int squareMeter = -1;
+        private Type type = Type.A;
+        private Material material = Material.A;
+        private Standard standard = Standard.A;
 
         public Builder(Person customer,
                        String streetAddress,
@@ -135,4 +95,45 @@ public class VacationHouse extends Property implements Serializable {
         }
     }
 
+    public VacationHouse(Builder builder) {
+        super(builder);
+
+        setStreetAddress(builder.streetAddress);
+        setPostalCode(builder.postalCode);
+        setMaterial(builder.material);
+        setSquareMeter(builder.squareMeter);
+        setStandard(builder.standard);
+        setCity(builder.city);
+        setYear(builder.year);
+
+        setType(builder.type);
+    }
+
+    /* SETTERS */
+    public void setType(VacationHouse.Type type)
+    {
+        this.type = type;
+    }
+
+    /* GETTERS */
+    public VacationHouse.Type getType()
+    {
+        return type;
+    }
+
+    /* OVERRIDES */
+    @Override
+    public boolean query(String value)
+    {
+        return super.query(value)
+                || (getStreetAddress() != null && getStreetAddress().contains(value))
+                || (getPostalCode() != null && getPostalCode().contains(value))
+                || (getCity() != null && getCity().contains(value))
+                || (getType() != null && getType().getValue().contains(value));
+    }
+
+    @Override
+    public InsuranceType identify() {
+        return InsuranceType.VACATION_HOUSE;
+    }
 }

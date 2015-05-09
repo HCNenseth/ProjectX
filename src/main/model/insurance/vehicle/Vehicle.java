@@ -4,13 +4,12 @@ import main.localization.Loc;
 import main.model.claim.Claim;
 import main.model.person.Person;
 import main.model.insurance.Insurance;
-import main.model.insurance.InsuranceBuilder;
 
 import java.io.Serializable;
 import java.time.LocalDate;
 
 /**
- * Created by HansChristian on 15.04.2015.
+ * Vehicle.java
  */
 public abstract class Vehicle<C extends Claim> extends Insurance<C> implements Serializable
 {
@@ -33,7 +32,7 @@ public abstract class Vehicle<C extends Claim> extends Insurance<C> implements S
         return owner;
     }
 
-    // SETTERS
+    /* SETTERS */
     public void setOwner(Person owner)
     {
         this.owner = owner;
@@ -56,7 +55,7 @@ public abstract class Vehicle<C extends Claim> extends Insurance<C> implements S
 
     public void setHorsePower(int hk){this.horsePower = hk; }
 
-    // GETTERS
+    /* GETTERS */
     public String getLicensePlate() {
         return licensePlate;
     }
@@ -73,6 +72,7 @@ public abstract class Vehicle<C extends Claim> extends Insurance<C> implements S
         return registration;
     }
 
+    /* OVERRIDES */
     @Override
     public boolean query(String value)
     {

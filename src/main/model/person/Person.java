@@ -1,7 +1,6 @@
 package main.model.person;
 
 import main.config.Config;
-import main.localization.Loc;
 import main.model.FullTextSearch;
 import main.model.Model;
 import main.model.Status;
@@ -15,7 +14,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 /**
- * Person class.
+ * Person.java
  */
 public class Person implements Serializable, FullTextSearch, Model
 {
@@ -139,7 +138,7 @@ public class Person implements Serializable, FullTextSearch, Model
     }
 
     /**
-     * Person class main and only constructur, requires Builder object.
+     * Person class main and only constructor, requires Builder object.
      * @param builder
      */
     private Person(Builder builder)
@@ -158,24 +157,7 @@ public class Person implements Serializable, FullTextSearch, Model
         claims = new LinkedList<>();
     }
 
-    /**
-     * Get insurances from person.
-     * @return
-     */
-    public List<Insurance> getInsurances()
-    {
-        return insurances;
-    }
-
-    /**
-     * Get claims from person.
-     * @return
-     */
-    public List<Claim> getClaims()
-    {
-        return claims;
-    }
-
+    /* ADDERS */
     /**
      * Add insurance to person object.
      * @param insurance
@@ -190,6 +172,7 @@ public class Person implements Serializable, FullTextSearch, Model
         claims.add(claim);
     }
 
+    /* SETTERS */
     public void setFirstname(String firstname)
     {
         this.firstname = firstname;
@@ -235,6 +218,7 @@ public class Person implements Serializable, FullTextSearch, Model
         this.dateOfBirth = dateOfBirth;
     }
 
+    /* GETTERS */
     public LocalDate getDateOfBirth()
     {
         return dateOfBirth;
@@ -280,16 +264,37 @@ public class Person implements Serializable, FullTextSearch, Model
         return email;
     }
 
+    /**
+     * Get insurances from person.
+     * @return
+     */
+    public List<Insurance> getInsurances()
+    {
+        return insurances;
+    }
+
+    /**
+     * Get claims from person.
+     * @return
+     */
+    public List<Claim> getClaims()
+    {
+        return claims;
+    }
+
+    /* STATIC */
     public static void saveNew(Person person)
     {
         ((List<Person>)Storage.getInstance().get(Config.PERSONS)).add(person);
     }
 
+    /* OVERRIDES */
     /**
      * Query method used for search.
      * @param value
      * @return
      */
+    @Override
     public boolean query(String value)
     {
         return getName().contains(value)

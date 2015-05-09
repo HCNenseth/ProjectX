@@ -1,7 +1,6 @@
 package main.model.insurance.vehicle;
 
 import main.localization.Loc;
-import main.model.claim.Claim;
 import main.model.claim.vehicle.CarClaim;
 import main.model.person.Person;
 import main.model.insurance.InsuranceType;
@@ -10,6 +9,9 @@ import java.io.Serializable;
 import java.util.LinkedList;
 import java.util.List;
 
+/**
+ * Car.java
+ */
 public class Car extends Vehicle<CarClaim> implements Serializable
 {
     private int mileage;

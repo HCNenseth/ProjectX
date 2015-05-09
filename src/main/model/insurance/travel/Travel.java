@@ -85,7 +85,8 @@ public class Travel extends Insurance<TravelClaim>
 
     public boolean query(String value)
     {
-        return super.query(value);
+        return super.query(value)
+                || (type != null && type.getValue().contains(value));
     }
 
     // TODO override equals and hashcode

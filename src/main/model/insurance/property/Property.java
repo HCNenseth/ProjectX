@@ -8,7 +8,7 @@ import main.model.insurance.InsuranceBuilder;
 import java.io.Serializable;
 
 /**
- * Created by HansChristian on 15.04.2015.
+ * Property.java
  */
 abstract class Property extends Insurance<PropertyClaim>
         implements Serializable
@@ -119,6 +119,8 @@ abstract class Property extends Insurance<PropertyClaim>
     @Override
     public boolean query(String value)
     {
-        return super.query(value); // only push upstream
+        return super.query(value)
+                || (material != null && material.getValue().contains(value))
+                || (standard != null && standard.getValue().contains(value));
     }
 }

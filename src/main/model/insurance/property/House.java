@@ -10,7 +10,9 @@ import java.io.Serializable;
 import java.util.LinkedList;
 import java.util.List;
 
-
+/**
+ * House.java
+ */
 public class House extends Property implements Serializable
 {
     private Type type;
@@ -109,8 +111,9 @@ public class House extends Property implements Serializable
         setSquareMeter(builder.squareMeter);
         setStandard(builder.standard);
         setCity(builder.city);
-        setType(builder.type);
         setYear(builder.year);
+
+        setType(builder.type);
     }
 
     /* GETTERS */
@@ -119,6 +122,7 @@ public class House extends Property implements Serializable
     /* SETTERS */
     public void setType(House.Type type) { this.type = type; }
 
+    /* OVERRIDES */
     @Override
     public InsuranceType identify()
     {
@@ -132,8 +136,6 @@ public class House extends Property implements Serializable
                 || (getStreetAddress() != null && getStreetAddress().contains(value))
                 || (getPostalCode() != null && getPostalCode().contains(value))
                 || (getCity() != null && getCity().contains(value))
-                || (getType() != null && getType().getValue().contains(value))
-                || (getMaterial() != null && getMaterial().getValue().contains(value))
-                || (getStandard() != null && getStandard().getValue().contains(value));
+                || (getType() != null && getType().getValue().contains(value));
     }
 }
