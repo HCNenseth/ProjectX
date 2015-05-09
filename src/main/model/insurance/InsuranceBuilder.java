@@ -5,7 +5,6 @@ import main.model.person.Person;
 import main.model.Status;
 
 import java.time.LocalDate;
-import java.util.Calendar;
 import java.util.List;
 
 /**
@@ -91,5 +90,6 @@ public abstract class InsuranceBuilder<T, E>
 
     /* ABSTRACT */
     public abstract E build();
+
     public abstract List<? extends Claim> getClaimsList();
 }

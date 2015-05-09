@@ -123,7 +123,4 @@ public class Boat extends Vehicle<BoatClaim> implements Serializable
                 || (type != null && type.getValue().contains(value))
                 || (propulsion != null && propulsion.getValue().contains(value));
     }
-
-    @Override
-    public String toString() { return super.toString(); }
 }

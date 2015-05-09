@@ -80,13 +80,4 @@ public abstract class Vehicle<C extends Claim> extends Insurance<C> implements S
                 || (licensePlate != null && licensePlate.contains(value));
     }
 
-    @Override
-    public String toString(){
-        return super.toString() + String.format(
-                "\n%s\t%s\n%s\t%s",
-                Loc.c("owner"), owner,
-                Loc.c("licence_plate"), licensePlate
-        );
-    }
-
 }

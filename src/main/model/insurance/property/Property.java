@@ -116,6 +116,7 @@ abstract class Property extends Insurance<PropertyClaim>
         return streetAddress;
     }
 
+    /* OVERRIDES */
     @Override
     public boolean query(String value)
     {

@@ -127,7 +127,4 @@ public class Car extends Vehicle<CarClaim> implements Serializable
                 || (type != null && type.getValue().contains(value))
                 || (propulsion != null && propulsion.getValue().contains(value));
     }
-
-    @Override
-    public String toString() { return super.toString(); }
 }

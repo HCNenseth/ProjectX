@@ -78,16 +78,17 @@ public class Travel extends Insurance<TravelClaim>
     /* SETTERS */
     public void setType(Continent type) { this.type = type; }
 
+    /* OVERRIDES */
+    @Override
     public InsuranceType identify()
     {
         return InsuranceType.TRAVEL;
     }
 
+    @Override
     public boolean query(String value)
     {
         return super.query(value)
                 || (type != null && type.getValue().contains(value));
     }
-
-    // TODO override equals and hashcode
 }

@@ -109,42 +109,23 @@ public abstract class Insurance<C extends Claim> implements
         claims.add(claim);
     }
 
-    @Override
-    public boolean query(String value)
-    {
-        // TODO implement test for all members!
-        return (desc != null && desc.contains(value));
-    }
-
+    /* STATIC */
     public static void saveNew(Insurance insurance)
     {
         ((List<Insurance>) Storage.getInstance().get(Config.INSURANCES)).add(insurance);
+    }
+
+    /* OVERRIDES */
+    @Override
+    public boolean query(String value)
+    {
+        return (desc != null && desc.contains(value));
     }
 
     @Override
     public Status getStatus()
     {
         return status;
-    }
-
-    @Override
-    public String toString()
-    {
-        return String.format(
-                "%s:\t%s\n" +
-                "%s:\t%s\n" +
-                "%s:\t%s\n" +
-                "%s:\t%s\n" +
-                "%s:\t%s\n" +
-                "%s:\t%s\n",
-                Loc.c("customer"), customer,
-                Loc.c("premium"), premium,
-                Loc.c("amount"), amount,
-                Loc.c("deductible"), deductible,
-                Loc.c("description"), desc,
-                Loc.c("date"), date
-
-        );
     }
 
     @Override
