@@ -24,7 +24,7 @@
 
 #HP
 * Claim model
-* Språk -> skifte språk ned på splash screen nivå.  	(flag icons: famfamfam.com) 
+* *Done - Språk -> skifte språk ned på splash screen nivå.  	(flag icons: famfamfam.com)* 
 * Themevelger -> ned på splash screen nivå.
 * Bilder i skademelding.
 * *Done - FormImageNode.*
