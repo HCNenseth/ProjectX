@@ -28,6 +28,7 @@
     <string name="data_files">Data filer (*.dat)</string>
     <string name="language">Språk</string>
     <string name="default">Standard</string>
+    <string name="refresh">Oppdater</string>
     <string name="inverse">Inverse</string>
     <string name="english">Engelsk</string>
     <string name="norwegian">Norsk</string>

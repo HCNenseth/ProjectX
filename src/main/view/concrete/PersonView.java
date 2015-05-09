@@ -1,8 +1,15 @@
 package main.view.concrete;
 
+import javafx.geometry.*;
+import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ToolBar;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.Priority;
+import javafx.scene.layout.Region;
+import main.config.Config;
 import main.controller.InsuranceController;
 import main.controller.PersonController;
 import main.controller.TableController;
@@ -10,6 +17,9 @@ import main.localization.Loc;
 import main.model.insurance.InsuranceType;
 import main.model.person.Person;
 import main.view.StandardGridPane;
+
+import java.awt.*;
+import java.util.DoubleSummaryStatistics;
 
 /**
  * Created by alex on 4/28/15.
@@ -43,7 +53,7 @@ public class PersonView extends StandardGridPane
 
     private void initButtonPanel()
     {
-        ToolBar buttonPane = new ToolBar();
+        AnchorPane buttonPane = new AnchorPane();
 
         // car
         Button b1 = new Button(Loc.c("car"));
@@ -73,7 +83,16 @@ public class PersonView extends StandardGridPane
         Button refreshButton = new Button(Loc.c("refresh"));
         refreshButton.setOnAction(e -> draw());
 
-        buttonPane.getItems().addAll(b1, b2, b3, b4, b5, editButton, refreshButton);
+        HBox hBox1 = new HBox();
+        HBox hBox2 = new HBox();
+        hBox1.getChildren().addAll(b1, b2, b3, b4, b5);
+        hBox2.getChildren().addAll(editButton, refreshButton);
+
+        AnchorPane.setLeftAnchor(hBox1, 0d);
+        AnchorPane.setRightAnchor(hBox2, 0d);
+
+        buttonPane.getChildren().addAll(hBox1, hBox2);
+        buttonPane.setPadding(new Insets(10, 0, 10, 0));
 
         add(buttonPane, 0, rowNum++, 2, 1);
     }
