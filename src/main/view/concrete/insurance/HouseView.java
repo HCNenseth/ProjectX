@@ -38,7 +38,7 @@ public class HouseView extends InsuranceView<House>
         getNode().add(new Label(getInsurance().getMaterial().getValue()), 1, rowNum++);
 
         // Standard
-        getNode().add(new Label(Loc.c("house_standard")), 0, rowNum);
+        getNode().add(new Label(Loc.c("property_standard")), 0, rowNum);
         getNode().add(new Label(getInsurance().getStandard().getValue()), 1, rowNum++);
 
         // Standard
