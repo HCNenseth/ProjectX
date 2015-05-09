@@ -17,21 +17,17 @@ import java.io.IOException;
 public class FormImageNode extends FormNode<Image> {
 
     private Image image;
-    private Button loadButton;
+    private Button openButton;
     private FileChooser fileChooser;
-    private String key;
-    private String filename;
     private String error;
-    private Label keyLabel;
     private Label errorLabel;
 
     public static class Builder
     {
         private String error = "";
-        private boolean required = false;
-        private String key = "";
-        private String loadText = Loc.c("button_load");
+        private String key = Loc.c("button_open");
         private Image image = null;
+        private boolean required = false;
 
         public Builder(String key)
         {
@@ -50,9 +46,9 @@ public class FormImageNode extends FormNode<Image> {
             return this;
         }
 
-        public Builder loadText(String loadText)
+        public Builder key(String key)
         {
-            this.loadText = loadText;
+            this.key = key;
             return this;
         }
 
@@ -71,45 +67,38 @@ public class FormImageNode extends FormNode<Image> {
     private FormImageNode(Builder builder)
     {
         error = builder.error;
-        key = builder.key;
         image = builder.image;
-        setRequired(builder.required);
-        keyLabel = new Label(builder.key + ":");
+
+        super.setRequired(builder.required);
+
         errorLabel = new Label(error);
         errorLabel.setTextFill(Color.RED);
         errorLabel.setVisible(false);
 
-        loadButton = new Button(builder.loadText);
-        loadButton.setOnAction(e -> initFileChooser());
-
+        openButton = new Button(builder.key);
+        openButton.setOnAction(e -> loadImage());
     }
 
-    // TODO should this be moved ?
-    private void initFileChooser()
+    private void loadImage()
     {
         fileChooser = new FileChooser();
-
         FileChooser.ExtensionFilter extFilterJPG = new FileChooser.ExtensionFilter(Loc.u("JPG") + " " + Loc.l("files") + " (*.jpg)", "*.JPG");
         FileChooser.ExtensionFilter extFilterPNG = new FileChooser.ExtensionFilter(Loc.u("PNG") + " " + Loc.l("files") + " (*.png)", "*.PNG");
-
         fileChooser.getExtensionFilters().addAll(extFilterJPG, extFilterPNG);
-
-        File file = fileChooser.showOpenDialog(null);
-
         try {
-            BufferedImage bufferedImage = ImageIO.read(file);
-            Image image = SwingFXUtils.toFXImage(bufferedImage, null);
-            // TODO filename must be unique.
-            filename = fileChooser.getInitialFileName();
-        } catch(IOException ex)
-        {
-            error = Loc.c("image_io_exception");
+            File file = fileChooser.showOpenDialog(null);
+            if (file != null) {
+                BufferedImage bufferedImage = ImageIO.read(file);
+                image = SwingFXUtils.toFXImage(bufferedImage, null);
+            }
+        } catch(IOException ex) {
+            error = Loc.c("error_image_format");
         }
     }
 
     @Override
     public Label getKey() {
-        return keyLabel;
+        return null;
     }
 
     @Override
@@ -119,7 +108,7 @@ public class FormImageNode extends FormNode<Image> {
 
     @Override
     public Node getNode() {
-        return loadButton;
+        return openButton;
     }
 
     @Override
@@ -129,7 +118,7 @@ public class FormImageNode extends FormNode<Image> {
 
     @Override
     public String getValue() {
-        return filename;
+        return null;
     }
 
     @Override
