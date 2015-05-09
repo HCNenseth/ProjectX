@@ -13,14 +13,14 @@ import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 
 public class FormImageNode extends FormNode<Image> {
 
     private Image image;
-    private Button loadButton;
+    private Button openButton;
     private FileChooser fileChooser;
     private String key;
-    private String filename;
     private String error;
     private Label keyLabel;
     private Label errorLabel;
@@ -28,10 +28,10 @@ public class FormImageNode extends FormNode<Image> {
     public static class Builder
     {
         private String error = "";
-        private boolean required = false;
         private String key = "";
-        private String loadText = Loc.c("button_load");
+        private String buttonText = Loc.c("button_load");
         private Image image = null;
+        private boolean required = false;
 
         public Builder(String key)
         {
@@ -50,9 +50,15 @@ public class FormImageNode extends FormNode<Image> {
             return this;
         }
 
-        public Builder loadText(String loadText)
+        public Builder key(String key)
         {
-            this.loadText = loadText;
+            this.key = key;
+            return this;
+        }
+
+        public Builder button(String text)
+        {
+            this.buttonText = text;
             return this;
         }
 
@@ -70,40 +76,42 @@ public class FormImageNode extends FormNode<Image> {
 
     private FormImageNode(Builder builder)
     {
-        error = builder.error;
+
         key = builder.key;
+        error = builder.error;
         image = builder.image;
-        setRequired(builder.required);
-        keyLabel = new Label(builder.key + ":");
+
+        super.setRequired(builder.required);
+
+        keyLabel = new Label(key + ":");
+
         errorLabel = new Label(error);
         errorLabel.setTextFill(Color.RED);
         errorLabel.setVisible(false);
 
-        loadButton = new Button(builder.loadText);
-        loadButton.setOnAction(e -> initFileChooser());
+        openButton = new Button(builder.buttonText);
+        openButton.setOnAction(e -> initFileChooser());
 
     }
 
-    // TODO should this be moved ?
     private void initFileChooser()
     {
         fileChooser = new FileChooser();
-
         FileChooser.ExtensionFilter extFilterJPG = new FileChooser.ExtensionFilter(Loc.u("JPG") + " " + Loc.l("files") + " (*.jpg)", "*.JPG");
         FileChooser.ExtensionFilter extFilterPNG = new FileChooser.ExtensionFilter(Loc.u("PNG") + " " + Loc.l("files") + " (*.png)", "*.PNG");
-
         fileChooser.getExtensionFilters().addAll(extFilterJPG, extFilterPNG);
-
-        File file = fileChooser.showOpenDialog(null);
-
         try {
+            openImage();
+        } catch(IOException ex) {
+            error = Loc.c("error_image_format");
+        }
+    }
+
+    private void openImage() throws IOException {
+        File file = fileChooser.showOpenDialog(null);
+        if (file != null) {
             BufferedImage bufferedImage = ImageIO.read(file);
-            Image image = SwingFXUtils.toFXImage(bufferedImage, null);
-            // TODO filename must be unique.
-            filename = fileChooser.getInitialFileName();
-        } catch(IOException ex)
-        {
-            error = Loc.c("image_io_exception");
+            image = SwingFXUtils.toFXImage(bufferedImage, null);
         }
     }
 
@@ -119,7 +127,7 @@ public class FormImageNode extends FormNode<Image> {
 
     @Override
     public Node getNode() {
-        return loadButton;
+        return openButton;
     }
 
     @Override
@@ -129,7 +137,7 @@ public class FormImageNode extends FormNode<Image> {
 
     @Override
     public String getValue() {
-        return filename;
+        return null;
     }
 
     @Override
