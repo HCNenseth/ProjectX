@@ -19,7 +19,6 @@ public class FormImageNode extends FormNode<Image> {
     private Image image;
     private Button openButton;
     private FileChooser fileChooser;
-    private String key;
     private String error;
     private Label errorLabel;
 
@@ -67,8 +66,6 @@ public class FormImageNode extends FormNode<Image> {
 
     private FormImageNode(Builder builder)
     {
-
-        key = builder.key;
         error = builder.error;
         image = builder.image;
 
@@ -78,29 +75,24 @@ public class FormImageNode extends FormNode<Image> {
         errorLabel.setTextFill(Color.RED);
         errorLabel.setVisible(false);
 
-        openButton = new Button(key);
-        openButton.setOnAction(e -> initFileChooser());
-
+        openButton = new Button(builder.key);
+        openButton.setOnAction(e -> loadImage());
     }
 
-    private void initFileChooser()
+    private void loadImage()
     {
         fileChooser = new FileChooser();
         FileChooser.ExtensionFilter extFilterJPG = new FileChooser.ExtensionFilter(Loc.u("JPG") + " " + Loc.l("files") + " (*.jpg)", "*.JPG");
         FileChooser.ExtensionFilter extFilterPNG = new FileChooser.ExtensionFilter(Loc.u("PNG") + " " + Loc.l("files") + " (*.png)", "*.PNG");
         fileChooser.getExtensionFilters().addAll(extFilterJPG, extFilterPNG);
         try {
-            openImage();
+            File file = fileChooser.showOpenDialog(null);
+            if (file != null) {
+                BufferedImage bufferedImage = ImageIO.read(file);
+                image = SwingFXUtils.toFXImage(bufferedImage, null);
+            }
         } catch(IOException ex) {
             error = Loc.c("error_image_format");
-        }
-    }
-
-    private void openImage() throws IOException {
-        File file = fileChooser.showOpenDialog(null);
-        if (file != null) {
-            BufferedImage bufferedImage = ImageIO.read(file);
-            image = SwingFXUtils.toFXImage(bufferedImage, null);
         }
     }
 
