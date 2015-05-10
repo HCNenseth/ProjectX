@@ -18,9 +18,8 @@ import java.util.List;
  */
 public abstract class Claim implements Serializable, FullTextSearch, Model {
 
-    public static final int claimId = 1;
-    private int id;
-    private static int claimCount = claimId;
+    public static int counter = 1000000;
+    public final int claimId;
 
     private Person customer;
     private Insurance insurance;
@@ -63,7 +62,7 @@ public abstract class Claim implements Serializable, FullTextSearch, Model {
      */
     public Claim(ClaimBuilder cb)
     {
-        /** #YOLO */
+        claimId = counter++;
         customer = cb.getCustomer();
         insurance = cb.getInsurance();
         dateOfDamages = cb.getDateOfDamages();
@@ -75,7 +74,6 @@ public abstract class Claim implements Serializable, FullTextSearch, Model {
         filePathImage = cb.getFilePathImage();
         paymentStatus = cb.getPaymentStatus();
         status = cb.getStatus();
-        id = claimCount++;
 
         // connect this claim reference to customer and insurance
         customer.addClaim(this);
@@ -83,9 +81,9 @@ public abstract class Claim implements Serializable, FullTextSearch, Model {
     }
 
     /* Setters */
-    public void setClaimCount(int claimCount)
+    public void setCounter(int claimCount)
     {
-        this.claimCount = claimCount;
+        this.counter = claimCount;
     }
 
     public void setDateOfDamages(LocalDate dateOfDamages)
@@ -150,7 +148,7 @@ public abstract class Claim implements Serializable, FullTextSearch, Model {
     /* Getters */
     public int getId()
     {
-        return id;
+        return claimId;
     }
 
     public Person getCustomer()
