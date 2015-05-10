@@ -52,7 +52,6 @@ public class CarClaimAdapter extends ClaimAdapter<CarClaim> implements Formable<
                     .build();
             storeImage();
         }
-
         callBackEvent.fire();
     }
 

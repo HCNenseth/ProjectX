@@ -1,5 +1,7 @@
 package main.view.form.adapter.claim;
 
+import main.model.Status;
+import main.model.claim.Claim;
 import main.model.claim.vehicle.BoatClaim;
 import main.model.insurance.Insurance;
 import main.model.person.Person;
@@ -38,9 +40,21 @@ public class BoatClaimAdapter extends ClaimAdapter<BoatClaim> implements Formabl
     public void callback()
     {
         if (editMode) {
+            setData();
         } else {
+            claim = new BoatClaim.Builder(person, insurance)
+                    .dateOfDamages(dateOfDamages.getData())
+                    .claimDate(claimDate.getData())
+                    .desc(description.getValue())
+                    .contacts(contacts.getValue())
+                    .amount(Double.parseDouble(amount.getValue()))
+                    .deductible(Double.parseDouble(deductible.getValue()))
+                    .paymentStatus((Claim.PaymentStatus) paymentStatus.getData())
+                    .status((Status) status.getData())
+                    .build();
+            storeImage();
         }
-
+        callBackEvent.fire();
     }
 
     @Override
