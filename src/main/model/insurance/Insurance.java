@@ -12,6 +12,7 @@ import main.model.Status;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * Main insurance class.
@@ -19,6 +20,11 @@ import java.util.List;
 public abstract class Insurance<C extends Claim> implements
         Serializable, Type, FullTextSearch, Model
 {
+    public static final int insuranceId = 1;
+
+    private int id;
+    private static int insuranceCount = insuranceId;
+
     private Person customer;
     private double premium;
     private double amount;
@@ -43,11 +49,17 @@ public abstract class Insurance<C extends Claim> implements
         this.desc = ib.getDesc();
         this.status = ib.getStatus();
         this.claims = ib.getClaimsList();
+        id = insuranceCount++;
 
         customer.addInsurance(this);
     }
 
     /* GETTERS */
+    public int getId()
+    {
+        return id;
+    }
+
     public double getPremium()
     {
         return premium;
@@ -79,6 +91,11 @@ public abstract class Insurance<C extends Claim> implements
     }
 
     /* SETTERS */
+    public void setInsuranceCount(int val)
+    {
+        insuranceCount = val;
+    }
+
     public void setDesc(String desc)
     {
         this.desc = desc;

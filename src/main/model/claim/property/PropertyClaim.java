@@ -8,7 +8,8 @@ import main.model.person.Person;
 
 // TODO Override toString
 
-public class PropertyClaim extends Claim {
+public class PropertyClaim extends Claim
+{
 
     private Type type;
 
@@ -29,11 +30,13 @@ public class PropertyClaim extends Claim {
 
     }
 
-    public static class Builder extends ClaimBuilder<Builder, PropertyClaim> {
+    public static class Builder extends ClaimBuilder<Builder, PropertyClaim>
+    {
 
         private Type type;
 
-        public Builder(Person customer, Insurance insurance) {
+        public Builder(Person customer, Insurance insurance)
+        {
             super(customer, insurance);
         }
 
@@ -44,7 +47,8 @@ public class PropertyClaim extends Claim {
         }
 
         @Override
-        public PropertyClaim build() {
+        public PropertyClaim build()
+        {
             return new PropertyClaim(this);
         }
     }
@@ -54,7 +58,8 @@ public class PropertyClaim extends Claim {
      *
      * @param builder
      */
-    public PropertyClaim(Builder builder) {
+    public PropertyClaim(Builder builder)
+    {
         super(builder);
         type = builder.type;
     }

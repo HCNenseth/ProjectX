@@ -19,10 +19,10 @@ import java.util.concurrent.atomic.AtomicInteger;
  */
 public class Person implements Serializable, FullTextSearch, Model
 {
-    public static final AtomicInteger customerId = new AtomicInteger(1_000_000);
+    public static final int customerId = 1_000_001;
 
-    private final int id;
-    private AtomicInteger customerCount = customerId;
+    private int id;
+    private static int customerCount = customerId;
 
     private String firstname;
     private String lastname;
@@ -158,7 +158,7 @@ public class Person implements Serializable, FullTextSearch, Model
         postalCode = builder.postalCode;
         city = builder.city;
         status = builder.status;
-        id = customerCount.incrementAndGet();
+        id = customerCount++;
 
         insurances = new LinkedList<>();
         claims = new LinkedList<>();
@@ -180,7 +180,7 @@ public class Person implements Serializable, FullTextSearch, Model
     }
 
     /* SETTERS */
-    public void setCustomerCount(AtomicInteger customerCount)
+    public void setCustomerCount(int customerCount)
     {
         this.customerCount = customerCount;
     }

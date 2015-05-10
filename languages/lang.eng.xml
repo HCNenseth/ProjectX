@@ -117,6 +117,7 @@
     <string name="bonus">Bonus</string>
     <string name="amount">Amount</string>
     <string name="deductible">Deductible</string>
+    <string name="insurance_Id">Insurance Identification number</string>
     <string name="car_insurance">Car insurance</string>
     <string name="boat_insurance">Boat insurance</string>
     <string name="house_insurance">House insurance</string>
@@ -126,7 +127,7 @@
     <string name="propulsion">Propulsion</string>
 
     <!-- person -->
-    <string name="customerId">Customer identification number</string>
+    <string name="customer_Id">Customer identification number</string>
     <string name="firstname">Firstname</string>
     <string name="firstname_error">Firstname must contain ...</string>
     <string name="lastname">Lastname</string>

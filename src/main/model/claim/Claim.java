@@ -19,6 +19,11 @@ import java.util.List;
  */
 public abstract class Claim implements Serializable, FullTextSearch, Model {
 
+    public static final int claimId = 1;
+
+    private int id;
+    private static int claimCount = claimId;
+
     private int reference;
     private Person customer;
     private Insurance insurance;
@@ -36,7 +41,8 @@ public abstract class Claim implements Serializable, FullTextSearch, Model {
     private PaymentStatus paymentStatus;
     private Status status;
 
-    public enum ClaimType {
+    public enum ClaimType
+    {
         PROPERTY, TRAVEL, BOAT, CAR
     }
 
@@ -73,6 +79,7 @@ public abstract class Claim implements Serializable, FullTextSearch, Model {
         filePathImage = cb.getFilePathImage();
         paymentStatus = cb.getPaymentStatus();
         status = cb.getStatus();
+        id = claimCount++;
 
         // connect this claim reference to customer and insurance
         customer.addClaim(this);
@@ -80,6 +87,11 @@ public abstract class Claim implements Serializable, FullTextSearch, Model {
     }
 
     /* Setters */
+    public void setClaimCount(int claimCount)
+    {
+        this.claimCount = claimCount;
+    }
+
     public void setDateOfDamages(LocalDate dateOfDamages)
     {
         this.dateOfDamages = dateOfDamages;
@@ -140,6 +152,11 @@ public abstract class Claim implements Serializable, FullTextSearch, Model {
     }
 
     /* Getters */
+    public int getId()
+    {
+        return id;
+    }
+
     public int getReference()
     {
         return reference;
@@ -200,7 +217,10 @@ public abstract class Claim implements Serializable, FullTextSearch, Model {
         return deductible;
     }
 
-    public static void saveNew(Claim claim) {((List<Claim>) Storage.getInstance().get(Config.CLAIMS)).add(claim);}
+    public static void saveNew(Claim claim)
+    {
+        ((List<Claim>) Storage.getInstance().get(Config.CLAIMS)).add(claim);
+    }
 
     public abstract ClaimType identify();
 

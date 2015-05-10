@@ -42,6 +42,10 @@ public class ClaimView<T extends Claim> extends StandardGridPane
 
     public void initFields()
     {
+        // claimId
+        add(new Label(Loc.c("claim_id")), 0 , rowNum);
+        add(new Label(claim.getId() + ""), 1, rowNum++);
+
         // customer
         add(new Label(Loc.c("customer")), 0, rowNum);
         add(new Label(claim.getCustomer().getName()), 1, rowNum++);
@@ -80,11 +84,11 @@ public class ClaimView<T extends Claim> extends StandardGridPane
 
         // date
         add(new Label(Loc.c("date")), 0, rowNum);
-         //   gp.add(new Label(claim.getDate().toString()), 1, rowNum++);
+        add(new Label(claim.getDate().toString()), 1, rowNum++);
 
         // type
         add(new Label(Loc.c("type")), 0, rowNum);
-       // gp.add(new Label(claim.getType().getValue()), 1, rowNum++);
+     //   add(new Label(claim.getType().getValue()), 1, rowNum++);
 
         // paymentStatus
         add(new Label(Loc.c("payment_status")), 0, rowNum);
