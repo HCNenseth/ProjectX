@@ -1,17 +1,18 @@
 package main.model.claim;
 
-import javafx.scene.image.Image;
-import main.localization.Loc;
 import main.model.Status;
 import main.model.insurance.Insurance;
 import main.model.person.Person;
 
 import java.time.LocalDate;
-import java.util.List;
 
-
-public abstract class ClaimBuilder<T, E>  {
-
+/**
+ * ClaimBuilder.java
+ * @param <T> Concrete claim builder class (eg. CarClaim.Builder)
+ * @param <E> Concrete claim class (eg CarClaim)
+ */
+public abstract class ClaimBuilder<T, E>
+{
     private int reference;
     private Person customer;
     private Insurance insurance;

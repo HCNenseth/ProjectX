@@ -2,15 +2,19 @@ package main.view.form.adapter.claim;
 
 import javafx.event.ActionEvent;
 import javafx.scene.control.ButtonBase;
+import main.config.Config;
+import main.controller.ImageController;
 import main.localization.Loc;
 import main.model.Status;
 import main.model.claim.Claim;
+import main.model.claim.ClaimBuilder;
 import main.model.insurance.Insurance;
 import main.model.person.Person;
 import main.validator.StringMatcher;
 import main.view.form.Formable;
 import main.view.form.node.*;
 
+import java.io.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -22,25 +26,24 @@ public abstract class ClaimAdapter<T extends Claim> implements Formable<T>
 {
     private FormLabelNode personNode;
     private FormLabelNode insuranceNode;
-    private FormDateNode dateofDamages;
-    private FormDateNode claimDate;
-    private FormTextAreaNode description;
-    private FormValueNode contacts;
-    private FormValueNode amount;
-    private FormValueNode deductible;
-    private FormImageNode image;
-    private FormChoiceNode paymentStatus;
-    private FormChoiceNode status;
+    protected FormDateNode dateOfDamages;
+    protected FormDateNode claimDate;
+    protected FormTextAreaNode description;
+    protected FormValueNode contacts;
+    protected FormValueNode amount;
+    protected FormValueNode deductible;
+    protected FormImageNode image;
+    protected FormChoiceNode paymentStatus;
+    protected FormChoiceNode status;
 
-    private Person person;
-    private Insurance insurance;
-    private Claim claim;
+    protected Person person;
+    protected Insurance insurance;
+    protected T claim;
     protected boolean editMode = false;
 
     private final int standardYear = 2014;
     private final int standardMonth = 01;
-    private final int standrdDay = 01;
-
+    private final int standardDay = 01;
 
     protected ButtonBase callBackEvent = new ButtonBase()
     {
@@ -79,16 +82,16 @@ public abstract class ClaimAdapter<T extends Claim> implements Formable<T>
         insuranceNode = new FormLabelNode.Builder(Loc.c("insurance"),
                 insurance.identify().getValue()).build();
 
-        dateofDamages = new FormDateNode.Builder(Loc.c("date_of_damages"),
+        dateOfDamages = new FormDateNode.Builder(Loc.c("date_of_damages"),
                 editMode ? claim.getDateOfDamages() : LocalDate.of(standardYear,
                         standardMonth,
-                        standrdDay))
+                        standardDay))
                 .build();
 
         claimDate = new FormDateNode.Builder(Loc.c("date_of_claim"),
                 editMode ? claim.getClaimDate() : LocalDate.of(standardYear,
                         standardMonth,
-                        standrdDay))
+                        standardDay))
                 .build();
 
         description = new FormTextAreaNode.Builder(Loc.c("description"))
@@ -143,7 +146,7 @@ public abstract class ClaimAdapter<T extends Claim> implements Formable<T>
         List<FormNode> tmp = new ArrayList<>();
         tmp.add(personNode);
         tmp.add(insuranceNode);
-        tmp.add(dateofDamages);
+        tmp.add(dateOfDamages);
         tmp.add(claimDate);
         tmp.add(description);
         tmp.add(contacts);
@@ -153,5 +156,26 @@ public abstract class ClaimAdapter<T extends Claim> implements Formable<T>
         tmp.add(paymentStatus);
         tmp.add(status);
         return tmp;
+    }
+
+    protected void setData()
+    {
+        claim.setDateOfDamages(dateOfDamages.getData());
+        claim.setClaimDate(claimDate.getData());
+        claim.setDesc(description.getValue());
+        claim.setContacts(contacts.getValue());
+        claim.setAmount(Double.parseDouble(amount.getValue()));
+        claim.setDeductible(Double.parseDouble(deductible.getValue()));
+        claim.setPaymentStatus((Claim.PaymentStatus) paymentStatus.getData());
+        claim.setStatus((Status) status.getData());
+        storeImage();
+    }
+
+    protected void storeImage()
+    {
+        if (image.getData() == null) { return; }
+
+        ImageController.storeImage(image.getData(), String.format("Claim-%d-%s",
+                claim.getId(), claim.identify().getValue()));
     }
 }

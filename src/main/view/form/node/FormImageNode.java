@@ -1,32 +1,32 @@
 package main.view.form.node;
 
-import javafx.embed.swing.SwingFXUtils;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
+import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
 import javafx.stage.FileChooser;
 import main.localization.Loc;
 
-import javax.imageio.ImageIO;
-import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
-public class FormImageNode extends FormNode<Image> {
+public class FormImageNode extends FormNode<File> {
 
-    private Image image;
+    private File image;
     private Button openButton;
     private FileChooser fileChooser;
     private String error;
+    private Label key;
+    private Label placeHolder;
     private Label errorLabel;
+    private HBox wrapper;
 
     public static class Builder
     {
+        private String key;
         private String error = "";
-        private String key = Loc.c("button_open");
-        private Image image = null;
         private boolean required = false;
 
         public Builder(String key)
@@ -46,18 +46,6 @@ public class FormImageNode extends FormNode<Image> {
             return this;
         }
 
-        public Builder key(String key)
-        {
-            this.key = key;
-            return this;
-        }
-
-        public Builder image(Image image)
-        {
-            this.image = image;
-            return this;
-        }
-
         public FormImageNode build()
         {
             return new FormImageNode(this);
@@ -66,63 +54,76 @@ public class FormImageNode extends FormNode<Image> {
 
     private FormImageNode(Builder builder)
     {
-        error = builder.error;
-        image = builder.image;
-
         super.setRequired(builder.required);
+
+        error = builder.error;
+
+        wrapper = new HBox();
+        wrapper.setSpacing(5);
+
+        key = new Label(builder.key);
+        placeHolder = new Label("");
 
         errorLabel = new Label(error);
         errorLabel.setTextFill(Color.RED);
         errorLabel.setVisible(false);
 
-        openButton = new Button(builder.key);
+        openButton = new Button(Loc.c("add_image"));
         openButton.setOnAction(e -> loadImage());
     }
 
     private void loadImage()
     {
         fileChooser = new FileChooser();
-        FileChooser.ExtensionFilter extFilterJPG = new FileChooser.ExtensionFilter(Loc.u("JPG") + " " + Loc.l("files") + " (*.jpg)", "*.JPG");
-        FileChooser.ExtensionFilter extFilterPNG = new FileChooser.ExtensionFilter(Loc.u("PNG") + " " + Loc.l("files") + " (*.png)", "*.PNG");
+        FileChooser.ExtensionFilter extFilterJPG = new FileChooser.ExtensionFilter(
+                Loc.u("jpg_files"), "*.jpg", "*.JPG");
+        FileChooser.ExtensionFilter extFilterPNG = new FileChooser.ExtensionFilter(
+                Loc.u("png_files"), "*.png", "*.PNG");
+
         fileChooser.getExtensionFilters().addAll(extFilterJPG, extFilterPNG);
-        try {
-            File file = fileChooser.showOpenDialog(null);
-            if (file != null) {
-                BufferedImage bufferedImage = ImageIO.read(file);
-                image = SwingFXUtils.toFXImage(bufferedImage, null);
-            }
-        } catch(IOException ex) {
-            error = Loc.c("error_image_format");
+
+        File file = fileChooser.showOpenDialog(null);
+
+        if (file != null) {
+            placeHolder.setText(file.getName());
+            image = file;
         }
     }
 
     @Override
-    public Label getKey() {
-        return null;
+    public Label getKey()
+    {
+        return key;
     }
 
     @Override
-    public Label getError() {
+    public Label getError()
+    {
         return errorLabel;
     }
 
     @Override
-    public Node getNode() {
-        return openButton;
+    public Node getNode()
+    {
+        wrapper.getChildren().addAll(openButton, placeHolder);
+        return wrapper;
     }
 
     @Override
-    public Type getType() {
+    public Type getType()
+    {
         return Type.IMAGE;
     }
 
     @Override
-    public String getValue() {
-        return null;
+    public String getValue()
+    {
+        throw new UnsupportedOperationException("not supported");
     }
 
     @Override
-    public Image getData() {
+    public File getData()
+    {
         return image;
     }
 }

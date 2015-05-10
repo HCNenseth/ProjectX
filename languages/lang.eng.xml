@@ -112,6 +112,7 @@
     <string name="car">Car</string>
     <string name="boat">Boat</string>
     <string name="house">House</string>
+    <string name="property">Property</string>
     <string name="vacation_house">Vacation house</string>
     <string name="travel">Travel</string>
     <string name="premium">Premium</string>
@@ -202,6 +203,7 @@
     <string name="vacation_house_type_d">Tent</string>
 
     <!-- travel -->
+    <string name="travel">Travel</string>
     <string name="continent">Continent</string>
     <string name="continent_a">Europa</string>
     <string name="continent_b">Asia</string>

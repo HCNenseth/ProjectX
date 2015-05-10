@@ -18,9 +18,11 @@ public class ClaimController
 
     public static void create(Claim.ClaimType type, Person person, Insurance insurance)
     {
-        String title = "";
+        String title;
         Form f = new Form();
         ClaimAdapter claimAdapter;
+
+        System.out.println(type);
         switch (type) {
             case CAR:
                 title = "new_car_claim";
@@ -31,7 +33,7 @@ public class ClaimController
                 claimAdapter = new BoatClaimAdapter(person, insurance);
                 break;
             case PROPERTY:
-                title = "new_propery_claim";
+                title = "new_property_claim";
                 claimAdapter = new PropertyClaimAdapter(person, insurance);
                 break;
             case TRAVEL:
