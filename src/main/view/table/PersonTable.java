@@ -11,7 +11,7 @@ public class PersonTable extends Table<Person>
     public PersonTable()
     {
         // customerId
-        injectColumn(Column.generate(Loc.c("customerId"), "CustomerId"));
+        injectColumn(Column.generate(Loc.c("id"), "id"));
 
         // name
         injectColumn(Column.generate(Loc.c("firstname"), "firstname"));
