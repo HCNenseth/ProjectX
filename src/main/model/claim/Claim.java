@@ -15,16 +15,13 @@ import java.util.List;
 
 /**
  * Main claim class.
- * TODO uncomment the toString lines when other models are up to date.
  */
 public abstract class Claim implements Serializable, FullTextSearch, Model {
 
     public static final int claimId = 1;
-
     private int id;
     private static int claimCount = claimId;
 
-    private int reference;
     private Person customer;
     private Insurance insurance;
 
@@ -79,7 +76,6 @@ public abstract class Claim implements Serializable, FullTextSearch, Model {
     public Claim(ClaimBuilder cb)
     {
         /** #YOLO */
-        reference = reference++;
         customer = cb.getCustomer();
         insurance = cb.getInsurance();
         dateOfDamages = cb.getDateOfDamages();
@@ -178,11 +174,6 @@ public abstract class Claim implements Serializable, FullTextSearch, Model {
         return id;
     }
 
-    public int getReference()
-    {
-        return reference;
-    }
-
     public Person getCustomer()
     {
         return customer;
@@ -266,10 +257,11 @@ public abstract class Claim implements Serializable, FullTextSearch, Model {
                         "%s:\t%s\n" +
                         "%s:\t%s\n" +
                         "%s:\t%s\n" +
+                        "%s:\t%s\n" +
                         "%s:\t%s\n",
-                Loc.c("reference"), reference,
+                Loc.c("claim_id"), claimId,
                 Loc.c("customer"), customer,
-                //Loc.c("insurance"), insurance.getReference(),   Remember to add a new "format-line" above.
+                Loc.c("insurance"), insurance.getId(),
                 Loc.c("accident_date"), dateOfDamages,
                 Loc.c("claim_date"), claimDate,
                 Loc.c("last_edited"), lastEdited,

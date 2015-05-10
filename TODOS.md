@@ -11,7 +11,7 @@
 * *DONE -Claim tabeller*
 
 #HC
-* Løpenummer på alle typer.
+* *DONE - Løpenummer på alle typer.*
 * Shortcuts- mnemonics
 * Statistikk visning
     * øking/minking av antall skademeldinger innenfor en gitt tidsperiode
