@@ -124,7 +124,7 @@ public class Car extends Vehicle<CarClaim> implements Serializable
     public boolean query(String value)
     {
         return super.query(value)
-                || (type != null && type.getValue().contains(value))
-                || (propulsion != null && propulsion.getValue().contains(value));
+                || (type != null && type.getValue().toLowerCase().contains(value.toLowerCase()))
+                || (propulsion != null && propulsion.getValue().toLowerCase().contains(value.toLowerCase()));
     }
 }

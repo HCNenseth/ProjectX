@@ -77,7 +77,7 @@ public abstract class Vehicle<C extends Claim> extends Insurance<C> implements S
     public boolean query(String value)
     {
         return super.query(value)
-                || (licensePlate != null && licensePlate.contains(value));
+                || (licensePlate != null && licensePlate.toLowerCase().contains(value.toLowerCase()));
     }
 
 }
