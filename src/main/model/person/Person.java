@@ -297,12 +297,12 @@ public class Person implements Serializable, FullTextSearch, Model
     @Override
     public boolean query(String value)
     {
-        return getName().contains(value)
-                || streetAddress.contains(value)
-                || city.contains(value)
-                || postalCode.contains(value)
-                || phoneNumber.contains(value)
-                || email.contains(value);
+        return getName().toLowerCase().contains(value.toLowerCase())
+                || streetAddress.toLowerCase().contains(value.toLowerCase())
+                || city.toLowerCase().contains(value.toLowerCase())
+                || postalCode.toLowerCase().contains(value.toLowerCase())
+                || phoneNumber.toLowerCase().contains(value.toLowerCase())
+                || email.toLowerCase().contains(value.toLowerCase());
     }
 
     /**
