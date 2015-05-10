@@ -194,7 +194,7 @@
     <string name="material">Material</string>
 
     <!-- vacation house -->
-    <string name="new_vacation_house_insurance">Vacation house insurance</string>
+    <string name="new_vacation_house_insurance">New vacation house insurance</string>
     <string name="vacation_house_insurance">Vacation house insurance</string>
     <string name="vacation_house_type_a">Cottage</string>
     <string name="vacation_house_type_b">Caravan</string>

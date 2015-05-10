@@ -50,7 +50,7 @@ public class InsuranceController
                 VacationHouseAdapter vacationHouseAdapter = new VacationHouseAdapter(p);
                 vacationHouseAdapter.setOnDoneAction(InsuranceController::view);
                 f.injectAdapter(vacationHouseAdapter);
-                Resources.inst.getOtp().injectObservableTab(Loc.c("new_vacation_house_insuarance"),
+                Resources.inst.getOtp().injectObservableTab(Loc.c("new_vacation_house_insurance"),
                         f.getForm(), true);
                 return;
             case TRAVEL:
