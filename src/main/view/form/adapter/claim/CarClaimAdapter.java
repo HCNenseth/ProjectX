@@ -1,5 +1,7 @@
 package main.view.form.adapter.claim;
 
+import main.model.Status;
+import main.model.claim.Claim;
 import main.model.claim.vehicle.CarClaim;
 import main.model.insurance.Insurance;
 import main.model.person.Person;
@@ -14,12 +16,10 @@ import java.util.function.Consumer;
  */
 public class CarClaimAdapter extends ClaimAdapter<CarClaim> implements Formable<CarClaim>
 {
-    private CarClaim claim;
 
     public CarClaimAdapter(CarClaim claim)
     {
         super(claim);
-        this.claim = claim;
     }
 
     public CarClaimAdapter(Person person, Insurance insurance)
@@ -38,9 +38,21 @@ public class CarClaimAdapter extends ClaimAdapter<CarClaim> implements Formable<
     public void callback()
     {
         if (editMode) {
+            setData();
         } else {
+            claim = new CarClaim.Builder(person, insurance)
+                    .dateOfDamages(dateOfDamages.getData())
+                    .claimDate(claimDate.getData())
+                    .desc(description.getValue())
+                    .contacts(contacts.getValue())
+                    .amount(Double.parseDouble(amount.getValue()))
+                    .deductible(Double.parseDouble(deductible.getValue()))
+                    .paymentStatus((Claim.PaymentStatus) paymentStatus.getData())
+                    .status((Status) status.getData())
+                    .build();
+            storeImage();
         }
-
+        callBackEvent.fire();
     }
 
     @Override

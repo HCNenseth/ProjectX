@@ -15,6 +15,7 @@ public class Config {
 
     public static final String CSS = "file:resources/css/";
     public static final String IMAGES = "file:resources/images/";
+    public static final String UPLOADS = "uploads/";
 
     public static final double HEIGHT = Screen.getPrimary().getVisualBounds().getHeight() * 0.9;
     public static final double WIDTH = Screen.getPrimary().getVisualBounds().getWidth() * 0.9;

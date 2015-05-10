@@ -39,7 +39,19 @@ public abstract class Claim implements Serializable, FullTextSearch, Model {
 
     public enum ClaimType
     {
-        PROPERTY, TRAVEL, BOAT, CAR
+        PROPERTY(Loc.l("property")),
+        TRAVEL(Loc.l("travel")),
+        BOAT(Loc.l("boat")),
+        CAR(Loc.l("car"));
+
+        String value;
+
+        ClaimType(String value) { this.value = value; }
+
+        public String getValue() { return value; }
+
+        @Override
+        public String toString() { return getValue(); }
     }
 
     public enum PaymentStatus {
@@ -91,6 +103,11 @@ public abstract class Claim implements Serializable, FullTextSearch, Model {
         this.dateOfDamages = dateOfDamages;
     }
 
+    public void setClaimDate(LocalDate claimDate)
+    {
+        this.claimDate = claimDate;
+    }
+
     public void setDesc(String desc)
     {
         this.desc = desc;
@@ -139,6 +156,10 @@ public abstract class Claim implements Serializable, FullTextSearch, Model {
         }
     }
 
+    public void setAmount(double amount)
+    {
+        this.amount = amount;
+    }
 
     public void setDeductible(double deductible)
     {
@@ -211,8 +232,10 @@ public abstract class Claim implements Serializable, FullTextSearch, Model {
         ((List<Claim>) Storage.getInstance().get(Config.CLAIMS)).add(claim);
     }
 
+    /* ABSTRACT */
     public abstract ClaimType identify();
 
+    /* OVERRIDES */
     @Override
     public boolean query(String value)
     {
@@ -249,4 +272,5 @@ public abstract class Claim implements Serializable, FullTextSearch, Model {
 
     @Override
     public LocalDate getDate() { return dateOfDamages; }
+
 }
