@@ -126,6 +126,7 @@
     <string name="propulsion">Propulsion</string>
 
     <!-- person -->
+    <string name="customerId">Customer identification number</string>
     <string name="firstname">Firstname</string>
     <string name="firstname_error">Firstname must contain ...</string>
     <string name="lastname">Lastname</string>

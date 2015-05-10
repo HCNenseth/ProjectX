@@ -12,12 +12,18 @@ import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * Person.java
  */
 public class Person implements Serializable, FullTextSearch, Model
 {
+    public static final AtomicInteger customerId = new AtomicInteger(1_000_000);
+
+    private final int id;
+    private AtomicInteger customerCount = customerId;
+
     private String firstname;
     private String lastname;
 
@@ -152,6 +158,7 @@ public class Person implements Serializable, FullTextSearch, Model
         postalCode = builder.postalCode;
         city = builder.city;
         status = builder.status;
+        id = customerCount.incrementAndGet();
 
         insurances = new LinkedList<>();
         claims = new LinkedList<>();
@@ -173,6 +180,11 @@ public class Person implements Serializable, FullTextSearch, Model
     }
 
     /* SETTERS */
+    public void setCustomerCount(AtomicInteger customerCount)
+    {
+        this.customerCount = customerCount;
+    }
+
     public void setFirstname(String firstname)
     {
         this.firstname = firstname;
@@ -219,6 +231,11 @@ public class Person implements Serializable, FullTextSearch, Model
     }
 
     /* GETTERS */
+    public String getId()
+    {
+        return Integer.toString(id);
+    }
+
     public LocalDate getDateOfBirth()
     {
         return dateOfBirth;
@@ -302,7 +319,8 @@ public class Person implements Serializable, FullTextSearch, Model
                 || city.toLowerCase().contains(value.toLowerCase())
                 || postalCode.toLowerCase().contains(value.toLowerCase())
                 || phoneNumber.toLowerCase().contains(value.toLowerCase())
-                || email.toLowerCase().contains(value.toLowerCase());
+                || email.toLowerCase().contains(value.toLowerCase())
+                || getId().toLowerCase().contains(value.toLowerCase());
     }
 
     /**

@@ -10,6 +10,9 @@ public class PersonTable extends Table<Person>
 {
     public PersonTable()
     {
+        // customerId
+        injectColumn(Column.generate(Loc.c("customerId"), "CustomerId"));
+
         // name
         injectColumn(Column.generate(Loc.c("firstname"), "firstname"));
         injectColumn(Column.generate(Loc.c("lastname"), "lastname"));

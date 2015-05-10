@@ -105,6 +105,12 @@ public class PersonView extends StandardGridPane
 
         /* LEFT FIELDS (first and second column */
 
+        // customerId
+        innerGridPane.add(new Label(Loc.c("customerId")),
+                first, leftInnerRowNum);
+        innerGridPane.add(new Label(person.getId()),
+                second, leftInnerRowNum++);
+
         // firstname
         innerGridPane.add(new Label(Loc.c("firstname")),
                 first, leftInnerRowNum);
