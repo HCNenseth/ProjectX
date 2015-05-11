@@ -31,6 +31,7 @@ public class SceneSwitch
 
         primaryStage.setTitle(String.format("%s - [%s]",
                 Config.APP_NAME, Storage.getInstance().getFilename()));
+
         // Compatibility code
         primaryStage.setMaxHeight(Config.HEIGHT);
         primaryStage.setMinHeight(Config.HEIGHT);

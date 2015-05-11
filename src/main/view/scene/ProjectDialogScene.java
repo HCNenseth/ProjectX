@@ -10,8 +10,6 @@ import javafx.scene.control.ToggleGroup;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import main.config.Config;
 import main.controller.Mediator;
@@ -20,8 +18,8 @@ import main.controller.Signal;
 import main.localization.Loc;
 import main.preference.Pref;
 
-import java.io.FileNotFoundException;
-import java.io.IOException;
+import java.io.File;
+
 
 /**
  * ProjectDialog Scene
@@ -96,28 +94,25 @@ public class ProjectDialogScene
         gridPane.add(new Label(Loc.c("create_new")), 1, rowNum++);
 
         ToggleGroup languages = new ToggleGroup();
-        for(String s : Loc.getLanguages())
-        {
-            RadioButton tmp = new RadioButton(Loc.c(s));
+        for (String s : Loc.getLanguages()) {
 
-            // TODO fix this bug
-            System.out.println(Config.IMAGES + s + ".png");
+            RadioButton lang = new RadioButton(Loc.c(s));
+
             Image image = new Image(Config.IMAGES + s +".png");
-            tmp.setGraphic(new ImageView(image));
+            lang.setGraphic(new ImageView(image));
 
-            tmp.setToggleGroup(languages);
+            lang.setToggleGroup(languages);
 
-            if(Loc.getActiveLang().equals(s))
-            {
-                tmp.setSelected(true);
+            if(Loc.getActiveLang().equals(s)) {
+                lang.setSelected(true);
             }
 
-            tmp.setOnAction(e -> {
+            lang.setOnAction(e -> {
                 Loc.setActiveLang(s);
                 Pref.inst.put("language", s);
             });
 
-            gridPane.add(tmp, 0, rowNum++);
+            gridPane.add(lang, 0, rowNum++);
         }
 
 

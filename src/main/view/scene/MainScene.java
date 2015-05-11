@@ -7,7 +7,7 @@ import main.view.Resources;
 import main.view.menubar.MenuBar;
 
 /**
- * Created by alex on 5/5/15.
+ * MainScene.java
  */
 public class MainScene
 {

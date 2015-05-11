@@ -110,19 +110,6 @@ public class ObserverTabPane extends TabPane implements Observer
     }
 
     /**
-     * Inject new tab without reference. A simple proxy method for
-     * the method below (with reference)
-     * @param title - tab title
-     * @param content - tab content
-     * @param closeable - tab attr
-     */
-    public void injectObservableTab(String title, Node content,
-                                   boolean closeable)
-    {
-        injectObservableTab(title, content, null, closeable);
-    }
-
-    /**
      * Inject new tab with reference
      * @param title - tab title
      * @param content - tab content
