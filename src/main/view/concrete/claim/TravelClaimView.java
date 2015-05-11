@@ -11,10 +11,8 @@ import main.model.insurance.travel.Travel;
  */
 public class TravelClaimView extends ClaimView<TravelClaim>
 {
-    private int rowNum = 0;
-    private Travel travel;
 
-    public TravelClaimView(Claim claim)
+    public TravelClaimView(TravelClaim claim)
     {
         super(claim);
 
@@ -23,7 +21,12 @@ public class TravelClaimView extends ClaimView<TravelClaim>
 
     private void addFields()
     {
+        // type
+        add(new Label(Loc.c("type")), 0, rowNum);
+        add(new Label(claim.identify().getValue()), 1, rowNum++);
+
+        // continent
         add(new Label(Loc.c("continent")), 0, rowNum);
-        add(new Label(travel.getType().getValue()), 1, rowNum++);
+        add(new Label(claim.getType().getValue()), 1, rowNum++);
     }
 }

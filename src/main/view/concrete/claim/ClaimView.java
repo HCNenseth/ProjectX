@@ -14,12 +14,12 @@ import main.view.stage.ImageStage;
 /**
  * Created by alex on 4/28/15.
  */
-public class ClaimView<T extends Claim> extends StandardGridPane
+public abstract class ClaimView<T extends Claim> extends StandardGridPane
 {
-    private int rowNum = 0;
-    private Claim claim;
+    protected int rowNum = 0;
+    protected T claim;
 
-    public ClaimView(Claim claim)
+    public ClaimView(T claim)
     {
         this.claim = claim;
 

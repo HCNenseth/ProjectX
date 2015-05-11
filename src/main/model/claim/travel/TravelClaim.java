@@ -35,8 +35,8 @@ public class TravelClaim extends Claim {
 
     public static class Builder extends ClaimBuilder<Builder, TravelClaim>
     {
-        private Travel.Continent continent;
-        private Type type = null;
+        private Travel.Continent continent = Travel.Continent.A;
+        private Type type = Type.A;
 
         public Builder(Person customer, Insurance insurance)
         {

@@ -2,14 +2,14 @@ package main.view.concrete.claim;
 
 import javafx.scene.control.Label;
 import main.localization.Loc;
-import main.model.claim.property.PropertyClaim;
+import main.model.claim.vehicle.BoatClaim;
 
 /**
- * Created by Hans Christian on 08.05.2015.
+ * BoatClaimView.java
  */
-public class PropertyClaimView extends ClaimView<PropertyClaim>
+public class BoatClaimView extends ClaimView<BoatClaim>
 {
-    public PropertyClaimView(PropertyClaim claim)
+    public BoatClaimView(BoatClaim claim)
     {
         super(claim);
         addFields();

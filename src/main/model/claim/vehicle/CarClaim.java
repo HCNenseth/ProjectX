@@ -1,11 +1,13 @@
 package main.model.claim.vehicle;
 
-import javafx.scene.image.Image;
+import main.config.Config;
 import main.localization.Loc;
 import main.model.claim.Claim;
 import main.model.claim.ClaimBuilder;
 import main.model.insurance.Insurance;
 import main.model.person.Person;
+
+import java.io.File;
 
 // TODO Override toString
 
@@ -32,8 +34,8 @@ public class CarClaim extends Claim
 
     public static class Builder extends ClaimBuilder<Builder, CarClaim>
     {
-        private Type type;
-        private String damageReport;
+        private Type type = Type.A;
+        private String damageReport = "";
 
         public Builder(Person customer, Insurance insurance) {
             super(customer, insurance);
@@ -68,6 +70,7 @@ public class CarClaim extends Claim
     public CarClaim(Builder builder) {
         super(builder);
         type = builder.type;
+        damageReportFileName = builder.damageReport;
     }
 
     /* GETTERS */
@@ -79,6 +82,11 @@ public class CarClaim extends Claim
     public String getDamageReportFileName()
     {
         return damageReportFileName;
+    }
+
+    public File getDamageReportFile()
+    {
+        return new File(Config.UPLOADS + getFilePathImage());
     }
 
     /* SETTERS */

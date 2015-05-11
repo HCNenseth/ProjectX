@@ -31,7 +31,7 @@ public class PropertyClaim extends Claim
 
     public static class Builder extends ClaimBuilder<Builder, PropertyClaim>
     {
-        private Type type;
+        private Type type = Type.A;
 
         public Builder(Person customer, Insurance insurance)
         {

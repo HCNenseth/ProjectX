@@ -22,7 +22,7 @@ import java.util.List;
  */
 public class BoatAdapter extends InsuranceAdapter<Boat> implements Formable<Boat>
 {
-    private FormValueNode licencePlate;
+    private FormValueNode licensePlate;
     //private FormValueNode owner;
     private FormDateNode registration;
     private FormValueNode length;
@@ -44,10 +44,10 @@ public class BoatAdapter extends InsuranceAdapter<Boat> implements Formable<Boat
 
     private void initNodes()
     {
-        licencePlate = new FormValueNode.Builder(Loc.c("licence_plate"))
+        licensePlate = new FormValueNode.Builder(Loc.c("license_plate"))
                 .regex(StringMatcher.getRegnr())
                 .value(getEditMode() ? getInsurance().getLicensePlate() : "")
-                .error(Loc.c("licence_plate_error"))
+                .error(Loc.c("license_plate_error"))
                 .build();
 
         // This does not make any sense!
@@ -97,7 +97,7 @@ public class BoatAdapter extends InsuranceAdapter<Boat> implements Formable<Boat
     public List<FormNode> getVisibleNodes()
     {
         List<FormNode> tmp = super.getNodes();
-        tmp.add(licencePlate);
+        tmp.add(licensePlate);
         tmp.add(registration);
         tmp.add(length);
         tmp.add(horsePower);
@@ -124,10 +124,10 @@ public class BoatAdapter extends InsuranceAdapter<Boat> implements Formable<Boat
 
             i.setHorsePower(Integer.parseInt(horsePower.getValue()));
             i.setLength(Integer.parseInt(length.getData()));
-            i.setLicensePlate(licencePlate.getValue());
+            i.setLicensePlate(licensePlate.getValue());
 
         } else {
-            Boat insurance = new Boat.Builder(getCustomer(), licencePlate.getValue())
+            Boat insurance = new Boat.Builder(getCustomer(), licensePlate.getValue())
                     // shared values for all insurances
                     .premium(getPremium())
                     .amount(getAmount())

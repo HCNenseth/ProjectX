@@ -9,7 +9,7 @@ import main.model.claim.vehicle.CarClaim;
 import main.model.insurance.Insurance;
 import main.model.person.Person;
 import main.view.Resources;
-import main.view.concrete.claim.ClaimView;
+import main.view.concrete.claim.*;
 import main.view.form.Form;
 import main.view.form.adapter.claim.*;
 
@@ -61,9 +61,27 @@ public class ClaimController
         Resources.inst.getOtp().closeObservableTabs(claim);
         Resources.inst.getOtp().closeObservableTabs(f);
 
-        ClaimView claimView = new ClaimView(claim);
+        ClaimView<? extends Claim> view;
+
+        switch (claim.identify()) {
+            case CAR:
+                view = new CarClaimView((CarClaim) claim);
+                break;
+            case BOAT:
+                view = new BoatClaimView((BoatClaim) claim);
+                break;
+            case PROPERTY:
+                view = new PropertyClaimView((PropertyClaim) claim);
+                break;
+            case TRAVEL:
+                view = new TravelClaimView((TravelClaim) claim);
+                break;
+            default:
+                throw new IllegalStateException("No such claim type!");
+        }
+
         Resources.inst.getOtp().injectObservableTab(Loc.c("claim"),
-                claimView.getNode(), claim, true);
+                view.getNode(), claim, true);
     }
 
     public static void edit(Claim claim)
@@ -72,7 +90,7 @@ public class ClaimController
         Resources.inst.getOtp().closeObservableTabs(claim);
 
         String title;
-        Form f = new Form();
+        f = new Form();
         ClaimAdapter<? extends Claim> claimAdapter;
 
         switch (claim.identify()) {

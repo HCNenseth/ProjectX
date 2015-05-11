@@ -50,7 +50,7 @@ public class CarClaimAdapter extends ClaimAdapter<CarClaim>
 
     protected void storeDamageReport()
     {
-        if (image.getData() == null) { return; }
+        if (damageReportImage.getData() == null) { return; }
 
         String fileName = ImageController.storeImage(damageReportImage.getData(),
                 String.format("CarClaim-Damagereport-%s-%s",
