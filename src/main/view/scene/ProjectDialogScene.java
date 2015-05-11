@@ -18,8 +18,6 @@ import main.controller.Signal;
 import main.localization.Loc;
 import main.preference.Pref;
 
-import java.io.File;
-
 
 /**
  * ProjectDialog Scene
@@ -114,9 +112,6 @@ public class ProjectDialogScene
 
             gridPane.add(lang, 0, rowNum++);
         }
-
-
-
     }
 
     public Scene getScene() { return scene; }
