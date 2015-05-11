@@ -51,9 +51,9 @@ public abstract class Insurance<C extends Claim> implements
     }
 
     /* GETTERS */
-    public int getId()
+    public String getId()
     {
-        return id;
+        return Integer.toString(id);
     }
 
     public double getPremium()
@@ -132,7 +132,8 @@ public abstract class Insurance<C extends Claim> implements
     @Override
     public boolean query(String value)
     {
-        return (desc != null && desc.contains(value));
+        return (desc != null && desc.contains(value))
+                || (getId().contains(value));
     }
 
     @Override

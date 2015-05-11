@@ -165,9 +165,9 @@ public abstract class Claim implements Serializable, FullTextSearch, Model
     }
 
     /* Getters */
-    public int getId()
+    public String getId()
     {
-        return id;
+        return Integer.toString(id);
     }
 
     public Person getCustomer()
@@ -237,8 +237,9 @@ public abstract class Claim implements Serializable, FullTextSearch, Model
     @Override
     public boolean query(String value)
     {
-        return desc.contains(value)
-                || contacts.contains(value);
+        return desc.toLowerCase().contains(value.toLowerCase())
+                || contacts.toLowerCase().contains(value.toLowerCase())
+                || getId().contains(value);
     }
 
     @Override
