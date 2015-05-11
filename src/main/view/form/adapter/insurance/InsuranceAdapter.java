@@ -10,8 +10,13 @@ import main.validator.StringMatcher;
 import main.view.form.node.*;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
+/**
+ * InsuranceAdapter.java
+ * @param <T> - Concrete insurance adapter.
+ */
 public abstract class InsuranceAdapter<T extends Insurance>
 {
 
@@ -85,9 +90,7 @@ public abstract class InsuranceAdapter<T extends Insurance>
                 .required(false)
                 .build();
 
-         List<Status> statusList = new ArrayList<>();
-         for (Status s : Status.values()) { statusList.add(s); }
-
+         List<Status> statusList = new ArrayList<>(Arrays.asList(Status.values()));
          status = new FormChoiceNode.Builder<>(Loc.c("status"), statusList)
                 .active(editMode ? insurance.getStatus() : Status.ACTIVE)
                 .build();

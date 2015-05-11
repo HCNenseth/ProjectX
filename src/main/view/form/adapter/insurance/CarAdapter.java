@@ -14,11 +14,12 @@ import main.view.form.node.FormValueNode;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.function.Consumer;
 
 /**
- * Created by HansPetter on 22.04.2015.
+ * CarAdapter.java
  */
 public class CarAdapter extends InsuranceAdapter<Car> implements Formable<Car>
 {
@@ -77,17 +78,14 @@ public class CarAdapter extends InsuranceAdapter<Car> implements Formable<Car>
                 .error(Loc.c("vehicle_horse_power_error"))
                 .build();
 
-        List<Car.Type> typeList = new ArrayList<>();
-        for (Car.Type t : Car.Type.values()) { typeList.add(t); }
-
+        List<Car.Type> typeList = new ArrayList<>(Arrays.asList(Car.Type.values()));
         type = new FormChoiceNode.Builder<>(Loc.c("car_type"), typeList)
                 .active(getEditMode() ? getInsurance().getType() : Car.Type.A)
                 .required(false)
                 .build();
 
-        List<Car.Propulsion> propulsionList = new ArrayList<>();
-        for(Car.Propulsion p : Car.Propulsion.values()) { propulsionList.add(p); }
-
+        List<Car.Propulsion> propulsionList = new ArrayList<>(
+                Arrays.asList(Car.Propulsion.values()));
         propulsion = new FormChoiceNode.Builder<>(Loc.c("car_propulsion"), propulsionList)
                 .active(getEditMode() ? getInsurance().getPropulsion() : Car.Propulsion.A)
                 .required(false)

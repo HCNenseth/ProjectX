@@ -10,6 +10,7 @@ import main.view.form.node.FormChoiceNode;
 import main.view.form.node.FormNode;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -34,9 +35,8 @@ public class PropertyClaimAdapter extends ClaimAdapter<PropertyClaim>
 
     private void initFields()
     {
-        List<PropertyClaim.Type> typeList = new ArrayList<>();
-        for (PropertyClaim.Type t : PropertyClaim.Type.values()) { typeList.add(t); }
-
+        List<PropertyClaim.Type> typeList = new ArrayList<>(
+                Arrays.asList(PropertyClaim.Type.values()));
         type = new FormChoiceNode.Builder<>(Loc.c("property_claim_type"), typeList)
                 .active(editMode ? claim.getType() : PropertyClaim.Type.A)
                 .build();

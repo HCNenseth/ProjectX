@@ -14,9 +14,13 @@ import main.view.form.node.FormValueNode;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.function.Consumer;
 
+/**
+ * BoatAdapter.java
+ */
 public class BoatAdapter extends InsuranceAdapter<Boat> implements Formable<Boat>
 {
     private FormValueNode licencePlate;
@@ -75,21 +79,14 @@ public class BoatAdapter extends InsuranceAdapter<Boat> implements Formable<Boat
                 .error(Loc.c("vehicle_horse_power_error"))
                 .build();
 
-        List<Boat.Propulsion> propulsionList = new ArrayList<>();
-        for (Boat.Propulsion p : Boat.Propulsion.values()) {
-            propulsionList.add(p);
-        }
-
+        List<Boat.Propulsion> propulsionList = new ArrayList<>(
+                Arrays.asList(Boat.Propulsion.values()));
         propulsion = new FormChoiceNode.Builder<>(Loc.c("boat_propulsion"), propulsionList )
                 .active(getEditMode() ? getInsurance().getPropulsion() : Boat.Propulsion.A)
                 .required(false)
                 .build();
 
-        List<Boat.Type> typeList = new ArrayList<>();
-        for (Boat.Type t : Boat.Type.values()) {
-            typeList.add(t);
-        }
-
+        List<Boat.Type> typeList = new ArrayList<>(Arrays.asList(Boat.Type.values()));
         type = new FormChoiceNode.Builder<>(Loc.c("boat_type"), typeList)
                 .active(getEditMode() ? getInsurance().getType() : Boat.Type.A)
                 .required(false)

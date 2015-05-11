@@ -3,17 +3,12 @@ package main.view.form.adapter;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonBase;
-import main.controller.Mediator;
-import main.controller.Payload;
-import main.controller.Signal;
 import main.localization.Loc;
-import main.model.Model;
 import main.model.search.Search;
 import main.validator.StringMatcher;
 import main.view.form.Formable;
 import main.view.form.node.FormDateNode;
 import main.view.form.node.FormNode;
-import main.view.form.node.FormSlideNode;
 import main.view.form.node.FormValueNode;
 
 import java.time.LocalDate;
@@ -22,7 +17,7 @@ import java.util.List;
 import java.util.function.Consumer;
 
 /**
- * Created by alex on 4/24/15.
+ * SearchAdapter.java
  */
 public class SearchAdapter implements Formable<Search>
 {

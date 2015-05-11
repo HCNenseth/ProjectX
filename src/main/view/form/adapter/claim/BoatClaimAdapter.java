@@ -10,12 +10,14 @@ import main.view.form.node.FormChoiceNode;
 import main.view.form.node.FormNode;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
- * Created by alex on 5/7/15.
+ * BoatClaimAdapter.java
  */
-public class BoatClaimAdapter extends ClaimAdapter<BoatClaim> implements Formable<BoatClaim>
+public class BoatClaimAdapter extends ClaimAdapter<BoatClaim>
+        implements Formable<BoatClaim>
 {
     private FormChoiceNode<BoatClaim.Type> type;
 
@@ -33,9 +35,8 @@ public class BoatClaimAdapter extends ClaimAdapter<BoatClaim> implements Formabl
 
     private void initFields()
     {
-        List<BoatClaim.Type> typeList = new ArrayList<>();
-        for (BoatClaim.Type t : BoatClaim.Type.values()) { typeList.add(t); }
-
+        List<BoatClaim.Type> typeList = new ArrayList<>(
+                Arrays.asList(BoatClaim.Type.values()));
         type = new FormChoiceNode.Builder<>(Loc.c("boat_claim_type"), typeList)
                 .active(editMode ? claim.getType() : BoatClaim.Type.A)
                 .build();

@@ -11,6 +11,7 @@ import main.view.form.node.FormChoiceNode;
 import main.view.form.node.FormNode;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -36,16 +37,14 @@ public class TravelClaimAdapter extends ClaimAdapter<TravelClaim>
 
     private void initFields()
     {
-        List<TravelClaim.Type> typeList = new ArrayList<>();
-        for (TravelClaim.Type t : TravelClaim.Type.values()) { typeList.add(t); }
-
+        List<TravelClaim.Type> typeList = new ArrayList<>(
+                Arrays.asList(TravelClaim.Type.values()));
         type = new FormChoiceNode.Builder<>(Loc.c("travel_claim_type"), typeList)
                 .active(editMode ? claim.getType() : TravelClaim.Type.A)
                 .build();
 
-        List<Travel.Continent> continentList = new ArrayList<>();
-        for (Travel.Continent c : Travel.Continent.values()) { continentList.add(c); }
-
+        List<Travel.Continent> continentList = new ArrayList<>(
+                Arrays.asList(Travel.Continent.values()));
         continent = new FormChoiceNode.Builder<>(Loc.c("continent"), continentList)
                 .active(editMode ? claim.getContinent() : Travel.Continent.A)
                 .build();

@@ -12,12 +12,14 @@ import main.view.form.node.FormImageNode;
 import main.view.form.node.FormNode;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
  * CarClaimAdapter.java
  */
-public class CarClaimAdapter extends ClaimAdapter<CarClaim> implements Formable<CarClaim>
+public class CarClaimAdapter extends ClaimAdapter<CarClaim>
+        implements Formable<CarClaim>
 {
     private FormChoiceNode<CarClaim.Type> type;
     private FormImageNode damageReportImage;
@@ -36,9 +38,8 @@ public class CarClaimAdapter extends ClaimAdapter<CarClaim> implements Formable<
 
     private void initFields()
     {
-        List<CarClaim.Type> typeList = new ArrayList<>();
-        for (CarClaim.Type t : CarClaim.Type.values()) { typeList.add(t); }
-
+        List<CarClaim.Type> typeList = new ArrayList<>(
+                Arrays.asList(CarClaim.Type.values()));
         type = new FormChoiceNode.Builder<>(Loc.c("car_claim_type"), typeList)
                 .active(editMode ? claim.getType() : CarClaim.Type.A)
                 .build();

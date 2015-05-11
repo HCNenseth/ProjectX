@@ -11,9 +11,13 @@ import main.view.form.node.FormNode;
 import main.view.form.node.FormValueNode;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.function.Consumer;
 
+/**
+ * HouseAdapter.java
+ */
 public class HouseAdapter extends InsuranceAdapter<House> implements Formable<House>
 {
 
@@ -72,29 +76,18 @@ public class HouseAdapter extends InsuranceAdapter<House> implements Formable<Ho
                 .regex(StringMatcher.getDigit())
                 .build();
 
-        List<House.Type> typeList = new ArrayList();
-        for (House.Type t : House.Type.values()) {
-            typeList.add(t);
-        }
-
+        List<House.Type> typeList = new ArrayList<>(Arrays.asList(House.Type.values()));
         type = new FormChoiceNode.Builder<>(Loc.c("type"), typeList)
                 .active(getEditMode() ? getInsurance().getType() : House.Type.A)
                 .build();
 
-        List<House.Material> materialList = new ArrayList();
-        for (House.Material m : House.Material.values()) {
-            materialList.add(m);
-        }
-
+        List<House.Material> materialList = new ArrayList<>(
+                Arrays.asList(House.Material.values()));
         material = new FormChoiceNode.Builder<>(Loc.c("material"), materialList)
                 .active(getEditMode() ? getInsurance().getMaterial() : House.Material.A)
                 .build();
 
-        List<House.Standard> standardList = new ArrayList();
-        for (House.Standard s : House.Standard.values()) {
-            standardList.add(s);
-        }
-
+        List<House.Standard> standardList = new ArrayList<>(Arrays.asList(House.Standard.values()));
         standard = new FormChoiceNode.Builder<>(Loc.c("standard"), standardList)
                 .active(getEditMode() ? getInsurance().getStandard() : House.Standard.A)
                 .build();

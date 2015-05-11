@@ -14,6 +14,7 @@ import main.view.form.node.*;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.function.Consumer;
 
@@ -119,23 +120,17 @@ public abstract class ClaimAdapter<T extends Claim> implements Formable<T>
 
         image = new FormImageNode.Builder(Loc.c("image")).build();
 
-        List<Claim.PaymentStatus> paymentStatusList = new ArrayList();
-        for (Claim.PaymentStatus s : Claim.PaymentStatus.values()) {
-            paymentStatusList.add(s);
-        }
-
+        List<Claim.PaymentStatus> paymentStatusList = new ArrayList<>(
+                Arrays.asList(Claim.PaymentStatus.values()));
         paymentStatus = new FormChoiceNode.Builder<>(Loc.c("payment_status"),
                 paymentStatusList)
                 .active(editMode ? claim.getPaymentStatus() : Claim.PaymentStatus.A)
                 .build();
 
-        List<Status> statusList = new ArrayList();
-        for (Status s : Status.values()) { statusList.add(s); }
-
+        List<Status> statusList = new ArrayList<>(Arrays.asList(Status.values()));
         status = new FormChoiceNode.Builder<>(Loc.c("status"), statusList)
                 .active(editMode ? claim.getStatus() : Status.ACTIVE)
                 .build();
-
     }
 
     public List<FormNode> getVisibleNodes()

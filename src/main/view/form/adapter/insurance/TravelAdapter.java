@@ -10,11 +10,12 @@ import main.view.form.node.FormChoiceNode;
 import main.view.form.node.FormNode;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.function.Consumer;
 
 /**
- * Created by HansChristian on 24.04.2015.
+ * TravelAdapter.java
  */
 public class TravelAdapter extends InsuranceAdapter<Travel> implements Formable<Travel>
 {
@@ -35,11 +36,8 @@ public class TravelAdapter extends InsuranceAdapter<Travel> implements Formable<
     private void initNodes()
     {
 
-        List<Travel.Continent> typeList = new ArrayList<>();
-        for (Travel.Continent t : Travel.Continent.values()) {
-            typeList.add(t);
-        }
-
+        List<Travel.Continent> typeList = new ArrayList<>(
+                Arrays.asList(Travel.Continent.values()));
         continent = new FormChoiceNode.Builder(Loc.c("continent"), typeList)
                 .required(false)
                 .active(Travel.Continent.A)

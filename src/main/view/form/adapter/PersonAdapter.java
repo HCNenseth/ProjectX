@@ -5,7 +5,6 @@ import javafx.scene.control.ButtonBase;
 import main.config.Config;
 import main.localization.Loc;
 import main.model.Status;
-import main.model.Storage;
 import main.model.person.Person;
 import main.validator.StringMatcher;
 import main.view.form.node.FormChoiceNode;
@@ -16,11 +15,12 @@ import main.view.form.Formable;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.function.Consumer;
 
 /**
- * Created by alex on 4/21/15.
+ * PersonAdapter.java
  */
 public class PersonAdapter implements Formable<Person>
 {
@@ -115,10 +115,8 @@ public class PersonAdapter implements Formable<Person>
                 .required(false)
                 .build();
 
-        List<Status> statusList = new ArrayList<>();
-        for (Status s : Status.values()) { statusList.add(s); }
-
-        status = new FormChoiceNode.Builder<>(Loc.c("status"), statusList)
+        List<Status> statusList = new ArrayList<>(Arrays.asList(Status.values()));
+        status = new FormChoiceNode.Builder(Loc.c("status"), statusList)
                 .active(editMode ? person.getStatus() : Status.ACTIVE)
                 .build();
     }

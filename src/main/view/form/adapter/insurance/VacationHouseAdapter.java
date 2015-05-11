@@ -2,24 +2,24 @@ package main.view.form.adapter.insurance;
 
 import main.localization.Loc;
 import main.model.insurance.Insurance;
-import main.model.insurance.property.House;
 import main.model.insurance.property.VacationHouse;
 import main.model.person.Person;
 import main.validator.StringMatcher;
 import main.view.form.Formable;
-import main.view.form.adapter.insurance.InsuranceAdapter;
 import main.view.form.node.FormChoiceNode;
 import main.view.form.node.FormNode;
 import main.view.form.node.FormValueNode;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.function.Consumer;
 
 /**
- * Created by HansChristian on 30.04.2015.
+ * VacationHouseAdapter.java
  */
-public class VacationHouseAdapter extends InsuranceAdapter<VacationHouse> implements Formable<VacationHouse>
+public class VacationHouseAdapter extends InsuranceAdapter<VacationHouse>
+        implements Formable<VacationHouse>
 {
 
     private FormValueNode street;
@@ -77,28 +77,20 @@ public class VacationHouseAdapter extends InsuranceAdapter<VacationHouse> implem
                 .regex(StringMatcher.getDigit())
                 .build();
 
-        List<VacationHouse.Type> typeList = new ArrayList();
-        for (VacationHouse.Type t : VacationHouse.Type.values()) {
-            typeList.add(t);
-        }
-
+        List<VacationHouse.Type> typeList = new ArrayList<>(
+                Arrays.asList(VacationHouse.Type.values()));
         type = new FormChoiceNode.Builder<>(Loc.c("type"), typeList)
                 .active(getEditMode() ? getInsurance().getType() : VacationHouse.Type.A)
                 .build();
 
-        List<VacationHouse.Material> materialList = new ArrayList();
-        for (VacationHouse.Material m : VacationHouse.Material.values()) {
-            materialList.add(m);
-        }
-
+        List<VacationHouse.Material> materialList = new ArrayList<>(
+                Arrays.asList(VacationHouse.Material.values()));
         material = new FormChoiceNode.Builder<>(Loc.c("material"), materialList)
                 .active(getEditMode() ? getInsurance().getMaterial() : VacationHouse.Material.A)
                 .build();
 
-        List<VacationHouse.Standard> standardList = new ArrayList<>();
-        for (VacationHouse.Standard s : VacationHouse.Standard.values()) {
-            standardList.add(s);
-        }
+        List<VacationHouse.Standard> standardList = new ArrayList<>(
+                Arrays.asList(VacationHouse.Standard.values()));
         standard = new FormChoiceNode.Builder(Loc.c("standard"), standardList)
                 .active(getEditMode() ? getInsurance().getStandard() : VacationHouse.Standard.A)
                 .build();
