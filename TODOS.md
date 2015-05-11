@@ -23,10 +23,10 @@
 * Claim views
 
 #HP
-* Claim model
+* *Done Claim model.*
 * *Done - Språk -> skifte språk ned på splash screen nivå.  	(flag icons: famfamfam.com)* 
-* Themevelger -> ned på splash screen nivå.
-* Bilder i skademelding.
+* Themevelger -> ned på splash screen nivå. ( FORSLAG: skrape themes. )
+* *Done Bilder i skademelding.*
 * *Done - FormImageNode.*
 * *Done - FormTextNode.*
 * Refresh *alle* fanekort
