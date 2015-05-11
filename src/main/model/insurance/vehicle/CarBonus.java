@@ -7,6 +7,8 @@ import java.time.LocalDate;
 import java.util.List;
 
 /**
+ * CarBonus.java
+ *
  * Static protected class for helping car insurances to
  * calculate correct bonus
  */

@@ -9,8 +9,8 @@ import main.model.person.Person;
 
 // TODO Override toString
 
-public class CarClaim extends Claim {
-
+public class CarClaim extends Claim
+{
     private Type type;
     private String damageReportFileName;
 
@@ -30,10 +30,10 @@ public class CarClaim extends Claim {
         public String toString() { return value; }
     }
 
-    public static class Builder extends ClaimBuilder<Builder, CarClaim> {
-
+    public static class Builder extends ClaimBuilder<Builder, CarClaim>
+    {
         private Type type;
-        private Image damageReport;
+        private String damageReport;
 
         public Builder(Person customer, Insurance insurance) {
             super(customer, insurance);
@@ -45,14 +45,15 @@ public class CarClaim extends Claim {
             return this;
         }
 
-        public Builder damageReport(Image damageReport)
+        public Builder damageReport(String damageReport)
         {
             this.damageReport = damageReport;
             return this;
         }
 
         @Override
-        public CarClaim build() {
+        public CarClaim build()
+        {
             return new CarClaim(this);
         }
 
@@ -91,11 +92,16 @@ public class CarClaim extends Claim {
         this.damageReportFileName = damageReportFileName;
     }
 
+    /* OVERRIDES */
     @Override
-    public ClaimType identify() { return ClaimType.CAR; }
+    public ClaimType identify()
+    {
+        return ClaimType.CAR;
+    }
 
     @Override
-    public ModelType getModelType() {
+    public ModelType getModelType()
+    {
         return ModelType.CLAIM;
     }
 }

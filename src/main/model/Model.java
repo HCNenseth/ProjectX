@@ -1,7 +1,7 @@
 package main.model;
 
 /**
- * Created by alex on 4/26/15.
+ * Model.java
  */
 public interface Model
 {

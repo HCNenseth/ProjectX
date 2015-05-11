@@ -6,10 +6,11 @@ import main.model.claim.ClaimBuilder;
 import main.model.insurance.Insurance;
 import main.model.person.Person;
 
-// TODO Override toString
-
-public class BoatClaim extends Claim {
-
+/**
+ * BoatClaim.java
+ */
+public class BoatClaim extends Claim
+{
     private Type type;
 
     public enum Type
@@ -28,8 +29,8 @@ public class BoatClaim extends Claim {
         public String toString() { return value; }
     }
 
-    public static class Builder extends ClaimBuilder<Builder, BoatClaim> {
-
+    public static class Builder extends ClaimBuilder<Builder, BoatClaim>
+    {
         private Type type;
 
         public Builder(Person customer, Insurance insurance)
@@ -45,7 +46,8 @@ public class BoatClaim extends Claim {
 
 
         @Override
-        public BoatClaim build() {
+        public BoatClaim build()
+        {
             return new BoatClaim(this);
         }
 
@@ -73,11 +75,16 @@ public class BoatClaim extends Claim {
         return type;
     }
 
+    /* OVERRIDES */
     @Override
-    public ClaimType identify() { return ClaimType.BOAT; }
+    public ClaimType identify()
+    {
+        return ClaimType.BOAT;
+    }
 
     @Override
-    public ModelType getModelType() {
+    public ModelType getModelType()
+    {
         return ModelType.CLAIM;
     }
 }

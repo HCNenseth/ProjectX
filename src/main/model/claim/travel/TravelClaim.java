@@ -7,8 +7,10 @@ import main.model.insurance.Insurance;
 import main.model.insurance.travel.Travel;
 import main.model.person.Person;
 
-// TODO Override toString
 
+/**
+ * TravelClaim.java
+ */
 public class TravelClaim extends Claim {
 
     private Travel.Continent continent;
@@ -33,7 +35,6 @@ public class TravelClaim extends Claim {
 
     public static class Builder extends ClaimBuilder<Builder, TravelClaim>
     {
-
         private Travel.Continent continent;
         private Type type = null;
 
@@ -55,7 +56,8 @@ public class TravelClaim extends Claim {
         }
 
         @Override
-        public TravelClaim build() {
+        public TravelClaim build()
+        {
             return new TravelClaim(this);
         }
     }
@@ -84,16 +86,22 @@ public class TravelClaim extends Claim {
     {
         this.continent = continent;
     }
+
     public void setType(Type type)
     {
         this.type = type;
     }
 
+    /* OVERRIDES */
     @Override
-    public ClaimType identify() { return ClaimType.TRAVEL; }
+    public ClaimType identify()
+    {
+        return ClaimType.TRAVEL;
+    }
 
     @Override
-    public ModelType getModelType() {
+    public ModelType getModelType()
+    {
         return ModelType.CLAIM;
     }
 }

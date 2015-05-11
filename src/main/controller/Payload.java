@@ -1,7 +1,7 @@
 package main.controller;
 
 /**
- * Created by alex on 4/23/15.
+ * Payload.java
  */
 public class Payload
 {
@@ -14,6 +14,7 @@ public class Payload
     {
         this.e = e;
     }
+
     public Payload(String string)
     {
         this.string = string;

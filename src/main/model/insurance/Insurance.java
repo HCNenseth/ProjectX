@@ -13,6 +13,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 /**
+ * Insurance.java
  * Main insurance class.
  */
 public abstract class Insurance<C extends Claim> implements
@@ -133,7 +134,6 @@ public abstract class Insurance<C extends Claim> implements
         counter += val;
     }
 
-
     /* OVERRIDES */
     @Override
     public boolean query(String value)
@@ -149,8 +149,14 @@ public abstract class Insurance<C extends Claim> implements
     }
 
     @Override
-    public ModelType getModelType() { return ModelType.INSURANCE; }
+    public ModelType getModelType()
+    {
+        return ModelType.INSURANCE;
+    }
 
     @Override
-    public LocalDate getDate() { return date; }
+    public LocalDate getDate()
+    {
+        return date;
+    }
 }

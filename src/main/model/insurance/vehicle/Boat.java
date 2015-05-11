@@ -9,6 +9,9 @@ import java.io.Serializable;
 import java.util.LinkedList;
 import java.util.List;
 
+/**
+ * Boat.java
+ */
 public class Boat extends Vehicle<BoatClaim> implements Serializable
 {
     private int length;
@@ -99,22 +102,43 @@ public class Boat extends Vehicle<BoatClaim> implements Serializable
 
     /* GETTERS */
 
-    public int getLength() { return length; }
+    public int getLength()
+    {
+        return length;
+    }
 
-    public Type getType() { return type; }
+    public Type getType()
+    {
+        return type;
+    }
 
-    public Propulsion getPropulsion() { return propulsion; }
+    public Propulsion getPropulsion()
+    {
+        return propulsion;
+    }
 
     /* SETTERS */
-    public void setLength(int length) { this.length = length; }
+    public void setLength(int length)
+    {
+        this.length = length;
+    }
 
-    public void setType(Type type) { this.type = type; }
+    public void setType(Type type)
+    {
+        this.type = type;
+    }
 
-    public void setPropulsion(Propulsion propulsion) { this.propulsion = propulsion; }
+    public void setPropulsion(Propulsion propulsion)
+    {
+        this.propulsion = propulsion;
+    }
 
     /* OVERRIDES */
     @Override
-    public InsuranceType identify() { return InsuranceType.BOAT; }
+    public InsuranceType identify()
+    {
+        return InsuranceType.BOAT;
+    }
 
     @Override
     public boolean query(String value)

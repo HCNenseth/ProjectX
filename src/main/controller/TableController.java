@@ -9,7 +9,7 @@ import main.view.table.PersonTable;
 import java.util.stream.Stream;
 
 /**
- * Created by alex on 4/28/15.
+ * TableController.java
  */
 public class TableController
 {

@@ -6,8 +6,9 @@ import main.model.claim.ClaimBuilder;
 import main.model.insurance.Insurance;
 import main.model.person.Person;
 
-// TODO Override toString
-
+/**
+ * PropertyClaim.java
+ */
 public class PropertyClaim extends Claim
 {
     private Type type;
@@ -30,7 +31,6 @@ public class PropertyClaim extends Claim
 
     public static class Builder extends ClaimBuilder<Builder, PropertyClaim>
     {
-
         private Type type;
 
         public Builder(Person customer, Insurance insurance)
@@ -74,11 +74,16 @@ public class PropertyClaim extends Claim
         this.type = type;
     }
 
+    /* OVERRIDES */
     @Override
-    public ClaimType identify() { return ClaimType.PROPERTY; }
+    public ClaimType identify()
+    {
+        return ClaimType.PROPERTY;
+    }
 
     @Override
-    public ModelType getModelType() {
+    public ModelType getModelType()
+    {
         return ModelType.CLAIM;
     }
 }

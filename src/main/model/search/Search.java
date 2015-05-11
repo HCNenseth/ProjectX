@@ -5,7 +5,7 @@ import main.model.Model;
 import java.time.LocalDate;
 
 /**
- * Created by alex on 5/7/15.
+ * Search.java
  */
 public class Search implements Model
 {
@@ -48,7 +48,10 @@ public class Search implements Model
     }
 
     /* GETTERS */
-    public String getKeyword() { return keyword; }
+    public String getKeyword()
+    {
+        return keyword;
+    }
 
     public LocalDate getFrom()
     {
@@ -61,5 +64,8 @@ public class Search implements Model
     }
 
     @Override
-    public ModelType getModelType() { return ModelType.SEARCH; }
+    public ModelType getModelType()
+    {
+        return ModelType.SEARCH;
+    }
 }

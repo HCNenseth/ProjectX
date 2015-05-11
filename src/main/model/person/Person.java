@@ -336,8 +336,14 @@ public class Person implements Serializable, FullTextSearch, Model
     }
 
     @Override
-    public ModelType getModelType() { return ModelType.PERSON; }
+    public ModelType getModelType()
+    {
+        return ModelType.PERSON;
+    }
 
     @Override
-    public LocalDate getDate() { return dateOfBirth; }
+    public LocalDate getDate()
+    {
+        return dateOfBirth;
+    }
 }

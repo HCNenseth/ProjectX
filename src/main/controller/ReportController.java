@@ -7,9 +7,8 @@ import main.model.person.Person;
 import main.view.Resources;
 import main.view.concrete.ReportView;
 
-
 /**
- * Created by alex on 5/7/15.
+ * ReportController.java
  */
 public class ReportController
 {

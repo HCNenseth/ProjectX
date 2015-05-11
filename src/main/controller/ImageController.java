@@ -5,7 +5,7 @@ import main.config.Config;
 import java.io.*;
 
 /**
- * Created by HansPetter on 07.05.2015.
+ * ImageController.java
  */
 public class ImageController
 {
@@ -22,34 +22,31 @@ public class ImageController
     {
         if (file == null) { return null; }
 
+        String output = "";
+
         File dest = new File(String.format("%s%s.%s",
                 Config.UPLOADS,
                 newFileName,
                 getFileExtension(file.getName())));
 
-        InputStream inputStream;
-        OutputStream outputStream;
 
-        try {
-            inputStream = new FileInputStream(file);
-            outputStream = new FileOutputStream(dest);
+        try (InputStream inputStream = new FileInputStream(file);
+             OutputStream outputStream = new FileOutputStream(dest))
+        {
 
-            byte[] buffer = new byte[4096];
+            byte[] buffer = new byte[Config.MAX_UPLOAD_FILESIZE];
             int length;
 
             while ((length = inputStream.read(buffer)) > 0) {
                 outputStream.write(buffer, 0, length);
             }
 
-            inputStream.close();
-            outputStream.close();
-            return dest.getName();
+            output = dest.getName();
 
         } catch (IOException e) {
             e.printStackTrace();
         }
 
-        return "";
-
+        return output;
     }
 }

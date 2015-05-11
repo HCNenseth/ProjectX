@@ -8,7 +8,7 @@ import main.view.form.Form;
 import main.view.form.adapter.PersonAdapter;
 
 /**
- * Created by alex on 4/23/15.
+ * PersonController.java
  */
 public class PersonController
 {
@@ -18,8 +18,10 @@ public class PersonController
     {
         Form f = new Form();
         PersonAdapter personAdapter = new PersonAdapter();
+
         personAdapter.setOnDoneAction(PersonController::view);
         f.injectAdapter(personAdapter);
+
         Resources.inst.getOtp().injectObservableTab(Loc.c("new_customer"),
                 f.getForm(), true);
     }

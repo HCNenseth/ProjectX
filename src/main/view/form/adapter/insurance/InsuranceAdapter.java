@@ -7,17 +7,20 @@ import main.model.Status;
 import main.model.insurance.Insurance;
 import main.model.person.Person;
 import main.validator.StringMatcher;
+import main.view.form.Formable;
 import main.view.form.node.*;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.function.Consumer;
 
 /**
  * InsuranceAdapter.java
  * @param <T> - Concrete insurance adapter.
  */
 public abstract class InsuranceAdapter<T extends Insurance>
+        implements Formable<T>
 {
 
     private FormLabelNode customerNode;
@@ -127,4 +130,11 @@ public abstract class InsuranceAdapter<T extends Insurance>
 
     /* SETTERS */
     protected void setInsurance(T insurance) { this.insurance = insurance; }
+
+    /* OVERRIDES */
+    @Override
+    public void setOnDoneAction(Consumer<T> c)
+    {
+        callBackEvent.setOnAction(e -> c.accept(getInsurance()));
+    }
 }

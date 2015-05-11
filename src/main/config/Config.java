@@ -3,10 +3,10 @@ package main.config;
 import javafx.stage.Screen;
 
 /**
- * Created by HansPetter on 29.04.2015.
+ * Config.java;
  */
-public class Config {
-
+public class Config
+{
     public static final String APP_NAME = "Wakizashi";
 
     public static final String PERSONS = "persons";
@@ -31,4 +31,6 @@ public class Config {
     public final static int PERSON_COUNTER_START = 1000000;
     public final static int INSURANCE_COUNTER_START = 2000000;
     public final static int CLAIM_COUNTER_START = 3000000;
+
+    public final static int MAX_UPLOAD_FILESIZE = 4096;
 }

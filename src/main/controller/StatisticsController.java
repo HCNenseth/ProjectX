@@ -11,7 +11,7 @@ import main.view.concrete.statistics.PersonStatisticsView;
 
 
 /**
- * Created by alex on 5/7/15.
+ * StatisticsController.java
  */
 public class StatisticsController
 {

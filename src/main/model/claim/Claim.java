@@ -15,6 +15,8 @@ import java.time.LocalDate;
 import java.util.List;
 
 /**
+ * Claim.java
+ *
  * Main claim class.
  */
 public abstract class Claim implements Serializable, FullTextSearch, Model
@@ -55,7 +57,8 @@ public abstract class Claim implements Serializable, FullTextSearch, Model
         public String toString() { return getValue(); }
     }
 
-    public enum PaymentStatus {
+    public enum PaymentStatus
+    {
         A(Loc.c("payment_status_a")),
         B(Loc.c("payment_status_b")),
         C(Loc.c("payment_status_c"));
@@ -293,6 +296,8 @@ public abstract class Claim implements Serializable, FullTextSearch, Model
     }
 
     @Override
-    public LocalDate getDate() { return dateOfDamages; }
-
+    public LocalDate getDate()
+    {
+        return dateOfDamages;
+    }
 }

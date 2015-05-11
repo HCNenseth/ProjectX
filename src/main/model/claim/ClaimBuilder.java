@@ -58,7 +58,7 @@ public abstract class ClaimBuilder<T, E>
     public T contacts(String contacts)
     {
         this.contacts = contacts;
-        return (T)this;
+        return (T) this;
     }
 
     public T desc(String desc)
@@ -76,7 +76,7 @@ public abstract class ClaimBuilder<T, E>
     public T status(Status status)
     {
         this.status = status;
-        return (T)this;
+        return (T) this;
     }
 
     public T dateOfDamages(LocalDate dateOfDamages)
@@ -114,7 +114,10 @@ public abstract class ClaimBuilder<T, E>
         return amount;
     }
 
-    public double getDeductible() { return deductible; }
+    public double getDeductible()
+    {
+        return deductible;
+    }
 
     public String getContacts()
     {
@@ -150,7 +153,6 @@ public abstract class ClaimBuilder<T, E>
     {
         return status;
     }
-
 
     /* Abstract */
     public abstract E build();

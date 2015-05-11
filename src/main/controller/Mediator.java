@@ -1,7 +1,7 @@
 package main.controller;
 
 /**
- * Created by alex on 4/23/15.
+ * Mediator.java
  */
 public enum Mediator
 {

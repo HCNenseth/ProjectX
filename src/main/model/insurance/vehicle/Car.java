@@ -18,8 +18,7 @@ public class Car extends Vehicle<CarClaim> implements Serializable
     private Type type;
     private Propulsion propulsion;
 
-    public enum Propulsion
-    {
+    public enum Propulsion {
         A(Loc.c("car_propulsion_a")),
         B(Loc.c("car_propulsion_b")),
         C(Loc.c("car_propulsion_c"));
@@ -34,8 +33,7 @@ public class Car extends Vehicle<CarClaim> implements Serializable
         public String toString() { return value; }
     }
 
-    public enum Type
-    {
+    public enum Type {
         A(Loc.c("car_type_a")),
         B(Loc.c("car_type_b")),
         C(Loc.c("car_type_c")),
@@ -101,24 +99,48 @@ public class Car extends Vehicle<CarClaim> implements Serializable
     }
 
     /* SETTERS */
-    public void setMileage(int mileage) { this.mileage = mileage; }
+    public void setMileage(int mileage)
+    {
+        this.mileage = mileage;
+    }
 
-    public void setType(Type type) { this.type = type; }
+    public void setType(Type type)
+    {
+        this.type = type;
+    }
 
-    public void setPropulsion(Propulsion propulsion) { this.propulsion = propulsion; }
+    public void setPropulsion(Propulsion propulsion)
+    {
+        this.propulsion = propulsion;
+    }
 
     /* GETTERS */
-    public int getMileage() { return mileage; }
+    public int getMileage()
+    {
+        return mileage;
+    }
 
-    public Type getType() { return type; }
+    public Type getType()
+    {
+        return type;
+    }
 
-    public Propulsion getPropulsion() { return propulsion; }
+    public Propulsion getPropulsion()
+    {
+        return propulsion;
+    }
 
-    public int getBonus() { return CarBonus.getBonus(this); }
+    public int getBonus()
+    {
+        return CarBonus.getBonus(this);
+    }
 
     /* OVERRIDES */
     @Override
-    public InsuranceType identify() { return InsuranceType.CAR; }
+    public InsuranceType identify()
+    {
+        return InsuranceType.CAR;
+    }
 
     @Override
     public boolean query(String value)

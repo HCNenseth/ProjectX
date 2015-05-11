@@ -1,7 +1,7 @@
 package main.validator;
 
 /**
- * Created by alex on 4/17/15.
+ * StringMatcher.java
  */
 public enum StringMatcher
 {
@@ -19,7 +19,6 @@ public enum StringMatcher
     private final static String firstname = baseString;
     private final static String lastname = baseString;
     private final static String color = baseString;
-
 
     private final static String regnr  = "\\w{2,8}";
     private final static String type = "\\w{2,20}";
@@ -45,53 +44,23 @@ public enum StringMatcher
 
     public static boolean power(String val) { return val.matches(power); }
 
-    public static String getEmail()
-    {
-        return email;
-    }
+    public static String getEmail() { return email; }
 
-    public static String getYear()
-    {
-        return year;
-    }
+    public static String getYear() { return year; }
 
-    public static String getDigit()
-    {
-        return baseDigit;
-    }
+    public static String getDigit() { return baseDigit; }
 
-    public static String getFloat()
-    {
-        return baseFloat;
-    }
+    public static String getFloat() { return baseFloat; }
 
-    public static String getBaseString()
-    {
-        return baseString;
-    }
+    public static String getBaseString() { return baseString; }
 
-    public static String getFirstname()
-    {
-        return firstname;
-    }
+    public static String getFirstname() { return firstname; }
 
-    public static String getLastname()
-    {
-        return lastname;
-    }
+    public static String getLastname() { return lastname; }
 
-    public static String getRegnr()
-    {
-        return regnr;
-    }
+    public static String getRegnr() { return regnr; }
 
-    public static String getPostalCode()
-    {
-        return year;
-    }
+    public static String getPostalCode() { return year; }
 
-    public static String getLiberation()
-    {
-        return liberation;
-    }
+    public static String getLiberation() { return liberation; }
 }

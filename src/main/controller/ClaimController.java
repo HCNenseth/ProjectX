@@ -14,7 +14,7 @@ import main.view.form.Form;
 import main.view.form.adapter.claim.*;
 
 /**
- * Created by alex on 4/26/15.
+ * ClaimController.java
  */
 public class ClaimController
 {
@@ -46,6 +46,7 @@ public class ClaimController
             default:
                 throw new IllegalStateException("Unknown claim type");
         }
+
         claimAdapter.setOnDoneAction(ClaimController::view);
         f.injectAdapter(claimAdapter);
 
@@ -61,7 +62,6 @@ public class ClaimController
         ClaimView claimView = new ClaimView(claim);
         Resources.inst.getOtp().injectObservableTab(Loc.c("claim"),
                 claimView.getNode(), claim, true);
-
     }
 
     public static void edit(Claim claim)
@@ -93,6 +93,7 @@ public class ClaimController
             default:
                 throw new IllegalStateException("Unknown claim type");
         }
+
         claimAdapter.setOnDoneAction(ClaimController::view);
         f.injectAdapter(claimAdapter);
 

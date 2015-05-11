@@ -16,7 +16,6 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.function.Consumer;
 
 /**
  * BoatAdapter.java
@@ -150,11 +149,5 @@ public class BoatAdapter extends InsuranceAdapter<Boat> implements Formable<Boat
             Insurance.saveNew(insurance);
         }
         callBackEvent.fire();
-    }
-
-    @Override
-    public void setOnDoneAction(Consumer<Boat> c)
-    {
-        callBackEvent.setOnAction(e -> c.accept(getInsurance()));
     }
 }

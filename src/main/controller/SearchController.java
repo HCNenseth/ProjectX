@@ -13,14 +13,17 @@ import main.view.form.adapter.SearchAdapter;
 import java.time.LocalDate;
 
 /**
- * Created by alex on 4/23/15.
+ * SearchController.java
  */
 class SearchController
 {
-    Form f;
+    private Form f;
+    private Payload payload;
 
-    public SearchController(Payload p)
+
+    public SearchController(Payload payload)
     {
+        this.payload = payload;
         f = new Form();
         create();
     }

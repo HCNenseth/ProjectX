@@ -2,7 +2,6 @@ package main.controller;
 
 import javafx.application.Platform;
 import javafx.stage.FileChooser;
-import main.App;
 import main.localization.Loc;
 import main.model.Storage;
 import main.preference.Pref;
@@ -12,7 +11,7 @@ import java.io.File;
 import java.io.IOException;
 
 /**
- * Created by alex on 4/23/15.
+ * MenuBar.java
  */
 public class MenuBar
 {
@@ -112,7 +111,6 @@ public class MenuBar
         try {
             Storage.getInstance().save();
         } catch (IOException ioe) {
-            // TODO do something meaningful with this error.
             System.out.println("error writing to file");
         }
     }

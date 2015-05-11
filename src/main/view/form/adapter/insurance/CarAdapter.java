@@ -146,10 +146,4 @@ public class CarAdapter extends InsuranceAdapter<Car> implements Formable<Car>
         }
         callBackEvent.fire();
     }
-
-    @Override
-    public void setOnDoneAction(Consumer<Car> c)
-    {
-        callBackEvent.setOnAction(e -> c.accept(getInsurance()));
-    }
 }
