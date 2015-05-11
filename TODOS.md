@@ -4,11 +4,11 @@
 * Bonusutregning for kjøretøy forsikring.
 * Regexifisering.
 * *DONE - Søkeresultater i samme bilde som søkeskjema.*
-* Fullføre alle adaptere (inkl. claims)
+* *DONE - Fullføre alle adaptere (inkl. claims)*
 * *DONE - Statistikk layout*
 * *DONE - Implementere totalkunde som gir kunder med min 3 forsikringer 10% rabatt.*
 * *DONE - Rapporten*
-* *DONE -Claim tabeller*
+* *DONE - Claim tabeller*
 
 #HC
 * *DONE - Løpenummer på alle typer.*

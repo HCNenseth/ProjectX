@@ -20,10 +20,11 @@ import main.view.form.adapter.insurance.*;
 public class InsuranceController
 {
     private InsuranceController() {}
+    private static Form f;
 
     public static void create(Person p, InsuranceType type)
     {
-        Form f = new Form();
+        f = new Form();
         InsuranceAdapter<? extends Insurance> insurance;
         String title;
 
@@ -55,13 +56,14 @@ public class InsuranceController
         insurance.setOnDoneAction(InsuranceController::view);
         f.injectAdapter(insurance);
         Resources.inst.getOtp().injectObservableTab(title,
-                f.getForm(), true);
+                f.getForm(), f, true);
     }
 
     public static void view(Insurance insurance)
     {
         // Remove all tabs dealing with this object
         Resources.inst.getOtp().closeObservableTabs(insurance);
+        Resources.inst.getOtp().closeObservableTabs(f);
 
         InsuranceView view;
 
@@ -101,7 +103,7 @@ public class InsuranceController
         // Remove all tabs dealing with this object
         Resources.inst.getOtp().closeObservableTabs(insurance);
 
-        Form f = new Form();
+        f = new Form();
         InsuranceAdapter<? extends Insurance> insuranceAdapter;
 
         switch (insurance.identify()) {

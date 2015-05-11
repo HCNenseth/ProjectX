@@ -20,7 +20,7 @@ import java.util.Observer;
 public class ObservablePane extends Observable
 {
     private BasePane pane;
-    private Model reference;
+    private Object reference;
 
     public ObservablePane(Observer observer, String title)
     {
@@ -32,10 +32,10 @@ public class ObservablePane extends Observable
 
     public void setContent(Node node) { pane.setContent(node); }
 
-    public boolean hasReference(Model reference)
+    public boolean hasReference(Object reference)
     {
         return this.reference != null && this.reference.equals(reference);
     }
 
-    public void setReference(Model reference) { this.reference = reference; }
+    public void setReference(Object reference) { this.reference = reference; }
 }

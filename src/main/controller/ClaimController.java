@@ -19,11 +19,12 @@ import main.view.form.adapter.claim.*;
 public class ClaimController
 {
     private ClaimController() {}
+    private static Form f;
 
     public static void create(Claim.ClaimType type, Person person, Insurance insurance)
     {
         String title;
-        Form f = new Form();
+        f = new Form();
         ClaimAdapter<? extends Claim> claimAdapter;
 
         switch (type) {
@@ -51,13 +52,14 @@ public class ClaimController
         f.injectAdapter(claimAdapter);
 
         Resources.inst.getOtp().injectObservableTab(Loc.c(title),
-                f.getForm(), true);
+                f.getForm(), f, true);
     }
 
     public static void view(Claim claim)
     {
         // Remove all tabs dealing with this object
         Resources.inst.getOtp().closeObservableTabs(claim);
+        Resources.inst.getOtp().closeObservableTabs(f);
 
         ClaimView claimView = new ClaimView(claim);
         Resources.inst.getOtp().injectObservableTab(Loc.c("claim"),
