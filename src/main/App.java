@@ -48,9 +48,9 @@ public class App extends Application
                 dialogMode = false;
 
                 // get data from storage and setup the different classes
-                Person.setCounter(Person.getPersons().size() - 1);
-                Insurance.setCounter(Insurance.getInsurances().size() - 1);
-                Claim.setCounter(Claim.getClaims().size() - 1);
+                Person.setCounter(Person.getPersons().size());
+                Insurance.setCounter(Insurance.getInsurances().size());
+                Claim.setCounter(Claim.getClaims().size());
 
             } catch (IOException | ClassNotFoundException e) {
                 // TODO do something meaningful with this error.

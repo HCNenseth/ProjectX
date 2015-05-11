@@ -55,9 +55,4 @@ public class CarClaimAdapter extends ClaimAdapter<CarClaim> implements Formable<
         callBackEvent.fire();
     }
 
-    @Override
-    public void setOnDoneAction(Consumer<CarClaim> c)
-    {
-        callBackEvent.setOnAction(e -> c.accept(claim));
-    }
 }

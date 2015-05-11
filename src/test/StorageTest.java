@@ -316,6 +316,7 @@ public class StorageTest
                             .dateOfDamages(LocalDate.of(randInt(1960, 2014),
                                     randInt(1, 12), randInt(1, 28)))
                             .desc(randomDomain())
+                            .contacts(randomDomain())
                             .amount(randInt(1000, 12000))
                             .build());
                 }
@@ -340,6 +341,7 @@ public class StorageTest
                             .dateOfDamages(LocalDate.of(randInt(1960, 2014),
                                     randInt(1, 12), randInt(1, 28)))
                             .desc(randomDomain())
+                            .contacts(randomDomain())
                             .amount(randInt(1000, 12000))
                             .build());
                 }
@@ -364,6 +366,7 @@ public class StorageTest
                             .dateOfDamages(LocalDate.of(randInt(1960, 2014),
                                     randInt(1, 12), randInt(1, 28)))
                             .desc(randomDomain())
+                            .contacts(randomDomain())
                             .amount(randInt(1000, 12000))
                             .build());
                 }
@@ -387,6 +390,7 @@ public class StorageTest
                             .dateOfDamages(LocalDate.of(randInt(1960, 2014),
                                     randInt(1, 12), randInt(1, 28)))
                             .desc(randomDomain())
+                            .contacts(randomDomain())
                             .amount(randInt(1000, 12000))
                             .build());
                 }
@@ -407,6 +411,7 @@ public class StorageTest
                             .dateOfDamages(LocalDate.of(randInt(1960, 2014),
                                     randInt(1, 12), randInt(1, 28)))
                             .desc(randomDomain())
+                            .contacts(randomDomain())
                             .amount(randInt(1000, 12000))
                             .build());
                 }

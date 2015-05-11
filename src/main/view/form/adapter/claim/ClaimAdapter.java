@@ -18,6 +18,7 @@ import java.io.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Consumer;
 
 /**
  * Created by HansChristian on 28.04.2015.
@@ -104,6 +105,7 @@ public abstract class ClaimAdapter<T extends Claim> implements Formable<T>
                 .value(editMode ? claim.getContacts() : "")
                 .regex(StringMatcher.getBaseString())
                 .error(Loc.c("claim_contacts_error"))
+                .required(false)
                 .build();
 
         amount = new FormValueNode.Builder(Loc.c("amount"))
@@ -177,5 +179,11 @@ public abstract class ClaimAdapter<T extends Claim> implements Formable<T>
 
         ImageController.storeImage(image.getData(), String.format("Claim-%d-%s",
                 claim.getId(), claim.identify().getValue()));
+    }
+
+    @Override
+    public void setOnDoneAction(Consumer<T> c)
+    {
+        callBackEvent.setOnAction(e -> c.accept(claim));
     }
 }
