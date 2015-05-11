@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <language name="norwegian">
 
-
+    <string name="open_existing">Åpne</string>
+    <string name="create_new">Opprett</string>
     <string name="menu_close_project">Lukk prosjektet</string>
     <string name="menu_file_exit">Avslutt</string>
     <string name="menu_group_about">Om</string>
