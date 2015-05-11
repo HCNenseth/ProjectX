@@ -9,6 +9,7 @@ import main.model.person.Person;
 import main.model.Status;
 import main.model.insurance.Insurance;
 
+import java.io.File;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.List;
@@ -154,6 +155,11 @@ public abstract class Claim implements Serializable, FullTextSearch, Model
         this.amount = amount;
     }
 
+    public void setFilePathImage(String filePathImage)
+    {
+        this.filePathImage = filePathImage;
+    }
+
     public void setDeductible(double deductible)
     {
         this.deductible = deductible;
@@ -218,6 +224,16 @@ public abstract class Claim implements Serializable, FullTextSearch, Model
     public double getDeductible()
     {
         return deductible;
+    }
+
+    public String getFilePathImage()
+    {
+        return filePathImage;
+    }
+
+    public File getImageFile()
+    {
+        return new File(Config.UPLOADS + getFilePathImage());
     }
 
     /* STATIC */

@@ -177,8 +177,10 @@ public abstract class ClaimAdapter<T extends Claim> implements Formable<T>
     {
         if (image.getData() == null) { return; }
 
-        ImageController.storeImage(image.getData(), String.format("Claim-%d-%s",
-                claim.getId(), claim.identify().getValue()));
+        String fileName = ImageController.storeImage(image.getData(),
+                String.format("Claim-%s-%s", claim.getId(), claim.identify().getValue()));
+
+        claim.setFilePathImage(fileName);
     }
 
     @Override

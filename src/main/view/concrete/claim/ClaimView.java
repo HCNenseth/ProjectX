@@ -1,15 +1,15 @@
 package main.view.concrete.claim;
 
 import javafx.scene.control.Button;
+import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.scene.control.ToolBar;
 import main.controller.ClaimController;
 import main.localization.Loc;
 import main.model.claim.Claim;
-import main.model.insurance.property.House;
-import main.model.insurance.vehicle.Boat;
-import main.model.insurance.vehicle.Car;
 import main.view.StandardGridPane;
+import main.view.stage.ImageStage;
+
 
 /**
  * Created by alex on 4/28/15.
@@ -52,27 +52,20 @@ public class ClaimView<T extends Claim> extends StandardGridPane
 
         // insurance
         add(new Label(Loc.c("insurance")), 0, rowNum);
-        switch (claim.getInsurance().identify()) {
-            case CAR:
-                add(new Label(((Car) claim.getInsurance()).getType().getValue()), 1, rowNum++);
-                break;
-            case BOAT:
-                add(new Label(((Boat) claim.getInsurance()).getType().getValue()), 1, rowNum++);
-                break;
-            case HOUSE:
-                add(new Label(((House) claim.getInsurance()).getType().getValue()), 1, rowNum++);
-                break;
-            case TRAVEL:
-                //gp.add(new Label(((Travel)claim.getInsurance()).getType()), 1, rowNum++);
-                add(new Label("Travel-replace-me"), 1, rowNum++);
-                break;
-            default:
-                add(new Label(Loc.c("unknown")), 1, rowNum++);
-        }
+        add(new Label(claim.identify().getValue()), 1, rowNum++);
 
         // desc
         add(new Label(Loc.c("description")), 0, rowNum);
         add(new Label(claim.getDesc()), 1, rowNum++);
+
+        if (!claim.getFilePathImage().equals("")) {
+            add(new Label(Loc.c("image")), 0, rowNum);
+            Hyperlink hyperlink = new Hyperlink(claim.getFilePathImage());
+            hyperlink.setOnAction(e ->
+                new ImageStage().showImage(claim.getImageFile())
+            );
+            add(hyperlink, 1, rowNum++);
+        }
 
         // contacts
         add(new Label(Loc.c("contacts")), 0, rowNum);
@@ -85,10 +78,6 @@ public class ClaimView<T extends Claim> extends StandardGridPane
         // date
         add(new Label(Loc.c("date")), 0, rowNum);
         add(new Label(claim.getDate().toString()), 1, rowNum++);
-
-        // type
-        add(new Label(Loc.c("type")), 0, rowNum);
-     //   add(new Label(claim.getType().getValue()), 1, rowNum++);
 
         // paymentStatus
         add(new Label(Loc.c("payment_status")), 0, rowNum);

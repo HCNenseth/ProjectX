@@ -28,6 +28,7 @@
     <string name="refresh">Refresh</string>
     <string name="view">View</string>
     <string name="image">Image</string>
+    <string name="add_image">Add image</string>
     <string name="data_files">Data files (*.dat)</string>
     <string name="language">Language</string>
     <string name="default">Default</string>
@@ -248,9 +249,14 @@
     <string name="date_of_claim">Date of claim</string>
 
     <string name="new_car_claim">New car claim</string>
+    <string name="edit_car_claim">Edit car claim</string>
     <string name="new_boat_claim">New boat claim</string>
+    <string name="edit_boat_claim">Edit boat claim</string>
     <string name="new_property_claim">New property claim</string>
+    <string name="edit_property_claim">Edit property claim</string>
     <string name="new_travel_claim">New travel claim</string>
+    <string name="edit_travel_claim">Edit travel claim</string>
+
 
     <!-- Report -->
     <string name="report">Report</string>

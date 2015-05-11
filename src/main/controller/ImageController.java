@@ -9,7 +9,7 @@ import java.io.*;
  */
 public class ImageController
 {
-    private static String getFileExtention(String fileName)
+    private static String getFileExtension(String fileName)
     {
         if (fileName.lastIndexOf(".") > 0) {
             return fileName.substring(fileName.lastIndexOf(".") + 1);
@@ -18,15 +18,14 @@ public class ImageController
         return "";
     }
 
-    public static void storeImage(File file, String newFileName)
+    public static String storeImage(File file, String newFileName)
     {
-        if (file == null) { return; }
+        if (file == null) { return null; }
 
         File dest = new File(String.format("%s%s.%s",
                 Config.UPLOADS,
                 newFileName,
-                getFileExtention(file.getName())));
-
+                getFileExtension(file.getName())));
 
         InputStream inputStream;
         OutputStream outputStream;
@@ -44,9 +43,13 @@ public class ImageController
 
             inputStream.close();
             outputStream.close();
+            return dest.getName();
 
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+        return "";
+
     }
 }
