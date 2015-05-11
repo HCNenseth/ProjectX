@@ -21,7 +21,7 @@ public class ImageScene
     private WebView loadBrowser() {
         WebView browser = new WebView();
         WebEngine webEngine = browser.getEngine();
-        webEngine.load("file://" + image);
+        webEngine.load("file:" + image);
 
         return browser;
     }
