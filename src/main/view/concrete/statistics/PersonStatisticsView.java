@@ -30,9 +30,8 @@ public class PersonStatisticsView extends StandardGridPane
         LineChart lineChart = new LineChart(xAxis, yAxis);
         lineChart.setData(getChartData());
         lineChart.setTitle("speculations");
-        Resources.inst.getStackPane().getChildren().add(lineChart);
 
-        // add(new Label("Fill me up baby!"), 0, 0);
+        add(lineChart, 0 ,0);
     }
 
     private ObservableList<XYChart.Series<String, Double>> getChartData()
