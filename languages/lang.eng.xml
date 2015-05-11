@@ -144,6 +144,9 @@
     <string name="total_claims_amount_sum">Claims amount</string>
     <string name="total_claims_deductible_sum">Claims deductible</string>
 
+    <!-- insurance -->
+    <string name="insurance_id">Insurance Id</string>
+
     <!-- car -->
     <string name="license_plate">License plate</string>
     <string name="car_propulsion">Propulsion</string>
@@ -213,6 +216,7 @@
     <string name="continent_f">War Zone</string>
 
     <!-- Claim -->
+    <string name="claim_id">Claim Id</string>
     <string name="new_claim">New claim</string>
     <string name="claim">Claim</string>
     <string name="contacts">Contacts</string>

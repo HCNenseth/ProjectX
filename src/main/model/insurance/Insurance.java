@@ -1,7 +1,6 @@
 package main.model.insurance;
 
 import main.config.Config;
-import main.localization.Loc;
 import main.model.FullTextSearch;
 import main.model.Model;
 import main.model.Storage;
@@ -12,7 +11,6 @@ import main.model.Status;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.List;
-import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * Main insurance class.
@@ -20,10 +18,8 @@ import java.util.concurrent.atomic.AtomicInteger;
 public abstract class Insurance<C extends Claim> implements
         Serializable, Type, FullTextSearch, Model
 {
-    public static final int insuranceId = 1;
-
+    private static int counter = Config.INSURANCE_COUNTER_START;
     private int id;
-    private static int insuranceCount = insuranceId;
 
     private Person customer;
     private double premium;
@@ -49,7 +45,7 @@ public abstract class Insurance<C extends Claim> implements
         this.desc = ib.getDesc();
         this.status = ib.getStatus();
         this.claims = ib.getClaimsList();
-        id = insuranceCount++;
+        id = counter++;
 
         customer.addInsurance(this);
     }
@@ -91,9 +87,9 @@ public abstract class Insurance<C extends Claim> implements
     }
 
     /* SETTERS */
-    public void setInsuranceCount(int val)
+    public void setCounter(int val)
     {
-        insuranceCount = val;
+        counter = val;
     }
 
     public void setDesc(String desc)

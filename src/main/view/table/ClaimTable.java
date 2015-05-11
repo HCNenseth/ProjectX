@@ -10,6 +10,7 @@ public class ClaimTable extends Table<Claim>
 {
     public ClaimTable()
     {
+        injectColumn(Column.generate(Loc.c("id"), "id"));
         injectColumn(Column.generate(Loc.c("date_of_claim"), "claimDate"));
         injectColumn(Column.generate(Loc.c("date_of_damages"), "dateOfDamages"));
         injectColumn(Column.generate(Loc.c("amount"), "amount"));

@@ -28,5 +28,7 @@ public class Config {
     public final static int TOTAL_CUSTOMER_INSURANCE_COUNT = 3;
     public final static int TOTAL_CUSTOMER_DISCOUNT = 10;
 
-
+    public final static int PERSON_COUNTER_START = 1000000;
+    public final static int INSURANCE_COUNTER_START = 1000000;
+    public final static int CLAIM_COUNTER_START = 1000000;
 }

@@ -10,7 +10,7 @@ public class InsuranceTable extends Table<Insurance>
 {
     public InsuranceTable()
     {
-        //injectColumn(Column.generate(Loc.c("insurance"), "insuranceType"));
+        injectColumn(Column.generate(Loc.c("id"), "id"));
         injectColumn(Column.generate(Loc.c("type"), "type"));
         injectColumn(Column.generate(Loc.c("premium"), "premium"));
         injectColumn(Column.generate(Loc.c("amount"), "amount"));

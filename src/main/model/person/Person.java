@@ -18,10 +18,8 @@ import java.util.List;
  */
 public class Person implements Serializable, FullTextSearch, Model
 {
-    public static final int customerId = 1_000_001;
-
+    private static int counter = Config.PERSON_COUNTER_START;
     private int id;
-    private static int customerCount = customerId;
 
     private String firstname;
     private String lastname;
@@ -157,7 +155,7 @@ public class Person implements Serializable, FullTextSearch, Model
         postalCode = builder.postalCode;
         city = builder.city;
         status = builder.status;
-        id = customerCount++;
+        id = counter++;
 
         insurances = new LinkedList<>();
         claims = new LinkedList<>();
@@ -181,7 +179,7 @@ public class Person implements Serializable, FullTextSearch, Model
     /* SETTERS */
     public void setCustomerCount(int customerCount)
     {
-        this.customerCount = customerCount;
+        this.counter = customerCount;
     }
 
     public void setFirstname(String firstname)

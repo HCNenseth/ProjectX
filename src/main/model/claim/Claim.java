@@ -16,10 +16,10 @@ import java.util.List;
 /**
  * Main claim class.
  */
-public abstract class Claim implements Serializable, FullTextSearch, Model {
-
-    public static int counter = 1000000;
-    public final int claimId;
+public abstract class Claim implements Serializable, FullTextSearch, Model
+{
+    private static int counter = Config.CLAIM_COUNTER_START;
+    private int id;
 
     private Person customer;
     private Insurance insurance;
@@ -74,7 +74,8 @@ public abstract class Claim implements Serializable, FullTextSearch, Model {
      */
     public Claim(ClaimBuilder cb)
     {
-        claimId = counter++;
+        id = counter++;
+
         customer = cb.getCustomer();
         insurance = cb.getInsurance();
         dateOfDamages = cb.getDateOfDamages();
@@ -146,12 +147,9 @@ public abstract class Claim implements Serializable, FullTextSearch, Model {
      */
     public void addContacts(String contacts)
     {
-        if(this.contacts == null && this.contacts.isEmpty())
-        {
+        if(this.contacts.equals("")) {
             setContacts(contacts);
-        }
-        else if(this.contacts != null && !this.contacts.isEmpty())
-        {
+        } else {
             this.contacts += "\n" + contacts;
         }
     }
@@ -169,7 +167,7 @@ public abstract class Claim implements Serializable, FullTextSearch, Model {
     /* Getters */
     public int getId()
     {
-        return claimId;
+        return id;
     }
 
     public Person getCustomer()
@@ -257,7 +255,7 @@ public abstract class Claim implements Serializable, FullTextSearch, Model {
                         "%s:\t%s\n" +
                         "%s:\t%s\n" +
                         "%s:\t%s\n",
-                Loc.c("claim_id"), claimId,
+                Loc.c("claim_id"), id,
                 Loc.c("customer"), customer,
                 Loc.c("insurance"), insurance.getId(),
                 Loc.c("accident_date"), dateOfDamages,
