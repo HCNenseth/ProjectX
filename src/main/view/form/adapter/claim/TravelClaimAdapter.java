@@ -1,38 +1,61 @@
 package main.view.form.adapter.claim;
 
-import main.model.Status;
+import main.localization.Loc;
 import main.model.claim.Claim;
 import main.model.claim.travel.TravelClaim;
 import main.model.insurance.Insurance;
+import main.model.insurance.travel.Travel;
 import main.model.person.Person;
 import main.view.form.Formable;
+import main.view.form.node.FormChoiceNode;
 import main.view.form.node.FormNode;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
-import java.util.function.Consumer;
 
 /**
- * Created by alex on 5/7/15.
+ * TravelClaimAdapter.java
  */
-public class TravelClaimAdapter extends ClaimAdapter<TravelClaim> implements Formable<TravelClaim>
+public class TravelClaimAdapter extends ClaimAdapter<TravelClaim>
+        implements Formable<TravelClaim>
 {
-    private TravelClaim claim;
+    private FormChoiceNode<TravelClaim.Type> type;
+    private FormChoiceNode<Travel.Continent> continent;
 
     public TravelClaimAdapter(TravelClaim claim)
     {
         super(claim);
-        this.claim = claim;
+        initFields();
     }
 
     public TravelClaimAdapter(Person person, Insurance insurance)
     {
         super(person, insurance);
+        initFields();
+    }
+
+    private void initFields()
+    {
+        List<TravelClaim.Type> typeList = new ArrayList<>(
+                Arrays.asList(TravelClaim.Type.values()));
+        type = new FormChoiceNode.Builder<>(Loc.c("travel_claim_type"), typeList)
+                .active(editMode ? claim.getType() : TravelClaim.Type.A)
+                .build();
+
+        List<Travel.Continent> continentList = new ArrayList<>(
+                Arrays.asList(Travel.Continent.values()));
+        continent = new FormChoiceNode.Builder<>(Loc.c("continent"), continentList)
+                .active(editMode ? claim.getContinent() : Travel.Continent.A)
+                .build();
     }
 
     @Override
     public List<FormNode> getVisibleNodes()
     {
         List<FormNode> tmp = super.getVisibleNodes();
+        tmp.add(type);
+        tmp.add(continent);
         return tmp;
     }
 
@@ -41,6 +64,8 @@ public class TravelClaimAdapter extends ClaimAdapter<TravelClaim> implements For
     {
         if (editMode) {
             setData();
+            claim.setType(type.getData());
+            claim.setContinent(continent.getData());
         } else {
             claim = new TravelClaim.Builder(person, insurance)
                     .dateOfDamages(dateOfDamages.getData())
@@ -49,17 +74,14 @@ public class TravelClaimAdapter extends ClaimAdapter<TravelClaim> implements For
                     .contacts(contacts.getValue())
                     .amount(Double.parseDouble(amount.getValue()))
                     .deductible(Double.parseDouble(deductible.getValue()))
-                    .paymentStatus((Claim.PaymentStatus) paymentStatus.getData())
-                    .status((Status) status.getData())
+                    .paymentStatus(paymentStatus.getData())
+                    .status(status.getData())
+                    .continent(continent.getData())
+                    .type(type.getData())
                     .build();
-            storeImage();
+            Claim.saveNew(claim);
         }
+        storeImage();
         callBackEvent.fire();
-    }
-
-    @Override
-    public void setOnDoneAction(Consumer<TravelClaim> c)
-    {
-        callBackEvent.setOnAction(e -> c.accept(claim));
     }
 }

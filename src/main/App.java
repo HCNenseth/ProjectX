@@ -4,6 +4,9 @@ import javafx.application.Application;
 import javafx.stage.Stage;
 import main.localization.Loc;
 import main.model.Storage;
+import main.model.claim.Claim;
+import main.model.insurance.Insurance;
+import main.model.person.Person;
 import main.preference.Pref;
 import main.view.Resources;
 
@@ -43,6 +46,12 @@ public class App extends Application
             try {
                 Storage.getInstance().read();
                 dialogMode = false;
+
+                // get data from storage and setup the different classes
+                Person.setCounter(Person.getPersons().size());
+                Insurance.setCounter(Insurance.getInsurances().size());
+                Claim.setCounter(Claim.getClaims().size());
+
             } catch (IOException | ClassNotFoundException e) {
                 // TODO do something meaningful with this error.
                 System.out.println("error reading from file");

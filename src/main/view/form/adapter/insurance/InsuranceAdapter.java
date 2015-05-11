@@ -11,19 +11,24 @@ import main.view.form.Formable;
 import main.view.form.node.*;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.function.Consumer;
 
-// TODO this code is not tested.
-
+/**
+ * InsuranceAdapter.java
+ * @param <T> - Concrete insurance adapter.
+ */
 public abstract class InsuranceAdapter<T extends Insurance>
+        implements Formable<T>
 {
 
     private FormLabelNode customerNode;
     private FormValueNode amount;
-    private FormTextAreaNode desc;
-    private FormValueNode premium;
-    private FormChoiceNode status;
     private FormValueNode deductible;
+    private FormValueNode premium;
+    private FormTextAreaNode desc;
+    private FormChoiceNode<Status> status;
 
     private Person customer;
     private boolean editMode = false;
@@ -88,9 +93,7 @@ public abstract class InsuranceAdapter<T extends Insurance>
                 .required(false)
                 .build();
 
-         List<Enum> statusList = new ArrayList<>();
-         for (Status s : Status.values()) { statusList.add(s); }
-
+         List<Status> statusList = new ArrayList<>(Arrays.asList(Status.values()));
          status = new FormChoiceNode.Builder<>(Loc.c("status"), statusList)
                 .active(editMode ? insurance.getStatus() : Status.ACTIVE)
                 .build();
@@ -108,6 +111,7 @@ public abstract class InsuranceAdapter<T extends Insurance>
         return tmp;
     }
 
+    /* GETTERS */
     protected double getAmount() { return Double.parseDouble(amount.getValue()); }
 
     protected double getDeductible() { return Double.parseDouble(deductible.getValue()); }
@@ -116,26 +120,21 @@ public abstract class InsuranceAdapter<T extends Insurance>
 
     protected String getDescription() { return desc.getValue(); }
 
-    protected Status getStatus() { return (Status)status.getData(); }
+    protected Status getStatus() { return status.getData(); }
 
-    protected boolean getEditMode()
+    protected boolean getEditMode() { return editMode; }
+
+    protected Person getCustomer() { return customer; }
+
+    protected T getInsurance() { return insurance; }
+
+    /* SETTERS */
+    protected void setInsurance(T insurance) { this.insurance = insurance; }
+
+    /* OVERRIDES */
+    @Override
+    public void setOnDoneAction(Consumer<T> c)
     {
-        return editMode;
+        callBackEvent.setOnAction(e -> c.accept(getInsurance()));
     }
-
-    protected Person getCustomer()
-    {
-        return customer;
-    }
-
-    protected T getInsurance()
-    {
-        return insurance;
-    }
-
-    protected void setInsurance(T insurance)
-    {
-        this.insurance = insurance;
-    }
-
 }

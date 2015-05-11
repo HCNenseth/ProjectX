@@ -13,7 +13,6 @@ import java.io.Serializable;
 abstract class Property extends Insurance<PropertyClaim>
         implements Serializable
 {
-
     private String postalCode;
     private String city;
     private int year;
@@ -60,64 +59,84 @@ abstract class Property extends Insurance<PropertyClaim>
     public Property(InsuranceBuilder ib) { super(ib); }
 
     /* SETTERS */
-    public void setStreetAddress(String streetAddress) {
+    public void setStreetAddress(String streetAddress)
+    {
         this.streetAddress = streetAddress;
     }
 
-    public void setPostalCode(String postalCode) {
+    public void setPostalCode(String postalCode)
+    {
         this.postalCode = postalCode;
     }
 
-    public void setCity(String city) {
+    public void setCity(String city)
+    {
         this.city = city;
     }
 
-    public void setYear(int year) {
+    public void setYear(int year)
+    {
         this.year = year;
     }
 
-    public void setMaterial(Material material) {
+    public void setMaterial(Material material)
+    {
         this.material = material;
     }
 
-    public void setSquareMeter(int squareMeter) {
+    public void setSquareMeter(int squareMeter)
+    {
         this.squareMeter = squareMeter;
     }
 
-    public void setStandard(Standard standard) {
+    public void setStandard(Standard standard)
+    {
         this.standard = standard;
     }
 
-    public void setContents(int contents){ this.contents = contents; }
+    public void setContents(int contents)
+    {
+        this.contents = contents;
+    }
 
     /* GETTERS */
-    public String getPostalCode() {
+    public String getPostalCode()
+    {
         return postalCode;
     }
 
-    public String getCity() {
+    public String getCity()
+    {
         return city;
     }
 
-    public int getYear() {
+    public int getYear()
+    {
         return year;
     }
 
-    public int getContents(){ return contents; }
+    public int getContents()
+    {
+        return contents;
+    }
 
-    public int getSquareMeter() {
+    public int getSquareMeter()
+    {
         return squareMeter;
     }
 
-    public Material getMaterial() {
+    public Material getMaterial()
+    {
         return material;
     }
 
-    public Standard getStandard() {
+    public Standard getStandard()
+    {
         return standard;
     }
 
-    public String getStreetAddress() {
+    public String getStreetAddress()
+    {
         return streetAddress;
     }
 

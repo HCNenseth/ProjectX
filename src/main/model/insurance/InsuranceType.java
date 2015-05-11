@@ -3,7 +3,7 @@ package main.model.insurance;
 import main.localization.Loc;
 
 /**
- * Created by alex on 4/17/15.
+ * InsuranceType.java
  */
 public enum InsuranceType
 {

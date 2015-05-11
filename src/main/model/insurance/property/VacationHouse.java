@@ -13,8 +13,8 @@ import java.util.List;
 /**
  * VacationHouse.java
  */
-public class VacationHouse extends Property implements Serializable {
-
+public class VacationHouse extends Property implements Serializable
+{
     private Type type;
 
     public enum Type {
@@ -91,12 +91,14 @@ public class VacationHouse extends Property implements Serializable {
         }
 
         @Override
-        public VacationHouse build() {
+        public VacationHouse build()
+        {
             return new VacationHouse(this);
         }
     }
 
-    public VacationHouse(Builder builder) {
+    public VacationHouse(Builder builder)
+    {
         super(builder);
 
         setStreetAddress(builder.streetAddress);
@@ -135,7 +137,8 @@ public class VacationHouse extends Property implements Serializable {
     }
 
     @Override
-    public InsuranceType identify() {
+    public InsuranceType identify()
+    {
         return InsuranceType.VACATION_HOUSE;
     }
 }

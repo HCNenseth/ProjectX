@@ -12,16 +12,14 @@ import java.util.LinkedList;
 import java.util.List;
 
 /**
- * Created by HansChristian on 15.04.2015.
+ * Travel.java
  */
 public class Travel extends Insurance<TravelClaim>
         implements Serializable
 {
-
     private Continent type;
 
-    public enum Continent
-    {
+    public enum Continent {
         A(Loc.c("continent_a")),
         B(Loc.c("continent_b")),
         C(Loc.c("continent_c")),
@@ -48,7 +46,6 @@ public class Travel extends Insurance<TravelClaim>
             super.customer(customer);
         }
 
-
         public Builder continent(Continent val)
         {
             continent = val;
@@ -73,10 +70,16 @@ public class Travel extends Insurance<TravelClaim>
     }
 
     /* GETTERS */
-    public Continent getType() { return type; }
+    public Continent getType()
+    {
+        return type;
+    }
 
     /* SETTERS */
-    public void setType(Continent type) { this.type = type; }
+    public void setType(Continent type)
+    {
+        this.type = type;
+    }
 
     /* OVERRIDES */
     @Override

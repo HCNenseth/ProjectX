@@ -14,9 +14,12 @@ import main.view.form.node.FormValueNode;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
-import java.util.function.Consumer;
 
+/**
+ * BoatAdapter.java
+ */
 public class BoatAdapter extends InsuranceAdapter<Boat> implements Formable<Boat>
 {
     private FormValueNode licencePlate;
@@ -24,8 +27,8 @@ public class BoatAdapter extends InsuranceAdapter<Boat> implements Formable<Boat
     private FormDateNode registration;
     private FormValueNode length;
     private FormValueNode horsePower;
-    private FormChoiceNode propulsion;
-    private FormChoiceNode type;
+    private FormChoiceNode<Boat.Propulsion> propulsion;
+    private FormChoiceNode<Boat.Type> type;
 
     public BoatAdapter(Person customer, Boat boat)
     {
@@ -75,23 +78,14 @@ public class BoatAdapter extends InsuranceAdapter<Boat> implements Formable<Boat
                 .error(Loc.c("vehicle_horse_power_error"))
                 .build();
 
-        List<Enum> propulsionList = new ArrayList<>();
-        for(Boat.Propulsion p : Boat.Propulsion.values())
-        {
-            propulsionList.add(p);
-        }
-
+        List<Boat.Propulsion> propulsionList = new ArrayList<>(
+                Arrays.asList(Boat.Propulsion.values()));
         propulsion = new FormChoiceNode.Builder<>(Loc.c("boat_propulsion"), propulsionList )
                 .active(getEditMode() ? getInsurance().getPropulsion() : Boat.Propulsion.A)
                 .required(false)
                 .build();
 
-        List<Enum> typeList = new ArrayList<>();
-        for(Boat.Type t : Boat.Type.values())
-        {
-            typeList.add(t);
-        }
-
+        List<Boat.Type> typeList = new ArrayList<>(Arrays.asList(Boat.Type.values()));
         type = new FormChoiceNode.Builder<>(Loc.c("boat_type"), typeList)
                 .active(getEditMode() ? getInsurance().getType() : Boat.Type.A)
                 .required(false)
@@ -125,8 +119,8 @@ public class BoatAdapter extends InsuranceAdapter<Boat> implements Formable<Boat
             i.setDesc(getDescription());
             i.setStatus(getStatus());
 
-            i.setType((Boat.Type) type.getData());
-            i.setPropulsion((Boat.Propulsion) propulsion.getData());
+            i.setType(type.getData());
+            i.setPropulsion(propulsion.getData());
 
             i.setHorsePower(Integer.parseInt(horsePower.getValue()));
             i.setLength(Integer.parseInt(length.getData()));
@@ -141,8 +135,8 @@ public class BoatAdapter extends InsuranceAdapter<Boat> implements Formable<Boat
                     .desc(getDescription())
                     .status(getStatus())
 
-                    .type((Boat.Type) type.getData())
-                    .propulsion((Boat.Propulsion) propulsion.getData())
+                    .type(type.getData())
+                    .propulsion(propulsion.getData())
 
                     .horsePower(Integer.parseInt(horsePower.getValue()))
                     .length(Integer.parseInt(length.getValue()))
@@ -155,11 +149,5 @@ public class BoatAdapter extends InsuranceAdapter<Boat> implements Formable<Boat
             Insurance.saveNew(insurance);
         }
         callBackEvent.fire();
-    }
-
-    @Override
-    public void setOnDoneAction(Consumer<Boat> c)
-    {
-        callBackEvent.setOnAction(e -> c.accept(getInsurance()));
     }
 }

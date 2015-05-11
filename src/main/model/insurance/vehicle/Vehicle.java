@@ -1,6 +1,5 @@
 package main.model.insurance.vehicle;
 
-import main.localization.Loc;
 import main.model.claim.Claim;
 import main.model.person.Person;
 import main.model.insurance.Insurance;
@@ -11,7 +10,8 @@ import java.time.LocalDate;
 /**
  * Vehicle.java
  */
-public abstract class Vehicle<C extends Claim> extends Insurance<C> implements Serializable
+public abstract class Vehicle<C extends Claim> extends Insurance<C>
+        implements Serializable
 {
     private String licensePlate;
     private Person owner;
@@ -53,22 +53,29 @@ public abstract class Vehicle<C extends Claim> extends Insurance<C> implements S
         this.modelYear = year;
     }
 
-    public void setHorsePower(int hk){this.horsePower = hk; }
+    public void setHorsePower(int hk)
+    {
+        this.horsePower = hk;
+    }
 
     /* GETTERS */
-    public String getLicensePlate() {
+    public String getLicensePlate()
+    {
         return licensePlate;
     }
 
-    public int getHorsePower() {
+    public int getHorsePower()
+    {
         return horsePower;
     }
 
-    public int getModelYear() {
+    public int getModelYear()
+    {
         return modelYear;
     }
 
-    public LocalDate getRegistration() {
+    public LocalDate getRegistration()
+    {
         return registration;
     }
 

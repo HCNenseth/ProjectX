@@ -18,10 +18,8 @@ import java.util.List;
  */
 public class Person implements Serializable, FullTextSearch, Model
 {
-    public static final int customerId = 1_000_001;
-
+    private static int counter = Config.PERSON_COUNTER_START;
     private int id;
-    private static int customerCount = customerId;
 
     private String firstname;
     private String lastname;
@@ -157,7 +155,7 @@ public class Person implements Serializable, FullTextSearch, Model
         postalCode = builder.postalCode;
         city = builder.city;
         status = builder.status;
-        id = customerCount++;
+        id = counter++;
 
         insurances = new LinkedList<>();
         claims = new LinkedList<>();
@@ -179,11 +177,6 @@ public class Person implements Serializable, FullTextSearch, Model
     }
 
     /* SETTERS */
-    public void setCustomerCount(int customerCount)
-    {
-        this.customerCount = customerCount;
-    }
-
     public void setFirstname(String firstname)
     {
         this.firstname = firstname;
@@ -299,9 +292,19 @@ public class Person implements Serializable, FullTextSearch, Model
     }
 
     /* STATIC */
+    public static List<Person> getPersons()
+    {
+        return (List<Person>)Storage.getInstance().get(Config.PERSONS);
+    }
+
     public static void saveNew(Person person)
     {
-        ((List<Person>)Storage.getInstance().get(Config.PERSONS)).add(person);
+        Person.getPersons().add(person);
+    }
+
+    public static void setCounter(int val)
+    {
+        counter += val;
     }
 
     /* OVERRIDES */
@@ -333,8 +336,14 @@ public class Person implements Serializable, FullTextSearch, Model
     }
 
     @Override
-    public ModelType getModelType() { return ModelType.PERSON; }
+    public ModelType getModelType()
+    {
+        return ModelType.PERSON;
+    }
 
     @Override
-    public LocalDate getDate() { return dateOfBirth; }
+    public LocalDate getDate()
+    {
+        return dateOfBirth;
+    }
 }

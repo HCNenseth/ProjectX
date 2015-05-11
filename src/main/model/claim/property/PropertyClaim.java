@@ -6,11 +6,11 @@ import main.model.claim.ClaimBuilder;
 import main.model.insurance.Insurance;
 import main.model.person.Person;
 
-// TODO Override toString
-
+/**
+ * PropertyClaim.java
+ */
 public class PropertyClaim extends Claim
 {
-
     private Type type;
 
     public enum Type
@@ -27,12 +27,10 @@ public class PropertyClaim extends Claim
 
         @Override
         public String toString() { return value; }
-
     }
 
     public static class Builder extends ClaimBuilder<Builder, PropertyClaim>
     {
-
         private Type type;
 
         public Builder(Person customer, Insurance insurance)
@@ -64,11 +62,28 @@ public class PropertyClaim extends Claim
         type = builder.type;
     }
 
+    /* GETTERS */
+    public Type getType()
+    {
+        return type;
+    }
+
+    /* SETTERS */
+    public void setType(Type type)
+    {
+        this.type = type;
+    }
+
+    /* OVERRIDES */
     @Override
-    public ClaimType identify() { return ClaimType.PROPERTY; }
+    public ClaimType identify()
+    {
+        return ClaimType.PROPERTY;
+    }
 
     @Override
-    public ModelType getModelType() {
+    public ModelType getModelType()
+    {
         return ModelType.CLAIM;
     }
 }

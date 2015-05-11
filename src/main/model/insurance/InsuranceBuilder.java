@@ -8,6 +8,8 @@ import java.time.LocalDate;
 import java.util.List;
 
 /**
+ * InsuranceBuilder.java
+ *
  * InsuranceBuilder abstract class.
  * All insurances builders should extend from this class.
  */
@@ -72,21 +74,45 @@ public abstract class InsuranceBuilder<T, E>
     }
 
     /* GETTERS */
-    public Person getCustomer() { return customer; }
+    public Person getCustomer()
+    {
+        return customer;
+    }
 
-    public Person getOwner(){ return owner; }
+    public Person getOwner()
+    {
+        return owner;
+    }
 
-    public double getAmount() { return amount; }
+    public double getAmount()
+    {
+        return amount;
+    }
 
-    public double getPremium() { return premium; }
+    public double getPremium()
+    {
+        return premium;
+    }
 
-    public double getDeductible() { return deductible; }
+    public double getDeductible()
+    {
+        return deductible;
+    }
 
-    public LocalDate getDate() { return date; }
+    public LocalDate getDate()
+    {
+        return date;
+    }
 
-    public String getDesc() { return desc; }
+    public String getDesc()
+    {
+        return desc;
+    }
 
-    public Status getStatus() { return status; }
+    public Status getStatus()
+    {
+        return status;
+    }
 
     /* ABSTRACT */
     public abstract E build();

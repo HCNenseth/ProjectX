@@ -226,12 +226,9 @@ public class StorageTest
             // YOLO!!!
         }
 
-        List<Person> personsFromFile = (List<Person>) Storage.getInstance()
-                .get("persons");
-        List<Insurance> insurancesFromFile = (List<Insurance>) Storage.getInstance()
-                .get("insurances");
-        List<Claim> claimsFromFile = (List<Claim>) Storage.getInstance()
-                .get("claims");
+        List<Person> personsFromFile = Person.getPersons();
+        List<Insurance> insurancesFromFile = Insurance.getInsurances();
+        List<Claim> claimsFromFile = Claim.getClaims();
 
 
         // TODO compare/equal the elements
@@ -319,7 +316,9 @@ public class StorageTest
                             .dateOfDamages(LocalDate.of(randInt(1960, 2014),
                                     randInt(1, 12), randInt(1, 28)))
                             .desc(randomDomain())
+                            .contacts(randomDomain())
                             .amount(randInt(1000, 12000))
+                            .type(randomEnumValue(CarClaim.Type.class))
                             .build());
                 }
                 insurances.add(car);
@@ -343,6 +342,8 @@ public class StorageTest
                             .dateOfDamages(LocalDate.of(randInt(1960, 2014),
                                     randInt(1, 12), randInt(1, 28)))
                             .desc(randomDomain())
+                            .contacts(randomDomain())
+                            .type(randomEnumValue(BoatClaim.Type.class))
                             .amount(randInt(1000, 12000))
                             .build());
                 }
@@ -367,6 +368,7 @@ public class StorageTest
                             .dateOfDamages(LocalDate.of(randInt(1960, 2014),
                                     randInt(1, 12), randInt(1, 28)))
                             .desc(randomDomain())
+                            .contacts(randomDomain())
                             .amount(randInt(1000, 12000))
                             .build());
                 }
@@ -390,6 +392,7 @@ public class StorageTest
                             .dateOfDamages(LocalDate.of(randInt(1960, 2014),
                                     randInt(1, 12), randInt(1, 28)))
                             .desc(randomDomain())
+                            .contacts(randomDomain())
                             .amount(randInt(1000, 12000))
                             .build());
                 }
@@ -410,6 +413,7 @@ public class StorageTest
                             .dateOfDamages(LocalDate.of(randInt(1960, 2014),
                                     randInt(1, 12), randInt(1, 28)))
                             .desc(randomDomain())
+                            .contacts(randomDomain())
                             .amount(randInt(1000, 12000))
                             .build());
                 }

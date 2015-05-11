@@ -15,127 +15,126 @@ import main.view.form.Form;
 import main.view.form.adapter.insurance.*;
 
 /**
- * Created by alex on 4/26/15.
+ * InsuranceController.java
  */
 public class InsuranceController
 {
     private InsuranceController() {}
+    private static Form f;
 
     public static void create(Person p, InsuranceType type)
     {
-        Form f = new Form();
+        f = new Form();
+        InsuranceAdapter<? extends Insurance> insurance;
+        String title;
+
         switch (type) {
             case CAR:
-                CarAdapter carAdapter = new CarAdapter(p);
-                carAdapter.setOnDoneAction(InsuranceController::view);
-                f.injectAdapter(carAdapter);
-                Resources.inst.getOtp().injectObservableTab(Loc.c("new_car_insurance"),
-                        f.getForm(), true);
-                return;
+                title = Loc.c("new_car_insurance");
+                insurance = new CarAdapter(p);
+                break;
             case BOAT:
-                BoatAdapter boatAdapter = new BoatAdapter(p);
-                boatAdapter.setOnDoneAction(InsuranceController::view);
-                f.injectAdapter(boatAdapter);
-                Resources.inst.getOtp().injectObservableTab(Loc.c("new_boat_insurance"),
-                        f.getForm(), true);
-                return;
+                title = Loc.c("new_boat_insurance");
+                insurance = new BoatAdapter(p);
+                break;
             case HOUSE:
-                HouseAdapter houseAdapter = new HouseAdapter(p);
-                houseAdapter.setOnDoneAction(InsuranceController::view);
-                f.injectAdapter(houseAdapter);
-                Resources.inst.getOtp().injectObservableTab(Loc.c("new_house_insurance"),
-                        f.getForm(), true);
-                return;
+                title = Loc.c("new_house_insurance");
+                insurance = new HouseAdapter(p);
+                break;
             case VACATION_HOUSE:
-                VacationHouseAdapter vacationHouseAdapter = new VacationHouseAdapter(p);
-                vacationHouseAdapter.setOnDoneAction(InsuranceController::view);
-                f.injectAdapter(vacationHouseAdapter);
-                Resources.inst.getOtp().injectObservableTab(Loc.c("new_vacation_house_insurance"),
-                        f.getForm(), true);
-                return;
+                title = Loc.c("new_vacation_house_insurance");
+                insurance = new VacationHouseAdapter(p);
+                break;
             case TRAVEL:
-                TravelAdapter travelAdapter = new TravelAdapter(p);
-                travelAdapter.setOnDoneAction(InsuranceController::view);
-                f.injectAdapter(travelAdapter);
-                Resources.inst.getOtp().injectObservableTab(Loc.c("new_travel_insurance"),
-                        f.getForm(), true);
-                return;
+                title = Loc.c("new_travel_insurance");
+                insurance = new TravelAdapter(p);
+                break;
             default:
                 throw new IllegalStateException("Unknown Insurance type");
         }
+
+        insurance.setOnDoneAction(InsuranceController::view);
+        f.injectAdapter(insurance);
+        Resources.inst.getOtp().injectObservableTab(title,
+                f.getForm(), f, true);
     }
 
-    public static void view(Insurance i)
+    public static void view(Insurance insurance)
     {
+        // Remove all tabs dealing with this object
+        Resources.inst.getOtp().closeObservableTabs(insurance);
+        Resources.inst.getOtp().closeObservableTabs(f);
+
         InsuranceView view;
 
-        switch (i.identify()) {
+        switch (insurance.identify()) {
             case CAR:
-                view = new CarView((Car)i);
+                view = new CarView((Car)insurance);
                 Resources.inst.getOtp().injectObservableTab(Loc.c("car_insurance"),
-                        view.getNode(), i, true);
+                        view.getNode(), insurance, true);
                 return;
             case BOAT:
-                view = new BoatView((Boat)i);
+                view = new BoatView((Boat)insurance);
                 Resources.inst.getOtp().injectObservableTab(Loc.c("boat_insurance"),
-                        view.getNode(), i, true);
+                        view.getNode(), insurance, true);
                 return;
             case HOUSE:
-                view = new HouseView((House)i);
+                view = new HouseView((House)insurance);
                 Resources.inst.getOtp().injectObservableTab(Loc.c("house_insurance"),
-                        view.getNode(), i, true);
+                        view.getNode(), insurance, true);
                 return;
             case VACATION_HOUSE:
-                view = new VacationHouseView((VacationHouse)i);
+                view = new VacationHouseView((VacationHouse)insurance);
                 Resources.inst.getOtp().injectObservableTab(Loc.c("vacation_house_insurance"),
-                        view.getNode(), i, true);
+                        view.getNode(), insurance, true);
                 return;
             case TRAVEL:
-                view = new TravelView((Travel)i);
+                view = new TravelView((Travel)insurance);
                 Resources.inst.getOtp().injectObservableTab(Loc.c("travel_insurance"),
-                        view.getNode(), i, true);
+                        view.getNode(), insurance, true);
                 return;
             default:
                 throw new IllegalStateException("Unknown Insurance type");
         }
     }
 
-    public static void edit(Insurance i)
+    public static void edit(Insurance insurance)
     {
-        Resources.inst.getOtp().closeObservableTabs(i);
+        // Remove all tabs dealing with this object
+        Resources.inst.getOtp().closeObservableTabs(insurance);
 
-        Form f = new Form();
-        switch (i.identify()) {
+        f = new Form();
+        InsuranceAdapter<? extends Insurance> insuranceAdapter;
+
+        switch (insurance.identify()) {
             case CAR:
-                CarAdapter carAdapter = new CarAdapter(i.getCustomer(), (Car)i);
-                carAdapter.setOnDoneAction(InsuranceController::view);
-                f.injectAdapter(carAdapter);
+                insuranceAdapter = new CarAdapter(insurance.getCustomer(),
+                        (Car)insurance);
                 break;
             case BOAT:
-                BoatAdapter boatAdapter = new BoatAdapter(i.getCustomer(), (Boat)i);
-                boatAdapter.setOnDoneAction(InsuranceController::view);
-                f.injectAdapter(boatAdapter);
+                insuranceAdapter = new BoatAdapter(insurance.getCustomer(),
+                        (Boat)insurance);
                 break;
             case HOUSE:
-                HouseAdapter houseAdapter = new HouseAdapter(i.getCustomer(), (House)i);
-                houseAdapter.setOnDoneAction(InsuranceController::view);
-                f.injectAdapter(houseAdapter);
+                insuranceAdapter = new HouseAdapter(insurance.getCustomer(),
+                        (House)insurance);
                 break;
             case VACATION_HOUSE:
-                VacationHouseAdapter vacationHouseAdapter = new VacationHouseAdapter(i.getCustomer(), (VacationHouse)i);
-                vacationHouseAdapter.setOnDoneAction(InsuranceController::view);
-                f.injectAdapter(vacationHouseAdapter);
+                insuranceAdapter = new VacationHouseAdapter(insurance.getCustomer(),
+                        (VacationHouse)insurance);
                 break;
             case TRAVEL:
-                TravelAdapter travelAdapter = new TravelAdapter(i.getCustomer(), (Travel)i);
-                travelAdapter.setOnDoneAction(InsuranceController::view);
-                f.injectAdapter(travelAdapter);
+                insuranceAdapter = new TravelAdapter(insurance.getCustomer(),
+                        (Travel)insurance);
                 break;
             default:
                 throw new IllegalStateException("Unknown Insurance type");
         }
 
-        Resources.inst.getOtp().injectObservableTab(i.identify().getValue(),
-                f.getForm(), i, true);
+        insuranceAdapter.setOnDoneAction(InsuranceController::view);
+        f.injectAdapter(insuranceAdapter);
+
+        Resources.inst.getOtp().injectObservableTab(insurance.identify().getValue(),
+                f.getForm(), insurance, true);
     }
 }

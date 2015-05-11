@@ -1,7 +1,6 @@
 package main.model.insurance;
 
 import main.config.Config;
-import main.localization.Loc;
 import main.model.FullTextSearch;
 import main.model.Model;
 import main.model.Storage;
@@ -12,18 +11,16 @@ import main.model.Status;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.List;
-import java.util.concurrent.atomic.AtomicInteger;
 
 /**
+ * Insurance.java
  * Main insurance class.
  */
 public abstract class Insurance<C extends Claim> implements
         Serializable, Type, FullTextSearch, Model
 {
-    public static final int insuranceId = 1;
-
+    private static int counter = Config.INSURANCE_COUNTER_START;
     private int id;
-    private static int insuranceCount = insuranceId;
 
     private Person customer;
     private double premium;
@@ -49,15 +46,15 @@ public abstract class Insurance<C extends Claim> implements
         this.desc = ib.getDesc();
         this.status = ib.getStatus();
         this.claims = ib.getClaimsList();
-        id = insuranceCount++;
+        id = counter++;
 
         customer.addInsurance(this);
     }
 
     /* GETTERS */
-    public int getId()
+    public String getId()
     {
-        return id;
+        return Integer.toString(id);
     }
 
     public double getPremium()
@@ -91,11 +88,6 @@ public abstract class Insurance<C extends Claim> implements
     }
 
     /* SETTERS */
-    public void setInsuranceCount(int val)
-    {
-        insuranceCount = val;
-    }
-
     public void setDesc(String desc)
     {
         this.desc = desc;
@@ -127,16 +119,27 @@ public abstract class Insurance<C extends Claim> implements
     }
 
     /* STATIC */
+    public static List<Insurance> getInsurances()
+    {
+        return (List<Insurance>)Storage.getInstance().get(Config.INSURANCES);
+    }
+
     public static void saveNew(Insurance insurance)
     {
-        ((List<Insurance>) Storage.getInstance().get(Config.INSURANCES)).add(insurance);
+        Insurance.getInsurances().add(insurance);
+    }
+
+    public static void setCounter(int val)
+    {
+        counter += val;
     }
 
     /* OVERRIDES */
     @Override
     public boolean query(String value)
     {
-        return (desc != null && desc.contains(value));
+        return (desc != null && desc.contains(value))
+                || (getId().contains(value));
     }
 
     @Override
@@ -146,8 +149,14 @@ public abstract class Insurance<C extends Claim> implements
     }
 
     @Override
-    public ModelType getModelType() { return ModelType.INSURANCE; }
+    public ModelType getModelType()
+    {
+        return ModelType.INSURANCE;
+    }
 
     @Override
-    public LocalDate getDate() { return date; }
+    public LocalDate getDate()
+    {
+        return date;
+    }
 }

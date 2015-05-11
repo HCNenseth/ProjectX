@@ -5,11 +5,11 @@ import main.config.Config;
 import java.io.*;
 
 /**
- * Created by HansPetter on 07.05.2015.
+ * ImageController.java
  */
 public class ImageController
 {
-    private static String getFileExtention(String fileName)
+    private static String getFileExtension(String fileName)
     {
         if (fileName.lastIndexOf(".") > 0) {
             return fileName.substring(fileName.lastIndexOf(".") + 1);
@@ -18,35 +18,35 @@ public class ImageController
         return "";
     }
 
-    public static void storeImage(File file, String newFileName)
+    public static String storeImage(File file, String newFileName)
     {
-        if (file == null) { return; }
+        if (file == null) { return null; }
+
+        String output = "";
 
         File dest = new File(String.format("%s%s.%s",
                 Config.UPLOADS,
                 newFileName,
-                getFileExtention(file.getName())));
+                getFileExtension(file.getName())));
 
 
-        InputStream inputStream;
-        OutputStream outputStream;
+        try (InputStream inputStream = new FileInputStream(file);
+             OutputStream outputStream = new FileOutputStream(dest))
+        {
 
-        try {
-            inputStream = new FileInputStream(file);
-            outputStream = new FileOutputStream(dest);
-
-            byte[] buffer = new byte[4096];
+            byte[] buffer = new byte[Config.MAX_UPLOAD_FILESIZE];
             int length;
 
             while ((length = inputStream.read(buffer)) > 0) {
                 outputStream.write(buffer, 0, length);
             }
 
-            inputStream.close();
-            outputStream.close();
+            output = dest.getName();
 
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+        return output;
     }
 }

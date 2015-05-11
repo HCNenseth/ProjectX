@@ -5,7 +5,7 @@ import main.model.insurance.InsuranceBuilder;
 import java.time.LocalDate;
 
 /**
- * Created by alex on 5/7/15.
+ * VehicleBuilder.java
  */
 public abstract class VehicleBuilder<T>
         extends InsuranceBuilder<T, Vehicle>
@@ -18,25 +18,48 @@ public abstract class VehicleBuilder<T>
     /* SETTERS */
 
     public T licensePlate(String licensePlate)
-    { this.licensePlate = licensePlate; return (T) this; }
+    {
+        this.licensePlate = licensePlate;
+        return (T) this;
+    }
 
     public T registration(LocalDate registration)
-    { this.registration = registration; return (T) this;}
+    {
+        this.registration = registration;
+        return (T) this;
+    }
 
     public T horsePower(int horsePower)
-    { this.horsePower = horsePower; return (T) this; }
+    {
+        this.horsePower = horsePower;
+        return (T) this;
+    }
 
     public T modelYear(int modelYear)
-    { this.modelYear = modelYear; return (T) this; }
+    {
+        this.modelYear = modelYear;
+        return (T) this;
+    }
 
     /* GETTERS */
 
-    public String getLicensePlate() { return licensePlate; }
+    public String getLicensePlate()
+    {
+        return licensePlate;
+    }
 
-    public LocalDate getRegistration() { return registration; }
+    public LocalDate getRegistration()
+    {
+        return registration;
+    }
 
-    public int getHorsePower() { return horsePower; }
+    public int getHorsePower()
+    {
+        return horsePower;
+    }
 
-    public int getModelYear() { return modelYear; }
-
+    public int getModelYear()
+    {
+        return modelYear;
+    }
 }

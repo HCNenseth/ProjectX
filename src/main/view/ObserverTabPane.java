@@ -52,7 +52,7 @@ public class ObserverTabPane extends TabPane implements Observer
      * Find and delete tab and list entry based on Model reference
      * @param ref
      */
-    public void closeObservableTabs(Model ref)
+    public void closeObservableTabs(Object ref)
     {
         Iterator iterator = observablePaneMap.entrySet().iterator();
         while (iterator.hasNext()) {
@@ -130,7 +130,7 @@ public class ObserverTabPane extends TabPane implements Observer
      * @param closeable - tab attr
      */
     public void injectObservableTab(String title, Node content,
-                                   Model ref, boolean closeable)
+                                   Object ref, boolean closeable)
     {
         // hide splash view...
         Resources.inst.getSplashView().hide();

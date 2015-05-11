@@ -3,7 +3,7 @@ package main.model;
 import main.localization.Loc;
 
 /**
- * Created by alex on 4/17/15.
+ * Status.java
  */
 public enum Status
 {
@@ -17,17 +17,10 @@ public enum Status
 
     private String value;
 
-    Status(String value)
-    {
-        this.value = value;
-    }
+    Status(String value) { this.value = value; }
 
     public String getValue() { return value; }
 
     @Override
-    public String toString()
-    {
-        return value;
-    }
-
+    public String toString() { return value; }
 }

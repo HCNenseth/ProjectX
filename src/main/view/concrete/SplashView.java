@@ -10,6 +10,7 @@ import main.config.Config;
 import main.controller.Mediator;
 import main.controller.Payload;
 import main.controller.Signal;
+import main.controller.StatisticsController;
 
 /**
  * Created by HansPetter on 30.04.2015.
@@ -64,7 +65,8 @@ public class SplashView
                 new Payload(main.controller.MenuBar.Type.NEW_CUSTOMER)));
 
         statistics = new Button("", statisticsIV);
-        statistics.setOnAction(e -> System.out.println("statistics not ready yet."));
+        statistics.setOnAction(e -> Mediator.inst.router(Signal.STATISTICS,
+                new Payload(StatisticsController.Type.PERSON)));
 
         hbox.getChildren().addAll(search, customer, statistics);
 

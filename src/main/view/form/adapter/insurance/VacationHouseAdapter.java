@@ -2,24 +2,24 @@ package main.view.form.adapter.insurance;
 
 import main.localization.Loc;
 import main.model.insurance.Insurance;
-import main.model.insurance.property.House;
 import main.model.insurance.property.VacationHouse;
 import main.model.person.Person;
 import main.validator.StringMatcher;
 import main.view.form.Formable;
-import main.view.form.adapter.insurance.InsuranceAdapter;
 import main.view.form.node.FormChoiceNode;
 import main.view.form.node.FormNode;
 import main.view.form.node.FormValueNode;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.function.Consumer;
 
 /**
- * Created by HansChristian on 30.04.2015.
+ * VacationHouseAdapter.java
  */
-public class VacationHouseAdapter extends InsuranceAdapter<VacationHouse> implements Formable<VacationHouse>
+public class VacationHouseAdapter extends InsuranceAdapter<VacationHouse>
+        implements Formable<VacationHouse>
 {
 
     private FormValueNode street;
@@ -27,8 +27,9 @@ public class VacationHouseAdapter extends InsuranceAdapter<VacationHouse> implem
     private FormValueNode city;
     private FormValueNode squareMeters;
     private FormValueNode yearBuilt;
-    private FormChoiceNode type;
-    private FormChoiceNode material;
+    private FormChoiceNode<VacationHouse.Type> type;
+    private FormChoiceNode<VacationHouse.Material> material;
+    private FormChoiceNode<VacationHouse.Standard> standard;
 
     public VacationHouseAdapter(Person customer, VacationHouse vacationHouse)
     {
@@ -76,24 +77,22 @@ public class VacationHouseAdapter extends InsuranceAdapter<VacationHouse> implem
                 .regex(StringMatcher.getDigit())
                 .build();
 
-        List<Enum> typeList = new ArrayList();
-        for(VacationHouse.Type t : VacationHouse.Type.values())
-        {
-            typeList.add(t);
-        }
-
+        List<VacationHouse.Type> typeList = new ArrayList<>(
+                Arrays.asList(VacationHouse.Type.values()));
         type = new FormChoiceNode.Builder<>(Loc.c("type"), typeList)
                 .active(getEditMode() ? getInsurance().getType() : VacationHouse.Type.A)
                 .build();
 
-        List<Enum> materialList = new ArrayList();
-        for(VacationHouse.Material m : VacationHouse.Material.values())
-        {
-            materialList.add(m);
-        }
-
+        List<VacationHouse.Material> materialList = new ArrayList<>(
+                Arrays.asList(VacationHouse.Material.values()));
         material = new FormChoiceNode.Builder<>(Loc.c("material"), materialList)
-                .active(getEditMode() ? getInsurance().getMaterial() : House.Material.A)
+                .active(getEditMode() ? getInsurance().getMaterial() : VacationHouse.Material.A)
+                .build();
+
+        List<VacationHouse.Standard> standardList = new ArrayList<>(
+                Arrays.asList(VacationHouse.Standard.values()));
+        standard = new FormChoiceNode.Builder(Loc.c("standard"), standardList)
+                .active(getEditMode() ? getInsurance().getStandard() : VacationHouse.Standard.A)
                 .build();
     }
 
@@ -118,8 +117,10 @@ public class VacationHouseAdapter extends InsuranceAdapter<VacationHouse> implem
         if (getEditMode()) {
             VacationHouse i = getInsurance();
             i.setCity(city.getValue());
-            i.setType((VacationHouse.Type) type.getData());
-            i.setMaterial((VacationHouse.Material) material.getData());
+            i.setType(type.getData());
+            i.setMaterial(material.getData());
+            i.setDesc(getDescription());
+            i.setStandard(standard.getData());
             i.setSquareMeter(Integer.parseInt(squareMeters.getValue()));
             i.setYear(Integer.parseInt(yearBuilt.getValue()));
             i.setPremium(getPremium());
@@ -129,8 +130,10 @@ public class VacationHouseAdapter extends InsuranceAdapter<VacationHouse> implem
             VacationHouse insurance = new VacationHouse.Builder(getCustomer(),
                     street.getValue(), postalCode.getValue())
                     .city(city.getValue())
-                    .type((VacationHouse.Type) type.getData())
-                    .material((VacationHouse.Material) material.getData())
+                    .type(type.getData())
+                    .material(material.getData())
+                    .standard(standard.getData())
+                    .desc(getDescription())
                     .squareMeter(Integer.parseInt(squareMeters.getValue()))
                     .year(Integer.parseInt(yearBuilt.getValue()))
                     .premium(getPremium())

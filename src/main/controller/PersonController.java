@@ -8,26 +8,31 @@ import main.view.form.Form;
 import main.view.form.adapter.PersonAdapter;
 
 /**
- * Created by alex on 4/23/15.
+ * PersonController.java
  */
 public class PersonController
 {
     private PersonController() {}
+    private static Form f;
 
     public static void create()
     {
-        Form f = new Form();
+        f = new Form();
+
         PersonAdapter personAdapter = new PersonAdapter();
+
         personAdapter.setOnDoneAction(PersonController::view);
         f.injectAdapter(personAdapter);
+
         Resources.inst.getOtp().injectObservableTab(Loc.c("new_customer"),
-                f.getForm(), true);
+                f.getForm(), f, true);
     }
 
     public static void view(Person person)
     {
         // Remove all tabs dealing with this person
         Resources.inst.getOtp().closeObservableTabs(person);
+        Resources.inst.getOtp().closeObservableTabs(f);
 
         PersonView personView = new PersonView(person);
 
@@ -40,7 +45,7 @@ public class PersonController
         // Remove all tabs dealing with this person
         Resources.inst.getOtp().closeObservableTabs(person);
 
-        Form f = new Form();
+        f = new Form();
         PersonAdapter personAdapter = new PersonAdapter(person);
         personAdapter.setOnDoneAction(PersonController::view);
         f.injectAdapter(personAdapter);

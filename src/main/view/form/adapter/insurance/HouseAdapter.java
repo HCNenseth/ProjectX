@@ -11,9 +11,13 @@ import main.view.form.node.FormNode;
 import main.view.form.node.FormValueNode;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.function.Consumer;
 
+/**
+ * HouseAdapter.java
+ */
 public class HouseAdapter extends InsuranceAdapter<House> implements Formable<House>
 {
 
@@ -22,8 +26,9 @@ public class HouseAdapter extends InsuranceAdapter<House> implements Formable<Ho
     private FormValueNode city;
     private FormValueNode squareMeters;
     private FormValueNode yearBuilt;
-    private FormChoiceNode type;
-    private FormChoiceNode material;
+    private FormChoiceNode<House.Type> type;
+    private FormChoiceNode<House.Material> material;
+    private FormChoiceNode<House.Standard> standard;
 
     public HouseAdapter(Person customer, House house)
     {
@@ -39,7 +44,6 @@ public class HouseAdapter extends InsuranceAdapter<House> implements Formable<Ho
 
     private void initNodes()
     {
-
         street = new FormValueNode.Builder(Loc.c("street_address"))
                 .error(Loc.c("error_house_street"))
                 .value(getEditMode() ? getCustomer().getStreetAddress() : "")
@@ -72,24 +76,20 @@ public class HouseAdapter extends InsuranceAdapter<House> implements Formable<Ho
                 .regex(StringMatcher.getDigit())
                 .build();
 
-        List<Enum> typeList = new ArrayList();
-        for(House.Type t : House.Type.values())
-        {
-            typeList.add(t);
-        }
-
+        List<House.Type> typeList = new ArrayList<>(Arrays.asList(House.Type.values()));
         type = new FormChoiceNode.Builder<>(Loc.c("type"), typeList)
                 .active(getEditMode() ? getInsurance().getType() : House.Type.A)
                 .build();
 
-        List<Enum> materialList = new ArrayList();
-        for(House.Material m : House.Material.values())
-        {
-            materialList.add(m);
-        }
-
+        List<House.Material> materialList = new ArrayList<>(
+                Arrays.asList(House.Material.values()));
         material = new FormChoiceNode.Builder<>(Loc.c("material"), materialList)
                 .active(getEditMode() ? getInsurance().getMaterial() : House.Material.A)
+                .build();
+
+        List<House.Standard> standardList = new ArrayList<>(Arrays.asList(House.Standard.values()));
+        standard = new FormChoiceNode.Builder<>(Loc.c("standard"), standardList)
+                .active(getEditMode() ? getInsurance().getStandard() : House.Standard.A)
                 .build();
     }
 
@@ -102,6 +102,7 @@ public class HouseAdapter extends InsuranceAdapter<House> implements Formable<Ho
         tmp.add(city);
         tmp.add(type);
         tmp.add(material);
+        tmp.add(standard);
         tmp.add(squareMeters);
         tmp.add(yearBuilt);
 
@@ -114,8 +115,10 @@ public class HouseAdapter extends InsuranceAdapter<House> implements Formable<Ho
         if (getEditMode()) {
             House i = getInsurance();
             i.setCity(city.getValue());
-            i.setType((House.Type) type.getData());
-            i.setMaterial((House.Material) material.getData());
+            i.setType(type.getData());
+            i.setMaterial(material.getData());
+            i.setStandard(standard.getData());
+            i.setDesc(getDescription());
             i.setSquareMeter(Integer.parseInt(squareMeters.getValue()));
             i.setYear(Integer.parseInt(yearBuilt.getValue()));
             i.setPremium(getPremium());
@@ -125,8 +128,10 @@ public class HouseAdapter extends InsuranceAdapter<House> implements Formable<Ho
             House insurance = new House.Builder(getCustomer(),
                     street.getValue(), postalCode.getValue())
                     .city(city.getValue())
-                    .type((House.Type) type.getData())
-                    .material((House.Material) material.getData())
+                    .type(type.getData())
+                    .material(material.getData())
+                    .standard(standard.getData())
+                    .desc(getDescription())
                     .squareMeter(Integer.parseInt(squareMeters.getValue()))
                     .year(Integer.parseInt(yearBuilt.getValue()))
                     .premium(getPremium())

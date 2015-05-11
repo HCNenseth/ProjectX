@@ -9,17 +9,20 @@ import main.model.person.Person;
 import main.model.Status;
 import main.model.insurance.Insurance;
 
+import java.io.File;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.List;
 
 /**
+ * Claim.java
+ *
  * Main claim class.
  */
-public abstract class Claim implements Serializable, FullTextSearch, Model {
-
-    public static int counter = 1000000;
-    public final int claimId;
+public abstract class Claim implements Serializable, FullTextSearch, Model
+{
+    private static int counter = Config.CLAIM_COUNTER_START;
+    private int id;
 
     private Person customer;
     private Insurance insurance;
@@ -54,7 +57,8 @@ public abstract class Claim implements Serializable, FullTextSearch, Model {
         public String toString() { return getValue(); }
     }
 
-    public enum PaymentStatus {
+    public enum PaymentStatus
+    {
         A(Loc.c("payment_status_a")),
         B(Loc.c("payment_status_b")),
         C(Loc.c("payment_status_c"));
@@ -74,7 +78,8 @@ public abstract class Claim implements Serializable, FullTextSearch, Model {
      */
     public Claim(ClaimBuilder cb)
     {
-        claimId = counter++;
+        id = counter++;
+
         customer = cb.getCustomer();
         insurance = cb.getInsurance();
         dateOfDamages = cb.getDateOfDamages();
@@ -93,11 +98,6 @@ public abstract class Claim implements Serializable, FullTextSearch, Model {
     }
 
     /* Setters */
-    public void setCounter(int claimCount)
-    {
-        this.counter = claimCount;
-    }
-
     public void setDateOfDamages(LocalDate dateOfDamages)
     {
         this.dateOfDamages = dateOfDamages;
@@ -146,12 +146,9 @@ public abstract class Claim implements Serializable, FullTextSearch, Model {
      */
     public void addContacts(String contacts)
     {
-        if(this.contacts == null && this.contacts.isEmpty())
-        {
+        if(this.contacts.equals("")) {
             setContacts(contacts);
-        }
-        else if(this.contacts != null && !this.contacts.isEmpty())
-        {
+        } else {
             this.contacts += "\n" + contacts;
         }
     }
@@ -161,15 +158,20 @@ public abstract class Claim implements Serializable, FullTextSearch, Model {
         this.amount = amount;
     }
 
+    public void setFilePathImage(String filePathImage)
+    {
+        this.filePathImage = filePathImage;
+    }
+
     public void setDeductible(double deductible)
     {
         this.deductible = deductible;
     }
 
     /* Getters */
-    public int getId()
+    public String getId()
     {
-        return claimId;
+        return Integer.toString(id);
     }
 
     public Person getCustomer()
@@ -227,10 +229,32 @@ public abstract class Claim implements Serializable, FullTextSearch, Model {
         return deductible;
     }
 
+    public String getFilePathImage()
+    {
+        return filePathImage;
+    }
+
+    public File getImageFile()
+    {
+        return new File(Config.UPLOADS + getFilePathImage());
+    }
+
+    /* STATIC */
+    public static List<Claim> getClaims()
+    {
+        return (List<Claim>)Storage.getInstance().get(Config.CLAIMS);
+    }
+
     public static void saveNew(Claim claim)
     {
-        ((List<Claim>) Storage.getInstance().get(Config.CLAIMS)).add(claim);
+        Claim.getClaims().add(claim);
     }
+
+    public static void setCounter(int val)
+    {
+        counter += val;
+    }
+
 
     /* ABSTRACT */
     public abstract ClaimType identify();
@@ -239,8 +263,9 @@ public abstract class Claim implements Serializable, FullTextSearch, Model {
     @Override
     public boolean query(String value)
     {
-        return desc.contains(value)
-                || contacts.contains(value);
+        return desc.toLowerCase().contains(value.toLowerCase())
+                || contacts.toLowerCase().contains(value.toLowerCase())
+                || getId().contains(value);
     }
 
     @Override
@@ -257,7 +282,7 @@ public abstract class Claim implements Serializable, FullTextSearch, Model {
                         "%s:\t%s\n" +
                         "%s:\t%s\n" +
                         "%s:\t%s\n",
-                Loc.c("claim_id"), claimId,
+                Loc.c("claim_id"), id,
                 Loc.c("customer"), customer,
                 Loc.c("insurance"), insurance.getId(),
                 Loc.c("accident_date"), dateOfDamages,
@@ -271,6 +296,8 @@ public abstract class Claim implements Serializable, FullTextSearch, Model {
     }
 
     @Override
-    public LocalDate getDate() { return dateOfDamages; }
-
+    public LocalDate getDate()
+    {
+        return dateOfDamages;
+    }
 }
