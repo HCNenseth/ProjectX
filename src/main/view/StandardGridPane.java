@@ -26,6 +26,13 @@ public abstract class StandardGridPane extends GridPane
         setVgap(vgap);
     }
 
+    private void setupOneColumn()
+    {
+        ColumnConstraints mainColumn = new ColumnConstraints();
+        mainColumn.setPercentWidth(100);
+        getColumnConstraints().add(0, mainColumn);
+    }
+
     private void setupTwoColumns()
     {
         ColumnConstraints keyColumn = new ColumnConstraints();
@@ -36,13 +43,6 @@ public abstract class StandardGridPane extends GridPane
 
         getColumnConstraints().add(0, keyColumn);
         getColumnConstraints().add(1, valueColumn);
-    }
-
-    private void setupOneColumn()
-    {
-        ColumnConstraints mainColumn = new ColumnConstraints();
-        mainColumn.setPercentWidth(100);
-        getColumnConstraints().add(0, mainColumn);
     }
 
     private void setupThreeColumn()
