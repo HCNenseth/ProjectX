@@ -177,11 +177,6 @@ public class Person implements Serializable, FullTextSearch, Model
     }
 
     /* SETTERS */
-    public void setCustomerCount(int customerCount)
-    {
-        this.counter = customerCount;
-    }
-
     public void setFirstname(String firstname)
     {
         this.firstname = firstname;
@@ -300,6 +295,11 @@ public class Person implements Serializable, FullTextSearch, Model
     public static void saveNew(Person person)
     {
         ((List<Person>)Storage.getInstance().get(Config.PERSONS)).add(person);
+    }
+
+    public static void setCounter(int val)
+    {
+        counter += val;
     }
 
     /* OVERRIDES */

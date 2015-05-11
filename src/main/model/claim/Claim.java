@@ -94,11 +94,6 @@ public abstract class Claim implements Serializable, FullTextSearch, Model
     }
 
     /* Setters */
-    public void setCounter(int claimCount)
-    {
-        this.counter = claimCount;
-    }
-
     public void setDateOfDamages(LocalDate dateOfDamages)
     {
         this.dateOfDamages = dateOfDamages;
@@ -225,10 +220,17 @@ public abstract class Claim implements Serializable, FullTextSearch, Model
         return deductible;
     }
 
+    /* STATIC */
     public static void saveNew(Claim claim)
     {
         ((List<Claim>) Storage.getInstance().get(Config.CLAIMS)).add(claim);
     }
+
+    public static void setCounter(int val)
+    {
+        counter += val;
+    }
+
 
     /* ABSTRACT */
     public abstract ClaimType identify();

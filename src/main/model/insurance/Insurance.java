@@ -87,11 +87,6 @@ public abstract class Insurance<C extends Claim> implements
     }
 
     /* SETTERS */
-    public void setCounter(int val)
-    {
-        counter = val;
-    }
-
     public void setDesc(String desc)
     {
         this.desc = desc;
@@ -127,6 +122,12 @@ public abstract class Insurance<C extends Claim> implements
     {
         ((List<Insurance>) Storage.getInstance().get(Config.INSURANCES)).add(insurance);
     }
+
+    public static void setCounter(int val)
+    {
+        counter += val;
+    }
+
 
     /* OVERRIDES */
     @Override
