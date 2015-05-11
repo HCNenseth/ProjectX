@@ -248,6 +248,9 @@
     <string name="date_of_damages">Date of damages</string>
     <string name="date_of_claim">Date of claim</string>
 
+    <string name="car_claim_type">Car claim type</string>
+    <string name="claim_damage_report">Damage report</string>
+    <string name="boat_claim_type">Boat claim type</string>
     <string name="new_car_claim">New car claim</string>
     <string name="edit_car_claim">Edit car claim</string>
     <string name="new_boat_claim">New boat claim</string>

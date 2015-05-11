@@ -32,7 +32,7 @@ public class PersonAdapter implements Formable<Person>
     private FormValueNode postalCode;
     private FormValueNode phoneNumber;
     private FormValueNode email;
-    private FormChoiceNode status;
+    private FormChoiceNode<Status> status;
 
     ButtonBase callBackEvent = new ButtonBase()
     {
@@ -115,7 +115,7 @@ public class PersonAdapter implements Formable<Person>
                 .required(false)
                 .build();
 
-        List<Enum> statusList = new ArrayList<>();
+        List<Status> statusList = new ArrayList<>();
         for (Status s : Status.values()) { statusList.add(s); }
 
         status = new FormChoiceNode.Builder<>(Loc.c("status"), statusList)
@@ -150,7 +150,7 @@ public class PersonAdapter implements Formable<Person>
             person.setPostalCode(postalCode.getValue());
             person.setStreetAddress(streetAddress.getValue());
             person.setCity(city.getValue());
-            person.setStatus((Status) status.getData());
+            person.setStatus(status.getData());
             person.setEmail(email.getValue());
             person.setPhoneNumber(phoneNumber.getValue());
         } else {
@@ -158,7 +158,7 @@ public class PersonAdapter implements Formable<Person>
                     .streetAddress(streetAddress.getValue())
                     .dateOfBirth(dob.getData())
                     .postalCode(postalCode.getValue())
-                    .status((Status)status.getData())
+                    .status(status.getData())
                     .city(city.getValue())
                     .email(email.getData())
                     .phoneNumber(phoneNumber.getData())

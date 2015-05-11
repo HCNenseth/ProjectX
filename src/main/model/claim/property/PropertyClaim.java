@@ -10,7 +10,6 @@ import main.model.person.Person;
 
 public class PropertyClaim extends Claim
 {
-
     private Type type;
 
     public enum Type
@@ -27,7 +26,6 @@ public class PropertyClaim extends Claim
 
         @Override
         public String toString() { return value; }
-
     }
 
     public static class Builder extends ClaimBuilder<Builder, PropertyClaim>
@@ -62,6 +60,18 @@ public class PropertyClaim extends Claim
     {
         super(builder);
         type = builder.type;
+    }
+
+    /* GETTERS */
+    public Type getType()
+    {
+        return type;
+    }
+
+    /* SETTERS */
+    public void setType(Type type)
+    {
+        this.type = type;
     }
 
     @Override

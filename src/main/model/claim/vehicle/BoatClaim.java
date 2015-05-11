@@ -61,6 +61,18 @@ public class BoatClaim extends Claim {
         type = builder.type;
     }
 
+    /* SETTERS */
+    public void setType(Type type)
+    {
+        this.type = type;
+    }
+
+    /* GETTERS */
+    public Type getType()
+    {
+        return type;
+    }
+
     @Override
     public ClaimType identify() { return ClaimType.BOAT; }
 

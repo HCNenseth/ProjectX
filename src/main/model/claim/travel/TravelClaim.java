@@ -67,6 +67,28 @@ public class TravelClaim extends Claim {
         type = builder.type;
     }
 
+
+    /* GETTERS */
+    public Travel.Continent getContinent()
+    {
+        return continent;
+    }
+
+    public Type getType()
+    {
+        return type;
+    }
+
+    /* SETTERS */
+    public void setContinent(Travel.Continent continent)
+    {
+        this.continent = continent;
+    }
+    public void setType(Type type)
+    {
+        this.type = type;
+    }
+
     @Override
     public ClaimType identify() { return ClaimType.TRAVEL; }
 

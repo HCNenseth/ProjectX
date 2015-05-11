@@ -27,8 +27,9 @@ public class VacationHouseAdapter extends InsuranceAdapter<VacationHouse> implem
     private FormValueNode city;
     private FormValueNode squareMeters;
     private FormValueNode yearBuilt;
-    private FormChoiceNode type;
-    private FormChoiceNode material;
+    private FormChoiceNode<VacationHouse.Type> type;
+    private FormChoiceNode<VacationHouse.Material> material;
+    private FormChoiceNode<VacationHouse.Standard> standard;
 
     public VacationHouseAdapter(Person customer, VacationHouse vacationHouse)
     {
@@ -76,9 +77,8 @@ public class VacationHouseAdapter extends InsuranceAdapter<VacationHouse> implem
                 .regex(StringMatcher.getDigit())
                 .build();
 
-        List<Enum> typeList = new ArrayList();
-        for(VacationHouse.Type t : VacationHouse.Type.values())
-        {
+        List<VacationHouse.Type> typeList = new ArrayList();
+        for (VacationHouse.Type t : VacationHouse.Type.values()) {
             typeList.add(t);
         }
 
@@ -86,14 +86,21 @@ public class VacationHouseAdapter extends InsuranceAdapter<VacationHouse> implem
                 .active(getEditMode() ? getInsurance().getType() : VacationHouse.Type.A)
                 .build();
 
-        List<Enum> materialList = new ArrayList();
-        for(VacationHouse.Material m : VacationHouse.Material.values())
-        {
+        List<VacationHouse.Material> materialList = new ArrayList();
+        for (VacationHouse.Material m : VacationHouse.Material.values()) {
             materialList.add(m);
         }
 
         material = new FormChoiceNode.Builder<>(Loc.c("material"), materialList)
-                .active(getEditMode() ? getInsurance().getMaterial() : House.Material.A)
+                .active(getEditMode() ? getInsurance().getMaterial() : VacationHouse.Material.A)
+                .build();
+
+        List<VacationHouse.Standard> standardList = new ArrayList<>();
+        for (VacationHouse.Standard s : VacationHouse.Standard.values()) {
+            standardList.add(s);
+        }
+        standard = new FormChoiceNode.Builder(Loc.c("standard"), standardList)
+                .active(getEditMode() ? getInsurance().getStandard() : VacationHouse.Standard.A)
                 .build();
     }
 
@@ -118,8 +125,9 @@ public class VacationHouseAdapter extends InsuranceAdapter<VacationHouse> implem
         if (getEditMode()) {
             VacationHouse i = getInsurance();
             i.setCity(city.getValue());
-            i.setType((VacationHouse.Type) type.getData());
-            i.setMaterial((VacationHouse.Material) material.getData());
+            i.setType(type.getData());
+            i.setMaterial(material.getData());
+            i.setStandard(standard.getData());
             i.setSquareMeter(Integer.parseInt(squareMeters.getValue()));
             i.setYear(Integer.parseInt(yearBuilt.getValue()));
             i.setPremium(getPremium());
@@ -129,8 +137,9 @@ public class VacationHouseAdapter extends InsuranceAdapter<VacationHouse> implem
             VacationHouse insurance = new VacationHouse.Builder(getCustomer(),
                     street.getValue(), postalCode.getValue())
                     .city(city.getValue())
-                    .type((VacationHouse.Type) type.getData())
-                    .material((VacationHouse.Material) material.getData())
+                    .type(type.getData())
+                    .material(material.getData())
+                    .standard(standard.getData())
                     .squareMeter(Integer.parseInt(squareMeters.getValue()))
                     .year(Integer.parseInt(yearBuilt.getValue()))
                     .premium(getPremium())

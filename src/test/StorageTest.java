@@ -318,6 +318,7 @@ public class StorageTest
                             .desc(randomDomain())
                             .contacts(randomDomain())
                             .amount(randInt(1000, 12000))
+                            .type(randomEnumValue(CarClaim.Type.class))
                             .build());
                 }
                 insurances.add(car);
@@ -342,6 +343,7 @@ public class StorageTest
                                     randInt(1, 12), randInt(1, 28)))
                             .desc(randomDomain())
                             .contacts(randomDomain())
+                            .type(randomEnumValue(BoatClaim.Type.class))
                             .amount(randInt(1000, 12000))
                             .build());
                 }

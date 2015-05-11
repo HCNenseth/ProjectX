@@ -12,7 +12,7 @@ import main.model.person.Person;
 public class CarClaim extends Claim {
 
     private Type type;
-    private Image damageReport; // skademeldingsskjema
+    private String damageReportFileName;
 
     public enum Type
     {
@@ -67,6 +67,28 @@ public class CarClaim extends Claim {
     public CarClaim(Builder builder) {
         super(builder);
         type = builder.type;
+    }
+
+    /* GETTERS */
+    public Type getType()
+    {
+        return type;
+    }
+
+    public String getDamageReportFileName()
+    {
+        return damageReportFileName;
+    }
+
+    /* SETTERS */
+    public void setType(Type type)
+    {
+        this.type = type;
+    }
+
+    public void setDamageReportFileName(String damageReportFileName)
+    {
+        this.damageReportFileName = damageReportFileName;
     }
 
     @Override

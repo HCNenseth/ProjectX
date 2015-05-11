@@ -18,8 +18,7 @@ import java.util.function.Consumer;
  */
 public class TravelAdapter extends InsuranceAdapter<Travel> implements Formable<Travel>
 {
-
-    private FormChoiceNode continent;
+    private FormChoiceNode<Travel.Continent> continent;
 
     public TravelAdapter(Person customer, Travel travel)
     {
@@ -36,9 +35,8 @@ public class TravelAdapter extends InsuranceAdapter<Travel> implements Formable<
     private void initNodes()
     {
 
-        List<Enum> typeList = new ArrayList<>();
-        for(Travel.Continent t : Travel.Continent.values())
-        {
+        List<Travel.Continent> typeList = new ArrayList<>();
+        for (Travel.Continent t : Travel.Continent.values()) {
             typeList.add(t);
         }
 
@@ -68,7 +66,7 @@ public class TravelAdapter extends InsuranceAdapter<Travel> implements Formable<
             i.setDesc(getDescription());
             i.setStatus(getStatus());
 
-            i.setType((Travel.Continent) continent.getData());
+            i.setType(continent.getData());
         } else {
             Travel insurance =  new Travel.Builder(getCustomer())
                     .premium(getPremium())
@@ -76,7 +74,7 @@ public class TravelAdapter extends InsuranceAdapter<Travel> implements Formable<
                     .deductible(getDeductible())
                     .status(getStatus())
                     .desc(getDescription())
-                    .continent((Travel.Continent)continent.getData())
+                    .continent(continent.getData())
                     .build();
             setInsurance(insurance);
             Insurance.saveNew(insurance);

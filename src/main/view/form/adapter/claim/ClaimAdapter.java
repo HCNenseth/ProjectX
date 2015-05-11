@@ -2,26 +2,23 @@ package main.view.form.adapter.claim;
 
 import javafx.event.ActionEvent;
 import javafx.scene.control.ButtonBase;
-import main.config.Config;
 import main.controller.ImageController;
 import main.localization.Loc;
 import main.model.Status;
 import main.model.claim.Claim;
-import main.model.claim.ClaimBuilder;
 import main.model.insurance.Insurance;
 import main.model.person.Person;
 import main.validator.StringMatcher;
 import main.view.form.Formable;
 import main.view.form.node.*;
 
-import java.io.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Consumer;
 
 /**
- * Created by HansChristian on 28.04.2015.
+ * ClaimAdapter.java
  */
 public abstract class ClaimAdapter<T extends Claim> implements Formable<T>
 {
@@ -29,13 +26,13 @@ public abstract class ClaimAdapter<T extends Claim> implements Formable<T>
     private FormLabelNode insuranceNode;
     protected FormDateNode dateOfDamages;
     protected FormDateNode claimDate;
-    protected FormTextAreaNode description;
     protected FormValueNode contacts;
     protected FormValueNode amount;
     protected FormValueNode deductible;
+    protected FormTextAreaNode description;
     protected FormImageNode image;
-    protected FormChoiceNode paymentStatus;
-    protected FormChoiceNode status;
+    protected FormChoiceNode<Claim.PaymentStatus> paymentStatus;
+    protected FormChoiceNode<Status> status;
 
     protected Person person;
     protected Insurance insurance;
@@ -122,7 +119,7 @@ public abstract class ClaimAdapter<T extends Claim> implements Formable<T>
 
         image = new FormImageNode.Builder(Loc.c("image")).build();
 
-        List<Enum> paymentStatusList = new ArrayList();
+        List<Claim.PaymentStatus> paymentStatusList = new ArrayList();
         for (Claim.PaymentStatus s : Claim.PaymentStatus.values()) {
             paymentStatusList.add(s);
         }
@@ -132,10 +129,8 @@ public abstract class ClaimAdapter<T extends Claim> implements Formable<T>
                 .active(editMode ? claim.getPaymentStatus() : Claim.PaymentStatus.A)
                 .build();
 
-        List<Enum> statusList = new ArrayList();
-        for (Status s : Status.values()) {
-            statusList.add(s);
-        }
+        List<Status> statusList = new ArrayList();
+        for (Status s : Status.values()) { statusList.add(s); }
 
         status = new FormChoiceNode.Builder<>(Loc.c("status"), statusList)
                 .active(editMode ? claim.getStatus() : Status.ACTIVE)
@@ -168,9 +163,8 @@ public abstract class ClaimAdapter<T extends Claim> implements Formable<T>
         claim.setContacts(contacts.getValue());
         claim.setAmount(Double.parseDouble(amount.getValue()));
         claim.setDeductible(Double.parseDouble(deductible.getValue()));
-        claim.setPaymentStatus((Claim.PaymentStatus) paymentStatus.getData());
-        claim.setStatus((Status) status.getData());
-        storeImage();
+        claim.setPaymentStatus(paymentStatus.getData());
+        claim.setStatus(status.getData());
     }
 
     protected void storeImage()

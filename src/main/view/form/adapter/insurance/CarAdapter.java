@@ -27,9 +27,9 @@ public class CarAdapter extends InsuranceAdapter<Car> implements Formable<Car>
     //private FormValueNode owner;
     private FormDateNode registration;
     private FormValueNode mileage;
-    private FormChoiceNode type;
-    private FormChoiceNode propulsion;
     private FormValueNode horsePower;
+    private FormChoiceNode<Car.Type> type;
+    private FormChoiceNode<Car.Propulsion> propulsion;
 
     public CarAdapter(Person customer, Car car)
     {
@@ -77,7 +77,7 @@ public class CarAdapter extends InsuranceAdapter<Car> implements Formable<Car>
                 .error(Loc.c("vehicle_horse_power_error"))
                 .build();
 
-        List<Enum> typeList = new ArrayList<>();
+        List<Car.Type> typeList = new ArrayList<>();
         for (Car.Type t : Car.Type.values()) { typeList.add(t); }
 
         type = new FormChoiceNode.Builder<>(Loc.c("car_type"), typeList)
@@ -85,7 +85,7 @@ public class CarAdapter extends InsuranceAdapter<Car> implements Formable<Car>
                 .required(false)
                 .build();
 
-        List<Enum> propulsionList = new ArrayList<>();
+        List<Car.Propulsion> propulsionList = new ArrayList<>();
         for(Car.Propulsion p : Car.Propulsion.values()) { propulsionList.add(p); }
 
         propulsion = new FormChoiceNode.Builder<>(Loc.c("car_propulsion"), propulsionList)
@@ -120,8 +120,8 @@ public class CarAdapter extends InsuranceAdapter<Car> implements Formable<Car>
             i.setDesc(getDescription());
             i.setStatus(getStatus());
 
-            i.setType((Car.Type) type.getData());
-            i.setPropulsion((Car.Propulsion) propulsion.getData());
+            i.setType(type.getData());
+            i.setPropulsion(propulsion.getData());
 
             i.setMileage(Integer.parseInt(mileage.getValue()));
             i.setHorsePower(Integer.parseInt(horsePower.getValue()));
@@ -136,8 +136,8 @@ public class CarAdapter extends InsuranceAdapter<Car> implements Formable<Car>
                     .desc(getDescription())
                     .status(getStatus())
 
-                    .type((Car.Type) type.getData())
-                    .propulsion((Car.Propulsion) propulsion.getData())
+                    .type(type.getData())
+                    .propulsion(propulsion.getData())
 
                     .mileage(Integer.parseInt(mileage.getValue()))
                     .horsePower(Integer.parseInt(horsePower.getValue()))
