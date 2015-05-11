@@ -292,9 +292,14 @@ public class Person implements Serializable, FullTextSearch, Model
     }
 
     /* STATIC */
+    public static List<Person> getPersons()
+    {
+        return (List<Person>)Storage.getInstance().get(Config.PERSONS);
+    }
+
     public static void saveNew(Person person)
     {
-        ((List<Person>)Storage.getInstance().get(Config.PERSONS)).add(person);
+        Person.getPersons().add(person);
     }
 
     public static void setCounter(int val)

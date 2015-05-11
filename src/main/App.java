@@ -2,7 +2,6 @@ package main;
 
 import javafx.application.Application;
 import javafx.stage.Stage;
-import main.config.Config;
 import main.localization.Loc;
 import main.model.Storage;
 import main.model.claim.Claim;
@@ -12,7 +11,6 @@ import main.preference.Pref;
 import main.view.Resources;
 
 import java.io.IOException;
-import java.util.List;
 
 /**
  * Created by alex on 4/22/15.
@@ -50,14 +48,9 @@ public class App extends Application
                 dialogMode = false;
 
                 // get data from storage and setup the different classes
-                List<Person> persons = (List<Person>)Storage.getInstance().get(Config.PERSONS);
-                Person.setCounter(persons.size() - 1);
-
-                List<Insurance> insurances = (List<Insurance>)Storage.getInstance().get(Config.INSURANCES);
-                Insurance.setCounter(insurances.size() - 1);
-
-                List<Claim> claims = (List<Claim>)Storage.getInstance().get(Config.CLAIMS);
-                Claim.setCounter(claims.size() - 1);
+                Person.setCounter(Person.getPersons().size() - 1);
+                Insurance.setCounter(Insurance.getInsurances().size() - 1);
+                Claim.setCounter(Claim.getClaims().size() - 1);
 
             } catch (IOException | ClassNotFoundException e) {
                 // TODO do something meaningful with this error.

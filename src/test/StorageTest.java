@@ -226,12 +226,9 @@ public class StorageTest
             // YOLO!!!
         }
 
-        List<Person> personsFromFile = (List<Person>) Storage.getInstance()
-                .get("persons");
-        List<Insurance> insurancesFromFile = (List<Insurance>) Storage.getInstance()
-                .get("insurances");
-        List<Claim> claimsFromFile = (List<Claim>) Storage.getInstance()
-                .get("claims");
+        List<Person> personsFromFile = Person.getPersons();
+        List<Insurance> insurancesFromFile = Insurance.getInsurances();
+        List<Claim> claimsFromFile = Claim.getClaims();
 
 
         // TODO compare/equal the elements

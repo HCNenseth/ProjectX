@@ -1,8 +1,6 @@
 package main.controller;
 
-import main.config.Config;
 import main.localization.Loc;
-import main.model.Storage;
 import main.model.claim.Claim;
 import main.model.insurance.Insurance;
 import main.model.person.Person;
@@ -13,7 +11,6 @@ import main.view.form.Form;
 import main.view.form.adapter.SearchAdapter;
 
 import java.time.LocalDate;
-import java.util.List;
 
 /**
  * Created by alex on 4/23/15.
@@ -44,18 +41,19 @@ class SearchController
         LocalDate from = search.getFrom();
         LocalDate to = search.getTo();
 
-        List<Person> persons = (List<Person>)Storage.getInstance().get(Config.PERSONS);
-        List<Insurance> insurances = (List<Insurance>)Storage.getInstance().get(Config.INSURANCES);
-        List<Claim> claims = (List<Claim>)Storage.getInstance().get(Config.CLAIMS);
-
         /* put the tables into a search result view */
         SearchResultView searchResult = new SearchResultView();
 
-        searchResult.addTable(TableController.getPersonTable(persons.stream()
+        // Persons
+        searchResult.addTable(TableController.getPersonTable(Person.getPersons().stream()
                 .filter(i -> (i.query(keyword) && i.between(from, to)))).getTable(), Loc.c("persons"));
-        searchResult.addTable(TableController.getInsuranceTable(insurances.stream()
+
+        // Insurances
+        searchResult.addTable(TableController.getInsuranceTable(Insurance.getInsurances().stream()
                 .filter(i -> (i.query(keyword) && i.between(from, to)))).getTable(), Loc.c("insurances"));
-        searchResult.addTable(TableController.getClaimsTable(claims.stream()
+
+        // Claims
+        searchResult.addTable(TableController.getClaimsTable(Claim.getClaims().stream()
                 .filter(i -> (i.query(keyword) && i.between(from, to)))).getTable(), Loc.c("claims"));
 
         f.setCallbackData(searchResult.getNode());

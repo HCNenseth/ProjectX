@@ -221,9 +221,14 @@ public abstract class Claim implements Serializable, FullTextSearch, Model
     }
 
     /* STATIC */
+    public static List<Claim> getClaims()
+    {
+        return (List<Claim>)Storage.getInstance().get(Config.CLAIMS);
+    }
+
     public static void saveNew(Claim claim)
     {
-        ((List<Claim>) Storage.getInstance().get(Config.CLAIMS)).add(claim);
+        Claim.getClaims().add(claim);
     }
 
     public static void setCounter(int val)

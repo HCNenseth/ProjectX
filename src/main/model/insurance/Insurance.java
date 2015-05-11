@@ -118,9 +118,14 @@ public abstract class Insurance<C extends Claim> implements
     }
 
     /* STATIC */
+    public static List<Insurance> getInsurances()
+    {
+        return (List<Insurance>)Storage.getInstance().get(Config.INSURANCES);
+    }
+
     public static void saveNew(Insurance insurance)
     {
-        ((List<Insurance>) Storage.getInstance().get(Config.INSURANCES)).add(insurance);
+        Insurance.getInsurances().add(insurance);
     }
 
     public static void setCounter(int val)

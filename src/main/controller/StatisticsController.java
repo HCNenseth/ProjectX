@@ -1,8 +1,6 @@
 package main.controller;
 
-import main.config.Config;
 import main.localization.Loc;
-import main.model.Storage;
 import main.model.claim.Claim;
 import main.model.insurance.Insurance;
 import main.model.person.Person;
@@ -11,7 +9,6 @@ import main.view.concrete.statistics.ClaimStatisticsView;
 import main.view.concrete.statistics.InsuranceStatisticsView;
 import main.view.concrete.statistics.PersonStatisticsView;
 
-import java.util.List;
 
 /**
  * Created by alex on 5/7/15.
@@ -36,8 +33,8 @@ public class StatisticsController
 
     private static void loadPersonStatistics()
     {
-        List<Person> persons = (List<Person>) Storage.getInstance().get(Config.PERSONS);
-        PersonStatisticsView personStatisticsView = new PersonStatisticsView(persons);
+        PersonStatisticsView personStatisticsView = new PersonStatisticsView(
+                Person.getPersons());
 
         Resources.inst.getOtp().injectObservableTab(Loc.c("persons"),
                 personStatisticsView.getNode(), null, true);
@@ -45,8 +42,8 @@ public class StatisticsController
 
     private static void loadInsuranceStatistics()
     {
-        List<Insurance> insurances = (List<Insurance>)Storage.getInstance().get(Config.INSURANCES);
-        InsuranceStatisticsView insuranceStatisticsView = new InsuranceStatisticsView(insurances);
+        InsuranceStatisticsView insuranceStatisticsView = new InsuranceStatisticsView(
+                Insurance.getInsurances());
 
         Resources.inst.getOtp().injectObservableTab(Loc.c("insurances"),
                 insuranceStatisticsView.getNode(), null, true);
@@ -54,8 +51,8 @@ public class StatisticsController
 
     private static void loadClaimsStatistics()
     {
-        List<Claim> claims = (List<Claim>)Storage.getInstance().get(Config.CLAIMS);
-        ClaimStatisticsView claimStatisticsView = new ClaimStatisticsView(claims);
+        ClaimStatisticsView claimStatisticsView = new ClaimStatisticsView(
+                Claim.getClaims());
 
         Resources.inst.getOtp().injectObservableTab(Loc.c("claims"),
                 claimStatisticsView.getNode(), null, true);
