@@ -3,8 +3,10 @@ package main.view.concrete;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ToolBar;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
 import main.config.Config;
 import main.controller.InsuranceController;
 import main.controller.PersonController;
@@ -47,7 +49,7 @@ public class PersonView extends StandardGridPane
 
     private void initButtonPanel()
     {
-        ToolBar buttonPane = new ToolBar();
+        AnchorPane buttonPane = new AnchorPane();
 
         // car
         Button b1 = new Button(Loc.c("car"));
@@ -74,6 +76,9 @@ public class PersonView extends StandardGridPane
         b5.setOnAction(e -> InsuranceController.create(person,
                 InsuranceType.TRAVEL));
 
+        HBox leftAlignedButtons = new HBox();
+        leftAlignedButtons.getChildren().addAll(b1, b2, b3, b4, b5);
+
         // edit person
         Button editButton = new Button(Loc.c("edit"));
         editButton.setOnAction(e -> PersonController.edit(person));
@@ -82,8 +87,13 @@ public class PersonView extends StandardGridPane
         Button refreshButton = new Button(Loc.c("refresh"));
         refreshButton.setOnAction(e -> draw());
 
-        buttonPane.getItems().addAll(b1, b2, b3, b4, b5,
-                editButton, refreshButton);
+        HBox rightAlignedButtons = new HBox();
+        rightAlignedButtons.getChildren().addAll(editButton, refreshButton);
+
+        AnchorPane.setLeftAnchor(leftAlignedButtons, 0d);
+        AnchorPane.setRightAnchor(rightAlignedButtons, 0d);
+        
+        buttonPane.getChildren().addAll(leftAlignedButtons, rightAlignedButtons);
 
         add(buttonPane, 0, rowNum++, 2, 1);
     }
