@@ -9,7 +9,6 @@ public enum InsuranceType
 {
     HOUSE(Loc.c("house_insurance")),
     VACATION_HOUSE(Loc.c("vacation_house_insurance")),
-    CONTENTS(Loc.c("contents_insurance")),
     TRAVEL(Loc.c("travel_insurance")),
     BOAT(Loc.c("boat_insurance")),
     CAR(Loc.c("car_insurance"));
