@@ -1,6 +1,7 @@
 package main.controller;
 
 import main.localization.Loc;
+import main.model.Model;
 import main.model.claim.Claim;
 import main.model.insurance.Insurance;
 import main.model.person.Person;
@@ -49,15 +50,21 @@ class SearchController
 
         // Persons
         searchResult.addTable(TableController.getPersonTable(Person.getPersons().stream()
-                .filter(i -> (i.query(keyword) && i.between(from, to)))).getTable(), Loc.c("persons"));
+                .filter(i -> (i.query(keyword) && i.between(from, to)))).getTable(),
+                Model.ModelType.PERSON,
+                Loc.c("persons"));
 
         // Insurances
         searchResult.addTable(TableController.getInsuranceTable(Insurance.getInsurances().stream()
-                .filter(i -> (i.query(keyword) && i.between(from, to)))).getTable(), Loc.c("insurances"));
+                .filter(i -> (i.query(keyword) && i.between(from, to)))).getTable(),
+                Model.ModelType.INSURANCE,
+                Loc.c("insurances"));
 
         // Claims
         searchResult.addTable(TableController.getClaimsTable(Claim.getClaims().stream()
-                .filter(i -> (i.query(keyword) && i.between(from, to)))).getTable(), Loc.c("claims"));
+                .filter(i -> (i.query(keyword) && i.between(from, to)))).getTable(),
+                Model.ModelType.CLAIM,
+                Loc.c("claims"));
 
         f.setCallbackData(searchResult.getNode());
     }

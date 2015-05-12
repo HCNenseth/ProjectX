@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <language name="english">
     <!-- menus -->
-    <string name="menu_group_file">_File</string>
+    <string name="menu_group_file">File</string>
     <string name="menu_close_project">Close project</string>
     <string name="menu_file_open">Open file</string>
     <string name="menu_file_save">Save</string>
@@ -261,7 +261,6 @@
     <string name="new_travel_claim">New travel claim</string>
     <string name="edit_travel_claim">Edit travel claim</string>
 
-
     <!-- Report -->
     <string name="report">Report</string>
     <string name="total_person_count">Total person count</string>
@@ -287,5 +286,16 @@
     <string name="average_house_insurance_claim">Average of claims per house insurance</string>
     <string name="average_vacation_house_insurance_claim">Average of claims per vacation house insurance</string>
     <string name="average_travel_insurance_claim">Average of claims per travel insurance</string>
+
+    <string name="statistics">Statistics</string>
+    <string name="statistics_persons">Statistics - Persons</string>
+    <string name="statistics_insurances">Statistics - Insurances</string>
+    <string name="statistics_claims">Statistics - Claims</string>
+    <string name="generate_statistics">Generate statistics</string>
+    <string name="summary">Summary</string>
+    <string name="value">Value</string>
+    <string name="count">Count</string>
+    <string name="year">Year</string>
+    <string name="age">Age</string>
 
 </language>

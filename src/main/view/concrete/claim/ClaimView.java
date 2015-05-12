@@ -15,13 +15,14 @@ import main.view.stage.ImageStage;
 
 
 /**
- * Created by alex on 4/28/15.
+ * ClaimView.java
  */
 public abstract class ClaimView<T extends Claim> extends StandardGridPane
 {
     protected int rowNum = 0;
     protected T claim;
     protected boolean drawn = false;
+    private int cellGap = 5;
 
     public ClaimView(T claim)
     {
@@ -60,6 +61,7 @@ public abstract class ClaimView<T extends Claim> extends StandardGridPane
         refreshButton.setOnAction(e -> draw());
 
         HBox rightAlignedButtons = new HBox();
+        rightAlignedButtons.setSpacing(cellGap);
         rightAlignedButtons.getChildren().addAll(editButton, refreshButton);
 
         AnchorPane.setLeftAnchor(customerButton, 0d);
