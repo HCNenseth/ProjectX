@@ -1,14 +1,10 @@
 package main.view.concrete.statistics;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
-import javafx.scene.control.Label;
+import main.localization.Loc;
 import main.model.person.Person;
-import main.view.Resources;
 import main.view.StandardGridPane;
 
 import java.util.List;
@@ -19,42 +15,48 @@ import java.util.List;
 public class PersonStatisticsView extends StandardGridPane
 {
     private List<Person> persons;
+    private final int lowerBound = 1930;
+    private final int upperBound = 2010;
+    private final int spacing = 5;
 
     public PersonStatisticsView(List<Person> persons)
     {
         super(1);
         this.persons = persons;
 
-        CategoryAxis xAxis = new CategoryAxis();
-        NumberAxis yAxis = new NumberAxis();
-        LineChart lineChart = new LineChart(xAxis, yAxis);
-        lineChart.setData(getChartData());
-        lineChart.setTitle("speculations");
-
-        add(lineChart, 0 ,0);
+        drawPlot();
     }
 
-    private ObservableList<XYChart.Series<String, Double>> getChartData()
+    private void drawPlot()
     {
-        double javaValue = persons.size();
-/*                .stream()
-                .mapToInt(p -> p.getInsurances().size())
-                .average()
-                .getAsDouble();
-*/
-        ObservableList<XYChart.Series<String, Double>> answer = FXCollections.observableArrayList();
+        NumberAxis xAxis = new NumberAxis(lowerBound  -1, upperBound, spacing);
+        xAxis.setLabel(Loc.c("year"));
 
-        XYChart.Series<String, Double> persons = new XYChart.Series<>();
+        NumberAxis yAxis = new NumberAxis();
+        yAxis.setLabel(Loc.c("count"));
 
-        persons.setName("Persons");
+        LineChart<Number, Number> lineChart = new LineChart<>(xAxis, yAxis);
 
-        for (int i = 2011; i < 2021; i++) {
-            persons.getData().add(new XYChart.Data(Integer.toString(i), javaValue));
-            javaValue = javaValue + 4 * Math.random() - .2;
+        lineChart.getData().add(getAgeData());
+
+        add(lineChart, 0, 0);
+    }
+
+    private XYChart.Series<Number, Number> getAgeData()
+    {
+        XYChart.Series<Number, Number> series = new XYChart.Series<>();
+        series.setName(Loc.c("age"));
+
+        for (int i = lowerBound; i < upperBound; i++) {
+            final int x = i;
+
+            series.getData().add(new XYChart.Data<>(x,
+                    (int) persons.stream()
+                            .filter(p -> p.getDateOfBirth().getYear() == x).count()));
 
         }
-        answer.addAll(persons);
-        return answer;
+
+        return series;
     }
 
 
