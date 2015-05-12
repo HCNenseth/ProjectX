@@ -3,34 +3,17 @@
 #Alex
 * Bonusutregning for kjøretøy forsikring.
 * Regexifisering.
-* *DONE - Søkeresultater i samme bilde som søkeskjema.*
-* *DONE - Fullføre alle adaptere (inkl. claims)*
-* *DONE - Statistikk layout*
-* *DONE - Implementere totalkunde som gir kunder med min 3 forsikringer 10% rabatt.*
-* *DONE - Rapporten*
-* *DONE - Claim tabeller*
 
 #HC
-* *DONE - Løpenummer på alle typer.*
-* Shortcuts- mnemonics
 * Statistikk visning
     * øking/minking av antall skademeldinger innenfor en gitt tidsperiode
     * øking/minking av skademeldinger av en bestemt type innenfor en gitt tidsperiode
     * øking/minking av de totale erstatningskostnadene
     * øking/minking av erstatningskostnadene for en gitt skadetype innenfor en gitt tidsperiode
     * type forsikringer rangert etter antall
-* Finne åpne iconer.			
-* Claim views
 
 #HP
-* *Done Claim model.*
-* *Done - Språk -> skifte språk ned på splash screen nivå.  	(flag icons: famfamfam.com)* 
-* Themevelger -> ned på splash screen nivå. ( FORSLAG: skrape themes. )
-* *Done Bilder i skademelding.*
-* *Done - FormImageNode.*
-* *Done - FormTextNode.*
-* Refresh *alle* fanekort
-* *Done - Toolbar -> (refresh + edit) knapp helt til høyre.*
+* Toolbar -> (refresh + edit) knapp helt til høyre.*
 
 # Free for all - Glemte oppgaver
 * Fjerne "Contents" forsikring og utvide "House+Vacation (property)" med innbo felt (ref oppgave beskrivelse)
@@ -51,4 +34,7 @@
 * Flyttbare faner!
 * Faneikoner (fra famfamfam kanskje)
 * Automatisk refresh av fanekort
+* Shortcuts- mnemonics
+* Themevelger -> ned på splash screen nivå. ( FORSLAG: skrape themes. )
+* Finne åpne iconer.			
 
