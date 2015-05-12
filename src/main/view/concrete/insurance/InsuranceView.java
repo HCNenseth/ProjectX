@@ -3,7 +3,6 @@ package main.view.concrete.insurance;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Separator;
-import javafx.scene.control.ToolBar;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import main.controller.ClaimController;
@@ -23,6 +22,7 @@ public abstract class InsuranceView<T extends Insurance> extends StandardGridPan
     private T insurance;
     protected int rowNum = 0;
     protected boolean drawn = false;
+    private int cellGap = 5;
 
     public InsuranceView(T insurance)
     {
@@ -72,6 +72,7 @@ public abstract class InsuranceView<T extends Insurance> extends StandardGridPan
         }
 
         HBox leftAlignedButtons = new HBox(b1, b2);
+        leftAlignedButtons.setSpacing(cellGap);
         AnchorPane.setLeftAnchor(leftAlignedButtons, 0d);
 
         Button editButton = new Button(Loc.c("edit"));
@@ -81,6 +82,7 @@ public abstract class InsuranceView<T extends Insurance> extends StandardGridPan
         refreshButton.setOnAction(e -> draw());
 
         HBox rightAlignedButtons = new HBox(editButton, refreshButton);
+        rightAlignedButtons.setSpacing(cellGap);
         AnchorPane.setRightAnchor(rightAlignedButtons, 0d);
 
         buttonPane.getChildren().addAll(leftAlignedButtons, rightAlignedButtons);

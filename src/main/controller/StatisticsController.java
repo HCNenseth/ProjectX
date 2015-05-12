@@ -9,6 +9,8 @@ import main.view.concrete.statistics.ClaimStatisticsView;
 import main.view.concrete.statistics.InsuranceStatisticsView;
 import main.view.concrete.statistics.PersonStatisticsView;
 
+import java.util.List;
+
 
 /**
  * StatisticsController.java
@@ -23,36 +25,42 @@ public class StatisticsController
     public static void view(Payload p)
     {
         switch ((Type)p.getEnumValue()) {
-            case PERSON: loadPersonStatistics(); break;
-            case INSURANCE: loadInsuranceStatistics(); break;
-            case CLAIM: loadClaimsStatistics(); break;
+            case PERSON:
+                loadPersonStatistics(Person.getPersons());
+                break;
+            case INSURANCE:
+                loadInsuranceStatistics(Insurance.getInsurances());
+                break;
+            case CLAIM:
+                loadClaimsStatistics(Claim.getClaims());
+                break;
             default:
                 throw new IllegalStateException("Unknown enum type");
         }
     }
 
-    private static void loadPersonStatistics()
+    public static void loadPersonStatistics(List<Person> personList)
     {
         PersonStatisticsView personStatisticsView = new PersonStatisticsView(
-                Person.getPersons());
+                personList);
 
         Resources.inst.getOtp().injectObservableTab(Loc.c("persons"),
                 personStatisticsView.getNode(), null, true);
     }
 
-    private static void loadInsuranceStatistics()
+    public static void loadInsuranceStatistics(List<Insurance> insuranceList)
     {
         InsuranceStatisticsView insuranceStatisticsView = new InsuranceStatisticsView(
-                Insurance.getInsurances());
+                insuranceList);
 
         Resources.inst.getOtp().injectObservableTab(Loc.c("insurances"),
                 insuranceStatisticsView.getNode(), null, true);
     }
 
-    private static void loadClaimsStatistics()
+    public static void loadClaimsStatistics(List<Claim> claimList)
     {
         ClaimStatisticsView claimStatisticsView = new ClaimStatisticsView(
-                Claim.getClaims());
+                claimList);
 
         Resources.inst.getOtp().injectObservableTab(Loc.c("claims"),
                 claimStatisticsView.getNode(), null, true);
