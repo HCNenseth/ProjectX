@@ -18,6 +18,7 @@
 * Fjerne "Contents" forsikring og utvide "House+Vacation (property)" med innbo felt (ref oppgave beskrivelse)
 * Statistikk visning
     * type forsikringer rangert etter antall
+* Dokumentasjon
 
 # Super nice to have 
 * Visning av inaktive forsikringer og kunder (diskusjon)
