@@ -17,7 +17,6 @@
 
 #HP
 * *Done - Toolbar -> (refresh + edit) knapp helt til høyre.*
-* Fjerne "Contents" forsikring og utvide "House+Vacation (property)" med innbo felt (ref oppgave beskrivelse)
 * Statistikk visning
     * type forsikringer rangert etter antall
 * Dokumentasjon
