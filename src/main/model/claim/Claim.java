@@ -14,11 +14,6 @@ import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.List;
 
-/**
- * Claim.java
- *
- * Main claim class.
- */
 public abstract class Claim implements Serializable, FullTextSearch, Model
 {
     private static int counter = Config.CLAIM_COUNTER_START;
@@ -267,7 +262,7 @@ public abstract class Claim implements Serializable, FullTextSearch, Model
                 || contacts.toLowerCase().contains(value.toLowerCase())
                 || getId().contains(value);
     }
-    
+
     @Override
     public LocalDate getDate()
     {

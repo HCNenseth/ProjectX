@@ -75,6 +75,8 @@
     <string name="vehicle_registration_error">Registreringsnummer må inneholde...</string>
     <string name="vehicle_horse_power">Hestekrefter</string>
     <string name="vehicle_horse_power_error">Hestekrefter må innehold.</string>
+    <string name="view_customer">Vis kunde</string>
+
 
     <!-- insurance -->
     <string name="premium">Premie</string>

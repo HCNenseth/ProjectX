@@ -4,7 +4,10 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.scene.control.ToolBar;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
 import main.controller.ClaimController;
+import main.controller.PersonController;
 import main.localization.Loc;
 import main.model.claim.Claim;
 import main.view.StandardGridPane;
@@ -18,24 +21,50 @@ public abstract class ClaimView<T extends Claim> extends StandardGridPane
 {
     protected int rowNum = 0;
     protected T claim;
+    protected boolean drawn = false;
 
     public ClaimView(T claim)
     {
         this.claim = claim;
+        draw();
+    }
+
+    private void draw()
+    {
+        if (drawn)
+        {
+            getChildren().clear();
+            rowNum = 0;
+        }
 
         initButtonPanel();
         initFields();
+
+        drawn = true;
     }
 
     public void initButtonPanel()
     {
-        ToolBar buttonPane = new ToolBar();
+        AnchorPane buttonPane = new AnchorPane();
+
+        // linking to the customer
+        Button customerButton = new Button(Loc.c("view_customer"));
+        customerButton.setOnAction(e -> PersonController.view(claim.getCustomer()));
 
         // edit person
         Button editButton = new Button(Loc.c("edit"));
         editButton.setOnAction(e -> ClaimController.edit(claim));
 
-        buttonPane.getItems().addAll(editButton);
+        // refresh the claim view
+        Button refreshButton = new Button(Loc.c("refresh"));
+        refreshButton.setOnAction(e -> draw());
+
+        HBox rightAlignedButtons = new HBox();
+        rightAlignedButtons.getChildren().addAll(editButton, refreshButton);
+
+        AnchorPane.setLeftAnchor(customerButton, 0d);
+        AnchorPane.setRightAnchor(rightAlignedButtons, 0d);
+        buttonPane.getChildren().addAll(customerButton, rightAlignedButtons);
 
         add(buttonPane, 0, rowNum++, 2, 1);
     }

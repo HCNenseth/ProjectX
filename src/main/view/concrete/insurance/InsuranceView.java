@@ -4,8 +4,11 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Separator;
 import javafx.scene.control.ToolBar;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
 import main.controller.ClaimController;
 import main.controller.InsuranceController;
+import main.controller.PersonController;
 import main.controller.TableController;
 import main.localization.Loc;
 import main.model.claim.Claim;
@@ -42,28 +45,34 @@ public abstract class InsuranceView<T extends Insurance> extends StandardGridPan
 
     private void initButtonPanel()
     {
-        ToolBar buttonPane = new ToolBar();
+        AnchorPane buttonPane = new AnchorPane();
 
-        Button b1 = new Button(Loc.c("new_claim"));
+        Button b1 = new Button(Loc.c("view_customer"));
+        b1.setOnAction(e -> PersonController.view(insurance.getCustomer()));
+
+        Button b2 = new Button(Loc.c("new_claim"));
         switch (insurance.identify()) {
             case CAR:
-                b1.setOnAction(e -> ClaimController.create(Claim.ClaimType.CAR,
+                b2.setOnAction(e -> ClaimController.create(Claim.ClaimType.CAR,
                         insurance.getCustomer(), insurance));
                 break;
             case BOAT:
-                b1.setOnAction(e -> ClaimController.create(Claim.ClaimType.BOAT,
+                b2.setOnAction(e -> ClaimController.create(Claim.ClaimType.BOAT,
                         insurance.getCustomer(), insurance));
                 break;
             case VACATION_HOUSE:
             case HOUSE:
-                b1.setOnAction(e -> ClaimController.create(Claim.ClaimType.PROPERTY,
+                b2.setOnAction(e -> ClaimController.create(Claim.ClaimType.PROPERTY,
                         insurance.getCustomer(), insurance));
                 break;
             case TRAVEL:
-                b1.setOnAction(e -> ClaimController.create(Claim.ClaimType.TRAVEL,
+                b2.setOnAction(e -> ClaimController.create(Claim.ClaimType.TRAVEL,
                         insurance.getCustomer(), insurance));
                 break;
         }
+
+        HBox leftAlignedButtons = new HBox(b1, b2);
+        AnchorPane.setLeftAnchor(leftAlignedButtons, 0d);
 
         Button editButton = new Button(Loc.c("edit"));
         editButton.setOnAction(e -> InsuranceController.edit(insurance));
@@ -71,7 +80,10 @@ public abstract class InsuranceView<T extends Insurance> extends StandardGridPan
         Button refreshButton = new Button(Loc.c("refresh"));
         refreshButton.setOnAction(e -> draw());
 
-        buttonPane.getItems().addAll(b1, editButton, refreshButton);
+        HBox rightAlignedButtons = new HBox(editButton, refreshButton);
+        AnchorPane.setRightAnchor(rightAlignedButtons, 0d);
+
+        buttonPane.getChildren().addAll(leftAlignedButtons, rightAlignedButtons);
 
         add(buttonPane, 0, rowNum++, 2, 1);
     }

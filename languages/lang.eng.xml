@@ -108,6 +108,7 @@
     <string name="vehicle_registration_error">Invalid date.</string>
     <string name="vehicle_horse_power">Horse power</string>
     <string name="vehicle_horse_power_error">Horse power error.</string>
+    <string name="view_customer">View customer</string>
 
     <!-- insurance -->
     <string name="car">Car</string>
