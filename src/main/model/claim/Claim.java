@@ -267,34 +267,7 @@ public abstract class Claim implements Serializable, FullTextSearch, Model
                 || contacts.toLowerCase().contains(value.toLowerCase())
                 || getId().contains(value);
     }
-
-    @Override
-    public String toString()
-    {
-        return String.format(
-                "%s:\t%s\n" +
-                        "%s:\t%s\n" +
-                        "%s:\t%s\n" +
-                        "%s:\t%s\n" +
-                        "%s:\t%s\n" +
-                        "%s:\t%s\n" +
-                        "%s:\t%s\n" +
-                        "%s:\t%s\n" +
-                        "%s:\t%s\n" +
-                        "%s:\t%s\n",
-                Loc.c("claim_id"), id,
-                Loc.c("customer"), customer,
-                Loc.c("insurance"), insurance.getId(),
-                Loc.c("accident_date"), dateOfDamages,
-                Loc.c("claim_date"), claimDate,
-                Loc.c("last_edited"), lastEdited,
-                Loc.c("description"), desc,
-                Loc.c("contacts"), contacts,
-                Loc.c("amount"), amount,
-                Loc.c("payment_status"), paymentStatus
-        );
-    }
-
+    
     @Override
     public LocalDate getDate()
     {
