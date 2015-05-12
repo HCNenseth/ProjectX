@@ -92,7 +92,7 @@ public class PersonView extends StandardGridPane
 
         AnchorPane.setLeftAnchor(leftAlignedButtons, 0d);
         AnchorPane.setRightAnchor(rightAlignedButtons, 0d);
-        
+
         buttonPane.getChildren().addAll(leftAlignedButtons, rightAlignedButtons);
 
         add(buttonPane, 0, rowNum++, 2, 1);
