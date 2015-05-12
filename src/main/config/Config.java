@@ -7,7 +7,7 @@ import javafx.stage.Screen;
  */
 public class Config
 {
-    public static final String APP_NAME = "Wakizashi";
+    public static final String APP_NAME = "General Average";
 
     public static final String PERSONS = "persons";
     public static final String INSURANCES = "insurances";

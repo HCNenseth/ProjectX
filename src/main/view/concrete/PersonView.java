@@ -77,6 +77,7 @@ public class PersonView extends StandardGridPane
                 InsuranceType.TRAVEL));
 
         HBox leftAlignedButtons = new HBox();
+        leftAlignedButtons.setSpacing(cellGap);
         leftAlignedButtons.getChildren().addAll(b1, b2, b3, b4, b5);
 
         // edit person
@@ -88,6 +89,7 @@ public class PersonView extends StandardGridPane
         refreshButton.setOnAction(e -> draw());
 
         HBox rightAlignedButtons = new HBox();
+        rightAlignedButtons.setSpacing(cellGap);
         rightAlignedButtons.getChildren().addAll(editButton, refreshButton);
 
         AnchorPane.setLeftAnchor(leftAlignedButtons, 0d);
