@@ -21,6 +21,7 @@
     <string name="menu_group_statistics">Statistikk</string>
     <string name="menu_statistics">Statistikk</string>
     <string name="summary">Oversikt</string>
+    <string name="number">Antall</string>
 
     <!-- commons -->
     <string name="theme">Tema</string>
