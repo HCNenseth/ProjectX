@@ -3,7 +3,7 @@
 #Alex
 * Bonusutregning for kjøretøy forsikring.
 * Regexifisering.
-* Lukke alle faner ved restart av prosjektet.
+* *DONE Lukke alle faner ved restart av prosjektet.*
 * Statistikk visning
     * øking/minking av antall skademeldinger innenfor en gitt tidsperiode
     * øking/minking av skademeldinger av en bestemt type innenfor en gitt tidsperiode

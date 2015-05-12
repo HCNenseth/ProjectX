@@ -39,7 +39,7 @@ public class InsuranceStatisticsView extends StandardGridPane
     {
         data = new HashMap<>();
 
-        for(InsuranceType type : InsuranceType.values()) {
+        for (InsuranceType type : InsuranceType.values()) {
             data.put(type.getValue(), (int) insurances.stream()
                     .filter(i -> i.identify().equals(type)).count());
         }

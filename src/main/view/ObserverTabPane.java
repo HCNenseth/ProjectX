@@ -84,13 +84,8 @@ public class ObserverTabPane extends TabPane implements Observer
 
     public void closeAllTabs()
     {
-        Iterator iterator = observablePaneMap.entrySet().iterator();
-        while (iterator.hasNext()) {
-            Map.Entry pair = (Map.Entry)iterator.next();
-            getTabs().removeAll((Tab)pair.getKey());
-        }
-
         observablePaneMap.clear();
+        getTabs().clear();
         Resources.inst.getSplashView().show();
     }
 
@@ -107,6 +102,8 @@ public class ObserverTabPane extends TabPane implements Observer
         tab.setOnCloseRequest(e -> closeTab(tab));
 
         getTabs().add(tab);
+
+        selectionModel.select(tab);
     }
 
     /**

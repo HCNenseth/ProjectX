@@ -12,7 +12,7 @@ import java.util.function.Consumer;
 
 
 /**
- * Created by alex on 4/23/15.
+ * Table.java
  */
 public abstract class Table<T> extends TableView<T>
 {

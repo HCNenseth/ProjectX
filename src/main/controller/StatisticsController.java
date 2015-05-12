@@ -44,7 +44,7 @@ public class StatisticsController
         PersonStatisticsView personStatisticsView = new PersonStatisticsView(
                 personList);
 
-        Resources.inst.getOtp().injectObservableTab(Loc.c("persons"),
+        Resources.inst.getOtp().injectObservableTab(Loc.c("statistics_persons"),
                 personStatisticsView.getNode(), null, true);
     }
 
@@ -53,7 +53,7 @@ public class StatisticsController
         InsuranceStatisticsView insuranceStatisticsView = new InsuranceStatisticsView(
                 insuranceList);
 
-        Resources.inst.getOtp().injectObservableTab(Loc.c("insurances"),
+        Resources.inst.getOtp().injectObservableTab(Loc.c("statistics_insurances"),
                 insuranceStatisticsView.getNode(), null, true);
     }
 
@@ -62,7 +62,7 @@ public class StatisticsController
         ClaimStatisticsView claimStatisticsView = new ClaimStatisticsView(
                 claimList);
 
-        Resources.inst.getOtp().injectObservableTab(Loc.c("claims"),
+        Resources.inst.getOtp().injectObservableTab(Loc.c("statistics_claims"),
                 claimStatisticsView.getNode(), null, true);
     }
 }
