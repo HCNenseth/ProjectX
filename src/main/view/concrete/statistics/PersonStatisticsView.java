@@ -1,14 +1,13 @@
 package main.view.concrete.statistics;
 
-import javafx.scene.chart.LineChart;
 import javafx.scene.chart.NumberAxis;
+import javafx.scene.chart.StackedAreaChart;
 import javafx.scene.chart.XYChart;
 import main.localization.Loc;
 import main.model.person.Person;
 import main.view.StandardGridPane;
 
 import java.util.List;
-import java.util.stream.IntStream;
 
 /**
  * PersonStatistics.java
@@ -46,7 +45,7 @@ public class PersonStatisticsView extends StandardGridPane
         NumberAxis yAxis = new NumberAxis();
         yAxis.setLabel(Loc.c("count"));
 
-        LineChart<Number, Number> lineChart = new LineChart<>(xAxis, yAxis);
+        StackedAreaChart<Number, Number> lineChart = new StackedAreaChart<>(xAxis, yAxis);
 
         lineChart.getData().add(getAgeData());
 
