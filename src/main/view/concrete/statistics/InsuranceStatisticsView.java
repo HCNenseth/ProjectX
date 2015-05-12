@@ -44,17 +44,10 @@ public class InsuranceStatisticsView extends StandardGridPane
     public void generateData()
     {
         data = new HashMap<>();
-        for(InsuranceType type : InsuranceType.values())
-        {
-            data.put(type.getValue(), 0);
-            for(Insurance i : Insurance.getInsurances())
-            {
-                if(i.identify().equals(type))
-                {
-                    int count = data.containsKey(type.getValue()) ? data.get(type.getValue()) : 0;
-                    data.put(type.getValue(), count + 1);
-                }
-            }
+
+        for(InsuranceType type : InsuranceType.values()) {
+            data.put(type.getValue(), (int)Insurance.getInsurances().stream()
+                    .filter(i -> i.identify().equals(type)).count());
         }
     }
 
