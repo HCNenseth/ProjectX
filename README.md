@@ -22,3 +22,7 @@ http://hg.openjdk.java.net/openjfx/8/master/rt/file/f89b7dc932af/modules/control
 
 # Resources
 http://www.iconarchive.com/show/soft-scraps-icons-by-hopstarter.1.html
+
+# Navneforslag
+https://en.wikipedia.org/wiki/Insurance
+https://en.wikipedia.org/wiki/General_average
