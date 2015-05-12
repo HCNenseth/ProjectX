@@ -9,6 +9,7 @@
     * øking/minking av skademeldinger av en bestemt type innenfor en gitt tidsperiode
     * øking/minking av de totale erstatningskostnadene
     * øking/minking av erstatningskostnadene for en gitt skadetype innenfor en gitt tidsperiode
+* Spisse unittester
 
 #HC
 * Testing
