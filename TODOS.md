@@ -13,6 +13,7 @@
 
 #HC
 * Testing
+* Språk
 
 #HP
 * Toolbar -> (refresh + edit) knapp helt til høyre.*
