@@ -8,28 +8,39 @@ import main.model.person.Person;
 import main.view.StandardGridPane;
 
 import java.util.List;
+import java.util.stream.IntStream;
 
 /**
- * Created by alex on 5/7/15.
+ * PersonStatistics.java
  */
 public class PersonStatisticsView extends StandardGridPane
 {
     private List<Person> persons;
-    private final int lowerBound = 1930;
-    private final int upperBound = 2010;
-    private final int spacing = 5;
+    private final int lowerBound;
+    private final int upperBound;
 
     public PersonStatisticsView(List<Person> persons)
     {
         super(1);
         this.persons = persons;
 
+        lowerBound = persons.stream()
+                .mapToInt(p -> p.getDateOfBirth().getYear())
+                .min()
+                .getAsInt();
+
+        upperBound = persons.stream()
+                .mapToInt(p -> p.getDateOfBirth().getYear())
+                .max()
+                .getAsInt();
+
         drawPlot();
     }
 
     private void drawPlot()
     {
-        NumberAxis xAxis = new NumberAxis(lowerBound  -1, upperBound, spacing);
+        NumberAxis xAxis = new NumberAxis();
+        xAxis.setForceZeroInRange(false);
         xAxis.setLabel(Loc.c("year"));
 
         NumberAxis yAxis = new NumberAxis();
@@ -58,7 +69,6 @@ public class PersonStatisticsView extends StandardGridPane
 
         return series;
     }
-
 
     @Override
     public StandardGridPane getNode() { return this; }
