@@ -20,6 +20,7 @@
     <string name="menu_group_edit">Endre</string>
     <string name="menu_group_statistics">Statistikk</string>
     <string name="menu_statistics">Statistikk</string>
+    <string name="summary">Oversikt</string>
 
     <!-- commons -->
     <string name="theme">Tema</string>
@@ -96,6 +97,7 @@
 
 
     <!-- car -->
+    <string name="car">Bil</string>
     <string name="car_propulsion_a">Bensin</string>
     <string name="car_propulsion_b">Diesel</string>
     <string name="car_propulsion_c">Elektrisk</string>
@@ -108,6 +110,7 @@
     <string name="model_year">Årsmodell</string>
 
     <!-- boat -->
+    <string name="boat">Båt</string>
     <string name="boat_propulsion_a">Bensin</string>
     <string name="boat_propulsion_b">Diesel</string>
     <string name="boat_propulsion_c">Enhjørnings urin</string>
@@ -123,6 +126,8 @@
     <string name="claim_type_c">Bilulykke</string>
 
     <!-- house -->
+    <string name="house">Hus</string>
+    <string name="vacation_house">Feriebolig</string>
     <string name="house_type_a">Villa</string>
     <string name="house_type_b">Leilighet</string>
     <string name="house_type_c">Husbåt</string>
@@ -153,6 +158,7 @@
     <string name="material">Materiale</string>
 
     <!-- travel -->
+    <string name="travel">Reise</string>
     <string name="continent_a">Europa</string>
     <string name="continent_b">Asia</string>
     <string name="continent_c">Afrika</string>
