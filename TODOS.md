@@ -16,10 +16,10 @@
 * Språk
 
 #HP
-* Burde ha implementert opprettetdato / endret dato for alle objekter
+* *Done - Burde ha implementert opprettetdato / endret dato for alle objekter *
 * *Done - Toolbar -> (refresh + edit) knapp helt til høyre.*
-* Statistikk visning
-    * type forsikringer rangert etter antall
+* *Done - Statistikk visning
+    * type forsikringer rangert etter antall *
 * Dokumentasjon
 
 # Super nice to have 
@@ -39,9 +39,8 @@
 * *DONE Dato-range-søk på rapport*
 * *DONE Årsfilter på rapportdata.*
 * Flyttbare faner!
-* Faneikoner (fra famfamfam kanskje)
+* *DONE Faneikoner (fra famfamfam kanskje)*
 * Automatisk refresh av fanekort
 * Shortcuts- mnemonics
 * Themevelger -> ned på splash screen nivå. ( FORSLAG: skrape themes. )
 * Finne åpne iconer.			
-

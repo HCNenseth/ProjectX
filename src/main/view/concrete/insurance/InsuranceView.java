@@ -99,6 +99,9 @@ public abstract class InsuranceView<T extends Insurance> extends StandardGridPan
         add(new Label(Loc.c("customer")), 0, rowNum);
         add(new Label(insurance.getCustomer().getName()), 1, rowNum++);
 
+        add(new Label(Loc.c("date")), 0, rowNum);
+        add(new Label(insurance.getDate().toString()), 1, rowNum++);
+
         add(new Label(Loc.c("premium")), 0, rowNum);
         add(new Label(insurance.getPremium() + ""), 1, rowNum++);
 
