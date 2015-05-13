@@ -43,7 +43,6 @@ public class PersonStatisticsView extends StandardGridPane
         xAxis.setLabel(Loc.c("year"));
 
         NumberAxis yAxis = new NumberAxis();
-        yAxis.setLabel(Loc.c("count"));
 
         StackedAreaChart<Number, Number> lineChart = new StackedAreaChart<>(xAxis, yAxis);
 

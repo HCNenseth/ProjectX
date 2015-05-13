@@ -254,6 +254,7 @@ public abstract class Claim implements Serializable, FullTextSearch, Model
     {
         return desc.toLowerCase().contains(value.toLowerCase())
                 || contacts.toLowerCase().contains(value.toLowerCase())
+                || paymentStatus.getValue().toLowerCase().contains(value.toLowerCase())
                 || getId().contains(value);
     }
 

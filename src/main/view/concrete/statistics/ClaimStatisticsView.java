@@ -1,16 +1,10 @@
 package main.view.concrete.statistics;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.scene.chart.*;
-import javafx.scene.control.Label;
-import javafx.scene.paint.Color;
 import main.localization.Loc;
 import main.model.claim.Claim;
 import main.view.StandardGridPane;
 
-import java.time.LocalDate;
-import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -42,25 +36,27 @@ public class ClaimStatisticsView extends StandardGridPane
 
      }
 
-    private void drawPlot() {
-        final NumberAxis xAxis = new NumberAxis(lowerBound, upperBound, 1);
-        final NumberAxis yAxis = new NumberAxis();
+    private void drawPlot()
+    {
 
+        final NumberAxis xAxis = new NumberAxis(lowerBound, upperBound, 1);
+        xAxis.setForceZeroInRange(false);
         xAxis.setLabel(Loc.c("month"));
 
-        final LineChart<Number, Number> lineChart = new LineChart<Number, Number>(xAxis, yAxis);
+        final NumberAxis yAxis = new NumberAxis();
 
-        lineChart.setTitle(Loc.c("claims") + " " + lowerBound + " - " + upperBound);
+        final LineChart<Number, Number> lineChart = new LineChart<>(xAxis, yAxis);
+
+        lineChart.setTitle(String.format("%s %d - %d",
+                Loc.c("claims"), lowerBound, upperBound));
 
         List<XYChart.Series> series = new LinkedList<>();
 
-        for(Claim.ClaimType type : Claim.ClaimType.values())
-        {
+        for (Claim.ClaimType type : Claim.ClaimType.values()) {
             series.add(new XYChart.Series());
         }
 
-        for(int i = lowerBound; i < upperBound; i++)
-        {
+        for (int i = lowerBound; i <= upperBound; i++) {
             final int x = i;
 
             int counter = 0;
@@ -75,18 +71,12 @@ public class ClaimStatisticsView extends StandardGridPane
             }
         }
 
-        for(XYChart.Series s : series)
-        {
+        for (XYChart.Series s : series) {
             lineChart.getData().add(s);
         }
 
         add(lineChart, 0, 0);
-
     }
-
-
-
-
 
     @Override
     public StandardGridPane getNode() { return this; }

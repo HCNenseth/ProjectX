@@ -39,9 +39,8 @@
 * *DONE Dato-range-søk på rapport*
 * *DONE Årsfilter på rapportdata.*
 * Flyttbare faner!
-* Faneikoner (fra famfamfam kanskje)
+* *DONE Faneikoner (fra famfamfam kanskje)*
 * Automatisk refresh av fanekort
 * Shortcuts- mnemonics
 * Themevelger -> ned på splash screen nivå. ( FORSLAG: skrape themes. )
 * Finne åpne iconer.			
-
