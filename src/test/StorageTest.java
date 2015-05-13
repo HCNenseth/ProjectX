@@ -228,8 +228,6 @@ public class StorageTest
         List<Claim> claimsFromFile = Claim.getClaims();
 
 
-        // TODO compare/equal the elements
-
         assertTrue(insurancesFromFile.get(0).identify().equals(InsuranceType.CAR));
         assertTrue(insurancesFromFile.get(1).identify().equals(InsuranceType.CAR));
         assertTrue(insurancesFromFile.get(2).identify().equals(InsuranceType.HOUSE));

@@ -20,10 +20,4 @@ public abstract class FormNode<T>
     public void setRequired(boolean required) { this.required = required; }
 
     public boolean getRequired() { return required; }
-
-    @Override
-    public String toString()
-    {
-        return "boop";
-    }
 }

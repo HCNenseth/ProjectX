@@ -120,6 +120,7 @@ public class VacationHouseAdapter extends InsuranceAdapter<VacationHouse>
             i.setType(type.getData());
             i.setMaterial(material.getData());
             i.setDesc(getDescription());
+            i.setDeductible(getDeductible());
             i.setStandard(standard.getData());
             i.setSquareMeter(Integer.parseInt(squareMeters.getValue()));
             i.setYear(Integer.parseInt(yearBuilt.getValue()));
@@ -134,6 +135,7 @@ public class VacationHouseAdapter extends InsuranceAdapter<VacationHouse>
                     .material(material.getData())
                     .standard(standard.getData())
                     .desc(getDescription())
+                    .deductible(getDeductible())
                     .squareMeter(Integer.parseInt(squareMeters.getValue()))
                     .year(Integer.parseInt(yearBuilt.getValue()))
                     .premium(getPremium())

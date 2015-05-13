@@ -54,8 +54,7 @@ public class App extends Application
                 Claim.setCounter(Claim.getClaims().size());
 
             } catch (IOException | ClassNotFoundException e) {
-                // TODO do something meaningful with this error.
-                System.out.println("error reading from file");
+                e.printStackTrace();
             }
         }
 

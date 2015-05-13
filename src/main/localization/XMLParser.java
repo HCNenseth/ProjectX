@@ -50,7 +50,6 @@ class XMLParser
      * This process is a bit fragile against files not being
      * XML files.
      */
-    // TODO add better protection against unknown files.
     private void readFiles()
     {
         File[] files = new File(path).listFiles();
@@ -61,7 +60,7 @@ class XMLParser
         }
 
         for (File f : files) {
-            if (f.canRead() && f.isFile()) {
+            if (f.canRead() && f.isFile() && f.getName().contains(".xml")) {
                 parseFile(f.getAbsolutePath());
             }
         }
@@ -71,7 +70,6 @@ class XMLParser
      * Inject XML file data into storage
      * @param filename - filename (absoulute) on system.
      */
-    // TODO handle exceptions better.
     private void parseFile(final String filename)
     {
         try {
