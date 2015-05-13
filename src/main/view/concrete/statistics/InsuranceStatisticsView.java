@@ -2,9 +2,9 @@ package main.view.concrete.statistics;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.geometry.Side;
 import javafx.scene.chart.*;
 import javafx.scene.control.Label;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import main.localization.Loc;
 import main.model.insurance.Insurance;
@@ -12,6 +12,7 @@ import main.model.insurance.InsuranceType;
 import main.view.StandardGridPane;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -37,12 +38,60 @@ public class InsuranceStatisticsView extends StandardGridPane
         // drawBarChart();
 
         drawPie();
-        drawPlot();
+
     }
 
-    private void drawPlot()
+    private void drawPlot(String name)
     {
+        if(getNode().getChildren().size() > 1)
+        {
+            getNode().getChildren().remove(1);
+        }
 
+        InsuranceType type = InsuranceType.HOUSE;
+        for(InsuranceType t : InsuranceType.values())
+        {
+            if(name.equals(t.getValue()))
+            {
+                type = t;
+            }
+        }
+
+        final int lowerBound = insurances.stream()
+                .mapToInt(i -> i.getDate().getYear())
+                .min()
+                .getAsInt();
+
+        final int upperBound = insurances.stream()
+                .mapToInt(i -> i.getDate().getYear())
+                .max()
+                .getAsInt();
+
+        final NumberAxis xAxis = new NumberAxis(lowerBound, upperBound, 1);
+        final NumberAxis yAxis = new NumberAxis();
+
+        xAxis.setLabel(Loc.c("year"));
+
+        final LineChart<Number, Number> lineChart = new LineChart<>(xAxis, yAxis);
+
+        lineChart.setTitle(Loc.c(type.getValue()) + " " + Loc.l("insurances") + " " + lowerBound + " - " + upperBound);
+
+        XYChart.Series series = new XYChart.Series();
+        for(int i = lowerBound; i < upperBound; i++)
+        {
+            int x = i;
+            InsuranceType t = type;
+
+            series.getData().add(new XYChart.Data<>(x, (int) insurances.stream()
+                    .filter(p -> p.identify().equals(t))
+                    .filter(d -> d.getDate().getYear() == x)
+                    .count()
+                    ));
+        }
+
+        lineChart.getData().add(series);
+
+        add(lineChart, 0, 2);
     }
 
     private void drawPie()
@@ -51,7 +100,7 @@ public class InsuranceStatisticsView extends StandardGridPane
         for(InsuranceType type : InsuranceType.values())
         {
             data.put(type.getValue(), (int) insurances.stream()
-            .filter(i -> i.identify().equals(type)).count());
+                    .filter(i -> i.identify().equals(type)).count());
         }
 
         ObservableList<PieChart.Data> pieChartData = FXCollections.observableArrayList();
@@ -62,6 +111,13 @@ public class InsuranceStatisticsView extends StandardGridPane
         chart = new PieChart(pieChartData);
         chart.setTitle(Loc.c("insurance_distribution"));
         chart.setLabelsVisible(true);
+
+        for(final PieChart.Data data : chart.getData())
+        {
+            data.getNode().addEventHandler(MouseEvent.MOUSE_PRESSED, event -> {
+                drawPlot(data.getName());
+            });
+        }
 
         final Label caption = new Label("");
         caption.setTextFill(Color.DARKORANGE);

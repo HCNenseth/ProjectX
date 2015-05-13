@@ -5,8 +5,8 @@
 * Regexifisering.
 * *DONE Lukke alle faner ved restart av prosjektet.*
 * Statistikk visning
-    * øking/minking av antall skademeldinger innenfor en gitt tidsperiode
-    * øking/minking av skademeldinger av en bestemt type innenfor en gitt tidsperiode
+    * *DONE - øking/minking av antall skademeldinger innenfor en gitt tidsperiode *
+    * *DONE - øking/minking av skademeldinger av en bestemt type innenfor en gitt tidsperiode *
     * øking/minking av de totale erstatningskostnadene
     * øking/minking av erstatningskostnadene for en gitt skadetype innenfor en gitt tidsperiode
 * Spisse unittester
@@ -16,10 +16,11 @@
 * Språk
 
 #HP
-* *Done - Burde ha implementert opprettetdato / endret dato for alle objekter *
-* *Done - Toolbar -> (refresh + edit) knapp helt til høyre.*
-* *Done - Statistikk visning
-    * type forsikringer rangert etter antall *
+* *DONE - Burde ha implementert opprettetdato / endret dato for alle objekter *
+* *DONE - Toolbar -> (refresh + edit) knapp helt til høyre.*
+* Statistikk visning
+    * DONE - type forsikringer rangert etter antall *
+    * Filtrere samtlige statistikker etter type.
 * Dokumentasjon
 
 # Super nice to have 
