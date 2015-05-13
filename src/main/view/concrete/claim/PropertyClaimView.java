@@ -5,7 +5,7 @@ import main.localization.Loc;
 import main.model.claim.property.PropertyClaim;
 
 /**
- * Created by Hans Christian on 08.05.2015.
+ * PropertyClaimView.java
  */
 public class PropertyClaimView extends ClaimView<PropertyClaim>
 {
@@ -19,6 +19,6 @@ public class PropertyClaimView extends ClaimView<PropertyClaim>
     {
         // type
         add(new Label(Loc.c("type")), 0, rowNum);
-        add(new Label(claim.identify().getValue()), 1, rowNum++);
+        add(new Label(claim.getType().getValue()), 1, rowNum++);
     }
 }

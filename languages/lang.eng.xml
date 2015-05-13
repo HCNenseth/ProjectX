@@ -65,6 +65,7 @@
     <string name="new_travel_insurance">New travel insurance</string>
 
     <!-- search -->
+    <string name="types">Types</string>
     <string name="search">Search</string>
     <string name="search_results">Search results</string>
     <string name="search_error">Keyword must contain at between 2 and 20 characters</string>
@@ -134,6 +135,7 @@
     <string name="propulsion">Propulsion</string>
 
     <!-- person -->
+    <string name="person">Person</string>
     <string name="customer_id">Customer ID</string>
     <string name="firstname">Firstname</string>
     <string name="firstname_error">Firstname must contain ...</string>
@@ -261,6 +263,7 @@
     <string name="edit_boat_claim">Edit boat claim</string>
     <string name="new_property_claim">New property claim</string>
     <string name="edit_property_claim">Edit property claim</string>
+    <string name="property_claim_type">Claim type</string>
     <string name="new_travel_claim">New travel claim</string>
     <string name="edit_travel_claim">Edit travel claim</string>
 

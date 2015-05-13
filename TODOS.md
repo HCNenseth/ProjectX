@@ -23,10 +23,10 @@
 * Dokumentasjon
 
 # Super nice to have 
-* Visning av inaktive forsikringer og kunder (diskusjon)
+* *DONE Visning av inaktive forsikringer og kunder (diskusjon)*
 * Utvide søk med kombinasjon av (n!):
-    * forsikringstype
-    * skadetype
+    * *DONE - Type*
+    * *DONE - Status*
 * Mer rapport data (copy paste)
     * selskapets totale utbetaling av erstatninger i løpet av et år
     * selskapets totale utbetaling av erstatninger for en gitt forsikringstype i løpet av et år
