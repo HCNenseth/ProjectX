@@ -32,49 +32,45 @@ public class StorageTest
 {
 
     public static final String[] firstnames = {
-            "James", "John", "Robert", "Michael", "William",
-            "David", "Richard", "Charles", "Joseph", "Thomas",
-            "Daniel", "Paul", "Christopher", "Mark", "Paul",
-            "Donald", "George", "Kenneth", "Steven", "Brian",
-            "Mary", "Linda", "Patricia", "Barbara", "Elizabeth",
-            "Jennifer", "Maria", "Susan", "Margaret", "Lisa",
-            "Nancy", "Karen", "Betty", "Sandra", "Betty", "Ruth",
-            "Laura", "Sarah", "Kimberly", "Jessica", "Shirley"
+            "Jonas", "Mathias", "Mattis", "Alexander", "Hans",
+            "Petter", "Hans-Petter", "Hans Christian", "Andreas",
+            "Elias", "Kristian", "Christian", "Sebastian", "Stian",
+            "Sander", "Markus", "Tobias", "Anders", "Lara", "Thea",
+            "Emma", "Sara", "Julie", "Ida", "Camilla", "Hanna",
+            "Nora", "Ingrid", "Emilie", "Amalie", "Hanne", "Linda",
+            "Katja", "Berit", "Kristin", "Christina", "Stine"
     };
 
     public static final String[] lastnames = {
-            "Smith", "Johnson", "Williams", "Jones", "Brown",
-            "Davis", "Miller", "Moore", "Taylor", "Jackson",
-            "Anderson", "White", "Harris", "Martin", "Garcia",
-            "Thomas", "Robinson", "Clark", "Rodriguez", "Lewis",
-            "Lee", "Walker", "Hall", "Allen", "Hernandez", "King",
-            "Wright", "Lopez", "Gonzales", "Nelson", "Perez",
-            "Turner", "Phillips", "Collins", "Stewart", "Sanchez",
-            "Morris", "Rogers", "Parker", "Evans", "Edwards", "Scott"
+            "Olsen", "Hansen", "Johnsen", "Johansen", "Larsen",
+            "Andreasen", "Pedersen", "Nilsen", "Kristiansen", "Jensen",
+            "Karlsen", "Pettersen", "Eriksen", "Berg", "Haugen", "Hagen",
+            "Dahl", "Halvorsen", "Lund", "Jakobsen", "Moen", "Gundersen",
+            "Iversen", "Strand", "Solberg", "Paulsen", "Knutsen", "Eide",
+            "Lie", "Lunde", "Moe", "Fredriksen", "Bakken", "Amundsen",
+            "Solheim", "Aas", "Myhre", "Ali", "Sandvik", "Vik", "Sandvik"
     };
 
     public static final String[] cities = {
-            "Bath", "Birmingham", "Bradford", "Brighton & Hove",
-            "Bristol", "Cambridge", "Canterbury", "Carlisle",
-            "Chelmsford", "Chester", "Coventry", "Derby",
-            "Durham", "Ely", "Exeter", "Gloucester", "Hereford",
-            "Kingston upon Hull", "Lancaster", "Leeds", "Leicester",
-            "Lincoln", "City of London", "Manchester", "Norwich",
-            "Nottingham", "Oxford", "Peterborough", "Plymouth",
-            "Portsmouth", "Preston", "Ripon", "Salford", "Salisbury",
-            "Sheffield", "Southampton", "Sunderland", "Truro", "Wakfield",
-            "Wells", "Westminister", "Winchester", "Worcester", "York"
+            "Alta", "Arendal", "Askim", "Bergen", "Brekstad", "Brevik",
+            "Brumunddal", "Bryne", "Drammen", "Egersund", "Elverum",
+            "Fagernes", "Fauske", "Flekkefjord", "Fredrikstad", "Grimstad",
+            "Halden", "Hamar", "Hammerfest", "Horten", "Kirkenes", "Kongsberg",
+            "Kopervik", "Kristiansand", "Kristiansund", "Larvik", "Molde",
+            "Moss", "Mysen", "Namsos", "Narvik", "Notodden", "Odda", "Orkanger",
+            "Oslo", "Rjukan", "Sandefjord", "Sandnes", "Sandvika", "Ski",
+            "Skien", "Sortland", "Stavern", "Stord", "Svelvik", "Trondheim",
+            "Ulsteinvik", "Vinstra"
     };
 
     public static final String[] domains = {
             "email", "yahoo", "google", "hotmail", "outlook",
-            "accident", "waterdamage", "collition", "avalanche",
-            "hurricane", "cowtipping", "naturaldisaster", "volcano",
-            "flood", "weather"
+            "generell-skade", "vannskade", "kollisjon", "steinras",
+            "storm", "kuvelting", "natur-katastrofe", "vulkan"
     };
 
     public static final String[] streetType = {
-            "Road", "Street", "Bridge", "Way", "Ground", "Place", "Crossroad"
+            "Vei", "Gate", "Bru", "Sted", "Plass", "Krysset"
     };
 
     /**
@@ -290,12 +286,12 @@ public class StorageTest
                     .streetAddress(streetName)
                     .email(email)
                     .phoneNumber(Integer.toString(randInt(20000000, 70000000)))
-                    .dateOfBirth(LocalDate.of(randInt(1930, 2014),
+                    .dateOfBirth(LocalDate.of(randInt(1930, 2000),
                             randInt(1, 12), randInt(1, 28)))
                     .build();
 
             /* add some random car insurances */
-            for (int j = 0; j < randInt(0, 10); j++) {
+            for (int j = 0; j < randInt(0, 2); j++) {
                 Car car = new Car.Builder(person, "ABC123")
                         .amount(randInt(1000, 4000))
                         .premium(randInt(300, 700))
@@ -311,7 +307,7 @@ public class StorageTest
                         .amount(randInt(4000, 10000))
                         .build();
                 /* add some random claims */
-                for (int k = 0; k < randInt(0, 5); k++) {
+                for (int k = 0; k < randInt(0, 2); k++) {
                     claims.add(new CarClaim.Builder(person, car)
                             .dateOfDamages(LocalDate.of(randInt(1960, 2014),
                                     randInt(1, 12), randInt(1, 28)))
@@ -325,7 +321,7 @@ public class StorageTest
             }
 
             /* add some random boat insurances */
-            for (int j = 0; j < randInt(0, 10); j++) {
+            for (int j = 0; j < randInt(0, 2); j++) {
                 Boat boat = new Boat.Builder(person, "ABC123")
                         .amount(randInt(1000, 4000))
                         .premium(randInt(300, 700))
@@ -337,7 +333,7 @@ public class StorageTest
                         .type(randomEnumValue(Boat.Type.class))
                         .build();
                 /* add some random claims */
-                for (int k = 0; k < randInt(0, 5); k++) {
+                for (int k = 0; k < randInt(0, 2); k++) {
                     claims.add(new BoatClaim.Builder(person, boat)
                             .dateOfDamages(LocalDate.of(randInt(1960, 2014),
                                     randInt(1, 12), randInt(1, 28)))
@@ -351,7 +347,7 @@ public class StorageTest
             }
 
             /* add some random houses */
-            for (int j = 0; j < randInt(0, 10); j++) {
+            for (int j = 0; j < randInt(0, 2); j++) {
                 House house = new House.Builder(person, streetName, randInt(1000, 9000) + "")
                         .material(randomEnumValue(House.Material.class))
                         .standard(randomEnumValue(House.Standard.class))
@@ -363,7 +359,7 @@ public class StorageTest
                         .squareMeter(randInt(30, 200))
                         .build();
                 /* add some random claims */
-                for (int k = 0; k < randInt(0, 5); k++) {
+                for (int k = 0; k < randInt(0, 2); k++) {
                     claims.add(new PropertyClaim.Builder(person, house)
                             .dateOfDamages(LocalDate.of(randInt(1960, 2014),
                                     randInt(1, 12), randInt(1, 28)))
@@ -375,7 +371,7 @@ public class StorageTest
                 insurances.add(house);
             }
 
-            for (int j = 0; j < randInt(0,10); j++) {
+            for (int j = 0; j < randInt(0, 2); j++) {
                 VacationHouse vacationHouse = new VacationHouse.Builder(person,
                         streetName, randInt(1000, 9000) + "")
                         .material(randomEnumValue(VacationHouse.Material.class))
@@ -387,7 +383,7 @@ public class StorageTest
                         .year(randInt(1900, 2014))
                         .squareMeter(randInt(30, 200))
                         .build();
-                for (int k = 0; k < randInt(0, 5); k++) {
+                for (int k = 0; k < randInt(0, 2); k++) {
                     claims.add(new PropertyClaim.Builder(person, vacationHouse)
                             .dateOfDamages(LocalDate.of(randInt(1960, 2014),
                                     randInt(1, 12), randInt(1, 28)))
@@ -400,7 +396,7 @@ public class StorageTest
             }
 
             /* add some random travel insurances */
-            for (int j = 0; j < randInt(0, 10); j++) {
+            for (int j = 0; j < randInt(0, 2); j++) {
                 Travel travel = new Travel.Builder(person)
                         .amount(randInt(1000, 4000))
                         .continent(randomEnumValue(Travel.Continent.class))
@@ -408,7 +404,7 @@ public class StorageTest
                         .deductible(randInt(4000, 12000))
                         .build();
                 /* add some random claims */
-                for (int k = 0; k < randInt(0, 5); k++) {
+                for (int k = 0; k < randInt(0, 2); k++) {
                     claims.add(new TravelClaim.Builder(person, travel)
                             .dateOfDamages(LocalDate.of(randInt(1960, 2014),
                                     randInt(1, 12), randInt(1, 28)))
