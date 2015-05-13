@@ -2,6 +2,7 @@ package main.controller;
 
 import javafx.application.Platform;
 import javafx.stage.FileChooser;
+import main.config.Config;
 import main.localization.Loc;
 import main.model.Storage;
 import main.preference.Pref;
@@ -50,6 +51,7 @@ public class MenuBar
     private void restartApp()
     {
         saveFile();
+        Resources.inst.getOtp().closeAllTabs();
         Resources.inst.getSceneSwitch().setMainWindow();
     }
 
@@ -61,6 +63,7 @@ public class MenuBar
         fc.getExtensionFilters().addAll(
                 new FileChooser.ExtensionFilter(Loc.c("data_files"), "*.dat")
         );
+        fc.setInitialDirectory(new File(Config.DATA));
         File file = fc.showOpenDialog(null);
 
         if (file != null) {
@@ -84,7 +87,8 @@ public class MenuBar
         fc.getExtensionFilters().addAll(
                 new FileChooser.ExtensionFilter(Loc.c("data_files"), "*.dat")
         );
-        File file = fc.showOpenDialog(null);
+        fc.setInitialDirectory(new File(Config.DATA));
+        File file = fc.showSaveDialog(null);
 
         if (file != null) {
             if (!file.getName().contains(".dat")) {

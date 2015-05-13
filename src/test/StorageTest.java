@@ -85,7 +85,7 @@ public class StorageTest
     {
         String[] strings = {"Input 1", "Input 2", "Input 3"};
         Integer[] ints = {2, 3, 5, 7, 11, 13};
-        Storage.injectFilename("strings.dat");
+        Storage.injectFilename("data/strings.dat");
 
         List<String> stringsToFile = new LinkedList<>();
         List<Integer> intsToFile = new LinkedList<>();
@@ -122,7 +122,7 @@ public class StorageTest
     @Test
     public void testInsurance()
     {
-        Storage.injectFilename("insurances.dat");
+        Storage.injectFilename("data/insurances.dat");
 
         List<Person> persons = new LinkedList<>();
         List<Insurance> insurances = new LinkedList<>();
@@ -267,7 +267,7 @@ public class StorageTest
          */
         int count = 2000;
 
-        Storage.injectFilename("persons_big.dat");
+        Storage.injectFilename("data/persons_big.dat");
 
         List<Person> persons = new LinkedList<>();
         List<Insurance> insurances = new LinkedList<>();
