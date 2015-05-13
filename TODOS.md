@@ -1,7 +1,7 @@
 #Condensed list of todos
 
 #Alex
-* Bonusutregning for kjøretøy forsikring.
+* *DONE Bonusutregning for kjøretøy forsikring.*
 * Regexifisering.
 * *DONE Lukke alle faner ved restart av prosjektet.*
 * Statistikk visning

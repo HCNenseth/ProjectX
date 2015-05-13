@@ -1,4 +1,4 @@
-package main.view.concrete;
+package main.view.concrete.report;
 
 import javafx.scene.Node;
 import javafx.scene.control.Label;
