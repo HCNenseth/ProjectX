@@ -227,7 +227,7 @@ public abstract class Claim implements Serializable, FullTextSearch, Model
     {
         return new File(Config.UPLOADS + getFilePathImage());
     }
-    
+
     /* STATIC */
     public static List<Claim> getClaims()
     {

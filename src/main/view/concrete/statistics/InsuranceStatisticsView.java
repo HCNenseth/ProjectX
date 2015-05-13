@@ -18,7 +18,8 @@ import java.util.List;
 public class InsuranceStatisticsView extends StandardGridPane
 {
     private List<Insurance> insurances;
-    private HashMap<String, Integer> data, histData;
+    private HashMap<String, Integer> data;
+    private HashMap<LocalDate, HashMap<String, Integer>> histData;
     private PieChart chart;
 
     public InsuranceStatisticsView(List<Insurance> insurances)
@@ -28,6 +29,9 @@ public class InsuranceStatisticsView extends StandardGridPane
 
         // generate data
         generateData();
+
+        // generate historical data
+        generateHistoricData();
 
         // show data as pie chart
         drawPieChart();
@@ -46,66 +50,30 @@ public class InsuranceStatisticsView extends StandardGridPane
         }
     }
 
-    public boolean isQuarterlyEqual(LocalDate date)
-    {
-        LocalDate b = LocalDate.now();
-
-        return (date.getYear() == b.getYear())
-                && (inPartition(date.getMonthValue()) == inPartition(b.getMonthValue()));
-        /*
-        if(date.getYear() == b.getYear())
-        {
-            if( quarter ( date.getMonthValue() ) == quarter(b.getMonthValue() ) )
-            {
-                return true;
-            }
-        }
-        return false;
-        */
-    }
-
-    public int inPartition(int x)
-    {
-        int[][] p = {{1,2,3},{4,5,6},{7,8,9},{10,11,12}};
-
-        for (int i = 0; i < p.length; i++)
-            for (int j = 0; j < p[i].length; j++)
-                if (p[i][j] == x) return i;
-
-        return -1;
-    }
-
-    public int quarter(int month)
-    {
-        if(month <= 3)
-        {
-            return 1;
-        }
-        else if(month <= 6)
-        {
-            return 2;
-        }
-        else if(month <= 9)
-        {
-            return 3;
-        }
-        else
-        {
-            return 4;
-        }
-    }
-
     public void generateHistoricData()
     {
         histData = new HashMap<>();
+
         LocalDate startDate = LocalDate.of(2010, 1, 1);
         LocalDate endDate = LocalDate.now();
 
+        for(LocalDate date = startDate; date.isAfter(endDate) ||
+                    date.isEqual(endDate);
+            date = date.plusYears(1))
+        {
+            final LocalDate x = date;
 
+            HashMap<String, Integer> tmp = new HashMap<>();
 
-        for(InsuranceType type : InsuranceType.values()) {
-            histData.put(type.getValue(), (int) insurances.stream()
-                    .filter(i -> i.identify().equals(type)).count());
+            for(InsuranceType type : InsuranceType.values())
+            {
+                tmp.put(type.getValue(), (int) insurances.stream()
+                        .filter(i -> i.getDate().getYear() == x.getYear())
+                        .filter(i -> i.identify().equals(type))
+                        .count());
+            }
+
+            histData.put(date, tmp);
         }
 
     }
