@@ -1,5 +1,6 @@
 package main.controller;
 
+import main.config.Config;
 import main.localization.Loc;
 import main.model.insurance.InsuranceType;
 import main.model.insurance.Insurance;
@@ -56,7 +57,7 @@ public class InsuranceController
         insurance.setOnDoneAction(InsuranceController::view);
         f.injectAdapter(insurance);
         Resources.inst.getOtp().injectObservableTab(title,
-                f.getForm(), f, true);
+                f.getForm(), f, Config.INSURANCE_TAB_IMAGE, true);
     }
 
     public static void view(Insurance insurance)
@@ -71,27 +72,27 @@ public class InsuranceController
             case CAR:
                 view = new CarView((Car)insurance);
                 Resources.inst.getOtp().injectObservableTab(Loc.c("car_insurance"),
-                        view.getNode(), insurance, true);
+                        view.getNode(), insurance, Config.INSURANCE_TAB_IMAGE, true);
                 return;
             case BOAT:
                 view = new BoatView((Boat)insurance);
                 Resources.inst.getOtp().injectObservableTab(Loc.c("boat_insurance"),
-                        view.getNode(), insurance, true);
+                        view.getNode(), insurance, Config.INSURANCE_TAB_IMAGE, true);
                 return;
             case HOUSE:
                 view = new HouseView((House)insurance);
                 Resources.inst.getOtp().injectObservableTab(Loc.c("house_insurance"),
-                        view.getNode(), insurance, true);
+                        view.getNode(), insurance, Config.INSURANCE_TAB_IMAGE, true);
                 return;
             case VACATION_HOUSE:
                 view = new VacationHouseView((VacationHouse)insurance);
                 Resources.inst.getOtp().injectObservableTab(Loc.c("vacation_house_insurance"),
-                        view.getNode(), insurance, true);
+                        view.getNode(), insurance, Config.INSURANCE_TAB_IMAGE, true);
                 return;
             case TRAVEL:
                 view = new TravelView((Travel)insurance);
                 Resources.inst.getOtp().injectObservableTab(Loc.c("travel_insurance"),
-                        view.getNode(), insurance, true);
+                        view.getNode(), insurance, Config.INSURANCE_TAB_IMAGE, true);
                 return;
             default:
                 throw new IllegalStateException("Unknown Insurance type");
@@ -135,6 +136,6 @@ public class InsuranceController
         f.injectAdapter(insuranceAdapter);
 
         Resources.inst.getOtp().injectObservableTab(insurance.identify().getValue(),
-                f.getForm(), insurance, true);
+                f.getForm(), insurance, Config.INSURANCE_TAB_IMAGE, true);
     }
 }

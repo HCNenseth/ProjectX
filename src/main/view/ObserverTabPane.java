@@ -4,7 +4,9 @@ import javafx.scene.Node;
 import javafx.scene.control.SingleSelectionModel;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
-import main.model.Model;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import main.config.Config;
 
 import java.util.*;
 
@@ -89,17 +91,19 @@ public class ObserverTabPane extends TabPane implements Observer
         Resources.inst.getSplashView().show();
     }
 
-    public void injectOfflineTab(String title,
-                                 Node content, boolean closeable)
+    public void injectOfflineTab(String title, Node content,
+                                 String image, boolean closeable)
     {
         Resources.inst.getSplashView().hide();
 
         BasePane bp = new BasePane(title);
         bp.setContent(content);
+
         Tab tab = new Tab(title);
         tab.setContent(bp);
         tab.setClosable(closeable);
         tab.setOnCloseRequest(e -> closeTab(tab));
+        tab.setGraphic(new ImageView(new Image(Config.IMAGES + image)));
 
         getTabs().add(tab);
 
@@ -114,7 +118,7 @@ public class ObserverTabPane extends TabPane implements Observer
      * @param closeable - tab attr
      */
     public void injectObservableTab(String title, Node content,
-                                   Object ref, boolean closeable)
+                                   Object ref, String image, boolean closeable)
     {
         // hide splash view...
         Resources.inst.getSplashView().hide();
@@ -127,6 +131,7 @@ public class ObserverTabPane extends TabPane implements Observer
         tab.setContent(obsPane.getPane());
         tab.closableProperty().set(closeable);
         tab.setOnCloseRequest(e -> closeTab(tab));
+        tab.setGraphic(new ImageView(new Image(Config.IMAGES + image)));
 
         // Add tab to tab pane
         getTabs().addAll(tab);

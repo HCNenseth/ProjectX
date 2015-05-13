@@ -1,5 +1,6 @@
 package main.controller;
 
+import main.config.Config;
 import main.localization.Loc;
 import main.model.claim.Claim;
 import main.model.claim.property.PropertyClaim;
@@ -52,7 +53,7 @@ public class ClaimController
         f.injectAdapter(claimAdapter);
 
         Resources.inst.getOtp().injectObservableTab(Loc.c(title),
-                f.getForm(), f, true);
+                f.getForm(), f, Config.CLAIM_TAB_IMAGE, true);
     }
 
     public static void view(Claim claim)
@@ -81,7 +82,7 @@ public class ClaimController
         }
 
         Resources.inst.getOtp().injectObservableTab(Loc.c("claim"),
-                view.getNode(), claim, true);
+                view.getNode(), claim, Config.CLAIM_TAB_IMAGE, true);
     }
 
     public static void edit(Claim claim)
@@ -118,6 +119,6 @@ public class ClaimController
         f.injectAdapter(claimAdapter);
 
         Resources.inst.getOtp().injectObservableTab(Loc.c(title),
-                f.getForm(), claim, true);
+                f.getForm(), claim, Config.CLAIM_TAB_IMAGE, true);
     }
 }

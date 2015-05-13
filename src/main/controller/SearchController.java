@@ -1,5 +1,6 @@
 package main.controller;
 
+import main.config.Config;
 import main.localization.Loc;
 import main.model.Model;
 import main.model.Status;
@@ -38,7 +39,7 @@ class SearchController
         f.injectAdapter(searchAdapter);
 
         Resources.inst.getOtp().injectOfflineTab(Loc.c("search"),
-                f.getForm(), true);
+                f.getForm(), Config.SEARCH_TAB_IMAGE, true);
     }
 
     private void search(Search search)

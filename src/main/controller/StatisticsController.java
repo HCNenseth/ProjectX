@@ -1,5 +1,6 @@
 package main.controller;
 
+import main.config.Config;
 import main.localization.Loc;
 import main.model.claim.Claim;
 import main.model.insurance.Insurance;
@@ -45,7 +46,7 @@ public class StatisticsController
                 personList);
 
         Resources.inst.getOtp().injectObservableTab(Loc.c("statistics_persons"),
-                personStatisticsView.getNode(), null, true);
+                personStatisticsView.getNode(), null, Config.STATS_TAB_IMAGE, true);
     }
 
     public static void loadInsuranceStatistics(List<Insurance> insuranceList)
@@ -54,7 +55,7 @@ public class StatisticsController
                 insuranceList);
 
         Resources.inst.getOtp().injectObservableTab(Loc.c("statistics_insurances"),
-                insuranceStatisticsView.getNode(), null, true);
+                insuranceStatisticsView.getNode(), null, Config.STATS_TAB_IMAGE, true);
     }
 
     public static void loadClaimsStatistics(List<Claim> claimList)
@@ -63,6 +64,6 @@ public class StatisticsController
                 claimList);
 
         Resources.inst.getOtp().injectObservableTab(Loc.c("statistics_claims"),
-                claimStatisticsView.getNode(), null, true);
+                claimStatisticsView.getNode(), null, Config.STATS_TAB_IMAGE, true);
     }
 }

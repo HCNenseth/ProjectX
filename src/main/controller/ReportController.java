@@ -1,5 +1,6 @@
 package main.controller;
 
+import main.config.Config;
 import main.localization.Loc;
 import main.model.claim.Claim;
 import main.model.insurance.Insurance;
@@ -45,20 +46,20 @@ public class ReportController
     {
         PersonReportView reportView = new PersonReportView(personsList);
         Resources.inst.getOtp().injectObservableTab(title,
-                reportView.getNode(), null, true);
+                reportView.getNode(), null, Config.REPORT_TAB_IMAGE, true);
     }
 
     public static void loadInsuranceReport(List<Insurance> insuranceList, String title)
     {
         InsuranceReportView reportView = new InsuranceReportView(insuranceList);
         Resources.inst.getOtp().injectObservableTab(title,
-                reportView.getNode(), null, true);
+                reportView.getNode(), null, Config.REPORT_TAB_IMAGE, true);
     }
 
     public static void loadClaimReport(List<Claim> claimList, String title)
     {
         ClaimReportView reportView = new ClaimReportView(claimList);
         Resources.inst.getOtp().injectObservableTab(title,
-                reportView.getNode(), null, true);
+                reportView.getNode(), null, Config.REPORT_TAB_IMAGE, true);
     }
 }

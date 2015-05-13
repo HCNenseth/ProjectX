@@ -19,6 +19,14 @@ public class Config
     public static final String UPLOADS = "uploads/";
     public static final String DATA = "data/";
 
+    public static final String PERSON_TAB_IMAGE = "user.png";
+    public static final String INSURANCE_TAB_IMAGE = "folder.png";
+    public static final String CLAIM_TAB_IMAGE = "package.png";
+    public static final String SEARCH_TAB_IMAGE = "magnifier.png";
+    public static final String STATS_TAB_IMAGE = "chart_pie.png";
+    public static final String REPORT_TAB_IMAGE = "information.png";
+    public static final String GENERIC_TAB_IMAGE = "tab.png";
+
     public static final double HEIGHT = Screen.getPrimary().getVisualBounds().getHeight() * 0.9;
     public static final double WIDTH = Screen.getPrimary().getVisualBounds().getWidth() * 0.9;
     public static final int PD_HEIGHT = 400, PD_WIDTH = 500;

@@ -1,5 +1,6 @@
 package main.controller;
 
+import main.config.Config;
 import main.localization.Loc;
 import main.model.person.Person;
 import main.view.Resources;
@@ -25,7 +26,7 @@ public class PersonController
         f.injectAdapter(personAdapter);
 
         Resources.inst.getOtp().injectObservableTab(Loc.c("new_customer"),
-                f.getForm(), f, true);
+                f.getForm(), f, Config.PERSON_TAB_IMAGE, true);
     }
 
     public static void view(Person person)
@@ -37,7 +38,7 @@ public class PersonController
         PersonView personView = new PersonView(person);
 
         Resources.inst.getOtp().injectObservableTab(person.getName(),
-                personView.getNode(), person, true);
+                personView.getNode(), person, Config.PERSON_TAB_IMAGE, true);
     }
 
     public static void edit(Person person)
@@ -51,6 +52,6 @@ public class PersonController
         f.injectAdapter(personAdapter);
 
         Resources.inst.getOtp().injectObservableTab(person.getName(),
-                f.getForm(), person, true);
+                f.getForm(), person, Config.PERSON_TAB_IMAGE, true);
     }
 }

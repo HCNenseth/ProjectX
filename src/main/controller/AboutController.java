@@ -1,5 +1,6 @@
 package main.controller;
 
+import main.config.Config;
 import main.localization.Loc;
 import main.view.Resources;
 import main.view.concrete.AboutView;
@@ -15,7 +16,7 @@ public class AboutController
     {
         AboutView view = new AboutView();
         Resources.inst.getOtp().injectObservableTab(Loc.c("about"),
-                view.getNode(), null, true);
+                view.getNode(), null, Config.GENERIC_TAB_IMAGE, true);
     }
 
 }
