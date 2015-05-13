@@ -280,7 +280,7 @@
     <string name="average_claims_per_customer">Average claims per customer</string>
     <string name="total_insurance_count">Total insurance count</string>
     <string name="average_claims_per_insurance">Average claims per insurance</string>
-    <string name="total_claims_count">Total claims count</string>
+    <string name="total_claims_count">Total claim count</string>
     <string name="total_car_insurance_count">Total of car insurances</string>
     <string name="total_boat_insurance_count">Total of boat insurances</string>
     <string name="total_house_insurance_count">Total of house insurances</string>
@@ -292,6 +292,9 @@
     <string name="total_house_insurance_claim_count">Total of house insurance claims</string>
     <string name="total_vacation_house_insurance_claim_count">Total of vacation house insurance claims</string>
     <string name="total_travel_insurance_claim_count">Total of travel insurance claims</string>
+
+    <string name="total_claim_amount">Total claim amount</string>
+    <string name="total_claim_deductible">Total claim deductible</string>
 
     <string name="average_car_insurance_claim">Average of claims per car insurance</string>
     <string name="average_boat_insurance_claim">Average of claims per boat insurance</string>

@@ -41,5 +41,13 @@ public class ClaimReportView extends ReportView
 
         addKey(Loc.c("total_claims_count"));
         addValue(String.format("%d", claimList.size()));
+
+        addKey(Loc.c("total_claim_amount"));
+        addValue(String.format("%.2f",
+                (float)claimList.stream().mapToDouble(c -> c.getAmount()).sum()));
+
+        addKey(Loc.c("total_claim_deductible"));
+        addValue(String.format("%.2f",
+                (float)claimList.stream().mapToDouble(c -> c.getDeductible()).sum()));
     }
 }
