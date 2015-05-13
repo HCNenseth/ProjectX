@@ -66,6 +66,7 @@ public class ClaimStatisticsView extends StandardGridPane
             int counter = 0;
             for(Claim.ClaimType type : Claim.ClaimType.values())
             {
+                series.get(counter).setName(Loc.c(type.getValue()));
                 series.get(counter++).getData().add(new XYChart.Data<>(x, (int) claims.stream()
                         .filter(p -> p.identify().equals(type))
                         .filter(c -> c.getDate().getYear() == x)
