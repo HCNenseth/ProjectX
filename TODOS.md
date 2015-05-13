@@ -16,10 +16,10 @@
 * Språk
 
 #HP
-* Burde ha implementert opprettetdato / endret dato for alle objekter
+* *Done - Burde ha implementert opprettetdato / endret dato for alle objekter *
 * *Done - Toolbar -> (refresh + edit) knapp helt til høyre.*
-* Statistikk visning
-    * type forsikringer rangert etter antall
+* *Done - Statistikk visning
+    * type forsikringer rangert etter antall *
 * Dokumentasjon
 
 # Super nice to have 
