@@ -87,4 +87,11 @@ public class BoatClaim extends Claim
     {
         return ModelType.CLAIM;
     }
+
+    @Override
+    public boolean query(String value)
+    {
+        return super.query(value)
+                || (type != null && type.getValue().toLowerCase().contains(value.toLowerCase()));
+    }
 }

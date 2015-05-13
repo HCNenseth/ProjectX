@@ -59,7 +59,6 @@ public class CarClaim extends Claim
         {
             return new CarClaim(this);
         }
-
     }
 
 
@@ -112,5 +111,12 @@ public class CarClaim extends Claim
     public ModelType getModelType()
     {
         return ModelType.CLAIM;
+    }
+
+    @Override
+    public boolean query(String value)
+    {
+        return super.query(value)
+                || (type != null && type.getValue().toLowerCase().contains(value.toLowerCase()));
     }
 }
