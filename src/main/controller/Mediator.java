@@ -22,7 +22,7 @@ public enum Mediator
                 AboutController.view();
                 break;
             case REPORT:
-                ReportController.view();
+                ReportController.view(p);
                 break;
             case STATISTICS:
                 StatisticsController.view(p);
