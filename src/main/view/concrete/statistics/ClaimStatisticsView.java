@@ -43,7 +43,7 @@ public class ClaimStatisticsView extends StandardGridPane
      }
 
     private void drawPlot() {
-        final NumberAxis xAxis = new NumberAxis();
+        final NumberAxis xAxis = new NumberAxis(lowerBound, upperBound, 1);
         final NumberAxis yAxis = new NumberAxis();
 
         xAxis.setLabel(Loc.c("month"));
