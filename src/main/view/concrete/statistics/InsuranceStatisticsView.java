@@ -28,27 +28,49 @@ public class InsuranceStatisticsView extends StandardGridPane
         this.insurances = insurances;
 
         // generate data
-        generateData();
-
+        // generateData();
         // generate historical data
-        generateHistoricData();
-
+        // generateHistoricData();
         // show data as pie chart
-        drawPieChart();
-
+        // drawPieChart();
         // show data as graph
-        drawBarChart();
+        // drawBarChart();
+
+        drawPie();
+        drawPlot();
     }
 
-    public void generateData()
+    private void drawPlot()
+    {
+
+    }
+
+    private void drawPie()
     {
         data = new HashMap<>();
-
-        for (InsuranceType type : InsuranceType.values()) {
+        for(InsuranceType type : InsuranceType.values())
+        {
             data.put(type.getValue(), (int) insurances.stream()
-                    .filter(i -> i.identify().equals(type)).count());
+            .filter(i -> i.identify().equals(type)).count());
         }
+
+        ObservableList<PieChart.Data> pieChartData = FXCollections.observableArrayList();
+
+        data.entrySet().stream().forEach(e ->
+                pieChartData.add(new PieChart.Data(e.getKey(), e.getValue())));
+
+        chart = new PieChart(pieChartData);
+        chart.setTitle(Loc.c("insurance_distribution"));
+        chart.setLabelsVisible(true);
+
+        final Label caption = new Label("");
+        caption.setTextFill(Color.DARKORANGE);
+        caption.setStyle("-fx-font: 24 arial");
+
+        add(chart, 0, 0);
+
     }
+
 
     public void generateHistoricData()
     {
@@ -76,26 +98,6 @@ public class InsuranceStatisticsView extends StandardGridPane
             histData.put(date, tmp);
         }
 
-    }
-
-    public void drawPieChart()
-    {
-
-        ObservableList<PieChart.Data> pieChartData = FXCollections.observableArrayList();
-
-        data.entrySet().stream().forEach(e ->
-            pieChartData.add(new PieChart.Data(e.getKey(), e.getValue())));
-
-        chart = new PieChart(pieChartData);
-        chart.setTitle(Loc.c("insurance_distribution"));
-        chart.setLabelsVisible(false);
-        chart.setLegendSide(Side.TOP);
-
-        final Label caption = new Label("");
-        caption.setTextFill(Color.DARKORANGE);
-        caption.setStyle("-fx-font: 24 arial");
-
-        add(chart, 0, 0);
     }
 
     public void drawBarChart()
@@ -128,9 +130,6 @@ public class InsuranceStatisticsView extends StandardGridPane
         lineChart.setTitle(Loc.c("Total cost per insurance type"));
 
         XYChart.Series series = new XYChart.Series();
-
-
-
     }
 
     @Override
