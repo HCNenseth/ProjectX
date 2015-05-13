@@ -57,7 +57,7 @@ public class PersonStatisticsView extends StandardGridPane
         XYChart.Series<Number, Number> series = new XYChart.Series<>();
         series.setName(Loc.c("age"));
 
-        for (int i = lowerBound; i < upperBound; i++) {
+        for (int i = lowerBound; i <= upperBound; i++) {
             final int x = i;
 
             series.getData().add(new XYChart.Data<>(x,
