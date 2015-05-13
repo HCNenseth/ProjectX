@@ -11,6 +11,8 @@ public interface FullTextSearch
 
     LocalDate getDate();
 
+    LocalDate getEdited();
+
     Status getStatus();
 
     default boolean between(LocalDate from, LocalDate to)

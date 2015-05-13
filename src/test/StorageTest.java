@@ -293,6 +293,8 @@ public class StorageTest
             /* add some random car insurances */
             for (int j = 0; j < randInt(0, 2); j++) {
                 Car car = new Car.Builder(person, "ABC123")
+                        .date(LocalDate.of(randInt(1970, 2015),
+                                randInt(1,12), randInt(1,28)))
                         .amount(randInt(1000, 4000))
                         .premium(randInt(300, 700))
                         .deductible(randInt(4000, 12000))
@@ -323,6 +325,8 @@ public class StorageTest
             /* add some random boat insurances */
             for (int j = 0; j < randInt(0, 2); j++) {
                 Boat boat = new Boat.Builder(person, "ABC123")
+                        .date(LocalDate.of(randInt(1970, 2015),
+                                randInt(1,12), randInt(1,28)))
                         .amount(randInt(1000, 4000))
                         .premium(randInt(300, 700))
                         .deductible(randInt(4000, 12000))
@@ -351,6 +355,8 @@ public class StorageTest
                 House house = new House.Builder(person, streetName, randInt(1000, 9000) + "")
                         .material(randomEnumValue(House.Material.class))
                         .standard(randomEnumValue(House.Standard.class))
+                        .date(LocalDate.of(randInt(1970, 2015),
+                                randInt(1,12), randInt(1,28)))
                         .type(randomEnumValue(House.Type.class))
                         .amount(randInt(1000, 4000))
                         .premium(randInt(300, 700))
@@ -379,6 +385,8 @@ public class StorageTest
                         .type(randomEnumValue(VacationHouse.Type.class))
                         .amount(randInt(1000, 4000))
                         .premium(randInt(300, 700))
+                        .date(LocalDate.of(randInt(1970, 2015),
+                                randInt(1,12), randInt(1,28)))
                         .deductible(randInt(4000, 12000))
                         .year(randInt(1900, 2014))
                         .squareMeter(randInt(30, 200))
@@ -400,6 +408,8 @@ public class StorageTest
                 Travel travel = new Travel.Builder(person)
                         .amount(randInt(1000, 4000))
                         .continent(randomEnumValue(Travel.Continent.class))
+                        .date(LocalDate.of(randInt(1970, 2015),
+                                randInt(1,12), randInt(1,28)))
                         .premium(randInt(300, 700))
                         .deductible(randInt(4000, 12000))
                         .build();

@@ -135,8 +135,8 @@ public abstract class Claim implements Serializable, FullTextSearch, Model
             setContacts(contacts);
         } else {
             this.contacts += "\n" + contacts;
-            this.lastEdited = LocalDate.now();
         }
+        this.lastEdited = LocalDate.now();
     }
 
     public void setAmount(double amount)
@@ -261,5 +261,11 @@ public abstract class Claim implements Serializable, FullTextSearch, Model
     public LocalDate getDate()
     {
         return dateOfDamages;
+    }
+
+    @Override
+    public LocalDate getEdited()
+    {
+        return lastEdited;
     }
 }

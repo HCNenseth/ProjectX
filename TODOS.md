@@ -36,8 +36,8 @@
     * selskapets forsikringspremieinntekter på en gitt forsikringskunde i løpet av kundeforholdet
 
 # Nice to have (bonus oppgaver)
-* Dato-range-søk på rapport
-* Årsfilter på rapportdata.
+* *DONE Dato-range-søk på rapport*
+* *DONE Årsfilter på rapportdata.*
 * Flyttbare faner!
 * Faneikoner (fra famfamfam kanskje)
 * Automatisk refresh av fanekort
