@@ -46,9 +46,9 @@ public class ClaimStatisticsView extends StandardGridPane
         final NumberAxis xAxis = new NumberAxis(lowerBound, upperBound, 1);
         final NumberAxis yAxis = new NumberAxis();
 
-        xAxis.setLabel(Loc.c("month"));
+        xAxis.setLabel(Loc.c("year"));
 
-        final LineChart<Number, Number> lineChart = new LineChart<Number, Number>(xAxis, yAxis);
+        final LineChart<Number, Number> lineChart = new LineChart<>(xAxis, yAxis);
 
         lineChart.setTitle(Loc.c("claims") + " " + lowerBound + " - " + upperBound);
 
@@ -66,12 +66,12 @@ public class ClaimStatisticsView extends StandardGridPane
             int counter = 0;
             for(Claim.ClaimType type : Claim.ClaimType.values())
             {
-                series.get(counter).setName(Loc.c(type.getValue()));
-                series.get(counter++).getData().add(new XYChart.Data<>(x, (int) claims.stream()
+                series.get(counter).getData().add(new XYChart.Data<>(x, claims.stream()
                         .filter(p -> p.identify().equals(type))
                         .filter(c -> c.getDate().getYear() == x)
                         .count()
                 ));
+                series.get(counter++).setName(Loc.c(type.getValue()));
             }
         }
 
