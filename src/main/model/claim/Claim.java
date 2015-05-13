@@ -96,71 +96,65 @@ public abstract class Claim implements Serializable, FullTextSearch, Model
     public void setDateOfDamages(LocalDate dateOfDamages)
     {
         this.dateOfDamages = dateOfDamages;
+        this.lastEdited = LocalDate.now();
     }
 
     public void setClaimDate(LocalDate claimDate)
     {
         this.claimDate = claimDate;
+        this.lastEdited = LocalDate.now();
     }
 
     public void setDesc(String desc)
     {
         this.desc = desc;
+        this.lastEdited = LocalDate.now();
     }
 
-    /**
-     * Claim payment status.
-     * @param paymentStatus
-     */
     public void setPaymentStatus(PaymentStatus paymentStatus)
     {
         this.paymentStatus = paymentStatus;
+        this.lastEdited = LocalDate.now();
     }
 
-    /**
-     * Claim status.
-     * @param status
-     */
     public void setStatus(Status status)
     {
         this.status = status;
+        this.lastEdited = LocalDate.now();
     }
 
-    /**
-     * Setting the contacts info for one witness.
-     * @param contacts
-     */
     public void setContacts(String contacts)
     {
         this.contacts = contacts;
+        this.lastEdited = LocalDate.now();
     }
 
-    /**
-     * Setting the contacts info for multiple witnesses.
-     * @param contacts
-     */
     public void addContacts(String contacts)
     {
         if(this.contacts.equals("")) {
             setContacts(contacts);
         } else {
             this.contacts += "\n" + contacts;
+            this.lastEdited = LocalDate.now();
         }
     }
 
     public void setAmount(double amount)
     {
         this.amount = amount;
+        this.lastEdited = LocalDate.now();
     }
 
     public void setFilePathImage(String filePathImage)
     {
         this.filePathImage = filePathImage;
+        this.lastEdited = LocalDate.now();
     }
 
     public void setDeductible(double deductible)
     {
         this.deductible = deductible;
+        this.lastEdited = LocalDate.now();
     }
 
     /* Getters */
@@ -233,7 +227,7 @@ public abstract class Claim implements Serializable, FullTextSearch, Model
     {
         return new File(Config.UPLOADS + getFilePathImage());
     }
-
+    
     /* STATIC */
     public static List<Claim> getClaims()
     {

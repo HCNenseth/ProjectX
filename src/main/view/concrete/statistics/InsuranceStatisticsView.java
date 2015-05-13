@@ -101,15 +101,7 @@ public class InsuranceStatisticsView extends StandardGridPane
         LocalDate startDate = LocalDate.of(2010, 1, 1);
         LocalDate endDate = LocalDate.now();
 
-        for(LocalDate date = startDate; date.isBefore(endDate); date = date.plusMonths(3) )
-        {
 
-            for(InsuranceType type : InsuranceType.values() )
-            {
-                histData.put(type.getValue(), insurances.stream()
-                        .filter(i -> i.identify().equals(type)).filter()
-            }
-        }
 
         for(InsuranceType type : InsuranceType.values()) {
             histData.put(type.getValue(), (int) insurances.stream()
