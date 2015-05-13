@@ -27,6 +27,7 @@ public abstract class Insurance<C extends Claim> implements
     private double amount;
     private double deductible;
     private LocalDate date;
+    private LocalDate lastEdited;
     private String desc;
     private Status status;
 
@@ -47,6 +48,7 @@ public abstract class Insurance<C extends Claim> implements
         this.status = ib.getStatus();
         this.claims = ib.getClaimsList();
         id = counter++;
+        lastEdited = null;
 
         customer.addInsurance(this);
     }
@@ -87,35 +89,46 @@ public abstract class Insurance<C extends Claim> implements
         return claims;
     }
 
+    public LocalDate getLastEdited()
+    {
+        return lastEdited;
+    }
+
     /* SETTERS */
     public void setDesc(String desc)
     {
         this.desc = desc;
+        this.lastEdited = LocalDate.now();
     }
 
     public void setPremium(double val)
     {
         premium = val;
+        this.lastEdited = LocalDate.now();
     }
 
     public void setAmount(double val)
     {
         amount = val;
+        this.lastEdited = LocalDate.now();
     }
 
     public void setDeductible(double val)
     {
         deductible = val;
+        this.lastEdited = LocalDate.now();
     }
 
-    public void setStatus(Status s)
+    public void setStatus(Status status)
     {
-        status = s;
+        this.status = status;
+        this.lastEdited = LocalDate.now();
     }
 
     public void addClaim(C claim)
     {
         claims.add(claim);
+        this.lastEdited = LocalDate.now();
     }
 
     /* STATIC */

@@ -31,6 +31,9 @@ public class Person implements Serializable, FullTextSearch, Model
     private String phoneNumber;
     private String email;
 
+    private LocalDate registrationDate;
+    private LocalDate lastEdited;
+
     private Status status;
 
     private List<Insurance> insurances;
@@ -156,6 +159,8 @@ public class Person implements Serializable, FullTextSearch, Model
         city = builder.city;
         status = builder.status;
         id = counter++;
+        lastEdited = null;
+        registrationDate = LocalDate.now();
 
         insurances = new LinkedList<>();
         claims = new LinkedList<>();
@@ -180,52 +185,71 @@ public class Person implements Serializable, FullTextSearch, Model
     public void setFirstname(String firstname)
     {
         this.firstname = firstname;
+        this.lastEdited = LocalDate.now();
     }
 
     public void setLastname(String lastname)
     {
         this.lastname = lastname;
+        this.lastEdited = LocalDate.now();
     }
 
     public void setStreetAddress(String streetAddress)
     {
         this.streetAddress = streetAddress;
+        this.lastEdited = LocalDate.now();
     }
 
     public void setCity(String city)
     {
         this.city = city;
+        this.lastEdited = LocalDate.now();
     }
 
     public void setPostalCode(String postalCode)
     {
         this.postalCode = postalCode;
+        this.lastEdited = LocalDate.now();
     }
 
     public void setPhoneNumber(String phoneNumber)
     {
         this.phoneNumber = phoneNumber;
+        this.lastEdited = LocalDate.now();
     }
 
     public void setEmail(String email)
     {
         this.email = email;
+        this.lastEdited = LocalDate.now();
     }
 
     public void setStatus(Status status)
     {
         this.status = status;
+        this.lastEdited = LocalDate.now();
     }
 
     public void setDateOfBirth(LocalDate dateOfBirth)
     {
         this.dateOfBirth = dateOfBirth;
+        this.lastEdited = LocalDate.now();
     }
 
     /* GETTERS */
     public String getId()
     {
         return Integer.toString(id);
+    }
+
+    public LocalDate getRegistrationDate()
+    {
+        return registrationDate;
+    }
+
+    public LocalDate getLastEdited()
+    {
+        return lastEdited;
     }
 
     public LocalDate getDateOfBirth()
@@ -273,19 +297,11 @@ public class Person implements Serializable, FullTextSearch, Model
         return email;
     }
 
-    /**
-     * Get insurances from person.
-     * @return
-     */
     public List<Insurance> getInsurances()
     {
         return insurances;
     }
 
-    /**
-     * Get claims from person.
-     * @return
-     */
     public List<Claim> getClaims()
     {
         return claims;
