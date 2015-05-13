@@ -9,8 +9,9 @@ import main.model.person.Person;
 
 import java.io.File;
 
-// TODO Override toString
-
+/**
+ * CarClaim.java
+ */
 public class CarClaim extends Claim
 {
     private Type type;

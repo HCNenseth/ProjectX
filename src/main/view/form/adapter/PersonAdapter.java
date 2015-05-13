@@ -34,6 +34,9 @@ public class PersonAdapter implements Formable<Person>
     private FormValueNode email;
     private FormChoiceNode<Status> status;
 
+    private Person person;
+    private boolean editMode = false;
+
     ButtonBase callBackEvent = new ButtonBase()
     {
         @Override
@@ -42,11 +45,6 @@ public class PersonAdapter implements Formable<Person>
             fireEvent(new ActionEvent());
         }
     };
-
-    private Person person;
-
-    // TODO rethink this implementation decision.
-    private boolean editMode = false;
 
     public PersonAdapter(Person person)
     {
