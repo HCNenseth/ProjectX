@@ -12,15 +12,17 @@ import java.util.List;
  * Static protected class for helping car insurances to
  * calculate correct bonus
  */
-class CarBonus
+public class CarBonus
 {
-    private enum Levels
+    private static final int daysInYear = 365;
+
+    public enum Levels
     {
-        L45(45, 365*1),
-        L55(55, 365*2),
-        L65(65, 365*3),
-        L70(70, 365*4),
-        L80(80, 365*5);
+        L1(45, daysInYear * 1),
+        L2(55, daysInYear * 2),
+        L3(65, daysInYear * 3),
+        L4(70, daysInYear * 4),
+        L5(80, daysInYear * 5);
 
         int bonus, days;
 
@@ -37,8 +39,13 @@ class CarBonus
             }
 
             // fall through catch
-            return L80;
+            return L5;
         }
+
+        public int getBonus() { return bonus; }
+
+        public int getDays(Levels l) { return l.days; }
+
     }
 
 
@@ -52,12 +59,11 @@ class CarBonus
      * @param car
      * @return
      */
-    // TODO - fix this broken algorithm!
     static int getBonus(Car car)
     {
         List<CarClaim> claims = car.getClaims();
 
-        int days = (car.getDate().compareTo(LocalDate.now()));
+        int days = Math.abs(car.getDate().compareTo(LocalDate.now())) * daysInYear;
 
         if (claims.size() == 0
                 || claims.stream().filter(i -> i.getStatus() == Status.ACTIVE).count() == 0)
@@ -70,7 +76,7 @@ class CarBonus
                 .sorted((c, e) -> e.getDateOfDamages().compareTo(LocalDate.now()))
                 .findFirst().get();
 
-        days -= (newest.getDateOfDamages().compareTo(LocalDate.now()));
+        days = (Math.abs(newest.getDateOfDamages().compareTo(LocalDate.now())) * daysInYear);
 
         return Levels.getLevel(days).bonus;
     }
