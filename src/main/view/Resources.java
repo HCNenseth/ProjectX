@@ -1,10 +1,11 @@
 package main.view;
 
+import javafx.application.HostServices;
 import javafx.scene.layout.StackPane;
 import main.view.concrete.SplashView;
 
 /**
- * Created by alex on 4/23/15.
+ * Resources.java
  */
 public enum Resources
 {
@@ -14,6 +15,7 @@ public enum Resources
     private ObserverTabPane observerTabPane;
     private SplashView splashView;
     private InfoBar infoBar;
+    private HostServices hostServices;
 
     private StackPane stackPane;
 
@@ -32,14 +34,38 @@ public enum Resources
         infoBar = new InfoBar();
     }
 
-    public SceneSwitch getSceneSwitch() { return sceneSwitch; }
+    public void injectHostServices(HostServices hostServices)
+    {
+        this.hostServices = hostServices;
+    }
 
-    public ObserverTabPane getOtp() { return observerTabPane; }
+    public SceneSwitch getSceneSwitch()
+    {
+        return sceneSwitch;
+    }
 
-    public InfoBar getInfoBar() { return infoBar; }
+    public ObserverTabPane getOtp()
+    {
+        return observerTabPane;
+    }
 
-    public SplashView getSplashView() { return splashView; }
+    public InfoBar getInfoBar()
+    {
+        return infoBar;
+    }
 
-    public StackPane getStackPane() { return stackPane; }
+    public SplashView getSplashView()
+    {
+        return splashView;
+    }
 
+    public StackPane getStackPane()
+    {
+        return stackPane;
+    }
+
+    public HostServices getHostServices()
+    {
+        return hostServices;
+    }
 }

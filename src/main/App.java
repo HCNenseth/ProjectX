@@ -23,6 +23,7 @@ public class App extends Application
     public void start(Stage primaryStage) throws Exception
     {
         Resources.inst.getSceneSwitch().setStage(primaryStage);
+        Resources.inst.injectHostServices(getHostServices());
 
         if (dialogMode) {
             Resources.inst.getSceneSwitch().setProjectDialogWindow();
@@ -57,6 +58,7 @@ public class App extends Application
                 System.out.println("error reading from file");
             }
         }
+
     }
 
     public static void main(String[] args)

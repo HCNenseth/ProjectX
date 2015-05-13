@@ -8,6 +8,7 @@ import javafx.stage.Screen;
 public class Config
 {
     public static final String APP_NAME = "General Average";
+    public static final String VERSION = "0.9";
 
     public static final String PERSONS = "persons";
     public static final String INSURANCES = "insurances";

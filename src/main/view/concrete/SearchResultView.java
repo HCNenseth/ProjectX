@@ -3,7 +3,9 @@ package main.view.concrete;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.text.Font;
+import main.controller.ReportController;
 import main.controller.StatisticsController;
 import main.localization.Loc;
 import main.model.Model;
@@ -24,6 +26,7 @@ public class SearchResultView extends StandardGridPane
 {
     private int rowNum = 0;
     private int headerSize = 16;
+    private int cellGap = 5;
 
     public SearchResultView()
     {
@@ -44,33 +47,48 @@ public class SearchResultView extends StandardGridPane
         AnchorPane header = new AnchorPane();
         AnchorPane.setLeftAnchor(l, 0d);
 
-        Hyperlink generate = new Hyperlink(Loc.c("generate_statistics"));
+        HBox rightBox = new HBox();
+        rightBox.setSpacing(cellGap);
+
+        Hyperlink statistics = new Hyperlink(Loc.c("statistics"));
+        Hyperlink report = new Hyperlink(Loc.c("report"));
+
+        rightBox.getChildren().addAll(statistics, report);
 
         List convert;
         switch (type) {
             case PERSON:
                 convert = new LinkedList<Person>();
                 table.getItems().stream().forEach(convert::add);
-                generate.setOnAction(e ->
+                statistics.setOnAction(e ->
                         StatisticsController.loadPersonStatistics(convert));
+                report.setOnAction(e ->
+                        ReportController.loadPersonReport(convert,
+                                Loc.c("person_report")));
                 break;
             case INSURANCE:
                 convert = new LinkedList<Insurance>();
                 table.getItems().stream().forEach(convert::add);
-                generate.setOnAction(e ->
+                statistics.setOnAction(e ->
                         StatisticsController.loadInsuranceStatistics(convert));
+                report.setOnAction(e ->
+                        ReportController.loadInsuranceReport(convert,
+                                Loc.c("insurance_report")));
                 break;
             case CLAIM:
                 convert = new LinkedList<Claim>();
                 table.getItems().stream().forEach(convert::add);
-                generate.setOnAction(e ->
+                statistics.setOnAction(e ->
                         StatisticsController.loadClaimsStatistics(convert));
+                report.setOnAction(e ->
+                        ReportController.loadClaimReport(convert,
+                                Loc.c("claim_report")));
                 break;
         }
 
-        AnchorPane.setRightAnchor(generate, 0d);
+        AnchorPane.setRightAnchor(rightBox, 0d);
 
-        header.getChildren().addAll(l, generate);
+        header.getChildren().addAll(l, rightBox);
 
         add(header, 0, rowNum++);
         add(table, 0, rowNum++);

@@ -1,7 +1,7 @@
 #Condensed list of todos
 
 #Alex
-* Bonusutregning for kjøretøy forsikring.
+* *DONE Bonusutregning for kjøretøy forsikring.*
 * Regexifisering.
 * *DONE Lukke alle faner ved restart av prosjektet.*
 * Statistikk visning
@@ -23,10 +23,10 @@
 * Dokumentasjon
 
 # Super nice to have 
-* Visning av inaktive forsikringer og kunder (diskusjon)
+* *DONE Visning av inaktive forsikringer og kunder (diskusjon)*
 * Utvide søk med kombinasjon av (n!):
-    * forsikringstype
-    * skadetype
+    * *DONE - Type*
+    * *DONE - Status*
 * Mer rapport data (copy paste)
     * selskapets totale utbetaling av erstatninger i løpet av et år
     * selskapets totale utbetaling av erstatninger for en gitt forsikringstype i løpet av et år
@@ -36,8 +36,8 @@
     * selskapets forsikringspremieinntekter på en gitt forsikringskunde i løpet av kundeforholdet
 
 # Nice to have (bonus oppgaver)
-* Dato-range-søk på rapport
-* Årsfilter på rapportdata.
+* *DONE Dato-range-søk på rapport*
+* *DONE Årsfilter på rapportdata.*
 * Flyttbare faner!
 * Faneikoner (fra famfamfam kanskje)
 * Automatisk refresh av fanekort

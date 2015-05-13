@@ -4,6 +4,8 @@ import main.model.Status;
 import main.model.claim.vehicle.CarClaim;
 
 import java.time.LocalDate;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 /**
@@ -73,7 +75,7 @@ public class CarBonus
 
         CarClaim newest = claims.stream()
                 .filter(c -> c.getStatus() == Status.ACTIVE)
-                .sorted((c, e) -> e.getDateOfDamages().compareTo(LocalDate.now()))
+                .sorted(Collections.reverseOrder(Comparator.comparing(CarClaim::getDateOfDamages)))
                 .findFirst().get();
 
         days = (Math.abs(newest.getDateOfDamages().compareTo(LocalDate.now())) * daysInYear);

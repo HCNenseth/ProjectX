@@ -1,9 +1,6 @@
 package main.view.concrete.claim;
 
-import javafx.scene.control.Button;
-import javafx.scene.control.Hyperlink;
-import javafx.scene.control.Label;
-import javafx.scene.control.ToolBar;
+import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import main.controller.ClaimController;
@@ -81,13 +78,18 @@ public abstract class ClaimView<T extends Claim> extends StandardGridPane
         add(new Label(Loc.c("customer")), 0, rowNum);
         add(new Label(claim.getCustomer().getName()), 1, rowNum++);
 
+        // date
+        add(new Label(Loc.c("date_of_damages")), 0, rowNum);
+        add(new Label(claim.getDate().toString()), 1, rowNum++);
+
+        add(new Label(Loc.c("date_of_claim")), 0, rowNum);
+        add(new Label(claim.getClaimDate().toString()), 1, rowNum++);
+
+        add(new Separator(), 0, rowNum++, 2, 1);
+
         // insurance
         add(new Label(Loc.c("insurance")), 0, rowNum);
         add(new Label(claim.identify().getValue()), 1, rowNum++);
-
-        // desc
-        add(new Label(Loc.c("description")), 0, rowNum);
-        add(new Label(claim.getDesc()), 1, rowNum++);
 
         if (!claim.getFilePathImage().equals("")) {
             add(new Label(Loc.c("image")), 0, rowNum);
@@ -106,9 +108,8 @@ public abstract class ClaimView<T extends Claim> extends StandardGridPane
         add(new Label(Loc.c("amount")), 0, rowNum);
         add(new Label(claim.getAmount() + ""), 1, rowNum++);
 
-        // date
-        add(new Label(Loc.c("date")), 0, rowNum);
-        add(new Label(claim.getDate().toString()), 1, rowNum++);
+        add(new Label(Loc.c("deductible")), 0, rowNum);
+        add(new Label(claim.getDeductible() + ""), 1, rowNum++);
 
         // paymentStatus
         add(new Label(Loc.c("payment_status")), 0, rowNum);
@@ -117,6 +118,15 @@ public abstract class ClaimView<T extends Claim> extends StandardGridPane
         // status
         add(new Label(Loc.c("status")), 0, rowNum);
         add(new Label(claim.getStatus().getValue()), 1, rowNum++);
+
+        add(new Separator(), 0, rowNum++, 2, 1);
+
+        // desc
+        add(new Label(Loc.c("description")), 0, rowNum);
+        add(new Label(claim.getDesc()), 1, rowNum++);
+
+        add(new Separator(), 0, rowNum++, 2, 1);
+
     }
 
     @Override

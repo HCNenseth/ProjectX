@@ -47,6 +47,7 @@ public abstract class Insurance<C extends Claim> implements
         this.desc = ib.getDesc();
         this.status = ib.getStatus();
         this.claims = ib.getClaimsList();
+
         id = counter++;
         lastEdited = null;
 
@@ -171,5 +172,11 @@ public abstract class Insurance<C extends Claim> implements
     public LocalDate getDate()
     {
         return date;
+    }
+
+    @Override
+    public LocalDate getEdited()
+    {
+        return lastEdited;
     }
 }

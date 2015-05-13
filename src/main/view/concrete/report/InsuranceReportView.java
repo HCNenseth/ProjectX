@@ -1,60 +1,45 @@
-package main.view.concrete;
+package main.view.concrete.report;
 
-import javafx.scene.Node;
-import javafx.scene.control.Label;
-import javafx.scene.control.Separator;
-import javafx.scene.text.Font;
 import main.localization.Loc;
-import main.model.claim.Claim;
-import main.model.insurance.InsuranceType;
 import main.model.insurance.Insurance;
-import main.model.person.Person;
-import main.view.StandardGridPane;
+import main.model.insurance.InsuranceType;
 
+import java.time.LocalDate;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.IntStream;
 
 /**
- * ReportView.java
+ * InsuranceReportView.java
  */
-public class ReportView extends StandardGridPane
+public class InsuranceReportView extends ReportView
 {
-    private int rowNum = 0;
-    private int headerSize = 16;
+    private List<Insurance> insuranceList;
 
-    public void injectCustomerData(List<Person> personList)
+    public InsuranceReportView(List<Insurance> insuranceList)
     {
-        addHeader(Loc.c("persons"));
+        this.insuranceList = insuranceList;
 
-        addKey(Loc.c("total_person_count"));
-        addValue(String.format("%d", personList.size()));
-
-        IntStream insurances = personList.stream()
-                .mapToInt(p -> p.getInsurances().size());
-        if (insurances.count() > 0) {
-            addKey(Loc.c("average_insurances_per_customer"));
-            addValue(String.format("%.2f",
-                    personList.stream()
-                            .mapToInt(p -> p.getInsurances().size())
-                            .average()
-                            .getAsDouble()));
-        }
-
-        IntStream claims = personList.stream()
-                .mapToInt(p -> p.getClaims().size());
-        if (claims.count() > 0) {
-            addKey(Loc.c("average_claims_per_customer"));
-            addValue(String.format("%.2f",
-                    personList.stream()
-                            .mapToInt(p -> p.getClaims().size())
-                            .average()
-                            .getAsDouble()));
-        }
+        loadData();
     }
 
-    public void injectInsuranceData(List<Insurance> insuranceList)
+    private void loadData()
     {
-        addHeader(Loc.c("insurances"));
+        LocalDate upperBound = insuranceList.stream()
+                .sorted(Collections.reverseOrder(Comparator.comparing(Insurance::getDate)))
+                .findFirst()
+                .get()
+                .getDate();
+
+        LocalDate lowerBound = insuranceList.stream()
+                .sorted(Comparator.comparing(Insurance::getDate))
+                .findFirst()
+                .get()
+                .getDate();
+
+        addHeader(String.format("%s: %s - %s",
+                Loc.c("range"), lowerBound, upperBound));
 
         // all
         addKey(Loc.c("total_insurance_count"));
@@ -181,35 +166,5 @@ public class ReportView extends StandardGridPane
                             .average()
                             .getAsDouble()));
         }
-
     }
-
-    public void injectClaimsData(List<Claim> claimList)
-    {
-        addHeader(Loc.c("claims"));
-
-        addKey(Loc.c("total_claims_count"));
-        addValue(String.format("%d", claimList.size()));
-
-    }
-
-    private void addHeader(String string)
-    {
-        Label label = new Label(string);
-        label.setFont(new Font(headerSize));
-        add(label, 0, rowNum++, 2, 1);
-        addColSpan(new Separator());
-    }
-
-    private void addColSpan(Node node)
-    {
-        add(node, 0, rowNum++, 2, 1);
-    }
-
-    private void addKey(String string) { add(new Label(string), 0, rowNum); }
-
-    private void addValue(String string) { add(new Label(string), 1, rowNum++); }
-
-    public StandardGridPane getNode() { return this; }
-
 }

@@ -5,6 +5,7 @@ package test;
  */
 
 import main.config.Config;
+import main.model.Status;
 import main.model.Storage;
 import main.model.claim.Claim;
 import main.model.claim.property.PropertyClaim;
@@ -285,6 +286,7 @@ public class StorageTest
                     .postalCode(String.valueOf(randInt(1000, 9000)))
                     .streetAddress(streetName)
                     .email(email)
+                    .status(randomEnumValue(Status.class))
                     .phoneNumber(Integer.toString(randInt(20000000, 70000000)))
                     .dateOfBirth(LocalDate.of(randInt(1930, 2000),
                             randInt(1, 12), randInt(1, 28)))
@@ -293,6 +295,8 @@ public class StorageTest
             /* add some random car insurances */
             for (int j = 0; j < randInt(0, 2); j++) {
                 Car car = new Car.Builder(person, "ABC123")
+                        .date(LocalDate.of(randInt(1970, 2015),
+                                randInt(1,12), randInt(1,28)))
                         .amount(randInt(1000, 4000))
                         .premium(randInt(300, 700))
                         .deductible(randInt(4000, 12000))
@@ -304,6 +308,7 @@ public class StorageTest
                                         randInt(1, 28))
                         )
                         .type(randomEnumValue(Car.Type.class))
+                        .status(randomEnumValue(Status.class))
                         .amount(randInt(4000, 10000))
                         .build();
                 /* add some random claims */
@@ -312,8 +317,10 @@ public class StorageTest
                             .dateOfDamages(LocalDate.of(randInt(1960, 2014),
                                     randInt(1, 12), randInt(1, 28)))
                             .desc(randomDomain())
+                            .deductible(randInt(5000, 10000))
                             .contacts(randomDomain())
-                            .amount(randInt(1000, 12000))
+                            .amount(randInt(10000, 20000))
+                            .status(randomEnumValue(Status.class))
                             .type(randomEnumValue(CarClaim.Type.class))
                             .build());
                 }
@@ -323,6 +330,8 @@ public class StorageTest
             /* add some random boat insurances */
             for (int j = 0; j < randInt(0, 2); j++) {
                 Boat boat = new Boat.Builder(person, "ABC123")
+                        .date(LocalDate.of(randInt(1970, 2015),
+                                randInt(1,12), randInt(1,28)))
                         .amount(randInt(1000, 4000))
                         .premium(randInt(300, 700))
                         .deductible(randInt(4000, 12000))
@@ -330,6 +339,7 @@ public class StorageTest
                         .length(randInt(10, 50))
                         .registration(LocalDate.of(randInt(1940, 2014),
                                 randInt(1, 12), randInt(1, 28)))
+                        .status(randomEnumValue(Status.class))
                         .type(randomEnumValue(Boat.Type.class))
                         .build();
                 /* add some random claims */
@@ -338,9 +348,11 @@ public class StorageTest
                             .dateOfDamages(LocalDate.of(randInt(1960, 2014),
                                     randInt(1, 12), randInt(1, 28)))
                             .desc(randomDomain())
+                            .deductible(randInt(5000, 10000))
                             .contacts(randomDomain())
                             .type(randomEnumValue(BoatClaim.Type.class))
-                            .amount(randInt(1000, 12000))
+                            .status(randomEnumValue(Status.class))
+                            .amount(randInt(10000, 20000))
                             .build());
                 }
                 insurances.add(boat);
@@ -351,10 +363,13 @@ public class StorageTest
                 House house = new House.Builder(person, streetName, randInt(1000, 9000) + "")
                         .material(randomEnumValue(House.Material.class))
                         .standard(randomEnumValue(House.Standard.class))
+                        .date(LocalDate.of(randInt(1970, 2015),
+                                randInt(1, 12), randInt(1, 28)))
                         .type(randomEnumValue(House.Type.class))
                         .amount(randInt(1000, 4000))
                         .premium(randInt(300, 700))
                         .deductible(randInt(4000, 12000))
+                        .status(randomEnumValue(Status.class))
                         .year(randInt(1900, 2014))
                         .squareMeter(randInt(30, 200))
                         .build();
@@ -364,8 +379,10 @@ public class StorageTest
                             .dateOfDamages(LocalDate.of(randInt(1960, 2014),
                                     randInt(1, 12), randInt(1, 28)))
                             .desc(randomDomain())
+                            .deductible(randInt(5000, 10000))
                             .contacts(randomDomain())
-                            .amount(randInt(1000, 12000))
+                            .amount(randInt(10000, 20000))
+                            .status(randomEnumValue(Status.class))
                             .build());
                 }
                 insurances.add(house);
@@ -379,7 +396,10 @@ public class StorageTest
                         .type(randomEnumValue(VacationHouse.Type.class))
                         .amount(randInt(1000, 4000))
                         .premium(randInt(300, 700))
+                        .date(LocalDate.of(randInt(1970, 2015),
+                                randInt(1, 12), randInt(1, 28)))
                         .deductible(randInt(4000, 12000))
+                        .status(randomEnumValue(Status.class))
                         .year(randInt(1900, 2014))
                         .squareMeter(randInt(30, 200))
                         .build();
@@ -388,8 +408,10 @@ public class StorageTest
                             .dateOfDamages(LocalDate.of(randInt(1960, 2014),
                                     randInt(1, 12), randInt(1, 28)))
                             .desc(randomDomain())
+                            .deductible(randInt(5000, 10000))
                             .contacts(randomDomain())
-                            .amount(randInt(1000, 12000))
+                            .amount(randInt(10000, 20000))
+                            .status(randomEnumValue(Status.class))
                             .build());
                 }
                 insurances.add(vacationHouse);
@@ -400,6 +422,8 @@ public class StorageTest
                 Travel travel = new Travel.Builder(person)
                         .amount(randInt(1000, 4000))
                         .continent(randomEnumValue(Travel.Continent.class))
+                        .date(LocalDate.of(randInt(1970, 2015),
+                                randInt(1, 12), randInt(1, 28)))
                         .premium(randInt(300, 700))
                         .deductible(randInt(4000, 12000))
                         .build();
@@ -409,8 +433,10 @@ public class StorageTest
                             .dateOfDamages(LocalDate.of(randInt(1960, 2014),
                                     randInt(1, 12), randInt(1, 28)))
                             .desc(randomDomain())
+                            .status(randomEnumValue(Status.class))
+                            .deductible(randInt(5000, 10000))
                             .contacts(randomDomain())
-                            .amount(randInt(1000, 12000))
+                            .amount(randInt(10000, 20000))
                             .build());
                 }
                 insurances.add(travel);

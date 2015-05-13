@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <language name="english">
     <!-- menus -->
-    <string name="menu_group_file">File</string>
+    <string name="menu_group_file">F_ile</string>
     <string name="menu_close_project">Close project</string>
     <string name="menu_file_open">Open file</string>
     <string name="menu_file_save">Save</string>
@@ -11,11 +11,14 @@
     <string name="menu_group_statistics">Statistics</string>
     <string name="menu_customer_statistics">Customers</string>
     <string name="menu_insurance_statistics">Insurances</string>
+    <string name="menu_customer_report">Customers</string>
+    <string name="menu_insurance_report">Insurances</string>
+    <string name="menu_claim_report">Claim</string>
     <string name="menu_claim_statistics">Claims</string>
     <string name="save_data_file_as">Save data file as</string>
     <string name="choose_data_file">Choose data file</string>
     <string name="menu_group_about">A_bout</string>
-    <string name="menu_about">_About</string>
+    <string name="menu_about">About</string>
     <string name="menu_report">Report</string>
 
     <!-- commons -->
@@ -47,7 +50,7 @@
     <string name="open_existing">Open existing</string>
     <string name="please_restart_for_changes_to_take_effect">
         Please restart for changes to take effect.</string>
-    <string name="version">Version 1.0</string>
+    <string name="version">Version</string>
     <string name="made_by">Made by</string>
     <string name="repository">Github</string>
     <string name="repository_url">https://github.com/HCNenseth/ProjectX</string>
@@ -62,6 +65,7 @@
     <string name="new_travel_insurance">New travel insurance</string>
 
     <!-- search -->
+    <string name="types">Types</string>
     <string name="search">Search</string>
     <string name="search_results">Search results</string>
     <string name="search_error">Keyword must contain at between 2 and 20 characters</string>
@@ -131,6 +135,7 @@
     <string name="propulsion">Propulsion</string>
 
     <!-- person -->
+    <string name="person">Person</string>
     <string name="customer_id">Customer ID</string>
     <string name="firstname">Firstname</string>
     <string name="firstname_error">Firstname must contain ...</string>
@@ -258,11 +263,18 @@
     <string name="edit_boat_claim">Edit boat claim</string>
     <string name="new_property_claim">New property claim</string>
     <string name="edit_property_claim">Edit property claim</string>
+    <string name="property_claim_type">Claim type</string>
     <string name="new_travel_claim">New travel claim</string>
     <string name="edit_travel_claim">Edit travel claim</string>
 
     <!-- Report -->
+    <string name="insurance_distribution">Insurance distribution</string>
+    <string name="number">Number</string>
     <string name="report">Report</string>
+    <string name="range">Range</string>
+    <string name="insurance_report">Insurance report</string>
+    <string name="claim_report">Claim report</string>
+    <string name="person_report">Person report</string>
     <string name="total_person_count">Total person count</string>
     <string name="average_insurances_per_customer">Average insurances per customer</string>
     <string name="average_claims_per_customer">Average claims per customer</string>

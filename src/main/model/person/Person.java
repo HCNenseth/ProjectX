@@ -362,4 +362,10 @@ public class Person implements Serializable, FullTextSearch, Model
     {
         return dateOfBirth;
     }
+
+    @Override
+    public LocalDate getEdited()
+    {
+        return lastEdited;
+    }
 }
