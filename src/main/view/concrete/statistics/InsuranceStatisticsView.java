@@ -2,7 +2,6 @@ package main.view.concrete.statistics;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.EventHandler;
 import javafx.geometry.Side;
 import javafx.scene.chart.*;
 import javafx.scene.control.Label;
@@ -12,7 +11,6 @@ import main.model.insurance.Insurance;
 import main.model.insurance.InsuranceType;
 import main.view.StandardGridPane;
 
-import java.awt.event.MouseEvent;
 import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.List;
@@ -51,6 +49,10 @@ public class InsuranceStatisticsView extends StandardGridPane
     public boolean isQuarterlyEqual(LocalDate date)
     {
         LocalDate b = LocalDate.now();
+
+        return (date.getYear() == b.getYear())
+                && (inPartition(date.getMonthValue()) == inPartition(b.getMonthValue()));
+        /*
         if(date.getYear() == b.getYear())
         {
             if( quarter ( date.getMonthValue() ) == quarter(b.getMonthValue() ) )
@@ -59,6 +61,18 @@ public class InsuranceStatisticsView extends StandardGridPane
             }
         }
         return false;
+        */
+    }
+
+    public int inPartition(int x)
+    {
+        int[][] p = {{1,2,3},{4,5,6},{7,8,9},{10,11,12}};
+
+        for (int i = 0; i < p.length; i++)
+            for (int j = 0; j < p[i].length; j++)
+                if (p[i][j] == x) return i;
+
+        return -1;
     }
 
     public int quarter(int month)
