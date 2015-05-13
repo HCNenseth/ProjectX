@@ -16,6 +16,7 @@
 * Språk
 
 #HP
+* Burde ha implementert opprettetdato / endret dato for alle objekter
 * *Done - Toolbar -> (refresh + edit) knapp helt til høyre.*
 * Statistikk visning
     * type forsikringer rangert etter antall
@@ -23,7 +24,6 @@
 
 # Super nice to have 
 * Visning av inaktive forsikringer og kunder (diskusjon)
-* Burde ha implementert opprettetdato / endret dato for alle objekter
 * Utvide søk med kombinasjon av (n!):
     * forsikringstype
     * skadetype
