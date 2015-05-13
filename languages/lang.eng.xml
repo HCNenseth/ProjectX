@@ -118,6 +118,7 @@
     <string name="car">Car</string>
     <string name="boat">Boat</string>
     <string name="house">House</string>
+    <string name="standard">Standard</string>
     <string name="property">Property</string>
     <string name="vacation_house">Vacation house</string>
     <string name="travel">Travel</string>

@@ -119,6 +119,7 @@ public class HouseAdapter extends InsuranceAdapter<House> implements Formable<Ho
             i.setMaterial(material.getData());
             i.setStandard(standard.getData());
             i.setDesc(getDescription());
+            i.setDeductible(getDeductible());
             i.setSquareMeter(Integer.parseInt(squareMeters.getValue()));
             i.setYear(Integer.parseInt(yearBuilt.getValue()));
             i.setPremium(getPremium());
@@ -132,6 +133,7 @@ public class HouseAdapter extends InsuranceAdapter<House> implements Formable<Ho
                     .material(material.getData())
                     .standard(standard.getData())
                     .desc(getDescription())
+                    .deductible(getDeductible())
                     .squareMeter(Integer.parseInt(squareMeters.getValue()))
                     .year(Integer.parseInt(yearBuilt.getValue()))
                     .premium(getPremium())
