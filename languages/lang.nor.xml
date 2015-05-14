@@ -24,7 +24,6 @@
     <!-- commons -->
     <string name="id">ID</string>
     <string name="theme">Tema</string>
-    <string name="about">Om</string>
     <string name="restart">Omstart</string>
     <string name="new">Ny</string>
     <string name="edit">Endre</string>
@@ -46,10 +45,8 @@
     <string name="new_insurance">Ny forsikring</string>
     <string name="create_new">Opprett</string>
     <string name="open_existing">Åpne</string>
-    <string name="please_restart_for_changes_to_take_effect">
-        Vennligst kjør en omstart av programmet for at endringene skal tre i kraft.</string>
+    <string name="please_restart_for_changes_to_take_effect">Vennligst kjør en omstart av programmet for at endringene skal tre i kraft.</string>
     <string name="version">Version</string>
-    <string name="made_by">Utviklet av</string>
     <string name="repository">Github</string>
     <string name="repository_url">https://github.com/HCNenseth/ProjectX</string>
     <string name="create_new_data_file">Lag ny datafil</string>
@@ -66,7 +63,7 @@
     <string name="types">Typer</string>
     <string name="search">Søk</string>
     <string name="search_results">Søkeresultater</string>
-    <string name="search_error">Søkeord må inneholde mellom 2 og 20 karakterer</string>
+    <string name="search_error">Søkeord må inneholde mellom 3 og 20 karakterer</string>
     <string name="persons">Personer</string>
     <string name="insurance">Forsikring</string>
     <string name="insurances">Forsikringer</string>
@@ -75,14 +72,14 @@
 
     <!-- statuses -->
     <string name="status">Status</string>
-    <string name="active">Aktive</string>
-    <string name="inactive">Inaktive</string>
+    <string name="active">Aktiv</string>
+    <string name="inactive">Inaktiv</string>
     <string name="pending">I påvente</string>
-    <string name="incomplete">Ufulstendig</string>
+    <string name="incomplete">Ufullstendig</string>
 
     <!-- shared -->
-    <string name="true">Sann</string>
-    <string name="false">Falsk</string>
+    <string name="true">Ja</string>
+    <string name="false">Nei</string>
     <string name="date">Dato</string>
     <string name="advanced">Avansert</string>
     <string name="from">Fra</string>
@@ -105,8 +102,7 @@
     <string name="new_customer">Ny kunde</string>
     <string name="mileage">Kjørelengde</string>
     <string name="license_plate">Registreringsnummer</string>
-    <string name="license_plate_error">
-        Registreringsnummer må inneholde mellom 2 og 8 tegn</string>
+    <string name="license_plate_error">Registreringsnummer må inneholde mellom 2 og 8 tegn</string>
     <string name="vehicle_registration">Første gang registrert</string>
     <string name="vehicle_registration_error">Ugyldig dato</string>
     <string name="vehicle_horse_power">Hestekrefter</string>
@@ -144,9 +140,9 @@
     <string name="date_of_birth">Fødselsdato</string>
     <string name="number_of_insurances">Antall forsikringer</string>
     <string name="number_of_claims">Antall skademeldinger</string>
-    <string name="total_customer">Total Kunde</string>
+    <string name="total_customer">Totalkunde</string>
     <string name="total_insurance_amount_sum">Totalt forsikringsbeløp</string>
-    <string name="total_insurance_premium_sum">Total forsikrings premium</string>
+    <string name="total_insurance_premium_sum">Total forsikringspremium</string>
     <string name="total_insurance_deductible_sum">Total forsikringsegenandel</string>
     <string name="total_claims_amount_sum">Skademeldingsbeløp</string>
     <string name="total_claims_deductible_sum">Skademeldinger egenandel</string>
@@ -176,8 +172,8 @@
 
     <string name="boat_type">Type</string>
     <string name="boat_type_a">Fiskebåt</string>
-    <string name="boat_type_b">Bananabåt</string>
-    <string name="boat_type_c">Oitjeanker</string>
+    <string name="boat_type_b">Bananbåt</string>
+    <string name="boat_type_c">Oljetanker</string>
     <string name="boat_type_d">Taubåt</string>
 
     <!-- house -->
@@ -241,7 +237,7 @@
     <string name="claim_property_c">Naturkatastrofe</string>
 
     <string name="claim_travel_a">Lommetyveri</string>
-    <string name="claim_travel_b">Mistet bagage</string>
+    <string name="claim_travel_b">Mistet bagasje</string>
     <string name="claim_travel_c">Kanselert fly</string>
     <string name="claim_travel_d">Sykdom</string>
 
@@ -268,12 +264,13 @@
 
     <!-- Report -->
     <string name="insurance_distribution">Forsikringsfordeling</string>
+    <string name="claims_distribution">Skademeldingsfordeling</string>
     <string name="number">Antall</string>
     <string name="report">Rapport</string>
     <string name="range">Utvalg</string>
-    <string name="insurance_report">Forsikringsrepport</string>
-    <string name="claim_report">Skademeldingsrepport</string>
-    <string name="person_report">Personrepport</string>
+    <string name="insurance_report">Forsikringsrapport</string>
+    <string name="claim_report">Skademeldingsrapport</string>
+    <string name="person_report">Personrapport</string>
     <string name="total_person_count">Totalt antall personer</string>
     <string name="average_insurances_per_customer">Gjennomsnittlig antall forsikringer pr kunde</string>
     <string name="average_claims_per_customer">Gjennomsnittlig antall skademeldinger pr kunde</string>
@@ -301,15 +298,32 @@
     <string name="average_vacation_house_insurance_claim">Gjennomsnittlig skademeldinger pr feriehusforsikring</string>
     <string name="average_travel_insurance_claim">Gjennomsnittlig skademeldinger pr reiseforsikring</string>
 
-    <string name="statistics">Statestikk</string>
-    <string name="statistics_persons">Statestikk - Personer</string>
-    <string name="statistics_insurances">Statestikk - Forsikringer</string>
-    <string name="statistics_claims">Statestikk - Skademeldinger</string>
-    <string name="generate_statistics">Generere statestikk</string>
+    <string name="statistics">Statistikk</string>
+    <string name="statistics_persons">Statistikk - Personer</string>
+    <string name="statistics_insurances">Statistikk - Forsikringer</string>
+    <string name="statistics_claims">Statistikk - Skademeldinger</string>
+    <string name="generate_statistics">Generere statistikk</string>
     <string name="summary">Oversikt</string>
     <string name="value">Verdi</string>
     <string name="count">Antall</string>
     <string name="year">År</string>
     <string name="age">Alder</string>
+
+    <!-- about -->
+    <string name="about">Om</string>
+    <string name="made_by">Utviklet av</string>
+    <string name="icons_by_fff">Ikoner av FamFamFam.com</string>
+
+    <!-- error -->
+    <string name="error_premium">Må inneholde bare tall</string>
+    <string name="error_amount">Må inneholde bare tall</string>
+    <string name="error_desc">Må inneholde beskrivelse</string>
+    <string name="error_house_street">Må inneholde gateadresse</string>
+    <string name="error_house_code">Må inneholde bare tall</string>
+    <string name="error_house_city">Må inneholde bare bokstaver</string>
+    <string name="error_house_year">Må inneholde bare tall</string>
+    <string name="error_house_squaremeters">Må inneholde bare tall</string>
+    <string name="mileage_error">Må inneholde bare tall</string>
+    <string name="length_error">Må inneholde bare tall</string>
 
 </language>

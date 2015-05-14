@@ -13,7 +13,7 @@
     <string name="menu_insurance_statistics">Insurances</string>
     <string name="menu_customer_report">Customers</string>
     <string name="menu_insurance_report">Insurances</string>
-    <string name="menu_claim_report">Claim</string>
+    <string name="menu_claim_report">Claims</string>
     <string name="menu_claim_statistics">Claims</string>
     <string name="save_data_file_as">Save data file as...</string>
     <string name="choose_data_file">Choose data file</string>
@@ -45,9 +45,7 @@
     <string name="new_insurance">New insurance</string>
     <string name="create_new">Create new</string>
     <string name="open_existing">Open existing</string>
-    <string name="please_restart_for_changes_to_take_effect">
-        Please restart for changes to take effect.</string>
-    <!-- don't put version number here (see Config.java) -->
+    <string name="please_restart_for_changes_to_take_effect">Please restart for changes to take effect.</string>
     <string name="version">Version</string>
     <string name="repository">Github</string>
     <string name="repository_url">https://github.com/HCNenseth/ProjectX</string>
@@ -80,8 +78,8 @@
     <string name="incomplete">Incomplete</string>
 
     <!-- shared -->
-    <string name="true">True</string>
-    <string name="false">False</string>
+    <string name="true">Yes</string>
+    <string name="false">No</string>
     <string name="date">Date</string>
     <string name="advanced">Advanced</string>
     <string name="from">From</string>
@@ -89,27 +87,26 @@
     <string name="description">Description</string>
     <string name="desc">Description</string>
     <string name="street_address">Street address</string>
-    <string name="street_address_error">Street address must contain...</string>
+    <string name="street_address_error">Street address must contain legal address</string>
     <string name="postal_code">Postal code</string>
     <string name="postal_code_error">Postal code must contain only numbers</string>
     <string name="phone_number">Phone number</string>
-    <string name="phone_number_error">Phone number must contain...</string>
+    <string name="phone_number_error">Phone number must contain only numbers</string>
     <string name="email">Email</string>
     <string name="email_error">Email has wrong format</string>
     <string name="length">Length</string>
     <string name="city">City</string>
-    <string name="city_error">City must contain...</string>
+    <string name="city_error">City must contain only letters</string>
     <string name="owner">Owner</string>
     <string name="customer">Customer</string>
     <string name="new_customer">New customer</string>
     <string name="mileage">Mileage</string>
     <string name="license_plate">Licence plate</string>
-    <string name="license_plate_error">
-        Licence plate must contain between 2 and 8 characters</string>
+    <string name="license_plate_error">Licence plate must contain between 2 and 8 characters</string>
     <string name="vehicle_registration">First time registered</string>
     <string name="vehicle_registration_error">Invalid date.</string>
     <string name="vehicle_horse_power">Horse power</string>
-    <string name="vehicle_horse_power_error">Horse power error.</string>
+    <string name="vehicle_horse_power_error">Must contain only numbers</string>
     <string name="view_customer">View customer</string>
 
     <!-- insurance -->
@@ -136,10 +133,10 @@
     <!-- person -->
     <string name="person">Person</string>
     <string name="customer_id">Customer ID</string>
-    <string name="firstname">Firstname</string>
-    <string name="firstname_error">Firstname must contain ...</string>
-    <string name="lastname">Lastname</string>
-    <string name="lastname_error">Lastname must contain ...</string>
+    <string name="firstname">First name</string>
+    <string name="firstname_error">First name must contain ...</string>
+    <string name="lastname">Last name</string>
+    <string name="lastname_error">Last name must contain ...</string>
     <string name="date_of_birth">Date of birth</string>
     <string name="number_of_insurances">Number of insurances</string>
     <string name="number_of_claims">Number of claims</string>
@@ -316,5 +313,17 @@
     <string name="about">About</string>
     <string name="made_by">Made by</string>
     <string name="icons_by_fff">Icons by FamFamFam.com</string>
+
+    <!-- error -->
+    <string name="error_premium">Must contain only digits</string>
+    <string name="error_amount">Must contain only digits</string>
+    <string name="error_desc">Must contain description</string>
+    <string name="error_house_street">Must contain street address</string>
+    <string name="error_house_code">Must contain only numbers</string>
+    <string name="error_house_city">Must contain only letters</string>
+    <string name="error_house_year">Must contain only numbers</string>
+    <string name="error_house_squaremeters">Must contain only numbers</string>
+    <string name="mileage_error">Must contain only digits</string>
+    <string name="length_error">Must contain only numbers</string>
 
 </language>
