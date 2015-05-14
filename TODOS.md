@@ -42,6 +42,6 @@
 * Flyttbare faner!
 * *DONE Faneikoner (fra famfamfam kanskje)*
 * Automatisk refresh av fanekort
-* Shortcuts- mnemonics
+* *DONE Shortcuts- mnemonics * Holdt til et minimum
 * Themevelger -> ned på splash screen nivå. ( FORSLAG: skrape themes. )
 * Finne åpne iconer.			
