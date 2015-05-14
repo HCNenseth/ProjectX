@@ -37,14 +37,22 @@ public abstract class Claim implements Serializable, FullTextSearch, Model
 
     public enum ClaimType
     {
-        PROPERTY(Loc.l("property")),
-        TRAVEL(Loc.l("travel")),
-        BOAT(Loc.l("boat")),
-        CAR(Loc.l("car"));
+        PROPERTY(Loc.c("property")),
+        TRAVEL(Loc.c("travel")),
+        BOAT(Loc.c("boat")),
+        CAR(Loc.c("car"));
 
         String value;
 
         ClaimType(String value) { this.value = value; }
+
+        public static ClaimType getType(String value)
+        {
+            for (ClaimType type : values())
+                if (type.getValue().equals(value))
+                    return type;
+            return null;
+        }
 
         public String getValue() { return value; }
 
@@ -255,6 +263,7 @@ public abstract class Claim implements Serializable, FullTextSearch, Model
         return desc.toLowerCase().contains(value.toLowerCase())
                 || contacts.toLowerCase().contains(value.toLowerCase())
                 || paymentStatus.getValue().toLowerCase().contains(value.toLowerCase())
+                || identify().getValue().toLowerCase().contains(value.toLowerCase())
                 || getId().contains(value);
     }
 

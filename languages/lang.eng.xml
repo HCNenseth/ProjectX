@@ -268,6 +268,7 @@
 
     <!-- Report -->
     <string name="insurance_distribution">Insurance distribution</string>
+    <string name="claims_distribution">Claims distribution</string>
     <string name="number">Number</string>
     <string name="report">Report</string>
     <string name="range">Range</string>

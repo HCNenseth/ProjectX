@@ -14,6 +14,9 @@ import main.view.StandardGridPane;
 
 import java.util.*;
 
+/**
+ * InsuranceStatisticsView.java
+ */
 public class InsuranceStatisticsView extends StandardGridPane
 {
     private List<Insurance> insurances;
@@ -27,7 +30,9 @@ public class InsuranceStatisticsView extends StandardGridPane
 
     private final int lowerBound;
     private final int upperBound;
+
     private final int cellGap = 5;
+    private int rowNum = 0;
 
     public InsuranceStatisticsView(List<Insurance> insurances)
     {
@@ -66,7 +71,7 @@ public class InsuranceStatisticsView extends StandardGridPane
         wrapper.setSpacing(cellGap);
 
         types.stream().forEach(t -> {
-            CheckBox c = new CheckBox(t.toString());
+            CheckBox c = new CheckBox(t.getValue());
             c.setSelected(true);
             c.setOnAction(e -> {
                 if ((checkboxMap.entrySet().stream()
@@ -87,7 +92,7 @@ public class InsuranceStatisticsView extends StandardGridPane
         AnchorPane.setLeftAnchor(wrapper, 0d);
         buttonPane.getChildren().add(wrapper);
 
-        add(buttonPane, 0, 0);
+        add(buttonPane, 0, rowNum++);
     }
 
     private void drawPie()
@@ -100,7 +105,10 @@ public class InsuranceStatisticsView extends StandardGridPane
         );
 
         chart = new PieChart(pieChartData);
-        chart.setTitle(Loc.c("insurance_distribution"));
+
+        chart.setTitle(String.format("%s %s - %s",
+                Loc.c("insurance_distribution") ,lowerBound, upperBound));
+
         chart.setLabelsVisible(true);
         chart.setLegendVisible(false);
 
@@ -108,13 +116,11 @@ public class InsuranceStatisticsView extends StandardGridPane
             data.getNode().addEventHandler(MouseEvent.MOUSE_PRESSED,
                     e -> checkboxMap.get(InsuranceType.getType(data.getName())).fire());
         }
-        add(chart, 0, 1);
+        add(chart, 0, rowNum++);
     }
 
     private void drawPlot()
     {
-        lineChart.setTitle(String.format("%s %s - %s",
-                Loc.c("insurances") ,lowerBound, upperBound));
 
         types.stream().forEach(e -> series.put(e, new XYChart.Series()));
 
@@ -134,7 +140,7 @@ public class InsuranceStatisticsView extends StandardGridPane
         series.entrySet().stream()
                 .forEach(e -> lineChart.getData().add(e.getValue()));
 
-        add(lineChart, 0, 2);
+        add(lineChart, 0, rowNum++);
     }
 
     private void showCurve(InsuranceType type)
@@ -148,5 +154,8 @@ public class InsuranceStatisticsView extends StandardGridPane
     }
 
     @Override
-    public StandardGridPane getNode() { return this; }
+    public StandardGridPane getNode()
+    {
+        return this;
+    }
 }
