@@ -3,13 +3,17 @@ package main.view.concrete.statistics;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.chart.*;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
 import main.localization.Loc;
 import main.model.insurance.Insurance;
 import main.model.insurance.InsuranceType;
 import main.view.StandardGridPane;
+import sun.plugin.javascript.navig.Anchor;
 
 import java.time.LocalDate;
 import java.util.HashMap;
@@ -26,6 +30,7 @@ public class InsuranceStatisticsView extends StandardGridPane
     private final int upperBound;
     private NumberAxis xAxis, yAxis;
     private LineChart<Number, Number> lineChart;
+    private Button refresh;
 
     public InsuranceStatisticsView(List<Insurance> insurances)
     {
@@ -42,15 +47,36 @@ public class InsuranceStatisticsView extends StandardGridPane
                 .max()
                 .getAsInt();
 
+        initButtonPane();
         drawPie();
         drawPlot();
     }
 
+    private void initButtonPane()
+    {
+        AnchorPane buttonPane = new AnchorPane();
+        HBox buttons = new HBox();
+        for(InsuranceType t : InsuranceType.values())
+        {
+            Button tmp = new Button(t.getValue());
+            tmp.setOnAction(e -> drawPlot(t.getValue()));
+            buttons.getChildren().add(tmp);
+        }
+
+        refresh = new Button("Refresh");
+        refresh.setOnAction(e -> drawPlot());
+        buttons.getChildren().add(refresh);
+
+        AnchorPane.setLeftAnchor(buttons, 0d);
+        buttonPane.getChildren().add(buttons);
+        add(buttonPane, 0, 0);
+    }
+
     private void drawPlot()
     {
-        if(getNode().getChildren().size() > 1)
+        if(getNode().getChildren().size() > 2)
         {
-            getNode().getChildren().remove(1);
+            getNode().getChildren().remove(2);
         }
 
         xAxis = new NumberAxis(lowerBound, upperBound, 1);
@@ -96,9 +122,9 @@ public class InsuranceStatisticsView extends StandardGridPane
 
     private void drawPlot(String name)
     {
-        if(getNode().getChildren().size() > 1)
+        if(getNode().getChildren().size() > 2)
         {
-            getNode().getChildren().remove(1);
+            getNode().getChildren().remove(2);
         }
 
         InsuranceType type = InsuranceType.HOUSE;
@@ -120,6 +146,7 @@ public class InsuranceStatisticsView extends StandardGridPane
         lineChart.setTitle(Loc.c(type.getValue()) + " " + Loc.l("insurances") + " " + lowerBound + " - " + upperBound);
 
         XYChart.Series series = new XYChart.Series();
+
         for(int i = lowerBound; i < upperBound; i++)
         {
             int x = i;
@@ -133,6 +160,8 @@ public class InsuranceStatisticsView extends StandardGridPane
         }
 
         lineChart.getData().add(series);
+        lineChart.setLegendVisible(false);
+
 
         add(lineChart, 0, 2);
     }
@@ -154,6 +183,7 @@ public class InsuranceStatisticsView extends StandardGridPane
         chart = new PieChart(pieChartData);
         chart.setTitle(Loc.c("insurance_distribution"));
         chart.setLabelsVisible(true);
+        chart.setLegendVisible(false);
 
         for(final PieChart.Data data : chart.getData())
         {
@@ -162,11 +192,7 @@ public class InsuranceStatisticsView extends StandardGridPane
             });
         }
 
-        final Label caption = new Label("");
-        caption.setTextFill(Color.DARKORANGE);
-        caption.setStyle("-fx-font: 24 arial");
-
-        add(chart, 0, 0);
+        add(chart, 0, 1);
 
     }
 
