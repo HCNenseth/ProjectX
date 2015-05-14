@@ -13,7 +13,7 @@
 
 #HC
 * Testing
-* Språk
+* *DONE Språk * Mangler italiensk
 
 #HP
 * *DONE - Burde ha implementert opprettetdato / endret dato for alle objekter *
