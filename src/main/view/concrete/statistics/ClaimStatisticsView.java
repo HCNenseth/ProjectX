@@ -58,6 +58,8 @@ public class ClaimStatisticsView extends StandardGridPane
         xAxis.setLabel(Loc.c("year"));
 
         yAxis = new NumberAxis();
+        yAxis.setLabel(Loc.c("number"));
+
         lineChart = new LineChart<>(xAxis, yAxis);
 
         claims.stream().forEach(i -> types.add(i.identify()));

@@ -53,7 +53,9 @@ public class InsuranceStatisticsView extends StandardGridPane
         xAxis = new NumberAxis();
         xAxis.setForceZeroInRange(false);
         xAxis.setLabel(Loc.c("year"));
+
         yAxis = new NumberAxis();
+        yAxis.setLabel(Loc.c("number"));
 
         lineChart = new LineChart<>(xAxis, yAxis);
 
