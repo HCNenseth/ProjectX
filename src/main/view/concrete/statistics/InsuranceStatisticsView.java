@@ -63,7 +63,7 @@ public class InsuranceStatisticsView extends StandardGridPane
             buttons.getChildren().add(tmp);
         }
 
-        refresh = new Button("Refresh");
+        refresh = new Button(Loc.c("refresh"));
         refresh.setOnAction(e -> drawPlot());
         buttons.getChildren().add(refresh);
 
@@ -86,7 +86,7 @@ public class InsuranceStatisticsView extends StandardGridPane
 
         lineChart = new LineChart<>(xAxis, yAxis);
 
-        lineChart.setTitle(Loc.c(Loc.l("insurances") + " " + lowerBound + " - " + upperBound));
+        lineChart.setTitle(Loc.c("insurances") + " " + lowerBound + " - " + upperBound);
 
         List<XYChart.Series> series = new LinkedList<>();
 

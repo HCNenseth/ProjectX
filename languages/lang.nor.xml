@@ -1,178 +1,315 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <language name="norwegian">
-
-    <string name="open_existing">Åpne</string>
-    <string name="create_new">Opprett</string>
-    <string name="menu_close_project">Lukk prosjektet</string>
-    <string name="menu_file_exit">Avslutt</string>
-    <string name="menu_group_about">Om</string>
-    <string name="menu_about">Om programmet</string>
-    <string name="please_restart_for_changes_to_take_effect">Vennligst kjør en omstart av programmet for at endringene skal tre i kraft.</string>
-    <string name="version">Versjon 1.0</string>
-    <string name="made_by">Utviklet av</string>
-    <string name="repository">Github</string>
-    <string name="repository_url">https://github.com/HCNenseth/ProjectX</string>
+    <!-- menus -->
     <string name="menu_group_file">Fil</string>
+    <string name="menu_close_project">Lukk prosjektet</string>
     <string name="menu_file_open">Åpne fil</string>
     <string name="menu_file_save">Lagre</string>
-    <string name="menu_file_save_as">Lagre som</string>
-    <string name="menu_file_close">Avslutt</string>
+    <string name="menu_file_save_as">Lagre som...</string>
+    <string name="menu_file_exit">Avslutt</string>
     <string name="menu_group_edit">Endre</string>
     <string name="menu_group_statistics">Statistikk</string>
-    <string name="menu_statistics">Statistikk</string>
-    <string name="summary">Oversikt</string>
-    <string name="number">Antall</string>
+    <string name="menu_customer_statistics">Kunde</string>
+    <string name="menu_insurance_statistics">Forsikring</string>
+    <string name="menu_customer_report">Kunde</string>
+    <string name="menu_insurance_report">Forsikring</string>
+    <string name="menu_claim_report">Skademelding</string>
+    <string name="menu_claim_statistics">Skademelding</string>
+    <string name="save_data_file_as">Lagre datafil som...</string>
+    <string name="choose_data_file">Velg datafil</string>
+    <string name="menu_group_about">Om</string>
+    <string name="menu_about">Om programmet</string>
+    <string name="menu_report">Rapport</string>
 
     <!-- commons -->
+    <string name="id">ID</string>
     <string name="theme">Tema</string>
+    <string name="about">Om</string>
+    <string name="restart">Omstart</string>
     <string name="new">Ny</string>
     <string name="edit">Endre</string>
+    <string name="refresh">Oppdater</string>
     <string name="view">Vis</string>
-    <string name="data_files">Data filer (*.dat)</string>
+    <string name="image">Bilde</string>
+    <string name="add_image">Legg til bilde</string>
+    <string name="data_files">Datafiler (*.dat)</string>
     <string name="language">Språk</string>
     <string name="default">Standard</string>
-    <string name="refresh">Oppdater</string>
-    <string name="inverse">Inverse</string>
+    <string name="inverse">Inversere</string>
     <string name="english">Engelsk</string>
     <string name="norwegian">Norsk</string>
     <string name="german">Tysk</string>
-    <string name="french">Fransk</string>
     <string name="italian">Italiensk</string>
     <string name="submit">Send</string>
-    <string name="restart">Omstart</string>
     <string name="type">Type</string>
     <string name="save">Lagre</string>
+    <string name="new_insurance">Ny forsikring</string>
+    <string name="create_new">Opprett</string>
+    <string name="open_existing">Åpne</string>
+    <string name="please_restart_for_changes_to_take_effect">
+        Vennligst kjør en omstart av programmet for at endringene skal tre i kraft.</string>
+    <string name="version">Version 1.01</string>
+    <string name="made_by">Utviklet av</string>
+    <string name="repository">Github</string>
+    <string name="repository_url">https://github.com/HCNenseth/ProjectX</string>
+    <string name="create_new_data_file">Lag ny datafil</string>
+    <string name="choose_data_file">Velg datafil</string>
+
+    <!-- headers -->
+    <string name="new_car_insurance">Ny bilforsikring</string>
+    <string name="new_boat_insurance">Ny båtforsikring</string>
+    <string name="new_house_insurance">Ny husforsikring</string>
+    <string name="new_vacationhouse_insurance">Ny feriehusforsikring</string>
+    <string name="new_travel_insurance">Ny reiseforsikring</string>
 
     <!-- search -->
+    <string name="types">Typer</string>
     <string name="search">Søk</string>
-    <string name="search_results">Søke resultater</string>
-    <string name="search_error">Nøkkelord må innehold mellom 2 og 20 bokstaver.</string>
+    <string name="search_results">Søkeresultater</string>
+    <string name="search_error">Søkeord må inneholde mellom 2 og 20 karakterer</string>
     <string name="persons">Personer</string>
-    <string name="insurances">Forsikringer</string>
     <string name="insurance">Forsikring</string>
+    <string name="insurances">Forsikringer</string>
     <string name="claims">Skademeldinger</string>
+    <string name="no_results">Ingen søkeresultater</string>
 
     <!-- statuses -->
     <string name="status">Status</string>
-    <string name="active">Aktiv</string>
-    <string name="inactive">Inaktiv</string>
-    <string name="pending">Ventende</string>
-    <string name="incomplete">Ufullstendig</string>
+    <string name="active">Aktive</string>
+    <string name="inactive">Inaktive</string>
+    <string name="pending">I påvente</string>
+    <string name="incomplete">Ufulstendig</string>
 
     <!-- shared -->
+    <string name="true">Sann</string>
+    <string name="false">Falsk</string>
     <string name="date">Dato</string>
+    <string name="advanced">Avansert</string>
+    <string name="from">Fra</string>
+    <string name="to">Til</string>
     <string name="description">Beskrivelse</string>
+    <string name="desc">Beskrivelse</string>
     <string name="street_address">Gateadresse</string>
-    <string name="street_address_error">Gateadresse må inneholde...</string>
+    <string name="street_address_error">Feil i gateadresse</string>
     <string name="postal_code">Postnummer</string>
-    <string name="postal_code_error">Postnummer må kun inneholde siffer.</string>
+    <string name="postal_code_error">Postnummer må inneholde 4 tall</string>
+    <string name="phone_number">Telefonnummer</string>
+    <string name="phone_number_error">Telefonnumre må inneholde bare tall</string>
+    <string name="email">E-post</string>
+    <string name="email_error">E-post har feil format</string>
+    <string name="length">Lengde</string>
     <string name="city">By</string>
-    <string name="city_error">By må inneholde...</string>
+    <string name="city_error">By må inneholde bare bokstaver</string>
     <string name="owner">Eier</string>
     <string name="customer">Kunde</string>
     <string name="new_customer">Ny kunde</string>
-    <string name="license_plate">Registreringnummer</string>
-    <string name="license_plate_error">Registreringsnummer må inneholde...</string>
-    <string name="vehicle_registration">Førstegangs registrert</string>
-    <string name="vehicle_registration_error">Registreringsnummer må inneholde...</string>
+    <string name="mileage">Kjørelengde</string>
+    <string name="license_plate">Registreringsnummer</string>
+    <string name="license_plate_error">
+        Registreringsnummer må inneholde mellom 2 og 8 tegn</string>
+    <string name="vehicle_registration">Første gang registrert</string>
+    <string name="vehicle_registration_error">Ugyldig dato</string>
     <string name="vehicle_horse_power">Hestekrefter</string>
-    <string name="vehicle_horse_power_error">Hestekrefter må innehold.</string>
+    <string name="vehicle_horse_power_error">Hestekrefter kan bare inneholde tall</string>
     <string name="view_customer">Vis kunde</string>
 
-
     <!-- insurance -->
-    <string name="premium">Premie</string>
+    <string name="car">Bil</string>
+    <string name="boat">Båt</string>
+    <string name="house">Hus</string>
+    <string name="standard">Standard</string>
+    <string name="property">Eiendom</string>
+    <string name="vacation_house">Feriehus</string>
+    <string name="travel">Resie</string>
+    <string name="premium">Premium</string>
+    <string name="bonus">Bonus</string>
     <string name="amount">Forsikringsbeløp</string>
-    <string name="deductible">Deductible</string>
-    <string name="car_insurance">Bil forsikring</string>
-    <string name="boat_insurance">Båt forsikring</string>
-    <string name="house_insurance">Hus forsikring</string>
-    <string name="travel_insurance">Reise forsikring</string>
+    <string name="deductible">Egenandel</string>
+    <string name="insurance_Id">Forsikrings Id-nummer</string>
+    <string name="car_insurance">Bilforsikring</string>
+    <string name="boat_insurance">Båtforsikring</string>
+    <string name="house_insurance">Husforsikring</string>
+    <string name="travel_insurance">Resieforsikring</string>
+    <string name="registration_year">Registreringsår</string>
+    <string name="horse_power">Hestekrefter</string>
+    <string name="propulsion">Fremdrift</string>
 
     <!-- person -->
+    <string name="person">Person</string>
+    <string name="customer_id">Kunde ID</string>
     <string name="firstname">Fornavn</string>
+    <string name="firstname_error">Fornavn må inneholde mellom 2 og 20 bokstaver</string>
     <string name="lastname">Etternavn</string>
-    <string name="firstname_error">Fornavn må inneholde ...</string>
-    <string name="lastname_error">Etternavn må inneholde ...</string>
+    <string name="lastname_error">Etternavn må inneholde mellom 2 og 20 bokstaver</string>
     <string name="date_of_birth">Fødselsdato</string>
+    <string name="number_of_insurances">Antall forsikringer</string>
+    <string name="number_of_claims">Antall skademeldinger</string>
+    <string name="total_customer">Total Kunde</string>
+    <string name="total_insurance_amount_sum">Totalt forsikringsbeløp</string>
+    <string name="total_insurance_premium_sum">Total forsikrings premium</string>
+    <string name="total_insurance_deductible_sum">Total forsikringsegenandel</string>
+    <string name="total_claims_amount_sum">Skademeldingsbeløp</string>
+    <string name="total_claims_deductible_sum">Skademeldinger egenandel</string>
 
+    <!-- insurance -->
+    <string name="insurance_id">Forsikring Id</string>
 
     <!-- car -->
-    <string name="car">Bil</string>
+    <string name="license_plate">Registreringsnummer</string>
+    <string name="car_propulsion">Fremdrift</string>
     <string name="car_propulsion_a">Bensin</string>
     <string name="car_propulsion_b">Diesel</string>
     <string name="car_propulsion_c">Elektrisk</string>
 
-    <string name="car_type_a">Liten bil</string>
-    <string name="car_type_b">Medium bil</string>
-    <string name="car_type_c">Stor bil</string>
-    <string name="car_type_d">Sportsbil</string>
+    <string name="car_type">Type</string>
+    <string name="car_type_a">Kompakt bil</string>
+    <string name="car_type_b">Mid-størrelse bil</string>
+    <string name="car_type_c">Full-størrelse bil</string>
+    <string name="car_type_d">Sports bil</string>
 
-    <string name="model_year">Årsmodell</string>
+    <string name="model_year">Model</string>
 
     <!-- boat -->
-    <string name="boat">Båt</string>
+    <string name="boat_propulsion">Fremdrift</string>
     <string name="boat_propulsion_a">Bensin</string>
     <string name="boat_propulsion_b">Diesel</string>
-    <string name="boat_propulsion_c">Enhjørnings urin</string>
 
+    <string name="boat_type">Type</string>
     <string name="boat_type_a">Fiskebåt</string>
-    <string name="boat_type_b">Bananbåt</string>
-    <string name="boat_type_c">Oljetanker</string>
-    <string name="boat_type_d">Tauebåt</string>
-
-    <!-- Claim -->
-    <string name="claim_type_a">Tyveri</string>
-    <string name="claim_type_b">Skade</string>
-    <string name="claim_type_c">Bilulykke</string>
+    <string name="boat_type_b">Bananabåt</string>
+    <string name="boat_type_c">Oitjeanker</string>
+    <string name="boat_type_d">Taubåt</string>
 
     <!-- house -->
-    <string name="house">Hus</string>
-    <string name="vacation_house">Feriebolig</string>
-    <string name="house_type_a">Villa</string>
+    <string name="house_type_a">Enebolig</string>
     <string name="house_type_b">Leilighet</string>
     <string name="house_type_c">Husbåt</string>
-    <string name="house_type_c">Husbil</string>
+    <string name="house_type_d">Campingvogn</string>
 
-    <string name="house_material">House material</string>
     <string name="house_material_a">Murstein</string>
-    <string name="house_material_b">Trevirke</string>
+    <string name="house_material_b">Tre</string>
     <string name="house_material_c">Glass</string>
 
-    <string name="property_material">Property material</string>
-    <string name="property_material_a">Property material a</string>
-    <string name="property_material_b">Property material b</string>
-    <string name="property_material_c">Property material c</string>
+    <string name="property_material_a">Tre</string>
+    <string name="property_material_b">Murstein</string>
+    <string name="property_material_c">Betong</string>
 
-    <string name="house_standard">House standard</string>
-    <string name="house_standard_a">House standard a</string>
-    <string name="house_standard_b">House standard b</string>
-    <string name="house_standard_c">House standard c</string>
+    <string name="property_standard">Eiendomsstandard</string>
+    <string name="property_standard_a">Som ny</string>
+    <string name="property_standard_b">Litt slitt</string>
+    <string name="property_standard_c">Gammel</string>
 
-    <string name="property_standard">Property standard</string>
-    <string name="property_standard_a">Property standard a</string>
-    <string name="property_standard_b">Property standard b</string>
-    <string name="property_standard_c">Property standard c</string>
-
-    <string name="year_built">Byggeår</string>
+    <string name="year_built">Bygningsår</string>
     <string name="square_meters">Kvadratmeter</string>
-    <string name="material">Materiale</string>
+    <string name="material">Matriale</string>
+
+    <!-- vacation house -->
+    <string name="new_vacation_house_insurance">Ny feriehusforsikring</string>
+    <string name="vacation_house_insurance">Feriehusforsikring</string>
+    <string name="vacation_house_type_a">Hytte</string>
+    <string name="vacation_house_type_b">Campingvogn</string>
+    <string name="vacation_house_type_c">Husbåt</string>
+    <string name="vacation_house_type_d">Telt</string>
 
     <!-- travel -->
     <string name="travel">Reise</string>
+    <string name="continent">Kontinent</string>
     <string name="continent_a">Europa</string>
     <string name="continent_b">Asia</string>
     <string name="continent_c">Afrika</string>
     <string name="continent_d">Amerika</string>
-    <string name="continent_e">Antarktis</string>
+    <string name="continent_e">Antarktika</string>
     <string name="continent_f">Krigssone</string>
 
     <!-- Claim -->
-    <string name="claim_type_a">Tyvere</string>
-    <string name="claim_type_b">Sykdom</string>
-    <string name="claim_type_c">Ulykket</string>
+    <string name="claim_id">Skademelding Id</string>
+    <string name="new_claim">Ny skademelding</string>
+    <string name="claim">Skademelding</string>
+    <string name="contacts">Vitner</string>
+    <string name="claim_type">Skademeldingstype</string>
 
-    <string name="payment_status_a">Avventer krav utbetaling</string>
-    <string name="payment_status_b">Krav avvist</string>
-    <string name="payment_status_c">Krav utbetalt.</string>
+    <string name="claim_car_a">Biltyveri</string>
+    <string name="claim_car_b">Uhell</string>
+    <string name="claim_car_c">Rust</string>
+
+    <string name="claim_boat_a">Båttyveri</string>
+    <string name="claim_boat_b">Stjålet motor</string>
+    <string name="claim_boat_c">Isfjell</string>
+
+    <string name="claim_property_a">Innbrudd</string>
+    <string name="claim_property_b">Vannskade</string>
+    <string name="claim_property_c">Naturkatastrofe</string>
+
+    <string name="claim_travel_a">Lommetyveri</string>
+    <string name="claim_travel_b">Mistet bagage</string>
+    <string name="claim_travel_c">Kanselert fly</string>
+    <string name="claim_travel_d">Sykdom</string>
+
+    <string name="payment_status">Betalingsstatus</string>
+    <string name="payment_status_a">I påvente</string>
+    <string name="payment_status_b">Ikke akseptert</string>
+    <string name="payment_status_c">Utbetalt</string>
+
+    <string name="date_of_damages">Skadedato</string>
+    <string name="date_of_claim">Skademeldingsdato</string>
+
+    <string name="car_claim_type">Bil skademeldingstype</string>
+    <string name="claim_damage_report">Skaderapport</string>
+    <string name="boat_claim_type">Båt skademeldingstype</string>
+    <string name="new_car_claim">Ny bilskademelding</string>
+    <string name="edit_car_claim">Endre bilskademelding</string>
+    <string name="new_boat_claim">Ny båtskademelding</string>
+    <string name="edit_boat_claim">Endre båtskademelding</string>
+    <string name="new_property_claim">Ny eidendomsskademelding</string>
+    <string name="edit_property_claim">Endre eidendomsskademelding</string>
+    <string name="property_claim_type">Skademeldingstype</string>
+    <string name="new_travel_claim">Ny reiseskademelding</string>
+    <string name="edit_travel_claim">Endre reiseskademelding</string>
+
+    <!-- Report -->
+    <string name="insurance_distribution">Forsikringsfordeling</string>
+    <string name="number">Antall</string>
+    <string name="report">Rapport</string>
+    <string name="range">Utvalg</string>
+    <string name="insurance_report">Forsikringsrepport</string>
+    <string name="claim_report">Skademeldingsrepport</string>
+    <string name="person_report">Personrepport</string>
+    <string name="total_person_count">Totalt antall personer</string>
+    <string name="average_insurances_per_customer">Gjennomsnittlig antall forsikringer pr kunde</string>
+    <string name="average_claims_per_customer">Gjennomsnittlig antall skademeldinger pr kunde</string>
+    <string name="total_insurance_count">Totalt antall forsikringer</string>
+    <string name="average_claims_per_insurance">Gjennomsnittlig antall skademeldinger  pr forsikring</string>
+    <string name="total_claims_count">Totalt antall skademeldinger</string>
+    <string name="total_car_insurance_count">Totalt antall bilforsikringer</string>
+    <string name="total_boat_insurance_count">Totalt antall båtforsikringer</string>
+    <string name="total_house_insurance_count">Totalt antall husforsikringer</string>
+    <string name="total_vacation_house_insurance_count">Totalt antall feriehusforsikringer</string>
+    <string name="total_travel_insurance_count">Totalt antall reiseforsikringer</string>
+
+    <string name="total_car_insurance_claim_count">Totalt antall bilskademeldinger</string>
+    <string name="total_boat_insurance_claim_count">Totalt antall båtskademeldinger</string>
+    <string name="total_house_insurance_claim_count">Totalt antall husskademeldinger</string>
+    <string name="total_vacation_house_insurance_claim_count">Totalt antall feriehusskademeldinger</string>
+    <string name="total_travel_insurance_claim_count">Totalt antall reiseskademeldinger</string>
+
+    <string name="total_claim_amount">Totalt skademeldinge utbetalinger</string>
+    <string name="total_claim_deductible">Totalt skademeldingsegenandel</string>
+
+    <string name="average_car_insurance_claim">Gjennomsnittlig skademeldinger pr bilforsikring</string>
+    <string name="average_boat_insurance_claim">Gjennomsnittlig skademeldinger pr båtforsikring</string>
+    <string name="average_house_insurance_claim">Gjennomsnittlig skademeldinger pr husforsikring</string>
+    <string name="average_vacation_house_insurance_claim">Gjennomsnittlig skademeldinger pr feriehusforsikring</string>
+    <string name="average_travel_insurance_claim">Gjennomsnittlig skademeldinger pr reiseforsikring</string>
+
+    <string name="statistics">Statestikk</string>
+    <string name="statistics_persons">Statestikk - Personer</string>
+    <string name="statistics_insurances">Statestikk - Forsikringer</string>
+    <string name="statistics_claims">Statestikk - Skademeldinger</string>
+    <string name="generate_statistics">Generere statestikk</string>
+    <string name="summary">Oversikt</string>
+    <string name="value">Verdi</string>
+    <string name="count">Antall</string>
+    <string name="year">År</string>
+    <string name="age">Alder</string>
+
 </language>

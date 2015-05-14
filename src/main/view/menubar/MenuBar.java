@@ -21,12 +21,10 @@ public class MenuBar extends javafx.scene.control.MenuBar
     {
         /* Menus */
         fileMenu = new Menu(Loc.c("menu_group_file"));
-        fileMenu.setAccelerator(KeyCombination.keyCombination("SHORTCUT + F"));
 
         statisticsMenu = new Menu(Loc.c("menu_group_statistics"));
 
         aboutMenu = new Menu(Loc.c("menu_group_about"));
-        aboutMenu.setAccelerator(KeyCombination.keyCombination("SHORTCUT + B"));
 
         newMenu = new Menu(Loc.c("new"));
 
@@ -85,10 +83,13 @@ public class MenuBar extends javafx.scene.control.MenuBar
 
         // new
         customer = new MenuItem(Loc.c("customer"));
+        customer.setAccelerator(KeyCombination.keyCombination("SHORTCUT + C"));
+
         customer.setOnAction(e -> Mediator.inst.router(Signal.FILE,
                 new Payload(main.controller.MenuBar.Type.NEW_CUSTOMER)));
 
         search = new MenuItem(Loc.c("search"));
+        search.setAccelerator(KeyCombination.keyCombination("SHORTCUT + S"));
         search.setOnAction(e -> Mediator.inst.router(Signal.SEARCH, null));
 
 

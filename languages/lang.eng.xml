@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <language name="english">
     <!-- menus -->
-    <string name="menu_group_file">F_ile</string>
+    <string name="menu_group_file">File</string>
     <string name="menu_close_project">Close project</string>
     <string name="menu_file_open">Open file</string>
     <string name="menu_file_save">Save</string>
-    <string name="menu_file_save_as">Save as</string>
-    <string name="menu_file_exit">E_xit</string>
+    <string name="menu_file_save_as">Save as...</string>
+    <string name="menu_file_exit">Exit</string>
     <string name="menu_group_edit">Edit</string>
     <string name="menu_group_statistics">Statistics</string>
     <string name="menu_customer_statistics">Customers</string>
@@ -15,9 +15,9 @@
     <string name="menu_insurance_report">Insurances</string>
     <string name="menu_claim_report">Claim</string>
     <string name="menu_claim_statistics">Claims</string>
-    <string name="save_data_file_as">Save data file as</string>
+    <string name="save_data_file_as">Save data file as...</string>
     <string name="choose_data_file">Choose data file</string>
-    <string name="menu_group_about">A_bout</string>
+    <string name="menu_group_about">About</string>
     <string name="menu_about">About</string>
     <string name="menu_report">Report</string>
 
@@ -36,11 +36,9 @@
     <string name="language">Language</string>
     <string name="default">Default</string>
     <string name="inverse">Inverse</string>
-    <string name="refresh">Refresh</string>
     <string name="english">English</string>
     <string name="norwegian">Norwegian</string>
     <string name="german">German</string>
-    <string name="france">French</string>
     <string name="italian">Italian</string>
     <string name="submit">Submit</string>
     <string name="type">Type</string>
@@ -50,7 +48,7 @@
     <string name="open_existing">Open existing</string>
     <string name="please_restart_for_changes_to_take_effect">
         Please restart for changes to take effect.</string>
-    <string name="version">Version</string>
+    <string name="version">Version 1.01</string>
     <string name="made_by">Made by</string>
     <string name="repository">Github</string>
     <string name="repository_url">https://github.com/HCNenseth/ProjectX</string>
@@ -107,7 +105,8 @@
     <string name="new_customer">New customer</string>
     <string name="mileage">Mileage</string>
     <string name="license_plate">Licence plate</string>
-    <string name="license_plate_error">licence plate must contain...</string>
+    <string name="license_plate_error">
+        Licence plate must contain between 2 and 8 characters</string>
     <string name="vehicle_registration">First time registered</string>
     <string name="vehicle_registration_error">Invalid date.</string>
     <string name="vehicle_horse_power">Horse power</string>
@@ -174,7 +173,6 @@
     <string name="boat_propulsion">Propulsion</string>
     <string name="boat_propulsion_a">Gas</string>
     <string name="boat_propulsion_b">Diesel</string>
-    <string name="boat_propulsion_c">Unicorn piss</string>
 
     <string name="boat_type">Type</string>
     <string name="boat_type_a">Fishing boat</string>
@@ -234,7 +232,7 @@
     <string name="claim_car_b">Accident</string>
     <string name="claim_car_c">Rust</string>
 
-    <string name="claim_boat_a">Grand Theft Boato</string>
+    <string name="claim_boat_a">Grand Theft Boat</string>
     <string name="claim_boat_b">Motor Theft</string>
     <string name="claim_boat_c">Iceberg</string>
 

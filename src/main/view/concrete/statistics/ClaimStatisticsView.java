@@ -41,7 +41,7 @@ public class ClaimStatisticsView extends StandardGridPane
 
         final NumberAxis xAxis = new NumberAxis(lowerBound, upperBound, 1);
         xAxis.setForceZeroInRange(false);
-        xAxis.setLabel(Loc.c("month"));
+        xAxis.setLabel(Loc.c("year"));
 
         final NumberAxis yAxis = new NumberAxis();
 
