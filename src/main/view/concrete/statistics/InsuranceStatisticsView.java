@@ -3,34 +3,31 @@ package main.view.concrete.statistics;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.chart.*;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
+import javafx.scene.control.CheckBox;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.paint.Color;
 import main.localization.Loc;
 import main.model.insurance.Insurance;
 import main.model.insurance.InsuranceType;
 import main.view.StandardGridPane;
-import sun.plugin.javascript.navig.Anchor;
 
-import java.time.LocalDate;
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 public class InsuranceStatisticsView extends StandardGridPane
 {
     private List<Insurance> insurances;
-    private HashMap<String, Integer> data;
-    private HashMap<LocalDate, HashMap<String, Integer>> histData;
-    private PieChart chart;
-    private final int lowerBound;
-    private final int upperBound;
+    private Set<InsuranceType> types = new HashSet<>();
+    private HashMap<InsuranceType, XYChart.Series> series = new HashMap<>();
+    private HashMap<InsuranceType, CheckBox> checkboxMap = new HashMap<>();
+
     private NumberAxis xAxis, yAxis;
     private LineChart<Number, Number> lineChart;
-    private Button refresh;
+    private PieChart chart;
+
+    private final int lowerBound;
+    private final int upperBound;
+    private final int cellGap = 5;
 
     public InsuranceStatisticsView(List<Insurance> insurances)
     {
@@ -48,153 +45,110 @@ public class InsuranceStatisticsView extends StandardGridPane
                 .max()
                 .getAsInt();
 
-        initButtonPane();
+        xAxis = new NumberAxis();
+        xAxis.setForceZeroInRange(false);
+        xAxis.setLabel(Loc.c("year"));
+        yAxis = new NumberAxis();
+
+        lineChart = new LineChart<>(xAxis, yAxis);
+
+        insurances.stream().forEach(i -> types.add(i.identify()));
+
+        initCheckboxes();
         drawPie();
         drawPlot();
     }
 
-    private void initButtonPane()
+    private void initCheckboxes()
     {
         AnchorPane buttonPane = new AnchorPane();
-        HBox buttons = new HBox();
-        for(InsuranceType t : InsuranceType.values())
-        {
-            Button tmp = new Button(t.getValue());
-            tmp.setOnAction(e -> drawPlot(t.getValue()));
-            buttons.getChildren().add(tmp);
-        }
+        HBox wrapper = new HBox();
+        wrapper.setSpacing(cellGap);
 
-        refresh = new Button(Loc.c("refresh"));
-        refresh.setOnAction(e -> drawPlot());
-        buttons.getChildren().add(refresh);
+        types.stream().forEach(t -> {
+            CheckBox c = new CheckBox(t.toString());
+            c.setSelected(true);
+            c.setOnAction(e -> {
+                if ((checkboxMap.entrySet().stream()
+                        .filter(i -> i.getValue().isSelected())
+                        .count() == 0))
+                { c.setSelected(true); }
+                if (c.isSelected()) {
+                    showCurve(t);
+                } else {
+                    hideCurve(t);
+                }
+            });
 
-        AnchorPane.setLeftAnchor(buttons, 0d);
-        buttonPane.getChildren().add(buttons);
+            checkboxMap.put(t, c);
+            wrapper.getChildren().add(c);
+        });
+
+        AnchorPane.setLeftAnchor(wrapper, 0d);
+        buttonPane.getChildren().add(wrapper);
+
         add(buttonPane, 0, 0);
     }
 
     private void drawPlot()
     {
-        if(getNode().getChildren().size() > 2)
-        {
+        if (getNode().getChildren().size() > 2) {
             getNode().getChildren().remove(2);
         }
 
-        xAxis = new NumberAxis(lowerBound, upperBound, 1);
-        yAxis = new NumberAxis();
+        lineChart.setTitle(String.format("%s %s - %s",
+                Loc.c("insurances") ,lowerBound, upperBound));
 
-        xAxis.setLabel(Loc.c("year"));
+        types.stream().forEach(e -> series.put(e, new XYChart.Series()));
 
-        lineChart = new LineChart<>(xAxis, yAxis);
+        for (int i = lowerBound; i < upperBound; i++) {
+            final int x = i;
 
-        lineChart.setTitle(Loc.c("insurances") + " " + lowerBound + " - " + upperBound);
-
-        List<XYChart.Series> series = new LinkedList<>();
-
-        for(InsuranceType t : InsuranceType.values())
-        {
-            series.add(new XYChart.Series());
+            types.stream().forEach(e -> {
+                series.get(e).getData().add(new XYChart.Data<>(x,
+                        (int) insurances.stream()
+                                .filter(p -> p.identify().equals(e))
+                                .filter(c -> c.getDate().getYear() == x)
+                                .count()));
+                series.get(e).setName(e.getValue());
+            });
         }
 
-
-        for(int i = lowerBound; i < upperBound; i++)
-        {
-            int x = i;
-
-            int counter = 0;
-            for(InsuranceType t : InsuranceType.values())
-            {
-                series.get(counter).getData().add(new XYChart.Data<>(x, insurances.stream()
-                            .filter(p -> p.identify().equals(t))
-                            .filter(c -> c.getDate().getYear() == x)
-                            .count()
-                ));
-                series.get(counter++).setName(Loc.c(t.getValue()));
-            }
-        }
-
-        for(XYChart.Series s : series)
-        {
-            lineChart.getData().add(s);
-        }
+        series.entrySet().stream()
+                .forEach(e -> lineChart.getData().add(e.getValue()));
 
         add(lineChart, 0, 2);
     }
 
-    private void drawPlot(String name)
+    private void showCurve(InsuranceType type)
     {
-        if(getNode().getChildren().size() > 2)
-        {
-            getNode().getChildren().remove(2);
-        }
+        series.get(type).getNode().setVisible(true);
+    }
 
-        InsuranceType type = InsuranceType.HOUSE;
-        for(InsuranceType t : InsuranceType.values())
-        {
-            if(name.equals(t.getValue()))
-            {
-                type = t;
-            }
-        }
-
-        xAxis = new NumberAxis(lowerBound, upperBound, 1);
-        yAxis = new NumberAxis();
-
-        xAxis.setLabel(Loc.c("year"));
-
-        lineChart = new LineChart<>(xAxis, yAxis);
-
-        lineChart.setTitle(Loc.c(type.getValue()) + " " + Loc.l("insurances") + " " + lowerBound + " - " + upperBound);
-
-        XYChart.Series series = new XYChart.Series();
-
-        for(int i = lowerBound; i < upperBound; i++)
-        {
-            int x = i;
-            InsuranceType t = type;
-
-            series.getData().add(new XYChart.Data<>(x, (int) insurances.stream()
-                    .filter(p -> p.identify().equals(t))
-                    .filter(d -> d.getDate().getYear() == x)
-                    .count()
-                    ));
-        }
-
-        lineChart.getData().add(series);
-        lineChart.setLegendVisible(false);
-
-
-        add(lineChart, 0, 2);
+    private void hideCurve(InsuranceType type)
+    {
+        series.get(type).getNode().setVisible(false);
     }
 
     private void drawPie()
     {
-        data = new HashMap<>();
-        for(InsuranceType type : InsuranceType.values())
-        {
-            data.put(type.getValue(), (int) insurances.stream()
-                    .filter(i -> i.identify().equals(type)).count());
-        }
-
         ObservableList<PieChart.Data> pieChartData = FXCollections.observableArrayList();
 
-        data.entrySet().stream().forEach(e ->
-                pieChartData.add(new PieChart.Data(e.getKey(), e.getValue())));
+        types.stream().forEach(e ->
+            pieChartData.add(new PieChart.Data(e.getValue(), (int) insurances.stream()
+                    .filter(i -> i.identify().equals(e)).count()))
+        );
 
         chart = new PieChart(pieChartData);
         chart.setTitle(Loc.c("insurance_distribution"));
         chart.setLabelsVisible(true);
         chart.setLegendVisible(false);
 
-        for(final PieChart.Data data : chart.getData())
-        {
-            data.getNode().addEventHandler(MouseEvent.MOUSE_PRESSED, event -> {
-                drawPlot(data.getName());
-            });
+        for (PieChart.Data data : chart.getData()) {
+            data.getNode().addEventHandler(MouseEvent.MOUSE_PRESSED,
+                    e -> checkboxMap.get(InsuranceType.getType(data.getName())).fire());
         }
-
         add(chart, 0, 1);
-
     }
 
     @Override

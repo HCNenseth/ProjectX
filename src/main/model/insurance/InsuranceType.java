@@ -17,6 +17,16 @@ public enum InsuranceType
 
     InsuranceType(String value) { this.value = value; }
 
+    public static InsuranceType getType(String value)
+    {
+        for (InsuranceType type : InsuranceType.values()) {
+            if (type.getValue().equals(value)) {
+                return type;
+            }
+        }
+        return null;
+    }
+
     public String getValue() { return value; }
 
     @Override
