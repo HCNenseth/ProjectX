@@ -12,7 +12,6 @@ import main.model.insurance.InsuranceType;
 import main.view.StandardGridPane;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -25,8 +24,8 @@ public class InsuranceStatisticsView extends StandardGridPane
     private PieChart chart;
     private final int lowerBound;
     private final int upperBound;
-    private final NumberAxis xAxis, yAxis;
-    private final LineChart<Number, Number> lineChart;
+    private NumberAxis xAxis, yAxis;
+    private LineChart<Number, Number> lineChart;
 
     public InsuranceStatisticsView(List<Insurance> insurances)
     {
@@ -43,6 +42,17 @@ public class InsuranceStatisticsView extends StandardGridPane
                 .max()
                 .getAsInt();
 
+        drawPie();
+        drawPlot();
+    }
+
+    private void drawPlot()
+    {
+        if(getNode().getChildren().size() > 1)
+        {
+            getNode().getChildren().remove(1);
+        }
+
         xAxis = new NumberAxis(lowerBound, upperBound, 1);
         yAxis = new NumberAxis();
 
@@ -50,12 +60,6 @@ public class InsuranceStatisticsView extends StandardGridPane
 
         lineChart = new LineChart<>(xAxis, yAxis);
 
-        drawPie();
-        drawPlot();
-    }
-
-    private void drawPlot()
-    {
         lineChart.setTitle(Loc.c(Loc.l("insurances") + " " + lowerBound + " - " + upperBound));
 
         List<XYChart.Series> series = new LinkedList<>();
@@ -65,12 +69,12 @@ public class InsuranceStatisticsView extends StandardGridPane
             series.add(new XYChart.Series());
         }
 
-        int counter = 0;
+
         for(int i = lowerBound; i < upperBound; i++)
         {
             int x = i;
 
-
+            int counter = 0;
             for(InsuranceType t : InsuranceType.values())
             {
                 series.get(counter).getData().add(new XYChart.Data<>(x, insurances.stream()
@@ -106,6 +110,12 @@ public class InsuranceStatisticsView extends StandardGridPane
             }
         }
 
+        xAxis = new NumberAxis(lowerBound, upperBound, 1);
+        yAxis = new NumberAxis();
+
+        xAxis.setLabel(Loc.c("year"));
+
+        lineChart = new LineChart<>(xAxis, yAxis);
 
         lineChart.setTitle(Loc.c(type.getValue()) + " " + Loc.l("insurances") + " " + lowerBound + " - " + upperBound);
 
