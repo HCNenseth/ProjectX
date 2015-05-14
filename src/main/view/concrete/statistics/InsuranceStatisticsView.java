@@ -14,6 +14,7 @@ import main.view.StandardGridPane;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 
 public class InsuranceStatisticsView extends StandardGridPane
@@ -22,23 +23,71 @@ public class InsuranceStatisticsView extends StandardGridPane
     private HashMap<String, Integer> data;
     private HashMap<LocalDate, HashMap<String, Integer>> histData;
     private PieChart chart;
+    private final int lowerBound;
+    private final int upperBound;
+    private final NumberAxis xAxis, yAxis;
+    private final LineChart<Number, Number> lineChart;
 
     public InsuranceStatisticsView(List<Insurance> insurances)
     {
         super(1);
         this.insurances = insurances;
 
-        // generate data
-        // generateData();
-        // generate historical data
-        // generateHistoricData();
-        // show data as pie chart
-        // drawPieChart();
-        // show data as graph
-        // drawBarChart();
+        lowerBound = insurances.stream()
+                .mapToInt(i -> i.getDate().getYear())
+                .min()
+                .getAsInt();
+
+        upperBound = insurances.stream()
+                .mapToInt(i -> i.getDate().getYear())
+                .max()
+                .getAsInt();
+
+        xAxis = new NumberAxis(lowerBound, upperBound, 1);
+        yAxis = new NumberAxis();
+
+        xAxis.setLabel(Loc.c("year"));
+
+        lineChart = new LineChart<>(xAxis, yAxis);
 
         drawPie();
+        drawPlot();
+    }
 
+    private void drawPlot()
+    {
+        lineChart.setTitle(Loc.c(Loc.l("insurances") + " " + lowerBound + " - " + upperBound));
+
+        List<XYChart.Series> series = new LinkedList<>();
+
+        for(InsuranceType t : InsuranceType.values())
+        {
+            series.add(new XYChart.Series());
+        }
+
+        int counter = 0;
+        for(int i = lowerBound; i < upperBound; i++)
+        {
+            int x = i;
+
+
+            for(InsuranceType t : InsuranceType.values())
+            {
+                series.get(counter).getData().add(new XYChart.Data<>(x, insurances.stream()
+                            .filter(p -> p.identify().equals(t))
+                            .filter(c -> c.getDate().getYear() == x)
+                            .count()
+                ));
+                series.get(counter++).setName(Loc.c(t.getValue()));
+            }
+        }
+
+        for(XYChart.Series s : series)
+        {
+            lineChart.getData().add(s);
+        }
+
+        add(lineChart, 0, 2);
     }
 
     private void drawPlot(String name)
@@ -57,22 +106,6 @@ public class InsuranceStatisticsView extends StandardGridPane
             }
         }
 
-        final int lowerBound = insurances.stream()
-                .mapToInt(i -> i.getDate().getYear())
-                .min()
-                .getAsInt();
-
-        final int upperBound = insurances.stream()
-                .mapToInt(i -> i.getDate().getYear())
-                .max()
-                .getAsInt();
-
-        final NumberAxis xAxis = new NumberAxis(lowerBound, upperBound, 1);
-        final NumberAxis yAxis = new NumberAxis();
-
-        xAxis.setLabel(Loc.c("year"));
-
-        final LineChart<Number, Number> lineChart = new LineChart<>(xAxis, yAxis);
 
         lineChart.setTitle(Loc.c(type.getValue()) + " " + Loc.l("insurances") + " " + lowerBound + " - " + upperBound);
 
@@ -125,67 +158,6 @@ public class InsuranceStatisticsView extends StandardGridPane
 
         add(chart, 0, 0);
 
-    }
-
-
-    public void generateHistoricData()
-    {
-        histData = new HashMap<>();
-
-        LocalDate startDate = LocalDate.of(2010, 1, 1);
-        LocalDate endDate = LocalDate.now();
-
-        for(LocalDate date = startDate; date.isAfter(endDate) ||
-                    date.isEqual(endDate);
-            date = date.plusYears(1))
-        {
-            final LocalDate x = date;
-
-            HashMap<String, Integer> tmp = new HashMap<>();
-
-            for(InsuranceType type : InsuranceType.values())
-            {
-                tmp.put(type.getValue(), (int) insurances.stream()
-                        .filter(i -> i.getDate().getYear() == x.getYear())
-                        .filter(i -> i.identify().equals(type))
-                        .count());
-            }
-
-            histData.put(date, tmp);
-        }
-
-    }
-
-    public void drawBarChart()
-    {
-        final CategoryAxis xAxis = new CategoryAxis();
-        final NumberAxis yAxis = new NumberAxis();
-        final BarChart<String, Number> bc = new BarChart<>(xAxis, yAxis);
-        bc.setTitle(Loc.c("summary"));
-        xAxis.setLabel(Loc.c("insurance"));
-        yAxis.setLabel(Loc.c("number"));
-
-        XYChart.Series series1 = new XYChart.Series();
-
-        data.entrySet().stream().forEach(e ->
-                series1.getData().add(new XYChart.Data<>(e.getKey(), e.getValue())));
-
-        bc.getData().add(series1);
-
-        add(bc, 0, 2);
-    }
-
-    public void drawLineChart()
-    {
-        final NumberAxis xAxis = new NumberAxis();
-        final NumberAxis yAxis = new NumberAxis();
-        xAxis.setLabel(Loc.c("year"));
-
-        final LineChart<Number, Number> lineChart = new LineChart<Number, Number>(xAxis, yAxis);
-
-        lineChart.setTitle(Loc.c("Total cost per insurance type"));
-
-        XYChart.Series series = new XYChart.Series();
     }
 
     @Override
