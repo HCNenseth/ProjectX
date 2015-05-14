@@ -20,7 +20,10 @@ public class Config
     public static final String DATA = "data/";
 
     public static final String PERSON_TAB_IMAGE = "user.png";
-    public static final String INSURANCE_TAB_IMAGE = "folder.png";
+    public static final String CAR_TAB_IMAGE = "car.png";
+    public static final String BOAT_TAB_IMAGE = "anchor.png";
+    public static final String HOUSE_TAB_IMAGE = "house.png";
+    public static final String TRAVEL_TAB_IMAGE = "world.png";
     public static final String CLAIM_TAB_IMAGE = "package.png";
     public static final String SEARCH_TAB_IMAGE = "magnifier.png";
     public static final String STATS_TAB_IMAGE = "chart_pie.png";
