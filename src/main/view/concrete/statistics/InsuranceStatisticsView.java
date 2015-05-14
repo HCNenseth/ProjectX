@@ -90,12 +90,29 @@ public class InsuranceStatisticsView extends StandardGridPane
         add(buttonPane, 0, 0);
     }
 
+    private void drawPie()
+    {
+        ObservableList<PieChart.Data> pieChartData = FXCollections.observableArrayList();
+
+        types.stream().forEach(e ->
+                        pieChartData.add(new PieChart.Data(e.getValue(), (int) insurances.stream()
+                                .filter(i -> i.identify().equals(e)).count()))
+        );
+
+        chart = new PieChart(pieChartData);
+        chart.setTitle(Loc.c("insurance_distribution"));
+        chart.setLabelsVisible(true);
+        chart.setLegendVisible(false);
+
+        for (PieChart.Data data : chart.getData()) {
+            data.getNode().addEventHandler(MouseEvent.MOUSE_PRESSED,
+                    e -> checkboxMap.get(InsuranceType.getType(data.getName())).fire());
+        }
+        add(chart, 0, 1);
+    }
+
     private void drawPlot()
     {
-        if (getNode().getChildren().size() > 2) {
-            getNode().getChildren().remove(2);
-        }
-
         lineChart.setTitle(String.format("%s %s - %s",
                 Loc.c("insurances") ,lowerBound, upperBound));
 
@@ -128,27 +145,6 @@ public class InsuranceStatisticsView extends StandardGridPane
     private void hideCurve(InsuranceType type)
     {
         series.get(type).getNode().setVisible(false);
-    }
-
-    private void drawPie()
-    {
-        ObservableList<PieChart.Data> pieChartData = FXCollections.observableArrayList();
-
-        types.stream().forEach(e ->
-            pieChartData.add(new PieChart.Data(e.getValue(), (int) insurances.stream()
-                    .filter(i -> i.identify().equals(e)).count()))
-        );
-
-        chart = new PieChart(pieChartData);
-        chart.setTitle(Loc.c("insurance_distribution"));
-        chart.setLabelsVisible(true);
-        chart.setLegendVisible(false);
-
-        for (PieChart.Data data : chart.getData()) {
-            data.getNode().addEventHandler(MouseEvent.MOUSE_PRESSED,
-                    e -> checkboxMap.get(InsuranceType.getType(data.getName())).fire());
-        }
-        add(chart, 0, 1);
     }
 
     @Override
