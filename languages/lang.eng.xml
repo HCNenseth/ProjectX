@@ -24,7 +24,6 @@
     <!-- commons -->
     <string name="id">ID</string>
     <string name="theme">Theme</string>
-    <string name="about">About</string>
     <string name="restart">Restart</string>
     <string name="new">New</string>
     <string name="edit">Edit</string>
@@ -48,8 +47,8 @@
     <string name="open_existing">Open existing</string>
     <string name="please_restart_for_changes_to_take_effect">
         Please restart for changes to take effect.</string>
-    <string name="version">Version 1.01</string>
-    <string name="made_by">Made by</string>
+    <!-- don't put version number here (see Config.java) -->
+    <string name="version">Version</string>
     <string name="repository">Github</string>
     <string name="repository_url">https://github.com/HCNenseth/ProjectX</string>
     <string name="create_new_data_file">Create new data file</string>
@@ -312,5 +311,10 @@
     <string name="count">Count</string>
     <string name="year">Year</string>
     <string name="age">Age</string>
+
+    <!-- about -->
+    <string name="about">About</string>
+    <string name="made_by">Made by</string>
+    <string name="icons_by_fff">Icons by FamFamFam.com</string>
 
 </language>

@@ -44,8 +44,12 @@ public class AboutView extends StandardGridPane
         Hyperlink githubLink = new Hyperlink(Loc.l("repository_url"));
         githubLink.setOnAction(e ->
                 Resources.inst.getHostServices().showDocument(Loc.l("repository_url")));
-
         add(githubLink, 0, rowNum++);
+
+        Hyperlink famfamfamLink = new Hyperlink(Loc.c("icons_by_fff"));
+        famfamfamLink.setOnAction(e ->
+                Resources.inst.getHostServices().showDocument("http://famfamfam.com/lab/icons/silk/"));
+        add(famfamfamLink, 0, rowNum++);
 
     }
 
