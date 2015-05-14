@@ -20,5 +20,7 @@ public class TravelView extends InsuranceView<Travel>
         // continent
         add(new Label(Loc.c("continent")), 0, rowNum);
         add(new Label(getInsurance().getType() + ""), 1, rowNum++);
+
+        addClaimsTable();
     }
 }
