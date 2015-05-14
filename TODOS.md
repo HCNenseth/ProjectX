@@ -13,7 +13,7 @@
 
 #HC
 * Testing
-* Språk
+* *DONE Språk * Mangler italiensk
 
 #HP
 * *DONE - Burde ha implementert opprettetdato / endret dato for alle objekter *
@@ -42,6 +42,6 @@
 * Flyttbare faner!
 * *DONE Faneikoner (fra famfamfam kanskje)*
 * Automatisk refresh av fanekort
-* Shortcuts- mnemonics
+* *DONE Shortcuts- mnemonics * Holdt til et minimum
 * Themevelger -> ned på splash screen nivå. ( FORSLAG: skrape themes. )
 * Finne åpne iconer.			
