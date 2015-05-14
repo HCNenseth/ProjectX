@@ -30,7 +30,7 @@ public class SearchResultView extends StandardGridPane
 
     public SearchResultView()
     {
-        super(1);
+        super(ColumnCount.ONE);
     }
 
     public void addTable(Table<? extends Model> table, Model.ModelType type, String title)

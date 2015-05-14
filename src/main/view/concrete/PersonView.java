@@ -29,7 +29,8 @@ public class PersonView extends StandardGridPane
 
     public PersonView(Person person)
     {
-        super(1);
+        super(ColumnCount.ONE);
+
         this.person = person;
         draw();
     }

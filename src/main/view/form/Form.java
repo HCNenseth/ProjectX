@@ -38,7 +38,7 @@ public class Form extends StandardGridPane
 
     public Form()
     {
-        super(3);
+        super(ColumnCount.THREE);
 
         setPadding(new Insets(5));
 
@@ -107,7 +107,7 @@ public class Form extends StandardGridPane
 
     private void setupAdvancedSection()
     {
-        StandardGridPane sgp = new StandardGridPane(3)
+        StandardGridPane sgp = new StandardGridPane(ColumnCount.THREE)
         {
             @Override
             public StandardGridPane getNode() { return this; }

@@ -20,7 +20,8 @@ public class PersonStatisticsView extends StandardGridPane
 
     public PersonStatisticsView(List<Person> persons)
     {
-        super(1);
+        super(ColumnCount.ONE);
+
         this.persons = persons;
 
         lowerBound = persons.stream()

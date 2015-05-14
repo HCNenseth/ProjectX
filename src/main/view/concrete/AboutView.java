@@ -16,11 +16,11 @@ public class AboutView extends StandardGridPane
 {
     private int rowNum = 0;
     private final int spaceCount = 5;
-    private static final int columnCount = 1;
 
     public AboutView()
     {
-        super(columnCount);
+        super(ColumnCount.ONE);
+
         initAboutFields();
     }
 

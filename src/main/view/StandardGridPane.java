@@ -5,21 +5,35 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Priority;
 
 /**
- * Created by alex on 4/30/15.
+ * StandardGridPane.java
  */
 public abstract class StandardGridPane extends GridPane
 {
     private int vgap = 5, hgap = 5;
     private int key = 20, value = 80;
 
-    public StandardGridPane() { this(2); }
+    private ColumnCount columnCount;
 
-    public StandardGridPane(int colCount)
+    public enum ColumnCount {
+        ONE, TWO, THREE
+    }
+
+    public StandardGridPane() { this(ColumnCount.TWO); }
+
+    public StandardGridPane(ColumnCount columnCount)
     {
-        switch (colCount) {
-            case 1: setupOneColumn(); break;
-            case 3: setupThreeColumn(); break;
-            default: setupTwoColumns();
+        this.columnCount = columnCount;
+
+        switch (columnCount) {
+            case ONE:
+                setupOneColumn();
+                break;
+            case THREE:
+                setupThreeColumn();
+                break;
+            case TWO:
+            default:
+                setupTwoColumns();
         }
 
         setHgap(hgap);

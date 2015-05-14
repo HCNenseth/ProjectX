@@ -19,7 +19,8 @@ public class ClaimStatisticsView extends StandardGridPane
 
     public ClaimStatisticsView(List<Claim> claims)
     {
-        super(1);
+        super(ColumnCount.ONE);
+
         this.claims = claims;
 
         lowerBound = claims.stream()

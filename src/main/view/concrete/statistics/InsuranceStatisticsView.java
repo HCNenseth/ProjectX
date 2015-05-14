@@ -34,7 +34,8 @@ public class InsuranceStatisticsView extends StandardGridPane
 
     public InsuranceStatisticsView(List<Insurance> insurances)
     {
-        super(1);
+        super(ColumnCount.ONE);
+
         this.insurances = insurances;
 
         lowerBound = insurances.stream()
