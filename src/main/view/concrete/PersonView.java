@@ -12,10 +12,12 @@ import main.controller.InsuranceController;
 import main.controller.PersonController;
 import main.controller.TableController;
 import main.localization.Loc;
+import main.model.Model;
 import main.model.Status;
 import main.model.insurance.InsuranceType;
 import main.model.person.Person;
 import main.view.StandardGridPane;
+import main.view.table.SugarTable;
 
 /**
  * Created by alex on 4/28/15.
@@ -266,14 +268,14 @@ public class PersonView extends StandardGridPane
         add(innerGridPane, 0, rowNum++);
 
         // insurances table
-        add(new Label(Loc.c("insurances")), first, rowNum++);
-        add(TableController.getInsuranceTable(person.getInsurances().stream())
-                .getTable(), 0, rowNum++);
+        add(new SugarTable(TableController.getInsuranceTable(person.getInsurances().stream())
+                .getTable(), Model.ModelType.INSURANCE, Loc.c("insurances")).getNode(),
+                0, rowNum++);
 
         // claims table
-        add(new Label(Loc.c("claims")), first, rowNum++);
-        add(TableController.getClaimsTable(person.getClaims().stream())
-                .getTable(), 0, rowNum++);
+        add(new SugarTable(TableController.getClaimsTable(person.getClaims().stream())
+                .getTable(), Model.ModelType.CLAIM, Loc.c("claims")).getNode(),
+                0, rowNum++);
     }
 
     public StandardGridPane getNode() { return this; }

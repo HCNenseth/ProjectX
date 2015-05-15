@@ -10,9 +10,11 @@ import main.controller.InsuranceController;
 import main.controller.PersonController;
 import main.controller.TableController;
 import main.localization.Loc;
+import main.model.Model;
 import main.model.claim.Claim;
 import main.model.insurance.Insurance;
 import main.view.StandardGridPane;
+import main.view.table.SugarTable;
 
 /**
  * Created by alex on 4/28/15.
@@ -122,9 +124,9 @@ public abstract class InsuranceView<T extends Insurance> extends StandardGridPan
 
     protected void addClaimsTable()
     {
-        getNode().add(new Label(Loc.c("claims")), 0, rowNum++);
-        getNode().add(TableController.getClaimsTable(getInsurance().getClaims().stream())
-                .getTable(), 0, rowNum++, 2, 1);
+        getNode().add(new SugarTable(TableController.getClaimsTable(getInsurance().getClaims().stream())
+                .getTable(), Model.ModelType.CLAIM, Loc.c("claims")).getNode(),
+                0, rowNum++, 2, 1);
     }
 
     public T getInsurance() { return insurance; }
