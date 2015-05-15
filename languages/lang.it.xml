@@ -1,4 +1,325 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <language name="italian">
-    <string name="new">Nuova</string>
+    <!-- menus -->
+    <string name="menu_group_file">File</string>
+    <string name="menu_close_project">Chiudi il progetto</string>
+    <string name="menu_file_open">Apri file</string>
+    <string name="menu_file_save">Salva</string>
+    <string name="menu_file_save_as">Salva come...</string>
+    <string name="menu_file_exit">Finisci</string>
+    <string name="menu_group_edit">Cambia</string>
+    <string name="menu_group_statistics">Statistica</string>
+    <string name="menu_customer_statistics">Cliente</string>
+    <string name="menu_insurance_statistics">Assicurazione</string>
+    <string name="menu_customer_report">Cliente</string>
+    <string name="menu_insurance_report">Assicurazione</string>
+    <string name="menu_claim_report">Denuncia di un sinistro</string>
+    <string name="menu_claim_statistics">Denuncia di un sinistro</string>
+    <string name="save_data_file_as">Salva fili di dati</string>
+    <string name="choose_data_file">Velg datafil</string>
+    <string name="menu_group_about">Informazioni</string>
+    <string name="menu_about">Informazioni sul programma</string>
+    <string name="menu_report">Rapport</string>
+
+    <!-- commons -->
+    <string name="id">ID</string>
+    <string name="restart">Riavvio</string>
+    <string name="new">Nuovo</string>
+    <string name="edit">Cambia</string>
+    <string name="refresh">Aggiorna</string>
+    <string name="view">Mostra</string>
+    <string name="image">Foto</string>
+    <string name="add_image">Nuovo foto</string>
+    <string name="data_files">Fili di dati (*.dat)</string>
+    <string name="language">Lingua</string>
+    <string name="english">Inglese</string>
+    <string name="norwegian">Norvegese</string>
+    <string name="italian">Italiano</string>
+    <string name="submit">Spedisci</string>
+    <string name="type">Tipo</string>
+    <string name="save">Salva</string>
+    <string name="new_insurance">Nuovo assicurazione</string>
+    <string name="create_new">Crea</string>
+    <string name="open_existing">Apri</string>
+    <string name="please_restart_for_changes_to_take_effect">Eseguire il riavvio del programma per la mofifica abbia effetto.</string>
+    <string name="version">Versione</string>
+    <string name="repository">Github</string>
+    <string name="repository_url">https://github.com/HCNenseth/ProjectX</string>
+    <string name="create_new_data_file">Crea nuovo filo di dato</string>
+    <string name="choose_data_file">Selezionare file di dati</string>
+
+    <!-- headers -->
+    <string name="new_car_insurance">Nuovo assicurazione auto</string>
+    <string name="new_boat_insurance">Nuovo assicurazione barca</string>
+    <string name="new_house_insurance">Nuovo assicurazione casa</string>
+    <string name="new_vacationhouse_insurance">Nuovo assicurazione casolare</string>
+    <string name="new_travel_insurance">Nuovo assicurazione viaggio</string>
+
+    <!-- search -->
+    <string name="types">Tipi</string>
+    <string name="search">Ricerca</string>
+    <string name="search_results">Risultati di ricerca</string>
+    <string name="search_error">La parola chiave deve contenere da 2 a 20 lettere</string>
+    <string name="persons">Persone</string>
+    <string name="insurance">Assicurazione</string>
+    <string name="insurances">Assicurazioni</string>
+    <string name="claims">Denuncia di un sinistro</string>
+    <string name="no_results">No risultati</string>
+
+    <!-- statuses -->
+    <string name="status">Stato</string>
+    <string name="active">Attivo</string>
+    <string name="inactive">Inattivo</string>
+    <string name="pending">In sospeso</string>
+    <string name="incomplete">Incompleto</string>
+
+    <!-- shared -->
+    <string name="true">si</string>
+    <string name="false">no</string>
+    <string name="date">data</string>
+    <string name="advanced">avanzato</string>
+    <string name="from">da</string>
+    <string name="to">a</string>
+    <string name="description">descrizione</string>
+    <string name="desc">descrizione</string>
+    <string name="street_address">indirizzo</string>
+    <string name="street_address_error">errori nel indirizzo</string>
+    <string name="postal_code">cap</string>
+    <string name="postal_code_error">Il cap deve contenere solo quattro cifre.</string>
+    <string name="phone_number">telefono</string>
+    <string name="phone_number_error">Il telefono deve contenere solo cifre.</string>
+    <string name="email">L'email</string>
+    <string name="email_error">L'email è errato</string>
+    <string name="length">lunghezza</string>
+    <string name="city">Città</string>
+    <string name="city_error">Città deve contenere solo lettere</string>
+    <string name="owner">Proprietario</string>
+    <string name="customer">Cliente</string>
+    <string name="new_customer">Nuovo cliente</string>
+    <string name="mileage">Chilometraggio</string>
+    <string name="license_plate">Numero di registrazione</string>
+    <string name="license_plate_error">La registrazione deve contenere tra i 2 e gli 8 caratteri</string>
+    <string name="vehicle_registration">Registrata la prima volta</string>
+    <string name="vehicle_registration_error">Data non valida</string>
+    <string name="vehicle_horse_power">Cavalli di potenza</string>
+    <string name="vehicle_horse_power_error">Cavalli di potenza deve contere solo cifre</string>
+    <string name="view_customer">Mostra cliente</string>
+
+    <!-- insurance -->
+    <string name="car">Auto</string>
+    <string name="boat">Barca</string>
+    <string name="house">Casa</string>
+    <string name="standard">Standard</string>
+    <string name="property">proprietÀ</string>
+    <string name="vacation_house">Casolare</string>
+    <string name="travel">Viaggio</string>
+    <string name="premium">Premio assicurativo</string>
+    <string name="bonus">Bonus</string>
+    <string name="amount">Cifra assicurativa</string>
+    <string name="deductible">detraibile</string>
+    <string name="insurance_Id">Assicurativo ID</string>
+    <string name="car_insurance">assicurazione auto</string>
+    <string name="boat_insurance">assicurazione barca</string>
+    <string name="house_insurance">assicurazione casa</string>
+    <string name="travel_insurance">assicurazione viaggio</string>
+    <string name="registration_year">Registrata la prima volta</string>
+    <string name="horse_power">Cavalli di potenza</string>
+    <string name="propulsion">propulsore</string>
+
+    <!-- person -->
+    <string name="person">Persone</string>
+    <string name="customer_id">Cliente ID</string>
+    <string name="firstname">Nome</string>
+    <string name="firstname_error">nome deve contenere tra i 2 ei 20 caratteri</string>
+    <string name="lastname">Cognome</string>
+    <string name="lastname_error">cognome deve contenere tra i 2 ei 20 caratteri</string>
+    <string name="date_of_birth">Data di nascita</string>
+    <string name="number_of_insurances">Numero di politiche</string>
+    <string name="number_of_claims">Numero di feriti</string>
+    <string name="total_customer">Totale cliente</string>
+    <string name="total_insurance_amount_sum">Totale cifra assicurativa</string>
+    <string name="total_insurance_premium_sum">Totale premio assicurativa</string>
+    <string name="total_insurance_deductible_sum">Totale detraibile</string>
+    <string name="total_claims_amount_sum">Totale cifra denuncia di un sinistro</string>
+    <string name="total_claims_deductible_sum">Totale denucia di un sinistro detrailbile</string>
+
+    <!-- insurance -->
+    <string name="insurance_id">Assicurativa ID</string>
+
+    <!-- car -->
+    <string name="license_plate">Numero di registrazione</string>
+    <string name="car_propulsion">Propulsore</string>
+    <string name="car_propulsion_a">Benzina</string>
+    <string name="car_propulsion_b">Diesel</string>
+    <string name="car_propulsion_c">Elettrica</string>
+
+    <string name="car_type">Tipo</string>
+    <string name="car_type_a">Auto piccola</string>
+    <string name="car_type_b">Auto media</string>
+    <string name="car_type_c">Auto grande</string>
+    <string name="car_type_d">Auto sportiva</string>
+
+    <string name="model_year">Modello</string>
+
+    <!-- boat -->
+    <string name="boat_propulsion">Propulsore</string>
+    <string name="boat_propulsion_a">Benzina</string>
+    <string name="boat_propulsion_b">Diesel</string>
+
+    <string name="boat_type">Tipo</string>
+    <string name="boat_type_a">Peschereccio</string>
+    <string name="boat_type_b">Barca di banana</string>
+    <string name="boat_type_c">Petroliera</string>
+    <string name="boat_type_d">Rimorchiatore</string>
+
+    <!-- house -->
+    <string name="house_type_a">Villa</string>
+    <string name="house_type_b">Appartamento</string>
+    <string name="house_type_c">Casa galleggiante</string>
+    <string name="house_type_d">Caravan</string>
+
+    <string name="house_material_a">Mattone</string>
+    <string name="house_material_b">legno</string>
+    <string name="house_material_c">vetro</string>
+
+    <string name="property_material_a">legno</string>
+    <string name="property_material_b">Mattone</string>
+    <string name="property_material_c">concreto</string>
+
+    <string name="property_standard">Proprietà standard</string>
+    <string name="property_standard_a">Come nuovo</string>
+    <string name="property_standard_b">leggermente consunte</string>
+    <string name="property_standard_c">antiche</string>
+
+    <string name="year_built">anno di costruzione</string>
+    <string name="square_meters">Metri quadrati</string>
+    <string name="material">Materiali</string>
+
+    <!-- vacation house -->
+    <string name="new_vacation_house_insurance">Nuove casolare assicurazione</string>
+    <string name="vacation_house_insurance">casolare assicurazione</string>
+    <string name="vacation_house_type_a">Casolare</string>
+    <string name="vacation_house_type_b">Caravan</string>
+    <string name="vacation_house_type_c">Case gallegiante</string>
+    <string name="vacation_house_type_d">tenda</string>
+
+    <!-- travel -->
+    <string name="travel">Viaggio</string>
+    <string name="continent">continente</string>
+    <string name="continent_a">Europa</string>
+    <string name="continent_b">Asia</string>
+    <string name="continent_c">Africa</string>
+    <string name="continent_d">America</string>
+    <string name="continent_e">Antartico</string>
+    <string name="continent_f">Zono di guerra</string>
+
+    <!-- Claim -->
+    <string name="claim_id">Denuncia di un sinistro Id</string>
+    <string name="new_claim">Nuovo denuncia di un sinistro</string>
+    <string name="claim">Denuncia di un sinistro</string>
+    <string name="contacts">Testimoni</string>
+    <string name="claim_type">Denuncia di un sinistro tipo</string>
+
+    <string name="claim_car_a">Furto</string>
+    <string name="claim_car_b">Incidente</string>
+    <string name="claim_car_c">Ruggine</string>
+
+    <string name="claim_boat_a">Furto</string>
+    <string name="claim_boat_b">il furto del motore</string>
+    <string name="claim_boat_c">iceberg</string>
+
+    <string name="claim_property_a">Furto con scasso</string>
+    <string name="claim_property_b">Danni da acqua</string>
+    <string name="claim_property_c">disastro naturale</string>
+
+    <string name="claim_travel_a">Borseggio</string>
+    <string name="claim_travel_b">Bagagli smarriti</string>
+    <string name="claim_travel_c">volo cancellato</string>
+    <string name="claim_travel_d">malattia</string>
+
+    <string name="payment_status">stato del pagamento</string>
+    <string name="payment_status_a">In attesa di</string>
+    <string name="payment_status_b">Richiesta respinta</string>
+    <string name="payment_status_c">Richiesta pagata</string>
+
+    <string name="date_of_damages">data danni</string>
+    <string name="date_of_claim">rapporto danni dato</string>
+
+    <string name="car_claim_type">tipo di rapporto incidente auto</string>
+    <string name="claim_damage_report">rapporto danni</string>
+    <string name="boat_claim_type">tipo di rapporto incidente barca</string>
+    <string name="new_car_claim">Nuovo rapporto incidente auto</string>
+    <string name="edit_car_claim">cambia rapporto incidente auto</string>
+    <string name="new_boat_claim">Nuovo rapporto incidente barca</string>
+    <string name="edit_boat_claim">cambia rapporto incidente barca</string>
+    <string name="new_property_claim">Nuovo rapporto incidente proprietà</string>
+    <string name="edit_property_claim">cambia rapporto incidente proprietà</string>
+    <string name="property_claim_type">Rapporto incidente proprietà</string>
+    <string name="new_travel_claim">Nuovo rapporto incidente viaggio</string>
+    <string name="edit_travel_claim">Cambia rapporto incidente viaggio</string>
+
+    <!-- Report -->
+    <string name="insurance_distribution">Assicurazione distribuzione</string>
+    <string name="claims_distribution">rapporto distribuzione Accident</string>
+    <string name="number">Numero</string>
+    <string name="report">Rapporto</string>
+    <string name="range">Selezione</string>
+    <string name="insurance_report">Rapporti di assicurazione</string>
+    <string name="claim_report">Rapporto di notifica danni</string>
+    <string name="person_report">Persona rapporto</string>
+    <string name="total_person_count">Numero totale di persone</string>
+    <string name="average_insurances_per_customer">Numero medio di politiche per cliente</string>
+    <string name="average_claims_per_customer">Numero medio di danneggiare messaggi per cliente</string>
+    <string name="total_insurance_count">Assicurazione totale</string>
+    <string name="average_claims_per_insurance">Il numero medio di lesioni sostiene per l'assicurazione</string>
+    <string name="total_claims_count">Totale messaggi danni</string>
+    <string name="total_car_insurance_count">Assicurazione auto totale</string>
+    <string name="total_boat_insurance_count">Assicurazione barca totale</string>
+    <string name="total_house_insurance_count">Assicurazioni casa totale</string>
+    <string name="total_vacation_house_insurance_count">Assicurazione totale della vacanza</string>
+    <string name="total_travel_insurance_count">Assicurazione di viaggio totale</string>
+
+    <string name="total_car_insurance_claim_count">Totale rivendicazioni lesioni automobile</string>
+    <string name="total_boat_insurance_claim_count">Totale rivendicazioni lesioni barce</string>
+    <string name="total_house_insurance_claim_count">Totale rivendicazioni lesioni case</string>
+    <string name="total_vacation_house_insurance_claim_count">Totale rivendicazioni lesioni casolare</string>
+    <string name="total_travel_insurance_claim_count">Totale rivendicazioni lesioni viaggioare</string>
+
+    <string name="total_claim_amount">L'ammontare totale di danni meld ingeriti</string>
+    <string name="total_claim_deductible">Totale rapporto danni deducibili</string>
+
+    <string name="average_car_insurance_claim">Messaggi danni medi per l'assicurazione auto</string>
+    <string name="average_boat_insurance_claim">Messaggi danni medi per l'assicurazione barca</string>
+    <string name="average_house_insurance_claim">Messaggi danni medi per l'assicurazione casa</string>
+    <string name="average_vacation_house_insurance_claim">Messaggi danni medi per l'assicurazione casolara</string>
+    <string name="average_travel_insurance_claim">Messaggi danni medi per l'assicurazione viaggio</string>
+
+    <string name="statistics">statistica</string>
+    <string name="statistics_persons">statistica - personi</string>
+    <string name="statistics_insurances">statistica - assicurazioni</string>
+    <string name="statistics_claims">Statistiche - Messaggi Danno</string>
+    <string name="generate_statistics">statistiche</string>
+    <string name="summary">Sommario</string>
+    <string name="value">Valore</string>
+    <string name="count">numero</string>
+    <string name="year">Anno</string>
+    <string name="age">età</string>
+
+    <!-- about -->
+    <string name="about">Informazione</string>
+    <string name="made_by">sviluppato da</string>
+    <string name="icons_by_fff">Icone dal FamFamFam.com</string>
+
+    <!-- error -->
+    <string name="error_premium">Deve contenere solo numeri</string>
+    <string name="error_amount">Deve contenere solo numeri</string>
+    <string name="error_desc">Deve contenere una descrizione</string>
+    <string name="error_house_street">Deve includere indirizzo</string>
+    <string name="error_house_code">Deve contenere solo numeri</string>
+    <string name="error_house_city">Deve contenere solo lettere</string>
+    <string name="error_house_year">Deve contenere solo numeri</string>
+    <string name="error_house_squaremeters">Deve contenere solo numeri</string>
+    <string name="mileage_error">Deve contenere solo numeri</string>
+    <string name="length_error">Deve contenere solo numeri</string>
+
 </language>
