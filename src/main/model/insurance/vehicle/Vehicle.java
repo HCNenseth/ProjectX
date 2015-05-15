@@ -14,27 +14,29 @@ public abstract class Vehicle<C extends Claim> extends Insurance<C>
         implements Serializable
 {
     private String licensePlate;
-    private Person owner;
+    private String owner;
     private int horsePower;
     private int modelYear;
     private LocalDate registration;
 
-    public Vehicle(VehicleBuilder ib)
+    public Vehicle(VehicleBuilder vb)
     {
-        super(ib);
-        setOwner(ib.getOwner());
-        setLicensePlate(ib.getLicensePlate());
-        setModelYear(ib.getModelYear());
-        setHorsePower(ib.getHorsePower());
-        setRegistration(ib.getRegistration());
-    }
+        super(vb);
 
-    public Person getOwner() {
-        return owner;
+        if (vb.getOwner().equals("")) {
+            setOwner(vb.getCustomer().getName());
+        } else {
+            setOwner(vb.getOwner());
+        }
+
+        setLicensePlate(vb.getLicensePlate());
+        setModelYear(vb.getModelYear());
+        setHorsePower(vb.getHorsePower());
+        setRegistration(vb.getRegistration());
     }
 
     /* SETTERS */
-    public void setOwner(Person owner)
+    public void setOwner(String owner)
     {
         this.owner = owner;
     }
@@ -60,6 +62,11 @@ public abstract class Vehicle<C extends Claim> extends Insurance<C>
     }
 
     /* GETTERS */
+    public String getOwner()
+    {
+        return owner;
+    }
+
     public String getLicensePlate()
     {
         return licensePlate;

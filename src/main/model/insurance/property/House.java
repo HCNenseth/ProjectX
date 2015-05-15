@@ -42,7 +42,7 @@ public class House extends Property implements Serializable
         private Type type = Type.A;
         private Material material = Material.A;
         private Standard standard = Standard.A;
-        private int contents = 0;
+        private double contents = 0;
 
 
         public Builder(Person customer, String streetAddress, String postalCode)
@@ -95,6 +95,12 @@ public class House extends Property implements Serializable
         public Builder standard(Standard standard)
         {
             this.standard = standard;
+            return this;
+        }
+
+        public Builder contents(Double val)
+        {
+            this.contents = val;
             return this;
         }
 

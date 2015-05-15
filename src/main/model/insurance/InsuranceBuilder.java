@@ -16,7 +16,6 @@ import java.util.List;
 public abstract class InsuranceBuilder<T, E>
 {
     private Person customer;
-    private Person owner = customer;
     private double amount = 0;
     private double premium = 0;
     private double deductible;
@@ -28,12 +27,6 @@ public abstract class InsuranceBuilder<T, E>
     public T customer(Person customer)
     {
         this.customer = customer;
-        return (T)this;
-    }
-
-    public T owner(Person owner)
-    {
-        this.owner = owner;
         return (T)this;
     }
 
@@ -77,11 +70,6 @@ public abstract class InsuranceBuilder<T, E>
     public Person getCustomer()
     {
         return customer;
-    }
-
-    public Person getOwner()
-    {
-        return owner;
     }
 
     public double getAmount()

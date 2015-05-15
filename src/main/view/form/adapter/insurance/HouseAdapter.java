@@ -21,6 +21,7 @@ import java.util.function.Consumer;
 public class HouseAdapter extends InsuranceAdapter<House> implements Formable<House>
 {
 
+    private FormValueNode contents;
     private FormValueNode street;
     private FormValueNode postalCode;
     private FormValueNode city;
@@ -44,6 +45,13 @@ public class HouseAdapter extends InsuranceAdapter<House> implements Formable<Ho
 
     private void initNodes()
     {
+        contents = new FormValueNode.Builder(Loc.c("contents"))
+                .error(Loc.c("error_house_contents"))
+                .value(getEditMode() ? getInsurance().getContents() + "" : "")
+                .regex(StringMatcher.getFloat())
+                .required(false)
+                .build();
+
         street = new FormValueNode.Builder(Loc.c("street_address"))
                 .error(Loc.c("error_house_street"))
                 .value(getEditMode() ? getInsurance().getStreetAddress() : "")
@@ -93,10 +101,52 @@ public class HouseAdapter extends InsuranceAdapter<House> implements Formable<Ho
                 .build();
     }
 
+    private void update()
+    {
+        House i = getInsurance();
+        i.setCity(city.getValue());
+        i.setType(type.getData());
+        i.setStreetAddress(street.getValue());
+        i.setPostalCode(postalCode.getValue());
+        i.setMaterial(material.getData());
+        i.setStandard(standard.getData());
+        i.setDesc(getDescription());
+        i.setDeductible(getDeductible());
+        i.setSquareMeter(Integer.parseInt(squareMeters.getValue()));
+        i.setYear(Integer.parseInt(yearBuilt.getValue()));
+        i.setPremium(getPremium());
+        i.setAmount(getAmount());
+        i.setStatus(getStatus());
+        i.setContents(Double.parseDouble(contents.getValue()));
+    }
+
+    private void create()
+    {
+        House insurance = new House.Builder(getCustomer(),
+                street.getValue(), postalCode.getValue())
+                .city(city.getValue())
+                .type(type.getData())
+                .material(material.getData())
+                .standard(standard.getData())
+                .desc(getDescription())
+                .deductible(getDeductible())
+                .squareMeter(Integer.parseInt(squareMeters.getValue()))
+                .year(Integer.parseInt(yearBuilt.getValue()))
+                .premium(getPremium())
+                .amount(getAmount())
+                .status(getStatus())
+                .contents(Double.parseDouble(contents.getValue()))
+                .build();
+        setInsurance(insurance);
+        Insurance.saveNew(insurance);
+    }
+
     @Override
     public List<FormNode> getVisibleNodes()
     {
         List<FormNode> tmp = super.getNodes();
+
+        tmp.add(contents);
         tmp.add(street);
         tmp.add(postalCode);
         tmp.add(city);
@@ -113,38 +163,11 @@ public class HouseAdapter extends InsuranceAdapter<House> implements Formable<Ho
     public void callback()
     {
         if (getEditMode()) {
-            House i = getInsurance();
-            i.setCity(city.getValue());
-            i.setType(type.getData());
-            i.setStreetAddress(street.getValue());
-            i.setPostalCode(postalCode.getValue());
-            i.setMaterial(material.getData());
-            i.setStandard(standard.getData());
-            i.setDesc(getDescription());
-            i.setDeductible(getDeductible());
-            i.setSquareMeter(Integer.parseInt(squareMeters.getValue()));
-            i.setYear(Integer.parseInt(yearBuilt.getValue()));
-            i.setPremium(getPremium());
-            i.setAmount(getAmount());
-            i.setStatus(getStatus());
+            update();
         } else {
-            House insurance = new House.Builder(getCustomer(),
-                    street.getValue(), postalCode.getValue())
-                    .city(city.getValue())
-                    .type(type.getData())
-                    .material(material.getData())
-                    .standard(standard.getData())
-                    .desc(getDescription())
-                    .deductible(getDeductible())
-                    .squareMeter(Integer.parseInt(squareMeters.getValue()))
-                    .year(Integer.parseInt(yearBuilt.getValue()))
-                    .premium(getPremium())
-                    .amount(getAmount())
-                    .status(getStatus())
-                    .build();
-            setInsurance(insurance);
-            Insurance.saveNew(insurance);
+            create();
         }
+
         callBackEvent.fire();
     }
 

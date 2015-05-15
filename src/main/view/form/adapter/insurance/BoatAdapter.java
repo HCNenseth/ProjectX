@@ -23,7 +23,7 @@ import java.util.List;
 public class BoatAdapter extends InsuranceAdapter<Boat> implements Formable<Boat>
 {
     private FormValueNode licensePlate;
-    //private FormValueNode owner;
+    private FormValueNode owner;
     private FormDateNode registration;
     private FormValueNode length;
     private FormValueNode horsePower;
@@ -50,14 +50,10 @@ public class BoatAdapter extends InsuranceAdapter<Boat> implements Formable<Boat
                 .error(Loc.c("license_plate_error"))
                 .build();
 
-        // This does not make any sense!
-        /*
         owner = new FormValueNode.Builder(Loc.c("owner"))
-                .value(getEditMode() ? getInsurance().getOwner().getName() : "")
+                .value(getEditMode() ? getInsurance().getOwner() : "")
                 .regex(StringMatcher.getBaseString())
                 .build();
-        */
-
 
         registration = new FormDateNode.Builder(Loc.c("vehicle_registration"),
                 getEditMode() ? getInsurance().getRegistration() : LocalDate.of(Config.STANDARD_YEAR,
@@ -93,10 +89,56 @@ public class BoatAdapter extends InsuranceAdapter<Boat> implements Formable<Boat
 
     }
 
+    private void update()
+    {
+        Boat i = getInsurance();
+        i.setPremium(getPremium());
+        i.setAmount(getAmount());
+        i.setDeductible(getDeductible());
+        i.setDesc(getDescription());
+        i.setStatus(getStatus());
+
+        i.setType(type.getData());
+        i.setPropulsion(propulsion.getData());
+
+        i.setOwner(owner.getValue());
+        i.setHorsePower(Integer.parseInt(horsePower.getValue()));
+        i.setLength(Integer.parseInt(length.getData()));
+        i.setLicensePlate(licensePlate.getValue());
+        i.setRegistration(registration.getData());
+    }
+
+    private void create()
+    {
+        Boat insurance = new Boat.Builder(getCustomer(), licensePlate.getValue())
+                // shared values for all insurances
+                .premium(getPremium())
+                .amount(getAmount())
+                .deductible(getDeductible())
+                .desc(getDescription())
+                .status(getStatus())
+
+                .type(type.getData())
+                .propulsion(propulsion.getData())
+
+                .owner(owner.getValue())
+                .horsePower(Integer.parseInt(horsePower.getValue()))
+                .length(Integer.parseInt(length.getValue()))
+                .registration(registration.getData())
+                .premium(getPremium())
+                .amount(getAmount())
+                .status(getStatus())
+                .build();
+        setInsurance(insurance);
+        Insurance.saveNew(insurance);
+    }
+
     @Override
     public List<FormNode> getVisibleNodes()
     {
         List<FormNode> tmp = super.getNodes();
+
+        tmp.add(owner);
         tmp.add(licensePlate);
         tmp.add(registration);
         tmp.add(length);
@@ -111,43 +153,11 @@ public class BoatAdapter extends InsuranceAdapter<Boat> implements Formable<Boat
     public void callback()
     {
         if (getEditMode()) {
-            Boat i = getInsurance();
-            // shared values for all insurances
-            i.setPremium(getPremium());
-            i.setAmount(getAmount());
-            i.setDeductible(getDeductible());
-            i.setDesc(getDescription());
-            i.setStatus(getStatus());
-
-            i.setType(type.getData());
-            i.setPropulsion(propulsion.getData());
-
-            i.setHorsePower(Integer.parseInt(horsePower.getValue()));
-            i.setLength(Integer.parseInt(length.getData()));
-            i.setLicensePlate(licensePlate.getValue());
-            i.setRegistration(registration.getData());
+            update();
         } else {
-            Boat insurance = new Boat.Builder(getCustomer(), licensePlate.getValue())
-                    // shared values for all insurances
-                    .premium(getPremium())
-                    .amount(getAmount())
-                    .deductible(getDeductible())
-                    .desc(getDescription())
-                    .status(getStatus())
-
-                    .type(type.getData())
-                    .propulsion(propulsion.getData())
-
-                    .horsePower(Integer.parseInt(horsePower.getValue()))
-                    .length(Integer.parseInt(length.getValue()))
-                    .registration(registration.getData())
-                    .premium(getPremium())
-                    .amount(getAmount())
-                    .status(getStatus())
-                    .build();
-            setInsurance(insurance);
-            Insurance.saveNew(insurance);
+            create();
         }
+
         callBackEvent.fire();
     }
 }

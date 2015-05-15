@@ -5,7 +5,7 @@ import main.localization.Loc;
 import main.model.insurance.property.House;
 
 /**
- * Created by alex on 4/28/15.
+ * HouseView.java
  */
 public class HouseView extends InsuranceView<House>
 {
@@ -16,6 +16,10 @@ public class HouseView extends InsuranceView<House>
 
     protected void childDraw()
     {
+        // Contents
+        add(new Label(Loc.c("contents")), 0, rowNum);
+        add(new Label(getInsurance().getContents() + ""), 1, rowNum++);
+
         // Street address
         add(new Label(Loc.c("street_address")), 0, rowNum);
         add(new Label(getInsurance().getStreetAddress()), 1, rowNum++);

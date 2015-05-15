@@ -180,7 +180,7 @@ public class StorageTest
                 .type(Boat.Type.C)
                 .amount(50000)
                 .desc("super boat")
-                .owner(person2)
+                .owner("some owner")
                 .build();
 
         Claim claim1 = new PropertyClaim.Builder(person1, house1)
