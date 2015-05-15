@@ -47,21 +47,21 @@ public class VacationHouseAdapter extends InsuranceAdapter<VacationHouse>
     {
         street = new FormValueNode.Builder(Loc.c("street_address"))
                 .error(Loc.c("error_house_street"))
-                .value(getEditMode() ? getCustomer().getStreetAddress() : "")
+                .value(getEditMode() ? getInsurance().getStreetAddress() : "")
                 .regex(StringMatcher.getLiberation())
                 .required(true)
                 .build();
 
         postalCode = new FormValueNode.Builder(Loc.c("postal_code"))
                 .error(Loc.c("error_house_code"))
-                .value(getEditMode() ? getCustomer().getPostalCode() : "")
+                .value(getEditMode() ? getInsurance().getPostalCode() : "")
                 .regex(StringMatcher.getPostalCode())
                 .required(true)
                 .build();
 
         city = new FormValueNode.Builder(Loc.c("city"))
                 .error(Loc.c("error_house_city"))
-                .value(getEditMode() ? getCustomer().getCity() : "")
+                .value(getEditMode() ? getInsurance().getCity() : "")
                 .regex(StringMatcher.getBaseString())
                 .build();
 
