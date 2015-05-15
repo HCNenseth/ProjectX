@@ -261,6 +261,7 @@
     <string name="property_claim_type">Claim type</string>
     <string name="new_travel_claim">New travel claim</string>
     <string name="edit_travel_claim">Edit travel claim</string>
+    <string name="travel_claim_type">Travel claim type</string>
 
     <!-- Report -->
     <string name="insurance_distribution">Insurance distribution</string>

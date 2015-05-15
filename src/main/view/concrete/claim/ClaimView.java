@@ -34,7 +34,7 @@ public abstract class ClaimView<T extends Claim> extends StandardGridPane
     {
         if (drawn)
         {
-            getChildren().clear();
+            getChildren();
             rowNum = 0;
         }
 

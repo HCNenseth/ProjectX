@@ -261,6 +261,8 @@
     <string name="property_claim_type">Skademeldingstype</string>
     <string name="new_travel_claim">Ny reiseskademelding</string>
     <string name="edit_travel_claim">Endre reiseskademelding</string>
+    <string name="travel_claim_type">Skademeldingstype</string>
+
 
     <!-- Report -->
     <string name="insurance_distribution">Forsikringsfordeling</string>
