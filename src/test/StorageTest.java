@@ -364,6 +364,9 @@ public class StorageTest
                         .date(LocalDate.of(randInt(1970, 2015),
                                 randInt(1, 12), randInt(1, 28)))
                         .type(randomEnumValue(House.Type.class))
+                        .city(city)
+                        .postalCode(String.valueOf(randInt(1000, 9000)))
+                        .streetAddress(streetName)
                         .amount(randInt(1000, 4000))
                         .premium(randInt(300, 700))
                         .deductible(randInt(4000, 12000))
@@ -394,6 +397,9 @@ public class StorageTest
                         .type(randomEnumValue(VacationHouse.Type.class))
                         .amount(randInt(1000, 4000))
                         .premium(randInt(300, 700))
+                        .city(city)
+                        .postalCode(String.valueOf(randInt(1000, 9000)))
+                        .streetAddress(streetName)
                         .date(LocalDate.of(randInt(1970, 2015),
                                 randInt(1, 12), randInt(1, 28)))
                         .deductible(randInt(4000, 12000))

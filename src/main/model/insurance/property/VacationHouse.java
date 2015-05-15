@@ -58,6 +58,18 @@ public class VacationHouse extends Property implements Serializable
             this.city = city; return this;
         }
 
+        public Builder streetAddress(String val)
+        {
+            this.streetAddress = val;
+            return this;
+        }
+
+        public Builder postalCode(String val)
+        {
+            this.postalCode = val;
+            return this;
+        }
+
         public Builder year(int year)
         {
             this.year = year; return this;
@@ -103,10 +115,10 @@ public class VacationHouse extends Property implements Serializable
 
         setStreetAddress(builder.streetAddress);
         setPostalCode(builder.postalCode);
+        setCity(builder.city);
         setMaterial(builder.material);
         setSquareMeter(builder.squareMeter);
         setStandard(builder.standard);
-        setCity(builder.city);
         setYear(builder.year);
         setContents(builder.contents);
 
