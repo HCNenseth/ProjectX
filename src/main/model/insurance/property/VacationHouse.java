@@ -39,7 +39,7 @@ public class VacationHouse extends Property implements Serializable
         private String city = Loc.u("N/A");
         private int year = 1950;
         private int squareMeter = 0;
-        private int contents = 0;
+        private double contents = 0;
         private Type type = Type.A;
         private Material material = Material.A;
         private Standard standard = Standard.A;
@@ -72,7 +72,8 @@ public class VacationHouse extends Property implements Serializable
 
         public Builder year(int year)
         {
-            this.year = year; return this;
+            this.year = year;
+            return this;
         }
 
         public Builder squareMeter(int squareMeter)
@@ -83,17 +84,26 @@ public class VacationHouse extends Property implements Serializable
 
         public Builder type(Type type)
         {
-            this.type = type; return this;
+            this.type = type;
+            return this;
         }
 
         public Builder material(Material material)
         {
-            this.material = material; return this;
+            this.material = material;
+            return this;
         }
 
         public Builder standard(Standard standard)
         {
-            this.standard = standard; return this;
+            this.standard = standard;
+            return this;
+        }
+
+        public Builder contents(Double contents)
+        {
+            this.contents = contents;
+            return this;
         }
 
         @Override

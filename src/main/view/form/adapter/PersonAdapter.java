@@ -119,6 +119,33 @@ public class PersonAdapter implements Formable<Person>
                 .build();
     }
 
+    private void update()
+    {
+        person.setFirstname(firstname.getValue());
+        person.setLastname(lastname.getValue());
+        person.setDateOfBirth(dob.getData());
+        person.setPostalCode(postalCode.getValue());
+        person.setStreetAddress(streetAddress.getValue());
+        person.setCity(city.getValue());
+        person.setStatus(status.getData());
+        person.setEmail(email.getValue());
+        person.setPhoneNumber(phoneNumber.getValue());
+    }
+
+    private void create()
+    {
+        person = new Person.Builder(firstname.getValue(), lastname.getValue())
+                .streetAddress(streetAddress.getValue())
+                .dateOfBirth(dob.getData())
+                .postalCode(postalCode.getValue())
+                .status(status.getData())
+                .city(city.getValue())
+                .email(email.getData())
+                .phoneNumber(phoneNumber.getData())
+                .build();
+        Person.saveNew(person);
+    }
+
     @Override
     public List<FormNode> getVisibleNodes()
     {
@@ -140,27 +167,11 @@ public class PersonAdapter implements Formable<Person>
     public void callback()
     {
         if (editMode) {
-            person.setFirstname(firstname.getValue());
-            person.setLastname(lastname.getValue());
-            person.setDateOfBirth(dob.getData());
-            person.setPostalCode(postalCode.getValue());
-            person.setStreetAddress(streetAddress.getValue());
-            person.setCity(city.getValue());
-            person.setStatus(status.getData());
-            person.setEmail(email.getValue());
-            person.setPhoneNumber(phoneNumber.getValue());
+            update();
         } else {
-            person = new Person.Builder(firstname.getValue(), lastname.getValue())
-                    .streetAddress(streetAddress.getValue())
-                    .dateOfBirth(dob.getData())
-                    .postalCode(postalCode.getValue())
-                    .status(status.getData())
-                    .city(city.getValue())
-                    .email(email.getData())
-                    .phoneNumber(phoneNumber.getData())
-                    .build();
-            Person.saveNew(person);
+            create();
         }
+
         callBackEvent.fire();
     }
 

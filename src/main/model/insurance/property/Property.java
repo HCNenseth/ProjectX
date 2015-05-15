@@ -13,14 +13,14 @@ import java.io.Serializable;
 abstract class Property extends Insurance<PropertyClaim>
         implements Serializable
 {
+    private String streetAddress;
     private String postalCode;
     private String city;
-    private int year;
     private Material material;
-    private int squareMeter;
     private Standard standard;
-    private String streetAddress;
-    private int contents;
+    private int year;
+    private int squareMeter;
+    private double contents;
 
     public enum Material {
         A(Loc.c("property_material_a")),
@@ -94,7 +94,7 @@ abstract class Property extends Insurance<PropertyClaim>
         this.standard = standard;
     }
 
-    public void setContents(int contents)
+    public void setContents(double contents)
     {
         this.contents = contents;
     }
@@ -115,7 +115,7 @@ abstract class Property extends Insurance<PropertyClaim>
         return year;
     }
 
-    public int getContents()
+    public double getContents()
     {
         return contents;
     }

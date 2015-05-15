@@ -89,6 +89,47 @@ public class CarAdapter extends InsuranceAdapter<Car> implements Formable<Car>
                 .build();
     }
 
+    private void update()
+    {
+        Car i = getInsurance();
+        i.setPremium(getPremium());
+        i.setAmount(getAmount());
+        i.setDeductible(getDeductible());
+        i.setDesc(getDescription());
+        i.setStatus(getStatus());
+
+        i.setType(type.getData());
+        i.setPropulsion(propulsion.getData());
+
+        i.setOwner(owner.getValue());
+        i.setMileage(Integer.parseInt(mileage.getValue()));
+        i.setHorsePower(Integer.parseInt(horsePower.getValue()));
+        i.setLicensePlate(licensePlate.getValue());
+        i.setRegistration(registration.getData());
+    }
+
+    private void create()
+    {
+        Car insurance = new Car.Builder(getCustomer(), licensePlate.getValue())
+                // shared values for all insurances
+                .premium(getPremium())
+                .amount(getAmount())
+                .deductible(getDeductible())
+                .desc(getDescription())
+                .status(getStatus())
+
+                .type(type.getData())
+                .propulsion(propulsion.getData())
+
+                .owner(owner.getValue())
+                .mileage(Integer.parseInt(mileage.getValue()))
+                .horsePower(Integer.parseInt(horsePower.getValue()))
+                .registration(registration.getData())
+                .build();
+        setInsurance(insurance);
+        Insurance.saveNew(insurance);
+    }
+
     @Override
     public List<FormNode> getVisibleNodes() {
         List<FormNode> tmp = super.getNodes();
@@ -108,42 +149,11 @@ public class CarAdapter extends InsuranceAdapter<Car> implements Formable<Car>
     public void callback()
     {
         if (getEditMode()) {
-            Car i = getInsurance();
-            // shared values for all insurances
-            i.setPremium(getPremium());
-            i.setAmount(getAmount());
-            i.setDeductible(getDeductible());
-            i.setDesc(getDescription());
-            i.setStatus(getStatus());
-
-            i.setType(type.getData());
-            i.setPropulsion(propulsion.getData());
-
-            i.setOwner(owner.getValue());
-            i.setMileage(Integer.parseInt(mileage.getValue()));
-            i.setHorsePower(Integer.parseInt(horsePower.getValue()));
-            i.setLicensePlate(licensePlate.getValue());
-            i.setRegistration(registration.getData());
+            update();
         } else {
-            Car insurance = new Car.Builder(getCustomer(), licensePlate.getValue())
-                    // shared values for all insurances
-                    .premium(getPremium())
-                    .amount(getAmount())
-                    .deductible(getDeductible())
-                    .desc(getDescription())
-                    .status(getStatus())
-
-                    .type(type.getData())
-                    .propulsion(propulsion.getData())
-
-                    .owner(owner.getValue())
-                    .mileage(Integer.parseInt(mileage.getValue()))
-                    .horsePower(Integer.parseInt(horsePower.getValue()))
-                    .registration(registration.getData())
-                    .build();
-            setInsurance(insurance);
-            Insurance.saveNew(insurance);
+            create();
         }
+
         callBackEvent.fire();
     }
 }

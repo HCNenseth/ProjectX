@@ -3,10 +3,9 @@ package main.view.concrete.insurance;
 import javafx.scene.control.Label;
 import main.localization.Loc;
 import main.model.insurance.property.VacationHouse;
-import main.view.concrete.insurance.InsuranceView;
 
 /**
- * Created by HansChristian on 30.04.2015.
+ * VacationHouseView.java
  */
 public class VacationHouseView extends InsuranceView<VacationHouse>
 {
@@ -17,6 +16,10 @@ public class VacationHouseView extends InsuranceView<VacationHouse>
 
     protected void childDraw()
     {
+        // Contents
+        add(new Label(Loc.c("contents")), 0, rowNum);
+        add(new Label(getInsurance().getContents() + ""), 1, rowNum++);
+
         // Street address
         add(new Label(Loc.c("street_address")), 0, rowNum);
         add(new Label(getInsurance().getStreetAddress()), 1, rowNum++);

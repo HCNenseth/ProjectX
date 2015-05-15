@@ -44,6 +44,31 @@ public class TravelAdapter extends InsuranceAdapter<Travel> implements Formable<
                 .build();
     }
 
+    private void update()
+    {
+        Travel i = getInsurance();
+        i.setPremium(getPremium());
+        i.setAmount(getAmount());
+        i.setDeductible(getDeductible());
+        i.setDesc(getDescription());
+        i.setStatus(getStatus());
+        i.setType(continent.getData());
+    }
+
+    private void create()
+    {
+        Travel insurance =  new Travel.Builder(getCustomer())
+                .premium(getPremium())
+                .amount(getAmount())
+                .deductible(getDeductible())
+                .status(getStatus())
+                .desc(getDescription())
+                .continent(continent.getData())
+                .build();
+        setInsurance(insurance);
+        Insurance.saveNew(insurance);
+    }
+
     @Override
     public List<FormNode> getVisibleNodes()
     {
@@ -57,26 +82,11 @@ public class TravelAdapter extends InsuranceAdapter<Travel> implements Formable<
     public void callback()
     {
         if (getEditMode()) {
-            Travel i = getInsurance();
-            i.setPremium(getPremium());
-            i.setAmount(getAmount());
-            i.setDeductible(getDeductible());
-            i.setDesc(getDescription());
-            i.setStatus(getStatus());
-
-            i.setType(continent.getData());
+            update();
         } else {
-            Travel insurance =  new Travel.Builder(getCustomer())
-                    .premium(getPremium())
-                    .amount(getAmount())
-                    .deductible(getDeductible())
-                    .status(getStatus())
-                    .desc(getDescription())
-                    .continent(continent.getData())
-                    .build();
-            setInsurance(insurance);
-            Insurance.saveNew(insurance);
+            create();
         }
+
         callBackEvent.fire();
     }
 
