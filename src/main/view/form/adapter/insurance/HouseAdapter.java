@@ -49,6 +49,7 @@ public class HouseAdapter extends InsuranceAdapter<House> implements Formable<Ho
                 .error(Loc.c("error_house_contents"))
                 .value(getEditMode() ? getInsurance().getContents() + "" : "")
                 .regex(StringMatcher.getFloat())
+                .required(false)
                 .build();
 
         street = new FormValueNode.Builder(Loc.c("street_address"))

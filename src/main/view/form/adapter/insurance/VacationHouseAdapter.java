@@ -49,6 +49,7 @@ public class VacationHouseAdapter extends InsuranceAdapter<VacationHouse>
                 .error(Loc.c("error_vacation_house_contents"))
                 .value(getEditMode() ? getInsurance().getContents() + "" : "")
                 .regex(StringMatcher.getFloat())
+                .required(false)
                 .build();
 
         street = new FormValueNode.Builder(Loc.c("street_address"))
