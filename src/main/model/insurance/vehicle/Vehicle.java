@@ -26,6 +26,7 @@ public abstract class Vehicle<C extends Claim> extends Insurance<C>
         setLicensePlate(ib.getLicensePlate());
         setModelYear(ib.getModelYear());
         setHorsePower(ib.getHorsePower());
+        setRegistration(ib.getRegistration());
     }
 
     public Person getOwner() {

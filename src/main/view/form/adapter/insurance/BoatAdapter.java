@@ -125,7 +125,7 @@ public class BoatAdapter extends InsuranceAdapter<Boat> implements Formable<Boat
             i.setHorsePower(Integer.parseInt(horsePower.getValue()));
             i.setLength(Integer.parseInt(length.getData()));
             i.setLicensePlate(licensePlate.getValue());
-
+            i.setRegistration(registration.getData());
         } else {
             Boat insurance = new Boat.Builder(getCustomer(), licensePlate.getValue())
                     // shared values for all insurances
