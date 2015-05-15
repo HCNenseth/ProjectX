@@ -15,14 +15,14 @@ public class CarClaimView extends ClaimView<CarClaim>
     public CarClaimView(CarClaim claim)
     {
         super(claim);
-        addFields();
     }
 
-    private void addFields()
+    @Override
+    public void childFields()
     {
         // type
         add(new Label(Loc.c("type")), 0, rowNum);
-        add(new Label(claim.identify().getValue()), 1, rowNum++);
+        add(new Label(claim.getType().getValue()), 1, rowNum++);
 
         // damage report
         if (!claim.getDamageReportFileName().equals("")) {

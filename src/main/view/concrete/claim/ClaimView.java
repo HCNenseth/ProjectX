@@ -34,12 +34,13 @@ public abstract class ClaimView<T extends Claim> extends StandardGridPane
     {
         if (drawn)
         {
-            getChildren();
+            getChildren().clear();
             rowNum = 0;
         }
 
         initButtonPanel();
         initFields();
+        childFields();
 
         drawn = true;
     }
@@ -131,6 +132,9 @@ public abstract class ClaimView<T extends Claim> extends StandardGridPane
         add(new Separator(), 0, rowNum++, 2, 1);
 
     }
+
+    /* ABSTRACT */
+    public abstract void childFields();
 
     @Override
     public StandardGridPane getNode()

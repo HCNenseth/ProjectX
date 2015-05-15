@@ -12,10 +12,10 @@ public class PropertyClaimView extends ClaimView<PropertyClaim>
     public PropertyClaimView(PropertyClaim claim)
     {
         super(claim);
-        addFields();
     }
 
-    private void addFields()
+    @Override
+    public void childFields()
     {
         // type
         add(new Label(Loc.c("type")), 0, rowNum);
