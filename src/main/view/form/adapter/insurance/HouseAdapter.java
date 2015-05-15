@@ -116,6 +116,8 @@ public class HouseAdapter extends InsuranceAdapter<House> implements Formable<Ho
             House i = getInsurance();
             i.setCity(city.getValue());
             i.setType(type.getData());
+            i.setStreetAddress(street.getValue());
+            i.setPostalCode(postalCode.getValue());
             i.setMaterial(material.getData());
             i.setStandard(standard.getData());
             i.setDesc(getDescription());

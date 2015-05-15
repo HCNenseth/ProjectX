@@ -117,6 +117,8 @@ public class VacationHouseAdapter extends InsuranceAdapter<VacationHouse>
         if (getEditMode()) {
             VacationHouse i = getInsurance();
             i.setCity(city.getValue());
+            i.setStreetAddress(street.getValue());
+            i.setPostalCode(postalCode.getValue());
             i.setType(type.getData());
             i.setMaterial(material.getData());
             i.setDesc(getDescription());
