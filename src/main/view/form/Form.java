@@ -5,16 +5,12 @@ import javafx.scene.Node;
 import javafx.scene.control.Accordion;
 import javafx.scene.control.Button;
 import javafx.scene.control.TitledPane;
-import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.Priority;
 import main.localization.Loc;
 import main.view.StandardGridPane;
 import main.view.form.node.FormNode;
 import main.view.form.node.FormValueNode;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**

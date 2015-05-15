@@ -7,11 +7,11 @@ import main.localization.Loc;
 import main.model.Status;
 import main.model.person.Person;
 import main.validator.StringMatcher;
+import main.view.form.Formable;
 import main.view.form.node.FormChoiceNode;
 import main.view.form.node.FormDateNode;
 import main.view.form.node.FormNode;
 import main.view.form.node.FormValueNode;
-import main.view.form.Formable;
 
 import java.time.LocalDate;
 import java.util.ArrayList;

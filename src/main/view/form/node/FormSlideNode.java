@@ -1,9 +1,7 @@
 package main.view.form.node;
 
-import javafx.scene.control.*;
-import javafx.scene.paint.Color;
-
-import javax.swing.text.LabelView;
+import javafx.scene.control.Label;
+import javafx.scene.control.Slider;
 
 /**
  * Simple FormNode class used for structuring data

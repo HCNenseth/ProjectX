@@ -12,8 +12,8 @@ import main.model.claim.property.PropertyClaim;
 import main.model.claim.travel.TravelClaim;
 import main.model.claim.vehicle.BoatClaim;
 import main.model.claim.vehicle.CarClaim;
-import main.model.insurance.InsuranceType;
 import main.model.insurance.Insurance;
+import main.model.insurance.InsuranceType;
 import main.model.insurance.property.House;
 import main.model.insurance.property.VacationHouse;
 import main.model.insurance.travel.Travel;
@@ -22,10 +22,11 @@ import main.model.insurance.vehicle.Car;
 import main.model.person.Person;
 import org.junit.Test;
 
-
 import java.io.IOException;
 import java.time.LocalDate;
-import java.util.*;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Random;
 
 import static org.junit.Assert.*;
 

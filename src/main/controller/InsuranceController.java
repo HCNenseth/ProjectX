@@ -2,8 +2,8 @@ package main.controller;
 
 import main.config.Config;
 import main.localization.Loc;
-import main.model.insurance.InsuranceType;
 import main.model.insurance.Insurance;
+import main.model.insurance.InsuranceType;
 import main.model.insurance.property.House;
 import main.model.insurance.property.VacationHouse;
 import main.model.insurance.travel.Travel;

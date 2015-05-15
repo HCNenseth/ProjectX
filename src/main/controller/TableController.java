@@ -6,6 +6,7 @@ import main.model.person.Person;
 import main.view.table.ClaimTable;
 import main.view.table.InsuranceTable;
 import main.view.table.PersonTable;
+
 import java.util.stream.Stream;
 
 /**

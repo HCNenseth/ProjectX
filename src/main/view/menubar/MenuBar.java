@@ -1,6 +1,8 @@
 package main.view.menubar;
 
-import javafx.scene.control.*;
+import javafx.scene.control.Menu;
+import javafx.scene.control.MenuItem;
+import javafx.scene.control.SeparatorMenuItem;
 import javafx.scene.input.KeyCombination;
 import main.controller.*;
 import main.localization.Loc;

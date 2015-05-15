@@ -2,9 +2,7 @@ package main.view.concrete.claim;
 
 import javafx.scene.control.Label;
 import main.localization.Loc;
-import main.model.claim.Claim;
 import main.model.claim.travel.TravelClaim;
-import main.model.insurance.travel.Travel;
 
 /**
  * Created by Hans Christian on 08.05.2015.

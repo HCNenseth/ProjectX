@@ -1,8 +1,8 @@
 package main.model.insurance;
 
+import main.model.Status;
 import main.model.claim.Claim;
 import main.model.person.Person;
-import main.model.Status;
 
 import java.time.LocalDate;
 import java.util.List;

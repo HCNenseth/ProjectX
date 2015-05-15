@@ -4,15 +4,7 @@ import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.control.Separator;
 import javafx.scene.text.Font;
-import main.localization.Loc;
-import main.model.claim.Claim;
-import main.model.insurance.InsuranceType;
-import main.model.insurance.Insurance;
-import main.model.person.Person;
 import main.view.StandardGridPane;
-
-import java.util.List;
-import java.util.stream.IntStream;
 
 /**
  * ReportView.java

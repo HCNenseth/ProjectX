@@ -2,8 +2,8 @@ package main.model.insurance.vehicle;
 
 import main.localization.Loc;
 import main.model.claim.vehicle.BoatClaim;
-import main.model.person.Person;
 import main.model.insurance.InsuranceType;
+import main.model.person.Person;
 
 import java.io.Serializable;
 import java.util.LinkedList;

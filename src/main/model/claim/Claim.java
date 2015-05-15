@@ -1,13 +1,13 @@
 package main.model.claim;
 
+import main.config.Config;
 import main.localization.Loc;
 import main.model.FullTextSearch;
 import main.model.Model;
-import main.config.Config;
-import main.model.Storage;
-import main.model.person.Person;
 import main.model.Status;
+import main.model.Storage;
 import main.model.insurance.Insurance;
+import main.model.person.Person;
 
 import java.io.File;
 import java.io.Serializable;

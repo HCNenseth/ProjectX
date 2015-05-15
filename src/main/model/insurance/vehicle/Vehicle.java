@@ -1,7 +1,6 @@
 package main.model.insurance.vehicle;
 
 import main.model.claim.Claim;
-import main.model.person.Person;
 import main.model.insurance.Insurance;
 
 import java.io.Serializable;

@@ -3,7 +3,6 @@ package main.view.concrete.insurance;
 import javafx.scene.control.Label;
 import main.localization.Loc;
 import main.model.insurance.travel.Travel;
-import main.view.concrete.insurance.InsuranceView;
 
 /**
  * Created by alex on 4/28/15.

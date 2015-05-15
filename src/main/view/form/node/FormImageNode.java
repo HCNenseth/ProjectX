@@ -3,14 +3,12 @@ package main.view.form.node;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.image.Image;
 import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
 import javafx.stage.FileChooser;
 import main.localization.Loc;
 
 import java.io.File;
-import java.io.IOException;
 
 public class FormImageNode extends FormNode<File> {
 

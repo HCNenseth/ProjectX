@@ -5,7 +5,6 @@ import main.model.insurance.Insurance;
 import main.model.insurance.travel.Travel;
 import main.model.person.Person;
 import main.view.form.Formable;
-import main.view.form.adapter.insurance.InsuranceAdapter;
 import main.view.form.node.FormChoiceNode;
 import main.view.form.node.FormNode;
 

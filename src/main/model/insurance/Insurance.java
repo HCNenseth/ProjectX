@@ -3,10 +3,10 @@ package main.model.insurance;
 import main.config.Config;
 import main.model.FullTextSearch;
 import main.model.Model;
+import main.model.Status;
 import main.model.Storage;
 import main.model.claim.Claim;
 import main.model.person.Person;
-import main.model.Status;
 
 import java.io.Serializable;
 import java.time.LocalDate;

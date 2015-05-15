@@ -2,8 +2,6 @@ package main.view;
 
 import javafx.scene.Node;
 import javafx.scene.layout.Pane;
-import main.model.Model;
-
 
 import java.util.Observable;
 import java.util.Observer;
