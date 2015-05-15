@@ -25,7 +25,7 @@ public class CarAdapter extends InsuranceAdapter<Car> implements Formable<Car>
 {
 
     private FormValueNode licensePlate;
-    //private FormValueNode owner;
+    private FormValueNode owner;
     private FormDateNode registration;
     private FormValueNode mileage;
     private FormValueNode horsePower;
@@ -52,13 +52,10 @@ public class CarAdapter extends InsuranceAdapter<Car> implements Formable<Car>
                 .regex(StringMatcher.getRegnr())
                 .build();
 
-        // This does not make any sense!
-        /*
         owner = new FormValueNode.Builder(Loc.c("owner"))
-                .value(getEditMode() ? getInsurance().getOwner().getName() : "")
+                .value(getEditMode() ? getInsurance().getOwner() : "")
                 .regex(StringMatcher.getBaseString())
                 .build();
-        */
 
         registration = new FormDateNode.Builder(Loc.c("vehicle_registration"),
                  getEditMode() ? getInsurance().getRegistration() : LocalDate.of(Config.STANDARD_YEAR,
@@ -96,6 +93,7 @@ public class CarAdapter extends InsuranceAdapter<Car> implements Formable<Car>
     public List<FormNode> getVisibleNodes() {
         List<FormNode> tmp = super.getNodes();
 
+        tmp.add(owner);
         tmp.add(licensePlate);
         tmp.add(registration);
         tmp.add(mileage);
@@ -121,6 +119,7 @@ public class CarAdapter extends InsuranceAdapter<Car> implements Formable<Car>
             i.setType(type.getData());
             i.setPropulsion(propulsion.getData());
 
+            i.setOwner(owner.getValue());
             i.setMileage(Integer.parseInt(mileage.getValue()));
             i.setHorsePower(Integer.parseInt(horsePower.getValue()));
             i.setLicensePlate(licensePlate.getValue());
@@ -137,6 +136,7 @@ public class CarAdapter extends InsuranceAdapter<Car> implements Formable<Car>
                     .type(type.getData())
                     .propulsion(propulsion.getData())
 
+                    .owner(owner.getValue())
                     .mileage(Integer.parseInt(mileage.getValue()))
                     .horsePower(Integer.parseInt(horsePower.getValue()))
                     .registration(registration.getData())

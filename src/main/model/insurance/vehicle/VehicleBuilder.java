@@ -10,12 +10,19 @@ import java.time.LocalDate;
 public abstract class VehicleBuilder<T>
         extends InsuranceBuilder<T, Vehicle>
 {
+    private String owner = "";
     private String licensePlate = "";
     private LocalDate registration;
     private int horsePower = 0;
     private int modelYear = 1970;
 
     /* SETTERS */
+
+    public T owner(String owner)
+    {
+        this.owner = owner;
+        return (T) this;
+    }
 
     public T licensePlate(String licensePlate)
     {
@@ -42,6 +49,10 @@ public abstract class VehicleBuilder<T>
     }
 
     /* GETTERS */
+    public String getOwner()
+    {
+        return owner;
+    }
 
     public String getLicensePlate()
     {

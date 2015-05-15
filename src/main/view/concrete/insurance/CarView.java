@@ -16,6 +16,10 @@ public class CarView extends InsuranceView<Car>
 
     protected void childDraw()
     {
+        // Owner
+        add(new Label(Loc.c("owner")), 0, rowNum);
+        add(new Label(getInsurance().getOwner()), 1 ,rowNum++);
+
         // Bonus
         add(new Label(Loc.c("bonus")), 0, rowNum);
         add(new Label(String.format("%d%%", getInsurance().getBonus())), 1, rowNum++);

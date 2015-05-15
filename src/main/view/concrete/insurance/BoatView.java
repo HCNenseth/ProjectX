@@ -16,6 +16,10 @@ public class BoatView extends InsuranceView<Boat>
 
     protected void childDraw()
     {
+        // Owner
+        add(new Label(Loc.c("owner")), 0, rowNum);
+        add(new Label(getInsurance().getOwner()), 1 ,rowNum++);
+
         // Type
         add(new Label(Loc.c("type")), 0, rowNum);
         add(new Label(getInsurance().getType().getValue()), 1, rowNum++);

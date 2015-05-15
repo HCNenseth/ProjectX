@@ -23,7 +23,7 @@ import java.util.List;
 public class BoatAdapter extends InsuranceAdapter<Boat> implements Formable<Boat>
 {
     private FormValueNode licensePlate;
-    //private FormValueNode owner;
+    private FormValueNode owner;
     private FormDateNode registration;
     private FormValueNode length;
     private FormValueNode horsePower;
@@ -50,14 +50,10 @@ public class BoatAdapter extends InsuranceAdapter<Boat> implements Formable<Boat
                 .error(Loc.c("license_plate_error"))
                 .build();
 
-        // This does not make any sense!
-        /*
         owner = new FormValueNode.Builder(Loc.c("owner"))
-                .value(getEditMode() ? getInsurance().getOwner().getName() : "")
+                .value(getEditMode() ? getInsurance().getOwner() : "")
                 .regex(StringMatcher.getBaseString())
                 .build();
-        */
-
 
         registration = new FormDateNode.Builder(Loc.c("vehicle_registration"),
                 getEditMode() ? getInsurance().getRegistration() : LocalDate.of(Config.STANDARD_YEAR,
@@ -97,6 +93,8 @@ public class BoatAdapter extends InsuranceAdapter<Boat> implements Formable<Boat
     public List<FormNode> getVisibleNodes()
     {
         List<FormNode> tmp = super.getNodes();
+
+        tmp.add(owner);
         tmp.add(licensePlate);
         tmp.add(registration);
         tmp.add(length);
@@ -122,6 +120,7 @@ public class BoatAdapter extends InsuranceAdapter<Boat> implements Formable<Boat
             i.setType(type.getData());
             i.setPropulsion(propulsion.getData());
 
+            i.setOwner(owner.getValue());
             i.setHorsePower(Integer.parseInt(horsePower.getValue()));
             i.setLength(Integer.parseInt(length.getData()));
             i.setLicensePlate(licensePlate.getValue());
@@ -138,6 +137,7 @@ public class BoatAdapter extends InsuranceAdapter<Boat> implements Formable<Boat
                     .type(type.getData())
                     .propulsion(propulsion.getData())
 
+                    .owner(owner.getValue())
                     .horsePower(Integer.parseInt(horsePower.getValue()))
                     .length(Integer.parseInt(length.getValue()))
                     .registration(registration.getData())
