@@ -23,8 +23,7 @@ public class CarBonus
         L1(45, daysInYear * 1),
         L2(55, daysInYear * 2),
         L3(65, daysInYear * 3),
-        L4(75, daysInYear * 4),
-        L5(80, daysInYear * 5);
+        L4(75, daysInYear * 4);
 
         int bonus, days;
 
@@ -55,7 +54,7 @@ public class CarBonus
             }
 
             // fall through catch
-            return L5;
+            return L4;
         }
 
         /**

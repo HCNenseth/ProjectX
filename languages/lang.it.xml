@@ -114,6 +114,7 @@
     <string name="vacation_house">Casolare</string>
     <string name="travel">Viaggio</string>
     <string name="premium">Premio assicurativo</string>
+    <string name="premium_bonus">Premio assicurativo bonuso</string>
     <string name="bonus">Bonus</string>
     <string name="amount">Cifra assicurativa</string>
     <string name="deductible">detraibile</string>

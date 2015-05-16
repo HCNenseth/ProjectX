@@ -118,6 +118,7 @@
     <string name="vacation_house">Feriehus</string>
     <string name="travel">Resie</string>
     <string name="premium">Premium</string>
+    <string name="premium_bonus">Premium etter bonus</string>
     <string name="bonus">Bonus</string>
     <string name="amount">Forsikringsbeløp</string>
     <string name="deductible">Egenandel</string>

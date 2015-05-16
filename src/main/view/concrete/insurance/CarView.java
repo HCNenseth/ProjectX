@@ -29,6 +29,10 @@ public class CarView extends InsuranceView<Car>
         add(new Label(Loc.c("bonus")), 0, rowNum);
         add(new Label(String.format("%d%%", getInsurance().getBonus())), 1, rowNum++);
 
+        // Premium after bonus
+        add(new Label(Loc.c("premium_bonus")), 0, rowNum);
+        add(new Label(String.format("%.2f", getInsurance().getBonusPremium())), 1, rowNum++);
+
         // Type
         add(new Label(Loc.c("type")), 0, rowNum);
         add(new Label(getInsurance().getType().getValue()), 1, rowNum++);

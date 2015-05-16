@@ -316,7 +316,7 @@ public class StorageTest
                         .date(LocalDate.of(randInt(1970, 2015),
                                 randInt(1, 12), randInt(1, 28)))
                         .amount(randInt(1000, 4000))
-                        .premium(randInt(300, 700))
+                        .premium(randInt(5000, 15000))
                         .deductible(randInt(4000, 12000))
                                 //.bonus(randInt(50,80))
                         .mileage(randInt(4000, 20000))
@@ -351,7 +351,7 @@ public class StorageTest
                         .date(LocalDate.of(randInt(1970, 2015),
                                 randInt(1, 12), randInt(1, 28)))
                         .amount(randInt(1000, 4000))
-                        .premium(randInt(300, 700))
+                        .premium(randInt(5000, 20000))
                         .deductible(randInt(4000, 12000))
                         .horsePower(randInt(20, 400))
                         .length(randInt(10, 50))
@@ -388,7 +388,7 @@ public class StorageTest
                         .postalCode(String.valueOf(randInt(1000, 9000)))
                         .streetAddress(streetName)
                         .amount(randInt(1000, 4000))
-                        .premium(randInt(300, 700))
+                        .premium(randInt(5000, 10000))
                         .deductible(randInt(4000, 12000))
                         .status(randomEnumValue(Status.class))
                         .year(randInt(1900, 2014))
@@ -416,7 +416,7 @@ public class StorageTest
                         .standard(randomEnumValue(VacationHouse.Standard.class))
                         .type(randomEnumValue(VacationHouse.Type.class))
                         .amount(randInt(1000, 4000))
-                        .premium(randInt(300, 700))
+                        .premium(randInt(2000, 6000))
                         .city(city)
                         .postalCode(String.valueOf(randInt(1000, 9000)))
                         .streetAddress(streetName)
@@ -448,7 +448,7 @@ public class StorageTest
                         .continent(randomEnumValue(Travel.Continent.class))
                         .date(LocalDate.of(randInt(1970, 2015),
                                 randInt(1, 12), randInt(1, 28)))
-                        .premium(randInt(300, 700))
+                        .premium(randInt(1000, 3000))
                         .deductible(randInt(4000, 12000))
                         .build();
                 /* add some random claims */
