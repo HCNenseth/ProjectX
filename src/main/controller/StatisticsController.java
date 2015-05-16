@@ -18,21 +18,9 @@ import java.util.List;
  */
 public class StatisticsController
 {
-    /**
-     * The enum Type.
-     */
     public enum Type
     {
-        /**
-         * The PERSON.
-         */
-        PERSON, /**
-     * The INSURANCE.
-     */
-    INSURANCE, /**
-     * The CLAIM.
-     */
-    CLAIM
+        PERSON, INSURANCE, CLAIM
     }
 
     /**

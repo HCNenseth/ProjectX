@@ -20,17 +20,8 @@ import main.view.stage.ImageStage;
  */
 public abstract class ClaimView<T extends Claim> extends StandardGridPane
 {
-    /**
-     * The Row num.
-     */
     protected int rowNum = 0;
-    /**
-     * The Claim.
-     */
     protected T claim;
-    /**
-     * The Drawn.
-     */
     protected boolean drawn = false;
     private int cellGap = 5;
 
@@ -156,7 +147,6 @@ public abstract class ClaimView<T extends Claim> extends StandardGridPane
     /**
      * Child fields.
      */
-/* ABSTRACT */
     public abstract void childFields();
 
     @Override

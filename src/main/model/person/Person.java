@@ -187,8 +187,6 @@ public class Person implements Serializable, FullTextSearch, Model
         claims = new LinkedList<>();
     }
 
-    /* ADDERS */
-
     /**
      * Add insurance to person object.
      *
@@ -214,7 +212,6 @@ public class Person implements Serializable, FullTextSearch, Model
      *
      * @param firstname the firstname
      */
-/* SETTERS */
     public void setFirstname(String firstname)
     {
         this.firstname = firstname;
@@ -314,7 +311,6 @@ public class Person implements Serializable, FullTextSearch, Model
      *
      * @return the id
      */
-/* GETTERS */
     public String getId()
     {
         return Integer.toString(id);
@@ -455,7 +451,6 @@ public class Person implements Serializable, FullTextSearch, Model
      *
      * @return the persons
      */
-/* STATIC */
     public static List<Person> getPersons()
     {
         return (List<Person>) Storage.getInstance().get(Config.PERSONS);
@@ -480,8 +475,6 @@ public class Person implements Serializable, FullTextSearch, Model
     {
         counter += val;
     }
-
-    /* OVERRIDES */
 
     /**
      * Query method used for search.

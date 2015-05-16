@@ -7,21 +7,9 @@ import main.localization.Loc;
  */
 public enum Status
 {
-    /**
-     * Generic statuses for the three main model types {person, insurance, claim}
-     */
     ACTIVE(Loc.c("active")),
-    /**
-     * The INACTIVE.
-     */
     INACTIVE(Loc.c("inactive")),
-    /**
-     * The PENDING.
-     */
     PENDING(Loc.c("pending")),
-    /**
-     * The INCOMPLETE.
-     */
     INCOMPLETE(Loc.c("incomplete"));
 
     private String value;

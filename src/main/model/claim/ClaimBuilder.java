@@ -14,7 +14,6 @@ import java.time.LocalDate;
  */
 public abstract class ClaimBuilder<T, E>
 {
-    private int reference;
     private Person customer;
     private Insurance insurance;
 
@@ -153,7 +152,9 @@ public abstract class ClaimBuilder<T, E>
         return (T) this;
     }
 
-    /* Getters */
+    /***********
+     * GETTERS *
+     ***********/
 
     /**
      * Gets customer.
@@ -270,6 +271,5 @@ public abstract class ClaimBuilder<T, E>
      *
      * @return the e
      */
-/* Abstract */
     public abstract E build();
 }

@@ -4,6 +4,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
 
 /**
+ * FormSlideNode.java
+ *
  * Simple FormNode class used for structuring data
  * and sending a key-value pair to the Form class.
  */
@@ -78,26 +80,31 @@ public class FormSlideNode extends FormNode<Integer>
         valueSlider.setSnapToTicks(true);
     }
 
+    @Override
     public Label getKey()
     {
         return keyLabel;
     }
 
+    @Override
     public Slider getNode()
     {
         return valueSlider;
     }
 
+    @Override
     public Label getError()
     {
         return new Label("");
     }
 
+    @Override
     public String getValue()
     {
         return Double.toString(valueSlider.getValue());
     }
 
+    @Override
     public Integer getData()
     {
         return (int) valueSlider.getValue();

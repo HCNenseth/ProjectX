@@ -12,26 +12,11 @@ public interface Model
      */
     enum ModelType
     {
-        /**
-         * The PERSON.
-         */
         PERSON(Loc.c("person")),
-        /**
-         * The INSURANCE.
-         */
         INSURANCE(Loc.c("insurance")),
-        /**
-         * The CLAIM.
-         */
         CLAIM(Loc.c("claim")),
-        /**
-         * The SEARCH.
-         */
         SEARCH(Loc.c("search"));
 
-        /**
-         * The Value.
-         */
         String value;
 
         /**

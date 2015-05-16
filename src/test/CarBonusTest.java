@@ -1,9 +1,5 @@
 package test;
 
-/**
- * CarBonusTest.java
- */
-
 import main.model.Status;
 import main.model.claim.vehicle.CarClaim;
 import main.model.insurance.vehicle.Car;
@@ -17,6 +13,8 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 /**
+ * CarBonusTest.java
+ *
  * The type Car bonus test.
  */
 public class CarBonusTest

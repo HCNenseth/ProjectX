@@ -54,26 +54,6 @@ public class FormLabelNode extends FormNode<Label>
         valueLabel = new Label(value);
     }
 
-    public Label getKey()
-    {
-        return keyLabel;
-    }
-
-    public Label getNode()
-    {
-        return valueLabel;
-    }
-
-    public Label getError()
-    {
-        return new Label();
-    }
-
-    public String getValue()
-    {
-        return valueLabel.getText();
-    }
-
     /**
      * Gets regex.
      *
@@ -84,6 +64,31 @@ public class FormLabelNode extends FormNode<Label>
         return "";
     }
 
+    @Override
+    public Label getKey()
+    {
+        return keyLabel;
+    }
+
+    @Override
+    public Label getNode()
+    {
+        return valueLabel;
+    }
+
+    @Override
+    public Label getError()
+    {
+        return new Label();
+    }
+
+    @Override
+    public String getValue()
+    {
+        return valueLabel.getText();
+    }
+
+    @Override
     public Label getData()
     {
         return getNode();

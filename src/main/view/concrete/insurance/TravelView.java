@@ -5,7 +5,7 @@ import main.localization.Loc;
 import main.model.insurance.travel.Travel;
 
 /**
- * Created by alex on 4/28/15.
+ * TravelView.java
  */
 public class TravelView extends InsuranceView<Travel>
 {

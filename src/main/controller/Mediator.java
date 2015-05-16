@@ -5,14 +5,8 @@ package main.controller;
  */
 public enum Mediator
 {
-    /**
-     * The inst.
-     */
     inst;
 
-    /**
-     * Instantiates a new Mediator.
-     */
     Mediator()
     {
     }

@@ -1,10 +1,3 @@
-/**
- * @filename UnitTest.java
- * @date 2015-03-01
- * <p>
- * Unittests for the main.validator package.
- */
-
 package test;
 
 import main.validator.StringMatcher;
@@ -14,6 +7,7 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 /**
+ * ValidatorTest.java
  * The type Validator test.
  */
 public class ValidatorTest

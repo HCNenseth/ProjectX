@@ -6,6 +6,8 @@ import javafx.scene.control.Label;
 import java.time.LocalDate;
 
 /**
+ * FormDateNode.java
+ *
  * Simple FormNode class used for structuring data
  * and sending a key-value pair to the Form class.
  */
@@ -15,8 +17,6 @@ public class FormDateNode extends FormNode<LocalDate>
     private LocalDate value;
     private Label keyLabel;
     private DatePicker datePicker;
-
-    private final String pattern = "yyyy-MM-dd";
 
     /**
      * The type Builder.
@@ -72,26 +72,6 @@ public class FormDateNode extends FormNode<LocalDate>
         datePicker = new DatePicker(value);
     }
 
-    public Label getKey()
-    {
-        return keyLabel;
-    }
-
-    public DatePicker getNode()
-    {
-        return datePicker;
-    }
-
-    public Label getError()
-    {
-        return new Label();
-    }
-
-    public String getValue()
-    {
-        return datePicker.getPromptText();
-    }
-
     /**
      * Gets regex.
      *
@@ -102,6 +82,31 @@ public class FormDateNode extends FormNode<LocalDate>
         return "";
     }
 
+    @Override
+    public Label getKey()
+    {
+        return keyLabel;
+    }
+
+    @Override
+    public DatePicker getNode()
+    {
+        return datePicker;
+    }
+
+    @Override
+    public Label getError()
+    {
+        return new Label();
+    }
+
+    @Override
+    public String getValue()
+    {
+        return datePicker.getPromptText();
+    }
+
+    @Override
     public LocalDate getData()
     {
         return getNode().getValue();

@@ -13,11 +13,11 @@ import main.view.form.Form;
  */
 public class PersonController
 {
+    private static Form f;
+
     private PersonController()
     {
     }
-
-    private static Form f;
 
     /**
      * Create void.

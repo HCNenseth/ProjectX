@@ -8,7 +8,7 @@ import main.controller.*;
 import main.localization.Loc;
 
 /**
- * Created by alex on 4/22/15.
+ * MenuBar.java
  */
 public class MenuBar extends javafx.scene.control.MenuBar
 {

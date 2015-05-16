@@ -13,6 +13,7 @@ import java.util.function.Consumer;
 
 /**
  * Table.java
+ *
  * @param <T>  the type parameter
  */
 public abstract class Table<T> extends TableView<T>

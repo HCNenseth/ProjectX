@@ -20,8 +20,9 @@ import main.preference.Pref;
 
 
 /**
+ * ProjectDialogScene.java
+ *
  * ProjectDialog Scene
- * <p>
  * This file both draws and sets the Project Dialog window. This because
  * the codebase is so small, and splitting it up would only make things
  * more messy.

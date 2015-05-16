@@ -5,7 +5,7 @@ import main.localization.Loc;
 import main.model.insurance.vehicle.Car;
 
 /**
- * Created by alex on 4/28/15.
+ * CarView.java
  */
 public class CarView extends InsuranceView<Car>
 {

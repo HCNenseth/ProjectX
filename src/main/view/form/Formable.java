@@ -9,7 +9,8 @@ import java.util.List;
 import java.util.function.Consumer;
 
 /**
- * Created by alex on 4/21/15.
+ * Formable.java
+ *
  * @param <T>  the type parameter
  */
 public interface Formable<T extends Model>

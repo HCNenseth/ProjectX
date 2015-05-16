@@ -18,39 +18,15 @@ public class CarBonus
 {
     private static final int daysInYear = 365;
 
-    /**
-     * The enum Levels.
-     */
     public enum Levels
     {
-        /**
-         * The L1.
-         */
         L1(45, daysInYear * 1),
-        /**
-         * The L2.
-         */
         L2(55, daysInYear * 2),
-        /**
-         * The L3.
-         */
         L3(65, daysInYear * 3),
-        /**
-         * The L4.
-         */
-        L4(70, daysInYear * 4),
-        /**
-         * The L5.
-         */
+        L4(75, daysInYear * 4),
         L5(80, daysInYear * 5);
 
-        /**
-         * The Bonus.
-         */
-        int bonus, /**
-     * The Days.
-     */
-    days;
+        int bonus, days;
 
         /**
          * Instantiates a new Levels.

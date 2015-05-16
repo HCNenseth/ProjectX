@@ -13,27 +13,12 @@ public class BoatClaim extends Claim
 {
     private Type type;
 
-    /**
-     * The enum Type.
-     */
     public enum Type
     {
-        /**
-         * The A.
-         */
         A(Loc.c("claim_boat_a")),
-        /**
-         * The B.
-         */
         B(Loc.c("claim_boat_b")),
-        /**
-         * The C.
-         */
         C(Loc.c("claim_boat_c"));
 
-        /**
-         * The Value.
-         */
         String value;
 
         /**
@@ -118,7 +103,6 @@ public class BoatClaim extends Claim
      *
      * @param type the type
      */
-/* SETTERS */
     public void setType(Type type)
     {
         this.type = type;
@@ -129,7 +113,6 @@ public class BoatClaim extends Claim
      *
      * @return the type
      */
-/* GETTERS */
     public Type getType()
     {
         return type;

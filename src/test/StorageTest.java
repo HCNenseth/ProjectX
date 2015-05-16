@@ -1,9 +1,5 @@
 package test;
 
-/**
- * Created by alex on 4/16/15.
- */
-
 import main.config.Config;
 import main.model.Status;
 import main.model.Storage;
@@ -31,6 +27,8 @@ import java.util.Random;
 import static org.junit.Assert.*;
 
 /**
+ * StorageTest.java
+ *
  * The type Storage test.
  */
 public class StorageTest
@@ -284,7 +282,7 @@ public class StorageTest
          */
         int count = 2000;
 
-        Storage.injectFilename("data/persons_big.dat");
+        Storage.injectFilename("data/demodata.dat");
 
         List<Person> persons = new LinkedList<>();
         List<Insurance> insurances = new LinkedList<>();

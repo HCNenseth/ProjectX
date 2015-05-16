@@ -6,6 +6,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.paint.Color;
 
 /**
+ * FormValueNode.java
+ *
  * Simple FormNode class used for structuring data
  * and sending a key-value pair to the Form class.
  */
@@ -115,26 +117,6 @@ public class FormValueNode extends FormNode<String>
         errorLabel.setVisible(false);
     }
 
-    public Label getKey()
-    {
-        return keyLabel;
-    }
-
-    public TextField getNode()
-    {
-        return valueField;
-    }
-
-    public Label getError()
-    {
-        return errorLabel;
-    }
-
-    public String getValue()
-    {
-        return valueField.getText();
-    }
-
     /**
      * Gets regex.
      *
@@ -143,11 +125,6 @@ public class FormValueNode extends FormNode<String>
     public String getRegex()
     {
         return regex;
-    }
-
-    public String getData()
-    {
-        return getValue();
     }
 
     /**
@@ -161,9 +138,38 @@ public class FormValueNode extends FormNode<String>
     }
 
     @Override
+    public Label getKey()
+    {
+        return keyLabel;
+    }
+
+    @Override
+    public TextField getNode()
+    {
+        return valueField;
+    }
+
+    @Override
+    public Label getError()
+    {
+        return errorLabel;
+    }
+
+    @Override
+    public String getValue()
+    {
+        return valueField.getText();
+    }
+
+    @Override
+    public String getData()
+    {
+        return getValue();
+    }
+
+    @Override
     public Type getType()
     {
         return Type.VALUE;
     }
-
 }

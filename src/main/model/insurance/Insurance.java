@@ -61,7 +61,6 @@ public abstract class Insurance<C extends Claim> implements
      *
      * @return the id
      */
-/* GETTERS */
     public String getId()
     {
         return Integer.toString(id);
@@ -142,7 +141,6 @@ public abstract class Insurance<C extends Claim> implements
      *
      * @param desc the desc
      */
-/* SETTERS */
     public void setDesc(String desc)
     {
         this.desc = desc;
@@ -209,7 +207,6 @@ public abstract class Insurance<C extends Claim> implements
      *
      * @return the insurances
      */
-/* STATIC */
     public static List<Insurance> getInsurances()
     {
         return (List<Insurance>) Storage.getInstance().get(Config.INSURANCES);

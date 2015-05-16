@@ -19,27 +19,12 @@ public class Boat extends Vehicle<BoatClaim> implements Serializable
     private Propulsion propulsion;
     private Type type;
 
-    /**
-     * The enum Propulsion.
-     */
     public enum Propulsion
     {
-        /**
-         * The A.
-         */
         A(Loc.c("boat_propulsion_a")),
-        /**
-         * The B.
-         */
         B(Loc.c("boat_propulsion_b")),
-        /**
-         * The C.
-         */
         C(Loc.c("boat_propulsion_c"));
 
-        /**
-         * The Value.
-         */
         String value;
 
         /**
@@ -69,31 +54,13 @@ public class Boat extends Vehicle<BoatClaim> implements Serializable
         }
     }
 
-    /**
-     * The enum Type.
-     */
     public enum Type
     {
-        /**
-         * The A.
-         */
         A(Loc.c("boat_type_a")),
-        /**
-         * The B.
-         */
         B(Loc.c("boat_type_b")),
-        /**
-         * The C.
-         */
         C(Loc.c("boat_type_c")),
-        /**
-         * The D.
-         */
         D(Loc.c("boat_type_d"));
 
-        /**
-         * The Value.
-         */
         String value;
 
         /**
@@ -200,8 +167,6 @@ public class Boat extends Vehicle<BoatClaim> implements Serializable
         propulsion = builder.propulsion;
     }
 
-    /* GETTERS */
-
     /**
      * Gets length.
      *
@@ -237,7 +202,6 @@ public class Boat extends Vehicle<BoatClaim> implements Serializable
      *
      * @param length the length
      */
-/* SETTERS */
     public void setLength(int length)
     {
         this.length = length;
@@ -263,7 +227,6 @@ public class Boat extends Vehicle<BoatClaim> implements Serializable
         this.propulsion = propulsion;
     }
 
-    /* OVERRIDES */
     @Override
     public InsuranceType identify()
     {

@@ -17,27 +17,12 @@ public class VacationHouse extends Property implements Serializable
 {
     private Type type;
 
-    /**
-     * The enum Type.
-     */
     public enum Type
     {
-        /**
-         * The A.
-         */
         A(Loc.c("vacation_house_type_a")),
-        /**
-         * The B.
-         */
         B(Loc.c("vacation_house_type_b")),
-        /**
-         * The C.
-         */
         C(Loc.c("vacation_house_type_c"));
 
-        /**
-         * The Value.
-         */
         String value;
 
         /**
@@ -245,7 +230,6 @@ public class VacationHouse extends Property implements Serializable
      *
      * @param type the type
      */
-/* SETTERS */
     public void setType(VacationHouse.Type type)
     {
         this.type = type;
@@ -256,13 +240,11 @@ public class VacationHouse extends Property implements Serializable
      *
      * @return the type
      */
-/* GETTERS */
     public VacationHouse.Type getType()
     {
         return type;
     }
 
-    /* OVERRIDES */
     @Override
     public boolean query(String value)
     {

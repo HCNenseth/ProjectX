@@ -22,27 +22,12 @@ abstract class Property extends Insurance<PropertyClaim>
     private int squareMeter;
     private double contents;
 
-    /**
-     * The enum Material.
-     */
     public enum Material
     {
-        /**
-         * The A.
-         */
         A(Loc.c("property_material_a")),
-        /**
-         * The B.
-         */
         B(Loc.c("property_material_b")),
-        /**
-         * The C.
-         */
         C(Loc.c("property_material_c"));
 
-        /**
-         * The Value.
-         */
         String value;
 
         /**
@@ -72,27 +57,12 @@ abstract class Property extends Insurance<PropertyClaim>
         }
     }
 
-    /**
-     * The enum Standard.
-     */
     public enum Standard
     {
-        /**
-         * The A.
-         */
         A(Loc.c("property_standard_a")),
-        /**
-         * The B.
-         */
         B(Loc.c("property_standard_b")),
-        /**
-         * The C.
-         */
         C(Loc.c("property_standard_c"));
 
-        /**
-         * The Value.
-         */
         String value;
 
         /**
@@ -132,12 +102,15 @@ abstract class Property extends Insurance<PropertyClaim>
         super(ib);
     }
 
+    /***********
+     * SETTERS *
+     ***********/
+
     /**
      * Sets street address.
      *
      * @param streetAddress the street address
      */
-/* SETTERS */
     public void setStreetAddress(String streetAddress)
     {
         this.streetAddress = streetAddress;
@@ -213,12 +186,15 @@ abstract class Property extends Insurance<PropertyClaim>
         this.contents = contents;
     }
 
+    /***********
+     * GETTERS *
+     ***********/
+
     /**
      * Gets postal code.
      *
      * @return the postal code
      */
-/* GETTERS */
     public String getPostalCode()
     {
         return postalCode;

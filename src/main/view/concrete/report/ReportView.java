@@ -11,9 +11,6 @@ import main.view.StandardGridPane;
  */
 abstract class ReportView extends StandardGridPane
 {
-    /**
-     * The Row num.
-     */
     protected int rowNum = 0;
     private int headerSize = 16;
 

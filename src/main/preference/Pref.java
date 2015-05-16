@@ -5,9 +5,6 @@ package main.preference;
  */
 public enum Pref
 {
-    /**
-     * The inst.
-     */
     inst;
 
     private XMLParser p;

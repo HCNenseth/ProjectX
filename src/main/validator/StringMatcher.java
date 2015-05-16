@@ -5,10 +5,7 @@ package main.validator;
  */
 public enum StringMatcher
 {
-    /**
-     * The INSTANCE.
-     */
-    INSTANCE;
+    inst;
 
     /**
      * Some simple rules. Edit here!

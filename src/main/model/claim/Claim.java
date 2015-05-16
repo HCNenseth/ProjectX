@@ -38,31 +38,13 @@ public abstract class Claim implements Serializable, FullTextSearch, Model
     private PaymentStatus paymentStatus;
     private Status status;
 
-    /**
-     * The enum Claim type.
-     */
     public enum ClaimType
     {
-        /**
-         * The PROPERTY.
-         */
         PROPERTY(Loc.c("property")),
-        /**
-         * The TRAVEL.
-         */
         TRAVEL(Loc.c("travel")),
-        /**
-         * The BOAT.
-         */
         BOAT(Loc.c("boat")),
-        /**
-         * The CAR.
-         */
         CAR(Loc.c("car"));
 
-        /**
-         * The Value.
-         */
         String value;
 
         /**
@@ -111,22 +93,10 @@ public abstract class Claim implements Serializable, FullTextSearch, Model
      */
     public enum PaymentStatus
     {
-        /**
-         * The A.
-         */
         A(Loc.c("payment_status_a")),
-        /**
-         * The B.
-         */
         B(Loc.c("payment_status_b")),
-        /**
-         * The C.
-         */
         C(Loc.c("payment_status_c"));
 
-        /**
-         * The Value.
-         */
         String value;
 
         /**
@@ -182,12 +152,15 @@ public abstract class Claim implements Serializable, FullTextSearch, Model
         insurance.addClaim(this);
     }
 
+    /***********
+     * SETTERS *
+     ***********/
+
     /**
      * Sets date of damages.
      *
      * @param dateOfDamages the date of damages
      */
-/* Setters */
     public void setDateOfDamages(LocalDate dateOfDamages)
     {
         this.dateOfDamages = dateOfDamages;
@@ -297,12 +270,15 @@ public abstract class Claim implements Serializable, FullTextSearch, Model
         this.lastEdited = LocalDate.now();
     }
 
+    /***********
+     * GETTERS *
+     ***********/
+
     /**
      * Gets id.
      *
      * @return the id
      */
-/* Getters */
     public String getId()
     {
         return Integer.toString(id);
@@ -433,12 +409,15 @@ public abstract class Claim implements Serializable, FullTextSearch, Model
         return new File(Config.UPLOADS + getFilePathImage());
     }
 
+    /**********
+     * STATIC *
+     **********/
+
     /**
      * Gets claims.
      *
      * @return the claims
      */
-/* STATIC */
     public static List<Claim> getClaims()
     {
         return (List<Claim>) Storage.getInstance().get(Config.CLAIMS);
@@ -470,10 +449,8 @@ public abstract class Claim implements Serializable, FullTextSearch, Model
      *
      * @return the claim type
      */
-/* ABSTRACT */
     public abstract ClaimType identify();
 
-    /* OVERRIDES */
     @Override
     public boolean query(String value)
     {

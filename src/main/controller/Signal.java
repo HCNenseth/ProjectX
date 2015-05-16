@@ -5,26 +5,5 @@ package main.controller;
  */
 public enum Signal
 {
-    /**
-     * The FILE.
-     */
-    FILE, /**
- * The NEW.
- */
-NEW, /**
- * The EDIT.
- */
-EDIT, /**
- * The STATISTICS.
- */
-STATISTICS, /**
- * The REPORT.
- */
-REPORT, /**
- * The SEARCH.
- */
-SEARCH, /**
- * The ABOUT.
- */
-ABOUT
+    FILE, NEW, EDIT, STATISTICS, REPORT, SEARCH, ABOUT
 }

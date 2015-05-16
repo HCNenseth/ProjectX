@@ -4,7 +4,7 @@ import main.localization.Loc;
 import main.model.claim.Claim;
 
 /**
- * Created by alex on 4/24/15.
+ * ClaimTable.java
  */
 public class ClaimTable extends Table<Claim>
 {

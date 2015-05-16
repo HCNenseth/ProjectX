@@ -4,7 +4,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 /**
- * Created by alex on 4/24/15.
+ * Column.java
  */
 class Column
 {

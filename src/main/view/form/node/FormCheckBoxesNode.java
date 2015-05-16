@@ -8,6 +8,8 @@ import javafx.scene.paint.Color;
 import java.util.*;
 
 /**
+ * FormCheckBoxesNode.java
+ *
  * Simple FormNode class used for structuring data
  * and sending a key-value pair to the Form class.
  * @param <T>  the type parameter

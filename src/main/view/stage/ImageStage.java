@@ -9,7 +9,7 @@ import java.io.File;
 import java.io.IOException;
 
 /**
- * Created by alex on 5/11/15.
+ * ImageStage.java
  */
 public class ImageStage extends Stage
 {

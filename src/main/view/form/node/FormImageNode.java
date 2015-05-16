@@ -11,6 +11,8 @@ import main.localization.Loc;
 import java.io.File;
 
 /**
+ * FormImageNode.java
+ *
  * The type Form image node.
  */
 public class FormImageNode extends FormNode<File>

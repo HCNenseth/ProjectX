@@ -13,27 +13,12 @@ public class PropertyClaim extends Claim
 {
     private Type type;
 
-    /**
-     * The enum Type.
-     */
     public enum Type
     {
-        /**
-         * The A.
-         */
         A(Loc.c("claim_property_a")),
-        /**
-         * The B.
-         */
         B(Loc.c("claim_property_b")),
-        /**
-         * The C.
-         */
         C(Loc.c("claim_property_c"));
 
-        /**
-         * The Value.
-         */
         String value;
 
         /**
@@ -116,7 +101,6 @@ public class PropertyClaim extends Claim
      *
      * @return the type
      */
-/* GETTERS */
     public Type getType()
     {
         return type;
@@ -127,7 +111,6 @@ public class PropertyClaim extends Claim
      *
      * @param type the type
      */
-/* SETTERS */
     public void setType(Type type)
     {
         this.type = type;

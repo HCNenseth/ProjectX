@@ -26,58 +26,19 @@ public abstract class ClaimAdapter<T extends Claim> implements Formable<T>
 {
     private FormLabelNode personNode;
     private FormLabelNode insuranceNode;
-    /**
-     * The Date of damages.
-     */
     protected FormDateNode dateOfDamages;
-    /**
-     * The Claim date.
-     */
     protected FormDateNode claimDate;
-    /**
-     * The Contacts.
-     */
     protected FormValueNode contacts;
-    /**
-     * The Amount.
-     */
     protected FormValueNode amount;
-    /**
-     * The Deductible.
-     */
     protected FormValueNode deductible;
-    /**
-     * The Description.
-     */
     protected FormTextAreaNode description;
-    /**
-     * The Image.
-     */
     protected FormImageNode image;
-    /**
-     * The Payment status.
-     */
     protected FormChoiceNode<Claim.PaymentStatus> paymentStatus;
-    /**
-     * The Status.
-     */
     protected FormChoiceNode<Status> status;
 
-    /**
-     * The Person.
-     */
     protected Person person;
-    /**
-     * The Insurance.
-     */
     protected Insurance insurance;
-    /**
-     * The Claim.
-     */
     protected T claim;
-    /**
-     * The Edit mode.
-     */
     protected boolean editMode = false;
 
     private final int standardYear = 2014;

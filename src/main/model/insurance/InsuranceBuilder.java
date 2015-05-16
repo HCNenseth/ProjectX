@@ -31,7 +31,6 @@ public abstract class InsuranceBuilder<T, E>
      * @param customer the customer
      * @return the t
      */
-/* SETTERS */
     public T customer(Person customer)
     {
         this.customer = customer;
@@ -115,7 +114,6 @@ public abstract class InsuranceBuilder<T, E>
      *
      * @return the customer
      */
-/* GETTERS */
     public Person getCustomer()
     {
         return customer;
@@ -186,7 +184,6 @@ public abstract class InsuranceBuilder<T, E>
      *
      * @return the e
      */
-/* ABSTRACT */
     public abstract E build();
 
     /**

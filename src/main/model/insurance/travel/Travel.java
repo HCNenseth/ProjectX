@@ -19,39 +19,15 @@ public class Travel extends Insurance<TravelClaim>
 {
     private Continent type;
 
-    /**
-     * The enum Continent.
-     */
     public enum Continent
     {
-        /**
-         * The A.
-         */
         A(Loc.c("continent_a")),
-        /**
-         * The B.
-         */
         B(Loc.c("continent_b")),
-        /**
-         * The C.
-         */
         C(Loc.c("continent_c")),
-        /**
-         * The D.
-         */
         D(Loc.c("continent_d")),
-        /**
-         * The E.
-         */
         E(Loc.c("continent_e")),
-        /**
-         * The F.
-         */
         F(Loc.c("continent_f"));
 
-        /**
-         * The Value.
-         */
         String value;
 
         /**
@@ -132,7 +108,6 @@ public class Travel extends Insurance<TravelClaim>
      *
      * @return the type
      */
-/* GETTERS */
     public Continent getType()
     {
         return type;
@@ -143,7 +118,6 @@ public class Travel extends Insurance<TravelClaim>
      *
      * @param type the type
      */
-/* SETTERS */
     public void setType(Continent type)
     {
         this.type = type;

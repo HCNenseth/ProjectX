@@ -5,7 +5,7 @@ import main.localization.Loc;
 import main.model.insurance.vehicle.Boat;
 
 /**
- * Created by alex on 4/28/15.
+ * BoatView.java
  */
 public class BoatView extends InsuranceView<Boat>
 {

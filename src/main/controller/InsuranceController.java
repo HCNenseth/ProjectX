@@ -20,11 +20,11 @@ import main.view.form.Form;
  */
 public class InsuranceController
 {
+    private static Form f;
+
     private InsuranceController()
     {
     }
-
-    private static Form f;
 
     /**
      * Create void.

@@ -19,7 +19,7 @@ import main.view.StandardGridPane;
 import main.view.table.SugarTable;
 
 /**
- * Created by alex on 4/28/15.
+ * PersonView.java
  */
 public class PersonView extends StandardGridPane
 {

@@ -7,8 +7,9 @@ import java.util.Observable;
 import java.util.Observer;
 
 /**
- * ObservablePane
- * <p>
+ * ObservablePane.java
+ *
+ *
  * Tabs for ObserverTabPane. Extends Observable for observer pattern
  * with ObserverTabPane.
  *

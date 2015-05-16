@@ -16,38 +16,9 @@ import java.io.IOException;
  */
 public class MenuBar
 {
-    /**
-     * The enum Type.
-     */
     public enum Type
     {
-        /**
-         * The OPEN.
-         */
-        OPEN, /**
-     * The SAVE.
-     */
-    SAVE, /**
-     * The NEW.
-     */
-    NEW, /**
-     * The NEW_PROJECT.
-     */
-    NEW_PROJECT,
-        /**
-         * The CLOSE.
-         */
-        CLOSE, /**
-     * The RESTART.
-     */
-    RESTART,
-        /**
-         * The NEW_CUSTOMER.
-         */
-        NEW_CUSTOMER, /**
-     * The ABOUT.
-     */
-    ABOUT,
+        OPEN, SAVE, NEW, NEW_PROJECT, CLOSE, RESTART, NEW_CUSTOMER, ABOUT,
     }
 
     /**
@@ -85,6 +56,22 @@ public class MenuBar
             default:
                 return;
         }
+    }
+
+    /**
+     * New project.
+     */
+    public void newProject()
+    {
+        Resources.inst.getSceneSwitch().setProjectDialogWindow();
+    }
+
+    /**
+     * New customer.
+     */
+    public void newCustomer()
+    {
+        PersonController.create();
     }
 
     private void aboutUs()
@@ -157,7 +144,6 @@ public class MenuBar
         }
     }
 
-
     private void saveFile()
     {
         if (!Storage.hasFilename()) {
@@ -169,21 +155,5 @@ public class MenuBar
         } catch (IOException ioe) {
             System.out.println("error writing to file");
         }
-    }
-
-    /**
-     * New project.
-     */
-    public void newProject()
-    {
-        Resources.inst.getSceneSwitch().setProjectDialogWindow();
-    }
-
-    /**
-     * New customer.
-     */
-    public void newCustomer()
-    {
-        PersonController.create();
     }
 }

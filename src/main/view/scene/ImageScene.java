@@ -5,7 +5,7 @@ import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
 
 /**
- * Created by alex on 5/11/15.
+ * ImageScene.java
  */
 public class ImageScene
 {

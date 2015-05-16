@@ -45,7 +45,6 @@ public abstract class Vehicle<C extends Claim> extends Insurance<C>
      *
      * @param owner the owner
      */
-/* SETTERS */
     public void setOwner(String owner)
     {
         this.owner = owner;
@@ -96,7 +95,6 @@ public abstract class Vehicle<C extends Claim> extends Insurance<C>
      *
      * @return the owner
      */
-/* GETTERS */
     public String getOwner()
     {
         return owner;

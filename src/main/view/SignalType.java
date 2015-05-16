@@ -5,11 +5,5 @@ package main.view;
  */
 public enum SignalType
 {
-    /**
-     * The REFRESH.
-     */
-    REFRESH, /**
- * The DELETE.
- */
-DELETE;
+    REFRESH, DELETE
 }

@@ -7,7 +7,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.text.Font;
 
 /**
- * Created by alex on 4/18/15.
+ * BasePane.java
  */
 public class BasePane extends BorderPane
 {

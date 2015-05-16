@@ -113,7 +113,6 @@ public class Search implements Model
      *
      * @return the keyword
      */
-/* GETTERS */
     public String getKeyword()
     {
         return keyword;

@@ -13,7 +13,7 @@ import main.controller.Signal;
 import main.controller.StatisticsController;
 
 /**
- * Created by HansPetter on 30.04.2015.
+ * SplashView.java
  */
 public class SplashView
 {

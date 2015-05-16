@@ -6,11 +6,12 @@ import javafx.scene.control.TextArea;
 import javafx.scene.paint.Color;
 
 /**
+ * FormTextAreaNode.java
+ *
  * The type Form text area node.
  */
 public class FormTextAreaNode extends FormNode<TextArea>
 {
-
     private String key;
     private String value;
     private String error;

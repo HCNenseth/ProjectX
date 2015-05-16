@@ -9,9 +9,6 @@ import main.view.concrete.SplashView;
  */
 public enum Resources
 {
-    /**
-     * The inst.
-     */
     inst;
 
     private SceneSwitch sceneSwitch;

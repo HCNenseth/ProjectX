@@ -17,27 +17,12 @@ public class TravelClaim extends Claim
     private Travel.Continent continent;
     private Type type;
 
-    /**
-     * The enum Type.
-     */
     public enum Type
     {
-        /**
-         * The A.
-         */
         A(Loc.c("claim_travel_a")),
-        /**
-         * The B.
-         */
         B(Loc.c("claim_travel_b")),
-        /**
-         * The C.
-         */
         C(Loc.c("claim_travel_c"));
 
-        /**
-         * The Value.
-         */
         String value;
 
         /**
@@ -131,7 +116,6 @@ public class TravelClaim extends Claim
      *
      * @return the continent
      */
-/* GETTERS */
     public Travel.Continent getContinent()
     {
         return continent;
@@ -152,7 +136,6 @@ public class TravelClaim extends Claim
      *
      * @param continent the continent
      */
-/* SETTERS */
     public void setContinent(Travel.Continent continent)
     {
         this.continent = continent;

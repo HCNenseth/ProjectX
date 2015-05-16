@@ -7,9 +7,11 @@ import javafx.scene.paint.Color;
 import java.util.List;
 
 /**
+ * FormChoiceNode.java
+ *
  * Simple FormNode class used for structuring data
  * and sending a key-value pair to the Form class.
- * @param <T>  the type parameter
+ * @param <T>   the type parameter
  */
 public class FormChoiceNode<T> extends FormNode<T>
 {
@@ -23,7 +25,7 @@ public class FormChoiceNode<T> extends FormNode<T>
 
     /**
      * The type Builder.
-     * @param <T>  the type parameter
+     * @param <T>   the type parameter
      */
     public static class Builder<T>
     {

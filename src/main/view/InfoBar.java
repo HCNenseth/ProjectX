@@ -9,7 +9,7 @@ import javafx.scene.paint.Color;
 import main.localization.Loc;
 
 /**
- * Created by alex on 4/30/15.
+ * InfoBar.java
  */
 public class InfoBar extends GridPane
 {

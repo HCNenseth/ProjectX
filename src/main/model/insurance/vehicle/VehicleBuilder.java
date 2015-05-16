@@ -17,8 +17,6 @@ public abstract class VehicleBuilder<T>
     private int horsePower = 0;
     private int modelYear = 1970;
 
-    /* SETTERS */
-
     /**
      * Owner t.
      *
@@ -84,7 +82,6 @@ public abstract class VehicleBuilder<T>
      *
      * @return the owner
      */
-/* GETTERS */
     public String getOwner()
     {
         return owner;

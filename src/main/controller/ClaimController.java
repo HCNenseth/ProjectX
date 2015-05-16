@@ -19,11 +19,11 @@ import main.view.form.Form;
  */
 public class ClaimController
 {
+    private static Form f;
+
     private ClaimController()
     {
     }
-
-    private static Form f;
 
     /**
      * Create void.

@@ -17,27 +17,12 @@ public class House extends Property implements Serializable
 {
     private Type type;
 
-    /**
-     * The enum Type.
-     */
     public enum Type
     {
-        /**
-         * The A.
-         */
         A(Loc.c("house_type_a")),
-        /**
-         * The B.
-         */
         B(Loc.c("house_type_b")),
-        /**
-         * The C.
-         */
         C(Loc.c("house_type_c"));
 
-        /**
-         * The Value.
-         */
         String value;
 
         /**
@@ -243,7 +228,6 @@ public class House extends Property implements Serializable
      *
      * @return the type
      */
-/* GETTERS */
     public House.Type getType()
     {
         return type;
@@ -254,13 +238,11 @@ public class House extends Property implements Serializable
      *
      * @param type the type
      */
-/* SETTERS */
     public void setType(House.Type type)
     {
         this.type = type;
     }
 
-    /* OVERRIDES */
     @Override
     public InsuranceType identify()
     {

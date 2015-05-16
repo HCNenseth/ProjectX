@@ -11,8 +11,8 @@ import main.config.Config;
 import java.util.*;
 
 /**
- * ObserverTabPane
- * <p>
+ * ObserverTabPane.java
+ *
  * Main tab pane for application. Extends JavaFX TabPane and adds
  * some functionality on top. Implements Observer pattern for communication.
  *

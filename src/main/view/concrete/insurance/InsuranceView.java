@@ -17,19 +17,14 @@ import main.view.StandardGridPane;
 import main.view.table.SugarTable;
 
 /**
- * Created by alex on 4/28/15.
+ * InsuranceView.java
  * @param <T>  the type parameter
  */
 public abstract class InsuranceView<T extends Insurance> extends StandardGridPane
 {
     private T insurance;
-    /**
-     * The Row num.
-     */
+
     protected int rowNum = 0;
-    /**
-     * The Drawn.
-     */
     protected boolean drawn = false;
     private int cellGap = 5;
 

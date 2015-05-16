@@ -4,7 +4,7 @@ import javafx.scene.Node;
 import javafx.scene.control.Label;
 
 /**
- * Created by alex on 4/21/15.
+ * FormNode.java
  * @param <T>  the type parameter
  */
 public abstract class FormNode<T>

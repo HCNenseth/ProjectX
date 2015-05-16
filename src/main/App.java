@@ -13,7 +13,7 @@ import main.view.Resources;
 import java.io.IOException;
 
 /**
- * Created by alex on 4/22/15.
+ * App.java
  */
 public class App extends Application
 {

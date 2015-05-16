@@ -7,30 +7,12 @@ import main.localization.Loc;
  */
 public enum InsuranceType
 {
-    /**
-     * The HOUSE.
-     */
     HOUSE(Loc.c("house")),
-    /**
-     * The VACATION_HOUSE.
-     */
     VACATION_HOUSE(Loc.c("vacation_house")),
-    /**
-     * The TRAVEL.
-     */
     TRAVEL(Loc.c("travel")),
-    /**
-     * The BOAT.
-     */
     BOAT(Loc.c("boat")),
-    /**
-     * The CAR.
-     */
     CAR(Loc.c("car"));
 
-    /**
-     * The Value.
-     */
     String value;
 
     /**

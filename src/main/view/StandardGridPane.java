@@ -11,9 +11,7 @@ public abstract class StandardGridPane extends GridPane
 {
     private int vgap = 5, hgap = 5;
     private int key = 20, value = 80;
-    /**
-     * The Row num.
-     */
+
     protected int rowNum = 0;
 
     private ColumnCount columnCount;
@@ -23,16 +21,7 @@ public abstract class StandardGridPane extends GridPane
      */
     public enum ColumnCount
     {
-        /**
-         * The ONE.
-         */
-        ONE, /**
-     * The TWO.
-     */
-    TWO, /**
-     * The THREE.
-     */
-    THREE
+        ONE, TWO, THREE
     }
 
     /**

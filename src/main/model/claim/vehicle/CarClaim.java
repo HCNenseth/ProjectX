@@ -17,27 +17,12 @@ public class CarClaim extends Claim
     private Type type;
     private String damageReportFileName;
 
-    /**
-     * The enum Type.
-     */
     public enum Type
     {
-        /**
-         * The A.
-         */
         A(Loc.c("claim_car_a")),
-        /**
-         * The B.
-         */
         B(Loc.c("claim_car_b")),
-        /**
-         * The C.
-         */
         C(Loc.c("claim_car_c"));
 
-        /**
-         * The Value.
-         */
         String value;
 
         /**
@@ -130,12 +115,15 @@ public class CarClaim extends Claim
         damageReportFileName = builder.damageReport;
     }
 
+    /***********
+     * GETTERS *
+     ***********/
+
     /**
      * Gets type.
      *
      * @return the type
      */
-/* GETTERS */
     public Type getType()
     {
         return type;
@@ -161,12 +149,15 @@ public class CarClaim extends Claim
         return new File(Config.UPLOADS + getFilePathImage());
     }
 
+    /***********
+     * SETTERS *
+     ***********/
+
     /**
      * Sets type.
      *
      * @param type the type
      */
-/* SETTERS */
     public void setType(Type type)
     {
         this.type = type;
