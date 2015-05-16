@@ -8,6 +8,9 @@ import main.model.claim.Claim;
  */
 public class ClaimTable extends Table<Claim>
 {
+    /**
+     * Instantiates a new Claim table.
+     */
     public ClaimTable()
     {
         injectColumn(Column.generate(Loc.c("id"), "id"));

@@ -1,6 +1,7 @@
 package main.controller;
 
 import main.config.Config;
+import main.controller.adapter.SearchAdapter;
 import main.localization.Loc;
 import main.model.Model;
 import main.model.Status;
@@ -11,7 +12,6 @@ import main.model.search.Search;
 import main.view.Resources;
 import main.view.concrete.SearchResultView;
 import main.view.form.Form;
-import main.view.form.adapter.SearchAdapter;
 
 import java.time.LocalDate;
 import java.util.Set;
@@ -25,6 +25,11 @@ class SearchController
     private Payload payload;
 
 
+    /**
+     * Instantiates a new Search controller.
+     *
+     * @param payload the payload
+     */
     public SearchController(Payload payload)
     {
         this.payload = payload;

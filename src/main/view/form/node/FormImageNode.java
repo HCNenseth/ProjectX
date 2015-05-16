@@ -10,7 +10,11 @@ import main.localization.Loc;
 
 import java.io.File;
 
-public class FormImageNode extends FormNode<File> {
+/**
+ * The type Form image node.
+ */
+public class FormImageNode extends FormNode<File>
+{
 
     private File image;
     private Button openButton;
@@ -21,29 +25,54 @@ public class FormImageNode extends FormNode<File> {
     private Label errorLabel;
     private HBox wrapper;
 
+    /**
+     * The type Builder.
+     */
     public static class Builder
     {
         private String key;
         private String error = "";
         private boolean required = false;
 
+        /**
+         * Instantiates a new Builder.
+         *
+         * @param key the key
+         */
         public Builder(String key)
         {
             this.key = key;
         }
 
+        /**
+         * Required builder.
+         *
+         * @param required the required
+         * @return the builder
+         */
         public Builder required(boolean required)
         {
             this.required = required;
             return this;
         }
 
+        /**
+         * Error builder.
+         *
+         * @param error the error
+         * @return the builder
+         */
         public Builder error(String error)
         {
             this.error = error;
             return this;
         }
 
+        /**
+         * Build form image node.
+         *
+         * @return the form image node
+         */
         public FormImageNode build()
         {
             return new FormImageNode(this);

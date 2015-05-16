@@ -10,8 +10,13 @@ import main.view.concrete.AboutView;
  */
 public class AboutController
 {
-    private AboutController(){ }
+    private AboutController()
+    {
+    }
 
+    /**
+     * View void.
+     */
     public static void view()
     {
         AboutView view = new AboutView();

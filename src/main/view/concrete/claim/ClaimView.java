@@ -16,14 +16,29 @@ import main.view.stage.ImageStage;
 
 /**
  * ClaimView.java
+ * @param <T>  the type parameter
  */
 public abstract class ClaimView<T extends Claim> extends StandardGridPane
 {
+    /**
+     * The Row num.
+     */
     protected int rowNum = 0;
+    /**
+     * The Claim.
+     */
     protected T claim;
+    /**
+     * The Drawn.
+     */
     protected boolean drawn = false;
     private int cellGap = 5;
 
+    /**
+     * Instantiates a new Claim view.
+     *
+     * @param claim the claim
+     */
     public ClaimView(T claim)
     {
         this.claim = claim;
@@ -32,8 +47,7 @@ public abstract class ClaimView<T extends Claim> extends StandardGridPane
 
     private void draw()
     {
-        if (drawn)
-        {
+        if (drawn) {
             getChildren().clear();
             rowNum = 0;
         }
@@ -45,6 +59,9 @@ public abstract class ClaimView<T extends Claim> extends StandardGridPane
         drawn = true;
     }
 
+    /**
+     * Init button panel.
+     */
     public void initButtonPanel()
     {
         AnchorPane buttonPane = new AnchorPane();
@@ -72,10 +89,13 @@ public abstract class ClaimView<T extends Claim> extends StandardGridPane
         add(buttonPane, 0, rowNum++, 2, 1);
     }
 
+    /**
+     * Init fields.
+     */
     public void initFields()
     {
         // claimId
-        add(new Label(Loc.c("claim_id")), 0 , rowNum);
+        add(new Label(Loc.c("claim_id")), 0, rowNum);
         add(new Label(claim.getId() + ""), 1, rowNum++);
 
         // customer
@@ -99,7 +119,7 @@ public abstract class ClaimView<T extends Claim> extends StandardGridPane
             add(new Label(Loc.c("image")), 0, rowNum);
             Hyperlink hyperlink = new Hyperlink(claim.getFilePathImage());
             hyperlink.setOnAction(e ->
-                new ImageStage().showImage(claim.getImageFile())
+                            new ImageStage().showImage(claim.getImageFile())
             );
             add(hyperlink, 1, rowNum++);
         }
@@ -133,7 +153,10 @@ public abstract class ClaimView<T extends Claim> extends StandardGridPane
 
     }
 
-    /* ABSTRACT */
+    /**
+     * Child fields.
+     */
+/* ABSTRACT */
     public abstract void childFields();
 
     @Override

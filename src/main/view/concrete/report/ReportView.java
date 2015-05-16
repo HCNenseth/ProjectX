@@ -11,9 +11,17 @@ import main.view.StandardGridPane;
  */
 abstract class ReportView extends StandardGridPane
 {
+    /**
+     * The Row num.
+     */
     protected int rowNum = 0;
     private int headerSize = 16;
 
+    /**
+     * Add header.
+     *
+     * @param string the string
+     */
     protected void addHeader(String string)
     {
         Label label = new Label(string);
@@ -22,21 +30,39 @@ abstract class ReportView extends StandardGridPane
         addColSpan(new Separator());
     }
 
+    /**
+     * Add col span.
+     *
+     * @param node the node
+     */
     protected void addColSpan(Node node)
     {
         add(node, 0, rowNum++, 2, 1);
     }
 
+    /**
+     * Add key.
+     *
+     * @param string the string
+     */
     protected void addKey(String string)
     {
         add(new Label(string), 0, rowNum);
     }
 
+    /**
+     * Add value.
+     *
+     * @param string the string
+     */
     protected void addValue(String string)
     {
         add(new Label(string), 1, rowNum++);
     }
 
-    public StandardGridPane getNode() { return this; }
+    public StandardGridPane getNode()
+    {
+        return this;
+    }
 
 }

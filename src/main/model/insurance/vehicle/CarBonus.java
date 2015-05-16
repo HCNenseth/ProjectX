@@ -10,7 +10,7 @@ import java.util.List;
 
 /**
  * CarBonus.java
- *
+ * <p>
  * Static protected class for helping car insurances to
  * calculate correct bonus
  */
@@ -18,35 +18,90 @@ public class CarBonus
 {
     private static final int daysInYear = 365;
 
+    /**
+     * The enum Levels.
+     */
     public enum Levels
     {
+        /**
+         * The L1.
+         */
         L1(45, daysInYear * 1),
+        /**
+         * The L2.
+         */
         L2(55, daysInYear * 2),
+        /**
+         * The L3.
+         */
         L3(65, daysInYear * 3),
+        /**
+         * The L4.
+         */
         L4(70, daysInYear * 4),
+        /**
+         * The L5.
+         */
         L5(80, daysInYear * 5);
 
-        int bonus, days;
+        /**
+         * The Bonus.
+         */
+        int bonus, /**
+     * The Days.
+     */
+    days;
 
+        /**
+         * Instantiates a new Levels.
+         *
+         * @param bonus the bonus
+         * @param days the days
+         */
         Levels(int bonus, int days)
         {
             this.bonus = bonus;
             this.days = days;
         }
 
+        /**
+         * Gets level.
+         *
+         * @param days the days
+         * @return the level
+         */
         public static Levels getLevel(int days)
         {
             for (Levels l : Levels.values()) {
-                if (days <= l.days) { return l; }
+                if (days <= l.days) {
+                    return l;
+                }
             }
 
             // fall through catch
             return L5;
         }
 
-        public int getBonus() { return bonus; }
+        /**
+         * Gets bonus.
+         *
+         * @return the bonus
+         */
+        public int getBonus()
+        {
+            return bonus;
+        }
 
-        public int getDays(Levels l) { return l.days; }
+        /**
+         * Gets days.
+         *
+         * @param l the l
+         * @return the days
+         */
+        public int getDays(Levels l)
+        {
+            return l.days;
+        }
 
     }
 
@@ -58,8 +113,9 @@ public class CarBonus
      * (from current day) and subtract the claim date (again: if any).
      * Insert this number into the above enum, and let the enum spit out
      * correct bonus level...
-     * @param car
-     * @return
+     *
+     * @param car the car
+     * @return bonus
      */
     static int getBonus(Car car)
     {
@@ -68,8 +124,7 @@ public class CarBonus
         int days = Math.abs(car.getDate().compareTo(LocalDate.now())) * daysInYear;
 
         if (claims.size() == 0
-                || claims.stream().filter(i -> i.getStatus() == Status.ACTIVE).count() == 0)
-        {
+                || claims.stream().filter(i -> i.getStatus() == Status.ACTIVE).count() == 0) {
             return Levels.getLevel(days).bonus;
         }
 

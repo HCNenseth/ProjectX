@@ -18,14 +18,31 @@ import java.util.List;
  */
 public class StatisticsController
 {
+    /**
+     * The enum Type.
+     */
     public enum Type
     {
-        PERSON, INSURANCE, CLAIM
+        /**
+         * The PERSON.
+         */
+        PERSON, /**
+     * The INSURANCE.
+     */
+    INSURANCE, /**
+     * The CLAIM.
+     */
+    CLAIM
     }
 
+    /**
+     * View void.
+     *
+     * @param p the p
+     */
     public static void view(Payload p)
     {
-        switch ((Type)p.getEnumValue()) {
+        switch ((Type) p.getEnumValue()) {
             case PERSON:
                 loadPersonStatistics(Person.getPersons());
                 break;
@@ -40,6 +57,11 @@ public class StatisticsController
         }
     }
 
+    /**
+     * Load person statistics.
+     *
+     * @param personList the person list
+     */
     public static void loadPersonStatistics(List<Person> personList)
     {
         PersonStatisticsView personStatisticsView = new PersonStatisticsView(
@@ -49,6 +71,11 @@ public class StatisticsController
                 personStatisticsView.getNode(), null, Config.STATS_TAB_IMAGE, true);
     }
 
+    /**
+     * Load insurance statistics.
+     *
+     * @param insuranceList the insurance list
+     */
     public static void loadInsuranceStatistics(List<Insurance> insuranceList)
     {
         InsuranceStatisticsView insuranceStatisticsView = new InsuranceStatisticsView(
@@ -58,6 +85,11 @@ public class StatisticsController
                 insuranceStatisticsView.getNode(), null, Config.STATS_TAB_IMAGE, true);
     }
 
+    /**
+     * Load claims statistics.
+     *
+     * @param claimList the claim list
+     */
     public static void loadClaimsStatistics(List<Claim> claimList)
     {
         ClaimStatisticsView claimStatisticsView = new ClaimStatisticsView(

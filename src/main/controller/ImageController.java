@@ -18,9 +18,18 @@ public class ImageController
         return "";
     }
 
+    /**
+     * Store image.
+     *
+     * @param file the file
+     * @param newFileName the new file name
+     * @return the string
+     */
     public static String storeImage(File file, String newFileName)
     {
-        if (file == null) { return null; }
+        if (file == null) {
+            return null;
+        }
 
         String output = "";
 
@@ -31,8 +40,7 @@ public class ImageController
 
 
         try (InputStream inputStream = new FileInputStream(file);
-             OutputStream outputStream = new FileOutputStream(dest))
-        {
+             OutputStream outputStream = new FileOutputStream(dest)) {
 
             byte[] buffer = new byte[Config.MAX_UPLOAD_FILESIZE];
             int length;

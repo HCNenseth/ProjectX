@@ -1,4 +1,4 @@
-package main.view.form.adapter.insurance;
+package main.controller.adapter.insurance;
 
 import javafx.event.ActionEvent;
 import javafx.scene.control.ButtonBase;
@@ -17,7 +17,8 @@ import java.util.function.Consumer;
 
 /**
  * InsuranceAdapter.java
- * @param <T> - Concrete insurance adapter.
+ *
+ * @param <T>  - Concrete insurance adapter.
  */
 public abstract class InsuranceAdapter<T extends Insurance>
         implements Formable<T>
@@ -34,6 +35,9 @@ public abstract class InsuranceAdapter<T extends Insurance>
     private boolean editMode = false;
     private T insurance = null;
 
+    /**
+     * The Call back event.
+     */
     protected ButtonBase callBackEvent = new ButtonBase()
     {
         @Override
@@ -43,6 +47,12 @@ public abstract class InsuranceAdapter<T extends Insurance>
         }
     };
 
+    /**
+     * Instantiates a new Insurance adapter.
+     *
+     * @param customer the customer
+     * @param insurance the insurance
+     */
     public InsuranceAdapter(Person customer, T insurance)
     {
         if (customer == null || insurance == null)
@@ -54,6 +64,11 @@ public abstract class InsuranceAdapter<T extends Insurance>
         initialize();
     }
 
+    /**
+     * Instantiates a new Insurance adapter.
+     *
+     * @param customer the customer
+     */
     public InsuranceAdapter(Person customer)
     {
         if (customer == null)
@@ -64,41 +79,46 @@ public abstract class InsuranceAdapter<T extends Insurance>
     }
 
     private void initialize()
-     {
-         customerNode = new FormLabelNode.Builder(Loc.c("customer"), customer.getName())
-                 .build();
+    {
+        customerNode = new FormLabelNode.Builder(Loc.c("customer"), customer.getName())
+                .build();
 
-         premium = new FormValueNode.Builder(Loc.c("premium"))
+        premium = new FormValueNode.Builder(Loc.c("premium"))
                 .regex(StringMatcher.getFloat())
                 .value(editMode ? Double.toString(insurance.getPremium()) : "")
                 .error(Loc.c("error_premium"))
                 .build();
 
-         amount = new FormValueNode.Builder(Loc.c("amount"))
+        amount = new FormValueNode.Builder(Loc.c("amount"))
                 .regex(StringMatcher.getFloat())
                 .value(editMode ? Double.toString(insurance.getAmount()) : "")
                 .error(Loc.c("error_amount"))
                 .build();
 
-         deductible = new FormValueNode.Builder(Loc.c("deductible"))
+        deductible = new FormValueNode.Builder(Loc.c("deductible"))
                 .regex(StringMatcher.getFloat())
                 .value(editMode ? Double.toString(insurance.getDeductible()) : "")
                 .error(Loc.c("error_amount"))
                 .build();
 
-         desc = new FormTextAreaNode.Builder(Loc.c("desc"))
+        desc = new FormTextAreaNode.Builder(Loc.c("desc"))
                 .regex(StringMatcher.getBaseString())
                 .value(editMode ? insurance.getDesc() : "")
                 .error(Loc.c("error_desc"))
                 .required(false)
                 .build();
 
-         List<Status> statusList = new ArrayList<>(Arrays.asList(Status.values()));
-         status = new FormChoiceNode.Builder<>(Loc.c("status"), statusList)
+        List<Status> statusList = new ArrayList<>(Arrays.asList(Status.values()));
+        status = new FormChoiceNode.Builder<>(Loc.c("status"), statusList)
                 .active(editMode ? insurance.getStatus() : Status.ACTIVE)
                 .build();
     }
 
+    /**
+     * Gets nodes.
+     *
+     * @return the nodes
+     */
     protected List<FormNode> getNodes()
     {
         List<FormNode> tmp = new ArrayList<>();
@@ -111,25 +131,97 @@ public abstract class InsuranceAdapter<T extends Insurance>
         return tmp;
     }
 
-    /* GETTERS */
-    protected double getAmount() { return Double.parseDouble(amount.getValue()); }
+    /**
+     * Gets amount.
+     *
+     * @return the amount
+     */
+/* GETTERS */
+    protected double getAmount()
+    {
+        return Double.parseDouble(amount.getValue());
+    }
 
-    protected double getDeductible() { return Double.parseDouble(deductible.getValue()); }
+    /**
+     * Gets deductible.
+     *
+     * @return the deductible
+     */
+    protected double getDeductible()
+    {
+        return Double.parseDouble(deductible.getValue());
+    }
 
-    protected double getPremium() { return Double.parseDouble(premium.getValue()); }
+    /**
+     * Gets premium.
+     *
+     * @return the premium
+     */
+    protected double getPremium()
+    {
+        return Double.parseDouble(premium.getValue());
+    }
 
-    protected String getDescription() { return desc.getValue(); }
+    /**
+     * Gets description.
+     *
+     * @return the description
+     */
+    protected String getDescription()
+    {
+        return desc.getValue();
+    }
 
-    protected Status getStatus() { return status.getData(); }
+    /**
+     * Gets status.
+     *
+     * @return the status
+     */
+    protected Status getStatus()
+    {
+        return status.getData();
+    }
 
-    protected boolean getEditMode() { return editMode; }
+    /**
+     * Gets edit mode.
+     *
+     * @return the edit mode
+     */
+    protected boolean getEditMode()
+    {
+        return editMode;
+    }
 
-    protected Person getCustomer() { return customer; }
+    /**
+     * Gets customer.
+     *
+     * @return the customer
+     */
+    protected Person getCustomer()
+    {
+        return customer;
+    }
 
-    protected T getInsurance() { return insurance; }
+    /**
+     * Gets insurance.
+     *
+     * @return the insurance
+     */
+    protected T getInsurance()
+    {
+        return insurance;
+    }
 
-    /* SETTERS */
-    protected void setInsurance(T insurance) { this.insurance = insurance; }
+    /**
+     * Sets insurance.
+     *
+     * @param insurance the insurance
+     */
+/* SETTERS */
+    protected void setInsurance(T insurance)
+    {
+        this.insurance = insurance;
+    }
 
     /* OVERRIDES */
     @Override

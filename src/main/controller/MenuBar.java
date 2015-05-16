@@ -16,24 +16,74 @@ import java.io.IOException;
  */
 public class MenuBar
 {
-    public enum Type {
-        OPEN, SAVE, NEW, NEW_PROJECT,
-        CLOSE, RESTART,
-        NEW_CUSTOMER, ABOUT,
+    /**
+     * The enum Type.
+     */
+    public enum Type
+    {
+        /**
+         * The OPEN.
+         */
+        OPEN, /**
+     * The SAVE.
+     */
+    SAVE, /**
+     * The NEW.
+     */
+    NEW, /**
+     * The NEW_PROJECT.
+     */
+    NEW_PROJECT,
+        /**
+         * The CLOSE.
+         */
+        CLOSE, /**
+     * The RESTART.
+     */
+    RESTART,
+        /**
+         * The NEW_CUSTOMER.
+         */
+        NEW_CUSTOMER, /**
+     * The ABOUT.
+     */
+    ABOUT,
     }
 
+    /**
+     * Instantiates a new Menu bar.
+     *
+     * @param p the p
+     */
     public MenuBar(Payload p)
     {
-        switch ((Type)p.getEnumValue()) {
-            case OPEN: openFile(); break;
-            case NEW: newFile(); break;
-            case NEW_PROJECT: newProject(); break;
-            case SAVE: saveFile(); break;
-            case CLOSE: exitApp(); break;
-            case RESTART: restartApp(); break;
-            case NEW_CUSTOMER: newCustomer(); break;
-            case ABOUT: aboutUs(); break;
-            default: return;
+        switch ((Type) p.getEnumValue()) {
+            case OPEN:
+                openFile();
+                break;
+            case NEW:
+                newFile();
+                break;
+            case NEW_PROJECT:
+                newProject();
+                break;
+            case SAVE:
+                saveFile();
+                break;
+            case CLOSE:
+                exitApp();
+                break;
+            case RESTART:
+                restartApp();
+                break;
+            case NEW_CUSTOMER:
+                newCustomer();
+                break;
+            case ABOUT:
+                aboutUs();
+                break;
+            default:
+                return;
         }
     }
 
@@ -110,7 +160,9 @@ public class MenuBar
 
     private void saveFile()
     {
-        if (!Storage.hasFilename()) { return; }
+        if (!Storage.hasFilename()) {
+            return;
+        }
 
         try {
             Storage.getInstance().save();
@@ -119,7 +171,19 @@ public class MenuBar
         }
     }
 
-    public void newProject() { Resources.inst.getSceneSwitch().setProjectDialogWindow(); }
+    /**
+     * New project.
+     */
+    public void newProject()
+    {
+        Resources.inst.getSceneSwitch().setProjectDialogWindow();
+    }
 
-    public void newCustomer() { PersonController.create(); }
+    /**
+     * New customer.
+     */
+    public void newCustomer()
+    {
+        PersonController.create();
+    }
 }

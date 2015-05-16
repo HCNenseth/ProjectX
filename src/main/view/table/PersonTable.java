@@ -8,6 +8,9 @@ import main.model.person.Person;
  */
 public class PersonTable extends Table<Person>
 {
+    /**
+     * Instantiates a new Person table.
+     */
     public PersonTable()
     {
         // customerId

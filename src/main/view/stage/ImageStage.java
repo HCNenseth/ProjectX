@@ -13,8 +13,18 @@ import java.io.IOException;
  */
 public class ImageStage extends Stage
 {
-    public ImageStage() {}
+    /**
+     * Instantiates a new Image stage.
+     */
+    public ImageStage()
+    {
+    }
 
+    /**
+     * Show image.
+     *
+     * @param image the image
+     */
     public void showImage(File image)
     {
         setScene(new ImageScene(image.getAbsolutePath()).getScene());

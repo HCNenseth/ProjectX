@@ -18,6 +18,11 @@ public class PersonStatisticsView extends StandardGridPane
     private final int lowerBound;
     private final int upperBound;
 
+    /**
+     * Instantiates a new Person statistics view.
+     *
+     * @param persons the persons
+     */
     public PersonStatisticsView(List<Person> persons)
     {
         super(ColumnCount.ONE);
@@ -71,5 +76,8 @@ public class PersonStatisticsView extends StandardGridPane
     }
 
     @Override
-    public StandardGridPane getNode() { return this; }
+    public StandardGridPane getNode()
+    {
+        return this;
+    }
 }

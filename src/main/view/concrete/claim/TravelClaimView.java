@@ -10,6 +10,11 @@ import main.model.claim.travel.TravelClaim;
 public class TravelClaimView extends ClaimView<TravelClaim>
 {
 
+    /**
+     * Instantiates a new Travel claim view.
+     *
+     * @param claim the claim
+     */
     public TravelClaimView(TravelClaim claim)
     {
         super(claim);

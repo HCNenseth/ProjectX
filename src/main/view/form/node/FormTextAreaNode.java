@@ -5,7 +5,11 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.paint.Color;
 
-public class FormTextAreaNode extends FormNode<TextArea> {
+/**
+ * The type Form text area node.
+ */
+public class FormTextAreaNode extends FormNode<TextArea>
+{
 
     private String key;
     private String value;
@@ -15,6 +19,9 @@ public class FormTextAreaNode extends FormNode<TextArea> {
     private TextArea textArea;
     private Label errorLabel;
 
+    /**
+     * The type Builder.
+     */
     public static class Builder
     {
         private String key;
@@ -23,35 +30,69 @@ public class FormTextAreaNode extends FormNode<TextArea> {
         private String regex = "";
         private boolean required = false;
 
+        /**
+         * Instantiates a new Builder.
+         *
+         * @param key the key
+         */
         public Builder(String key)
         {
             this.key = key;
         }
 
+        /**
+         * Value builder.
+         *
+         * @param value the value
+         * @return the builder
+         */
         public Builder value(String value)
         {
             this.value = value;
             return this;
         }
 
+        /**
+         * Error builder.
+         *
+         * @param error the error
+         * @return the builder
+         */
         public Builder error(String error)
         {
             this.error = error;
             return this;
         }
 
+        /**
+         * Regex builder.
+         *
+         * @param regex the regex
+         * @return the builder
+         */
         public Builder regex(String regex)
         {
             this.regex = regex;
             return this;
         }
 
+        /**
+         * Required builder.
+         *
+         * @param required the required
+         * @return the builder
+         */
         public Builder required(boolean required)
         {
             this.required = required;
             return this;
         }
 
+        /**
+         * Build form text area node.
+         *
+         * @return the form text area node
+         */
         public FormTextAreaNode build()
         {
             return new FormTextAreaNode(this);
@@ -59,6 +100,11 @@ public class FormTextAreaNode extends FormNode<TextArea> {
 
     }
 
+    /**
+     * Instantiates a new Form text area node.
+     *
+     * @param builder the builder
+     */
     public FormTextAreaNode(Builder builder)
     {
         key = builder.key;
@@ -78,35 +124,40 @@ public class FormTextAreaNode extends FormNode<TextArea> {
     }
 
     @Override
-    public Label getKey() {
+    public Label getKey()
+    {
         return keyLabel;
     }
 
     @Override
-    public Label getError() {
+    public Label getError()
+    {
         return errorLabel;
     }
 
     @Override
-    public Node getNode() {
+    public Node getNode()
+    {
         return textArea;
     }
 
     @Override
-    public Type getType() {
+    public Type getType()
+    {
         return Type.TEXTAREA;
     }
 
     @Override
-    public String getValue() {
+    public String getValue()
+    {
         return textArea.getText();
     }
 
     @Override
-    public TextArea getData() {
+    public TextArea getData()
+    {
         return textArea;
     }
-
 
 
 }

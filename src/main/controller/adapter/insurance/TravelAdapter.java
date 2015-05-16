@@ -1,4 +1,4 @@
-package main.view.form.adapter.insurance;
+package main.controller.adapter.insurance;
 
 import main.localization.Loc;
 import main.model.insurance.Insurance;
@@ -20,12 +20,23 @@ public class TravelAdapter extends InsuranceAdapter<Travel> implements Formable<
 {
     private FormChoiceNode<Travel.Continent> continent;
 
+    /**
+     * Instantiates a new Travel adapter.
+     *
+     * @param customer the customer
+     * @param travel the travel
+     */
     public TravelAdapter(Person customer, Travel travel)
     {
         super(customer, travel);
         initNodes();
     }
 
+    /**
+     * Instantiates a new Travel adapter.
+     *
+     * @param customer the customer
+     */
     public TravelAdapter(Person customer)
     {
         super(customer);
@@ -56,7 +67,7 @@ public class TravelAdapter extends InsuranceAdapter<Travel> implements Formable<
 
     private void create()
     {
-        Travel insurance =  new Travel.Builder(getCustomer())
+        Travel insurance = new Travel.Builder(getCustomer())
                 .premium(getPremium())
                 .amount(getAmount())
                 .deductible(getDeductible())

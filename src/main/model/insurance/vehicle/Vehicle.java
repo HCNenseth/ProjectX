@@ -8,6 +8,7 @@ import java.time.LocalDate;
 
 /**
  * Vehicle.java
+ * @param <C>  the type parameter
  */
 public abstract class Vehicle<C extends Claim> extends Insurance<C>
         implements Serializable
@@ -18,6 +19,11 @@ public abstract class Vehicle<C extends Claim> extends Insurance<C>
     private int modelYear;
     private LocalDate registration;
 
+    /**
+     * Instantiates a new Vehicle.
+     *
+     * @param vb the vb
+     */
     public Vehicle(VehicleBuilder vb)
     {
         super(vb);
@@ -34,53 +40,103 @@ public abstract class Vehicle<C extends Claim> extends Insurance<C>
         setRegistration(vb.getRegistration());
     }
 
-    /* SETTERS */
+    /**
+     * Sets owner.
+     *
+     * @param owner the owner
+     */
+/* SETTERS */
     public void setOwner(String owner)
     {
         this.owner = owner;
     }
 
+    /**
+     * Sets registration.
+     *
+     * @param date the date
+     */
     public void setRegistration(LocalDate date)
     {
         registration = date;
     }
 
+    /**
+     * Sets license plate.
+     *
+     * @param licensePlate the license plate
+     */
     public void setLicensePlate(String licensePlate)
     {
         this.licensePlate = licensePlate;
     }
 
+    /**
+     * Sets model year.
+     *
+     * @param year the year
+     */
     public void setModelYear(int year)
     {
         this.modelYear = year;
     }
 
+    /**
+     * Sets horse power.
+     *
+     * @param hk the hk
+     */
     public void setHorsePower(int hk)
     {
         this.horsePower = hk;
     }
 
-    /* GETTERS */
+    /**
+     * Gets owner.
+     *
+     * @return the owner
+     */
+/* GETTERS */
     public String getOwner()
     {
         return owner;
     }
 
+    /**
+     * Gets license plate.
+     *
+     * @return the license plate
+     */
     public String getLicensePlate()
     {
         return licensePlate;
     }
 
+    /**
+     * Gets horse power.
+     *
+     * @return the horse power
+     */
     public int getHorsePower()
     {
         return horsePower;
     }
 
+    /**
+     * Gets model year.
+     *
+     * @return the model year
+     */
     public int getModelYear()
     {
         return modelYear;
     }
 
+    /**
+     * Gets registration.
+     *
+     * @return the registration
+     */
     public LocalDate getRegistration()
     {
         return registration;

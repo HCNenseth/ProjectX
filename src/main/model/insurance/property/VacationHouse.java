@@ -17,21 +17,59 @@ public class VacationHouse extends Property implements Serializable
 {
     private Type type;
 
-    public enum Type {
+    /**
+     * The enum Type.
+     */
+    public enum Type
+    {
+        /**
+         * The A.
+         */
         A(Loc.c("vacation_house_type_a")),
+        /**
+         * The B.
+         */
         B(Loc.c("vacation_house_type_b")),
+        /**
+         * The C.
+         */
         C(Loc.c("vacation_house_type_c"));
 
+        /**
+         * The Value.
+         */
         String value;
 
-        Type(String value) { this.value = value; }
+        /**
+         * Instantiates a new Type.
+         *
+         * @param value the value
+         */
+        Type(String value)
+        {
+            this.value = value;
+        }
 
-        public String getValue() { return value; }
+        /**
+         * Gets value.
+         *
+         * @return the value
+         */
+        public String getValue()
+        {
+            return value;
+        }
 
         @Override
-        public String toString() { return getValue(); }
+        public String toString()
+        {
+            return getValue();
+        }
     }
 
+    /**
+     * The type Builder.
+     */
     public static class Builder extends InsuranceBuilder<Builder, VacationHouse>
     {
         private String streetAddress;
@@ -44,6 +82,13 @@ public class VacationHouse extends Property implements Serializable
         private Material material = Material.A;
         private Standard standard = Standard.A;
 
+        /**
+         * Instantiates a new Builder.
+         *
+         * @param customer the customer
+         * @param streetAddress the street address
+         * @param postalCode the postal code
+         */
         public Builder(Person customer,
                        String streetAddress,
                        String postalCode)
@@ -53,53 +98,108 @@ public class VacationHouse extends Property implements Serializable
             this.postalCode = postalCode;
         }
 
+        /**
+         * City builder.
+         *
+         * @param city the city
+         * @return the builder
+         */
         public Builder city(String city)
         {
-            this.city = city; return this;
+            this.city = city;
+            return this;
         }
 
+        /**
+         * Street address.
+         *
+         * @param val the val
+         * @return the builder
+         */
         public Builder streetAddress(String val)
         {
             this.streetAddress = val;
             return this;
         }
 
+        /**
+         * Postal code.
+         *
+         * @param val the val
+         * @return the builder
+         */
         public Builder postalCode(String val)
         {
             this.postalCode = val;
             return this;
         }
 
+        /**
+         * Year builder.
+         *
+         * @param year the year
+         * @return the builder
+         */
         public Builder year(int year)
         {
             this.year = year;
             return this;
         }
 
+        /**
+         * Square meter.
+         *
+         * @param squareMeter the square meter
+         * @return the builder
+         */
         public Builder squareMeter(int squareMeter)
         {
             this.squareMeter = squareMeter;
             return this;
         }
 
+        /**
+         * Type builder.
+         *
+         * @param type the type
+         * @return the builder
+         */
         public Builder type(Type type)
         {
             this.type = type;
             return this;
         }
 
+        /**
+         * Material builder.
+         *
+         * @param material the material
+         * @return the builder
+         */
         public Builder material(Material material)
         {
             this.material = material;
             return this;
         }
 
+        /**
+         * Standard builder.
+         *
+         * @param standard the standard
+         * @return the builder
+         */
         public Builder standard(Standard standard)
         {
             this.standard = standard;
             return this;
         }
 
+        /**
+         * Contents builder.
+         *
+         * @param contents the contents
+         * @return the builder
+         */
         public Builder contents(Double contents)
         {
             this.contents = contents;
@@ -119,6 +219,11 @@ public class VacationHouse extends Property implements Serializable
         }
     }
 
+    /**
+     * Instantiates a new Vacation house.
+     *
+     * @param builder the builder
+     */
     public VacationHouse(Builder builder)
     {
         super(builder);
@@ -135,13 +240,23 @@ public class VacationHouse extends Property implements Serializable
         type = builder.type;
     }
 
-    /* SETTERS */
+    /**
+     * Sets type.
+     *
+     * @param type the type
+     */
+/* SETTERS */
     public void setType(VacationHouse.Type type)
     {
         this.type = type;
     }
 
-    /* GETTERS */
+    /**
+     * Gets type.
+     *
+     * @return the type
+     */
+/* GETTERS */
     public VacationHouse.Type getType()
     {
         return type;

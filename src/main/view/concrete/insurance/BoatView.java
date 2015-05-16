@@ -9,6 +9,11 @@ import main.model.insurance.vehicle.Boat;
  */
 public class BoatView extends InsuranceView<Boat>
 {
+    /**
+     * Instantiates a new Boat view.
+     *
+     * @param boat the boat
+     */
     public BoatView(Boat boat)
     {
         super(boat);
@@ -18,7 +23,7 @@ public class BoatView extends InsuranceView<Boat>
     {
         // Owner
         add(new Label(Loc.c("owner")), 0, rowNum);
-        add(new Label(getInsurance().getOwner()), 1 ,rowNum++);
+        add(new Label(getInsurance().getOwner()), 1, rowNum++);
 
         // Type
         add(new Label(Loc.c("type")), 0, rowNum);

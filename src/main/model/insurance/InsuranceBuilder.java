@@ -9,9 +9,11 @@ import java.util.List;
 
 /**
  * InsuranceBuilder.java
- *
+ * <p>
  * InsuranceBuilder abstract class.
  * All insurances builders should extend from this class.
+ * @param <T>  the type parameter
+ * @param <E>  the type parameter
  */
 public abstract class InsuranceBuilder<T, E>
 {
@@ -23,87 +25,174 @@ public abstract class InsuranceBuilder<T, E>
     private String desc = "";
     private Status status = Status.ACTIVE;
 
-    /* SETTERS */
+    /**
+     * Customer t.
+     *
+     * @param customer the customer
+     * @return the t
+     */
+/* SETTERS */
     public T customer(Person customer)
     {
         this.customer = customer;
-        return (T)this;
+        return (T) this;
     }
 
+    /**
+     * Amount t.
+     *
+     * @param amount the amount
+     * @return the t
+     */
     public T amount(double amount)
     {
         this.amount = amount;
-        return (T)this;
+        return (T) this;
     }
 
+    /**
+     * Premium t.
+     *
+     * @param premium the premium
+     * @return the t
+     */
     public T premium(double premium)
     {
         this.premium = premium;
-        return (T)this;
+        return (T) this;
     }
 
+    /**
+     * Deductible t.
+     *
+     * @param deductible the deductible
+     * @return the t
+     */
     public T deductible(double deductible)
     {
         this.deductible = deductible;
-        return (T)this;
+        return (T) this;
     }
 
+    /**
+     * Date t.
+     *
+     * @param date the date
+     * @return the t
+     */
     public T date(LocalDate date)
     {
         this.date = date;
-        return (T)this;
+        return (T) this;
     }
 
+    /**
+     * Desc t.
+     *
+     * @param desc the desc
+     * @return the t
+     */
     public T desc(String desc)
     {
         this.desc = desc;
-        return (T)this;
+        return (T) this;
     }
 
+    /**
+     * Status t.
+     *
+     * @param status the status
+     * @return the t
+     */
     public T status(Status status)
     {
         this.status = status;
-        return (T)this;
+        return (T) this;
     }
 
-    /* GETTERS */
+    /**
+     * Gets customer.
+     *
+     * @return the customer
+     */
+/* GETTERS */
     public Person getCustomer()
     {
         return customer;
     }
 
+    /**
+     * Gets amount.
+     *
+     * @return the amount
+     */
     public double getAmount()
     {
         return amount;
     }
 
+    /**
+     * Gets premium.
+     *
+     * @return the premium
+     */
     public double getPremium()
     {
         return premium;
     }
 
+    /**
+     * Gets deductible.
+     *
+     * @return the deductible
+     */
     public double getDeductible()
     {
         return deductible;
     }
 
+    /**
+     * Gets date.
+     *
+     * @return the date
+     */
     public LocalDate getDate()
     {
         return date;
     }
 
+    /**
+     * Gets desc.
+     *
+     * @return the desc
+     */
     public String getDesc()
     {
         return desc;
     }
 
+    /**
+     * Gets status.
+     *
+     * @return the status
+     */
     public Status getStatus()
     {
         return status;
     }
 
-    /* ABSTRACT */
+    /**
+     * Build e.
+     *
+     * @return the e
+     */
+/* ABSTRACT */
     public abstract E build();
 
+    /**
+     * Gets claims list.
+     *
+     * @return the claims list
+     */
     public abstract List<? extends Claim> getClaimsList();
 }

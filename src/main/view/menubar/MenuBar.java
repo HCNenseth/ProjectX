@@ -19,6 +19,9 @@ public class MenuBar extends javafx.scene.control.MenuBar
             customerReport, insuranceReport, claimReport,
             customer, search, aboutUs;
 
+    /**
+     * Instantiates a new Menu bar.
+     */
     public MenuBar()
     {
         /* Menus */

@@ -39,6 +39,7 @@ public class Storage
 
     /**
      * Static method for access from the outside.
+     *
      * @return single instance
      */
     public static Storage getInstance()
@@ -51,7 +52,8 @@ public class Storage
 
     /**
      * Set filename to read for reading and writing data to.
-     * @param f
+     *
+     * @param f the f
      */
     public static void injectFilename(String f)
     {
@@ -60,6 +62,7 @@ public class Storage
 
     /**
      * Return isset boolean value for filename.
+     * @return the boolean
      */
     public static boolean hasFilename()
     {
@@ -68,14 +71,19 @@ public class Storage
 
     /**
      * Returns current filename
-     * @return
+     *
+     * @return filename
      */
-    public String getFilename() { return filename; }
+    public String getFilename()
+    {
+        return filename;
+    }
 
     /**
      * Read data from file.
-     * @throws IOException
-     * @throws ClassNotFoundException
+     *
+     * @throws IOException the iO exception
+     * @throws IOException the class not found exception
      */
     public void read() throws IOException, ClassNotFoundException
     {
@@ -85,12 +93,13 @@ public class Storage
         ObjectInputStream handle = new ObjectInputStream(
                 new FileInputStream(filename));
 
-        data = (Map)handle.readObject();
+        data = (Map) handle.readObject();
     }
 
     /**
      * Save data to file.
-     * @throws IOException
+     *
+     * @throws IOException the iO exception
      */
     public void save() throws IOException
     {
@@ -106,8 +115,9 @@ public class Storage
 
     /**
      * Put List into data set, accept any List with any object type.
-     * @param key
-     * @param list
+     *
+     * @param key the key
+     * @param list the list
      */
     public void put(String key, List<?> list)
     {
@@ -116,8 +126,9 @@ public class Storage
 
     /**
      * Return List from data set.
-     * @param key
-     * @return
+     *
+     * @param key the key
+     * @return list
      */
     public List<?> get(String key)
     {

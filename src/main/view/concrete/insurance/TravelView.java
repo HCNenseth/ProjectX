@@ -9,6 +9,11 @@ import main.model.insurance.travel.Travel;
  */
 public class TravelView extends InsuranceView<Travel>
 {
+    /**
+     * Instantiates a new Travel view.
+     *
+     * @param travel the travel
+     */
     public TravelView(Travel travel)
     {
         super(travel);

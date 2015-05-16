@@ -9,6 +9,11 @@ import main.model.claim.property.PropertyClaim;
  */
 public class PropertyClaimView extends ClaimView<PropertyClaim>
 {
+    /**
+     * Instantiates a new Property claim view.
+     *
+     * @param claim the claim
+     */
     public PropertyClaimView(PropertyClaim claim)
     {
         super(claim);

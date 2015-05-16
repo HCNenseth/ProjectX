@@ -9,6 +9,11 @@ import main.model.insurance.vehicle.Car;
  */
 public class CarView extends InsuranceView<Car>
 {
+    /**
+     * Instantiates a new Car view.
+     *
+     * @param car the car
+     */
     public CarView(Car car)
     {
         super(car);
@@ -18,7 +23,7 @@ public class CarView extends InsuranceView<Car>
     {
         // Owner
         add(new Label(Loc.c("owner")), 0, rowNum);
-        add(new Label(getInsurance().getOwner()), 1 ,rowNum++);
+        add(new Label(getInsurance().getOwner()), 1, rowNum++);
 
         // Bonus
         add(new Label(Loc.c("bonus")), 0, rowNum);

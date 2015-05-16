@@ -9,6 +9,11 @@ import main.model.claim.vehicle.BoatClaim;
  */
 public class BoatClaimView extends ClaimView<BoatClaim>
 {
+    /**
+     * Instantiates a new Boat claim view.
+     *
+     * @param claim the claim
+     */
     public BoatClaimView(BoatClaim claim)
     {
         super(claim);

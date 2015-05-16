@@ -14,6 +14,9 @@ public class MainScene
     private Scene scene;
     private BorderPane bp;
 
+    /**
+     * Instantiates a new Main scene.
+     */
     public MainScene()
     {
         bp = new BorderPane();
@@ -26,5 +29,13 @@ public class MainScene
         scene.getStylesheets().add("file:resources/css/main.css");
     }
 
-    public Scene getScene() { return scene; }
+    /**
+     * Gets scene.
+     *
+     * @return the scene
+     */
+    public Scene getScene()
+    {
+        return scene;
+    }
 }

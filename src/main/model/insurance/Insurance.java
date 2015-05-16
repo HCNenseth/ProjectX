@@ -15,6 +15,7 @@ import java.util.List;
 /**
  * Insurance.java
  * Main insurance class.
+ * @param <C>  the type parameter
  */
 public abstract class Insurance<C extends Claim> implements
         Serializable, Type, FullTextSearch, Model
@@ -35,7 +36,8 @@ public abstract class Insurance<C extends Claim> implements
 
     /**
      * Insurance constructor.
-     * @param ib
+     *
+     * @param ib the ib
      */
     public Insurance(InsuranceBuilder ib)
     {
@@ -54,95 +56,180 @@ public abstract class Insurance<C extends Claim> implements
         customer.addInsurance(this);
     }
 
-    /* GETTERS */
+    /**
+     * Gets id.
+     *
+     * @return the id
+     */
+/* GETTERS */
     public String getId()
     {
         return Integer.toString(id);
     }
 
+    /**
+     * Gets premium.
+     *
+     * @return the premium
+     */
     public double getPremium()
     {
         return premium;
     }
 
+    /**
+     * Gets amount.
+     *
+     * @return the amount
+     */
     public double getAmount()
     {
         return amount;
     }
 
+    /**
+     * Gets deductible.
+     *
+     * @return the deductible
+     */
     public double getDeductible()
     {
         return deductible;
     }
 
+    /**
+     * Gets desc.
+     *
+     * @return the desc
+     */
     public String getDesc()
     {
         return desc;
     }
 
+    /**
+     * Gets customer.
+     *
+     * @return the customer
+     */
     public Person getCustomer()
     {
         return customer;
     }
 
+    /**
+     * Gets claims.
+     *
+     * @return the claims
+     */
     public List<C> getClaims()
     {
         return claims;
     }
 
+    /**
+     * Gets last edited.
+     *
+     * @return the last edited
+     */
     public LocalDate getLastEdited()
     {
         return lastEdited;
     }
 
-    /* SETTERS */
+    /**
+     * Sets desc.
+     *
+     * @param desc the desc
+     */
+/* SETTERS */
     public void setDesc(String desc)
     {
         this.desc = desc;
         this.lastEdited = LocalDate.now();
     }
 
+    /**
+     * Sets premium.
+     *
+     * @param val the val
+     */
     public void setPremium(double val)
     {
         premium = val;
         this.lastEdited = LocalDate.now();
     }
 
+    /**
+     * Sets amount.
+     *
+     * @param val the val
+     */
     public void setAmount(double val)
     {
         amount = val;
         this.lastEdited = LocalDate.now();
     }
 
+    /**
+     * Sets deductible.
+     *
+     * @param val the val
+     */
     public void setDeductible(double val)
     {
         deductible = val;
         this.lastEdited = LocalDate.now();
     }
 
+    /**
+     * Sets status.
+     *
+     * @param status the status
+     */
     public void setStatus(Status status)
     {
         this.status = status;
         this.lastEdited = LocalDate.now();
     }
 
+    /**
+     * Add claim.
+     *
+     * @param claim the claim
+     */
     public void addClaim(C claim)
     {
         claims.add(claim);
         this.lastEdited = LocalDate.now();
     }
 
-    /* STATIC */
+    /**
+     * Gets insurances.
+     *
+     * @return the insurances
+     */
+/* STATIC */
     public static List<Insurance> getInsurances()
     {
-        return (List<Insurance>)Storage.getInstance().get(Config.INSURANCES);
+        return (List<Insurance>) Storage.getInstance().get(Config.INSURANCES);
     }
 
+    /**
+     * Save new.
+     *
+     * @param insurance the insurance
+     */
     public static void saveNew(Insurance insurance)
     {
         Insurance.getInsurances().add(insurance);
     }
 
+    /**
+     * Sets counter.
+     *
+     * @param val the val
+     */
     public static void setCounter(int val)
     {
         counter += val;

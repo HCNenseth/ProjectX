@@ -17,13 +17,32 @@ import java.util.List;
  */
 public class ReportController
 {
+    /**
+     * The enum Type.
+     */
     public enum Type
     {
-        PERSON, INSURANCE, CLAIM
+        /**
+         * The PERSON.
+         */
+        PERSON, /**
+     * The INSURANCE.
+     */
+    INSURANCE, /**
+     * The CLAIM.
+     */
+    CLAIM
     }
 
-    private ReportController() {}
+    private ReportController()
+    {
+    }
 
+    /**
+     * View void.
+     *
+     * @param p the p
+     */
     public static void view(Payload p)
     {
         switch ((Type) p.getEnumValue()) {
@@ -42,6 +61,12 @@ public class ReportController
 
     }
 
+    /**
+     * Load person report.
+     *
+     * @param personsList the persons list
+     * @param title the title
+     */
     public static void loadPersonReport(List<Person> personsList, String title)
     {
         PersonReportView reportView = new PersonReportView(personsList);
@@ -49,6 +74,12 @@ public class ReportController
                 reportView.getNode(), null, Config.REPORT_TAB_IMAGE, true);
     }
 
+    /**
+     * Load insurance report.
+     *
+     * @param insuranceList the insurance list
+     * @param title the title
+     */
     public static void loadInsuranceReport(List<Insurance> insuranceList, String title)
     {
         InsuranceReportView reportView = new InsuranceReportView(insuranceList);
@@ -56,6 +87,12 @@ public class ReportController
                 reportView.getNode(), null, Config.REPORT_TAB_IMAGE, true);
     }
 
+    /**
+     * Load claim report.
+     *
+     * @param claimList the claim list
+     * @param title the title
+     */
     public static void loadClaimReport(List<Claim> claimList, String title)
     {
         ClaimReportView reportView = new ClaimReportView(claimList);

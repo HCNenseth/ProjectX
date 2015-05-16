@@ -17,6 +17,11 @@ public class InsuranceReportView extends ReportView
 {
     private List<Insurance> insuranceList;
 
+    /**
+     * Instantiates a new Insurance report view.
+     *
+     * @param insuranceList the insurance list
+     */
     public InsuranceReportView(List<Insurance> insuranceList)
     {
         this.insuranceList = insuranceList;
@@ -59,8 +64,8 @@ public class InsuranceReportView extends ReportView
         // car
         addKey(Loc.c("total_car_insurance_count"));
         int carInsuranceCount = (int) insuranceList.stream()
-                        .filter(i -> i.identify() == InsuranceType.CAR)
-                        .count();
+                .filter(i -> i.identify() == InsuranceType.CAR)
+                .count();
         addValue(String.format("%d", carInsuranceCount));
         if (carInsuranceCount > 0) {
             addKey(Loc.c("total_car_insurance_claim_count"));
@@ -81,8 +86,8 @@ public class InsuranceReportView extends ReportView
         // boat
         addKey(Loc.c("total_boat_insurance_count"));
         int boatInsuranceCount = (int) insuranceList.stream()
-                        .filter(i -> i.identify() == InsuranceType.BOAT)
-                        .count();
+                .filter(i -> i.identify() == InsuranceType.BOAT)
+                .count();
         addValue(String.format("%d", boatInsuranceCount));
         if (boatInsuranceCount > 0) {
             addKey(Loc.c("total_boat_insurance_claim_count"));
@@ -103,8 +108,8 @@ public class InsuranceReportView extends ReportView
         // house
         addKey(Loc.c("total_house_insurance_count"));
         int houseInsuranceCount = (int) insuranceList.stream()
-                        .filter(i -> i.identify() == InsuranceType.HOUSE)
-                        .count();
+                .filter(i -> i.identify() == InsuranceType.HOUSE)
+                .count();
         addValue(String.format("%d", houseInsuranceCount));
         if (houseInsuranceCount > 0) {
             addKey(Loc.c("total_house_insurance_claim_count"));
@@ -124,7 +129,7 @@ public class InsuranceReportView extends ReportView
 
         // vacation house
         addKey(Loc.c("total_vacation_house_insurance_count"));
-        int vacationHouseInsuranceCount = (int)insuranceList.stream()
+        int vacationHouseInsuranceCount = (int) insuranceList.stream()
                 .filter(i -> i.identify() == InsuranceType.VACATION_HOUSE)
                 .count();
         addValue(String.format("%d", vacationHouseInsuranceCount));
@@ -147,8 +152,8 @@ public class InsuranceReportView extends ReportView
         // travel
         addKey(Loc.c("total_travel_insurance_count"));
         int travelInsuranceCount = (int) insuranceList.stream()
-                        .filter(i -> i.identify() == InsuranceType.TRAVEL)
-                        .count();
+                .filter(i -> i.identify() == InsuranceType.TRAVEL)
+                .count();
 
         addValue(String.format("%d", travelInsuranceCount));
         if (travelInsuranceCount > 0) {

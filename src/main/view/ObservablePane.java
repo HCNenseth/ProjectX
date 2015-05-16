@@ -8,32 +8,68 @@ import java.util.Observer;
 
 /**
  * ObservablePane
- *
+ * <p>
  * Tabs for ObserverTabPane. Extends Observable for observer pattern
  * with ObserverTabPane.
  *
  * @filename ObservablePane.java
- * @date 2015-04-26
+ * @date 2015 -04-26
  */
 public class ObservablePane extends Observable
 {
     private BasePane pane;
     private Object reference;
 
+    /**
+     * Instantiates a new Observable pane.
+     *
+     * @param observer the observer
+     * @param title the title
+     */
     public ObservablePane(Observer observer, String title)
     {
         this.pane = new BasePane(title);
         addObserver(observer);
     }
 
-    public Pane getPane() { return pane; }
+    /**
+     * Gets pane.
+     *
+     * @return the pane
+     */
+    public Pane getPane()
+    {
+        return pane;
+    }
 
-    public void setContent(Node node) { pane.setContent(node); }
+    /**
+     * Sets content.
+     *
+     * @param node the node
+     */
+    public void setContent(Node node)
+    {
+        pane.setContent(node);
+    }
 
+    /**
+     * Has reference.
+     *
+     * @param reference the reference
+     * @return the boolean
+     */
     public boolean hasReference(Object reference)
     {
         return this.reference != null && this.reference.equals(reference);
     }
 
-    public void setReference(Object reference) { this.reference = reference; }
+    /**
+     * Sets reference.
+     *
+     * @param reference the reference
+     */
+    public void setReference(Object reference)
+    {
+        this.reference = reference;
+    }
 }

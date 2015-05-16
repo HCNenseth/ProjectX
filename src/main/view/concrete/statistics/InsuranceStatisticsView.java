@@ -40,6 +40,11 @@ public class InsuranceStatisticsView extends StandardGridPane
     private final int cellGap = 5;
     private int rowNum = 0;
 
+    /**
+     * Instantiates a new Insurance statistics view.
+     *
+     * @param insurances the insurances
+     */
     public InsuranceStatisticsView(List<Insurance> insurances)
     {
         super(ColumnCount.ONE);
@@ -84,8 +89,9 @@ public class InsuranceStatisticsView extends StandardGridPane
             c.setOnAction(e -> {
                 if ((checkboxMap.entrySet().stream()
                         .filter(i -> i.getValue().isSelected())
-                        .count() == 0))
-                { c.setSelected(true); }
+                        .count() == 0)) {
+                    c.setSelected(true);
+                }
                 if (c.isSelected()) {
                     showCurve(t);
                 } else {
@@ -115,7 +121,7 @@ public class InsuranceStatisticsView extends StandardGridPane
         chart = new PieChart(pieChartData);
 
         chart.setTitle(String.format("%s %s - %s",
-                Loc.c("insurance_distribution") ,lowerBound, upperBound));
+                Loc.c("insurance_distribution"), lowerBound, upperBound));
 
         chart.setLabelsVisible(true);
         chart.setLegendVisible(false);

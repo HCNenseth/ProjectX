@@ -5,10 +5,24 @@ package main.controller;
  */
 public enum Mediator
 {
+    /**
+     * The inst.
+     */
     inst;
 
-    Mediator() {}
+    /**
+     * Instantiates a new Mediator.
+     */
+    Mediator()
+    {
+    }
 
+    /**
+     * Router void.
+     *
+     * @param s the s
+     * @param p the p
+     */
     public void router(Signal s, Payload p)
     {
         switch (s) {

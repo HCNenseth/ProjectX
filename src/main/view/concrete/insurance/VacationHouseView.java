@@ -9,6 +9,11 @@ import main.model.insurance.property.VacationHouse;
  */
 public class VacationHouseView extends InsuranceView<VacationHouse>
 {
+    /**
+     * Instantiates a new Vacation house view.
+     *
+     * @param vacationHouse the vacation house
+     */
     public VacationHouseView(VacationHouse vacationHouse)
     {
         super(vacationHouse);

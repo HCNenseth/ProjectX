@@ -11,44 +11,100 @@ import main.model.person.Person;
 /**
  * TravelClaim.java
  */
-public class TravelClaim extends Claim {
+public class TravelClaim extends Claim
+{
 
     private Travel.Continent continent;
     private Type type;
 
+    /**
+     * The enum Type.
+     */
     public enum Type
     {
+        /**
+         * The A.
+         */
         A(Loc.c("claim_travel_a")),
+        /**
+         * The B.
+         */
         B(Loc.c("claim_travel_b")),
+        /**
+         * The C.
+         */
         C(Loc.c("claim_travel_c"));
 
+        /**
+         * The Value.
+         */
         String value;
 
-        Type(String value){ this.value = value; }
+        /**
+         * Instantiates a new Type.
+         *
+         * @param value the value
+         */
+        Type(String value)
+        {
+            this.value = value;
+        }
 
-        public String getValue() { return value; }
+        /**
+         * Gets value.
+         *
+         * @return the value
+         */
+        public String getValue()
+        {
+            return value;
+        }
 
         @Override
-        public String toString() { return value; }
+        public String toString()
+        {
+            return value;
+        }
 
     }
 
+    /**
+     * The type Builder.
+     */
     public static class Builder extends ClaimBuilder<Builder, TravelClaim>
     {
         private Travel.Continent continent = Travel.Continent.A;
         private Type type = Type.A;
 
+        /**
+         * Instantiates a new Builder.
+         *
+         * @param customer the customer
+         * @param insurance the insurance
+         */
         public Builder(Person customer, Insurance insurance)
         {
             super(customer, insurance);
         }
 
+        /**
+         * Continent builder.
+         *
+         * @param continent the continent
+         * @return the builder
+         */
         public Builder continent(Travel.Continent continent)
         {
             this.continent = continent;
             return this;
         }
 
+        /**
+         * Type builder.
+         *
+         * @param type the type
+         * @return the builder
+         */
         public Builder type(Type type)
         {
             this.type = type;
@@ -70,23 +126,43 @@ public class TravelClaim extends Claim {
     }
 
 
-    /* GETTERS */
+    /**
+     * Gets continent.
+     *
+     * @return the continent
+     */
+/* GETTERS */
     public Travel.Continent getContinent()
     {
         return continent;
     }
 
+    /**
+     * Gets type.
+     *
+     * @return the type
+     */
     public Type getType()
     {
         return type;
     }
 
-    /* SETTERS */
+    /**
+     * Sets continent.
+     *
+     * @param continent the continent
+     */
+/* SETTERS */
     public void setContinent(Travel.Continent continent)
     {
         this.continent = continent;
     }
 
+    /**
+     * Sets type.
+     *
+     * @param type the type
+     */
     public void setType(Type type)
     {
         this.type = type;

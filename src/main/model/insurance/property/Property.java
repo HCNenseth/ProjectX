@@ -22,119 +22,273 @@ abstract class Property extends Insurance<PropertyClaim>
     private int squareMeter;
     private double contents;
 
-    public enum Material {
+    /**
+     * The enum Material.
+     */
+    public enum Material
+    {
+        /**
+         * The A.
+         */
         A(Loc.c("property_material_a")),
+        /**
+         * The B.
+         */
         B(Loc.c("property_material_b")),
+        /**
+         * The C.
+         */
         C(Loc.c("property_material_c"));
 
+        /**
+         * The Value.
+         */
         String value;
 
-        Material(String value) { this.value = value; }
+        /**
+         * Instantiates a new Material.
+         *
+         * @param value the value
+         */
+        Material(String value)
+        {
+            this.value = value;
+        }
 
-        public String getValue() { return value; }
+        /**
+         * Gets value.
+         *
+         * @return the value
+         */
+        public String getValue()
+        {
+            return value;
+        }
 
         @Override
-        public String toString() { return getValue(); }
+        public String toString()
+        {
+            return getValue();
+        }
     }
 
-    public enum Standard {
+    /**
+     * The enum Standard.
+     */
+    public enum Standard
+    {
+        /**
+         * The A.
+         */
         A(Loc.c("property_standard_a")),
+        /**
+         * The B.
+         */
         B(Loc.c("property_standard_b")),
+        /**
+         * The C.
+         */
         C(Loc.c("property_standard_c"));
 
+        /**
+         * The Value.
+         */
         String value;
 
-        Standard(String value) { this.value = value; }
+        /**
+         * Instantiates a new Standard.
+         *
+         * @param value the value
+         */
+        Standard(String value)
+        {
+            this.value = value;
+        }
 
-        public String getValue() { return value; }
+        /**
+         * Gets value.
+         *
+         * @return the value
+         */
+        public String getValue()
+        {
+            return value;
+        }
 
         @Override
-        public String toString() { return getValue(); }
+        public String toString()
+        {
+            return getValue();
+        }
     }
 
     /**
      * Constructor - pushes builder object up the inheritance chain.
-     * @param ib
+     *
+     * @param ib the ib
      */
-    public Property(InsuranceBuilder ib) { super(ib); }
+    public Property(InsuranceBuilder ib)
+    {
+        super(ib);
+    }
 
-    /* SETTERS */
+    /**
+     * Sets street address.
+     *
+     * @param streetAddress the street address
+     */
+/* SETTERS */
     public void setStreetAddress(String streetAddress)
     {
         this.streetAddress = streetAddress;
     }
 
+    /**
+     * Sets postal code.
+     *
+     * @param postalCode the postal code
+     */
     public void setPostalCode(String postalCode)
     {
         this.postalCode = postalCode;
     }
 
+    /**
+     * Sets city.
+     *
+     * @param city the city
+     */
     public void setCity(String city)
     {
         this.city = city;
     }
 
+    /**
+     * Sets year.
+     *
+     * @param year the year
+     */
     public void setYear(int year)
     {
         this.year = year;
     }
 
+    /**
+     * Sets material.
+     *
+     * @param material the material
+     */
     public void setMaterial(Material material)
     {
         this.material = material;
     }
 
+    /**
+     * Sets square meter.
+     *
+     * @param squareMeter the square meter
+     */
     public void setSquareMeter(int squareMeter)
     {
         this.squareMeter = squareMeter;
     }
 
+    /**
+     * Sets standard.
+     *
+     * @param standard the standard
+     */
     public void setStandard(Standard standard)
     {
         this.standard = standard;
     }
 
+    /**
+     * Sets contents.
+     *
+     * @param contents the contents
+     */
     public void setContents(double contents)
     {
         this.contents = contents;
     }
 
-    /* GETTERS */
+    /**
+     * Gets postal code.
+     *
+     * @return the postal code
+     */
+/* GETTERS */
     public String getPostalCode()
     {
         return postalCode;
     }
 
+    /**
+     * Gets city.
+     *
+     * @return the city
+     */
     public String getCity()
     {
         return city;
     }
 
+    /**
+     * Gets year.
+     *
+     * @return the year
+     */
     public int getYear()
     {
         return year;
     }
 
+    /**
+     * Gets contents.
+     *
+     * @return the contents
+     */
     public double getContents()
     {
         return contents;
     }
 
+    /**
+     * Gets square meter.
+     *
+     * @return the square meter
+     */
     public int getSquareMeter()
     {
         return squareMeter;
     }
 
+    /**
+     * Gets material.
+     *
+     * @return the material
+     */
     public Material getMaterial()
     {
         return material;
     }
 
+    /**
+     * Gets standard.
+     *
+     * @return the standard
+     */
     public Standard getStandard()
     {
         return standard;
     }
 
+    /**
+     * Gets street address.
+     *
+     * @return the street address
+     */
     public String getStreetAddress()
     {
         return streetAddress;

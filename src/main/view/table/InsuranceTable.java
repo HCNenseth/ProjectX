@@ -8,6 +8,9 @@ import main.model.insurance.Insurance;
  */
 public class InsuranceTable extends Table<Insurance>
 {
+    /**
+     * Instantiates a new Insurance table.
+     */
     public InsuranceTable()
     {
         injectColumn(Column.generate(Loc.c("id"), "id"));

@@ -18,61 +18,161 @@ public class Car extends Vehicle<CarClaim> implements Serializable
     private Type type;
     private Propulsion propulsion;
 
-    public enum Propulsion {
+    /**
+     * The enum Propulsion.
+     */
+    public enum Propulsion
+    {
+        /**
+         * The A.
+         */
         A(Loc.c("car_propulsion_a")),
+        /**
+         * The B.
+         */
         B(Loc.c("car_propulsion_b")),
+        /**
+         * The C.
+         */
         C(Loc.c("car_propulsion_c"));
 
+        /**
+         * The Value.
+         */
         String value;
 
-        Propulsion(String value) { this.value = value; }
+        /**
+         * Instantiates a new Propulsion.
+         *
+         * @param value the value
+         */
+        Propulsion(String value)
+        {
+            this.value = value;
+        }
 
-        public String getValue() { return value; }
+        /**
+         * Gets value.
+         *
+         * @return the value
+         */
+        public String getValue()
+        {
+            return value;
+        }
 
         @Override
-        public String toString() { return value; }
+        public String toString()
+        {
+            return value;
+        }
     }
 
-    public enum Type {
+    /**
+     * The enum Type.
+     */
+    public enum Type
+    {
+        /**
+         * The A.
+         */
         A(Loc.c("car_type_a")),
+        /**
+         * The B.
+         */
         B(Loc.c("car_type_b")),
+        /**
+         * The C.
+         */
         C(Loc.c("car_type_c")),
+        /**
+         * The D.
+         */
         D(Loc.c("car_type_d"));
 
+        /**
+         * The Value.
+         */
         String value;
 
-        Type(String value) { this.value = value; }
+        /**
+         * Instantiates a new Type.
+         *
+         * @param value the value
+         */
+        Type(String value)
+        {
+            this.value = value;
+        }
 
-        public String getValue() { return value; }
+        /**
+         * Gets value.
+         *
+         * @return the value
+         */
+        public String getValue()
+        {
+            return value;
+        }
 
         @Override
-        public String toString() { return value; }
+        public String toString()
+        {
+            return value;
+        }
     }
 
+    /**
+     * The type Builder.
+     */
     public static class Builder extends VehicleBuilder<Builder>
     {
         private int mileage = 0;
         private Type type = Type.A;
         private Propulsion propulsion = Propulsion.A;
 
+        /**
+         * Instantiates a new Builder.
+         *
+         * @param customer the customer
+         * @param licencePlate the licence plate
+         */
         public Builder(Person customer, String licencePlate)
         {
             super.licensePlate(licencePlate);
             super.customer(customer);
         }
 
+        /**
+         * Mileage builder.
+         *
+         * @param val the val
+         * @return the builder
+         */
         public Builder mileage(int val)
         {
             this.mileage = val;
             return this;
         }
 
+        /**
+         * Type builder.
+         *
+         * @param val the val
+         * @return the builder
+         */
         public Builder type(Type val)
         {
             type = val;
             return this;
         }
 
+        /**
+         * Propulsion builder.
+         *
+         * @param val the val
+         * @return the builder
+         */
         public Builder propulsion(Propulsion val)
         {
             propulsion = val;
@@ -98,38 +198,73 @@ public class Car extends Vehicle<CarClaim> implements Serializable
         propulsion = builder.propulsion;
     }
 
-    /* SETTERS */
+    /**
+     * Sets mileage.
+     *
+     * @param mileage the mileage
+     */
+/* SETTERS */
     public void setMileage(int mileage)
     {
         this.mileage = mileage;
     }
 
+    /**
+     * Sets type.
+     *
+     * @param type the type
+     */
     public void setType(Type type)
     {
         this.type = type;
     }
 
+    /**
+     * Sets propulsion.
+     *
+     * @param propulsion the propulsion
+     */
     public void setPropulsion(Propulsion propulsion)
     {
         this.propulsion = propulsion;
     }
 
-    /* GETTERS */
+    /**
+     * Gets mileage.
+     *
+     * @return the mileage
+     */
+/* GETTERS */
     public int getMileage()
     {
         return mileage;
     }
 
+    /**
+     * Gets type.
+     *
+     * @return the type
+     */
     public Type getType()
     {
         return type;
     }
 
+    /**
+     * Gets propulsion.
+     *
+     * @return the propulsion
+     */
     public Propulsion getPropulsion()
     {
         return propulsion;
     }
 
+    /**
+     * Gets bonus.
+     *
+     * @return the bonus
+     */
     public int getBonus()
     {
         return CarBonus.getBonus(this);

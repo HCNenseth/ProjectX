@@ -16,8 +16,14 @@ import java.time.LocalDate;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
+/**
+ * The type Car bonus test.
+ */
 public class CarBonusTest
 {
+    /**
+     * Main test.
+     */
     @Test
     public void mainTest()
     {

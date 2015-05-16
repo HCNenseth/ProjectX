@@ -19,6 +19,9 @@ public class FormValueNode extends FormNode<String>
     private TextField valueField;
     private Label errorLabel;
 
+    /**
+     * The type Builder.
+     */
     public static class Builder
     {
         private String key;
@@ -27,31 +30,69 @@ public class FormValueNode extends FormNode<String>
         private String regex = "";
         private boolean required = true;
 
+        /**
+         * Instantiates a new Builder.
+         *
+         * @param key the key
+         */
         public Builder(String key)
         {
             this.key = key;
         }
 
+        /**
+         * Value builder.
+         *
+         * @param value the value
+         * @return the builder
+         */
         public Builder value(String value)
         {
-            this.value = value; return this;
+            this.value = value;
+            return this;
         }
 
+        /**
+         * Error builder.
+         *
+         * @param error the error
+         * @return the builder
+         */
         public Builder error(String error)
         {
-            this.error = error; return this;
+            this.error = error;
+            return this;
         }
 
+        /**
+         * Regex builder.
+         *
+         * @param regex the regex
+         * @return the builder
+         */
         public Builder regex(String regex)
         {
-            this.regex = regex; return this;
+            this.regex = regex;
+            return this;
         }
 
+        /**
+         * Required builder.
+         *
+         * @param value the value
+         * @return the builder
+         */
         public Builder required(boolean value)
         {
-            this.required = value; return this;
+            this.required = value;
+            return this;
         }
 
+        /**
+         * Build form value node.
+         *
+         * @return the form value node
+         */
         public FormValueNode build()
         {
             return new FormValueNode(this);
@@ -74,24 +115,55 @@ public class FormValueNode extends FormNode<String>
         errorLabel.setVisible(false);
     }
 
-    public Label getKey() { return keyLabel; }
+    public Label getKey()
+    {
+        return keyLabel;
+    }
 
-    public TextField getNode() { return valueField; }
+    public TextField getNode()
+    {
+        return valueField;
+    }
 
-    public Label getError() { return errorLabel; }
+    public Label getError()
+    {
+        return errorLabel;
+    }
 
-    public String getValue() { return valueField.getText(); }
+    public String getValue()
+    {
+        return valueField.getText();
+    }
 
-    public String getRegex() { return regex; }
+    /**
+     * Gets regex.
+     *
+     * @return the regex
+     */
+    public String getRegex()
+    {
+        return regex;
+    }
 
-    public String getData() { return getValue(); }
+    public String getData()
+    {
+        return getValue();
+    }
 
+    /**
+     * Connect to button.
+     *
+     * @param button the button
+     */
     public void connectToButton(Button button)
     {
         valueField.setOnAction(e -> button.fire());
     }
 
     @Override
-    public Type getType() { return Type.VALUE; }
+    public Type getType()
+    {
+        return Type.VALUE;
+    }
 
 }

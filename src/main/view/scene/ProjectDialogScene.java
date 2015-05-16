@@ -21,7 +21,7 @@ import main.preference.Pref;
 
 /**
  * ProjectDialog Scene
- *
+ * <p>
  * This file both draws and sets the Project Dialog window. This because
  * the codebase is so small, and splitting it up would only make things
  * more messy.
@@ -36,10 +36,13 @@ public class ProjectDialogScene
     private Button openExisting, createNew, langEN, langNO, langIT, langFR;
 
     private int linesGap = 10, btnSize = 80,
-                appNameSize = 20, appNamePadding = 5,
-                rowNum = 0;
+            appNameSize = 20, appNamePadding = 5,
+            rowNum = 0;
 
 
+    /**
+     * Instantiates a new Project dialog scene.
+     */
     public ProjectDialogScene()
     {
         gridPane = new GridPane();
@@ -96,12 +99,12 @@ public class ProjectDialogScene
 
             RadioButton lang = new RadioButton(Loc.c(s));
 
-            Image image = new Image(Config.IMAGES + s +".png");
+            Image image = new Image(Config.IMAGES + s + ".png");
             lang.setGraphic(new ImageView(image));
 
             lang.setToggleGroup(languages);
 
-            if(Loc.getActiveLang().equals(s)) {
+            if (Loc.getActiveLang().equals(s)) {
                 lang.setSelected(true);
             }
 
@@ -114,6 +117,14 @@ public class ProjectDialogScene
         }
     }
 
-    public Scene getScene() { return scene; }
+    /**
+     * Gets scene.
+     *
+     * @return the scene
+     */
+    public Scene getScene()
+    {
+        return scene;
+    }
 
 }

@@ -13,31 +13,80 @@ public class PropertyClaim extends Claim
 {
     private Type type;
 
+    /**
+     * The enum Type.
+     */
     public enum Type
     {
+        /**
+         * The A.
+         */
         A(Loc.c("claim_property_a")),
+        /**
+         * The B.
+         */
         B(Loc.c("claim_property_b")),
+        /**
+         * The C.
+         */
         C(Loc.c("claim_property_c"));
 
+        /**
+         * The Value.
+         */
         String value;
 
-        Type(String value){ this.value = value; }
+        /**
+         * Instantiates a new Type.
+         *
+         * @param value the value
+         */
+        Type(String value)
+        {
+            this.value = value;
+        }
 
-        public String getValue() { return value; }
+        /**
+         * Gets value.
+         *
+         * @return the value
+         */
+        public String getValue()
+        {
+            return value;
+        }
 
         @Override
-        public String toString() { return value; }
+        public String toString()
+        {
+            return value;
+        }
     }
 
+    /**
+     * The type Builder.
+     */
     public static class Builder extends ClaimBuilder<Builder, PropertyClaim>
     {
         private Type type = Type.A;
 
+        /**
+         * Instantiates a new Builder.
+         *
+         * @param customer the customer
+         * @param insurance the insurance
+         */
         public Builder(Person customer, Insurance insurance)
         {
             super(customer, insurance);
         }
 
+        /**
+         * Type builder.
+         *
+         * @param type the type
+         * @return the builder
+         */
         public Builder type(Type type)
         {
             this.type = type;
@@ -54,7 +103,7 @@ public class PropertyClaim extends Claim
     /**
      * Claim constructor.
      *
-     * @param builder
+     * @param builder the builder
      */
     public PropertyClaim(Builder builder)
     {
@@ -62,13 +111,23 @@ public class PropertyClaim extends Claim
         type = builder.type;
     }
 
-    /* GETTERS */
+    /**
+     * Gets type.
+     *
+     * @return the type
+     */
+/* GETTERS */
     public Type getType()
     {
         return type;
     }
 
-    /* SETTERS */
+    /**
+     * Sets type.
+     *
+     * @param type the type
+     */
+/* SETTERS */
     public void setType(Type type)
     {
         this.type = type;

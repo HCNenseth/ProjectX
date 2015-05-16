@@ -12,18 +12,21 @@ import java.util.*;
 
 /**
  * ObserverTabPane
- *
+ * <p>
  * Main tab pane for application. Extends JavaFX TabPane and adds
  * some functionality on top. Implements Observer pattern for communication.
  *
  * @filename ObserverTabPane.java
- * @date 2015-04-26
+ * @date 2015 -04-26
  */
 public class ObserverTabPane extends TabPane implements Observer
 {
     private Map<Tab, ObservablePane> observablePaneMap;
     private SingleSelectionModel<Tab> selectionModel;
 
+    /**
+     * Instantiates a new Observer tab pane.
+     */
     public ObserverTabPane()
     {
         observablePaneMap = new HashMap<>();
@@ -33,14 +36,15 @@ public class ObserverTabPane extends TabPane implements Observer
     /**
      * Observer pattern update method. This method can be used
      * to send a signal to all observable panes in the list.
+     *
      * @param obj
      * @param arg
      */
     @Override
     public void update(Observable obj, Object arg)
     {
-        ObservablePane caller = (ObservablePane)obj; // unsafe
-        SignalType signalType = (SignalType)arg; // unsafe
+        ObservablePane caller = (ObservablePane) obj; // unsafe
+        SignalType signalType = (SignalType) arg; // unsafe
 
         switch (signalType) {
             case REFRESH:
@@ -52,15 +56,16 @@ public class ObserverTabPane extends TabPane implements Observer
 
     /**
      * Find and delete tab and list entry based on Model reference
-     * @param ref
+     *
+     * @param ref the ref
      */
     public void closeObservableTabs(Object ref)
     {
         Iterator iterator = observablePaneMap.entrySet().iterator();
         while (iterator.hasNext()) {
-            Map.Entry pair = (Map.Entry)iterator.next();
-            Tab key = (Tab)pair.getKey();
-            ObservablePane value = (ObservablePane)pair.getValue();
+            Map.Entry pair = (Map.Entry) iterator.next();
+            Tab key = (Tab) pair.getKey();
+            ObservablePane value = (ObservablePane) pair.getValue();
             if (value.hasReference(ref)) {
                 getTabs().remove(key);
                 iterator.remove();
@@ -70,6 +75,7 @@ public class ObserverTabPane extends TabPane implements Observer
 
     /**
      * remove tab from map when it closes.
+     *
      * @param tab
      */
     private void closeTab(Tab tab)
@@ -84,6 +90,9 @@ public class ObserverTabPane extends TabPane implements Observer
 
     }
 
+    /**
+     * Close all tabs.
+     */
     public void closeAllTabs()
     {
         observablePaneMap.clear();
@@ -91,6 +100,14 @@ public class ObserverTabPane extends TabPane implements Observer
         Resources.inst.getSplashView().show();
     }
 
+    /**
+     * Inject offline tab.
+     *
+     * @param title the title
+     * @param content the content
+     * @param image the image
+     * @param closeable the closeable
+     */
     public void injectOfflineTab(String title, Node content,
                                  String image, boolean closeable)
     {
@@ -112,19 +129,23 @@ public class ObserverTabPane extends TabPane implements Observer
 
     /**
      * Inject new tab with reference
+     *
      * @param title - tab title
      * @param content - tab content
      * @param ref - tab model reference
+     * @param image the image
      * @param closeable - tab attr
      */
     public void injectObservableTab(String title, Node content,
-                                   Object ref, String image, boolean closeable)
+                                    Object ref, String image, boolean closeable)
     {
         // hide splash view...
         Resources.inst.getSplashView().hide();
 
         ObservablePane obsPane = new ObservablePane(this, title);
-        if (ref != null) { obsPane.setReference(ref); }
+        if (ref != null) {
+            obsPane.setReference(ref);
+        }
         obsPane.setContent(content);
 
         Tab tab = new Tab(title);

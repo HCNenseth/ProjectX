@@ -1,4 +1,4 @@
-package main.view.form.adapter;
+package main.controller.adapter;
 
 import javafx.event.ActionEvent;
 import javafx.scene.control.ButtonBase;
@@ -37,6 +37,9 @@ public class PersonAdapter implements Formable<Person>
     private Person person;
     private boolean editMode = false;
 
+    /**
+     * The Call back event.
+     */
     ButtonBase callBackEvent = new ButtonBase()
     {
         @Override
@@ -46,6 +49,11 @@ public class PersonAdapter implements Formable<Person>
         }
     };
 
+    /**
+     * Instantiates a new Person adapter.
+     *
+     * @param person the person
+     */
     public PersonAdapter(Person person)
     {
         if (person != null) {
@@ -55,7 +63,13 @@ public class PersonAdapter implements Formable<Person>
         initNodes();
     }
 
-    public PersonAdapter() { this(null); }
+    /**
+     * Instantiates a new Person adapter.
+     */
+    public PersonAdapter()
+    {
+        this(null);
+    }
 
     private void initNodes()
     {
@@ -73,8 +87,8 @@ public class PersonAdapter implements Formable<Person>
 
         dob = new FormDateNode.Builder(Loc.c("date_of_birth"),
                 editMode ? person.getDateOfBirth() : LocalDate.of(Config.STANDARD_YEAR,
-                                                                  Config.STANDARD_MONTH,
-                                                                  Config.STANDARD_DAY))
+                        Config.STANDARD_MONTH,
+                        Config.STANDARD_DAY))
                 .required(false)
                 .build();
 

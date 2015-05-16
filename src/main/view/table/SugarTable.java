@@ -29,8 +29,15 @@ public class SugarTable extends StandardGridPane
     private static int cellGap = 5;
 
 
+    /**
+     * Instantiates a new Sugar table.
+     *
+     * @param table the table
+     * @param type the type
+     * @param title the title
+     */
     public SugarTable(Table<? extends Model> table,
-                        Model.ModelType type, String title)
+                      Model.ModelType type, String title)
     {
         super(ColumnCount.ONE);
 
