@@ -17,6 +17,9 @@ public class AboutView extends StandardGridPane
     private int rowNum = 0;
     private final int spaceCount = 5;
 
+    /**
+     * Instantiates a new About view.
+     */
     public AboutView()
     {
         super(ColumnCount.ONE);
@@ -53,6 +56,9 @@ public class AboutView extends StandardGridPane
 
     }
 
-    public StandardGridPane getNode() { return this; }
+    public StandardGridPane getNode()
+    {
+        return this;
+    }
 }
 

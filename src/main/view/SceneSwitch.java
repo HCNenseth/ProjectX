@@ -14,8 +14,18 @@ public class SceneSwitch
 {
     private Stage primaryStage;
 
-    public SceneSwitch() { }
+    /**
+     * Instantiates a new Scene switch.
+     */
+    public SceneSwitch()
+    {
+    }
 
+    /**
+     * Sets stage.
+     *
+     * @param stage the stage
+     */
     public void setStage(Stage stage)
     {
         primaryStage = stage;
@@ -24,6 +34,9 @@ public class SceneSwitch
                 .add(new Image("file:resources/images/companyIcon.png"));
     }
 
+    /**
+     * Sets main window.
+     */
     public void setMainWindow()
     {
         primaryStage.close();
@@ -35,6 +48,9 @@ public class SceneSwitch
         primaryStage.show();
     }
 
+    /**
+     * Sets project dialog window.
+     */
     public void setProjectDialogWindow()
     {
         primaryStage.close();
@@ -43,5 +59,13 @@ public class SceneSwitch
         primaryStage.show();
     }
 
-    public boolean hasStage() { return primaryStage == null; }
+    /**
+     * Has stage.
+     *
+     * @return the boolean
+     */
+    public boolean hasStage()
+    {
+        return primaryStage == null;
+    }
 }

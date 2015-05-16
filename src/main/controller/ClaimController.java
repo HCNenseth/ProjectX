@@ -1,6 +1,7 @@
 package main.controller;
 
 import main.config.Config;
+import main.controller.adapter.claim.*;
 import main.localization.Loc;
 import main.model.claim.Claim;
 import main.model.claim.property.PropertyClaim;
@@ -12,16 +13,25 @@ import main.model.person.Person;
 import main.view.Resources;
 import main.view.concrete.claim.*;
 import main.view.form.Form;
-import main.view.form.adapter.claim.*;
 
 /**
  * ClaimController.java
  */
 public class ClaimController
 {
-    private ClaimController() {}
     private static Form f;
 
+    private ClaimController()
+    {
+    }
+
+    /**
+     * Create void.
+     *
+     * @param type the type
+     * @param person the person
+     * @param insurance the insurance
+     */
     public static void create(Claim.ClaimType type, Person person, Insurance insurance)
     {
         String title;
@@ -56,6 +66,11 @@ public class ClaimController
                 f.getForm(), f, Config.CLAIM_TAB_IMAGE, true);
     }
 
+    /**
+     * View void.
+     *
+     * @param claim the claim
+     */
     public static void view(Claim claim)
     {
         // Remove all tabs dealing with this object
@@ -85,6 +100,11 @@ public class ClaimController
                 view.getNode(), claim, Config.CLAIM_TAB_IMAGE, true);
     }
 
+    /**
+     * Edit void.
+     *
+     * @param claim the claim
+     */
     public static void edit(Claim claim)
     {
         // Remove all tabs dealing with this object

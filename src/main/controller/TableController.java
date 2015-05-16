@@ -14,6 +14,12 @@ import java.util.stream.Stream;
  */
 public class TableController
 {
+    /**
+     * Gets person table.
+     *
+     * @param personStream the person stream
+     * @return the person table
+     */
     public static PersonTable getPersonTable(Stream<Person> personStream)
     {
         PersonTable personTable = new PersonTable();
@@ -26,6 +32,12 @@ public class TableController
         return personTable;
     }
 
+    /**
+     * Gets insurance table.
+     *
+     * @param insuranceStream the insurance stream
+     * @return the insurance table
+     */
     public static InsuranceTable getInsuranceTable(Stream<Insurance> insuranceStream)
     {
         InsuranceTable insuranceTable = new InsuranceTable();
@@ -38,6 +50,12 @@ public class TableController
         return insuranceTable;
     }
 
+    /**
+     * Gets claims table.
+     *
+     * @param claimStream the claim stream
+     * @return the claims table
+     */
     public static ClaimTable getClaimsTable(Stream<Claim> claimStream)
     {
         ClaimTable claimTable = new ClaimTable();

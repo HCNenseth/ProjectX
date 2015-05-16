@@ -1,4 +1,4 @@
-package main.view.form.adapter.insurance;
+package main.controller.adapter.insurance;
 
 import main.localization.Loc;
 import main.model.insurance.Insurance;
@@ -31,12 +31,23 @@ public class VacationHouseAdapter extends InsuranceAdapter<VacationHouse>
     private FormChoiceNode<VacationHouse.Material> material;
     private FormChoiceNode<VacationHouse.Standard> standard;
 
+    /**
+     * Instantiates a new Vacation house adapter.
+     *
+     * @param customer the customer
+     * @param vacationHouse the vacation house
+     */
     public VacationHouseAdapter(Person customer, VacationHouse vacationHouse)
     {
         super(customer, vacationHouse);
         initNodes();
     }
 
+    /**
+     * Instantiates a new Vacation house adapter.
+     *
+     * @param customer the customer
+     */
     public VacationHouseAdapter(Person customer)
     {
         super(customer);

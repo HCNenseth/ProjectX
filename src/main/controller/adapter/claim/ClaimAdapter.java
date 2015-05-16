@@ -1,4 +1,4 @@
-package main.view.form.adapter.claim;
+package main.controller.adapter.claim;
 
 import javafx.event.ActionEvent;
 import javafx.scene.control.ButtonBase;
@@ -20,6 +20,7 @@ import java.util.function.Consumer;
 
 /**
  * ClaimAdapter.java
+ * @param <T>  the type parameter
  */
 public abstract class ClaimAdapter<T extends Claim> implements Formable<T>
 {
@@ -44,6 +45,9 @@ public abstract class ClaimAdapter<T extends Claim> implements Formable<T>
     private final int standardMonth = 01;
     private final int standardDay = 01;
 
+    /**
+     * The Call back event.
+     */
     protected ButtonBase callBackEvent = new ButtonBase()
     {
         @Override
@@ -53,7 +57,12 @@ public abstract class ClaimAdapter<T extends Claim> implements Formable<T>
         }
     };
 
-    // edit constructor
+    /**
+     * Instantiates a new Claim adapter.
+     *
+     * @param claim the claim
+     */
+// edit constructor
     public ClaimAdapter(T claim)
     {
         if (claim != null) {
@@ -65,7 +74,13 @@ public abstract class ClaimAdapter<T extends Claim> implements Formable<T>
         initNodes();
     }
 
-    // create constructor
+    /**
+     * Instantiates a new Claim adapter.
+     *
+     * @param person the person
+     * @param insurance the insurance
+     */
+// create constructor
     public ClaimAdapter(Person person, Insurance insurance)
     {
         this.person = person;
@@ -150,6 +165,9 @@ public abstract class ClaimAdapter<T extends Claim> implements Formable<T>
         return tmp;
     }
 
+    /**
+     * Sets data.
+     */
     protected void setData()
     {
         claim.setDateOfDamages(dateOfDamages.getData());
@@ -162,9 +180,14 @@ public abstract class ClaimAdapter<T extends Claim> implements Formable<T>
         claim.setStatus(status.getData());
     }
 
+    /**
+     * Store image.
+     */
     protected void storeImage()
     {
-        if (image.getData() == null) { return; }
+        if (image.getData() == null) {
+            return;
+        }
 
         String fileName = ImageController.storeImage(image.getData(),
                 String.format("Claim-%s-%s", claim.getId(), claim.identify().getValue()));

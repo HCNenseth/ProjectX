@@ -1,4 +1,4 @@
-package main.view.form.adapter.insurance;
+package main.controller.adapter.insurance;
 
 import main.config.Config;
 import main.localization.Loc;
@@ -30,12 +30,23 @@ public class BoatAdapter extends InsuranceAdapter<Boat> implements Formable<Boat
     private FormChoiceNode<Boat.Propulsion> propulsion;
     private FormChoiceNode<Boat.Type> type;
 
+    /**
+     * Instantiates a new Boat adapter.
+     *
+     * @param customer the customer
+     * @param boat the boat
+     */
     public BoatAdapter(Person customer, Boat boat)
     {
         super(customer, boat);
         initNodes();
     }
 
+    /**
+     * Instantiates a new Boat adapter.
+     *
+     * @param customer the customer
+     */
     public BoatAdapter(Person customer)
     {
         super(customer);
@@ -57,8 +68,8 @@ public class BoatAdapter extends InsuranceAdapter<Boat> implements Formable<Boat
 
         registration = new FormDateNode.Builder(Loc.c("vehicle_registration"),
                 getEditMode() ? getInsurance().getRegistration() : LocalDate.of(Config.STANDARD_YEAR,
-                                                                                Config.STANDARD_MONTH,
-                                                                                Config.STANDARD_DAY))
+                        Config.STANDARD_MONTH,
+                        Config.STANDARD_DAY))
                 .required(false)
                 .build();
 
@@ -76,7 +87,7 @@ public class BoatAdapter extends InsuranceAdapter<Boat> implements Formable<Boat
 
         List<Boat.Propulsion> propulsionList = new ArrayList<>(
                 Arrays.asList(Boat.Propulsion.values()));
-        propulsion = new FormChoiceNode.Builder<>(Loc.c("boat_propulsion"), propulsionList )
+        propulsion = new FormChoiceNode.Builder<>(Loc.c("boat_propulsion"), propulsionList)
                 .active(getEditMode() ? getInsurance().getPropulsion() : Boat.Propulsion.A)
                 .required(false)
                 .build();

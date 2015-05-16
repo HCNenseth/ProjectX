@@ -5,11 +5,15 @@ import main.localization.Loc;
 import main.model.claim.travel.TravelClaim;
 
 /**
- * Created by Hans Christian on 08.05.2015.
+ * TravelClaimView.java
  */
 public class TravelClaimView extends ClaimView<TravelClaim>
 {
-
+    /**
+     * Instantiates a new Travel claim view.
+     *
+     * @param claim the claim
+     */
     public TravelClaimView(TravelClaim claim)
     {
         super(claim);

@@ -17,15 +17,22 @@ import main.view.StandardGridPane;
 import main.view.table.SugarTable;
 
 /**
- * Created by alex on 4/28/15.
+ * InsuranceView.java
+ * @param <T>  the type parameter
  */
 public abstract class InsuranceView<T extends Insurance> extends StandardGridPane
 {
     private T insurance;
+
     protected int rowNum = 0;
     protected boolean drawn = false;
     private int cellGap = 5;
 
+    /**
+     * Instantiates a new Insurance view.
+     *
+     * @param insurance the insurance
+     */
     public InsuranceView(T insurance)
     {
         this.insurance = insurance;
@@ -122,17 +129,34 @@ public abstract class InsuranceView<T extends Insurance> extends StandardGridPan
         add(new Separator(), 0, rowNum++, 2, 1);
     }
 
+    /**
+     * Add claims table.
+     */
     protected void addClaimsTable()
     {
         getNode().add(new SugarTable(TableController.getClaimsTable(getInsurance().getClaims().stream())
-                .getTable(), Model.ModelType.CLAIM, Loc.c("claims")).getNode(),
+                        .getTable(), Model.ModelType.CLAIM, Loc.c("claims")).getNode(),
                 0, rowNum++, 2, 1);
     }
 
-    public T getInsurance() { return insurance; }
+    /**
+     * Gets insurance.
+     *
+     * @return the insurance
+     */
+    public T getInsurance()
+    {
+        return insurance;
+    }
 
+    /**
+     * Child draw.
+     */
     protected abstract void childDraw();
 
     @Override
-    public StandardGridPane getNode() { return this; }
+    public StandardGridPane getNode()
+    {
+        return this;
+    }
 }

@@ -7,6 +7,9 @@ import main.localization.Loc;
  */
 public interface Model
 {
+    /**
+     * The enum Model type.
+     */
     enum ModelType
     {
         PERSON(Loc.c("person")),
@@ -16,13 +19,37 @@ public interface Model
 
         String value;
 
-        ModelType(String value) { this.value = value; }
+        /**
+         * Instantiates a new Model type.
+         *
+         * @param value the value
+         */
+        ModelType(String value)
+        {
+            this.value = value;
+        }
 
-        public String getValue() { return value; }
+        /**
+         * Gets value.
+         *
+         * @return the value
+         */
+        public String getValue()
+        {
+            return value;
+        }
 
         @Override
-        public String toString() { return getValue(); }
+        public String toString()
+        {
+            return getValue();
+        }
     }
 
+    /**
+     * Gets model type.
+     *
+     * @return the model type
+     */
     ModelType getModelType();
 }

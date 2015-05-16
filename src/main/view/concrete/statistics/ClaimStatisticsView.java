@@ -40,6 +40,11 @@ public class ClaimStatisticsView extends StandardGridPane
     private final int cellGap = 5;
     private int rowNum = 0;
 
+    /**
+     * Instantiates a new Claim statistics view.
+     *
+     * @param claims the claims
+     */
     public ClaimStatisticsView(List<Claim> claims)
     {
         super(ColumnCount.ONE);

@@ -14,6 +14,9 @@ import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.List;
 
+/**
+ * The type Claim.
+ */
 public abstract class Claim implements Serializable, FullTextSearch, Model
 {
     private static int counter = Config.CLAIM_COUNTER_START;
@@ -44,8 +47,22 @@ public abstract class Claim implements Serializable, FullTextSearch, Model
 
         String value;
 
-        ClaimType(String value) { this.value = value; }
+        /**
+         * Instantiates a new Claim type.
+         *
+         * @param value the value
+         */
+        ClaimType(String value)
+        {
+            this.value = value;
+        }
 
+        /**
+         * Gets type.
+         *
+         * @param value the value
+         * @return the type
+         */
         public static ClaimType getType(String value)
         {
             for (ClaimType type : values())
@@ -54,12 +71,26 @@ public abstract class Claim implements Serializable, FullTextSearch, Model
             return null;
         }
 
-        public String getValue() { return value; }
+        /**
+         * Gets value.
+         *
+         * @return the value
+         */
+        public String getValue()
+        {
+            return value;
+        }
 
         @Override
-        public String toString() { return getValue(); }
+        public String toString()
+        {
+            return getValue();
+        }
     }
 
+    /**
+     * The enum Payment status.
+     */
     public enum PaymentStatus
     {
         A(Loc.c("payment_status_a")),
@@ -67,17 +98,38 @@ public abstract class Claim implements Serializable, FullTextSearch, Model
         C(Loc.c("payment_status_c"));
 
         String value;
-        PaymentStatus(String value){ this.value = value; }
 
-        public String getValue() { return value; }
+        /**
+         * Instantiates a new Payment status.
+         *
+         * @param value the value
+         */
+        PaymentStatus(String value)
+        {
+            this.value = value;
+        }
+
+        /**
+         * Gets value.
+         *
+         * @return the value
+         */
+        public String getValue()
+        {
+            return value;
+        }
 
         @Override
-        public String toString() { return getValue(); }
+        public String toString()
+        {
+            return getValue();
+        }
     }
 
     /**
      * Claim constructor.
-     * @param cb
+     *
+     * @param cb the cb
      */
     public Claim(ClaimBuilder cb)
     {
@@ -100,46 +152,84 @@ public abstract class Claim implements Serializable, FullTextSearch, Model
         insurance.addClaim(this);
     }
 
-    /* Setters */
+    /***********
+     * SETTERS *
+     ***********/
+
+    /**
+     * Sets date of damages.
+     *
+     * @param dateOfDamages the date of damages
+     */
     public void setDateOfDamages(LocalDate dateOfDamages)
     {
         this.dateOfDamages = dateOfDamages;
         this.lastEdited = LocalDate.now();
     }
 
+    /**
+     * Sets claim date.
+     *
+     * @param claimDate the claim date
+     */
     public void setClaimDate(LocalDate claimDate)
     {
         this.claimDate = claimDate;
         this.lastEdited = LocalDate.now();
     }
 
+    /**
+     * Sets desc.
+     *
+     * @param desc the desc
+     */
     public void setDesc(String desc)
     {
         this.desc = desc;
         this.lastEdited = LocalDate.now();
     }
 
+    /**
+     * Sets payment status.
+     *
+     * @param paymentStatus the payment status
+     */
     public void setPaymentStatus(PaymentStatus paymentStatus)
     {
         this.paymentStatus = paymentStatus;
         this.lastEdited = LocalDate.now();
     }
 
+    /**
+     * Sets status.
+     *
+     * @param status the status
+     */
     public void setStatus(Status status)
     {
         this.status = status;
         this.lastEdited = LocalDate.now();
     }
 
+    /**
+     * Sets contacts.
+     *
+     * @param contacts the contacts
+     */
     public void setContacts(String contacts)
     {
         this.contacts = contacts;
         this.lastEdited = LocalDate.now();
     }
 
+    /**
+     * Add contacts.
+     *
+     * @param contacts the contacts
+     */
     public void addContacts(String contacts)
     {
-        if(this.contacts.equals("")) {
+        if (this.contacts.equals("")) {
             setContacts(contacts);
         } else {
             this.contacts += "\n" + contacts;
@@ -147,50 +237,98 @@ public abstract class Claim implements Serializable, FullTextSearch, Model
         this.lastEdited = LocalDate.now();
     }
 
+    /**
+     * Sets amount.
+     *
+     * @param amount the amount
+     */
     public void setAmount(double amount)
     {
         this.amount = amount;
         this.lastEdited = LocalDate.now();
     }
 
+    /**
+     * Sets file path image.
+     *
+     * @param filePathImage the file path image
+     */
     public void setFilePathImage(String filePathImage)
     {
         this.filePathImage = filePathImage;
         this.lastEdited = LocalDate.now();
     }
 
+    /**
+     * Sets deductible.
+     *
+     * @param deductible the deductible
+     */
     public void setDeductible(double deductible)
     {
         this.deductible = deductible;
         this.lastEdited = LocalDate.now();
     }
 
-    /* Getters */
+    /***********
+     * GETTERS *
+     ***********/
+
+    /**
+     * Gets id.
+     *
+     * @return the id
+     */
     public String getId()
     {
         return Integer.toString(id);
     }
 
+    /**
+     * Gets customer.
+     *
+     * @return the customer
+     */
     public Person getCustomer()
     {
         return customer;
     }
 
+    /**
+     * Gets insurance.
+     *
+     * @return the insurance
+     */
     public Insurance getInsurance()
     {
         return insurance;
     }
 
+    /**
+     * Gets date of damages.
+     *
+     * @return the date of damages
+     */
     public LocalDate getDateOfDamages()
     {
         return dateOfDamages;
     }
 
+    /**
+     * Gets claim date.
+     *
+     * @return the claim date
+     */
     public LocalDate getClaimDate()
     {
         return claimDate;
     }
 
+    /**
+     * Gets last edited.
+     *
+     * @return the last edited
+     */
     public LocalDate getLastEdited()
     {
         return lastEdited;
@@ -201,62 +339,118 @@ public abstract class Claim implements Serializable, FullTextSearch, Model
         return status;
     }
 
+    /**
+     * Gets payment status.
+     *
+     * @return the payment status
+     */
     public PaymentStatus getPaymentStatus()
     {
         return paymentStatus;
     }
 
+    /**
+     * Gets desc.
+     *
+     * @return the desc
+     */
     public String getDesc()
     {
         return desc;
     }
 
+    /**
+     * Gets contacts.
+     *
+     * @return the contacts
+     */
     public String getContacts()
     {
         return contacts;
     }
 
+    /**
+     * Gets amount.
+     *
+     * @return the amount
+     */
     public double getAmount()
     {
         return amount;
     }
 
+    /**
+     * Gets deductible.
+     *
+     * @return the deductible
+     */
     public double getDeductible()
     {
         return deductible;
     }
 
+    /**
+     * Gets file path image.
+     *
+     * @return the file path image
+     */
     public String getFilePathImage()
     {
         return filePathImage;
     }
 
+    /**
+     * Gets image file.
+     *
+     * @return the image file
+     */
     public File getImageFile()
     {
         return new File(Config.UPLOADS + getFilePathImage());
     }
 
-    /* STATIC */
+    /**********
+     * STATIC *
+     **********/
+
+    /**
+     * Gets claims.
+     *
+     * @return the claims
+     */
     public static List<Claim> getClaims()
     {
-        return (List<Claim>)Storage.getInstance().get(Config.CLAIMS);
+        return (List<Claim>) Storage.getInstance().get(Config.CLAIMS);
     }
 
+    /**
+     * Save new.
+     *
+     * @param claim the claim
+     */
     public static void saveNew(Claim claim)
     {
         Claim.getClaims().add(claim);
     }
 
+    /**
+     * Sets counter.
+     *
+     * @param val the val
+     */
     public static void setCounter(int val)
     {
         counter += val;
     }
 
 
-    /* ABSTRACT */
+    /**
+     * Identify claim type.
+     *
+     * @return the claim type
+     */
     public abstract ClaimType identify();
 
-    /* OVERRIDES */
     @Override
     public boolean query(String value)
     {

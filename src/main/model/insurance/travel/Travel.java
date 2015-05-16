@@ -19,7 +19,8 @@ public class Travel extends Insurance<TravelClaim>
 {
     private Continent type;
 
-    public enum Continent {
+    public enum Continent
+    {
         A(Loc.c("continent_a")),
         B(Loc.c("continent_b")),
         C(Loc.c("continent_c")),
@@ -29,23 +30,56 @@ public class Travel extends Insurance<TravelClaim>
 
         String value;
 
-        Continent(String value) { this.value = value;}
+        /**
+         * Instantiates a new Continent.
+         *
+         * @param value the value
+         */
+        Continent(String value)
+        {
+            this.value = value;
+        }
 
-        public String getValue() { return value; }
+        /**
+         * Gets value.
+         *
+         * @return the value
+         */
+        public String getValue()
+        {
+            return value;
+        }
 
         @Override
-        public String toString() { return value; }
+        public String toString()
+        {
+            return value;
+        }
     }
 
+    /**
+     * The type Builder.
+     */
     public static class Builder extends InsuranceBuilder<Builder, Travel>
     {
         private Continent continent = Continent.A;
 
+        /**
+         * Instantiates a new Builder.
+         *
+         * @param customer the customer
+         */
         public Builder(Person customer)
         {
             super.customer(customer);
         }
 
+        /**
+         * Continent builder.
+         *
+         * @param val the val
+         * @return the builder
+         */
         public Builder continent(Continent val)
         {
             continent = val;
@@ -69,13 +103,21 @@ public class Travel extends Insurance<TravelClaim>
         type = builder.continent;
     }
 
-    /* GETTERS */
+    /**
+     * Gets type.
+     *
+     * @return the type
+     */
     public Continent getType()
     {
         return type;
     }
 
-    /* SETTERS */
+    /**
+     * Sets type.
+     *
+     * @param type the type
+     */
     public void setType(Continent type)
     {
         this.type = type;

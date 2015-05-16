@@ -1,4 +1,4 @@
-package main.view.form.adapter.insurance;
+package main.controller.adapter.insurance;
 
 import main.config.Config;
 import main.localization.Loc;
@@ -31,12 +31,23 @@ public class CarAdapter extends InsuranceAdapter<Car> implements Formable<Car>
     private FormChoiceNode<Car.Type> type;
     private FormChoiceNode<Car.Propulsion> propulsion;
 
+    /**
+     * Instantiates a new Car adapter.
+     *
+     * @param customer the customer
+     * @param car the car
+     */
     public CarAdapter(Person customer, Car car)
     {
         super(customer, car);
         initNodes();
     }
 
+    /**
+     * Instantiates a new Car adapter.
+     *
+     * @param customer the customer
+     */
     public CarAdapter(Person customer)
     {
         super(customer);
@@ -57,9 +68,9 @@ public class CarAdapter extends InsuranceAdapter<Car> implements Formable<Car>
                 .build();
 
         registration = new FormDateNode.Builder(Loc.c("vehicle_registration"),
-                 getEditMode() ? getInsurance().getRegistration() : LocalDate.of(Config.STANDARD_YEAR,
-                                                                                 Config.STANDARD_MONTH,
-                                                                                 Config.STANDARD_DAY))
+                getEditMode() ? getInsurance().getRegistration() : LocalDate.of(Config.STANDARD_YEAR,
+                        Config.STANDARD_MONTH,
+                        Config.STANDARD_DAY))
                 .build();
 
         mileage = new FormValueNode.Builder(Loc.c("mileage"))
@@ -130,7 +141,8 @@ public class CarAdapter extends InsuranceAdapter<Car> implements Formable<Car>
     }
 
     @Override
-    public List<FormNode> getVisibleNodes() {
+    public List<FormNode> getVisibleNodes()
+    {
         List<FormNode> tmp = super.getNodes();
 
         tmp.add(owner);

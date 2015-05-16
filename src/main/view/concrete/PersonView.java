@@ -19,7 +19,7 @@ import main.view.StandardGridPane;
 import main.view.table.SugarTable;
 
 /**
- * Created by alex on 4/28/15.
+ * PersonView.java
  */
 public class PersonView extends StandardGridPane
 {
@@ -28,6 +28,11 @@ public class PersonView extends StandardGridPane
     private int rowNum = 0;
     private boolean drawn = false;
 
+    /**
+     * Instantiates a new Person view.
+     *
+     * @param person the person
+     */
     public PersonView(Person person)
     {
         super(ColumnCount.ONE);
@@ -38,8 +43,7 @@ public class PersonView extends StandardGridPane
 
     private void draw()
     {
-        if(drawn)
-        {
+        if (drawn) {
             getChildren().clear();
             rowNum = 0;
         }
@@ -180,10 +184,10 @@ public class PersonView extends StandardGridPane
 
         /* RIGHT FIELDS (third and fourth column) */
 
-        int insuranceActiveCount = (int)person.getInsurances().stream()
+        int insuranceActiveCount = (int) person.getInsurances().stream()
                 .filter(i -> i.getStatus() == Status.ACTIVE)
                 .count();
-        int insuranceTotalCount = (int)person.getInsurances().stream()
+        int insuranceTotalCount = (int) person.getInsurances().stream()
                 .count();
         boolean totalCustomer = insuranceActiveCount >= Config.TOTAL_CUSTOMER_INSURANCE_COUNT;
 
@@ -233,15 +237,15 @@ public class PersonView extends StandardGridPane
                 .sum())), fourth, rightInnerRowNum++);
 
         // number of claims
-        int claimsActiveCount = (int)person.getClaims().stream()
+        int claimsActiveCount = (int) person.getClaims().stream()
                 .filter(i -> i.getStatus() == Status.ACTIVE)
                 .count();
-        int claimsTotalCount = (int)person.getClaims().stream()
+        int claimsTotalCount = (int) person.getClaims().stream()
                 .count();
         innerGridPane.add(new Label(Loc.c("number_of_claims")),
                 third, rightInnerRowNum);
         innerGridPane.add(new Label(String.format("%d (%d)",
-                claimsActiveCount, claimsTotalCount)),
+                        claimsActiveCount, claimsTotalCount)),
                 fourth, rightInnerRowNum++);
 
         // claims sum
@@ -268,14 +272,17 @@ public class PersonView extends StandardGridPane
 
         // insurances table
         add(new SugarTable(TableController.getInsuranceTable(person.getInsurances().stream())
-                .getTable(), Model.ModelType.INSURANCE, Loc.c("insurances")).getNode(),
+                        .getTable(), Model.ModelType.INSURANCE, Loc.c("insurances")).getNode(),
                 0, rowNum++);
 
         // claims table
         add(new SugarTable(TableController.getClaimsTable(person.getClaims().stream())
-                .getTable(), Model.ModelType.CLAIM, Loc.c("claims")).getNode(),
+                        .getTable(), Model.ModelType.CLAIM, Loc.c("claims")).getNode(),
                 0, rowNum++);
     }
 
-    public StandardGridPane getNode() { return this; }
+    public StandardGridPane getNode()
+    {
+        return this;
+    }
 }

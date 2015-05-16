@@ -5,7 +5,7 @@ package main.validator;
  */
 public enum StringMatcher
 {
-    INSTANCE;
+    inst;
 
     /**
      * Some simple rules. Edit here!
@@ -20,47 +20,208 @@ public enum StringMatcher
     private final static String lastname = baseString;
     private final static String color = baseString;
 
-    private final static String regnr  = "\\w{2,8}";
+    private final static String regnr = "\\w{2,8}";
     private final static String type = "\\w{2,20}";
     private final static String year = "\\d{4}";
     private final static String length = baseFloat;
     private final static String power = baseFloat;
 
-    public static boolean email(String val) { return val.matches(email); }
+    /**
+     * Email boolean.
+     *
+     * @param val the val
+     * @return the boolean
+     */
+    public static boolean email(String val)
+    {
+        return val.matches(email);
+    }
 
-    public static boolean firstname(String val) { return val.matches(firstname); }
+    /**
+     * Firstname boolean.
+     *
+     * @param val the val
+     * @return the boolean
+     */
+    public static boolean firstname(String val)
+    {
+        return val.matches(firstname);
+    }
 
-    public static boolean lastname(String val) { return val.matches(lastname); }
+    /**
+     * Lastname boolean.
+     *
+     * @param val the val
+     * @return the boolean
+     */
+    public static boolean lastname(String val)
+    {
+        return val.matches(lastname);
+    }
 
-    public static boolean regnr(String val) { return val.matches(regnr); }
+    /**
+     * Regnr boolean.
+     *
+     * @param val the val
+     * @return the boolean
+     */
+    public static boolean regnr(String val)
+    {
+        return val.matches(regnr);
+    }
 
-    public static boolean type(String val) { return val.matches(type); }
+    /**
+     * Type boolean.
+     *
+     * @param val the val
+     * @return the boolean
+     */
+    public static boolean type(String val)
+    {
+        return val.matches(type);
+    }
 
-    public static boolean color(String val) { return val.matches(color); }
+    /**
+     * Color boolean.
+     *
+     * @param val the val
+     * @return the boolean
+     */
+    public static boolean color(String val)
+    {
+        return val.matches(color);
+    }
 
-    public static boolean year(String val) { return val.matches(year); }
+    /**
+     * Year boolean.
+     *
+     * @param val the val
+     * @return the boolean
+     */
+    public static boolean year(String val)
+    {
+        return val.matches(year);
+    }
 
-    public static boolean length(String val) { return val.matches(length); }
+    /**
+     * Length boolean.
+     *
+     * @param val the val
+     * @return the boolean
+     */
+    public static boolean length(String val)
+    {
+        return val.matches(length);
+    }
 
-    public static boolean power(String val) { return val.matches(power); }
+    /**
+     * Power boolean.
+     *
+     * @param val the val
+     * @return the boolean
+     */
+    public static boolean power(String val)
+    {
+        return val.matches(power);
+    }
 
-    public static String getEmail() { return email; }
+    /**
+     * Gets email.
+     *
+     * @return the email
+     */
+    public static String getEmail()
+    {
+        return email;
+    }
 
-    public static String getYear() { return year; }
+    /**
+     * Gets year.
+     *
+     * @return the year
+     */
+    public static String getYear()
+    {
+        return year;
+    }
 
-    public static String getDigit() { return baseDigit; }
+    /**
+     * Gets digit.
+     *
+     * @return the digit
+     */
+    public static String getDigit()
+    {
+        return baseDigit;
+    }
 
-    public static String getFloat() { return baseFloat; }
+    /**
+     * Gets float.
+     *
+     * @return the float
+     */
+    public static String getFloat()
+    {
+        return baseFloat;
+    }
 
-    public static String getBaseString() { return baseString; }
+    /**
+     * Gets base string.
+     *
+     * @return the base string
+     */
+    public static String getBaseString()
+    {
+        return baseString;
+    }
 
-    public static String getFirstname() { return firstname; }
+    /**
+     * Gets firstname.
+     *
+     * @return the firstname
+     */
+    public static String getFirstname()
+    {
+        return firstname;
+    }
 
-    public static String getLastname() { return lastname; }
+    /**
+     * Gets lastname.
+     *
+     * @return the lastname
+     */
+    public static String getLastname()
+    {
+        return lastname;
+    }
 
-    public static String getRegnr() { return regnr; }
+    /**
+     * Gets regnr.
+     *
+     * @return the regnr
+     */
+    public static String getRegnr()
+    {
+        return regnr;
+    }
 
-    public static String getPostalCode() { return year; }
+    /**
+     * Gets postal code.
+     *
+     * @return the postal code
+     */
+    public static String getPostalCode()
+    {
+        return year;
+    }
 
-    public static String getLiberation() { return liberation; }
+    /**
+     * Gets liberation.
+     *
+     * @return the liberation
+     */
+    public static String getLiberation()
+    {
+        return liberation;
+    }
 }

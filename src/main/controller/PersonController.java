@@ -1,21 +1,27 @@
 package main.controller;
 
 import main.config.Config;
+import main.controller.adapter.PersonAdapter;
 import main.localization.Loc;
 import main.model.person.Person;
 import main.view.Resources;
 import main.view.concrete.PersonView;
 import main.view.form.Form;
-import main.view.form.adapter.PersonAdapter;
 
 /**
  * PersonController.java
  */
 public class PersonController
 {
-    private PersonController() {}
     private static Form f;
 
+    private PersonController()
+    {
+    }
+
+    /**
+     * Create void.
+     */
     public static void create()
     {
         f = new Form();
@@ -29,6 +35,11 @@ public class PersonController
                 f.getForm(), f, Config.PERSON_TAB_IMAGE, true);
     }
 
+    /**
+     * View void.
+     *
+     * @param person the person
+     */
     public static void view(Person person)
     {
         // Remove all tabs dealing with this person
@@ -41,6 +52,11 @@ public class PersonController
                 personView.getNode(), person, Config.PERSON_TAB_IMAGE, true);
     }
 
+    /**
+     * Edit void.
+     *
+     * @param person the person
+     */
     public static void edit(Person person)
     {
         // Remove all tabs dealing with this person

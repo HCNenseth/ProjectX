@@ -1,4 +1,4 @@
-package main.view.form.adapter.claim;
+package main.controller.adapter.claim;
 
 import main.controller.ImageController;
 import main.localization.Loc;
@@ -24,12 +24,23 @@ public class CarClaimAdapter extends ClaimAdapter<CarClaim>
     private FormChoiceNode<CarClaim.Type> type;
     private FormImageNode damageReportImage;
 
+    /**
+     * Instantiates a new Car claim adapter.
+     *
+     * @param claim the claim
+     */
     public CarClaimAdapter(CarClaim claim)
     {
         super(claim);
         initFields();
     }
 
+    /**
+     * Instantiates a new Car claim adapter.
+     *
+     * @param person the person
+     * @param insurance the insurance
+     */
     public CarClaimAdapter(Person person, Insurance insurance)
     {
         super(person, insurance);
@@ -48,9 +59,14 @@ public class CarClaimAdapter extends ClaimAdapter<CarClaim>
                 .build();
     }
 
+    /**
+     * Store damage report.
+     */
     protected void storeDamageReport()
     {
-        if (damageReportImage.getData() == null) { return; }
+        if (damageReportImage.getData() == null) {
+            return;
+        }
 
         String fileName = ImageController.storeImage(damageReportImage.getData(),
                 String.format("CarClaim-Damagereport-%s-%s",

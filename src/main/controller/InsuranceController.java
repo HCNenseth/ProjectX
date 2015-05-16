@@ -1,6 +1,7 @@
 package main.controller;
 
 import main.config.Config;
+import main.controller.adapter.insurance.*;
 import main.localization.Loc;
 import main.model.insurance.Insurance;
 import main.model.insurance.InsuranceType;
@@ -13,16 +14,24 @@ import main.model.person.Person;
 import main.view.Resources;
 import main.view.concrete.insurance.*;
 import main.view.form.Form;
-import main.view.form.adapter.insurance.*;
 
 /**
  * InsuranceController.java
  */
 public class InsuranceController
 {
-    private InsuranceController() {}
     private static Form f;
 
+    private InsuranceController()
+    {
+    }
+
+    /**
+     * Create void.
+     *
+     * @param p the p
+     * @param type the type
+     */
     public static void create(Person p, InsuranceType type)
     {
         f = new Form();
@@ -65,6 +74,11 @@ public class InsuranceController
                 f.getForm(), f, icon, true);
     }
 
+    /**
+     * View void.
+     *
+     * @param insurance the insurance
+     */
     public static void view(Insurance insurance)
     {
         // Remove all tabs dealing with this object
@@ -75,27 +89,27 @@ public class InsuranceController
 
         switch (insurance.identify()) {
             case CAR:
-                view = new CarView((Car)insurance);
+                view = new CarView((Car) insurance);
                 Resources.inst.getOtp().injectObservableTab(Loc.c("car_insurance"),
                         view.getNode(), insurance, Config.CAR_TAB_IMAGE, true);
                 return;
             case BOAT:
-                view = new BoatView((Boat)insurance);
+                view = new BoatView((Boat) insurance);
                 Resources.inst.getOtp().injectObservableTab(Loc.c("boat_insurance"),
                         view.getNode(), insurance, Config.BOAT_TAB_IMAGE, true);
                 return;
             case HOUSE:
-                view = new HouseView((House)insurance);
+                view = new HouseView((House) insurance);
                 Resources.inst.getOtp().injectObservableTab(Loc.c("house_insurance"),
                         view.getNode(), insurance, Config.HOUSE_TAB_IMAGE, true);
                 return;
             case VACATION_HOUSE:
-                view = new VacationHouseView((VacationHouse)insurance);
+                view = new VacationHouseView((VacationHouse) insurance);
                 Resources.inst.getOtp().injectObservableTab(Loc.c("vacation_house_insurance"),
                         view.getNode(), insurance, Config.HOUSE_TAB_IMAGE, true);
                 return;
             case TRAVEL:
-                view = new TravelView((Travel)insurance);
+                view = new TravelView((Travel) insurance);
                 Resources.inst.getOtp().injectObservableTab(Loc.c("travel_insurance"),
                         view.getNode(), insurance, Config.TRAVEL_TAB_IMAGE, true);
                 return;
@@ -104,6 +118,11 @@ public class InsuranceController
         }
     }
 
+    /**
+     * Edit void.
+     *
+     * @param insurance the insurance
+     */
     public static void edit(Insurance insurance)
     {
         // Remove all tabs dealing with this object
@@ -117,27 +136,27 @@ public class InsuranceController
             case CAR:
                 icon = Config.CAR_TAB_IMAGE;
                 insuranceAdapter = new CarAdapter(insurance.getCustomer(),
-                        (Car)insurance);
+                        (Car) insurance);
                 break;
             case BOAT:
                 icon = Config.BOAT_TAB_IMAGE;
                 insuranceAdapter = new BoatAdapter(insurance.getCustomer(),
-                        (Boat)insurance);
+                        (Boat) insurance);
                 break;
             case HOUSE:
                 icon = Config.HOUSE_TAB_IMAGE;
                 insuranceAdapter = new HouseAdapter(insurance.getCustomer(),
-                        (House)insurance);
+                        (House) insurance);
                 break;
             case VACATION_HOUSE:
                 icon = Config.HOUSE_TAB_IMAGE;
                 insuranceAdapter = new VacationHouseAdapter(insurance.getCustomer(),
-                        (VacationHouse)insurance);
+                        (VacationHouse) insurance);
                 break;
             case TRAVEL:
                 icon = Config.TRAVEL_TAB_IMAGE;
                 insuranceAdapter = new TravelAdapter(insurance.getCustomer(),
-                        (Travel)insurance);
+                        (Travel) insurance);
                 break;
             default:
                 throw new IllegalStateException("Unknown Insurance type");

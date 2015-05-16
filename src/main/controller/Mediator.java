@@ -7,8 +7,16 @@ public enum Mediator
 {
     inst;
 
-    Mediator() {}
+    Mediator()
+    {
+    }
 
+    /**
+     * Router void.
+     *
+     * @param s the s
+     * @param p the p
+     */
     public void router(Signal s, Payload p)
     {
         switch (s) {

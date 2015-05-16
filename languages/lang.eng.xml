@@ -118,6 +118,7 @@
     <string name="vacation_house">Vacation house</string>
     <string name="travel">Travel</string>
     <string name="premium">Premium</string>
+    <string name="premium_bonus">Premium after bonus</string>
     <string name="bonus">Bonus</string>
     <string name="amount">Amount</string>
     <string name="deductible">Deductible</string>

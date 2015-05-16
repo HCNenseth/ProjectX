@@ -4,10 +4,13 @@ import main.localization.Loc;
 import main.model.insurance.Insurance;
 
 /**
- * Created by alex on 4/24/15.
+ * InsuranceTable.java
  */
 public class InsuranceTable extends Table<Insurance>
 {
+    /**
+     * Instantiates a new Insurance table.
+     */
     public InsuranceTable()
     {
         injectColumn(Column.generate(Loc.c("id"), "id"));

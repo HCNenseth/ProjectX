@@ -5,10 +5,15 @@ import main.localization.Loc;
 import main.model.insurance.vehicle.Car;
 
 /**
- * Created by alex on 4/28/15.
+ * CarView.java
  */
 public class CarView extends InsuranceView<Car>
 {
+    /**
+     * Instantiates a new Car view.
+     *
+     * @param car the car
+     */
     public CarView(Car car)
     {
         super(car);
@@ -18,11 +23,15 @@ public class CarView extends InsuranceView<Car>
     {
         // Owner
         add(new Label(Loc.c("owner")), 0, rowNum);
-        add(new Label(getInsurance().getOwner()), 1 ,rowNum++);
+        add(new Label(getInsurance().getOwner()), 1, rowNum++);
 
         // Bonus
         add(new Label(Loc.c("bonus")), 0, rowNum);
         add(new Label(String.format("%d%%", getInsurance().getBonus())), 1, rowNum++);
+
+        // Premium after bonus
+        add(new Label(Loc.c("premium_bonus")), 0, rowNum);
+        add(new Label(String.format("%.2f", getInsurance().getBonusPremium())), 1, rowNum++);
 
         // Type
         add(new Label(Loc.c("type")), 0, rowNum);

@@ -58,8 +58,9 @@ public class Person implements Serializable, FullTextSearch, Model
 
         /**
          * Constructor with the required params.
-         * @param firstname
-         * @param lastname
+         *
+         * @param firstname the firstname
+         * @param lastname the lastname
          */
         public Builder(String firstname, String lastname)
         {
@@ -69,8 +70,9 @@ public class Person implements Serializable, FullTextSearch, Model
 
         /**
          * Setter for streetAddress member.
-         * @param val
-         * @return
+         *
+         * @param val the val
+         * @return builder
          */
         public Builder streetAddress(String val)
         {
@@ -80,8 +82,9 @@ public class Person implements Serializable, FullTextSearch, Model
 
         /**
          * Setter for city member.
-         * @param val
-         * @return
+         *
+         * @param val the val
+         * @return builder
          */
         public Builder city(String val)
         {
@@ -91,8 +94,9 @@ public class Person implements Serializable, FullTextSearch, Model
 
         /**
          * Setter for postal code.
-         * @param val
-         * @return
+         *
+         * @param val the val
+         * @return builder
          */
         public Builder postalCode(String val)
         {
@@ -102,8 +106,9 @@ public class Person implements Serializable, FullTextSearch, Model
 
         /**
          * Setter for dob.
-         * @param val
-         * @return
+         *
+         * @param val the val
+         * @return builder
          */
         public Builder dateOfBirth(LocalDate val)
         {
@@ -111,12 +116,24 @@ public class Person implements Serializable, FullTextSearch, Model
             return this;
         }
 
+        /**
+         * Phone number.
+         *
+         * @param val the val
+         * @return the builder
+         */
         public Builder phoneNumber(String val)
         {
             phoneNumber = val;
             return this;
         }
 
+        /**
+         * Email builder.
+         *
+         * @param val the val
+         * @return the builder
+         */
         public Builder email(String val)
         {
             email = val;
@@ -125,17 +142,20 @@ public class Person implements Serializable, FullTextSearch, Model
 
         /**
          * Setter for status.
-         * @param val
-         * @return
+         *
+         * @param val the val
+         * @return builder
          */
         public Builder status(Status val)
         {
-            status = val; return this;
+            status = val;
+            return this;
         }
 
         /**
          * Builder build method for creating the person object.
-         * @return
+         *
+         * @return person
          */
         public Person build()
         {
@@ -145,6 +165,7 @@ public class Person implements Serializable, FullTextSearch, Model
 
     /**
      * Person class main and only constructor, requires Builder object.
+     *
      * @param builder
      */
     private Person(Builder builder)
@@ -166,166 +187,298 @@ public class Person implements Serializable, FullTextSearch, Model
         claims = new LinkedList<>();
     }
 
-    /* ADDERS */
     /**
      * Add insurance to person object.
-     * @param insurance
+     *
+     * @param insurance the insurance
      */
     public void addInsurance(Insurance insurance)
     {
         insurances.add(insurance);
     }
 
+    /**
+     * Add claim.
+     *
+     * @param claim the claim
+     */
     public void addClaim(Claim claim)
     {
         claims.add(claim);
     }
 
-    /* SETTERS */
+    /**
+     * Sets firstname.
+     *
+     * @param firstname the firstname
+     */
     public void setFirstname(String firstname)
     {
         this.firstname = firstname;
         this.lastEdited = LocalDate.now();
     }
 
+    /**
+     * Sets lastname.
+     *
+     * @param lastname the lastname
+     */
     public void setLastname(String lastname)
     {
         this.lastname = lastname;
         this.lastEdited = LocalDate.now();
     }
 
+    /**
+     * Sets street address.
+     *
+     * @param streetAddress the street address
+     */
     public void setStreetAddress(String streetAddress)
     {
         this.streetAddress = streetAddress;
         this.lastEdited = LocalDate.now();
     }
 
+    /**
+     * Sets city.
+     *
+     * @param city the city
+     */
     public void setCity(String city)
     {
         this.city = city;
         this.lastEdited = LocalDate.now();
     }
 
+    /**
+     * Sets postal code.
+     *
+     * @param postalCode the postal code
+     */
     public void setPostalCode(String postalCode)
     {
         this.postalCode = postalCode;
         this.lastEdited = LocalDate.now();
     }
 
+    /**
+     * Sets phone number.
+     *
+     * @param phoneNumber the phone number
+     */
     public void setPhoneNumber(String phoneNumber)
     {
         this.phoneNumber = phoneNumber;
         this.lastEdited = LocalDate.now();
     }
 
+    /**
+     * Sets email.
+     *
+     * @param email the email
+     */
     public void setEmail(String email)
     {
         this.email = email;
         this.lastEdited = LocalDate.now();
     }
 
+    /**
+     * Sets status.
+     *
+     * @param status the status
+     */
     public void setStatus(Status status)
     {
         this.status = status;
         this.lastEdited = LocalDate.now();
     }
 
+    /**
+     * Sets date of birth.
+     *
+     * @param dateOfBirth the date of birth
+     */
     public void setDateOfBirth(LocalDate dateOfBirth)
     {
         this.dateOfBirth = dateOfBirth;
         this.lastEdited = LocalDate.now();
     }
 
-    /* GETTERS */
+    /**
+     * Gets id.
+     *
+     * @return the id
+     */
     public String getId()
     {
         return Integer.toString(id);
     }
 
+    /**
+     * Gets registration date.
+     *
+     * @return the registration date
+     */
     public LocalDate getRegistrationDate()
     {
         return registrationDate;
     }
 
+    /**
+     * Gets last edited.
+     *
+     * @return the last edited
+     */
     public LocalDate getLastEdited()
     {
         return lastEdited;
     }
 
+    /**
+     * Gets date of birth.
+     *
+     * @return the date of birth
+     */
     public LocalDate getDateOfBirth()
     {
         return dateOfBirth;
     }
 
+    /**
+     * Gets name.
+     *
+     * @return the name
+     */
     public String getName()
     {
         return String.format("%s %s", firstname, lastname);
     }
 
+    /**
+     * Gets firstname.
+     *
+     * @return the firstname
+     */
     public String getFirstname()
     {
         return firstname;
     }
 
+    /**
+     * Gets lastname.
+     *
+     * @return the lastname
+     */
     public String getLastname()
     {
         return lastname;
     }
 
+    /**
+     * Gets street address.
+     *
+     * @return the street address
+     */
     public String getStreetAddress()
     {
         return streetAddress;
     }
 
+    /**
+     * Gets city.
+     *
+     * @return the city
+     */
     public String getCity()
     {
         return city;
     }
 
+    /**
+     * Gets postal code.
+     *
+     * @return the postal code
+     */
     public String getPostalCode()
     {
         return postalCode;
     }
 
+    /**
+     * Gets phone number.
+     *
+     * @return the phone number
+     */
     public String getPhoneNumber()
     {
         return phoneNumber;
     }
 
+    /**
+     * Gets email.
+     *
+     * @return the email
+     */
     public String getEmail()
     {
         return email;
     }
 
+    /**
+     * Gets insurances.
+     *
+     * @return the insurances
+     */
     public List<Insurance> getInsurances()
     {
         return insurances;
     }
 
+    /**
+     * Gets claims.
+     *
+     * @return the claims
+     */
     public List<Claim> getClaims()
     {
         return claims;
     }
 
-    /* STATIC */
+    /**
+     * Gets persons.
+     *
+     * @return the persons
+     */
     public static List<Person> getPersons()
     {
-        return (List<Person>)Storage.getInstance().get(Config.PERSONS);
+        return (List<Person>) Storage.getInstance().get(Config.PERSONS);
     }
 
+    /**
+     * Save new.
+     *
+     * @param person the person
+     */
     public static void saveNew(Person person)
     {
         Person.getPersons().add(person);
     }
 
+    /**
+     * Sets counter.
+     *
+     * @param val the val
+     */
     public static void setCounter(int val)
     {
         counter += val;
     }
 
-    /* OVERRIDES */
     /**
      * Query method used for search.
+     *
      * @param value
      * @return
      */
@@ -343,6 +496,7 @@ public class Person implements Serializable, FullTextSearch, Model
 
     /**
      * Mandatory method for returning staus.
+     *
      * @return
      */
     @Override

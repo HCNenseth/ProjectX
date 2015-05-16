@@ -13,7 +13,7 @@ mkdir $TMP
 mkdir $TMP/data
 mkdir $TMP/preferences
 
-cp ../data/persons_big.dat $TMP/data/demodata.dat
+cp ../data/demodata.dat $TMP/data/demodata.dat
 cp -r ../languages $TMP/
 cp -r ../src $TMP/
 cp -r ../uploads $TMP/

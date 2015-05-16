@@ -15,8 +15,22 @@ public enum InsuranceType
 
     String value;
 
-    InsuranceType(String value) { this.value = value; }
+    /**
+     * Instantiates a new Insurance type.
+     *
+     * @param value the value
+     */
+    InsuranceType(String value)
+    {
+        this.value = value;
+    }
 
+    /**
+     * Gets type.
+     *
+     * @param value the value
+     * @return the type
+     */
     public static InsuranceType getType(String value)
     {
         for (InsuranceType type : values())
@@ -25,8 +39,19 @@ public enum InsuranceType
         return null;
     }
 
-    public String getValue() { return value; }
+    /**
+     * Gets value.
+     *
+     * @return the value
+     */
+    public String getValue()
+    {
+        return value;
+    }
 
     @Override
-    public String toString() { return getValue(); }
+    public String toString()
+    {
+        return getValue();
+    }
 }

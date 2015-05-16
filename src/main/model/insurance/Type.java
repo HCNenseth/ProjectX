@@ -5,5 +5,10 @@ package main.model.insurance;
  */
 public interface Type
 {
+    /**
+     * Identify insurance type.
+     *
+     * @return the insurance type
+     */
     InsuranceType identify();
 }

@@ -36,6 +36,9 @@ class XMLParser
     private DocumentBuilderFactory dbf;
     private Document dom;
 
+    /**
+     * Instantiates a new XML parser.
+     */
     public XMLParser()
     {
         preferences = new HashMap<>();
@@ -64,6 +67,7 @@ class XMLParser
 
     /**
      * Try to parse file if possible
+     *
      * @param filename - absolute filename path
      */
     private void parseFile(final String filename)
@@ -86,16 +90,18 @@ class XMLParser
         NodeList nl = root.getElementsByTagName(childLevel);
 
         for (int i = 0; i < nl.getLength(); i++) {
-            Element el = (Element)nl.item(i);
+            Element el = (Element) nl.item(i);
             String key = el.getAttribute(childAttributeName);
             String value = el.getTextContent();
             preferences.put(key, value);
         }
     }
+
     /**
      * Public getter method for accessing values in the hashmap.
+     *
      * @param key - key to search for.
-     * @return
+     * @return string
      */
     public String get(String key)
     {
@@ -105,6 +111,7 @@ class XMLParser
     /**
      * Put a key value pair into the hashmap. Immediately after save the
      * whole hashmap to file (overwrite)
+     *
      * @param key - key value to store.
      * @param value - value value to store.
      */
@@ -153,7 +160,7 @@ class XMLParser
 
                 // send DOM to file
                 tr.transform(new DOMSource(dom),
-                             new StreamResult(new FileOutputStream(mainFile)));
+                        new StreamResult(new FileOutputStream(mainFile)));
 
             } catch (TransformerException | IOException e) {
                 e.printStackTrace();

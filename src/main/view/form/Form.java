@@ -14,6 +14,8 @@ import main.view.form.node.FormValueNode;
 import java.util.List;
 
 /**
+ * Form.java
+ *
  * Form class for wrapping labels and textFields in a
  * gridpane and validating them upon submit. Depends heavy
  * on the FormNode class.
@@ -32,6 +34,9 @@ public class Form extends StandardGridPane
     private boolean valid = true;
     private boolean hasCallbackData = false;
 
+    /**
+     * Instantiates a new Form.
+     */
     public Form()
     {
         super(ColumnCount.THREE);
@@ -48,7 +53,8 @@ public class Form extends StandardGridPane
     /**
      * Inject a Formable object into form. This method should
      * implement a system for rejecting object > 1
-     * @param caller
+     *
+     * @param caller the caller
      */
     public void injectAdapter(Formable caller)
     {
@@ -67,11 +73,14 @@ public class Form extends StandardGridPane
 
     /**
      * Return gridpane and add the button bottom.
-     * @return
+     *
+     * @return form
      */
     public GridPane getForm()
     {
-        if (optionalNodes != null) { add(optionalNodes, 1, rowNum++); }
+        if (optionalNodes != null) {
+            add(optionalNodes, 1, rowNum++);
+        }
 
         add(submit, 1, rowNum++);
         return this;
@@ -79,11 +88,14 @@ public class Form extends StandardGridPane
 
     /**
      * Make possible to return data to form, eg after validate callback.
+     *
      * @param node - any JavaFX node.
      */
     public void setCallbackData(Node node)
     {
-        if (hasCallbackData) { getChildren().remove(callBackData); }
+        if (hasCallbackData) {
+            getChildren().remove(callBackData);
+        }
 
         add(node, 0, rowNum, 3, 1);
         callBackData = node;
@@ -92,6 +104,7 @@ public class Form extends StandardGridPane
 
     /**
      * Expand gridpane and add the formnode.
+     *
      * @param fn
      */
     private void addPart(FormNode fn)
@@ -106,13 +119,16 @@ public class Form extends StandardGridPane
         StandardGridPane sgp = new StandardGridPane(ColumnCount.THREE)
         {
             @Override
-            public StandardGridPane getNode() { return this; }
+            public StandardGridPane getNode()
+            {
+                return this;
+            }
         };
 
         int innerRowNum = 0;
 
         optionalNodes = new Accordion();
-        for (FormNode n: hiddenNodes) {
+        for (FormNode n : hiddenNodes) {
             sgp.add(n.getKey(), 0, innerRowNum);
             sgp.add(n.getNode(), 1, innerRowNum);
             sgp.add(n.getError(), 2, innerRowNum++);
@@ -144,7 +160,7 @@ public class Form extends StandardGridPane
                 case VALUE:
                     // check if required or value is not blank
                     if (fn.getRequired() || !fn.getValue().equals("")) {
-                        FormValueNode fvn = (FormValueNode)fn;
+                        FormValueNode fvn = (FormValueNode) fn;
                         if (!fvn.getNode().getText().matches(fvn.getRegex())) {
                             // Show error message and set class valid to false
                             fn.getError().setVisible(true);
@@ -155,9 +171,14 @@ public class Form extends StandardGridPane
             }
         }
 
-        if (valid) { caller.callback(); }
+        if (valid) {
+            caller.callback();
+        }
     }
 
     @Override
-    public StandardGridPane getNode() { return this; }
+    public StandardGridPane getNode()
+    {
+        return this;
+    }
 }

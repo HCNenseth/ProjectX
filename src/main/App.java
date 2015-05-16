@@ -13,7 +13,7 @@ import main.view.Resources;
 import java.io.IOException;
 
 /**
- * Created by alex on 4/22/15.
+ * App.java
  */
 public class App extends Application
 {
@@ -60,6 +60,11 @@ public class App extends Application
 
     }
 
+    /**
+     * The entry point of application.
+     *
+     * @param args the input arguments
+     */
     public static void main(String[] args)
     {
         launch(args);

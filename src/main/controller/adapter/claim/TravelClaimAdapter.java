@@ -1,4 +1,4 @@
-package main.view.form.adapter.claim;
+package main.controller.adapter.claim;
 
 import main.localization.Loc;
 import main.model.claim.Claim;
@@ -23,12 +23,23 @@ public class TravelClaimAdapter extends ClaimAdapter<TravelClaim>
     private FormChoiceNode<TravelClaim.Type> type;
     private FormChoiceNode<Travel.Continent> continent;
 
+    /**
+     * Instantiates a new Travel claim adapter.
+     *
+     * @param claim the claim
+     */
     public TravelClaimAdapter(TravelClaim claim)
     {
         super(claim);
         initFields();
     }
 
+    /**
+     * Instantiates a new Travel claim adapter.
+     *
+     * @param person the person
+     * @param insurance the insurance
+     */
     public TravelClaimAdapter(Person person, Insurance insurance)
     {
         super(person, insurance);

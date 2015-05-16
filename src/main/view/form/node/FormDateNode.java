@@ -6,6 +6,8 @@ import javafx.scene.control.Label;
 import java.time.LocalDate;
 
 /**
+ * FormDateNode.java
+ *
  * Simple FormNode class used for structuring data
  * and sending a key-value pair to the Form class.
  */
@@ -16,25 +18,44 @@ public class FormDateNode extends FormNode<LocalDate>
     private Label keyLabel;
     private DatePicker datePicker;
 
-    private final String pattern = "yyyy-MM-dd";
-
+    /**
+     * The type Builder.
+     */
     public static class Builder
     {
         private String key;
         private LocalDate value;
         private boolean required;
 
+        /**
+         * Instantiates a new Builder.
+         *
+         * @param key the key
+         * @param value the value
+         */
         public Builder(String key, LocalDate value)
         {
             this.key = key;
             this.value = value;
         }
 
+        /**
+         * Required builder.
+         *
+         * @param value the value
+         * @return the builder
+         */
         public Builder required(boolean value)
         {
-            this.required = value; return this;
+            this.required = value;
+            return this;
         }
 
+        /**
+         * Build form date node.
+         *
+         * @return the form date node
+         */
         public FormDateNode build()
         {
             return new FormDateNode(this);
@@ -48,22 +69,53 @@ public class FormDateNode extends FormNode<LocalDate>
         super.setRequired(builder.required);
 
         keyLabel = new Label(key + ":");
-        datePicker =  new DatePicker(value);
+        datePicker = new DatePicker(value);
     }
 
-    public Label getKey() { return keyLabel; }
-
-    public DatePicker getNode() { return datePicker; }
-
-    public Label getError() { return new Label(); }
-
-    public String getValue() { return datePicker.getPromptText(); }
-
-    public String getRegex() { return ""; }
-
-    public LocalDate getData() { return getNode().getValue(); }
+    /**
+     * Gets regex.
+     *
+     * @return the regex
+     */
+    public String getRegex()
+    {
+        return "";
+    }
 
     @Override
-    public Type getType() { return Type.DATEPICKER; }
+    public Label getKey()
+    {
+        return keyLabel;
+    }
+
+    @Override
+    public DatePicker getNode()
+    {
+        return datePicker;
+    }
+
+    @Override
+    public Label getError()
+    {
+        return new Label();
+    }
+
+    @Override
+    public String getValue()
+    {
+        return datePicker.getPromptText();
+    }
+
+    @Override
+    public LocalDate getData()
+    {
+        return getNode().getValue();
+    }
+
+    @Override
+    public Type getType()
+    {
+        return Type.DATEPICKER;
+    }
 
 }

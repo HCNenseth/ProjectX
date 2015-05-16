@@ -16,25 +16,62 @@ import java.io.IOException;
  */
 public class MenuBar
 {
-    public enum Type {
-        OPEN, SAVE, NEW, NEW_PROJECT,
-        CLOSE, RESTART,
-        NEW_CUSTOMER, ABOUT,
+    public enum Type
+    {
+        OPEN, SAVE, NEW, NEW_PROJECT, CLOSE, RESTART, NEW_CUSTOMER, ABOUT,
     }
 
+    /**
+     * Instantiates a new Menu bar.
+     *
+     * @param p the p
+     */
     public MenuBar(Payload p)
     {
-        switch ((Type)p.getEnumValue()) {
-            case OPEN: openFile(); break;
-            case NEW: newFile(); break;
-            case NEW_PROJECT: newProject(); break;
-            case SAVE: saveFile(); break;
-            case CLOSE: exitApp(); break;
-            case RESTART: restartApp(); break;
-            case NEW_CUSTOMER: newCustomer(); break;
-            case ABOUT: aboutUs(); break;
-            default: return;
+        switch ((Type) p.getEnumValue()) {
+            case OPEN:
+                openFile();
+                break;
+            case NEW:
+                newFile();
+                break;
+            case NEW_PROJECT:
+                newProject();
+                break;
+            case SAVE:
+                saveFile();
+                break;
+            case CLOSE:
+                exitApp();
+                break;
+            case RESTART:
+                restartApp();
+                break;
+            case NEW_CUSTOMER:
+                newCustomer();
+                break;
+            case ABOUT:
+                aboutUs();
+                break;
+            default:
+                return;
         }
+    }
+
+    /**
+     * New project.
+     */
+    public void newProject()
+    {
+        Resources.inst.getSceneSwitch().setProjectDialogWindow();
+    }
+
+    /**
+     * New customer.
+     */
+    public void newCustomer()
+    {
+        PersonController.create();
     }
 
     private void aboutUs()
@@ -107,10 +144,11 @@ public class MenuBar
         }
     }
 
-
     private void saveFile()
     {
-        if (!Storage.hasFilename()) { return; }
+        if (!Storage.hasFilename()) {
+            return;
+        }
 
         try {
             Storage.getInstance().save();
@@ -118,8 +156,4 @@ public class MenuBar
             System.out.println("error writing to file");
         }
     }
-
-    public void newProject() { Resources.inst.getSceneSwitch().setProjectDialogWindow(); }
-
-    public void newCustomer() { PersonController.create(); }
 }

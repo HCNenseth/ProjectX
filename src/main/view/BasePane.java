@@ -7,7 +7,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.text.Font;
 
 /**
- * Created by alex on 4/18/15.
+ * BasePane.java
  */
 public class BasePane extends BorderPane
 {
@@ -15,6 +15,11 @@ public class BasePane extends BorderPane
     private int titleSize = 20;
     private int padding = 10;
 
+    /**
+     * Instantiates a new Base pane.
+     *
+     * @param title the title
+     */
     public BasePane(String title)
     {
         this.title = new Label(title);
@@ -24,6 +29,11 @@ public class BasePane extends BorderPane
         topProperty().set(this.title);
     }
 
+    /**
+     * Sets content.
+     *
+     * @param node the node
+     */
     public void setContent(Node node)
     {
         centerProperty().set(node);

@@ -7,8 +7,11 @@ import javafx.scene.paint.Color;
 import java.util.List;
 
 /**
+ * FormChoiceNode.java
+ *
  * Simple FormNode class used for structuring data
  * and sending a key-value pair to the Form class.
+ * @param <T>   the type parameter
  */
 public class FormChoiceNode<T> extends FormNode<T>
 {
@@ -20,6 +23,10 @@ public class FormChoiceNode<T> extends FormNode<T>
     private ChoiceBox<T> values;
     private Label errorLabel;
 
+    /**
+     * The type Builder.
+     * @param <T>   the type parameter
+     */
     public static class Builder<T>
     {
         private String key;
@@ -28,6 +35,12 @@ public class FormChoiceNode<T> extends FormNode<T>
         private String regex = "";
         private boolean required = true;
 
+        /**
+         * Instantiates a new Builder.
+         *
+         * @param key the key
+         * @param data the data
+         */
         public Builder(String key, List<T> data)
         {
             this.key = key;
@@ -35,26 +48,59 @@ public class FormChoiceNode<T> extends FormNode<T>
             values.getItems().setAll(data);
         }
 
+        /**
+         * Active builder.
+         *
+         * @param value the value
+         * @return the builder
+         */
         public Builder active(T value)
         {
-            values.setValue(value); return this;
+            values.setValue(value);
+            return this;
         }
 
+        /**
+         * Error builder.
+         *
+         * @param error the error
+         * @return the builder
+         */
         public Builder error(String error)
         {
-            this.error = error; return this;
+            this.error = error;
+            return this;
         }
 
+        /**
+         * Regex builder.
+         *
+         * @param regex the regex
+         * @return the builder
+         */
         public Builder regex(String regex)
         {
-            this.regex = regex; return this;
+            this.regex = regex;
+            return this;
         }
 
+        /**
+         * Required builder.
+         *
+         * @param value the value
+         * @return the builder
+         */
         public Builder required(boolean value)
         {
-            this.required = value; return this;
+            this.required = value;
+            return this;
         }
 
+        /**
+         * Build form choice node.
+         *
+         * @return the form choice node
+         */
         public FormChoiceNode build()
         {
             return new FormChoiceNode(this);
@@ -75,20 +121,49 @@ public class FormChoiceNode<T> extends FormNode<T>
         errorLabel.setVisible(false);
     }
 
-    public Label getKey() { return keyLabel; }
+    public Label getKey()
+    {
+        return keyLabel;
+    }
 
-    public ChoiceBox<T> getNode() { return values; }
+    public ChoiceBox<T> getNode()
+    {
+        return values;
+    }
 
-    public Label getError() { return errorLabel; }
+    public Label getError()
+    {
+        return errorLabel;
+    }
 
-    public String getRegex() { return regex; }
+    /**
+     * Gets regex.
+     *
+     * @return the regex
+     */
+    public String getRegex()
+    {
+        return regex;
+    }
 
-    public String getValue() { return values.getValue().toString(); }
+    public String getValue()
+    {
+        return values.getValue().toString();
+    }
 
-    public boolean getRequired() { return required; }
+    public boolean getRequired()
+    {
+        return required;
+    }
 
-    public T getData() { return values.getValue(); }
+    public T getData()
+    {
+        return values.getValue();
+    }
 
     @Override
-    public Type getType() { return Type.CHOICE; }
+    public Type getType()
+    {
+        return Type.CHOICE;
+    }
 }

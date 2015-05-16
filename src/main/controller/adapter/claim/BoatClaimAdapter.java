@@ -1,8 +1,8 @@
-package main.view.form.adapter.claim;
+package main.controller.adapter.claim;
 
 import main.localization.Loc;
 import main.model.claim.Claim;
-import main.model.claim.property.PropertyClaim;
+import main.model.claim.vehicle.BoatClaim;
 import main.model.insurance.Insurance;
 import main.model.person.Person;
 import main.view.form.Formable;
@@ -14,20 +14,31 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- * PropertyClaimAdapter.java
+ * BoatClaimAdapter.java
  */
-public class PropertyClaimAdapter extends ClaimAdapter<PropertyClaim>
-        implements Formable<PropertyClaim>
+public class BoatClaimAdapter extends ClaimAdapter<BoatClaim>
+        implements Formable<BoatClaim>
 {
-    private FormChoiceNode<PropertyClaim.Type> type;
+    private FormChoiceNode<BoatClaim.Type> type;
 
-    public PropertyClaimAdapter(PropertyClaim claim)
+    /**
+     * Instantiates a new Boat claim adapter.
+     *
+     * @param claim the claim
+     */
+    public BoatClaimAdapter(BoatClaim claim)
     {
         super(claim);
         initFields();
     }
 
-    public PropertyClaimAdapter(Person person, Insurance insurance)
+    /**
+     * Instantiates a new Boat claim adapter.
+     *
+     * @param person the person
+     * @param insurance the insurance
+     */
+    public BoatClaimAdapter(Person person, Insurance insurance)
     {
         super(person, insurance);
         initFields();
@@ -35,10 +46,10 @@ public class PropertyClaimAdapter extends ClaimAdapter<PropertyClaim>
 
     private void initFields()
     {
-        List<PropertyClaim.Type> typeList = new ArrayList<>(
-                Arrays.asList(PropertyClaim.Type.values()));
-        type = new FormChoiceNode.Builder<>(Loc.c("property_claim_type"), typeList)
-                .active(editMode ? claim.getType() : PropertyClaim.Type.A)
+        List<BoatClaim.Type> typeList = new ArrayList<>(
+                Arrays.asList(BoatClaim.Type.values()));
+        type = new FormChoiceNode.Builder<>(Loc.c("boat_claim_type"), typeList)
+                .active(editMode ? claim.getType() : BoatClaim.Type.A)
                 .build();
     }
 
@@ -57,7 +68,7 @@ public class PropertyClaimAdapter extends ClaimAdapter<PropertyClaim>
             setData();
             claim.setType(type.getData());
         } else {
-            claim = new PropertyClaim.Builder(person, insurance)
+            claim = new BoatClaim.Builder(person, insurance)
                     .dateOfDamages(dateOfDamages.getData())
                     .claimDate(claimDate.getData())
                     .desc(description.getValue())

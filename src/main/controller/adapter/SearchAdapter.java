@@ -1,4 +1,4 @@
-package main.view.form.adapter;
+package main.controller.adapter;
 
 import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
@@ -44,6 +44,9 @@ public class SearchAdapter implements Formable<Search>
     };
 
 
+    /**
+     * Instantiates a new Search adapter.
+     */
     public SearchAdapter()
     {
         input = new FormValueNode.Builder(Loc.c("search"))

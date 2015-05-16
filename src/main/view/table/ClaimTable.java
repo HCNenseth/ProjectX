@@ -4,10 +4,13 @@ import main.localization.Loc;
 import main.model.claim.Claim;
 
 /**
- * Created by alex on 4/24/15.
+ * ClaimTable.java
  */
 public class ClaimTable extends Table<Claim>
 {
+    /**
+     * Instantiates a new Claim table.
+     */
     public ClaimTable()
     {
         injectColumn(Column.generate(Loc.c("id"), "id"));

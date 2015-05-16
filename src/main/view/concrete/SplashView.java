@@ -13,7 +13,7 @@ import main.controller.Signal;
 import main.controller.StatisticsController;
 
 /**
- * Created by HansPetter on 30.04.2015.
+ * SplashView.java
  */
 public class SplashView
 {
@@ -23,6 +23,9 @@ public class SplashView
     private ImageView searchIV, customerIV, statisticsIV;
     private Button search, customer, statistics;
 
+    /**
+     * Instantiates a new Splash view.
+     */
     public SplashView()
     {
         hbox = new HBox();
@@ -75,16 +78,27 @@ public class SplashView
 
     }
 
+    /**
+     * Show void.
+     */
     public void show()
     {
         gridPane.setVisible(true);
     }
 
+    /**
+     * Hide void.
+     */
     public void hide()
     {
         gridPane.setVisible(false);
     }
 
+    /**
+     * Gets splash pane.
+     *
+     * @return the splash pane
+     */
     public GridPane getSplashPane()
     {
         return gridPane;

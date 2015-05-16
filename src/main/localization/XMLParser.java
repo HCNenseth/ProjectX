@@ -18,17 +18,17 @@ import java.util.Set;
  * XML parser created for scanning and importing main.localization
  * string from defined system path.
  * This parser expects XML files in the following format:
- *
+ * <p>
  * ---
  * <language name="english">
- *     <string name="key1">value1</string>
- *     <string name="key2">value2</string>
+ * <string name="key1">value1</string>
+ * <string name="key2">value2</string>
  * </language>
  * ---
- *
+ * <p>
  * This class is not accessible from outside this package.
  *
- * @date 2015-04-15
+ * @date 2015 -04-15
  * @filename XMLParser.java
  */
 class XMLParser
@@ -37,6 +37,9 @@ class XMLParser
     private DocumentBuilderFactory dbf;
     private final static String path = "languages";
 
+    /**
+     * Instantiates a new XML parser.
+     */
     public XMLParser()
     {
         languages = new HashMap<>();
@@ -67,6 +70,7 @@ class XMLParser
 
     /**
      * Inject XML file data into storage
+     *
      * @param filename - filename (absoulute) on system.
      */
     private void parseFile(final String filename)
@@ -85,6 +89,7 @@ class XMLParser
 
     /**
      * Parse DOM data into storage
+     *
      * @param dom
      */
     private void parseDocument(final Document dom)
@@ -97,7 +102,7 @@ class XMLParser
         if (nl != null && lang != null && nl.getLength() > 0) {
             Map<String, String> tmp = new HashMap<>();
             for (int i = 0; i < nl.getLength(); i++) {
-                Element el = (Element)nl.item(i);
+                Element el = (Element) nl.item(i);
                 String key = el.getAttribute("name");
                 String value = el.getTextContent();
                 tmp.put(key, value);
@@ -109,9 +114,10 @@ class XMLParser
     /**
      * Public method for returning value based on lang and key.
      * Throws IllegalStateException if lang does not exists.
-     * @param lang
-     * @param key
-     * @return
+     *
+     * @param lang the lang
+     * @param key the key
+     * @return string
      */
     public String get(String lang, String key)
     {
@@ -132,7 +138,11 @@ class XMLParser
 
     /**
      * Returns a set of all available languages.
-     * @return
+     *
+     * @return languages
      */
-    public Set<String> getLanguages() { return languages.keySet(); }
+    public Set<String> getLanguages()
+    {
+        return languages.keySet();
+    }
 }

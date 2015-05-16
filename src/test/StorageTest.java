@@ -1,9 +1,5 @@
 package test;
 
-/**
- * Created by alex on 4/16/15.
- */
-
 import main.config.Config;
 import main.model.Status;
 import main.model.Storage;
@@ -30,9 +26,17 @@ import java.util.Random;
 
 import static org.junit.Assert.*;
 
+/**
+ * StorageTest.java
+ *
+ * The type Storage test.
+ */
 public class StorageTest
 {
 
+    /**
+     * The constant firstnames.
+     */
     public static final String[] firstnames = {
             "Jonas", "Mathias", "Mattis", "Alexander", "Hans",
             "Petter", "Hans-Petter", "Hans Christian", "Andreas",
@@ -43,6 +47,9 @@ public class StorageTest
             "Katja", "Berit", "Kristin", "Christina", "Stine"
     };
 
+    /**
+     * The constant lastnames.
+     */
     public static final String[] lastnames = {
             "Olsen", "Hansen", "Johnsen", "Johansen", "Larsen",
             "Andreasen", "Pedersen", "Nilsen", "Kristiansen", "Jensen",
@@ -53,6 +60,9 @@ public class StorageTest
             "Solheim", "Aas", "Myhre", "Ali", "Sandvik", "Vik", "Sandvik"
     };
 
+    /**
+     * The constant cities.
+     */
     public static final String[] cities = {
             "Alta", "Arendal", "Askim", "Bergen", "Brekstad", "Brevik",
             "Brumunddal", "Bryne", "Drammen", "Egersund", "Elverum",
@@ -65,12 +75,18 @@ public class StorageTest
             "Ulsteinvik", "Vinstra"
     };
 
+    /**
+     * The constant domains.
+     */
     public static final String[] domains = {
             "email", "yahoo", "google", "hotmail", "outlook",
             "generell-skade", "vannskade", "kollisjon", "steinras",
             "storm", "kuvelting", "natur-katastrofe", "vulkan"
     };
 
+    /**
+     * The constant streetType.
+     */
     public static final String[] streetType = {
             "Vei", "Gate", "Bru", "Sted", "Plass", "Krysset"
     };
@@ -117,6 +133,9 @@ public class StorageTest
         assertArrayEquals(intsFromFile.toArray(), ints);
     }
 
+    /**
+     * Test insurance.
+     */
     @Test
     public void testInsurance()
     {
@@ -263,7 +282,7 @@ public class StorageTest
          */
         int count = 2000;
 
-        Storage.injectFilename("data/persons_big.dat");
+        Storage.injectFilename("data/demodata.dat");
 
         List<Person> persons = new LinkedList<>();
         List<Insurance> insurances = new LinkedList<>();
@@ -295,9 +314,9 @@ public class StorageTest
             for (int j = 0; j < randInt(0, 2); j++) {
                 Car car = new Car.Builder(person, "ABC123")
                         .date(LocalDate.of(randInt(1970, 2015),
-                                randInt(1,12), randInt(1,28)))
+                                randInt(1, 12), randInt(1, 28)))
                         .amount(randInt(1000, 4000))
-                        .premium(randInt(300, 700))
+                        .premium(randInt(5000, 15000))
                         .deductible(randInt(4000, 12000))
                                 //.bonus(randInt(50,80))
                         .mileage(randInt(4000, 20000))
@@ -330,9 +349,9 @@ public class StorageTest
             for (int j = 0; j < randInt(0, 2); j++) {
                 Boat boat = new Boat.Builder(person, "ABC123")
                         .date(LocalDate.of(randInt(1970, 2015),
-                                randInt(1,12), randInt(1,28)))
+                                randInt(1, 12), randInt(1, 28)))
                         .amount(randInt(1000, 4000))
-                        .premium(randInt(300, 700))
+                        .premium(randInt(5000, 20000))
                         .deductible(randInt(4000, 12000))
                         .horsePower(randInt(20, 400))
                         .length(randInt(10, 50))
@@ -369,7 +388,7 @@ public class StorageTest
                         .postalCode(String.valueOf(randInt(1000, 9000)))
                         .streetAddress(streetName)
                         .amount(randInt(1000, 4000))
-                        .premium(randInt(300, 700))
+                        .premium(randInt(5000, 10000))
                         .deductible(randInt(4000, 12000))
                         .status(randomEnumValue(Status.class))
                         .year(randInt(1900, 2014))
@@ -397,7 +416,7 @@ public class StorageTest
                         .standard(randomEnumValue(VacationHouse.Standard.class))
                         .type(randomEnumValue(VacationHouse.Type.class))
                         .amount(randInt(1000, 4000))
-                        .premium(randInt(300, 700))
+                        .premium(randInt(2000, 6000))
                         .city(city)
                         .postalCode(String.valueOf(randInt(1000, 9000)))
                         .streetAddress(streetName)
@@ -429,7 +448,7 @@ public class StorageTest
                         .continent(randomEnumValue(Travel.Continent.class))
                         .date(LocalDate.of(randInt(1970, 2015),
                                 randInt(1, 12), randInt(1, 28)))
-                        .premium(randInt(300, 700))
+                        .premium(randInt(1000, 3000))
                         .deductible(randInt(4000, 12000))
                         .build();
                 /* add some random claims */
@@ -466,7 +485,7 @@ public class StorageTest
     /**
      * Helper method for outputting random firstname
      *
-     * @return
+     * @return string
      */
     public String randomFirstname()
     {
@@ -476,7 +495,7 @@ public class StorageTest
     /**
      * Helper method for outputting random lastname
      *
-     * @return
+     * @return string
      */
     public String randomLastname()
     {
@@ -486,7 +505,7 @@ public class StorageTest
     /**
      * Helper method for outputting random city
      *
-     * @return
+     * @return string
      */
     public String randomCity()
     {
@@ -496,7 +515,7 @@ public class StorageTest
     /**
      * Helper method for outputting random streetAddress type
      *
-     * @return
+     * @return string
      */
     public String randomStreetType()
     {
@@ -506,7 +525,7 @@ public class StorageTest
     /**
      * Random domain name.
      *
-     * @return
+     * @return string
      */
     public String randomDomain()
     {
@@ -516,9 +535,10 @@ public class StorageTest
 
     /**
      * Insert generic enum, return random value!
-     * @param enumClass
-     * @param <E>
-     * @return
+     *
+     * @param <E>  the type parameter
+     * @param enumClass the enum class
+     * @return e
      */
     public <E extends Enum> E randomEnumValue(Class<E> enumClass)
     {
@@ -529,9 +549,9 @@ public class StorageTest
     /**
      * Helper method for generating random numbers in range
      *
-     * @param min
-     * @param max
-     * @return
+     * @param min the min
+     * @param max the max
+     * @return int
      */
     public int randInt(int min, int max)
     {

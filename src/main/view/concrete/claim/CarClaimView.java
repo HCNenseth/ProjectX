@@ -12,6 +12,11 @@ import main.view.stage.ImageStage;
  */
 public class CarClaimView extends ClaimView<CarClaim>
 {
+    /**
+     * Instantiates a new Car claim view.
+     *
+     * @param claim the claim
+     */
     public CarClaimView(CarClaim claim)
     {
         super(claim);

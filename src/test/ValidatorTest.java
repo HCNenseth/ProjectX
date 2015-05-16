@@ -1,12 +1,3 @@
-/**
- *
- * @filename UnitTest.java
- *
- * @date 2015-03-01
- *
- * Unittests for the main.validator package.
- */
-
 package test;
 
 import main.validator.StringMatcher;
@@ -15,9 +6,17 @@ import org.junit.Test;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
+/**
+ * ValidatorTest.java
+ * The type Validator test.
+ */
 public class ValidatorTest
 {
-    @Test public void test_email()
+    /**
+     * Test _ email.
+     */
+    @Test
+    public void test_email()
     {
         assertTrue(StringMatcher.email("test@example.com"));
         assertTrue(StringMatcher.email("test.best@example.com"));
@@ -30,7 +29,11 @@ public class ValidatorTest
         assertFalse(StringMatcher.email("horse@"));
     }
 
-    @Test public void test_firstname()
+    /**
+     * Test _ firstname.
+     */
+    @Test
+    public void test_firstname()
     {
         assertTrue(StringMatcher.firstname("John"));
         assertTrue(StringMatcher.firstname("John Carl"));
@@ -40,7 +43,11 @@ public class ValidatorTest
         assertTrue(StringMatcher.firstname("Jørn"));
     }
 
-    @Test public void test_lastname()
+    /**
+     * Test _ lastname.
+     */
+    @Test
+    public void test_lastname()
     {
         assertTrue(StringMatcher.lastname("Doe"));
         assertTrue(StringMatcher.lastname("Doe Smith"));
@@ -50,17 +57,29 @@ public class ValidatorTest
         assertTrue(StringMatcher.lastname("Jørnson"));
     }
 
-    @Test public void test_regnr()
+    /**
+     * Test _ regnr.
+     */
+    @Test
+    public void test_regnr()
     {
         assertTrue(StringMatcher.regnr("ABC123"));
     }
 
-    @Test public void test_type()
+    /**
+     * Test _ type.
+     */
+    @Test
+    public void test_type()
     {
         assertTrue(StringMatcher.type("Sailboat"));
     }
 
-    @Test public void test_color()
+    /**
+     * Test _ color.
+     */
+    @Test
+    public void test_color()
     {
         assertTrue(StringMatcher.color("Purple"));
         assertTrue(StringMatcher.color("Purplish yellow"));
@@ -70,7 +89,11 @@ public class ValidatorTest
         assertTrue(StringMatcher.color("Rød grønn"));
     }
 
-    @Test public void test_year()
+    /**
+     * Test _ year.
+     */
+    @Test
+    public void test_year()
     {
         assertTrue(StringMatcher.year("1999"));
 
@@ -80,7 +103,11 @@ public class ValidatorTest
         assertFalse(StringMatcher.year("Horse"));
     }
 
-    @Test public void test_length()
+    /**
+     * Test _ length.
+     */
+    @Test
+    public void test_length()
     {
         assertTrue(StringMatcher.length("32.2"));
         assertTrue(StringMatcher.length("32"));
@@ -91,7 +118,11 @@ public class ValidatorTest
         assertFalse(StringMatcher.length("32 F"));
     }
 
-    @Test public void test_power()
+    /**
+     * Test _ power.
+     */
+    @Test
+    public void test_power()
     {
         assertTrue(StringMatcher.power("144.5"));
         assertTrue(StringMatcher.power("144"));

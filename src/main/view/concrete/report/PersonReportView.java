@@ -16,6 +16,11 @@ public class PersonReportView extends ReportView
 {
     private List<Person> personList;
 
+    /**
+     * Instantiates a new Person report view.
+     *
+     * @param personList the person list
+     */
     public PersonReportView(List<Person> personList)
     {
         this.personList = personList;

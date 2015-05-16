@@ -7,9 +7,6 @@ import main.localization.Loc;
  */
 public enum Status
 {
-    /**
-     * Generic statuses for the three main model types {person, insurance, claim}
-     */
     ACTIVE(Loc.c("active")),
     INACTIVE(Loc.c("inactive")),
     PENDING(Loc.c("pending")),
@@ -17,10 +14,29 @@ public enum Status
 
     private String value;
 
-    Status(String value) { this.value = value; }
+    /**
+     * Instantiates a new Status.
+     *
+     * @param value the value
+     */
+    Status(String value)
+    {
+        this.value = value;
+    }
 
-    public String getValue() { return value; }
+    /**
+     * Gets value.
+     *
+     * @return the value
+     */
+    public String getValue()
+    {
+        return value;
+    }
 
     @Override
-    public String toString() { return value; }
+    public String toString()
+    {
+        return value;
+    }
 }

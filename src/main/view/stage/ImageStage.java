@@ -9,12 +9,22 @@ import java.io.File;
 import java.io.IOException;
 
 /**
- * Created by alex on 5/11/15.
+ * ImageStage.java
  */
 public class ImageStage extends Stage
 {
-    public ImageStage() {}
+    /**
+     * Instantiates a new Image stage.
+     */
+    public ImageStage()
+    {
+    }
 
+    /**
+     * Show image.
+     *
+     * @param image the image
+     */
     public void showImage(File image)
     {
         setScene(new ImageScene(image.getAbsolutePath()).getScene());

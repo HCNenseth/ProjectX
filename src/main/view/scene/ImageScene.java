@@ -5,20 +5,26 @@ import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
 
 /**
- * Created by alex on 5/11/15.
+ * ImageScene.java
  */
 public class ImageScene
 {
     private String image;
     private Scene scene;
 
+    /**
+     * Instantiates a new Image scene.
+     *
+     * @param image the image
+     */
     public ImageScene(String image)
     {
         this.image = image;
         scene = new Scene(loadBrowser());
     }
 
-    private WebView loadBrowser() {
+    private WebView loadBrowser()
+    {
         WebView browser = new WebView();
         WebEngine webEngine = browser.getEngine();
         webEngine.load("file:" + image);
@@ -26,5 +32,13 @@ public class ImageScene
         return browser;
     }
 
-    public Scene getScene() { return scene; }
+    /**
+     * Gets scene.
+     *
+     * @return the scene
+     */
+    public Scene getScene()
+    {
+        return scene;
+    }
 }

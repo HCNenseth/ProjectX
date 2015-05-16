@@ -1,4 +1,4 @@
-package main.view.form.adapter.insurance;
+package main.controller.adapter.insurance;
 
 import main.localization.Loc;
 import main.model.insurance.Insurance;
@@ -31,12 +31,23 @@ public class HouseAdapter extends InsuranceAdapter<House> implements Formable<Ho
     private FormChoiceNode<House.Material> material;
     private FormChoiceNode<House.Standard> standard;
 
+    /**
+     * Instantiates a new House adapter.
+     *
+     * @param customer the customer
+     * @param house the house
+     */
     public HouseAdapter(Person customer, House house)
     {
         super(customer, house);
         initNodes();
     }
 
+    /**
+     * Instantiates a new House adapter.
+     *
+     * @param customer the customer
+     */
     public HouseAdapter(Person customer)
     {
         super(customer);

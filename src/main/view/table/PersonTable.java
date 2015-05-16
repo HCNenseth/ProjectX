@@ -4,10 +4,13 @@ import main.localization.Loc;
 import main.model.person.Person;
 
 /**
- * Created by alex on 4/24/15.
+ * PersonTable.java
  */
 public class PersonTable extends Table<Person>
 {
+    /**
+     * Instantiates a new Person table.
+     */
     public PersonTable()
     {
         // customerId

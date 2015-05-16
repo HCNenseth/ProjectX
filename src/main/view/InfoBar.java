@@ -9,13 +9,16 @@ import javafx.scene.paint.Color;
 import main.localization.Loc;
 
 /**
- * Created by alex on 4/30/15.
+ * InfoBar.java
  */
 public class InfoBar extends GridPane
 {
     private Button xout;
     private int msg = 95, button = 5;
 
+    /**
+     * Instantiates a new Info bar.
+     */
     public InfoBar()
     {
         setVisible(false);
@@ -37,12 +40,31 @@ public class InfoBar extends GridPane
         add(xout, 1, 0);
     }
 
-    public GridPane getMain() { return this; }
+    /**
+     * Gets main.
+     *
+     * @return the main
+     */
+    public GridPane getMain()
+    {
+        return this;
+    }
 
-    private void hide() { setVisible(false); }
+    private void hide()
+    {
+        setVisible(false);
+    }
 
-    private void show() { setVisible(true); }
+    private void show()
+    {
+        setVisible(true);
+    }
 
+    /**
+     * Sets and show.
+     *
+     * @param string the string
+     */
     public void setAndShow(String string)
     {
         Label label = new Label(string);
