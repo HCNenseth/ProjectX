@@ -37,7 +37,7 @@ public class StorageTest
     /**
      * The constant firstnames.
      */
-    public static final String[] firstnames = {
+    private static final String[] firstnames = {
             "Jonas", "Mathias", "Mattis", "Alexander", "Hans",
             "Petter", "Hans-Petter", "Hans Christian", "Andreas",
             "Elias", "Kristian", "Christian", "Sebastian", "Stian",
@@ -50,7 +50,7 @@ public class StorageTest
     /**
      * The constant lastnames.
      */
-    public static final String[] lastnames = {
+    private static final String[] lastnames = {
             "Olsen", "Hansen", "Johnsen", "Johansen", "Larsen",
             "Andreasen", "Pedersen", "Nilsen", "Kristiansen", "Jensen",
             "Karlsen", "Pettersen", "Eriksen", "Berg", "Haugen", "Hagen",
@@ -63,7 +63,7 @@ public class StorageTest
     /**
      * The constant cities.
      */
-    public static final String[] cities = {
+    private static final String[] cities = {
             "Alta", "Arendal", "Askim", "Bergen", "Brekstad", "Brevik",
             "Brumunddal", "Bryne", "Drammen", "Egersund", "Elverum",
             "Fagernes", "Fauske", "Flekkefjord", "Fredrikstad", "Grimstad",
@@ -78,7 +78,7 @@ public class StorageTest
     /**
      * The constant domains.
      */
-    public static final String[] domains = {
+    private static final String[] domains = {
             "email", "yahoo", "google", "hotmail", "outlook",
             "generell-skade", "vannskade", "kollisjon", "steinras",
             "storm", "kuvelting", "natur-katastrofe", "vulkan"
@@ -87,7 +87,7 @@ public class StorageTest
     /**
      * The constant streetType.
      */
-    public static final String[] streetType = {
+    private static final String[] streetType = {
             "Vei", "Gate", "Bru", "Sted", "Plass", "Krysset"
     };
 

@@ -15,7 +15,7 @@ import main.view.StandardGridPane;
 public class AboutView extends StandardGridPane
 {
     private int rowNum = 0;
-    private final int spaceCount = 5;
+    private static final int spaceCount = 5;
 
     /**
      * Instantiates a new About view.

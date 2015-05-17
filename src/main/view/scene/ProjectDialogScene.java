@@ -34,7 +34,7 @@ public class ProjectDialogScene
 
     private Image openExistingIcon, createNewIcon;
     private ImageView openExistingImageView, createNewImageView;
-    private Button openExisting, createNew, langEN, langNO, langIT, langFR;
+    private Button openExisting, createNew;
 
     private int linesGap = 10, btnSize = 80,
             appNameSize = 20, appNamePadding = 5,

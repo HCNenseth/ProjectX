@@ -158,6 +158,7 @@ public class Form extends StandardGridPane
             // switch on because each node might have different behaviours
             switch (fn.getType()) {
                 case VALUE:
+                default:
                     // check if required or value is not blank
                     if (fn.getRequired() || !fn.getValue().equals("")) {
                         FormValueNode fvn = (FormValueNode) fn;

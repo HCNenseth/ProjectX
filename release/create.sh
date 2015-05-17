@@ -12,11 +12,11 @@ TMP=$APP_NAME.$DATE.$1
 mkdir $TMP
 mkdir $TMP/data
 mkdir $TMP/preferences
+mkdir $TMP/uploads
 
 cp ../data/demodata.dat $TMP/data/demodata.dat
 cp -r ../languages $TMP/
 cp -r ../src $TMP/
-cp -r ../uploads $TMP/
 cp -r ../resources $TMP/
 cp ../out/artifacts/$APP_NAME/$APP_NAME.jar $TMP/$APP_NAME.$1.jar
 

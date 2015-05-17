@@ -4,7 +4,7 @@ import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import main.config.Config;
 import main.view.Resources;
-import main.view.menubar.MenuBar;
+import main.view.menubar.MainMenuBar;
 
 /**
  * MainScene.java
@@ -21,7 +21,7 @@ public class MainScene
     {
         bp = new BorderPane();
 
-        bp.setTop(new MenuBar());
+        bp.setTop(new MainMenuBar());
         bp.setCenter(Resources.inst.getStackPane());
         bp.setBottom(Resources.inst.getInfoBar().getMain());
 

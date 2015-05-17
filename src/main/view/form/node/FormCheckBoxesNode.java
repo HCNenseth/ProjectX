@@ -93,7 +93,7 @@ public class FormCheckBoxesNode<T extends Enum> extends FormNode<Set<T>>
          */
         public Builder lastOneActive(boolean val)
         {
-            this.lastOneActive = lastOneActive;
+            this.lastOneActive = val;
             return this;
         }
 

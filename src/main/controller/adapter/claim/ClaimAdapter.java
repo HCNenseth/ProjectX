@@ -41,9 +41,9 @@ public abstract class ClaimAdapter<T extends Claim> implements Formable<T>
     protected T claim;
     protected boolean editMode = false;
 
-    private final int standardYear = 2014;
-    private final int standardMonth = 01;
-    private final int standardDay = 01;
+    private static final int standardYear = 2014;
+    private static final int standardMonth = 01;
+    private static final int standardDay = 01;
 
     /**
      * The Call back event.
