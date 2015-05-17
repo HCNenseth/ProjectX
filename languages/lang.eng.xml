@@ -327,5 +327,8 @@
     <string name="error_house_squaremeters">Must contain only numbers</string>
     <string name="mileage_error">Must contain only digits</string>
     <string name="length_error">Must contain only numbers</string>
+    <string name="claim_contacts_error">Must contain between 2 and 20 characters/digits</string>
+    <string name="claim_amount_error">Must contain only digits</string>
+    <string name="claim_deductible_error">Must contain only digits</string>
 
 </language>
