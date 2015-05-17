@@ -37,7 +37,7 @@ public class ClaimStatisticsView extends StandardGridPane
     private int lowerBound;
     private int upperBound;
 
-    private final int cellGap = 5;
+    private static final int cellGap = 5;
     private int rowNum = 0;
 
     /**

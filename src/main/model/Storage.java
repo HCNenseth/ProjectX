@@ -94,6 +94,8 @@ public class Storage
                 new FileInputStream(filename));
 
         data = (Map) handle.readObject();
+
+        handle.close();
     }
 
     /**

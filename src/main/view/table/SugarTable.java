@@ -104,6 +104,7 @@ public class SugarTable extends StandardGridPane
                                 Loc.c("insurance_report")));
                 break;
             case CLAIM:
+            default:
                 convert = new LinkedList<Claim>();
                 table.getItems().stream().forEach(convert::add);
                 statistics.setOnAction(e ->

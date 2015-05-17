@@ -27,10 +27,10 @@ import java.util.Map;
  */
 class XMLParser
 {
-    private final String mainFile = "preferences/main.xml";
-    private final String rootLevel = "preferences";
-    private final String childLevel = "string";
-    private final String childAttributeName = "name";
+    private static final String mainFile = "preferences/main.xml";
+    private static final String rootLevel = "preferences";
+    private static final String childLevel = "string";
+    private static final String childAttributeName = "name";
 
     private Map<String, String> preferences;
     private DocumentBuilderFactory dbf;

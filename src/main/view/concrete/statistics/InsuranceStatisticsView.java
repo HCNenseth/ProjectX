@@ -37,7 +37,7 @@ public class InsuranceStatisticsView extends StandardGridPane
     private final int lowerBound;
     private final int upperBound;
 
-    private final int cellGap = 5;
+    private static final int cellGap = 5;
     private int rowNum = 0;
 
     /**
