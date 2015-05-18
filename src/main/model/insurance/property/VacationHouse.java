@@ -209,7 +209,7 @@ public class VacationHouse extends Property implements Serializable
      *
      * @param builder the builder
      */
-    public VacationHouse(Builder builder)
+    private VacationHouse(Builder builder)
     {
         super(builder);
 

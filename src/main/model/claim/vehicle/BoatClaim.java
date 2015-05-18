@@ -19,7 +19,7 @@ public class BoatClaim extends Claim
         B(Loc.c("claim_boat_b")),
         C(Loc.c("claim_boat_c"));
 
-        String value;
+        final String value;
 
         /**
          * Instantiates a new Type.
@@ -92,7 +92,7 @@ public class BoatClaim extends Claim
      *
      * @param builder the builder
      */
-    public BoatClaim(Builder builder)
+    private BoatClaim(Builder builder)
     {
         super(builder);
         type = builder.type;

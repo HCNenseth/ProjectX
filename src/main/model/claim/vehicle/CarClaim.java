@@ -23,7 +23,7 @@ public class CarClaim extends Claim
         B(Loc.c("claim_car_b")),
         C(Loc.c("claim_car_c"));
 
-        String value;
+        final String value;
 
         /**
          * Instantiates a new Type.
@@ -108,7 +108,7 @@ public class CarClaim extends Claim
      *
      * @param builder the builder
      */
-    public CarClaim(Builder builder)
+    private CarClaim(Builder builder)
     {
         super(builder);
         type = builder.type;

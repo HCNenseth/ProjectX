@@ -105,7 +105,7 @@ public class Form extends StandardGridPane
     /**
      * Expand gridpane and add the formnode.
      *
-     * @param fn
+     * @param fn Formnode
      */
     private void addPart(FormNode fn)
     {
@@ -145,7 +145,7 @@ public class Form extends StandardGridPane
      * these tests failed call upon the callers
      * callback method.
      */
-    public void validate()
+    private void validate()
     {
         // reset valid getStatus
         valid = true;

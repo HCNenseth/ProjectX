@@ -14,8 +14,8 @@ import java.time.LocalDate;
  */
 public abstract class ClaimBuilder<T, E>
 {
-    private Person customer;
-    private Insurance insurance;
+    private final Person customer;
+    private final Insurance insurance;
 
     private LocalDate dateOfDamages = LocalDate.now();
     private LocalDate claimDate = LocalDate.now();

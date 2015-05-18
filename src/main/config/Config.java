@@ -2,9 +2,6 @@ package main.config;
 
 import javafx.stage.Screen;
 
-/**
- * Config.java
- */
 public class Config
 {
     public static final String APP_NAME = "General Average";
@@ -39,12 +36,12 @@ public class Config
     public static final int STANDARD_MONTH = 1;
     public static final int STANDARD_DAY = 1;
 
-    public final static int TOTAL_CUSTOMER_INSURANCE_COUNT = 3;
-    public final static int TOTAL_CUSTOMER_DISCOUNT = 10;
+    public static final int TOTAL_CUSTOMER_INSURANCE_COUNT = 3;
+    public static final int TOTAL_CUSTOMER_DISCOUNT = 10;
 
-    public final static int PERSON_COUNTER_START = 1000000;
-    public final static int INSURANCE_COUNTER_START = 2000000;
-    public final static int CLAIM_COUNTER_START = 3000000;
+    public static final int PERSON_COUNTER_START = 1000000;
+    public static final int INSURANCE_COUNTER_START = 2000000;
+    public static final int CLAIM_COUNTER_START = 3000000;
 
-    public final static int MAX_UPLOAD_FILESIZE = 4096;
+    public static final int MAX_UPLOAD_FILESIZE = 4096;
 }

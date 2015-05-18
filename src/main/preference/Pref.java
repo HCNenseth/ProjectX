@@ -1,7 +1,7 @@
 package main.preference;
 
 /**
- * Created by alex on 4/30/15.
+ * Pref.java
  */
 public enum Pref
 {

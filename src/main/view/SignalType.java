@@ -1,7 +1,7 @@
 package main.view;
 
 /**
- * Created by alex on 4/10/15.
+ * SignalType.java
  */
 public enum SignalType
 {

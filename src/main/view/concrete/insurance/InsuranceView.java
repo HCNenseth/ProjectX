@@ -25,7 +25,7 @@ public abstract class InsuranceView<T extends Insurance> extends StandardGridPan
     private T insurance;
 
     protected int rowNum = 0;
-    protected boolean drawn = false;
+    private boolean drawn = false;
     private int cellGap = 5;
 
     /**

@@ -106,7 +106,7 @@ public class FormTextAreaNode extends FormNode<TextArea>
      *
      * @param builder the builder
      */
-    public FormTextAreaNode(Builder builder)
+    private FormTextAreaNode(Builder builder)
     {
         key = builder.key;
         value = builder.value;

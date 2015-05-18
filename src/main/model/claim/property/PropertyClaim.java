@@ -90,7 +90,7 @@ public class PropertyClaim extends Claim
      *
      * @param builder the builder
      */
-    public PropertyClaim(Builder builder)
+    private PropertyClaim(Builder builder)
     {
         super(builder);
         type = builder.type;

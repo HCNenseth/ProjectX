@@ -22,8 +22,8 @@ public abstract class ClaimView<T extends Claim> extends StandardGridPane
 {
     protected int rowNum = 0;
     protected T claim;
-    protected boolean drawn = false;
     private int cellGap = 5;
+    private boolean drawn = false;
 
     /**
      * Instantiates a new Claim view.
@@ -53,7 +53,7 @@ public abstract class ClaimView<T extends Claim> extends StandardGridPane
     /**
      * Init button panel.
      */
-    public void initButtonPanel()
+    private void initButtonPanel()
     {
         AnchorPane buttonPane = new AnchorPane();
 
@@ -83,7 +83,7 @@ public abstract class ClaimView<T extends Claim> extends StandardGridPane
     /**
      * Init fields.
      */
-    public void initFields()
+    private void initFields()
     {
         // claimId
         add(new Label(Loc.c("claim_id")), 0, rowNum);
@@ -147,7 +147,7 @@ public abstract class ClaimView<T extends Claim> extends StandardGridPane
     /**
      * Child fields.
      */
-    public abstract void childFields();
+    protected abstract void childFields();
 
     @Override
     public StandardGridPane getNode()

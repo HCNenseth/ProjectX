@@ -9,11 +9,11 @@ import javafx.scene.text.Font;
 /**
  * BasePane.java
  */
-public class BasePane extends BorderPane
+class BasePane extends BorderPane
 {
-    private Label title;
-    private int titleSize = 20;
-    private int padding = 10;
+    private final Label title;
+    private final int titleSize = 20;
+    private final int padding = 10;
 
     /**
      * Instantiates a new Base pane.

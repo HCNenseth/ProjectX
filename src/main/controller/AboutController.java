@@ -6,9 +6,9 @@ import main.view.Resources;
 import main.view.concrete.AboutView;
 
 /**
- * AboutController.php
+ * AboutController.java
  */
-public class AboutController
+class AboutController
 {
     private AboutController()
     {

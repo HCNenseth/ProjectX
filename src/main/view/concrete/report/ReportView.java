@@ -11,7 +11,6 @@ import main.view.StandardGridPane;
  */
 abstract class ReportView extends StandardGridPane
 {
-    protected int rowNum = 0;
     private int headerSize = 16;
 
     /**
@@ -32,7 +31,7 @@ abstract class ReportView extends StandardGridPane
      *
      * @param node the node
      */
-    protected void addColSpan(Node node)
+    private void addColSpan(Node node)
     {
         add(node, 0, rowNum++, 2, 1);
     }

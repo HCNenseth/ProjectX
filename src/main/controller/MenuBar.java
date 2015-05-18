@@ -54,14 +54,13 @@ public class MenuBar
                 aboutUs();
                 break;
             default:
-                return;
         }
     }
 
     /**
      * New project.
      */
-    public void newProject()
+    private void newProject()
     {
         Resources.inst.getSceneSwitch().setProjectDialogWindow();
     }
@@ -69,7 +68,7 @@ public class MenuBar
     /**
      * New customer.
      */
-    public void newCustomer()
+    private void newCustomer()
     {
         PersonController.create();
     }
