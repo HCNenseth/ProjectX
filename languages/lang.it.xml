@@ -103,6 +103,7 @@
     <string name="vehicle_registration_error">Data non valida</string>
     <string name="vehicle_horse_power">Cavalli di potenza</string>
     <string name="vehicle_horse_power_error">Cavalli di potenza deve contere solo cifre</string>
+    <string name="owner_error">Proprietario deve contenere tra i 2 e gli 20 caratteri</string>
     <string name="view_customer">Mostra cliente</string>
 
     <!-- insurance -->
