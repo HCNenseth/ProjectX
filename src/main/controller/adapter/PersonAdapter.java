@@ -40,7 +40,7 @@ public class PersonAdapter implements Formable<Person>
     /**
      * The Call back event.
      */
-    ButtonBase callBackEvent = new ButtonBase()
+    private ButtonBase callBackEvent = new ButtonBase()
     {
         @Override
         public void fire()

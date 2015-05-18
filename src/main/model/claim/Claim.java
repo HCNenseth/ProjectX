@@ -20,10 +20,10 @@ import java.util.List;
 public abstract class Claim implements Serializable, FullTextSearch, Model
 {
     private static int counter = Config.CLAIM_COUNTER_START;
-    private int id;
+    private final int id;
 
-    private Person customer;
-    private Insurance insurance;
+    private final Person customer;
+    private final Insurance insurance;
 
     private LocalDate dateOfDamages;
     private LocalDate claimDate;
@@ -45,7 +45,7 @@ public abstract class Claim implements Serializable, FullTextSearch, Model
         BOAT(Loc.c("boat")),
         CAR(Loc.c("car"));
 
-        String value;
+        final String value;
 
         /**
          * Instantiates a new Claim type.
@@ -97,7 +97,7 @@ public abstract class Claim implements Serializable, FullTextSearch, Model
         B(Loc.c("payment_status_b")),
         C(Loc.c("payment_status_c"));
 
-        String value;
+        final String value;
 
         /**
          * Instantiates a new Payment status.
@@ -131,7 +131,7 @@ public abstract class Claim implements Serializable, FullTextSearch, Model
      *
      * @param cb the cb
      */
-    public Claim(ClaimBuilder cb)
+    protected Claim(ClaimBuilder cb)
     {
         id = counter++;
 

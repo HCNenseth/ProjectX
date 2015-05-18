@@ -25,7 +25,7 @@ public class Search implements Model
     {
         private String keyword;
 
-        private LocalDate from = LocalDate.of(1930, 01, 01);
+        private LocalDate from = LocalDate.of(1930, 1, 1);
         private LocalDate to = LocalDate.now();
         private Set<Status> status = new HashSet<>();
         private Set<ModelType> models = new HashSet<>();

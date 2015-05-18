@@ -62,7 +62,7 @@ public class CarClaimAdapter extends ClaimAdapter<CarClaim>
     /**
      * Store damage report.
      */
-    protected void storeDamageReport()
+    private void storeDamageReport()
     {
         if (damageReportImage.getData() == null) {
             return;

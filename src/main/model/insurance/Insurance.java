@@ -39,7 +39,7 @@ public abstract class Insurance<C extends Claim> implements
      *
      * @param ib the ib
      */
-    public Insurance(InsuranceBuilder ib)
+    protected Insurance(InsuranceBuilder ib)
     {
         this.customer = ib.getCustomer();
         this.premium = ib.getPremium();

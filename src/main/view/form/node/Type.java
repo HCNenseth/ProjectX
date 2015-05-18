@@ -1,30 +1,9 @@
 package main.view.form.node;
 
 /**
- * Created by alex on 4/21/15.
+ * Type.java
  */
 public enum Type
 {
-    /**
-     * The VALUE.
-     */
-    VALUE, /**
- * The CHOICE.
- */
-CHOICE, /**
- * The LABEL.
- */
-LABEL, /**
- * The DATEPICKER.
- */
-DATEPICKER, /**
- * The TEXTAREA.
- */
-TEXTAREA, /**
- * The IMAGE.
- */
-IMAGE, /**
- * The SLIDER.
- */
-SLIDER
+    VALUE, CHOICE, LABEL, DATEPICKER, TEXTAREA, IMAGE, SLIDER
 }

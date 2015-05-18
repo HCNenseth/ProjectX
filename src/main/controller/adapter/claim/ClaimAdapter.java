@@ -26,13 +26,14 @@ public abstract class ClaimAdapter<T extends Claim> implements Formable<T>
 {
     private FormLabelNode personNode;
     private FormLabelNode insuranceNode;
+    private FormImageNode image;
+
     protected FormDateNode dateOfDamages;
     protected FormDateNode claimDate;
     protected FormValueNode contacts;
     protected FormValueNode amount;
     protected FormValueNode deductible;
     protected FormTextAreaNode description;
-    protected FormImageNode image;
     protected FormChoiceNode<Claim.PaymentStatus> paymentStatus;
     protected FormChoiceNode<Status> status;
 
@@ -42,13 +43,13 @@ public abstract class ClaimAdapter<T extends Claim> implements Formable<T>
     protected boolean editMode = false;
 
     private static final int standardYear = 2014;
-    private static final int standardMonth = 01;
-    private static final int standardDay = 01;
+    private static final int standardMonth = 1;
+    private static final int standardDay = 1;
 
     /**
      * The Call back event.
      */
-    protected ButtonBase callBackEvent = new ButtonBase()
+    protected final ButtonBase callBackEvent = new ButtonBase()
     {
         @Override
         public void fire()
@@ -80,7 +81,6 @@ public abstract class ClaimAdapter<T extends Claim> implements Formable<T>
      * @param person the person
      * @param insurance the insurance
      */
-// create constructor
     public ClaimAdapter(Person person, Insurance insurance)
     {
         this.person = person;

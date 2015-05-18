@@ -7,7 +7,7 @@ import java.util.Set;
  * to the outside. Singleton pattern is used for preventing duplication
  * and some short and compact methods is defined.
  *
- * @date 2015 -04-15
+ * @date 2015-04-15
  * @filename Loc.java
  */
 public final class Loc

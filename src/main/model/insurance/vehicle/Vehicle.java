@@ -24,7 +24,7 @@ public abstract class Vehicle<C extends Claim> extends Insurance<C>
      *
      * @param vb the vb
      */
-    public Vehicle(VehicleBuilder vb)
+    protected Vehicle(VehicleBuilder vb)
     {
         super(vb);
 

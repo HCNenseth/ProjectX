@@ -95,7 +95,7 @@ public abstract class Table<T> extends TableView<T>
      *
      * @param column the column
      */
-    public void injectColumn(TableColumn<T, String> column)
+    protected void injectColumn(TableColumn<T, String> column)
     {
         getColumns().add(column);
     }

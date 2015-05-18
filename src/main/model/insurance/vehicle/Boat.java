@@ -25,7 +25,7 @@ public class Boat extends Vehicle<BoatClaim> implements Serializable
         B(Loc.c("boat_propulsion_b")),
         C(Loc.c("boat_propulsion_c"));
 
-        String value;
+        final String value;
 
         /**
          * Instantiates a new Propulsion.
@@ -61,7 +61,7 @@ public class Boat extends Vehicle<BoatClaim> implements Serializable
         C(Loc.c("boat_type_c")),
         D(Loc.c("boat_type_d"));
 
-        String value;
+        final String value;
 
         /**
          * Instantiates a new Type.

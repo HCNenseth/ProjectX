@@ -206,7 +206,7 @@ public class House extends Property implements Serializable
     /**
      * Constructor
      *
-     * @param builder
+     * @param builder builder object
      */
     private House(Builder builder)
     {

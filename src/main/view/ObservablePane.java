@@ -16,7 +16,7 @@ import java.util.Observer;
  * @filename ObservablePane.java
  * @date 2015 -04-26
  */
-public class ObservablePane extends Observable
+class ObservablePane extends Observable
 {
     private BasePane pane;
     private Object reference;

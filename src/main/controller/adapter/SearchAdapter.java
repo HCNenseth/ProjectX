@@ -32,7 +32,7 @@ public class SearchAdapter implements Formable<Search>
     private FormDateNode to;
     private Search search;
 
-    private int fromYear = 1930, fromMonth = 01, fromDay = 01;
+    private int fromYear = 1930, fromMonth = 1, fromDay = 1;
 
     private ButtonBase callBackEvent = new ButtonBase()
     {

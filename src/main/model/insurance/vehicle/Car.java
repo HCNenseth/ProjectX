@@ -18,28 +18,13 @@ public class Car extends Vehicle<CarClaim> implements Serializable
     private Type type;
     private Propulsion propulsion;
 
-    /**
-     * The enum Propulsion.
-     */
     public enum Propulsion
     {
-        /**
-         * The A.
-         */
         A(Loc.c("car_propulsion_a")),
-        /**
-         * The B.
-         */
         B(Loc.c("car_propulsion_b")),
-        /**
-         * The C.
-         */
         C(Loc.c("car_propulsion_c"));
 
-        /**
-         * The Value.
-         */
-        String value;
+        final String value;
 
         /**
          * Instantiates a new Propulsion.
@@ -68,32 +53,14 @@ public class Car extends Vehicle<CarClaim> implements Serializable
         }
     }
 
-    /**
-     * The enum Type.
-     */
     public enum Type
     {
-        /**
-         * The A.
-         */
         A(Loc.c("car_type_a")),
-        /**
-         * The B.
-         */
         B(Loc.c("car_type_b")),
-        /**
-         * The C.
-         */
         C(Loc.c("car_type_c")),
-        /**
-         * The D.
-         */
         D(Loc.c("car_type_d"));
 
-        /**
-         * The Value.
-         */
-        String value;
+        final String value;
 
         /**
          * Instantiates a new Type.

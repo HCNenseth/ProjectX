@@ -97,7 +97,7 @@ abstract class Property extends Insurance<PropertyClaim>
      *
      * @param ib the ib
      */
-    public Property(InsuranceBuilder ib)
+    protected Property(InsuranceBuilder ib)
     {
         super(ib);
     }
