@@ -106,6 +106,7 @@
     <string name="vehicle_registration_error">Invalid date.</string>
     <string name="vehicle_horse_power">Horse power</string>
     <string name="vehicle_horse_power_error">Must contain only numbers</string>
+    <string name="owner_error">Owner contain between 2 and 8 characters</string>
     <string name="view_customer">View customer</string>
 
     <!-- insurance -->

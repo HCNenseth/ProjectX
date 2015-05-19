@@ -65,6 +65,8 @@ public class CarAdapter extends InsuranceAdapter<Car> implements Formable<Car>
         owner = new FormValueNode.Builder(Loc.c("owner"))
                 .value(getEditMode() ? getInsurance().getOwner() : "")
                 .regex(StringMatcher.getBaseString())
+                .error(Loc.c("owner_error"))
+                .required(false)
                 .build();
 
         registration = new FormDateNode.Builder(Loc.c("vehicle_registration"),

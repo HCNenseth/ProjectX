@@ -106,6 +106,7 @@
     <string name="vehicle_registration_error">Ugyldig dato</string>
     <string name="vehicle_horse_power">Hestekrefter</string>
     <string name="vehicle_horse_power_error">Hestekrefter kan bare inneholde tall</string>
+    <string name="owner_error">Eier må innehold mellom 2 og 20 tegn</string>
     <string name="view_customer">Vis kunde</string>
 
     <!-- insurance -->
