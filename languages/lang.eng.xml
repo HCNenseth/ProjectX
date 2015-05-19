@@ -36,9 +36,8 @@
     <string name="default">Default</string>
     <string name="inverse">Inverse</string>
     <string name="english">English</string>
-    <string name="norwegian">Norwegian</string>
-    <string name="german">German</string>
-    <string name="italian">Italian</string>
+    <string name="norwegian">Norsk (Bokmål)</string>
+    <string name="italian">Italiano</string>
     <string name="submit">Submit</string>
     <string name="type">Type</string>
     <string name="save">Save</string>
@@ -199,6 +198,7 @@
     <string name="year_built">Year built</string>
     <string name="square_meters">Square meters</string>
     <string name="material">Material</string>
+    <string name="contents">Home contents</string>
 
     <!-- vacation house -->
     <string name="new_vacation_house_insurance">New vacation house insurance</string>
@@ -330,5 +330,7 @@
     <string name="claim_contacts_error">Must contain between 2 and 20 characters/digits</string>
     <string name="claim_amount_error">Must contain only digits</string>
     <string name="claim_deductible_error">Must contain only digits</string>
+    <string name="error_vacation_house_contents">Must contain only digits</string>
+    <string name="error_house_contents">Must contain only digits</string>
 
 </language>

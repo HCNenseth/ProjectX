@@ -32,8 +32,8 @@
     <string name="add_image">Nuovo foto</string>
     <string name="data_files">Fili di dati (*.dat)</string>
     <string name="language">Lingua</string>
-    <string name="english">Inglese</string>
-    <string name="norwegian">Norvegese</string>
+    <string name="english">English</string>
+    <string name="norwegian">Norsk (Bokmål)</string>
     <string name="italian">Italiano</string>
     <string name="submit">Spedisci</string>
     <string name="type">Tipo</string>
@@ -195,6 +195,8 @@
     <string name="year_built">anno di costruzione</string>
     <string name="square_meters">Metri quadrati</string>
     <string name="material">Materiali</string>
+    <string name="contents">Casa contenuto</string>
+
 
     <!-- vacation house -->
     <string name="new_vacation_house_insurance">Nuove casolare assicurazione</string>
@@ -235,10 +237,10 @@
 
     <string name="claim_travel_a">Borseggio</string>
     <string name="claim_travel_b">Bagagli smarriti</string>
-    <string name="claim_travel_c">volo cancellato</string>
-    <string name="claim_travel_d">malattia</string>
+    <string name="claim_travel_c">Volo cancellato</string>
+    <string name="claim_travel_d">Malattia</string>
 
-    <string name="payment_status">stato del pagamento</string>
+    <string name="payment_status">Stato del pagamento</string>
     <string name="payment_status_a">In attesa di</string>
     <string name="payment_status_b">Richiesta respinta</string>
     <string name="payment_status_c">Richiesta pagata</string>
@@ -295,20 +297,20 @@
     <string name="average_vacation_house_insurance_claim">Messaggi danni medi per l'assicurazione casolara</string>
     <string name="average_travel_insurance_claim">Messaggi danni medi per l'assicurazione viaggio</string>
 
-    <string name="statistics">statistica</string>
-    <string name="statistics_persons">statistica - personi</string>
-    <string name="statistics_insurances">statistica - assicurazioni</string>
+    <string name="statistics">Statistica</string>
+    <string name="statistics_persons">Statistica - personi</string>
+    <string name="statistics_insurances">Statistica - assicurazioni</string>
     <string name="statistics_claims">Statistiche - Messaggi Danno</string>
     <string name="generate_statistics">statistiche</string>
     <string name="summary">Sommario</string>
     <string name="value">Valore</string>
-    <string name="count">numero</string>
+    <string name="count">Numero</string>
     <string name="year">Anno</string>
-    <string name="age">età</string>
+    <string name="age">Età</string>
 
     <!-- about -->
     <string name="about">Informazione</string>
-    <string name="made_by">sviluppato da</string>
+    <string name="made_by">Sviluppato da</string>
     <string name="icons_by_fff">Icone dal FamFamFam.com</string>
 
     <!-- error -->
@@ -322,5 +324,7 @@
     <string name="error_house_squaremeters">Deve contenere solo numeri</string>
     <string name="mileage_error">Deve contenere solo numeri</string>
     <string name="length_error">Deve contenere solo numeri</string>
+    <string name="error_vacation_house_contents">Deve contenere solo numeri</string>
+    <string name="error_house_contents">Deve contenere solo numeri</string>
 
 </language>

@@ -35,10 +35,9 @@
     <string name="language">Språk</string>
     <string name="default">Standard</string>
     <string name="inverse">Inversere</string>
-    <string name="english">Engelsk</string>
-    <string name="norwegian">Norsk</string>
-    <string name="german">Tysk</string>
-    <string name="italian">Italiensk</string>
+    <string name="english">English</string>
+    <string name="norwegian">Norsk (Bokmål)</string>
+    <string name="italian">Italiano</string>
     <string name="submit">Send</string>
     <string name="type">Type</string>
     <string name="save">Lagre</string>
@@ -199,6 +198,8 @@
     <string name="year_built">Bygningsår</string>
     <string name="square_meters">Kvadratmeter</string>
     <string name="material">Matriale</string>
+    <string name="contents">Innbo</string>
+
 
     <!-- vacation house -->
     <string name="new_vacation_house_insurance">Ny feriehusforsikring</string>
@@ -328,5 +329,7 @@
     <string name="error_house_squaremeters">Må inneholde bare tall</string>
     <string name="mileage_error">Må inneholde bare tall</string>
     <string name="length_error">Må inneholde bare tall</string>
+    <string name="error_vacation_house_contents">Må inneholde bare tall</string>
+    <string name="error_house_contents">Må inneholde bare tall</string>
 
 </language>
