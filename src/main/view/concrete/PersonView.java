@@ -2,6 +2,8 @@ package main.view.concrete;
 
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
@@ -56,31 +58,37 @@ public class PersonView extends StandardGridPane
     private void initButtonPanel()
     {
         AnchorPane buttonPane = new AnchorPane();
+        Image image = new Image(Config.IMAGES + Config.ADD_ICON);
 
         // car
         Button b1 = new Button(Loc.c("car"));
         b1.setOnAction(e -> InsuranceController.create(person,
                 InsuranceType.CAR));
+        b1.setGraphic(new ImageView(image));
 
         // boat
         Button b2 = new Button(Loc.c("boat"));
         b2.setOnAction(e -> InsuranceController.create(person,
                 InsuranceType.BOAT));
+        b2.setGraphic(new ImageView(image));
 
         // house
         Button b3 = new Button(Loc.c("house"));
         b3.setOnAction(e -> InsuranceController.create(person,
                 InsuranceType.HOUSE));
+        b3.setGraphic(new ImageView(image));
 
         // vacation house
         Button b4 = new Button(Loc.c("vacation_house"));
         b4.setOnAction(e -> InsuranceController.create(person,
                 InsuranceType.VACATION_HOUSE));
+        b4.setGraphic(new ImageView(image));
 
         // travel
         Button b5 = new Button(Loc.c("travel"));
         b5.setOnAction(e -> InsuranceController.create(person,
                 InsuranceType.TRAVEL));
+        b5.setGraphic(new ImageView(image));
 
         HBox leftAlignedButtons = new HBox();
         leftAlignedButtons.setSpacing(cellGap);

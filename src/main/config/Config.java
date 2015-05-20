@@ -16,6 +16,7 @@ public class Config
     public static final String UPLOADS = "uploads/";
     public static final String DATA = "data/";
 
+    public static final String ADD_ICON = "add.png";
     public static final String PERSON_TAB_IMAGE = "user.png";
     public static final String CAR_TAB_IMAGE = "car.png";
     public static final String BOAT_TAB_IMAGE = "anchor.png";
