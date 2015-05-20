@@ -1,6 +1,9 @@
 package main.model;
 
 import main.config.Config;
+import main.model.claim.Claim;
+import main.model.insurance.Insurance;
+import main.model.person.Person;
 
 import java.io.*;
 import java.util.HashMap;
@@ -94,8 +97,11 @@ public class Storage
                 new FileInputStream(filename));
 
         data = (Map) handle.readObject();
-
         handle.close();
+
+        Person.setCounter(Person.getPersons().size());
+        Insurance.setCounter(Insurance.getInsurances().size());
+        Claim.setCounter(Claim.getClaims().size());
     }
 
     /**

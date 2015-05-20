@@ -48,11 +48,6 @@ public class App extends Application
                 Storage.getInstance().read();
                 dialogMode = false;
 
-                // get data from storage and setup the different classes
-                Person.setCounter(Person.getPersons().size());
-                Insurance.setCounter(Insurance.getInsurances().size());
-                Claim.setCounter(Claim.getClaims().size());
-
             } catch (IOException | ClassNotFoundException e) {
                 e.printStackTrace();
             }
