@@ -39,12 +39,12 @@ public class StorageTest
      */
     private static final String[] firstnames = {
             "Jonas", "Mathias", "Mattis", "Alexander", "Hans",
-            "Petter", "Hans-Petter", "Hans Christian", "Andreas",
+            "Petter", "Hans Petter", "Hans Christian", "Andreas",
             "Elias", "Kristian", "Christian", "Sebastian", "Stian",
             "Sander", "Markus", "Tobias", "Anders", "Lara", "Thea",
             "Emma", "Sara", "Julie", "Ida", "Camilla", "Hanna",
             "Nora", "Ingrid", "Emilie", "Amalie", "Hanne", "Linda",
-            "Katja", "Berit", "Kristin", "Christina", "Stine"
+            "Katja", "Berit", "Kristin", "Christina", "Stine", "Eva"
     };
 
     /**
@@ -240,7 +240,7 @@ public class StorageTest
             Storage.getInstance().save();
             Storage.getInstance().read();
         } catch (IOException | ClassNotFoundException e) {
-            // YOLO!!!
+            e.printStackTrace();
         }
 
         List<Person> personsFromFile = Person.getPersons();
@@ -254,19 +254,6 @@ public class StorageTest
         assertTrue(insurancesFromFile.get(3).identify().equals(InsuranceType.HOUSE));
         assertTrue(insurancesFromFile.get(4).identify().equals(InsuranceType.BOAT));
         assertTrue(insurancesFromFile.get(5).identify().equals(InsuranceType.BOAT));
-
-        /*
-        assertTrue(personsFromFile.contains(person2));
-        assertTrue(insurancesFromFile.contains(car1));
-        assertTrue(insurancesFromFile.contains(car2));
-        assertTrue(insurancesFromFile.contains(house1));
-        assertTrue(insurancesFromFile.contains(house2));
-        assertTrue(insurancesFromFile.contains(boat1));
-        assertTrue(insurancesFromFile.contains(boat2));
-        assertTrue(insurancesFromFile.contains(boat3));
-        assertTrue(claimsFromFile.contains(claim1));
-        */
-
     }
 
     /**
@@ -318,7 +305,6 @@ public class StorageTest
                         .amount(randInt(1000, 4000))
                         .premium(randInt(5000, 15000))
                         .deductible(randInt(4000, 12000))
-                                //.bonus(randInt(50,80))
                         .mileage(randInt(4000, 20000))
                         .registration(
                                 LocalDate.of(randInt(1980, 2014),
