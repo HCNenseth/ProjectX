@@ -6,3 +6,4 @@
 * [RC4 2015-05-18](http://student.cs.hioa.no/~s114143/dats1600/GeneralAverage.2015-05-18.RC4.zip)
 * [RC5 2015-05-18](http://student.cs.hioa.no/~s114143/dats1600/GeneralAverage.2015-05-18.RC5.zip)
 * [RC6 2015-05-19](http://student.cs.hioa.no/~s114143/dats1600/GeneralAverage.2015-05-19.RC6.zip)
+* [Final 2015-05-20](http://student.cs.hioa.no/~s114143/dats1600/GeneralAverage.2015-05-20.final.zip)
