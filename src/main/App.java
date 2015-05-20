@@ -4,9 +4,6 @@ import javafx.application.Application;
 import javafx.stage.Stage;
 import main.localization.Loc;
 import main.model.Storage;
-import main.model.claim.Claim;
-import main.model.insurance.Insurance;
-import main.model.person.Person;
 import main.preference.Pref;
 import main.view.Resources;
 
